@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Itinerario 29 · Cuidar a los que cuidan · PLAPA 2026</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Georgia,'Times New Roman',serif;background:#f5f3ee;color:#222;padding:0 0 3rem}
+  .portada{background:#4B1528;padding:2rem 2.5rem 1.5rem;color:#fff}
+  .portada-sup{font-size:11px;font-weight:700;color:#ED93B1;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem;font-family:Arial,sans-serif}
+  .portada-title{font-size:26px;font-weight:700;line-height:1.25;margin-bottom:.35rem}
+  .portada-sub{font-size:13px;color:#F4C0D1;line-height:1.55;margin-bottom:1rem}
+  .dest-box{background:#72243E;border-radius:6px;padding:.7rem 1rem;margin-bottom:1rem}
+  .dest-lbl{font-size:9px;font-weight:700;color:#F4C0D1;letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px;font-family:Arial,sans-serif}
+  .dest-txt{font-size:12px;color:#fff;line-height:1.55}
+  .pills{display:flex;flex-wrap:wrap;gap:5px}
+  .pill{font-size:10px;font-weight:700;padding:3px 10px;border-radius:99px;background:#72243E;color:#FBEAF0;font-family:Arial,sans-serif}
+  .nav{display:flex;background:#fff;border-bottom:2px solid #993556;flex-wrap:wrap}
+  .tab{padding:12px 18px;cursor:pointer;font-size:12px;font-family:Arial,sans-serif;color:#666;border:none;background:none;font-weight:600;letter-spacing:.03em;border-bottom:3px solid transparent;margin-bottom:-2px}
+  .tab:hover{color:#4B1528;background:#FDF0F4}
+  .tab.on{color:#4B1528;border-bottom-color:#993556;background:#FDF0F4}
+  .mod{display:none;max-width:900px;margin:0 auto;padding:2rem 2.5rem}
+  .mod.a{display:block}
+  .mod-tag{display:inline-block;font-size:10px;font-weight:700;padding:3px 10px;border-radius:99px;background:#FBEAF0;color:#4B1528;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.5rem;font-family:Arial,sans-serif}
+  .mod-title{font-size:20px;font-weight:700;color:#4B1528;line-height:1.3;margin-bottom:.3rem}
+  .mod-sub{font-size:12px;color:#888;font-family:Arial,sans-serif;margin-bottom:1.5rem}
+  .mf{border-left:4px solid #993556;background:#FBEAF0;padding:.8rem 1.1rem;margin-bottom:1.25rem;border-radius:0 6px 6px 0}
+  .mf-lbl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#72243E;margin-bottom:4px;font-family:Arial,sans-serif}
+  .mf-txt{font-size:14px;font-style:italic;line-height:1.6;color:#4B1528}
+  .sec-lbl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#999;margin:1.1rem 0 .5rem;font-family:Arial,sans-serif}
+  .puntos{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:1rem}
+  .puntos li{display:flex;gap:10px;font-size:13px;color:#333;line-height:1.6}
+  .dot{width:20px;min-width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;margin-top:2px;background:#FBEAF0;color:#4B1528;font-family:Arial,sans-serif}
+  .act-box{background:#FBEAF0;border-radius:6px;padding:.75rem 1rem;margin-bottom:6px;border:1px solid #E8B4C5}
+  .act-title{font-size:12px;font-weight:700;color:#4B1528;margin-bottom:4px;font-family:Arial,sans-serif}
+  .act-body{font-size:12.5px;color:#72243E;line-height:1.55}
+  .cita{background:#FBEAF0;border-radius:6px;padding:.8rem 1.1rem;margin-top:1.2rem;border-left:3px solid #993556}
+  .cita-lbl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#72243E;margin-bottom:4px;font-family:Arial,sans-serif}
+  .cita-txt{font-size:12px;font-style:italic;line-height:1.6;color:#4B1528}
+  .cita-ref{font-size:10px;font-style:normal;font-weight:700;color:#72243E;margin-top:3px;font-family:Arial,sans-serif}
+  .autocuidado{border-left:3px solid #993556;background:#f9f5f7;padding:.75rem 1rem;margin-top:1.2rem}
+  .auto-lbl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#72243E;margin-bottom:4px;font-family:Arial,sans-serif}
+  .auto-txt{font-size:12.5px;color:#555;line-height:1.55}
+  .ref{font-size:10px;color:#aaa;font-style:italic;margin-top:1rem;padding-top:.75rem;border-top:1px solid #e8d5dc;font-family:Arial,sans-serif}
+  .cinco-princ{display:flex;flex-direction:column;gap:6px;margin-bottom:1rem}
+  .princ{display:flex;gap:10px;align-items:flex-start}
+  .princ-ico{width:24px;min-width:24px;height:24px;background:#4B1528;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;font-family:Arial,sans-serif;flex-shrink:0}
+  .princ-txt{font-size:13px;color:#333;line-height:1.55;padding-top:2px}
+  .oracion{background:#4B1528;color:#fff;border-radius:8px;padding:1rem 1.2rem;margin-bottom:1rem;text-align:center;font-style:italic;line-height:1.7}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1.1rem}
+  .g-item{background:#FBEAF0;border-radius:6px;padding:.65rem .8rem;border:1px solid #E8B4C5}
+  .g-title{font-size:11px;font-weight:700;color:#4B1528;margin-bottom:3px;font-family:Arial,sans-serif}
+  .g-body{font-size:11px;color:#72243E;line-height:1.4}
+  .cinco-gestos{display:flex;flex-direction:column;gap:6px;margin-bottom:1rem}
+  @media(max-width:600px){.grid2{grid-template-columns:1fr}.mod{padding:1.2rem 1rem}.portada{padding:1.2rem}}
+  @media print{.nav{display:none}.mod{display:block!important;page-break-before:always}}
+</style>
+</head>
+<body>
+
+<div class="portada">
+  <p class="portada-sup">Itinerario formativo 29 · PLAPA — CELAM 2026</p>
+  <h1 class="portada-title">Cuidar a los que cuidan</h1>
+  <p class="portada-sub">Cinco principios de autocuidado pastoral y el acompañamiento del duelo cuando la muerte llega · 4 módulos</p>
+  <div class="dest-box">
+    <div class="dest-lbl">Destinatarios</div>
+    <div class="dest-txt">Todo agente pastoral, coordinador de equipo y párroco responsable del bienestar de quienes sirven en la pastoral de adicciones. Especialmente recomendado como itinerario de cierre del proceso formativo completo, o como retiro anual del equipo. No requiere experiencia previa específica: aborda una necesidad universal de cualquier agente que acompaña sufrimiento humano de manera sostenida.</div>
+  </div>
+  <div class="pills">
+    <span class="pill">§6.7.2</span>
+    <span class="pill">§8.7.4</span>
+    <span class="pill">§11.1.14</span>
+    <span class="pill">§11.1.15</span>
+    <span class="pill">Todo agente y coordinador</span>
+    <span class="pill">4 sesiones</span>
+    <span class="pill">Nivel inicial–intermedio</span>
+  </div>
+</div>
+
+<div class="nav">
+  <button class="tab on" onclick="show(1,this)">Módulo 1 · Los cinco principios del cuidado</button>
+  <button class="tab" onclick="show(2,this)">Módulo 2 · Estrategias de acción parroquial</button>
+  <button class="tab" onclick="show(3,this)">Módulo 3 · El duelo en la pastoral de adicciones</button>
+  <button class="tab" onclick="show(4,this)">Módulo 4 · Permanecer: gestos concretos de acompañamiento</button>
+</div>
+
+<!-- MÓDULO 1 -->
+<div id="m1" class="mod a">
+  <span class="mod-tag">Módulo 1 · El Ver</span>
+  <h2 class="mod-title">Los cinco principios del cuidado: humanizar la tarea y prevenir el burnout</h2>
+  <p class="mod-sub">Fundamentación y sentido del cuidado de los agentes pastorales · §11.1.14</p>
+
+  <div class="mf">
+    <div class="mf-lbl">Mensaje fuerza</div>
+    <div class="mf-txt">"El cuidado de los agentes pastorales es un elemento central del servicio. En él se dirime la calidad del acompañamiento brindado en la misión."</div>
+  </div>
+
+  <div class="cinco-princ">
+    <div class="princ"><div class="princ-ico">1</div><div class="princ-txt"><strong>Cultura del encuentro:</strong> reconocer la vulnerabilidad propia y del otro a través de una mirada tierna que pregunte genuinamente por el estado del compañero. No basta con preguntar "¿cómo estás?" de manera ritual: se trata de preguntar de verdad y escuchar la respuesta.</div></div>
+    <div class="princ"><div class="princ-ico">2</div><div class="princ-txt"><strong>La ternura como fuerza:</strong> entender que la ternura es el lenguaje de los más pequeños y una herramienta transformadora en contextos de dolor. La ternura no es debilidad: es la fuerza específica que sostiene en contextos de alta exigencia emocional.</div></div>
+    <div class="princ"><div class="princ-ico">3</div><div class="princ-txt"><strong>Reconocimiento de la propia herida:</strong> aceptar que el cuidador también es una persona vulnerable y rota psicoespiritualmente, lo que permite un acompañamiento más horizontal y humano. El agente que niega su propia fragilidad acompaña desde una falsa superioridad que el hermano percibe y rechaza.</div></div>
+    <div class="princ"><div class="princ-ico">4</div><div class="princ-txt"><strong>El descanso como parte de la misión:</strong> siguiendo el mandato de Mc 6,31 ("Vengan a descansar un poco"), el descanso no es una interrupción de la tarea, sino una condición necesaria para poder sostenerla en el tiempo.</div></div>
+    <div class="princ"><div class="princ-ico">5</div><div class="princ-txt"><strong>Gestión de límites y culpa:</strong> aprender a trazar límites saludables y soltar lo que no depende de uno mismo, trabajando la culpa que genera detenerse.</div></div>
+  </div>
+
+  <div class="oracion">
+    "Señor, concédeme la Serenidad para aceptar las cosas que no puedo cambiar, valor para cambiar las que puedo, y sabiduría para reconocer la diferencia."
+    <br><br><span style="font-size:11px;font-family:Arial,sans-serif;font-style:normal">— Oración de la Serenidad, citada en §11.1.14</span>
+  </div>
+
+  <p class="sec-lbl">El Ver — Realidad</p>
+  <ul class="puntos">
+    <li><span class="dot">V</span><span>El §11.1.14 ubica el cuidado del agente no como un beneficio adicional sino como el factor decisivo de calidad: "en él se dirime la calidad del acompañamiento brindado en la misión." Un agente quemado, sin descanso ni límites claros, no puede sostener la calidad de acompañamiento que el manual propone, por buena que sea su intención.</span></li>
+    <li><span class="dot">V</span><span>El mandato de Mc 6,31 ("Vengan a descansar un poco") es la base bíblica del Principio 4. Jesús mismo, en medio de la multitud que reclamaba su atención, instruyó a sus discípulos a apartarse a descansar. El descanso no es una traición a la misión: es parte de ella.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Juzgar — Iluminación</p>
+  <ul class="puntos">
+    <li><span class="dot">J</span><span>El Principio 3 (reconocimiento de la propia herida) conecta directamente con la teología del "sanador herido" que el manual desarrolla en el Itinerario 10 sobre acompañantes pares: "aceptar que el cuidador también es una persona vulnerable y rota psicoespiritualmente permite un acompañamiento más horizontal y humano." La negación de la propia herida no protege al agente: lo aísla y lo expone a un colapso mayor cuando la herida finalmente se manifiesta.</span></li>
+    <li><span class="dot">J</span><span>La Oración de la Serenidad, originalmente del programa de los 12 Pasos (Itinerario 27), aparece aquí aplicada al propio agente pastoral. Esa reutilización es significativa: las mismas herramientas espirituales que el manual propone para los hermanos en proceso de recuperación son necesarias para quienes los acompañan. Ningún agente está exento de necesitar serenidad, valor y sabiduría.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Actuar — Propuesta</p>
+  <div class="act-box">
+    <div class="act-title">Evaluar los cinco principios en el equipo actual</div>
+    <div class="act-body">El grupo evalúa honestamente cada principio: ¿hay cultura del encuentro real entre los miembros del equipo? ¿se practica la ternura entre sí, no solo hacia los hermanos acompañados? ¿pueden los agentes reconocer su propia vulnerabilidad sin temor a ser juzgados? ¿descansan de verdad? ¿saben trazar límites sin culpa? Identificar el principio más débil del equipo.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Rezar juntos la Oración de la Serenidad</div>
+    <div class="act-body">El grupo reza juntos la Oración de la Serenidad, deteniéndose en cada frase: ¿qué cosas no puedo cambiar en mi tarea pastoral y necesito aceptar? ¿qué cosas sí puedo cambiar y necesito el valor de encarar? ¿dónde necesito sabiduría para distinguir entre ambas? Compartir en parejas las respuestas personales.</div>
+  </div>
+
+  <div class="cita">
+    <div class="cita-lbl">Cita inspiradora · §11.1.14 — Mc 6,31</div>
+    <div class="cita-txt">"Vengan a descansar un poco. El descanso no es una interrupción de la tarea, sino una condición necesaria para poder sostenerla en el tiempo."</div>
+    <div class="cita-ref">Manual de la PLAPA, §11.1.14 — Cuidar a los que cuidan (CELAM 2026)</div>
+  </div>
+
+  <div class="autocuidado">
+    <div class="auto-lbl">Autocuidado del agente</div>
+    <div class="auto-txt">Este es el único itinerario del catálogo cuyo tema central es, literalmente, el autocuidado del agente. El facilitador puede tomarse la libertad de que esta sesión sea más breve en contenido y más larga en silencio, descanso compartido y oración. La forma de la sesión puede encarnar el mensaje: no se trata solo de hablar del descanso, sino de practicarlo juntos en ese mismo encuentro.</div>
+  </div>
+  <p class="ref">Referencias: §11.1.14, Mc 6,31 — Manual de la PLAPA, CELAM 2026</p>
+</div>
+
+<!-- MÓDULO 2 -->
+<div id="m2" class="mod">
+  <span class="mod-tag">Módulo 2 · El Juzgar</span>
+  <h2 class="mod-title">Estrategias de acción parroquial: institucionalizar el cuidado, no improvisarlo</h2>
+  <p class="mod-sub">Cinco mecanismos concretos que la parroquia puede implementar · §11.1.14</p>
+
+  <div class="mf">
+    <div class="mf-lbl">Mensaje fuerza</div>
+    <div class="mf-txt">"Para que el cuidado sea efectivo, la parroquia debe institucionalizar espacios y protocolos concretos. Cuidar a los que cuidan desde la parroquia implica pasar de una atención centrada únicamente en el éxito del tratamiento a una mirada integral que valore la salud física, mental y espiritual de sus servidores."</div>
+  </div>
+
+  <div class="grid2">
+    <div class="g-item">
+      <div class="g-title">Encuentros Fraternos ("Parar para seguir")</div>
+      <div class="g-body">Reuniones mensuales de los equipos para compartir la vida, rezar y procesar las frustraciones propias del territorio, reforzando la conciencia de trabajo en red.</div>
+    </div>
+    <div class="g-item">
+      <div class="g-title">Apostolado del Tiempo</div>
+      <div class="g-body">Red de laicos voluntarios que suplan temporalmente al cuidador primario en tareas administrativas o de acompañamiento básico, permitiéndole tomar descansos breves o atender asuntos personales.</div>
+    </div>
+    <div class="g-item">
+      <div class="g-title">Protocolos de Emergencia (Guías ABC)</div>
+      <div class="g-body">Guías claras de acción ante crisis para que el agente sepa cómo actuar sin recibir todo el impacto emocional de forma desordenada.</div>
+    </div>
+    <div class="g-item">
+      <div class="g-title">Supervisión y Formación Continua</div>
+      <div class="g-body">Espacios de escucha con profesionales o pares con experiencia para supervisar el trabajo, orientar la vocación y evitar que el sufrimiento de los asistidos se lleve de forma personal al hogar.</div>
+    </div>
+    <div class="g-item">
+      <div class="g-title">Recursos Espirituales y Lúdicos</div>
+      <div class="g-body">Manuales de espiritualidad específicos (oraciones, música), experiencias de conexión con la naturaleza y actividades recreativas que ofrezcan un "respiro para el alma."</div>
+    </div>
+  </div>
+
+  <p class="sec-lbl">El Ver — Realidad</p>
+  <ul class="puntos">
+    <li><span class="dot">V</span><span>El nombre del primer mecanismo —"Parar para seguir"— condensa la paradoja central de este itinerario: detenerse no es abandonar la misión, sino la condición para poder continuarla. Esta misma expresión aparece referenciada en múltiples itinerarios anteriores del catálogo (como cierre de actividades) precisamente porque es el dispositivo de revisión de vida más recurrente que el manual propone.</span></li>
+    <li><span class="dot">V</span><span>El Apostolado del Tiempo responde a un problema muy concreto: muchos agentes pastorales no descansan porque "no hay quien los reemplace." La solución que propone el §11.1.14 no es pedirle al agente que se esfuerce más en organizarse, sino construir una red de suplentes que haga posible el descanso real.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Juzgar — Iluminación</p>
+  <ul class="puntos">
+    <li><span class="dot">J</span><span>Las "Guías ABC" de protocolos de emergencia evitan que el agente "reciba todo el impacto emocional de forma desordenada" (§11.1.14). Tener un protocolo claro ante una crisis (una sobredosis, una recaída violenta, una situación de riesgo suicida) no es solo eficiencia operativa: es protección psicológica para el agente, que puede actuar desde un procedimiento conocido en lugar de improvisar bajo estrés extremo.</span></li>
+    <li><span class="dot">J</span><span>"Solo a través de una comunidad que se cuida a sí misma en red, es posible sostener la esperanza en los lugares donde el descarte y el sufrimiento parecen prevalecer" (§11.1.14, conclusión). Esta frase conecta el cuidado del agente con la sostenibilidad misma de la misión pastoral: sin agentes cuidados, no hay esperanza sostenible para ofrecer a los hermanos.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Actuar — Propuesta</p>
+  <div class="act-box">
+    <div class="act-title">Institucionalizar el "Parar para seguir"</div>
+    <div class="act-body">Si el equipo no tiene todavía un encuentro fraterno mensual regular, el grupo lo diseña ahora: ¿qué día del mes? ¿quién lo facilita? ¿qué estructura tendrá (compartir vida, oración, procesamiento de frustraciones)? Fijar la fecha del primer encuentro antes de cerrar esta sesión.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Diseñar el Apostolado del Tiempo del territorio</div>
+    <div class="act-body">El grupo identifica candidatos para una red de laicos voluntarios que puedan suplir temporalmente a los agentes principales: ¿quiénes en la comunidad podrían asumir tareas básicas para liberar tiempo de descanso a los coordinadores? Iniciar el reclutamiento, aunque sea con dos o tres personas.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Crear las primeras Guías ABC</div>
+    <div class="act-body">El grupo diseña el protocolo de emergencia para la situación de crisis más frecuente en el territorio (por ejemplo, una sobredosis o una crisis de violencia): ¿qué pasos sigue el agente, en orden? ¿a quién llama? ¿qué dice y qué no dice? Tener ese protocolo escrito y accesible reduce la carga emocional de improvisar en el momento de la crisis.</div>
+  </div>
+
+  <div class="cita">
+    <div class="cita-lbl">Cita inspiradora · §11.1.14</div>
+    <div class="cita-txt">"Cuidar a los que cuidan desde la parroquia implica pasar de una atención centrada únicamente en el éxito del tratamiento a una mirada integral que valore la salud física, mental y espiritual de sus servidores."</div>
+    <div class="cita-ref">Manual de la PLAPA, §11.1.14 — Cuidar a los que cuidan (CELAM 2026)</div>
+  </div>
+
+  <div class="autocuidado">
+    <div class="auto-lbl">Autocuidado del agente</div>
+    <div class="auto-txt">Pedir descanso o apoyo puede generar culpa en agentes con una vocación muy intensa de servicio. El facilitador recuerda que institucionalizar estos mecanismos —en lugar de dejarlos a la iniciativa individual de cada agente— quita la carga de la culpa: no es "pedir un favor especial", es parte del diseño institucional del que todos se benefician por igual.</div>
+  </div>
+  <p class="ref">Referencias: §11.1.14 — Manual de la PLAPA, CELAM 2026</p>
+</div>
+
+<!-- MÓDULO 3 -->
+<div id="m3" class="mod">
+  <span class="mod-tag">Módulo 3 · El Actuar</span>
+  <h2 class="mod-title">El duelo en la pastoral de adicciones: cuatro características que la comunidad necesita comprender</h2>
+  <p class="mod-sub">La muerte como compañera frecuente del territorio · §11.1.15</p>
+
+  <div class="mf">
+    <div class="mf-lbl">Mensaje fuerza</div>
+    <div class="mf-txt">"En la pastoral de adicciones, la muerte no es una posibilidad lejana: es una compañera frecuente. Hermanos que mueren por sobredosis en una esquina. Jóvenes asesinados por deudas con el narco. Madres que encuentran a sus hijos sin vida en una habitación."</div>
+  </div>
+
+  <p class="sec-lbl">El Ver — Realidad</p>
+  <ul class="puntos">
+    <li><span class="dot">V</span><span><strong>Un duelo estigmatizado.</strong> "La familia que pierde un hijo por sobredosis o por violencia asociada al consumo carga con un doble dolor: la pérdida y la vergüenza. La sociedad suele emitir un juicio implícito —'algo habrán hecho mal', 'se lo buscó'— que aísla a los deudos y les niega el derecho al consuelo público que se otorga naturalmente ante otras muertes" (§11.1.15). Esta soledad del duelo es una de las formas más crueles del descarte.</span></li>
+    <li><span class="dot">V</span><span><strong>Un duelo anticipado y prolongado.</strong> "Muchas familias comienzan a hacer duelo mucho antes de la muerte física. El deterioro progresivo, las desapariciones, los internamientos, las recaídas sucesivas van generando una pérdida gradual de la persona que conocían. Cuando la muerte llega, a veces se experimenta como un alivio que inmediatamente genera culpa" (§11.1.15). El agente que acompaña a esa familia necesita comprender esa culpa sin juzgarla.</span></li>
+    <li><span class="dot">V</span><span><strong>Un duelo sin cierre.</strong> "En contextos de violencia territorial, muchas familias no recuperan el cuerpo, no saben exactamente qué ocurrió, o la muerte queda impune. La imposibilidad de cerrar el ciclo agrava el sufrimiento y puede cronificarlo" (§11.1.15). Este tipo de duelo requiere paciencia extrema: no hay un ritual que lo cierre de forma definitiva.</span></li>
+    <li><span class="dot">V</span><span><strong>Un duelo que alcanza al equipo pastoral.</strong> "Los agentes que acompañan a personas con consumo problemático pierden hermanos con los que han caminado durante meses o años. Esas muertes dejan marcas profundas que, si no se elaboran, se acumulan hasta producir un agotamiento emocional que puede llevar al abandono de la tarea" (§11.1.15). Este punto conecta directamente con los Módulos 1 y 2 sobre el cuidado del agente.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Juzgar — Iluminación</p>
+  <ul class="puntos">
+    <li><span class="dot">J</span><span>"El acompañamiento del duelo no es un agregado menor a la pastoral de adicciones. Es la prueba de fuego de la ética del cuidado: si la Iglesia acompaña solo mientras hay esperanza de recuperación y se retira cuando llega la muerte, entonces su presencia estaba condicionada al resultado y no a la dignidad de la persona" (§11.1.15). Esta es una de las afirmaciones más exigentes de todo el manual: el verdadero criterio de la calidad pastoral no se mide en los éxitos, sino en la fidelidad ante el fracaso definitivo de la muerte.</span></li>
+    <li><span class="dot">J</span><span>El §11.1.15 retoma la imagen del Retablo de Isenheim que el Itinerario 11 desarrolla en profundidad: "María, Juan y la Magdalena no intentan resucitar al crucificado; lo sostienen, lo lloran y preparan su cuerpo con reverencia. Esa es la imagen de una comunidad que no abandona a sus muertos ni a quienes los lloran." El duelo pastoral se funda teológicamente en la predella del retablo, no en una técnica de gestión del duelo.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Actuar — Propuesta</p>
+  <div class="act-box">
+    <div class="act-title">Identificar las muertes que el equipo ha cargado sin procesar</div>
+    <div class="act-body">El grupo se da el espacio (con la delicadeza que el tema requiere) de nombrar a las personas del territorio que murieron por causas vinculadas al consumo en los últimos años. No para reabrir heridas sin sostén, sino para reconocer el peso acumulado que el equipo carga, muchas veces en silencio.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Evaluar cómo el equipo acompaña actualmente el duelo de las familias</div>
+    <div class="act-body">El grupo revisa: ¿hay un protocolo claro de acompañamiento cuando muere alguien del territorio? ¿se ofrece la celebración de las exequias sin condiciones ni juicio? ¿hay seguimiento posterior a la familia o el acompañamiento termina con el funeral?</div>
+  </div>
+
+  <div class="cita">
+    <div class="cita-lbl">Cita inspiradora · §11.1.15</div>
+    <div class="cita-txt">"La Iglesia es una madre que no suelta la mano de sus hijos, ni siquiera cuando el mundo ya les ha dado sepultura."</div>
+    <div class="cita-ref">Manual de la PLAPA, §11.1.15 — El acompañamiento del duelo (CELAM 2026)</div>
+  </div>
+
+  <div class="autocuidado">
+    <div class="auto-lbl">Autocuidado del agente</div>
+    <div class="auto-txt">Este módulo puede tocar muertes muy presentes y recientes para el equipo. El facilitador necesita estar preparado para detener la actividad estructurada y simplemente sostener el silencio o el llanto si emerge. No hay actividad más importante en este momento que permitir que el duelo del propio equipo encuentre, también él, un espacio de elaboración.</div>
+  </div>
+  <p class="ref">Referencias: §11.1.15 — Manual de la PLAPA, CELAM 2026</p>
+</div>
+
+<!-- MÓDULO 4 -->
+<div id="m4" class="mod">
+  <span class="mod-tag">Módulo 4 · Síntesis y revisión de vida</span>
+  <h2 class="mod-title">Permanecer: cinco gestos concretos de acompañamiento del duelo</h2>
+  <p class="mod-sub">De las liturgias memoriales a los santuarios de la memoria · §11.1.15</p>
+
+  <div class="mf">
+    <div class="mf-lbl">Mensaje fuerza</div>
+    <div class="mf-txt">"Permanecer al lado de la familia que perdió a su hijo —sin explicaciones fáciles, sin moralismos, sin la tentación de encontrarle un sentido inmediato al sinsentido— es el acto pastoral más desnudo y más verdadero que una comunidad puede ofrecer. Es lo que hacen María, Juan y la Magdalena en la predella del Retablo: quedarse."</div>
+  </div>
+
+  <div class="cinco-gestos">
+    <div class="princ"><div class="princ-ico">1</div><div class="princ-txt"><strong>Liturgias memoriales:</strong> celebraciones periódicas (al menos una vez al año) donde la comunidad nombre y recuerde a las personas que murieron por causas vinculadas al consumo. Honran la memoria y rompen el aislamiento de las familias.</div></div>
+    <div class="princ"><div class="princ-ico">2</div><div class="princ-txt"><strong>Grupos de acompañamiento para familias en duelo:</strong> espacios regulares donde madres, padres, hermanos y parejas que perdieron a alguien por la adicción compartan su experiencia con otros. No requieren conducción profesional especializada, aunque se recomienda articulación para casos de duelo complicado.</div></div>
+    <div class="princ"><div class="princ-ico">3</div><div class="princ-txt"><strong>Acompañamiento personalizado en el momento de la muerte:</strong> estar presente, acompañar los trámites, ofrecer la celebración de las exequias sin condiciones ni juicio. La presencia incondicional en ese momento puede iniciar un vínculo de confianza duradero.</div></div>
+    <div class="princ"><div class="princ-ico">4</div><div class="princ-txt"><strong>Santuarios de la memoria:</strong> espacios físicos (una pared, un altar, un rincón) con nombres o fotos de quienes ya no están. Dicen: esta persona existió, fue amada, y su vida tuvo un valor que la muerte no borra.</div></div>
+    <div class="princ"><div class="princ-ico">5</div><div class="princ-txt"><strong>Espacios de elaboración para el equipo pastoral:</strong> momentos dedicados donde el equipo nombra a quienes perdió, expresa lo que siente y recibe el sostén de sus pares. No se resuelve con una oración rápida: requiere tiempo dedicado.</div></div>
+  </div>
+
+  <p class="sec-lbl">El Ver — Realidad</p>
+  <ul class="puntos">
+    <li><span class="dot">V</span><span>"En muchos casos, la familia teme que la Iglesia la rechace o la juzgue" (§11.1.15, Gesto 3). Este temor explica por qué tantas familias se aíslan en su duelo: anticipan el juicio que la sociedad ya les ha hecho sentir, y temen que la institución religiosa lo repita. El gesto de presencia incondicional desmiente activamente ese temor.</span></li>
+    <li><span class="dot">V</span><span>Los santuarios de la memoria (Gesto 4) que el §11.1.15 describe ya existen en "algunos centros barriales y comunidades de la región", lo cual confirma que esta práctica nació de la experiencia territorial concreta, no de un diseño teórico previo.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Juzgar — Iluminación</p>
+  <ul class="puntos">
+    <li><span class="dot">J</span><span>Los cinco gestos forman una secuencia temporal coherente: el acompañamiento personalizado (Gesto 3) ocurre en el momento inmediato de la muerte; los grupos de acompañamiento (Gesto 2) sostienen el proceso en las semanas y meses siguientes; las liturgias memoriales (Gesto 1) y los santuarios (Gesto 4) dan continuidad a largo plazo; y los espacios de elaboración del equipo (Gesto 5) atraviesan todo el proceso de manera paralela, cuidando a quienes cuidan a las familias.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Actuar — Propuesta</p>
+  <div class="act-box">
+    <div class="act-title">Diseñar la primera liturgia memorial</div>
+    <div class="act-body">El grupo diseña los elementos de una primera liturgia memorial anual: ¿en qué fecha? ¿qué estructura (Eucaristía, momento de nombrar a los fallecidos, espacio de oración por las familias)? ¿cómo se convoca a las familias del territorio? Esta celebración puede convertirse en una tradición anual del centro barrial o la parroquia.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Crear el santuario de la memoria del territorio</div>
+    <div class="act-body">Si no existe, el grupo diseña los elementos mínimos de un santuario de la memoria: ¿en qué espacio físico? ¿con qué formato (pared con nombres, altar con fotos, libro de memoria)? ¿cómo se invita a las familias a participar de su construcción? Este espacio se convierte en un recordatorio permanente de que ninguna vida está de sobra, ni siquiera después de la muerte.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Cierre del itinerario y del catálogo: la permanencia como vocación final</div>
+    <div class="act-body">El grupo cierra el itinerario —y con él, todo el ciclo formativo del catálogo de 30 itinerarios— con un momento de silencio en memoria de todos los hermanos del territorio que ya no están, nombrados uno por uno si el grupo lo desea. Después del silencio, una oración de acción de gracias por el camino formativo recorrido y por la vocación de permanecer, que es, en última instancia, la esencia de toda la Pastoral Latinoamericana de Acompañamiento y Prevención de las Adicciones.</div>
+  </div>
+
+  <div class="cita">
+    <div class="cita-lbl">Cita inspiradora · §11.1.15</div>
+    <div class="cita-txt">"Permanecer al lado de la familia que perdió a su hijo —sin explicaciones fáciles, sin moralismos, sin la tentación de encontrarle un sentido inmediato al sinsentido— es el acto pastoral más desnudo y más verdadero que una comunidad puede ofrecer."</div>
+    <div class="cita-ref">Manual de la PLAPA, §11.1.15 — El acompañamiento del duelo: permanecer cuando la muerte llega (CELAM 2026)</div>
+  </div>
+
+  <div class="autocuidado">
+    <div class="auto-lbl">Autocuidado del agente — cierre del itinerario</div>
+    <div class="auto-txt">El itinerario que abre con el cuidado del agente y cierra con el acompañamiento de la muerte traza el círculo completo de la pastoral de adicciones: cuidar para poder permanecer, y permanecer incluso cuando ya no hay nada que "arreglar." Esa permanencia —sin condiciones, sin resultado garantizado, sin la necesidad de encontrar sentido inmediato— es la forma más pura del amor que el Evangelio propone. El agente que ha llegado hasta aquí, en este itinerario y en todo el catálogo, lleva consigo no solo conocimiento técnico y teológico, sino la vocación renovada de quedarse.</div>
+  </div>
+  <p class="ref">Referencias: §11.1.15, §3.7, §6.7.2, §8.7.4 — Manual de la PLAPA, CELAM 2026</p>
+</div>
+
+<script>
+function show(n,btn){
+  for(let i=1;i<=4;i++) document.getElementById('m'+i).className='mod';
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  document.getElementById('m'+n).className='mod a';
+  btn.classList.add('on');
+}
+</script>
+</body>
+</html>

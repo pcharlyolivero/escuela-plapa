@@ -1,0 +1,335 @@
+<meta charset="utf-8">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.root{font-family:var(--font-sans);color:var(--text-primary);padding:0 0 2rem}
+.portada{background:#042C53;border-radius:12px;padding:1.25rem 1.5rem 1rem;margin-bottom:1.25rem}
+.portada-sup{font-size:11px;font-weight:500;color:#85B7EB;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.35rem}
+.portada-title{font-size:20px;font-weight:500;color:#fff;line-height:1.3;margin-bottom:.25rem}
+.portada-sub{font-size:12px;color:#B5D4F4;line-height:1.55;margin-bottom:.75rem}
+.dest-box{background:#185FA5;border-radius:8px;padding:.55rem .85rem;margin-bottom:.85rem}
+.dest-lbl{font-size:9px;font-weight:500;color:#B5D4F4;letter-spacing:.07em;text-transform:uppercase;margin-bottom:3px}
+.dest-txt{font-size:12px;color:#fff;line-height:1.5}
+.portada-pills{display:flex;flex-wrap:wrap;gap:5px}
+.portada-pill{font-size:11px;font-weight:500;padding:2px 9px;border-radius:99px;background:#185FA5;color:#E6F1FB}
+.nav{display:flex;gap:6px;margin-bottom:1.25rem;flex-wrap:wrap}
+.btn{border:0.5px solid var(--border-strong);background:var(--surface-2);border-radius:8px;padding:7px 14px;cursor:pointer;font-size:12px;font-family:var(--font-sans);color:var(--text-secondary);transition:background .15s}
+.btn:hover{background:var(--surface-1)}
+.btn.on{border:2px solid #185FA5;background:#E6F1FB;color:#042C53;font-weight:500}
+.card{border-radius:12px;border:0.5px solid var(--border);background:var(--surface-2);overflow:hidden;display:none}
+.card.active{display:block}
+.ch{padding:.85rem 1.1rem .7rem;border-bottom:0.5px solid var(--border)}
+.cn{display:inline-block;font-size:11px;font-weight:500;padding:2px 9px;border-radius:99px;margin-bottom:.5rem;background:#E6F1FB;color:#042C53}
+.ct{font-size:16px;font-weight:500;line-height:1.3;margin-bottom:.2rem;color:#0C447C}
+.cs{font-size:11px;color:var(--text-secondary);line-height:1.45}
+.cb{padding:.85rem 1.1rem}
+.mf{border-left:3px solid #185FA5;background:#E6F1FB;padding:.65rem .9rem;margin-bottom:.9rem}
+.mf-lbl{font-size:9px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:#185FA5;margin-bottom:3px}
+.mf-txt{font-size:14px;font-weight:500;line-height:1.5;font-family:var(--font-voice);color:#042C53}
+.pl{font-size:9px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.4rem}
+.pts{list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:.9rem}
+.pts li{display:flex;gap:9px;font-size:12px;color:var(--text-secondary);line-height:1.55}
+.dot{width:18px;min-width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:500;margin-top:1px;background:#E6F1FB;color:#0C447C}
+.act{background:#E6F1FB;border-radius:8px;padding:.65rem .85rem;margin-bottom:6px}
+.act-title{font-size:11px;font-weight:500;color:#042C53;margin-bottom:3px}
+.act-body{font-size:12px;color:#185FA5;line-height:1.5}
+.cita{border-radius:7px;padding:.65rem .85rem;background:#E6F1FB;margin-top:.85rem}
+.cita-lbl{font-size:9px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:#185FA5;margin-bottom:3px}
+.cita-txt{font-size:11px;line-height:1.6;font-family:var(--font-voice);font-style:italic;color:#042C53}
+.cita-ref{font-size:10px;margin-top:3px;font-style:normal;font-weight:500;color:#185FA5}
+.ac-box{border-left:3px solid #185FA5;background:var(--surface-1);padding:.65rem .85rem;margin-top:.85rem}
+.ac-lbl{font-size:9px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:#185FA5;margin-bottom:3px}
+.ac-txt{font-size:12px;color:var(--text-secondary);line-height:1.55}
+.ref{font-size:10px;color:var(--text-muted);font-style:italic;margin-top:.75rem;padding-top:.6rem;border-top:0.5px solid var(--border)}
+.cinco{display:flex;flex-direction:column;gap:5px;margin-bottom:.85rem}
+.eje-d{display:flex;gap:9px;align-items:flex-start}
+.eje-num{width:22px;min-width:22px;height:22px;background:#E6F1FB;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:500;color:#0C447C;margin-top:1px}
+.eje-txt{font-size:12px;color:var(--text-secondary);line-height:1.5;padding-top:2px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:.85rem}
+.card-inner{background:#E6F1FB;border-radius:7px;padding:.55rem .7rem}
+.card-inner-t{font-size:11px;font-weight:500;color:#042C53;margin-bottom:2px}
+.card-inner-b{font-size:10px;color:#185FA5;line-height:1.4}
+.alerta{background:#FAEEDA;border-left:3px solid #BA7517;border-radius:0 7px 7px 0;padding:.55rem .8rem;margin-bottom:.7rem}
+.alerta-lbl{font-size:9px;font-weight:500;color:#854F0B;letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
+.alerta-txt{font-size:12px;color:#412402;line-height:1.5}
+</style>
+
+<h2 class="sr-only">Itinerario formativo 8: El territorio digital como nuevo desafío. Cuatro módulos sobre adicciones digitales, FOMO, apuestas online y pastoral en entornos virtuales, basados en §4.6, §6.1.4, §8.6.3, §9.5.4 y §5.10 del Manual de la PLAPA.</h2>
+
+<div class="root">
+
+<div class="portada">
+  <p class="portada-sup">Itinerario formativo 8 · PLAPA — CELAM 2026</p>
+  <h1 class="portada-title">El territorio digital como nuevo desafío</h1>
+  <p class="portada-sub">Adicciones conductuales, redes sociales, FOMO y pastoral en entornos virtuales · 4 módulos</p>
+  <div class="dest-box">
+    <div class="dest-lbl">Destinatarios</div>
+    <div class="dest-txt">Agentes pastorales que trabajan con adolescentes y jóvenes, animadores de pastoral juvenil, catequistas, docentes de escuelas católicas y referentes de centros barriales con presencia de jóvenes. También útil para padres y madres que acompañan procesos de crianza en contextos de hiperconexión. No requiere formación técnica, pero sí disposición a explorar sin alarmismo y sin permisividad acrítica un territorio que muchos agentes aún no han aprendido a leer pastoralmente.</div>
+  </div>
+  <div class="portada-pills">
+    <span class="portada-pill">§4.6</span>
+    <span class="portada-pill">§6.1.4</span>
+    <span class="portada-pill">§8.6.3</span>
+    <span class="portada-pill">§9.5.4</span>
+    <span class="portada-pill">Pastoral juvenil</span>
+    <span class="portada-pill">4 sesiones</span>
+    <span class="portada-pill">Nivel inicial–intermedio</span>
+  </div>
+</div>
+
+<div class="nav">
+  <button class="btn on" onclick="show(1,this)">Módulo 1 · El territorio que no tiene geografía</button>
+  <button class="btn" onclick="show(2,this)">Módulo 2 · FOMO, dopamina y compulsividad</button>
+  <button class="btn" onclick="show(3,this)">Módulo 3 · Apuestas, pornografía y videojuegos</button>
+  <button class="btn" onclick="show(4,this)">Módulo 4 · Ciudadanía digital y presencia pastoral</button>
+</div>
+
+<!-- MÓDULO 1 -->
+<div id="m1" class="card active" style="border-left:5px solid #185FA5">
+  <div class="ch">
+    <span class="cn">Módulo 1 · El Ver</span>
+    <div class="ct">El territorio que no tiene geografía: la vida digital como nuevo campo pastoral</div>
+    <div class="cs">El entorno virtual como espacio de subjetividad y riesgo · §6.1.4, §4.6</div>
+  </div>
+  <div class="cb">
+    <div class="mf">
+      <div class="mf-lbl">Mensaje fuerza</div>
+      <div class="mf-txt">"Lo digital es un territorio porque es el lugar donde el sujeto habita, pasa gran parte de su tiempo y construye su sentido de pertenencia e identidad. La existencia y los vínculos se juegan hoy en gran medida en las redes."</div>
+    </div>
+
+    <div class="pl">El Ver — Realidad</div>
+    <ul class="pts">
+      <li><span class="dot">V</span><span>La objeción más frecuente en equipos pastorales: "lo digital no es nuestro campo." El diagnóstico del manual la refuta desde la primera línea del §6.1.4: "El concepto de territorio ha trascendido los límites geográficos tradicionales para abarcar el entorno virtual, donde se desarrolla gran parte de la vida social contemporánea." Si la pastoral acompaña a la persona entera, no puede ignorar el territorio donde esa persona pasa más horas que en cualquier otro espacio.</span></li>
+      <li><span class="dot">V</span><span>El diagnóstico territorial (§4.6) cuantifica la magnitud: adolescentes que pasan más de ocho horas diarias frente a pantallas; cientos de notificaciones diarias que generan un "estado de alerta constante"; ludopatía por apuestas online que se inicia de manera "insidiosa a través de videojuegos aparentemente gratuitos que introducen lógicas de mercado y competencia." El territorio digital no es neutro: tiene arquitecturas diseñadas para capturar la atención y sostenerla.</span></li>
+    </ul>
+
+    <div class="pl">El Juzgar — Iluminación</div>
+    <div class="cinco">
+      <div class="eje-d"><div class="eje-num">1</div><div class="eje-txt"><strong>Deslocalización del vínculo:</strong> la hiperconexión virtual suele profundizar la soledad y deshilachar el tejido social, naturalizando lógicas de consumo e individualismo.</div></div>
+      <div class="eje-d"><div class="eje-num">2</div><div class="eje-txt"><strong>Mecanismos de adicción conductual:</strong> descargas constantes de dopamina a través de notificaciones que pueden alcanzar los centenares diarios, alterando los circuitos cerebrales del placer.</div></div>
+      <div class="eje-d"><div class="eje-num">3</div><div class="eje-txt"><strong>Estrés digital y FOMO:</strong> búsqueda de aprobación constante y fragmentación de la atención que dificulta el desarrollo de procesos reflexivos profundos.</div></div>
+      <div class="eje-d"><div class="eje-num">4</div><div class="eje-txt"><strong>Nuevas adicciones digitales:</strong> videojuegos, pornografía y apuestas online con mecanismos neurobiológicos análogos a los de las sustancias químicas.</div></div>
+      <div class="eje-d"><div class="eje-num">5</div><div class="eje-txt"><strong>Impacto socioemocional:</strong> la exposición desregulada a pantallas reemplaza el silencio reparador y el encuentro presencial, invisibilizando los problemas ante los padres hasta que el deterioro es severo.</div></div>
+    </div>
+
+    <div class="pl">El Actuar — Propuesta</div>
+    <div class="act">
+      <div class="act-title">Diagnóstico digital del territorio propio</div>
+      <div class="act-body">El grupo mapea: ¿qué plataformas y aplicaciones usan los jóvenes del territorio? ¿cuántas horas diarias estiman que pasan conectados? ¿hay presencia de apuestas online? ¿pornografía accesible desde los teléfonos? ¿videojuegos con compras integradas? El diagnóstico no es para alarmar: es para ver el territorio que todavía no estamos leyendo.</div>
+    </div>
+    <div class="act">
+      <div class="act-title">¿Y nosotros? Autoevaluación del equipo pastoral</div>
+      <div class="act-body">Antes de hablarles a los jóvenes del uso del teléfono, el equipo evalúa su propia relación con las pantallas: ¿cuántas horas diarias? ¿revisamos el teléfono en medio de conversaciones? ¿usamos redes sociales para la pastoral o también para evadirnos? La honestidad del diagnóstico propio da credibilidad a cualquier propuesta que se haga a los jóvenes.</div>
+    </div>
+    <div class="act">
+      <div class="act-title">Leer el §6.1.4 y el §4.6 juntos</div>
+      <div class="act-body">El grupo lee en voz alta los dos artículos (dos personas, párrafo por párrafo) y detiene la lectura cada vez que alguien reconoce algo de su propio territorio. No para analizar todavía: solo para reconocer. El reconocimiento es el primer paso del Ver.</div>
+    </div>
+
+    <div class="cita">
+      <div class="cita-lbl">Cita inspiradora · §6.1.4</div>
+      <div class="cita-txt">"La tecnología pierde su neutralidad cuando se convierte en un espacio de deshumanización, manipulación o adicciones digitales. Reconocer la ciudadanía digital implica entender que lo virtual tiene un impacto concreto en lo real y en el tejido social."</div>
+      <div class="cita-ref">Manual de la PLAPA, §6.1.4 — El territorio digital como nuevo desafío (CELAM 2026)</div>
+    </div>
+
+    <div class="ac-box">
+      <div class="ac-lbl">Autocuidado del agente</div>
+      <div class="ac-txt">El diagnóstico del territorio digital puede generar en los agentes mayores una sensación de extrañeza o de quedar fuera: "este mundo no es el mío." El facilitador cuida que esa distancia no se convierta en juicio ni en demonización de la tecnología. El §6.1.4 es explícito: la tecnología no es mala en sí misma; el problema está en los mecanismos de captura diseñados para vencer el autocontrol. Ese matiz es importante para que el diagnóstico no derive en prohibicionismo.</div>
+    </div>
+    <div class="ref">Referencias: §4.6, §6.1.4 — Manual de la PLAPA, CELAM 2026</div>
+  </div>
+</div>
+
+<!-- MÓDULO 2 -->
+<div id="m2" class="card" style="border-left:5px solid #185FA5">
+  <div class="ch">
+    <span class="cn">Módulo 2 · El Juzgar</span>
+    <div class="ct">FOMO, dopamina y compulsividad: cuando la pantalla secuestra el cerebro</div>
+    <div class="cs">Neurobiología de las adicciones conductuales · §8.6.3, §9.5.4</div>
+  </div>
+  <div class="cb">
+    <div class="mf">
+      <div class="mf-lbl">Mensaje fuerza</div>
+      <div class="mf-txt">"El diseño de muchas plataformas digitales busca expresamente 'enganchar' al usuario, aprovechando la neuroplasticidad del cerebro —especialmente el de los jóvenes— para instalar circuitos de dependencia rápidos y severos."</div>
+    </div>
+
+    <div class="pl">El Ver — Realidad</div>
+    <ul class="pts">
+      <li><span class="dot">V</span><span>La objeción más resistente: "son simples pasatiempos, no adicciones reales." El §9.5.4 la desarma con precisión científica: el DSM-5 ya clasifica el juego patológico dentro de los trastornos adictivos porque "el cerebro procesa estas experiencias mediante procesos neuroplásticos. La exposición constante a estímulos digitales cambia físicamente los circuitos cerebrales de manera similar al aprendizaje de cualquier hábito adictivo."</span></li>
+      <li><span class="dot">V</span><span>El FOMO (Fear of Missing Out) no es una rareza adolescente: es una respuesta biológica diseñada por las plataformas. "La sobrecarga de información deriva en una ansiedad persistente por la aprobación de los pares y una fragmentación de la atención que dificulta el desarrollo de procesos reflexivos profundos" (§6.1.4). Un joven en ese estado no elige distraerse: su arquitectura cerebral está siendo dirigida hacia la pantalla.</span></li>
+    </ul>
+
+    <div class="pl">El Juzgar — Iluminación</div>
+    <ul class="pts">
+      <li><span class="dot">J</span><span>El ciclo de la compulsividad digital replica exactamente el ciclo de la adicción química (§8.6.3): el comportamiento comienza por búsqueda de placer (impulsividad) y con el tiempo se vuelve compulsivo —impulsado ya no por el placer sino por la necesidad de evitar emociones negativas como el estrés o la ansiedad. La diferencia entre un uso recreativo y una adicción digital no está en la cantidad de horas: está en si la persona puede parar o no.</span></li>
+      <li><span class="dot">J</span><span>El §8.6.3 identifica tres niveles de dolor que la adicción digital intenta anestesiar: el dolor primario (el malestar emocional, el fracaso, la incertidumbre que el individuo tapa con la pantalla), el dolor secundario (la culpa, la vergüenza y la ansiedad social que genera la evasión digital), y la pérdida de la corteza prefrontal como "freno" (el uso persistente debilita la capacidad de controlar impulsos). La pastoral aborda los tres.</span></li>
+    </ul>
+
+    <div class="pl">El Actuar — Propuesta</div>
+    <div class="act">
+      <div class="act-title">Impulsividad vs. compulsividad: aprender a distinguir</div>
+      <div class="act-body">El grupo practica la distinción del §8.6.3 con situaciones concretas del territorio: ¿este joven usa el videojuego porque le genera placer o porque sin él se siente ansioso e irritable? ¿puede dejar de mirar el teléfono cuando está en una conversación importante? La distinción no es para diagnosticar: es para saber cómo acompañar.</div>
+    </div>
+    <div class="act">
+      <div class="act-title">El FOMO en nuestra propia comunidad</div>
+      <div class="act-body">El FOMO no es solo un fenómeno adolescente. El grupo reflexiona: ¿hay FOMO en nuestro equipo pastoral? ¿revisamos el grupo de WhatsApp de la comunidad compulsivamente? ¿hay ansiedad cuando no recibimos "likes" en una publicación del centro barrial? Nombrar el propio FOMO es el primer paso para acompañar el de los jóvenes sin hipocresía.</div>
+    </div>
+    <div class="act">
+      <div class="act-title">Silencio como contraprograma</div>
+      <div class="act-body">La Terapia de Aceptación y Compromiso (ACT, §8.6.3) propone que el sujeto aprenda a tolerar el malestar sin refugiarse en la pantalla. Practicarlo en la sesión: diez minutos sin teléfono, sin conversación, solo presencia. Al terminar: ¿qué apareció? ¿qué tan difícil fue? El silencio como herramienta pastoral concreta en un mundo que lo teme.</div>
+    </div>
+
+    <div class="cita">
+      <div class="cita-lbl">Cita inspiradora · §9.5.4</div>
+      <div class="cita-txt">"Aunque no medie una sustancia química ingerida, estas conductas alteran los centros de placer y recompensa del cerebro de forma similar a las drogas. El diseño de estas plataformas busca expresamente 'enganchar' al usuario, aprovechando la neuroplasticidad del cerebro —especialmente el de los jóvenes— para instalar circuitos de dependencia rápidos y severos."</div>
+      <div class="cita-ref">Manual de la PLAPA, §9.5.4 — Adicciones comportamentales (CELAM 2026)</div>
+    </div>
+
+    <div class="ac-box">
+      <div class="ac-lbl">Autocuidado del agente</div>
+      <div class="ac-txt">Este módulo puede generar angustia en los agentes que acompañan adolescentes y recién ahora comprenden la magnitud del fenómeno. El facilitador cuida el equilibrio: la información sobre la neurobiología es para entender, no para asustar. El §6.1.4 es claro: "el objetivo no es la supresión de la tecnología, sino el desarrollo de una ciudadanía digital responsable." Esa distinción es la que le devuelve agencia al agente y a los jóvenes.</div>
+    </div>
+    <div class="ref">Referencias: §8.6.3, §9.5.4, §6.1.4 — Manual de la PLAPA, CELAM 2026</div>
+  </div>
+</div>
+
+<!-- MÓDULO 3 -->
+<div id="m3" class="card" style="border-left:5px solid #185FA5">
+  <div class="ch">
+    <span class="cn">Módulo 3 · El Actuar</span>
+    <div class="ct">Apuestas online, pornografía y videojuegos: tres desafíos pastorales concretos</div>
+    <div class="cs">Respuesta pastoral diferenciada para cada adicción conductual · §9.5.4, §8.6.3, §4.6</div>
+  </div>
+  <div class="cb">
+    <div class="mf">
+      <div class="mf-lbl">Mensaje fuerza</div>
+      <div class="mf-txt">"La adicción a las apuestas online suele iniciarse de forma insidiosa a través de videojuegos aparentemente gratuitos que introducen lógicas de mercado y competencia, evolucionando luego hacia las apuestas por internet."</div>
+    </div>
+
+    <div class="grid2">
+      <div class="card-inner">
+        <div class="card-inner-t">Apuestas online</div>
+        <div class="card-inner-b">Inicio insidioso vía videojuegos gratuitos. Dolor secundario marcado por culpa y aislamiento. Deudas y mentiras como señales de alarma. Más frecuente en varones jóvenes.</div>
+      </div>
+      <div class="card-inner">
+        <div class="card-inner-t">Pornografía</div>
+        <div class="card-inner-b">Acceso desde los 11–12 años en promedio. Distorsión de vínculos reales. Ciclo de vergüenza que impide pedir ayuda. Especialmente silenciada en comunidades de fe.</div>
+      </div>
+      <div class="card-inner">
+        <div class="card-inner-t">Videojuegos compulsivos</div>
+        <div class="card-inner-b">Sustitución de vínculos reales por virtuales. Abandono escolar y familiar. Síntomas de abstinencia (irritabilidad, insomnio) al cortar el acceso. DSM-5 los reconoce.</div>
+      </div>
+      <div class="card-inner">
+        <div class="card-inner-t">Redes sociales compulsivas</div>
+        <div class="card-inner-b">FOMO, búsqueda compulsiva de validación, comparación permanente. Impacto en autoestima, especialmente en adolescentes mujeres. Diseño algorítmico que premia la permanencia.</div>
+      </div>
+    </div>
+
+    <div class="alerta">
+      <div class="alerta-lbl">Señales de alarma que el agente pastoral puede detectar</div>
+      <div class="alerta-txt">Cambio brusco de humor al interrumpir el uso · abandono de actividades que antes disfrutaba · mentiras sobre el tiempo que pasa conectado · deudas o pedidos de dinero inexplicables · retraimiento social progresivo · deterioro del rendimiento escolar o laboral · insomnio crónico.</div>
+    </div>
+
+    <div class="pl">El Ver — Realidad</div>
+    <ul class="pts">
+      <li><span class="dot">V</span><span>La pornografía es la adicción digital más silenciada en contextos pastorales. El §8.6.3 la incluye explícitamente entre las adicciones conductuales con los mismos mecanismos neurobiológicos que las apuestas online y los videojuegos. El silencio pastoral sobre este tema no protege a nadie: deja a los jóvenes (y a los adultos) sin recursos para nombrarlo y sin comunidad que los acompañe.</span></li>
+      <li><span class="dot">V</span><span>Las apuestas online son el vector de crecimiento más rápido entre los menores de edad. "Este camino suele iniciarse de forma insidiosa a través de videojuegos aparentemente gratuitos que introducen lógicas de mercado y competencia" (§4.6). Para cuando el joven reconoce el problema, la deuda y la mentira ya forman parte del ciclo. La prevención tiene que llegar antes de ese punto.</span></li>
+    </ul>
+
+    <div class="pl">El Juzgar — Iluminación</div>
+    <ul class="pts">
+      <li><span class="dot">J</span><span>Los cinco pilares del abordaje pastoral (§8.6.3): distinguir impulsividad de compulsividad; identificar el dolor primario que la conducta anestesia; trabajar el dolor secundario (culpa, vergüenza, aislamiento); usar herramientas de aceptación del malestar sin evasión (ACT); y abordar el estrés digital y el FOMO como parte del cuadro. El agente no trata clínicamente: identifica, acompaña y deriva en el momento oportuno.</span></li>
+      <li><span class="dot">J</span><span>"No se trata de la herramienta, sino del uso" (§9.5.4). El objetivo pastoral no es la prohibición de la tecnología: es "el desarrollo de una ciudadanía digital responsable. Se busca que la parte racional del cerebro recupere el mando sobre los impulsos emocionales, transformando la tecnología en una herramienta para el estudio y el encuentro humano" (§8.6.3).</span></li>
+    </ul>
+
+    <div class="pl">El Actuar — Propuesta</div>
+    <div class="act">
+      <div class="act-title">Abrir el espacio para lo que no se nombra</div>
+      <div class="act-body">En el grupo pastoral (no en el grupo de jóvenes todavía): ¿hay alguien que sospeche que un joven del territorio tiene un problema con apuestas, pornografía o videojuegos? ¿cómo lo haríamos visible sin estigmatizar? ¿qué sabemos hacer nosotros y qué necesita derivación? Diseñar juntos el protocolo mínimo de detección y acompañamiento.</div>
+    </div>
+    <div class="act">
+      <div class="act-title">La conversación que no estamos teniendo</div>
+      <div class="act-body">El grupo diseña un encuentro con los jóvenes del territorio sobre adicciones digitales: ¿qué formato? ¿qué tono (sin sermón, sin alarma, con honestidad)? ¿qué herramientas del §8.6.3 pueden usarse sin ser clínicos? La clave es abrir el espacio para que los jóvenes nombren lo que viven sin sentir que van a ser juzgados.</div>
+    </div>
+    <div class="act">
+      <div class="act-title">Crear contraprogramas de encuentro real</div>
+      <div class="act-body">La mejor respuesta a la captura digital no es la prohibición sino el contraprograma: espacios de encuentro real que compitan con la atracción de la pantalla. ¿Qué tienen los espacios comunitarios del territorio que la pantalla no puede dar? Nombrar tres cosas concretas. Diseñar un evento o espacio que las ponga en valor.</div>
+    </div>
+
+    <div class="cita">
+      <div class="cita-lbl">Cita inspiradora · §8.6.3</div>
+      <div class="cita-txt">"El objetivo no es la supresión de la tecnología, sino el desarrollo de una ciudadanía digital responsable. Se busca que la parte racional del cerebro recupere el mando sobre los impulsos emocionales, transformando la tecnología en una herramienta para el estudio y el encuentro humano."</div>
+      <div class="cita-ref">Manual de la PLAPA, §8.6.3 — El abordaje de las adicciones digitales (CELAM 2026)</div>
+    </div>
+
+    <div class="ac-box">
+      <div class="ac-lbl">Autocuidado del agente</div>
+      <div class="ac-txt">El módulo puede despertar en algunos agentes una sensación de urgencia que lleva al activismo sin discernimiento. El facilitador recuerda que el agente pastoral no trata clínicamente las adicciones digitales: acompaña, detecta y deriva. "El acompañamiento pastoral no sustituye al profesional; lo complementa en el tramo que la técnica sola no puede recorrer" (§6.4.2). Saber dónde termina la competencia del agente y dónde empieza la del especialista es parte del autocuidado y de la ética del cuidado.</div>
+    </div>
+    <div class="ref">Referencias: §4.6, §8.6.3, §9.5.4, §6.4.2 — Manual de la PLAPA, CELAM 2026</div>
+  </div>
+</div>
+
+<!-- MÓDULO 4 -->
+<div id="m4" class="card" style="border-left:5px solid #185FA5">
+  <div class="ch">
+    <span class="cn">Módulo 4 · Síntesis y revisión de vida</span>
+    <div class="ct">Ciudadanía digital y presencia pastoral: León XIV y el territorio del siglo XXI</div>
+    <div class="cs">La Iglesia en salida hacia el territorio virtual · §5.10, Magnifica Humanitas (2026)</div>
+  </div>
+  <div class="cb">
+    <div class="mf">
+      <div class="mf-lbl">Mensaje fuerza</div>
+      <div class="mf-txt">"Las lógicas algorítmicas de las redes sociales y los entornos digitales operan con una gramática de la compulsividad que comparte estructura con las adicciones clásicas. El territorio digital es, también, un territorio pastoral."</div>
+    </div>
+
+    <div class="pl">El Ver — Realidad</div>
+    <ul class="pts">
+      <li><span class="dot">V</span><span>León XIV, en la Magnifica Humanitas (2026), inscribe la reflexión sobre el territorio digital en la tradición inaugurada por León XIII ante la Revolución Industrial. Así como aquella transformación tecnológica exigió una respuesta eclesial nueva (la Rerum Novarum), la revolución digital exige una pastoral que no llegue tarde (§5.10). La Iglesia que no aprende a leer el territorio digital repetirá el error de llegar cuando la crisis ya estalló.</span></li>
+      <li><span class="dot">V</span><span>"Las lógicas algorítmicas de las redes sociales y los entornos digitales operan con una gramática de la compulsividad que comparte estructura con las adicciones clásicas: la búsqueda del reconocimiento inmediato, la incapacidad de soportar el vacío, la captura de la atención al servicio de intereses comerciales ajenos al bien de la persona" (§5.10). El Papa no alarmó: diagnosticó. La pastoral recoge ese diagnóstico y actúa.</span></li>
+    </ul>
+
+    <div class="pl">El Juzgar — Iluminación</div>
+    <ul class="pts">
+      <li><span class="dot">J</span><span>La "ciudadanía digital responsable" del §8.6.3 y del §6.1.4 no es solo un concepto técnico: es una propuesta antropológica. El ser humano no está hecho para ser capturado por un algoritmo: está hecho para el encuentro libre, gratuito y encarnado. Recuperar esa libertad en el territorio digital es una tarea pastoral que se inscribe en la misma tradición que acompañar la salida de cualquier otra forma de esclavitud.</span></li>
+      <li><span class="dot">J</span><span>La "dicción frente a la adicción" del §11.2.1 cobra aquí un sentido nuevo: el joven que puede nombrar lo que siente, que tiene un espacio donde su voz tiene lugar, que pertenece a una comunidad real donde es conocido por su nombre, tiene un factor protector contra la captura digital que ningún programa de control parental puede replicar. La pastoral de la presencia real es la respuesta más profunda al vacío que la pantalla llena.</span></li>
+    </ul>
+
+    <div class="pl">El Actuar — Propuesta</div>
+    <div class="act">
+      <div class="act-title">Presencia pastoral en el territorio digital</div>
+      <div class="act-body">¿Tiene el equipo presencia en las redes que usan los jóvenes del territorio? ¿qué presencia: institucional (publicar actividades) o vincular (interactuar, estar disponibles, crear comunidad)? La diferencia es la misma que entre cercanía física y presencia significativa (§6.1.1). El grupo evalúa su presencia digital actual y diseña un paso concreto hacia una presencia más vincular.</div>
+    </div>
+    <div class="act">
+      <div class="act-title">Protocolo comunitario de uso del teléfono</div>
+      <div class="act-body">El grupo diseña un protocolo de uso del teléfono para los espacios comunitarios (centro barrial, grupo juvenil, reuniones de equipo): ¿teléfonos fuera del alcance durante las reuniones? ¿un momento de "silencio digital" al inicio de cada encuentro? ¿acuerdo sobre el grupo de WhatsApp del equipo (horarios, tipo de mensajes)? El protocolo es una forma de ciudadanía digital comunitaria.</div>
+    </div>
+    <div class="act">
+      <div class="act-title">Cierre: ¿qué nos roba la pantalla que el encuentro nos devuelve?</div>
+      <div class="act-body">El grupo comparte en ronda: ¿qué encontraste en este itinerario que la pantalla nunca te podría dar? No para romantizar lo analógico: para nombrar lo que tiene valor irreemplazable en el encuentro real. Esa lista es la propuesta pastoral más sólida frente al territorio digital: no prohíbe; ofrece algo mejor.</div>
+    </div>
+
+    <div class="cita">
+      <div class="cita-lbl">Cita inspiradora · §5.10 — León XIV, Magnifica Humanitas (2026)</div>
+      <div class="cita-txt">"Las lógicas algorítmicas de las redes sociales y los entornos digitales operan con una gramática de la compulsividad que comparte estructura con las adicciones clásicas. El territorio digital es, también, un territorio pastoral."</div>
+      <div class="cita-ref">Citado en Manual de la PLAPA, §5.10 — León XIV: La pastoral de las adicciones (CELAM 2026)</div>
+    </div>
+
+    <div class="ac-box">
+      <div class="ac-lbl">Autocuidado del agente — cierre del itinerario</div>
+      <div class="ac-txt">El itinerario cierra con una práctica: en los próximos siete días, el equipo hace un "ayuno digital" mínimo —una hora al día sin teléfono— y registra en el cuaderno colectivo qué apareció en ese silencio. No como penitencia: como ejercicio de ciudadanía digital consciente. Lo que el agente practica en sí mismo puede proponerlo a los jóvenes con autenticidad. Lo que no practica, lo predica en el vacío.</div>
+    </div>
+    <div class="ref">Referencias: §5.10, Magnifica Humanitas (2026), §6.1.4, §8.6.3, §11.2.1 — Manual de la PLAPA, CELAM 2026</div>
+  </div>
+</div>
+
+</div>
+
+<script>
+function show(n,btn){
+  for(let i=1;i<=4;i++) document.getElementById('m'+i).classList.remove('active');
+  document.querySelectorAll('.btn').forEach(b=>b.classList.remove('on'));
+  document.getElementById('m'+n).classList.add('active');
+  btn.classList.add('on');
+}
+</script>

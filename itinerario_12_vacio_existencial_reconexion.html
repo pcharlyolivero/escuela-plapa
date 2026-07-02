@@ -1,0 +1,331 @@
+<meta charset="utf-8">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.root{font-family:var(--font-sans);color:var(--text-primary);padding:0 0 2rem}
+.portada{background:#1A3A5C;border-radius:12px;padding:1.25rem 1.5rem 1rem;margin-bottom:1.25rem}
+.portada-sup{font-size:11px;font-weight:500;color:#85B7EB;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.35rem}
+.portada-title{font-size:20px;font-weight:500;color:#fff;line-height:1.3;margin-bottom:.25rem}
+.portada-sub{font-size:12px;color:#B5D4F4;line-height:1.55;margin-bottom:.75rem}
+.dest-box{background:#2A5A8A;border-radius:8px;padding:.55rem .85rem;margin-bottom:.85rem}
+.dest-lbl{font-size:9px;font-weight:500;color:#B5D4F4;letter-spacing:.07em;text-transform:uppercase;margin-bottom:3px}
+.dest-txt{font-size:12px;color:#fff;line-height:1.5}
+.portada-pills{display:flex;flex-wrap:wrap;gap:5px}
+.portada-pill{font-size:11px;font-weight:500;padding:2px 9px;border-radius:99px;background:#2A5A8A;color:#E6F1FB}
+.nav{display:flex;gap:6px;margin-bottom:1.25rem;flex-wrap:wrap}
+.btn{border:0.5px solid var(--border-strong);background:var(--surface-2);border-radius:8px;padding:7px 14px;cursor:pointer;font-size:12px;font-family:var(--font-sans);color:var(--text-secondary);transition:background .15s}
+.btn:hover{background:var(--surface-1)}
+.btn.on{border:2px solid #2A5A8A;background:#E6F1FB;color:#0D2640;font-weight:500}
+.card{border-radius:12px;border:0.5px solid var(--border);background:var(--surface-2);overflow:hidden;display:none}
+.card.active{display:block}
+.ch{padding:.85rem 1.1rem .7rem;border-bottom:0.5px solid var(--border)}
+.cn{display:inline-block;font-size:11px;font-weight:500;padding:2px 9px;border-radius:99px;margin-bottom:.5rem;background:#E6F1FB;color:#0D2640}
+.ct{font-size:16px;font-weight:500;line-height:1.3;margin-bottom:.2rem;color:#1A3A5C}
+.cs{font-size:11px;color:var(--text-secondary);line-height:1.45}
+.cb{padding:.85rem 1.1rem}
+.mf{border-left:3px solid #2A5A8A;background:#E6F1FB;padding:.65rem .9rem;margin-bottom:.9rem}
+.mf-lbl{font-size:9px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:#2A5A8A;margin-bottom:3px}
+.mf-txt{font-size:14px;font-weight:500;line-height:1.5;font-family:var(--font-voice);color:#0D2640}
+.pl{font-size:9px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.4rem}
+.pts{list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:.9rem}
+.pts li{display:flex;gap:9px;font-size:12px;color:var(--text-secondary);line-height:1.55}
+.dot{width:18px;min-width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:500;margin-top:1px;background:#E6F1FB;color:#1A3A5C}
+.act{background:#E6F1FB;border-radius:8px;padding:.65rem .85rem;margin-bottom:6px}
+.act-title{font-size:11px;font-weight:500;color:#0D2640;margin-bottom:3px}
+.act-body{font-size:12px;color:#2A5A8A;line-height:1.5}
+.cita{border-radius:7px;padding:.65rem .85rem;background:#E6F1FB;margin-top:.85rem}
+.cita-lbl{font-size:9px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:#2A5A8A;margin-bottom:3px}
+.cita-txt{font-size:11px;line-height:1.6;font-family:var(--font-voice);font-style:italic;color:#0D2640}
+.cita-ref{font-size:10px;margin-top:3px;font-style:normal;font-weight:500;color:#2A5A8A}
+.ac-box{border-left:3px solid #2A5A8A;background:var(--surface-1);padding:.65rem .85rem;margin-top:.85rem}
+.ac-lbl{font-size:9px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:#2A5A8A;margin-bottom:3px}
+.ac-txt{font-size:12px;color:var(--text-secondary);line-height:1.55}
+.ref{font-size:10px;color:var(--text-muted);font-style:italic;margin-top:.75rem;padding-top:.6rem;border-top:0.5px solid var(--border)}
+.tres-niveles{display:flex;flex-direction:column;gap:6px;margin-bottom:.85rem}
+.nivel{display:flex;gap:9px;align-items:flex-start}
+.nivel-ico{width:22px;min-width:22px;height:22px;background:#E6F1FB;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:500;color:#1A3A5C;margin-top:1px}
+.nivel-txt{font-size:12px;color:var(--text-secondary);line-height:1.5;padding-top:2px}
+.cuatro-obs{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:.85rem}
+.obs{background:#E6F1FB;border-radius:7px;padding:.55rem .7rem}
+.obs-n{font-size:11px;font-weight:500;color:#0D2640;margin-bottom:2px}
+.obs-b{font-size:10px;color:#2A5A8A;line-height:1.4}
+.sacramento{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:.85rem}
+.sac{background:#E6F1FB;border-radius:7px;padding:.6rem .7rem}
+.sac-n{font-size:11px;font-weight:500;color:#0D2640;margin-bottom:3px}
+.sac-b{font-size:10px;color:#2A5A8A;line-height:1.4}
+</style>
+
+<div class="root">
+
+<div class="portada">
+  <p class="portada-sup">Itinerario formativo 12 · PLAPA — CELAM 2026</p>
+  <h1 class="portada-title">Vacío existencial y reconexión espiritual</h1>
+  <p class="portada-sub">La adicción como patología del espíritu: diagnóstico, acompañamiento y reparación del sentido · 4 módulos</p>
+  <div class="dest-box">
+    <div class="dest-lbl">Destinatarios</div>
+    <div class="dest-txt">Agentes pastorales, guías espirituales, sacerdotes y diáconos que acompañan procesos de recuperación desde la dimensión espiritual. También útil para psicólogos y trabajadores sociales que integran la dimensión espiritual en sus abordajes, y para equipos que quieren profundizar en la teología del acompañamiento del Capítulo 7 del manual. Requiere disposición a la reflexión teológica y antropológica; no se asume formación académica específica.</div>
+  </div>
+  <div class="portada-pills">
+    <span class="portada-pill">§7.1–7.4</span>
+    <span class="portada-pill">§7.6</span>
+    <span class="portada-pill">§5.2</span>
+    <span class="portada-pill">Guías espirituales y equipos</span>
+    <span class="portada-pill">4 sesiones</span>
+    <span class="portada-pill">Nivel intermedio</span>
+  </div>
+</div>
+
+<div class="nav">
+  <button class="btn on" onclick="show(1,this)">Módulo 1 · La fractura del espíritu</button>
+  <button class="btn" onclick="show(2,this)">Módulo 2 · La búsqueda fallida</button>
+  <button class="btn" onclick="show(3,this)">Módulo 3 · El despertar espiritual</button>
+  <button class="btn" onclick="show(4,this)">Módulo 4 · Los sacramentos y la autonomía</button>
+</div>
+
+<!-- MÓDULO 1 -->
+<div id="m1" class="card active" style="border-left:5px solid #2A5A8A">
+  <div class="ch">
+    <span class="cn">Módulo 1 · El Ver</span>
+    <div class="ct">La adicción no es un vicio: es una fractura de la trascendencia</div>
+    <div class="cs">La dimensión espiritual como herida más profunda y menos visible · §7.3.1, §7.3.4</div>
+  </div>
+  <div class="cb">
+    <div class="mf">
+      <div class="mf-lbl">Mensaje fuerza</div>
+      <div class="mf-txt">"El vacío de sentido no opera en paralelo al daño neurobiológico ni al trauma psíquico, sino que los habita desde dentro, configurando el suelo existencial sobre el cual esos daños se instalan y se sostienen."</div>
+    </div>
+
+    <div class="pl">El Ver — Realidad</div>
+    <ul class="pts">
+      <li><span class="dot">V</span><span>La mirada más extendida todavía juzga el consumo como "un vicio" o "una debilidad de carácter." El §7.3.1 la refuta desde la raíz: "La falta moral es secundaria a la desolación interior; tratar al hermano con misericordia es lo que permite iniciar un diálogo fraterno restaurador." Mientras el juicio moral permanece en la superficie, la fractura espiritual sigue sin ser tocada y el proceso de sanación no puede comenzar.</span></li>
+      <li><span class="dot">V</span><span>La adicción se instala en el vacío de sentido generado por la desprotección social (§7.3.4): "Cuando el entorno no provee un apego seguro, se genera una personalidad defensiva que busca alivio en la gratificación inmediata, instalándose en la grieta que la sociedad no supo cubrir." El trastorno no nació de la maldad: nació de la invisibilidad. "Nadie me miraba" es la frase que más se repite en los procesos de recuperación.</span></li>
+    </ul>
+
+    <div class="pl">El Juzgar — Iluminación</div>
+
+    <div class="tres-niveles">
+      <div class="nivel"><div class="nivel-ico">1</div><div class="nivel-txt"><strong>Fractura de la trascendencia (§7.3.1):</strong> el consumo funciona como "falso absoluto" que intenta sustituir la relación con Dios y con los hermanos. No es búsqueda de maldad: es sustitución de la verdadera trascendencia con una respuesta inmediata que promete lo que no puede dar.</div></div>
+      <div class="nivel"><div class="nivel-ico">2</div><div class="nivel-ico"></div></div>
+      <div class="nivel"><div class="nivel-ico">2</div><div class="nivel-txt"><strong>Desconexión progresiva (§7.3.3):</strong> el trastorno "causa un desencuentro progresivo con la verdad espiritual." La funcionalidad externa puede ocultar un deterioro profundo: la incapacidad creciente de amar desinteresadamente es la señal más clara de esa fractura.</div></div>
+      <div class="nivel"><div class="nivel-ico">3</div><div class="nivel-txt"><strong>Instalación en la invisibilidad (§7.3.4):</strong> la droga llena falsamente la necesidad de propósito en contextos donde el presente no tiene esperanza ni redes de apoyo. Es búsqueda compulsiva de una vivencia para escapar de un presente percibido como amenaza permanente.</div></div>
+    </div>
+
+    <div class="pl">El Actuar — Propuesta</div>
+    <div class="act">
+      <div class="act-title">Releer los casos del territorio con el lente del §7.3</div>
+      <div class="act-body">El grupo toma tres casos del territorio (anonimizados) y los relée desde la pregunta del §7.3.1: ¿qué fractura de la trascendencia hay detrás? ¿qué intentaba sanar el consumo? ¿qué invisibilidad precedió a la adicción? No para reemplazar el diagnóstico clínico: para añadir la dimensión que sin la lectura espiritual queda muda.</div>
+    </div>
+    <div class="act">
+      <div class="act-title">La pregunta que el consumo no hace pero responde</div>
+      <div class="act-body">El §7.3.2 cita Jr 2,13: "cavarse cisternas agrietadas que no retienen el agua." El grupo reflexiona: ¿qué "agua" estaba buscando cada persona del territorio cuando empezó a consumir? ¿pertenencia? ¿alivio del dolor? ¿poder? ¿invisibilidad frente a un mundo amenazante? Nombrar esa búsqueda con compasión cambia el modo de acompañar.</div>
+    </div>
+
+    <div class="cita">
+      <div class="cita-lbl">Cita inspiradora · §7.3.1</div>
+      <div class="cita-txt">"El trastorno por uso de sustancias, además de sus dimensiones biológicas y psicológicas, involucra una fractura de la trascendencia que constituye su herida más profunda y menos visible. El vacío de sentido no opera en paralelo al daño neurobiológico ni al trauma psíquico, sino que los habita desde dentro."</div>
+      <div class="cita-ref">Manual de la PLAPA, §7.3.1 — La naturaleza del consumo como fractura de la trascendencia (CELAM 2026)</div>
+    </div>
+
+    <div class="ac-box">
+      <div class="ac-lbl">Autocuidado del agente</div>
+      <div class="ac-txt">El módulo puede despertar en algunos agentes la pregunta: ¿hay en mi propia historia un vacío que intenté llenar con algo que no era Dios? La lectura del §7.3 es espejo tanto del acompañado como del acompañante. El facilitador cuida ese espacio con delicadeza: no es una sesión de confesión grupal, pero sí una invitación a la honestidad personal que da profundidad al acompañamiento. El agente que conoce su propio vacío puede acompañar el ajeno desde la fraternidad.</div>
+    </div>
+    <div class="ref">Referencias: §7.3.1, §7.3.3, §7.3.4, Jr 2,13 — Manual de la PLAPA, CELAM 2026</div>
+  </div>
+</div>
+
+<!-- MÓDULO 2 -->
+<div id="m2" class="card" style="border-left:5px solid #2A5A8A">
+  <div class="ch">
+    <span class="cn">Módulo 2 · El Juzgar</span>
+    <div class="ct">La búsqueda fallida y los obstáculos a la reconexión</div>
+    <div class="cs">Sed de infinito mal encauzada y pedagogía de la proximidad · §7.3.2, §7.4.2, §5.2</div>
+  </div>
+  <div class="cb">
+    <div class="mf">
+      <div class="mf-lbl">Mensaje fuerza</div>
+      <div class="mf-txt">"La adicción es una respuesta errónea a una necesidad espiritual legítima. La recuperación consiste en remover los obstáculos que bloquean el deseo de vivir para que la reconexión fluya."</div>
+    </div>
+
+    <div class="cuatro-obs">
+      <div class="obs">
+        <div class="obs-n">Obstáculo 1 — Vacío de sentido</div>
+        <div class="obs-b">La desprotección genera un vacío que el sujeto intenta cubrir con sustancias. La droga ocupa el lugar de pertenencia que la comunidad no supo dar.</div>
+      </div>
+      <div class="obs">
+        <div class="obs-n">Obstáculo 2 — Estigma social</div>
+        <div class="obs-b">Alimenta un sentimiento de no merecimiento que produce una fractura interna que bloquea el deseo de mejora. "No merezco salir de esto."</div>
+      </div>
+      <div class="obs">
+        <div class="obs-n">Obstáculo 3 — Consumismo</div>
+        <div class="obs-b">El "evangelio del bienestar" (§7.3.5) ofrece satisfacción inmediata que compite directamente con la búsqueda de sentido y profundiza la desconexión espiritual.</div>
+      </div>
+      <div class="obs">
+        <div class="obs-n">Obstáculo 4 — Culpa acumulada</div>
+        <div class="obs-b">La culpa actúa como mochila que paraliza al sujeto, llevándolo a creer que su identidad es su caída. Es uno de los más difíciles de remover.</div>
+      </div>
+    </div>
+
+    <div class="pl">El Ver — Realidad</div>
+    <ul class="pts">
+      <li><span class="dot">V</span><span>Juan Pablo II en el §5.2 identifica la adicción como "patología del espíritu": "El recurso a 'paraísos artificiales' es, en realidad, una huida de una realidad que el individuo percibe como insoportable, ruidosa y alienada. El toxicómano es, en esencia, un 'enfermo de falta de amor'." La pastoral que responde al enfermo de amor con moral abstracta da medicamentos a quien tiene hambre: calma la angustia del cuidador, no la necesidad del hermano.</span></li>
+      <li><span class="dot">V</span><span>El §7.4.2 identifica los dos obstáculos principales a la reconexión: "La desprotección genera un vacío de sentido que el sujeto intenta cubrir con sustancias. El estigma social alimenta un sentimiento de no merecimiento, provocando una fractura interna que bloquea el deseo de mejora." El acompañante que conoce estos dos obstáculos puede nombrarlos sin que el hermano los nombre primero.</span></li>
+    </ul>
+
+    <div class="pl">El Juzgar — Iluminación</div>
+    <ul class="pts">
+      <li><span class="dot">J</span><span>La remoción de los obstáculos opera a través de la "pedagogía de la proximidad" (§7.4.2): la cultura del encuentro ofrece seguridad (remueve el estigma), mientras que la vida sacramental ayuda a romper el ciclo de la culpa (remueve el obstáculo interior). Los dos instrumentos son simultáneos: no hay reconexión espiritual sin comunidad que la sostenga, ni comunidad eficaz sin vida sacramental que la alimente.</span></li>
+      <li><span class="dot">J</span><span>El consumismo como "evangelio del bienestar" (§7.3.5) no es un tema sociológico añadido: es el cuarto obstáculo que el capítulo 7 identifica. "El consumismo se ha erigido como un sistema de creencias que promete felicidad inmediata, compitiendo directamente con la búsqueda de sentido." La pastoral que no nombra el consumismo como competidor espiritual deja al hermano desarmado frente a la oferta cultural más poderosa de su entorno.</span></li>
+    </ul>
+
+    <div class="pl">El Actuar — Propuesta</div>
+    <div class="act">
+      <div class="act-title">Identificar los obstáculos en los procesos activos</div>
+      <div class="act-body">El grupo trabaja con los cuatro obstáculos de la grilla: para cada proceso de acompañamiento activo (anonimizado), ¿cuál de los cuatro es el dominante? ¿cuál está siendo abordado? ¿cuál se está ignorando? El diagnóstico de los obstáculos no reemplaza el diagnóstico clínico: lo complementa desde la dimensión que la clínica no puede ver.</div>
+    </div>
+    <div class="act">
+      <div class="act-title">La escucha activa como primer medicamento</div>
+      <div class="act-body">El §7.4.2 afirma que "la comunidad presta su capacidad de juzgar y esperar al hermano mediante el diálogo fraterno, sosteniéndolo hasta que recupere su autonomía." El grupo practica en pareja: uno cuenta una situación difícil (no del territorio: propia). El otro solo escucha, sin intervenir, sin aconsejar, cinco minutos. Al terminar: ¿qué generó ser escuchado así? ¿y escuchar así? La escucha activa se aprende haciéndola.</div>
+    </div>
+
+    <div class="cita">
+      <div class="cita-lbl">Cita inspiradora · §5.2 — Juan Pablo II, Evangelium Vitae N°12</div>
+      <div class="cita-txt">"El recurso a 'paraísos artificiales' es, en realidad, una huida de una realidad que el individuo percibe como insoportable, ruidosa y alienada. El toxicómano es, en esencia, un 'enfermo de falta de amor'."</div>
+      <div class="cita-ref">Citado en Manual de la PLAPA, §5.2 — El diagnóstico existencial (CELAM 2026)</div>
+    </div>
+
+    <div class="ac-box">
+      <div class="ac-lbl">Autocuidado del agente</div>
+      <div class="ac-txt">El consumismo como obstáculo espiritual no afecta solo al hermano que acompañamos: nos afecta también a nosotros. ¿Hay en el equipo formas de consumismo pastoral —la satisfacción de los resultados rápidos, la necesidad de mostrar logros, la impaciencia frente al proceso lento— que compiten con la búsqueda de sentido profundo? Nombrarlo no es autoflagelación: es honestidad que libera.</div>
+    </div>
+    <div class="ref">Referencias: §5.2, §7.3.2, §7.3.5, §7.4.2 — Manual de la PLAPA, CELAM 2026</div>
+  </div>
+</div>
+
+<!-- MÓDULO 3 -->
+<div id="m3" class="card" style="border-left:5px solid #2A5A8A">
+  <div class="ch">
+    <span class="cn">Módulo 3 · El Actuar</span>
+    <div class="ct">El despertar espiritual: la chispa que enciende el deseo de vida nueva</div>
+    <div class="cs">Cómo la comunidad facilita el reconocimiento del valor propio · §7.4.1, §7.4.3</div>
+  </div>
+  <div class="cb">
+    <div class="mf">
+      <div class="mf-lbl">Mensaje fuerza</div>
+      <div class="mf-txt">"La chispa se enciende cuando la persona descubre que su identidad no está definida por sus errores. Al reconocerse portador de una marca divina, el hermano deja de verse como un descarte social. Este reconocimiento no nace del esfuerzo propio: nace de sentirse acogido."</div>
+    </div>
+
+    <div class="pl">El Ver — Realidad</div>
+    <ul class="pts">
+      <li><span class="dot">V</span><span>El §7.4.1 describe el momento de la reconexión espiritual: "Al producirse un encuentro genuino, el espíritu reconoce su entorno natural y la reconexión fluye sin necesidad de artificios técnicos, apoyándose en el testimonio de los otros." La reconexión no se programa: se facilita. El acompañante no puede encender la chispa por el hermano; puede crear las condiciones para que se encienda sola.</span></li>
+      <li><span class="dot">V</span><span>La condición fundamental para la reconexión es el "abandono en un Poder Superior" (§7.4.1): "La reconexión se activa cuando la persona acepta su fragilidad. En ese acto de confianza, el encuentro con la gracia activa una sanación profunda que trasciende el puro esfuerzo voluntarista." La paradoja de la recuperación espiritual: la chispa se enciende cuando el hermano deja de intentar encenderla por su propia fuerza.</span></li>
+    </ul>
+
+    <div class="pl">El Juzgar — Iluminación</div>
+    <ul class="pts">
+      <li><span class="dot">J</span><span>"Aunque la voluntad esté debilitada, el despertar espiritual depende de la ayuda recibida. El vínculo afectivo y la escucha activa reparan la voluntad, ofreciendo una fuerza que el sujeto por sí solo no podría generar inicialmente" (§7.4.3). El §7.4.3 responde así la objeción más frecuente: que una voluntad dañada biológicamente no puede ser restaurada espiritualmente. La respuesta del manual: la voluntad se repara en el vínculo, no en el esfuerzo solitario.</span></li>
+      <li><span class="dot">J</span><span>Ef 5,14: "Despierta tú que duermes, levántate de entre los muertos, y Cristo te iluminará." El §7.4.3 usa este versículo para mostrar que el despertar espiritual no es gradual: hay un momento en que algo se enciende. Ese momento suele ocurrir en un encuentro: "al sentirse acogido, el ambiente de afecto incondicional rompe el ciclo del miedo, permitiendo que la fractura interna comience a sanar mediante el testimonio de los otros."</span></li>
+    </ul>
+
+    <div class="pl">El Actuar — Propuesta</div>
+    <div class="act">
+      <div class="act-title">Recordar el propio momento de despertar</div>
+      <div class="act-body">Cada participante recuerda —en silencio primero, luego en pareja si lo desea— un momento de su propia vida en que algo "se encendió": el reconocimiento de su propio valor, el encuentro con la gracia, el momento en que decidió cambiar algo importante. ¿Qué lo hizo posible? ¿quién estaba cerca? ¿qué dijo o hizo esa persona? El ejercicio revela que el despertar siempre tiene un testigo.</div>
+    </div>
+    <div class="act">
+      <div class="act-title">Crear condiciones para el despertar en el dispositivo</div>
+      <div class="act-body">El §7.4.1 describe la "esencia relacional del ser": la persona se realiza en el vínculo. El grupo evalúa: ¿qué condiciones crea el dispositivo para que el hermano se sienta genuinamente visto? ¿hay momentos de encuentro real (no de entrevista técnica) en el programa? ¿hay espacios donde el hermano puede decir algo de sí mismo que no sea su diagnóstico? Diseñar uno de esos espacios si no existe.</div>
+    </div>
+    <div class="act">
+      <div class="act-title">El servicio como verificación del despertar</div>
+      <div class="act-body">"Al cuidar a otro, el sujeto descubre que su historia de dolor tiene un valor salvífico, activando una resiliencia que devuelve el gusto por vivir" (§7.5 intro). El grupo identifica: ¿hay personas en procesos avanzados que podrían empezar a servir a otros dentro del dispositivo? ¿hay una tarea concreta que pueda asignárseles no como obligación sino como confirmación de su despertar?</div>
+    </div>
+
+    <div class="cita">
+      <div class="cita-lbl">Cita inspiradora · §7.4.3 — Ef 5,14</div>
+      <div class="cita-txt">"Este encendido ocurre al sentirse acogido. El ambiente de afecto incondicional rompe el ciclo del miedo, permitiendo que la fractura interna comience a sanar mediante el testimonio de los otros. Reconocerse portador de una marca divina es lo que activa una resiliencia que devuelve el gusto por vivir."</div>
+      <div class="cita-ref">Manual de la PLAPA, §7.4.3 — El despertar espiritual como chispa de vida nueva (CELAM 2026)</div>
+    </div>
+
+    <div class="ac-box">
+      <div class="ac-lbl">Autocuidado del agente</div>
+      <div class="ac-txt">El agente que acompaña despertares espirituales necesita cuidar el propio. ¿Cuándo fue la última vez que el equipo tuvo un momento de "encuentro genuino" entre sí, no de coordinación técnica? ¿hay espacio en el equipo para nombrar lo que despierta, lo que se apaga, lo que necesita ser encendido? La vida espiritual del equipo no es un añadido a la pastoral: es su fuente.</div>
+    </div>
+    <div class="ref">Referencias: §7.4.1, §7.4.3, §7.5 (intro), Ef 5,14 — Manual de la PLAPA, CELAM 2026</div>
+  </div>
+</div>
+
+<!-- MÓDULO 4 -->
+<div id="m4" class="card" style="border-left:5px solid #2A5A8A">
+  <div class="ch">
+    <span class="cn">Módulo 4 · Síntesis y revisión de vida</span>
+    <div class="ct">Los sacramentos como remedio y la autonomía como horizonte</div>
+    <div class="cs">La vida sacramental y la recuperación de la libertad · §7.4.4, §7.6</div>
+  </div>
+  <div class="cb">
+    <div class="mf">
+      <div class="mf-lbl">Mensaje fuerza</div>
+      <div class="mf-txt">"Los sacramentos no son metas para quienes han alcanzado la perfección, sino medios de sanación para que el hermano sane sus fracturas internas y reordene sus deseos hacia un proyecto de vida con propósito."</div>
+    </div>
+
+    <div class="sacramento">
+      <div class="sac">
+        <div class="sac-n">Reconciliación</div>
+        <div class="sac-b">Habilita la palabra. Externaliza lo que avergüenza. Rompe el ciclo del autodesprecio. Separa el error de la identidad sagrada. "El perdón divino es un abrazo que separa el error de la identidad sagrada" (§7.6.3).</div>
+      </div>
+      <div class="sac">
+        <div class="sac-n">Eucaristía</div>
+        <div class="sac-b">Sustento en el tránsito del dolor. La abstinencia deja de ser callejón sin salida. Restauración en la mesa compartida: el consumo aísla; la Eucaristía integra. "Ser invitado a la misma mesa sana la fractura del descarte" (§7.6.2).</div>
+      </div>
+    </div>
+
+    <div class="pl">El Ver — Realidad</div>
+    <ul class="pts">
+      <li><span class="dot">V</span><span>La objeción más resistente en contextos pastorales: "una persona que recae no puede acceder a la vida sacramental." El §7.6.1 la responde desde el principio fundante: "La disposición principal para recibir la gracia no es la perfección, sino la humildad de reconocer la propia impotencia. Negar el remedio a quien está enfermo es contrario a la misión de la Iglesia; el sacramento es el que otorga la fuerza para iniciar el orden, no su consecuencia final."</span></li>
+      <li><span class="dot">V</span><span>El §7.4.4 describe el horizonte del proceso: la autonomía. "La recuperación es un proceso autodirigido donde la persona es el agente principal." La autonomía no es independencia absoluta: "el modelo contempla que la persona mantenga vínculos de pertenencia y redes de escucha activa con su comunidad de origen, lo que previene recaídas mediante la seguridad de no estar solo." La autonomía que el manual propone es relacional, no individualista.</span></li>
+    </ul>
+
+    <div class="pl">El Juzgar — Iluminación</div>
+    <ul class="pts">
+      <li><span class="dot">J</span><span>"El propósito de enmienda debe entenderse como un camino progresivo de salud integral. Dios no se cansa de perdonar; cada encuentro sacramental es un paso en la reconexión espiritual que ayuda a desaprender el hábito de muerte mediante el diálogo fraterno" (§7.6.1). La comprensión progresiva del propósito de enmienda es la respuesta pastoral más madura a la pregunta sobre la confesión de quienes recaen: no se exige la perfección antes del sacramento, sino la apertura al camino.</span></li>
+      <li><span class="dot">J</span><span>La Gal 5,1 que funda el §7.2.4 cierra también el itinerario: "Para la libertad nos liberó Cristo." La autonomía como horizonte del proceso de recuperación espiritual no es mera independencia psicológica: es la libertad que Cristo vino a dar. El proceso de acompañamiento espiritual no termina cuando el hermano deja de consumir: termina cuando puede elegir libremente cómo vivir. Y ese horizonte nunca cierra del todo: sigue ampliándose.</span></li>
+    </ul>
+
+    <div class="pl">El Actuar — Propuesta</div>
+    <div class="act">
+      <div class="act-title">Los sacramentos en el dispositivo: diagnóstico y propuesta</div>
+      <div class="act-body">El grupo evalúa: ¿hay acceso real a la vida sacramental para las personas que acompaña? ¿hay sacerdotes disponibles para acompañar procesos sin exigir perfección previa? ¿hay catequesis sacramental adaptada a personas en recuperación? ¿hay actitudes en la comunidad que dificultan ese acceso (juicio moral, exigencia de "estar bien primero")? Identificar un paso concreto para mejorar ese acceso.</div>
+    </div>
+    <div class="act">
+      <div class="act-title">La autonomía como horizonte: ¿cuándo termina el acompañamiento?</div>
+      <div class="act-body">El grupo discute: ¿cuándo consideramos que un proceso de acompañamiento puede volverse más autónomo? ¿hay criterios claros o se decide por intuición? El §7.4.4 propone que la autonomía es progresiva y se entrena en la práctica cotidiana. El grupo diseña tres señales concretas que indican que el hermano está listo para dar el próximo paso hacia mayor autonomía.</div>
+    </div>
+    <div class="act">
+      <div class="act-title">Cierre: la pregunta de san Agustín</div>
+      <div class="act-body">León XIV (§5.10) cita a Agustín: "Buscamos la paz y la alegría, estamos sedientos de ellas." El facilitador invita a cada participante a completar en silencio: "Yo busco..." y "Dios responde a esa búsqueda con..." No se comparte obligatoriamente. Es el gesto final que cierra el itinerario devolviendo la pregunta espiritual al centro: no como abstracción teológica, sino como experiencia personal que funda el acompañamiento.</div>
+    </div>
+
+    <div class="cita">
+      <div class="cita-lbl">Cita inspiradora · §7.6.1 — Lc 5,31</div>
+      <div class="cita-txt">"No son los sanos los que necesitan médico, sino los enfermos. Yo no he venido a llamar a los justos, sino a los pecadores. La Iglesia actúa como un hospital de campaña que no pide méritos morales previos, sino que ofrece el alimento espiritual como un derecho que brota de la necesidad del sufriente."</div>
+      <div class="cita-ref">Manual de la PLAPA, §7.6.1 — Los sacramentos como remedio (CELAM 2026)</div>
+    </div>
+
+    <div class="ac-box">
+      <div class="ac-lbl">Autocuidado del agente — cierre del itinerario</div>
+      <div class="ac-txt">El itinerario sobre el vacío existencial cierra con la pregunta más personal: ¿cómo cuido mi propia vida espiritual para poder acompañar la vida espiritual de otros? El §7.6 no está escrito solo para los hermanos en recuperación: está escrito también para los acompañantes. Los sacramentos como remedio, la escucha como medicamento, el encuentro como chispa son propuestas para todos. El agente que no las practica para sí mismo difícilmente puede proponerlas con autenticidad.</div>
+    </div>
+    <div class="ref">Referencias: §7.4.1, §7.4.4, §7.6.1, §7.6.2, §7.6.3, §5.2, Lc 5,31, Gal 5,1, Ef 5,14 — Manual de la PLAPA, CELAM 2026</div>
+  </div>
+</div>
+
+</div>
+
+<script>
+function show(n,btn){
+  for(let i=1;i<=4;i++) document.getElementById('m'+i).classList.remove('active');
+  document.querySelectorAll('.btn').forEach(b=>b.classList.remove('on'));
+  document.getElementById('m'+n).classList.add('active');
+  btn.classList.add('on');
+}
+</script>

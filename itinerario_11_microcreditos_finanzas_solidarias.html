@@ -1,0 +1,341 @@
+<meta charset="utf-8">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.root{font-family:var(--font-sans);color:var(--text-primary);padding:0 0 2rem}
+.portada{background:#27500A;border-radius:12px;padding:1.25rem 1.5rem 1rem;margin-bottom:1.25rem}
+.portada-sup{font-size:11px;font-weight:500;color:#97C459;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.35rem}
+.portada-title{font-size:20px;font-weight:500;color:#fff;line-height:1.3;margin-bottom:.25rem}
+.portada-sub{font-size:12px;color:#C0DD97;line-height:1.55;margin-bottom:.75rem}
+.dest-box{background:#3B6D11;border-radius:8px;padding:.55rem .85rem;margin-bottom:.85rem}
+.dest-lbl{font-size:9px;font-weight:500;color:#C0DD97;letter-spacing:.07em;text-transform:uppercase;margin-bottom:3px}
+.dest-txt{font-size:12px;color:#fff;line-height:1.5}
+.portada-pills{display:flex;flex-wrap:wrap;gap:5px}
+.portada-pill{font-size:11px;font-weight:500;padding:2px 9px;border-radius:99px;background:#3B6D11;color:#EAF3DE}
+.nav{display:flex;gap:6px;margin-bottom:1.25rem;flex-wrap:wrap}
+.btn{border:0.5px solid var(--border-strong);background:var(--surface-2);border-radius:8px;padding:7px 14px;cursor:pointer;font-size:12px;font-family:var(--font-sans);color:var(--text-secondary);transition:background .15s}
+.btn:hover{background:var(--surface-1)}
+.btn.on{border:2px solid #3B6D11;background:#EAF3DE;color:#173404;font-weight:500}
+.card{border-radius:12px;border:0.5px solid var(--border);background:var(--surface-2);overflow:hidden;display:none}
+.card.active{display:block}
+.ch{padding:.85rem 1.1rem .7rem;border-bottom:0.5px solid var(--border)}
+.cn{display:inline-block;font-size:11px;font-weight:500;padding:2px 9px;border-radius:99px;margin-bottom:.5rem;background:#EAF3DE;color:#173404}
+.ct{font-size:16px;font-weight:500;line-height:1.3;margin-bottom:.2rem;color:#27500A}
+.cs{font-size:11px;color:var(--text-secondary);line-height:1.45}
+.cb{padding:.85rem 1.1rem}
+.mf{border-left:3px solid #3B6D11;background:#EAF3DE;padding:.65rem .9rem;margin-bottom:.9rem}
+.mf-lbl{font-size:9px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:#3B6D11;margin-bottom:3px}
+.mf-txt{font-size:14px;font-weight:500;line-height:1.5;font-family:var(--font-voice);color:#173404}
+.pl{font-size:9px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.4rem}
+.pts{list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:.9rem}
+.pts li{display:flex;gap:9px;font-size:12px;color:var(--text-secondary);line-height:1.55}
+.dot{width:18px;min-width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:500;margin-top:1px;background:#EAF3DE;color:#27500A}
+.act{background:#EAF3DE;border-radius:8px;padding:.65rem .85rem;margin-bottom:6px}
+.act-title{font-size:11px;font-weight:500;color:#173404;margin-bottom:3px}
+.act-body{font-size:12px;color:#27500A;line-height:1.5}
+.cita{border-radius:7px;padding:.65rem .85rem;background:#EAF3DE;margin-top:.85rem}
+.cita-lbl{font-size:9px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:#3B6D11;margin-bottom:3px}
+.cita-txt{font-size:11px;line-height:1.6;font-family:var(--font-voice);font-style:italic;color:#173404}
+.cita-ref{font-size:10px;margin-top:3px;font-style:normal;font-weight:500;color:#3B6D11}
+.ac-box{border-left:3px solid #3B6D11;background:var(--surface-1);padding:.65rem .85rem;margin-top:.85rem}
+.ac-lbl{font-size:9px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:#3B6D11;margin-bottom:3px}
+.ac-txt{font-size:12px;color:var(--text-secondary);line-height:1.55}
+.ref{font-size:10px;color:var(--text-muted);font-style:italic;margin-top:.75rem;padding-top:.6rem;border-top:0.5px solid var(--border)}
+.dos-principios{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:.85rem}
+.principio{background:#EAF3DE;border-radius:8px;padding:.65rem .75rem}
+.p-title{font-size:12px;font-weight:500;color:#173404;margin-bottom:4px}
+.p-body{font-size:11px;color:#27500A;line-height:1.45}
+.cuatro-lineas{display:flex;flex-direction:column;gap:5px;margin-bottom:.85rem}
+.linea{display:flex;gap:9px;align-items:flex-start}
+.linea-ico{width:20px;min-width:20px;height:20px;background:#EAF3DE;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:500;color:#27500A;margin-top:1px}
+.linea-txt{font-size:12px;color:var(--text-secondary);line-height:1.5;padding-top:1px}
+.tres-pasos{display:flex;flex-direction:column;gap:6px;margin-bottom:.85rem}
+.paso{display:flex;gap:9px;align-items:flex-start}
+.paso-num{width:22px;min-width:22px;height:22px;background:#27500A;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:500;color:#fff;margin-top:1px}
+.paso-txt{font-size:12px;color:var(--text-secondary);line-height:1.5;padding-top:1px}
+.cinco-ejes{display:flex;flex-direction:column;gap:5px;margin-bottom:.85rem}
+.eje{display:flex;gap:9px;align-items:flex-start}
+.eje-num{width:20px;min-width:20px;height:20px;background:#EAF3DE;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:500;color:#173404;margin-top:1px}
+.eje-txt{font-size:12px;color:var(--text-secondary);line-height:1.5;padding-top:1px}
+</style>
+
+<h2 class="sr-only">Itinerario formativo 11: Microcréditos y Finanzas Solidarias. Cuatro módulos sobre fondos rotatorios, reeducación financiera, economía popular solidaria y el acompañamiento integral en finanzas, basados en §6.3.5, §6.6.5 y §12.4 del Manual de la PLAPA.</h2>
+
+<div class="root">
+
+<div class="portada">
+  <p class="portada-sup">Itinerario formativo 11 · PLAPA — CELAM 2026</p>
+  <h1 class="portada-title">Microcréditos y Finanzas Solidarias</h1>
+  <p class="portada-sub">Economía popular y acompañamiento financiero como motores de identidad y reintegración sostenible · 4 módulos</p>
+  <div class="dest-box">
+    <div class="dest-lbl">Destinatarios</div>
+    <div class="dest-txt">Coordinadores de centros barriales, referentes de comunidades terapéuticas y agentes pastorales que acompañan procesos de reintegración social y laboral. También útil para equipos que quieren implementar fondos rotatorios o emprendimientos solidarios en sus territorios, y para quienes trabajan con personas en recuperación en la etapa de inserción económica. Se asume familiaridad básica con la economía del barrio; no requiere formación técnica en finanzas.</div>
+  </div>
+  <div class="portada-pills">
+    <span class="portada-pill">§6.3.5</span>
+    <span class="portada-pill">§6.6.5</span>
+    <span class="portada-pill">§12.4</span>
+    <span class="portada-pill">Coordinadores de reintegración</span>
+    <span class="portada-pill">4 sesiones</span>
+    <span class="portada-pill">Nivel intermedio</span>
+  </div>
+</div>
+
+<div class="nav">
+  <button class="btn on" onclick="show(1,this)">Módulo 1 · El dinero como terreno pastoral</button>
+  <button class="btn" onclick="show(2,this)">Módulo 2 · El Fondo Rotatorio como instrumento</button>
+  <button class="btn" onclick="show(3,this)">Módulo 3 · Las cuatro líneas de financiamiento</button>
+  <button class="btn" onclick="show(4,this)">Módulo 4 · Los tres pasos del acompañamiento integral</button>
+</div>
+
+<!-- MÓDULO 1 -->
+<div id="m1" class="card active" style="border-left:5px solid #3B6D11">
+  <div class="ch">
+    <span class="cn">Módulo 1 · El Ver</span>
+    <div class="ct">El dinero no es un riesgo que evitar: es un terreno que acompañar</div>
+    <div class="cs">La relación con el dinero como termómetro de madurez · §6.3.5</div>
+  </div>
+  <div class="cb">
+    <div class="mf">
+      <div class="mf-lbl">Mensaje fuerza</div>
+      <div class="mf-txt">"El manejo del dinero, bajo un esquema de acompañamiento, permite verificar el paso del patrón compulsivo a la gratificación inmediata al patrón de planificación y proyección vital. Sin este ejercicio de realismo, la autonomía recuperada corre el riesgo de ser una ilusión que se quiebra al primer contacto con el mercado."</div>
+    </div>
+
+    <div class="pl">El Ver — Realidad</div>
+    <ul class="pts">
+      <li><span class="dot">V</span><span>La objeción más extendida en equipos pastorales: "las personas en recuperación no deben manejar dinero porque actúa como disparador del consumo." El §6.3.5 la refuta con precisión: "El riesgo no se elimina con la prohibición, sino que se gestiona con la pedagogía. El manejo acompañado del dinero en entornos seguros permite que el hermano aprenda a convivir con el estímulo sin ser gobernado por él." Prohibir el dinero no forma la voluntad: la evita.</span></li>
+      <li><span class="dot">V</span><span>En los territorios de exclusión, "el acceso al sistema bancario y crediticio formal está completamente vedado debido a las exigencias burocráticas y patrimoniales" (§12.4). Sin cuenta bancaria, sin historial crediticio, sin documentación completa, el hermano que intenta reintegrarse económicamente choca con el mismo sistema que lo excluye. Las finanzas solidarias son la respuesta territorial a esa exclusión sistémica.</span></li>
+    </ul>
+
+    <div class="pl">El Juzgar — Iluminación</div>
+    <ul class="pts">
+      <li><span class="dot">J</span><span>El §6.3.5 define tres funciones del dinero en el proceso de recuperación: termómetro de madurez (la capacidad de conservar y administrar recursos sin ceder al impulso verifica que el freno biológico y espiritual ha comenzado a funcionar), reeducación financiera y planificación (enseña a proyectar, ahorrar y cuidar la casa común), y superación de la orfandad material (manejar recursos propios devuelve la dignidad al sujeto).</span></li>
+      <li><span class="dot">J</span><span>"No hay división entre la fe y la carne. Una espiritualidad sana es la que ayuda al hombre a ser libre en medio de sus circunstancias. El dinero, ordenado al bien de la familia y el servicio, deja de ser un motor de esclavitud para transformarse en un medio de justicia" (§6.3.5). La economía solidaria no es un programa técnico añadido a la pastoral: es la carne de la espiritualidad encarnada que el manual propone.</span></li>
+    </ul>
+
+    <div class="pl">El Actuar — Propuesta</div>
+    <div class="act">
+      <div class="act-title">¿Cómo tratamos el dinero en los procesos que acompañamos?</div>
+      <div class="act-body">El grupo evalúa honestamente: ¿hay personas en procesos activos que ya deberían estar manejando dinero propio pero el equipo lo evita por precaución? ¿cuándo es la primera vez que acompañamos a alguien en la gestión de un ingreso? ¿hay un protocolo para eso o se improvisa? El diagnóstico revela si el equipo está formando autonomía o perpetuando dependencia.</div>
+    </div>
+    <div class="act">
+      <div class="act-title">El primer sueldo: una práctica de acompañamiento</div>
+      <div class="act-body">El grupo diseña un protocolo mínimo para acompañar la primera experiencia de ingreso: ¿quién acompaña? ¿cómo se planifica el gasto juntos? ¿se destina algo al ahorro, algo a la familia, algo al proceso? ¿cómo se celebra? El primer sueldo no es solo dinero: es la verificación de que la persona puede protagonizar su propia economía. Merece un ritual de reconocimiento.</div>
+    </div>
+
+    <div class="cita">
+      <div class="cita-lbl">Cita inspiradora · §6.3.5</div>
+      <div class="cita-txt">"Quien viene de la exclusión o de la calle suele vivir en un presente perpetuo donde el recurso se agota instantáneamente. Utilizar el dinero de forma pedagógica enseña al hermano a proyectar, a ahorrar para su familia y a cuidar su casa común, devolviéndole su identidad de administrador responsable."</div>
+      <div class="cita-ref">Manual de la PLAPA, §6.3.5 — El dinero como signo de realismo y madurez (CELAM 2026)</div>
+    </div>
+
+    <div class="ac-box">
+      <div class="ac-lbl">Autocuidado del agente</div>
+      <div class="ac-txt">El módulo puede generar en algunos agentes la pregunta: ¿y nosotros, cómo nos relacionamos con el dinero? ¿hay transparencia en la gestión de los recursos del centro barrial? ¿los acompañados saben cómo se financia el dispositivo? La transparencia financiera del equipo no es solo una buena práctica administrativa: es un testimonio pastoral. El hermano que ve un equipo que maneja el dinero con honestidad tiene un modelo concreto de lo que la reeducación financiera puede producir.</div>
+    </div>
+    <div class="ref">Referencias: §6.3.5, §12.4 (introducción) — Manual de la PLAPA, CELAM 2026</div>
+  </div>
+</div>
+
+<!-- MÓDULO 2 -->
+<div id="m2" class="card" style="border-left:5px solid #3B6D11">
+  <div class="ch">
+    <span class="cn">Módulo 2 · El Juzgar</span>
+    <div class="ct">El Fondo Rotatorio: projimidad y confianza recíproca como garantía</div>
+    <div class="cs">La alternativa al sistema bancario que excluye · §12.4</div>
+  </div>
+  <div class="cb">
+    <div class="mf">
+      <div class="mf-lbl">Mensaje fuerza</div>
+      <div class="mf-txt">"Las Finanzas Solidarias representan la operativización de una economía que sirve a la vida de las personas y dice 'NO a una economía de exclusión e inequidad donde el dinero reina en lugar de servir'."</div>
+    </div>
+
+    <div class="dos-principios">
+      <div class="principio">
+        <div class="p-title">Circularidad</div>
+        <div class="p-body">No existe la acumulación especulativa ni el interés usurero. Cuando un emprendedor devuelve su crédito, ese mismo recurso financia el proyecto del siguiente compañero del barrio. El dinero sirve, no acumula.</div>
+      </div>
+      <div class="principio">
+        <div class="p-title">Garantía Solidaria</div>
+        <div class="p-body">El compromiso y el aval del grupo o del Centro Barrial sostienen y respaldan a cada integrante. El pago de la cuota se convierte en un acto de responsabilidad colectiva: no se le falla al banco, se le falla al compañero.</div>
+      </div>
+    </div>
+
+    <div class="pl">El Ver — Realidad</div>
+    <ul class="pts">
+      <li><span class="dot">V</span><span>Un Fondo Rotatorio es un instrumento de préstamo comunitario donde el dinero circula de manera transparente (§12.4). A diferencia del crédito bancario —que exige historial, garantías patrimoniales y documentación que el hermano no tiene— el fondo rotatorio exige solo una cosa: el vínculo de confianza con la comunidad. Esa exigencia no es menor: es la más profunda que existe.</span></li>
+      <li><span class="dot">V</span><span>La estrategia fue impulsada por Cáritas y el Hogar de Cristo en Argentina y está siendo sistematizada en el manual como modelo replicable para América Latina (§12.4). El contacto del programa es ecosol@caritas.org.ar. No es una propuesta teórica: es una práctica territorial probada que el manual documenta para que otros equipos puedan adoptarla o adaptarla.</span></li>
+    </ul>
+
+    <div class="pl">El Juzgar — Iluminación</div>
+    <ul class="pts">
+      <li><span class="dot">J</span><span>La Garantía Solidaria transforma la lógica del crédito: en el sistema bancario, el incumplimiento perjudica al banco (abstracto). En el fondo rotatorio, el incumplimiento perjudica al compañero de barrio (concreto). Esa concreción es la que activa la responsabilidad comunitaria de manera que ningún contrato legal puede replicar. "El pago de la cuota se convierte en un acto de responsabilidad colectiva para con los demás" (§12.4).</span></li>
+      <li><span class="dot">J</span><span>El principio de Circularidad (§12.4) es una declaración teológica además de económica: el dinero que ayuda a uno vuelve a la comunidad para ayudar al siguiente. No se acumula en las manos de quien ya tiene; circula hacia quien todavía no tiene. Es la lógica del maná del desierto aplicada a la economía barrial: justo lo necesario, que se renueva para los que vienen después.</span></li>
+    </ul>
+
+    <div class="pl">El Actuar — Propuesta</div>
+    <div class="act">
+      <div class="act-title">Evaluar la viabilidad de un Fondo Rotatorio en el territorio</div>
+      <div class="act-body">El grupo responde: ¿hay en el territorio personas en proceso de recuperación con un emprendimiento incipiente que necesita financiamiento? ¿hay una base comunitaria mínima (centro barrial, grupo pastoral, cooperativa) que pueda sostener la garantía solidaria? ¿hay alguien con capacidad de acompañamiento técnico básico? Si las tres respuestas son afirmativas, el territorio está listo para un primer fondo rotatorio.</div>
+    </div>
+    <div class="act">
+      <div class="act-title">Contactar con el programa de Finanzas Solidarias</div>
+      <div class="act-body">El grupo evalúa si hay una iniciativa de Finanzas Solidarias en la diócesis o la región y, de no haberla, designa a alguien para contactar ecosol@caritas.org.ar. El objetivo no es replicar el modelo exactamente: es aprender de la experiencia ya sistematizada antes de diseñar la propia. El manual ofrece el marco; la experiencia de Cáritas-Hogar de Cristo ofrece la metodología.</div>
+    </div>
+    <div class="act">
+      <div class="act-title">Diseñar las reglas del primer fondo rotatorio</div>
+      <div class="act-body">Si el grupo decide avanzar, diseña colectivamente las reglas básicas: monto inicial, criterios de acceso, cuotas de devolución, qué sucede en caso de incumplimiento, quién toma las decisiones. El diseño participativo de las reglas es la primera práctica de la economía solidaria: el fondo pertenece a la comunidad, no a una institución.</div>
+    </div>
+
+    <div class="cita">
+      <div class="cita-lbl">Cita inspiradora · §12.4</div>
+      <div class="cita-txt">"Un Fondo Rotatorio es un instrumento de préstamo comunitario donde el dinero circula de manera transparente. Cuando un emprendedor o cooperativa devuelve su crédito, ese mismo recurso se utiliza de inmediato para financiar el proyecto de otro compañero del barrio."</div>
+      <div class="cita-ref">Manual de la PLAPA, §12.4 — Microcréditos y Finanzas Solidarias (CELAM 2026)</div>
+    </div>
+
+    <div class="ac-box">
+      <div class="ac-lbl">Autocuidado del agente</div>
+      <div class="ac-txt">El Fondo Rotatorio pone a prueba la confianza comunitaria: cuando alguien no paga, el grupo siente la tensión entre la misericordia y la responsabilidad colectiva. El facilitador prepara al equipo para esa tensión antes de que ocurra. La Misericordia Estructurada (§6.3.3) aplica también aquí: el fondo tiene reglas porque el amor que lo sostiene quiere que dure, no que se agote en la primera dificultad.</div>
+    </div>
+    <div class="ref">Referencias: §12.4, §6.3.3 — Manual de la PLAPA, CELAM 2026</div>
+  </div>
+</div>
+
+<!-- MÓDULO 3 -->
+<div id="m3" class="card" style="border-left:5px solid #3B6D11">
+  <div class="ch">
+    <span class="cn">Módulo 3 · El Actuar</span>
+    <div class="ct">Las cuatro líneas de financiamiento y los cinco ejes de la economía solidaria</div>
+    <div class="cs">Qué financia el microcrédito y cómo se articula con la recuperación · §12.4.1, §6.6.5</div>
+  </div>
+  <div class="cb">
+    <div class="mf">
+      <div class="mf-lbl">Mensaje fuerza</div>
+      <div class="mf-txt">"No se le presta dinero a un número impersonal, sino que se apoya un proyecto de vida. Las finanzas solidarias no son un servicio técnico: son la operativización de una economía que sirve a la persona."</div>
+    </div>
+
+    <div class="cuatro-lineas">
+      <div class="linea"><div class="linea-ico">1</div><div class="linea-txt"><strong>Compra de insumos:</strong> adquisición de materia prima indispensable para iniciar o garantizar la continuidad de la producción sin depender de intermediarios abusivos.</div></div>
+      <div class="linea"><div class="linea-ico">2</div><div class="linea-txt"><strong>Maquinaria y herramientas:</strong> equipamiento técnico que mejora la escala, los costos y la calidad del trabajo, acelerando los procesos de autosuficiencia productiva.</div></div>
+      <div class="linea"><div class="linea-ico">3</div><div class="linea-txt"><strong>Mejoramiento del espacio:</strong> arreglos de infraestructura, adecuación de talleres o comercialización. En contextos periurbanos, muchas veces impacta directamente en la mejora de la vivienda familiar (la T de Techo).</div></div>
+      <div class="linea"><div class="linea-ico">4</div><div class="linea-txt"><strong>Fortalecimiento técnico:</strong> financiamiento para capacitaciones en administración eficiente, diseño, marketing socio-comunitario y uso de redes sociales para la venta.</div></div>
+    </div>
+
+    <div class="pl">El Ver — Realidad</div>
+    <ul class="pts">
+      <li><span class="dot">V</span><span>Las cuatro líneas de financiamiento del §12.4.1 no son categorías abstractas: responden a las cuatro barreras concretas que el emprendedor del barrio encuentra cuando intenta producir. Sin insumos no puede producir. Sin herramientas no puede escalar. Sin espacio no puede vender. Sin capacitación no puede gestionar. El microcrédito que no considera las cuatro líneas termina financiando solo una parte del problema.</span></li>
+      <li><span class="dot">V</span><span>Los cinco ejes de la economía popular y solidaria (§6.6.5): trabajo como lazo social, cooperativismo en sectores populares, reeducación financiera, misericordia estructurada en la organización productiva, y valoración de los talentos propios. "La inclusión social reconoce las herramientas que los sujetos ya poseen para disputar la economía barrial al narcotráfico" (§6.6.5). El microcrédito bien aplicado es la forma más concreta de disputarle ese terreno.</span></li>
+    </ul>
+
+    <div class="pl">El Juzgar — Iluminación</div>
+    <ul class="pts">
+      <li><span class="dot">J</span><span>La línea de Fortalecimiento Técnico (capacitaciones en administración, marketing, redes sociales) es la que más resiste la mentalidad asistencialista: ¿para qué le enseño a alguien en recuperación a usar Instagram para vender? El §12.4.1 responde implícitamente: porque la economía barrial ya funciona en esas plataformas, y el hermano que no sabe usarlas queda afuera del mercado donde puede competir sin títulos ni credenciales.</span></li>
+      <li><span class="dot">J</span><span>La línea de Mejoramiento del Espacio que impacta en la vivienda familiar conecta directamente con la T de Techo de las 3T (§6.3.2). El microcrédito que financia el techo de un taller productivo puede ser simultáneamente el microcrédito que consolida la habitabilidad del hogar. Las cuatro líneas no son estancas: bien articuladas, refuerzan el andamiaje de las 3T desde la economía solidaria.</span></li>
+    </ul>
+
+    <div class="pl">El Actuar — Propuesta</div>
+    <div class="act">
+      <div class="act-title">Mapear los emprendimientos del territorio</div>
+      <div class="act-body">El grupo identifica los emprendimientos productivos que ya existen en el territorio, especialmente entre personas en proceso de recuperación o sus familias: ¿qué producen? ¿qué necesitan para crecer? ¿cuál de las cuatro líneas de financiamiento les haría más diferencia? El mapa de emprendimientos es el punto de partida del plan de microcréditos.</div>
+    </div>
+    <div class="act">
+      <div class="act-title">Los talentos que el narcotráfico aprovecha y nosotros no</div>
+      <div class="act-body">El §6.6.5 propone "valorar los talentos que los sujetos ya poseen para disputar la economía barrial al narcotráfico." El grupo identifica: ¿qué habilidades, saberes o redes tienen los hermanos que acompañamos que el narco aprovecha (distribuir, organizar, convencer, moverse en el barrio) y la economía solidaria podría redirigir? La economía solidaria no inventa capacidades: las reorienta.</div>
+    </div>
+    <div class="act">
+      <div class="act-title">Diseñar un taller de reeducación financiera básica</div>
+      <div class="act-body">El grupo diseña un taller de dos horas de reeducación financiera básica para personas en proceso de recuperación: ingresos vs. gastos, ahorro mínimo, planificación de una compra, primer presupuesto. Sin tecnicismos. Con situaciones del barrio. La metodología interactiva (§6.2.7) aplica también aquí: no charla magistral, sino ejercicios concretos con números reales del territorio.</div>
+    </div>
+
+    <div class="cita">
+      <div class="cita-lbl">Cita inspiradora · §6.6.5</div>
+      <div class="cita-txt">"La inclusión económica no es el premio al final del camino, sino una condición de justicia para que la recuperación sea sostenible y digna, permitiendo que el sujeto se reconozca nuevamente como ciudadano con derechos y responsabilidades."</div>
+      <div class="cita-ref">Manual de la PLAPA, §6.6.5 — Economía popular y solidaria (CELAM 2026)</div>
+    </div>
+
+    <div class="ac-box">
+      <div class="ac-lbl">Autocuidado del agente</div>
+      <div class="ac-txt">El módulo puede generar en el equipo una sensación de "esto es demasiado técnico para nosotros." El facilitador recuerda que las finanzas solidarias no requieren un contador: requieren un acompañante que sabe escuchar un proyecto de vida y ayudar a ordenarlo. Las cuatro líneas de financiamiento son una herramienta de diálogo, no de evaluación técnica. El equipo que sabe hacer acompañamiento inespecífico ya tiene las habilidades básicas para hacer acompañamiento financiero.</div>
+    </div>
+    <div class="ref">Referencias: §12.4.1, §6.6.5 — Manual de la PLAPA, CELAM 2026</div>
+  </div>
+</div>
+
+<!-- MÓDULO 4 -->
+<div id="m4" class="card" style="border-left:5px solid #3B6D11">
+  <div class="ch">
+    <span class="cn">Módulo 4 · Síntesis y revisión de vida</span>
+    <div class="ct">Los tres pasos del acompañamiento integral: identificar, formular y seguir</div>
+    <div class="cs">La metodología que humaniza el crédito · §12.4.2</div>
+  </div>
+  <div class="cb">
+    <div class="mf">
+      <div class="mf-lbl">Mensaje fuerza</div>
+      <div class="mf-txt">"No se le presta dinero a un número impersonal, sino que se apoya un proyecto de vida. El seguimiento es tanto técnico como humano: implica celebrar los logros comerciales y ajustar las dificultades personales antes de que pongan en riesgo el proceso."</div>
+    </div>
+
+    <div class="tres-pasos">
+      <div class="paso">
+        <div class="paso-num">1</div>
+        <div class="paso-txt"><strong>Identificación:</strong> escuchar atentamente la necesidad real del emprendedor o la cooperativa. Evaluar de forma conjunta la viabilidad y el potencial productivo del proyecto, asegurando que la persona cuente con los apoyos necesarios en materia de salud, documentación civil y estabilidad habitacional.</div>
+      </div>
+      <div class="paso">
+        <div class="paso-num">2</div>
+        <div class="paso-txt"><strong>Formulación:</strong> acompañar técnicamente al participante para plasmar su idea en un plan concreto y ordenado de ingresos, egresos y cálculo de costos, determinando con realismo el monto del microcrédito y un esquema de cuotas de devolución sustentable.</div>
+      </div>
+      <div class="paso">
+        <div class="paso-num">3</div>
+        <div class="paso-txt"><strong>Seguimiento:</strong> realizar visitas periódicas y presenciales al espacio de trabajo. Este paso es tanto técnico como humano: celebrar los logros comerciales, brindar herramientas administrativas en el campo de acción y ajustar las dificultades operativas o personales antes de que pongan en riesgo el proceso.</div>
+      </div>
+    </div>
+
+    <div class="pl">El Ver — Realidad</div>
+    <ul class="pts">
+      <li><span class="dot">V</span><span>El paso 1 de Identificación requiere verificar que la persona "cuente con los apoyos necesarios en materia de salud, documentación civil y estabilidad habitacional" (§12.4.2). Esta verificación no es burocrática: es la constatación de que el andamiaje de las 3T mínimo está en pie. Un microcrédito entregado a alguien sin documentación, sin techo estable o sin acceso a salud es un crédito que probablemente fracase antes de empezar.</span></li>
+      <li><span class="dot">V</span><span>El paso 3 de Seguimiento es el que más distingue a las finanzas solidarias del crédito bancario convencional. El banco visita al deudor cuando no paga. El acompañante solidario visita para celebrar cuando le va bien y para ajustar cuando encuentra dificultades. "Este paso es tanto técnico como humano" (§12.4.2): la distinción resume todo el espíritu del manual.</span></li>
+    </ul>
+
+    <div class="pl">El Juzgar — Iluminación</div>
+    <ul class="pts">
+      <li><span class="dot">J</span><span>Los tres pasos de la guía metodológica (§12.4.2) son la aplicación de la epistemología ascendente al campo financiero: primero se escucha la realidad concreta del emprendedor (Identificación), luego se elabora el discernimiento técnico sobre su proyecto (Formulación), y finalmente se acompaña el proceso real en el territorio (Seguimiento). El VJA aplicado a la economía solidaria produce exactamente la misma estructura que cuando se aplica a la pastoral.</span></li>
+      <li><span class="dot">J</span><span>La frase que da título al §12.4.2 —"no se le presta dinero a un número impersonal, sino que se apoya un proyecto de vida"— es la versión económica del principio Persona Primero (§8.1). El microcrédito que ignora la historia, los vínculos y las fragilidades del emprendedor es un instrumento financiero. El que los integra es un instrumento pastoral.</span></li>
+    </ul>
+
+    <div class="pl">El Actuar — Propuesta</div>
+    <div class="act">
+      <div class="act-title">Aplicar los tres pasos a un caso del territorio</div>
+      <div class="act-body">El grupo toma un emprendimiento real del territorio (anonimizado) y lo recorre con los tres pasos del §12.4.2: ¿qué sabemos del emprendedor (Identificación)? ¿qué plan tiene y con qué recursos (Formulación)? ¿hay alguien que lo visita regularmente y celebra sus logros (Seguimiento)? El ejercicio revela en qué paso está el equipo y qué falta.</div>
+    </div>
+    <div class="act">
+      <div class="act-title">El mapa de finanzas solidarias del territorio</div>
+      <div class="act-body">El grupo cierra el itinerario construyendo un mapa de finanzas solidarias del territorio: emprendimientos activos, necesidades de financiamiento identificadas, recursos disponibles (fondo rotatorio propio, articulación con Cáritas, cooperativas existentes), y personas con capacidad de acompañamiento técnico. El mapa es el plan de trabajo del equipo para los próximos seis meses.</div>
+    </div>
+    <div class="act">
+      <div class="act-title">Cierre: la economía que queremos ser</div>
+      <div class="act-body">El grupo cierra con la misma frase del Módulo 4 del Itinerario 9, pero ahora desde la perspectiva financiera: "En este territorio, queremos construir una economía que..." Tres líneas máximo, escritas en silencio y leídas en voz alta. El facilitador busca los puntos en común y los nombra como el horizonte compartido del equipo hacia donde el itinerario apuntó.</div>
+    </div>
+
+    <div class="cita">
+      <div class="cita-lbl">Cita inspiradora · §12.4.2</div>
+      <div class="cita-txt">"No se le presta dinero a un número impersonal, sino que se apoya un proyecto de vida. El seguimiento implica celebrar los logros comerciales del emprendimiento, brindar herramientas administrativas en el campo de acción y ajustar las dificultades operativas o personales antes de que pongan en riesgo el proceso."</div>
+      <div class="cita-ref">Manual de la PLAPA, §12.4.2 — Guía Metodológica para el Acompañamiento Integral (CELAM 2026)</div>
+    </div>
+
+    <div class="ac-box">
+      <div class="ac-lbl">Autocuidado del agente — cierre del itinerario</div>
+      <div class="ac-txt">El itinerario cierra con la pregunta que el paso de Seguimiento le hace al equipo: ¿hay alguien en el territorio a quien el equipo tendría que visitar esta semana para celebrar un logro que no celebró? La economía solidaria que solo aparece cuando hay problemas reproduce la lógica del banco. La que aparece también para celebrar reproduce la lógica del Evangelio. Cerrar el itinerario con esa visita pendiente como primer compromiso concreto.</div>
+    </div>
+    <div class="ref">Referencias: §12.4.2, §6.3.5, §6.6.5 · Contacto: ecosol@caritas.org.ar — Manual de la PLAPA, CELAM 2026</div>
+  </div>
+</div>
+
+</div>
+
+<script>
+function show(n,btn){
+  for(let i=1;i<=4;i++) document.getElementById('m'+i).classList.remove('active');
+  document.querySelectorAll('.btn').forEach(b=>b.classList.remove('on'));
+  document.getElementById('m'+n).classList.add('active');
+  btn.classList.add('on');
+}
+</script>

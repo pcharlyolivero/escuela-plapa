@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Itinerario 21 · Pastoral con mujeres en situación de consumo · PLAPA 2026</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Georgia,'Times New Roman',serif;background:#f5f3ee;color:#222;padding:0 0 3rem}
+  .portada{background:#4B1528;padding:2rem 2.5rem 1.5rem;color:#fff}
+  .portada-sup{font-size:11px;font-weight:700;color:#ED93B1;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem;font-family:Arial,sans-serif}
+  .portada-title{font-size:26px;font-weight:700;line-height:1.25;margin-bottom:.35rem}
+  .portada-sub{font-size:13px;color:#F4C0D1;line-height:1.55;margin-bottom:1rem}
+  .dest-box{background:#72243E;border-radius:6px;padding:.7rem 1rem;margin-bottom:1rem}
+  .dest-lbl{font-size:9px;font-weight:700;color:#F4C0D1;letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px;font-family:Arial,sans-serif}
+  .dest-txt{font-size:12px;color:#fff;line-height:1.55}
+  .pills{display:flex;flex-wrap:wrap;gap:5px}
+  .pill{font-size:10px;font-weight:700;padding:3px 10px;border-radius:99px;background:#72243E;color:#FBEAF0;font-family:Arial,sans-serif}
+  .nav{display:flex;background:#fff;border-bottom:2px solid #993556;flex-wrap:wrap}
+  .tab{padding:12px 18px;cursor:pointer;font-size:12px;font-family:Arial,sans-serif;color:#666;border:none;background:none;font-weight:600;letter-spacing:.03em;border-bottom:3px solid transparent;margin-bottom:-2px}
+  .tab:hover{color:#4B1528;background:#FDF0F4}
+  .tab.on{color:#4B1528;border-bottom-color:#993556;background:#FDF0F4}
+  .mod{display:none;max-width:900px;margin:0 auto;padding:2rem 2.5rem}
+  .mod.a{display:block}
+  .mod-tag{display:inline-block;font-size:10px;font-weight:700;padding:3px 10px;border-radius:99px;background:#FBEAF0;color:#4B1528;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.5rem;font-family:Arial,sans-serif}
+  .mod-title{font-size:20px;font-weight:700;color:#4B1528;line-height:1.3;margin-bottom:.3rem}
+  .mod-sub{font-size:12px;color:#888;font-family:Arial,sans-serif;margin-bottom:1.5rem}
+  .mf{border-left:4px solid #993556;background:#FBEAF0;padding:.8rem 1.1rem;margin-bottom:1.25rem;border-radius:0 6px 6px 0}
+  .mf-lbl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#72243E;margin-bottom:4px;font-family:Arial,sans-serif}
+  .mf-txt{font-size:14px;font-style:italic;line-height:1.6;color:#4B1528}
+  .sec-lbl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#999;margin:1.1rem 0 .5rem;font-family:Arial,sans-serif}
+  .puntos{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:1rem}
+  .puntos li{display:flex;gap:10px;font-size:13px;color:#333;line-height:1.6}
+  .dot{width:20px;min-width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;margin-top:2px;background:#FBEAF0;color:#4B1528;font-family:Arial,sans-serif}
+  .act-box{background:#FBEAF0;border-radius:6px;padding:.75rem 1rem;margin-bottom:6px;border:1px solid #E8B4C5}
+  .act-title{font-size:12px;font-weight:700;color:#4B1528;margin-bottom:4px;font-family:Arial,sans-serif}
+  .act-body{font-size:12.5px;color:#72243E;line-height:1.55}
+  .cita{background:#FBEAF0;border-radius:6px;padding:.8rem 1.1rem;margin-top:1.2rem;border-left:3px solid #993556}
+  .cita-lbl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#72243E;margin-bottom:4px;font-family:Arial,sans-serif}
+  .cita-txt{font-size:12px;font-style:italic;line-height:1.6;color:#4B1528}
+  .cita-ref{font-size:10px;font-style:normal;font-weight:700;color:#72243E;margin-top:3px;font-family:Arial,sans-serif}
+  .autocuidado{border-left:3px solid #993556;background:#f9f5f7;padding:.75rem 1rem;margin-top:1.2rem}
+  .auto-lbl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#72243E;margin-bottom:4px;font-family:Arial,sans-serif}
+  .auto-txt{font-size:12.5px;color:#555;line-height:1.55}
+  .ref{font-size:10px;color:#aaa;font-style:italic;margin-top:1rem;padding-top:.75rem;border-top:1px solid #e8d5dc;font-family:Arial,sans-serif}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1.1rem}
+  .g-item{background:#FBEAF0;border-radius:6px;padding:.65rem .8rem;border:1px solid #E8B4C5}
+  .g-title{font-size:11px;font-weight:700;color:#4B1528;margin-bottom:3px;font-family:Arial,sans-serif}
+  .g-body{font-size:11px;color:#72243E;line-height:1.4}
+  .alerta{background:#FFF0ED;border-left:3px solid #D85A30;border-radius:0 6px 6px 0;padding:.65rem .9rem;margin-bottom:.9rem}
+  .alerta-lbl{font-size:9px;font-weight:700;color:#993C1D;letter-spacing:.07em;text-transform:uppercase;margin-bottom:3px;font-family:Arial,sans-serif}
+  .alerta-txt{font-size:12px;color:#4A1B0C;line-height:1.5}
+  .cinco{display:flex;flex-direction:column;gap:6px;margin-bottom:1rem}
+  .cinco-item{display:flex;gap:10px;align-items:flex-start}
+  .cinco-num{width:22px;min-width:22px;height:22px;background:#FBEAF0;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#4B1528;margin-top:1px;font-family:Arial,sans-serif;flex-shrink:0}
+  .cinco-txt{font-size:13px;color:#333;line-height:1.55;padding-top:2px}
+  @media(max-width:600px){.grid2{grid-template-columns:1fr}.mod{padding:1.2rem 1rem}.portada{padding:1.2rem}}
+  @media print{.nav{display:none}.mod{display:block!important;page-break-before:always}}
+</style>
+</head>
+<body>
+
+<div class="portada">
+  <p class="portada-sup">Itinerario formativo 21 · PLAPA — CELAM 2026</p>
+  <h1 class="portada-title">Pastoral con mujeres en situación de consumo</h1>
+  <p class="portada-sub">Doble condena, feminización de la pobreza, abordaje diferenciado y acompañamiento desde la perspectiva de género · 4 módulos</p>
+  <div class="dest-box">
+    <div class="dest-lbl">Destinatarios</div>
+    <div class="dest-txt">Equipos pastorales que acompañan mujeres en situación de consumo, coordinadores de dispositivos que quieren revisar sus protocolos desde la perspectiva de género, y agentes pastorales que trabajan con madres en situación de riesgo. También útil para equipos mixtos que quieren comprender por qué el mismo dispositivo produce resultados distintos según el género y qué ajustes metodológicos requiere el acompañamiento de mujeres. Nivel intermedio.</div>
+  </div>
+  <div class="pills">
+    <span class="pill">§4.4</span>
+    <span class="pill">§6.6.1–6.6.3</span>
+    <span class="pill">§8.6.1</span>
+    <span class="pill">§7.8</span>
+    <span class="pill">Equipos pastorales</span>
+    <span class="pill">4 sesiones</span>
+    <span class="pill">Nivel intermedio</span>
+  </div>
+</div>
+
+<div class="nav">
+  <button class="tab on" onclick="show(1,this)">Módulo 1 · La doble condena</button>
+  <button class="tab" onclick="show(2,this)">Módulo 2 · Feminización de la pobreza</button>
+  <button class="tab" onclick="show(3,this)">Módulo 3 · Los cinco pilares del abordaje diferenciado</button>
+  <button class="tab" onclick="show(4,this)">Módulo 4 · Espiritualidad y reconstrucción del ser</button>
+</div>
+
+<!-- MÓDULO 1 -->
+<div id="m1" class="mod a">
+  <span class="mod-tag">Módulo 1 · El Ver</span>
+  <h2 class="mod-title">La doble condena: juzgada dos veces por ser mujer</h2>
+  <p class="mod-sub">El diagnóstico territorial de la situación particular de las mujeres · §4.4</p>
+
+  <div class="mf">
+    <div class="mf-lbl">Mensaje fuerza</div>
+    <div class="mf-txt">"La mujer es juzgada no solo por el uso de sustancias, sino por el incumplimiento del rol cultural de madre y cuidadora del hogar. Este estigma genera una internalización del rechazo que alimenta ciclos de culpa y autodesprecio que suelen paralizar la búsqueda de acompañamiento."</div>
+  </div>
+
+  <div class="alerta">
+    <div class="alerta-lbl">Dato crítico · §8.6.1</div>
+    <div class="alerta-txt">Solo <strong>una de cada dieciocho mujeres</strong> con consumo problemático accede a tratamiento, en comparación con <strong>uno de cada siete hombres</strong>. La brecha no es casualidad: es el resultado sistemático de la doble condena, el abandono vincular, el miedo a perder la custodia y la ausencia de dispositivos que integren maternidad y recuperación.</div>
+  </div>
+
+  <p class="sec-lbl">El Ver — Realidad</p>
+  <ul class="puntos">
+    <li><span class="dot">V</span><span>El §4.4 describe la doble condena en sus dos dimensiones simultáneas: la condena social por el consumo (igual que el varón) y la condena moral por el incumplimiento del rol de madre y cuidadora (específica de la mujer). "Este estigma genera una internalización del rechazo, donde la persona llega a percibir su situación como una vergüenza personal, lo que alimenta ciclos de culpa y autodesprecio que suelen paralizar la búsqueda de acompañamiento." La vergüenza no es un sentimiento: es una barrera de acceso.</span></li>
+    <li><span class="dot">V</span><span>El contraste de redes de sostén que el §4.4 documenta es uno de los más reveladores del diagnóstico territorial: "Mientras los varones suelen contar con una red de contención femenina —madres, esposas o hermanas— durante sus procesos, las mujeres enfrentan frecuentemente el abandono de sus parejas y familias al hacerse visible el consumo." La misma comunidad que sostiene al varón abandona a la mujer.</span></li>
+    <li><span class="dot">V</span><span>"Muchas madres ocultan su problemática ante el miedo a que los organismos de protección les arrebaten la custodia de sus hijos, percibiendo al sistema más como una instancia punitiva que restauradora" (§4.4). El sistema de protección de la infancia, diseñado para cuidar a los niños, produce como efecto colateral el alejamiento de las madres del sistema de salud. Es una trampa institucional que el acompañamiento pastoral puede ayudar a desactivar.</span></li>
+    <li><span class="dot">V</span><span>"El consumo femenino funciona, en gran medida, como un intento autoterapéutico frente a traumas complejos. Historias de violencia de género, abusos en la infancia, negligencia y orfandad configuran una fractura interna que la sustancia busca anestesiar" (§4.4). El acompañante que no pregunta por la historia de trauma está acompañando el síntoma sin tocar la herida.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Juzgar — Iluminación</p>
+  <ul class="puntos">
+    <li><span class="dot">J</span><span>La doble condena no es solo un problema sociológico: tiene consecuencias biológicas documentadas. La vergüenza crónica activa el eje del estrés (hipocampo-hipófisis-glándulas suprarrenales) de la misma manera que cualquier otra fuente de estrés crónico, generando cortisol sostenido que daña la memoria, el sistema inmunológico y la capacidad de regulación emocional. La mujer que carga la doble condena está biológicamente más frágil para el proceso de recuperación.</span></li>
+    <li><span class="dot">J</span><span>"La respuesta institucional suele ignorar la necesidad de un abordaje integral que considere la maternidad y la reparación de los vínculos primarios como ejes centrales del proceso diagnóstico" (§4.4). La pastoral que puede integrar maternidad y recuperación —que no obliga a la mujer a elegir entre sus hijos y su proceso— ofrece algo que el sistema de salud pública rara vez puede dar.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Actuar — Propuesta</p>
+  <div class="act-box">
+    <div class="act-title">Diagnóstico de la doble condena en el territorio propio</div>
+    <div class="act-body">El grupo evalúa: ¿cuántas mujeres hay en los procesos activos del dispositivo comparadas con los varones? ¿qué dice esa proporción sobre las barreras de acceso? ¿hay mujeres en el territorio que el equipo sabe que tienen problemas de consumo y no acceden? ¿qué las retiene: el miedo a perder la custodia, el abandono del entorno, la vergüenza? Identificar las barreras concretas del territorio propio es el primer paso para desactivarlas.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">¿Qué mensaje enviamos sobre la "mala madre"?</div>
+    <div class="act-body">El grupo reflexiona honestamente: ¿hay en el equipo actitudes o frases que refuerzan la doble condena hacia las mujeres en situación de consumo? ¿se las juzga distinto que a los varones? ¿hay comentarios sobre "cómo puede hacer eso si tiene hijos"? La auditoría interna de las actitudes propias es la condición para que el dispositivo sea un espacio seguro para que las mujeres lleguen.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">El miedo a perder la custodia: diseñar una respuesta concreta</div>
+    <div class="act-body">El grupo identifica: ¿hay articulación del dispositivo con el sistema judicial de familia del territorio? ¿hay profesionales (trabajadores sociales, abogados) disponibles para acompañar a mujeres que temen perder la custodia? ¿hay testimonios de mujeres que lograron recuperarse sin perder a sus hijos? Esos testimonios son el argumento más poderoso para que otras se animen a pedir ayuda.</div>
+  </div>
+
+  <div class="cita">
+    <div class="cita-lbl">Cita inspiradora · §4.4</div>
+    <div class="cita-txt">"El diagnóstico territorial señala que el consumo femenino funciona, en gran medida, como un intento autoterapéutico frente a traumas complejos. Historias de violencia de género, abusos en la infancia, negligencia y orfandad configuran una fractura interna que la sustancia busca anestesiar."</div>
+    <div class="cita-ref">Manual de la PLAPA, §4.4 — La situación particular de las mujeres (CELAM 2026)</div>
+  </div>
+
+  <div class="autocuidado">
+    <div class="auto-lbl">Autocuidado del agente</div>
+    <div class="auto-txt">La doble condena también puede operar dentro del equipo: las mujeres del equipo pastoral que conocen situaciones de consumo en su propia historia o entorno cercano pueden sentir la misma vergüenza que las hermanas del territorio. El facilitador cuida que el módulo sea un espacio de comprensión y no de juicio. La liberación de la doble condena empieza por practicarla en el propio equipo antes de proponerla en el territorio.</div>
+  </div>
+  <p class="ref">Referencias: §4.4, §8.6.1 — Manual de la PLAPA, CELAM 2026</p>
+</div>
+
+<!-- MÓDULO 2 -->
+<div id="m2" class="mod">
+  <span class="mod-tag">Módulo 2 · El Juzgar</span>
+  <h2 class="mod-title">La feminización de la pobreza: exclusión múltiple y estrategias de supervivencia de alto riesgo</h2>
+  <p class="mod-sub">Tres dimensiones de la exclusión específica de las mujeres · §6.6.1, §6.6.2</p>
+
+  <div class="mf">
+    <div class="mf-lbl">Mensaje fuerza</div>
+    <div class="mf-txt">"La feminización de la pobreza crea escenarios de vulnerabilidad extrema donde la falta de acceso a derechos básicos empuja a las mujeres a situaciones de supervivencia de alto riesgo, como la prostitución o el narcomenudeo, que las exponen a nuevos círculos de violencia y consumo."</div>
+  </div>
+
+  <div class="grid2">
+    <div class="g-item">
+      <div class="g-title">Desprotección estatal diferenciada</div>
+      <div class="g-body">El sistema no suele ofrecer la misma infraestructura de amparo y rehabilitación a las mujeres que a los varones. Los centros de atención específicos para mujeres son escasos; los centros mixtos rara vez garantizan el abordaje del trauma complejo ni las necesidades reproductivas.</div>
+    </div>
+    <div class="g-item">
+      <div class="g-title">Precariedad habitacional y violencia</div>
+      <div class="g-body">La falta de acceso a tierra, techo y trabajo digno expone a muchas mujeres a riesgos de calleización y violencia, especialmente cuando deben criar solas a sus hijos. La situación de calle femenina tiene dinámicas de riesgo radicalmente distintas a las masculinas.</div>
+    </div>
+    <div class="g-item">
+      <div class="g-title">Invisibilización del dolor</div>
+      <div class="g-body">Las trayectorias de consumo femenino suelen ser silenciadas por la vergüenza social y la presión del entorno familiar. "La persona llega a percibir su situación como una vergüenza personal" (§4.4). El dolor invisible no recibe atención.</div>
+    </div>
+    <div class="g-item">
+      <div class="g-title">Estrategias de supervivencia de alto riesgo</div>
+      <div class="g-body">En contextos de pobreza extrema, muchas mujeres recurren al narcomenudeo o la prostitución para sostener la economía familiar. Estas estrategias las exponen a nuevos círculos de violencia y consumo, profundizando la vulnerabilidad en lugar de reducirla.</div>
+    </div>
+  </div>
+
+  <p class="sec-lbl">El Ver — Realidad</p>
+  <ul class="puntos">
+    <li><span class="dot">V</span><span>El §6.6.2 refuta la objeción más frecuente con precisión: "aunque la pobreza sea general, las mujeres enfrentan barreras de acceso únicas y una exclusión múltiple que las deja en una situación de mayor desamparo biológico y social." La feminización de la pobreza no es un argumento de victimización: es un diagnóstico de una realidad estructural que el acompañamiento pastoral necesita conocer para ser eficaz.</span></li>
+    <li><span class="dot">V</span><span>La conexión entre narcomenudeo, prostitución y consumo que el §4.4 describe no es una elección: es una trampa de supervivencia. "La falta de acceso a tierra, techo y trabajo digno empuja a muchas mujeres a estrategias de supervivencia de alto riesgo para sostener la economía familiar, lo que las expone a nuevos círculos de violencia y consumo." La mujer que vende drogas o se prostituye para alimentar a sus hijos no eligió esa vida: fue empujada por una tríada de exclusión que el §6.6.2 documenta.</span></li>
+    <li><span class="dot">V</span><span>"La exclusión quita las redes de amparo y las oportunidades de tratamiento, convirtiendo la adicción en una condena de muerte para el pobre" (§6.6.1). Para las mujeres en situación de feminización de la pobreza, esa sentencia se ejecuta con mayor rapidez por el efecto telescopio biológico y con mayor crueldad por la doble condena social. La intersección de exclusión de género y exclusión de clase produce la vulnerabilidad más profunda que el manual documenta.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Juzgar — Iluminación</p>
+  <ul class="puntos">
+    <li><span class="dot">J</span><span>"Liberar estas injusticias es la condición previa para que la persona pueda recuperar su dignidad ontológica y su libertad. Para ello, el Estado debe asumir su responsabilidad en la creación de condiciones legislativas y sociales que garanticen el futuro de estas mujeres" (§6.6.2). La caridad política que el manual propone tiene aquí uno de sus casos más urgentes: la pastoral que acompaña a mujeres en situación de consumo y feminización de la pobreza no puede ignorar la dimensión política de su tarea.</span></li>
+    <li><span class="dot">J</span><span>La pobreza estructural como "escenario de mayor riesgo para el despliegue de las adicciones" (§6.6.1) se expresa de manera diferenciada por género: las tres dimensiones críticas (privación de recursos básicos, invisibilidad y falta de sentido, violencia estructural y desprotección) afectan a las mujeres con una intensidad amplificada por la feminización de la pobreza. El acompañamiento que no ve esa diferencia aplica una "lógica de escritorio que ignora las llagas específicas del cuerpo sufriente de la mujer en el pueblo" (§6.6.2).</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Actuar — Propuesta</p>
+  <div class="act-box">
+    <div class="act-title">Mapear las estrategias de supervivencia de alto riesgo del territorio</div>
+    <div class="act-body">El grupo mapea —con honestidad y sin juicio— cuántas mujeres del territorio usan el narcomenudeo o la prostitución como estrategia de supervivencia. ¿Hay articulación del dispositivo con esas mujeres? ¿hay un espacio donde puedan llegar sin ser juzgadas por esas estrategias? ¿hay una respuesta de las 3T (tierra, techo, trabajo) que pueda ofrecerse como alternativa real? Sin alternativa concreta, el diagnóstico no produce cambio.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">La caridad política aplicada a las mujeres del territorio</div>
+    <div class="act-body">El grupo identifica tres acciones de caridad política concretas para las mujeres en situación de feminización de la pobreza del territorio: ¿hay legislación local sobre custodia y tratamiento que se pueda incidir? ¿hay organismos estatales de protección de la mujer con los que articular? ¿hay redes de mujeres en la diócesis con las que unir fuerzas? La caridad política empieza por conocer el mapa de lo que existe y lo que falta.</div>
+  </div>
+
+  <div class="cita">
+    <div class="cita-lbl">Cita inspiradora · §6.6.2</div>
+    <div class="cita-txt">"Señalar la feminización de la pobreza no resta importancia al dolor del varón, sino que busca una justicia en la respuesta; un modelo de misericordia debe ser sensible a las diferencias para no aplicar una lógica de escritorio que ignore las llagas específicas del cuerpo sufriente de la mujer en el pueblo."</div>
+    <div class="cita-ref">Manual de la PLAPA, §6.6.2 — La feminización de la pobreza (CELAM 2026)</div>
+  </div>
+
+  <div class="autocuidado">
+    <div class="auto-lbl">Autocuidado del agente</div>
+    <div class="auto-txt">El módulo puede generar en el equipo una sensación de impotencia ante la magnitud de las injusticias estructurales que describe. El facilitador recuerda que la pastoral no está sola en esa tarea: la caridad política es una acción colectiva que se construye articulando con otras instituciones, redes y movimientos. El agente que se ve como eslabón de una red mayor —no como héroe solitario— puede sostener la exposición a esta realidad sin que lo aplaste.</div>
+  </div>
+  <p class="ref">Referencias: §6.6.1, §6.6.2, §4.4 — Manual de la PLAPA, CELAM 2026</p>
+</div>
+
+<!-- MÓDULO 3 -->
+<div id="m3" class="mod">
+  <span class="mod-tag">Módulo 3 · El Actuar</span>
+  <h2 class="mod-title">Los cinco pilares del abordaje diferenciado: una herramienta de justicia terapéutica</h2>
+  <p class="mod-sub">Por qué el mismo protocolo no funciona para todos · §6.6.3, §8.6.1</p>
+
+  <div class="mf">
+    <div class="mf-lbl">Mensaje fuerza</div>
+    <div class="mf-txt">"La especificidad del abordaje no es un lujo técnico, sino la garantía de que el proceso respeta la dignidad inalienable de cada hermana. La verdadera equidad no consiste en la igualdad de trato burocrático, sino en la justicia de la respuesta artesanal que se hace cargo de la totalidad de la vida de la persona."</div>
+  </div>
+
+  <div class="cinco">
+    <div class="cinco-item">
+      <div class="cinco-num">1</div>
+      <div class="cinco-txt"><strong>Vulnerabilidad biológica (efecto telescopio):</strong> las mujeres desarrollan consecuencias médicas graves más rápido que los varones. El dispositivo necesita intervenciones más tempranas y una desintoxicación más larga. Los tiempos de recuperación estandarizados para varones son insuficientes para ellas.</div>
+    </div>
+    <div class="cinco-item">
+      <div class="cinco-num">2</div>
+      <div class="cinco-txt"><strong>Centralidad del trauma complejo:</strong> la gran mayoría de las trayectorias femeninas están marcadas por violencias de género y abusos que requieren espacios de seguridad emocional. El abordaje del trauma no puede posponerse hasta que "esté estabilizada": es condición de posibilidad del proceso.</div>
+    </div>
+    <div class="cinco-item">
+      <div class="cinco-num">3</div>
+      <div class="cinco-txt"><strong>Acompañamiento ante el abandono vincular:</strong> a diferencia de los varones, las mujeres suelen enfrentar el proceso en soledad afectiva absoluta. El dispositivo necesita ofrecer activamente la red de sostén que el entorno no da: figuras de apego seguro, grupos de mujeres en recuperación, tejedoras del cuidado.</div>
+    </div>
+    <div class="cinco-item">
+      <div class="cinco-num">4</div>
+      <div class="cinco-txt"><strong>Protección de la maternidad:</strong> eliminar el miedo a que el Estado arrebate la custodia de los hijos como condición para recibir ayuda. El tratamiento no puede obligar a la mujer a elegir entre su recuperación y su maternidad. Los dispositivos con espacio para hijos multiplican el acceso.</div>
+    </div>
+    <div class="cinco-item">
+      <div class="cinco-num">5</div>
+      <div class="cinco-txt"><strong>El rol de la acompañante par mujer:</strong> la "experta por experiencia" que, habiendo transitado y superado el mismo dolor, guía a otras desde la autoridad que le otorga su propio testimonio de recuperación. Su presencia encarna la posibilidad concreta del cambio de una manera que ningún profesional puede replicar.</div>
+    </div>
+  </div>
+
+  <p class="sec-lbl">El Ver — Realidad</p>
+  <ul class="puntos">
+    <li><span class="dot">V</span><span>El §8.6.1 refuta la objeción técnica más resistente: "aunque los mecanismos de recompensa cerebral sean análogos, los factores metabólicos y el contexto de violencia de género hacen que el impacto sea más devastador y rápido en la mujer. Ignorar la singularidad del género conduce a tratamientos ineficaces que no alojan la realidad subjetiva femenina." Los protocolos neutros no son equitativos: son ineficaces para las mujeres.</span></li>
+    <li><span class="dot">V</span><span>"Los centros mixtos a menudo no pueden garantizar el abordaje del trauma complejo ni las necesidades reproductivas de la mujer" (§6.6.3). El grupo mixto puede funcionar bien para etapas avanzadas del proceso, pero en las etapas iniciales —donde el trauma está más activo y la vergüenza más presente— el espacio de solo mujeres crea las condiciones de seguridad que el proceso necesita.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Juzgar — Iluminación</p>
+  <ul class="puntos">
+    <li><span class="dot">J</span><span>"La verdadera equidad no consiste en la igualdad de trato burocrático, sino en la justicia de la respuesta artesanal que se hace cargo de la totalidad de la vida de la persona, adaptando el cuidado a sus heridas particulares" (§6.6.3). La igualdad de trato no es justicia cuando las situaciones son radicalmente distintas. Dar lo mismo a quienes están en situaciones diferentes produce desigualdad, no equidad.</span></li>
+    <li><span class="dot">J</span><span>El quinto pilar —la acompañante par mujer— conecta directamente con el §8.5.4 (capital de recuperación) y el Itinerario 10 (acompañantes pares). La mujer que superó la adicción y la doble condena tiene una autoridad pastoral específica que ningún varón, por más empático que sea, puede ejercer en relación a otra mujer en esa situación. Reconocer y sostener ese rol es una decisión institucional, no un detalle de gestión.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Actuar — Propuesta</p>
+  <div class="act-box">
+    <div class="act-title">Auditar el dispositivo con los cinco pilares</div>
+    <div class="act-body">El grupo evalúa cada pilar para el dispositivo actual: ¿hay tiempos de desintoxicación diferenciados para mujeres (Pilar 1)? ¿hay abordaje específico de trauma (Pilar 2)? ¿hay red de sostén activa para mujeres que pierden su entorno al iniciar el proceso (Pilar 3)? ¿hay espacio para que vengan con sus hijos (Pilar 4)? ¿hay acompañantes pares mujeres (Pilar 5)? Para cada pilar ausente: identificar un primer paso concreto para incorporarlo.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Diseñar o fortalecer el espacio de solo mujeres</div>
+    <div class="act-body">Si el dispositivo no tiene un espacio específico para mujeres, el grupo diseña sus elementos mínimos: ¿qué formato (grupo de reflexión, grupo de apoyo, espacio de oración)? ¿quién lo facilita (una mujer del equipo, una acompañante par)? ¿qué frecuencia? ¿qué criterios de confidencialidad? ¿hay espacio físico para que vengan con hijos pequeños? El primer encuentro puede ser más pequeño de lo esperado: lo importante es que exista.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Identificar y sostener a las acompañantes pares mujeres</div>
+    <div class="act-body">¿Hay en el territorio mujeres en etapa de recuperación avanzada que podrían ejercer el rol de acompañante par? ¿están siendo identificadas, formadas y sostenidas? ¿hay un protocolo para su incorporación al equipo? El §6.6.3 es explícito: la acompañante par mujer es uno de los cinco pilares fundamentales del abordaje diferenciado. No es un complemento: es una condición de eficacia.</div>
+  </div>
+
+  <div class="cita">
+    <div class="cita-lbl">Cita inspiradora · §6.6.3</div>
+    <div class="cita-txt">"El abordaje diferenciado constituye una herramienta de justicia terapéutica. La especificidad del abordaje no es un lujo técnico, sino la garantía de que el proceso respete la dignidad inalienable de cada hermana."</div>
+    <div class="cita-ref">Manual de la PLAPA, §6.6.3 — Los abordajes diferenciados para mujeres (CELAM 2026)</div>
+  </div>
+
+  <div class="autocuidado">
+    <div class="auto-lbl">Autocuidado del agente</div>
+    <div class="auto-txt">El abordaje del trauma complejo (Pilar 2) puede afectar al equipo que acompaña a mujeres con historias de violencia severa. El facilitador recuerda que el agente pastoral no trata clínicamente el trauma: acompaña, contiene y deriva. Intentar absorber ese peso sin derivar ni recibir supervisión produce trauma secundario. El Pilar 2 requiere articulación con profesionales de salud mental especialistas en trauma: no porque el equipo pastoral no valga, sino porque el trauma complejo necesita intervención especializada que complementa lo que la pastoral ofrece.</div>
+  </div>
+  <p class="ref">Referencias: §6.6.3, §8.6.1 — Manual de la PLAPA, CELAM 2026</p>
+</div>
+
+<!-- MÓDULO 4 -->
+<div id="m4" class="mod">
+  <span class="mod-tag">Módulo 4 · Síntesis y revisión de vida</span>
+  <h2 class="mod-title">Espiritualidad de la mujer y reconstrucción del ser: el camino de la dignidad recuperada</h2>
+  <p class="mod-sub">Interioridad, doble condena y acompañamiento espiritual situado · §7.8</p>
+
+  <div class="mf">
+    <div class="mf-lbl">Mensaje fuerza</div>
+    <div class="mf-txt">"El juicio pastoral sobre las mujeres en situación de consumo debe reconocer que sus adicciones están ligadas al trauma y a una doble condena social. El camino de recuperación pasa por la restauración de la imagen propia dañada por el estigma, el redescubrimiento de la propia belleza interior y la reconstrucción de los vínculos desde la dignidad."</div>
+  </div>
+
+  <p class="sec-lbl">El Ver — Realidad</p>
+  <ul class="puntos">
+    <li><span class="dot">V</span><span>El §7.8 sobre la espiritualidad de la mujer en situación de consumo abre con un diagnóstico que el §4.4 ya anticipó: "las adicciones de la mujer están ligadas al trauma y a una doble condena social." La dimensión espiritual de ese diagnóstico es precisa: el estigma produce una "fractura de la imagen propia" que es al mismo tiempo psicológica y espiritual. La mujer que internalizó el mensaje de que es "una mala madre" tiene una herida en su identidad sagrada que ningún tratamiento farmacológico puede tocar.</span></li>
+    <li><span class="dot">V</span><span>"La mujer en situación de consumo suele llegar al proceso con una imagen de sí misma devastada por años de violencia, estigma y autodesprecio. El trabajo espiritual comienza por el reconocimiento de su dignidad ontológica intacta: ella sigue siendo imagen de Dios, aunque la adicción, la pobreza y el sistema la hayan tratado como descarte" (§7.8). La recuperación de la imagen propia no es un objetivo de la fase avanzada: es la condición de posibilidad del proceso desde el principio.</span></li>
+    <li><span class="dot">V</span><span>El §7.8.2 sobre el impacto de la doble condena en la interioridad y autoestima de la mujer madre es el artículo más delicado del capítulo: "El juicio moral como 'mala madre' es necesario juzgar cómo esta doble condena afecta su interioridad más profunda." La culpa materna que la mujer carga no es solo un sentimiento: es una herida espiritual que necesita la misma atención que la herida biológica.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Juzgar — Iluminación</p>
+  <ul class="puntos">
+    <li><span class="dot">J</span><span>La recuperación de la imagen propia que el §7.8 propone tiene tres movimientos: el reconocimiento de la dignidad ontológica intacta (soy imagen de Dios a pesar de todo), el redescubrimiento de la belleza interior (hay algo sagrado en mí que el consumo y el sistema no pudieron destruir), y la reconstrucción de los vínculos desde esa dignidad recuperada (puedo amar y ser amada de otra manera). Los tres movimientos son simultáneamente espirituales y psicológicos.</span></li>
+    <li><span class="dot">J</span><span>La figura de María Magdalena —a quien el §3.3 dedica uno de los análisis más profundos del manual— es la imagen evangélica que el §7.8 convoca para el acompañamiento de mujeres en situación de consumo. "Para la Magdalena, Jesús fue la única persona que la amó bien y que no quiso usarla." El agente pastoral que puede ofrecer ese tipo de amor —sin agenda, sin juicio, sin instrumentalización— reproduce el gesto evangélico más poderoso para la recuperación de la imagen propia de la mujer.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Actuar — Propuesta</p>
+  <div class="act-box">
+    <div class="act-title">La oración como restauración de la imagen propia</div>
+    <div class="act-body">El grupo diseña un momento de oración específico para el espacio de mujeres del dispositivo que trabaje sobre la imagen de sí misma: ¿qué pasajes del Evangelio hablan de mujeres que Jesús miró con dignidad (la Magdalena, la mujer adúltera, la samaritana)? ¿cómo se pueden usar en una lectio divina compartida? ¿qué gestos simbólicos (el espejo, la vela encendida, la imposición de manos) pueden acompañar ese momento? La oración que restaura la imagen propia es una herramienta pastoral con poder que ninguna intervención clínica puede replicar.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Desactivar la culpa materna sin negar la responsabilidad</div>
+    <div class="act-body">El grupo trabaja la tensión más delicada del acompañamiento de madres en situación de consumo: ¿cómo se nombra la culpa materna sin amplificarla (trampa de la moralización) ni minimizarla (trampa del relativismo)? ¿cómo se ayuda a la mujer a distinguir entre responsabilidad reparable y culpa destructiva? El §7.8.2 propone que el acompañamiento espiritual trabaje la culpa materna como invitación a la reparación, no como condena.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Cierre: la mujer del territorio que inspira el itinerario</div>
+    <div class="act-body">El grupo cierra nombrando (sin apellidos, con respeto) a una mujer del territorio cuya historia de recuperación fue posible gracias al acompañamiento pastoral. ¿Qué hizo posible su proceso? ¿cuál de los cinco pilares fue el decisivo? ¿qué tiene de ella que el dispositivo puede aprender? Ese testimonio es el argumento más poderoso para justificar la existencia del espacio de mujeres y para sostener al equipo cuando el proceso se hace largo y difícil.</div>
+  </div>
+
+  <div class="cita">
+    <div class="cita-lbl">Cita inspiradora · §7.8 (basado en §3.3)</div>
+    <div class="cita-txt">"Para la Magdalena, Jesús fue la única persona que la amó bien y que no quiso usarla. El agente pastoral que puede ofrecer ese tipo de amor —sin agenda, sin juicio, sin instrumentalización— reproduce el gesto evangélico más poderoso para la recuperación de la imagen propia de la mujer."</div>
+    <div class="cita-ref">Manual de la PLAPA, §3.3 y §7.8 — La Magdalena y la espiritualidad de la mujer (CELAM 2026)</div>
+  </div>
+
+  <div class="autocuidado">
+    <div class="auto-lbl">Autocuidado del agente — cierre del itinerario</div>
+    <div class="auto-txt">El itinerario cierra con la pregunta que la figura de María Magdalena le hace a cada agente: ¿hay en nuestra comunidad pastoral alguien que ame a las mujeres del territorio "bien", sin usarlas, sin instrumentalizarlas, sin convertirlas en el éxito del dispositivo? El amor sin agenda que el §7.8 propone como fundamento del acompañamiento de mujeres es también la medida más honesta de la calidad pastoral del equipo. Y la pregunta que ese amor plantea —¿cómo me aman a mí dentro de este equipo?— es la que el facilitador deja resonando al cerrar la sesión.</div>
+  </div>
+  <p class="ref">Referencias: §7.8, §7.8.2, §3.3, §6.6.3, §8.6.1 — Manual de la PLAPA, CELAM 2026</p>
+</div>
+
+<script>
+function show(n,btn){
+  for(let i=1;i<=4;i++) document.getElementById('m'+i).className='mod';
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  document.getElementById('m'+n).className='mod a';
+  btn.classList.add('on');
+}
+</script>
+</body>
+</html>

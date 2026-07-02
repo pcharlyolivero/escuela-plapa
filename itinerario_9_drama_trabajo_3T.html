@@ -1,0 +1,362 @@
+<meta charset="utf-8">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.root{font-family:var(--font-sans);color:var(--text-primary);padding:0 0 2rem}
+.portada{background:#412402;border-radius:12px;padding:1.25rem 1.5rem 1rem;margin-bottom:1.25rem}
+.portada-sup{font-size:11px;font-weight:500;color:#EF9F27;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.35rem}
+.portada-title{font-size:20px;font-weight:500;color:#fff;line-height:1.3;margin-bottom:.25rem}
+.portada-sub{font-size:12px;color:#FAC775;line-height:1.55;margin-bottom:.75rem}
+.dest-box{background:#854F0B;border-radius:8px;padding:.55rem .85rem;margin-bottom:.85rem}
+.dest-lbl{font-size:9px;font-weight:500;color:#FAC775;letter-spacing:.07em;text-transform:uppercase;margin-bottom:3px}
+.dest-txt{font-size:12px;color:#fff;line-height:1.5}
+.portada-pills{display:flex;flex-wrap:wrap;gap:5px}
+.portada-pill{font-size:11px;font-weight:500;padding:2px 9px;border-radius:99px;background:#854F0B;color:#FAEEDA}
+.nav{display:flex;gap:6px;margin-bottom:1.25rem;flex-wrap:wrap}
+.btn{border:0.5px solid var(--border-strong);background:var(--surface-2);border-radius:8px;padding:7px 14px;cursor:pointer;font-size:12px;font-family:var(--font-sans);color:var(--text-secondary);transition:background .15s}
+.btn:hover{background:var(--surface-1)}
+.btn.on{border:2px solid #BA7517;background:#FAEEDA;color:#412402;font-weight:500}
+.card{border-radius:12px;border:0.5px solid var(--border);background:var(--surface-2);overflow:hidden;display:none}
+.card.active{display:block}
+.ch{padding:.85rem 1.1rem .7rem;border-bottom:0.5px solid var(--border)}
+.cn{display:inline-block;font-size:11px;font-weight:500;padding:2px 9px;border-radius:99px;margin-bottom:.5rem;background:#FAEEDA;color:#412402}
+.ct{font-size:16px;font-weight:500;line-height:1.3;margin-bottom:.2rem;color:#633806}
+.cs{font-size:11px;color:var(--text-secondary);line-height:1.45}
+.cb{padding:.85rem 1.1rem}
+.mf{border-left:3px solid #BA7517;background:#FAEEDA;padding:.65rem .9rem;margin-bottom:.9rem}
+.mf-lbl{font-size:9px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:#854F0B;margin-bottom:3px}
+.mf-txt{font-size:14px;font-weight:500;line-height:1.5;font-family:var(--font-voice);color:#412402}
+.pl{font-size:9px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.4rem}
+.pts{list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:.9rem}
+.pts li{display:flex;gap:9px;font-size:12px;color:var(--text-secondary);line-height:1.55}
+.dot{width:18px;min-width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:500;margin-top:1px;background:#FAEEDA;color:#633806}
+.act{background:#FAEEDA;border-radius:8px;padding:.65rem .85rem;margin-bottom:6px}
+.act-title{font-size:11px;font-weight:500;color:#412402;margin-bottom:3px}
+.act-body{font-size:12px;color:#633806;line-height:1.5}
+.cita{border-radius:7px;padding:.65rem .85rem;background:#FAEEDA;margin-top:.85rem}
+.cita-lbl{font-size:9px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:#854F0B;margin-bottom:3px}
+.cita-txt{font-size:11px;line-height:1.6;font-family:var(--font-voice);font-style:italic;color:#412402}
+.cita-ref{font-size:10px;margin-top:3px;font-style:normal;font-weight:500;color:#854F0B}
+.ac-box{border-left:3px solid #BA7517;background:var(--surface-1);padding:.65rem .85rem;margin-top:.85rem}
+.ac-lbl{font-size:9px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:#854F0B;margin-bottom:3px}
+.ac-txt{font-size:12px;color:var(--text-secondary);line-height:1.55}
+.ref{font-size:10px;color:var(--text-muted);font-style:italic;margin-top:.75rem;padding-top:.6rem;border-top:0.5px solid var(--border)}
+.tres-t{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:.85rem}
+.t-card{background:#FAEEDA;border-radius:8px;padding:.6rem .7rem;text-align:center}
+.t-letra{font-size:22px;font-weight:500;color:#412402;margin-bottom:4px}
+.t-name{font-size:11px;font-weight:500;color:#633806;margin-bottom:3px}
+.t-desc{font-size:10px;color:#854F0B;line-height:1.4}
+.etapas{display:flex;flex-direction:column;gap:5px;margin-bottom:.85rem}
+.etapa{display:flex;gap:9px;align-items:flex-start}
+.etapa-num{width:22px;min-width:22px;height:22px;background:#FAEEDA;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:500;color:#412402;margin-top:1px}
+.etapa-txt{font-size:12px;color:var(--text-secondary);line-height:1.5;padding-top:2px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:.85rem}
+.g-item{background:#FAEEDA;border-radius:7px;padding:.55rem .7rem}
+.g-title{font-size:11px;font-weight:500;color:#412402;margin-bottom:2px}
+.g-body{font-size:10px;color:#854F0B;line-height:1.4}
+</style>
+
+<h2 class="sr-only">Itinerario formativo 9: El drama del trabajo y las 3T. Cuatro módulos sobre trabajo, dignidad, Tierra-Techo-Trabajo, Misericordia Estructurada y economía solidaria como andamiaje de la recuperación sostenible, basados en §6.3, §6.6.5, §4.9 y §12.3.3 del Manual de la PLAPA.</h2>
+
+<div class="root">
+
+<div class="portada">
+  <p class="portada-sup">Itinerario formativo 9 · PLAPA — CELAM 2026</p>
+  <h1 class="portada-title">El drama del trabajo y las 3T</h1>
+  <p class="portada-sub">Desempleo, economía popular y Tierra-Techo-Trabajo como andamiaje de justicia para la recuperación sostenible · 4 módulos</p>
+  <div class="dest-box">
+    <div class="dest-lbl">Destinatarios</div>
+    <div class="dest-txt">Coordinadores de centros barriales, equipos de acompañamiento específico, referentes de comunidades terapéuticas y agentes pastorales que trabajan con personas en proceso de recuperación o reintegración social. Particularmente útil para quienes diseñan propuestas de economía solidaria, cooperativas o programas de laborterapia. Requiere algo de experiencia en acompañamiento de procesos de recuperación; no requiere formación técnica en economía.</div>
+  </div>
+  <div class="portada-pills">
+    <span class="portada-pill">§4.9</span>
+    <span class="portada-pill">§6.3.1–6.3.5</span>
+    <span class="portada-pill">§6.6.5</span>
+    <span class="portada-pill">§12.3.3</span>
+    <span class="portada-pill">Equipos de acompañamiento</span>
+    <span class="portada-pill">4 sesiones</span>
+    <span class="portada-pill">Nivel intermedio</span>
+  </div>
+</div>
+
+<div class="nav">
+  <button class="btn on" onclick="show(1,this)">Módulo 1 · El trabajo como dignidad</button>
+  <button class="btn" onclick="show(2,this)">Módulo 2 · Las 3T: derechos sagrados</button>
+  <button class="btn" onclick="show(3,this)">Módulo 3 · Misericordia Estructurada y gradualidad</button>
+  <button class="btn" onclick="show(4,this)">Módulo 4 · Economía solidaria y Barrio Comunitario</button>
+</div>
+
+<!-- MÓDULO 1 -->
+<div id="m1" class="card active" style="border-left:5px solid #BA7517">
+  <div class="ch">
+    <span class="cn">Módulo 1 · El Ver</span>
+    <div class="ct">El trabajo no es un premio al final: es un medicamento desde el inicio</div>
+    <div class="cs">El drama del desempleo y el sentido sagrado del trabajo · §4.9, §6.3.1</div>
+  </div>
+  <div class="cb">
+    <div class="mf">
+      <div class="mf-lbl">Mensaje fuerza</div>
+      <div class="mf-txt">"La falta de empleo no debe mirarse solo desde las estadísticas económicas; es una verdadera urgencia que desestructura el corazón y la mente. Para esta pastoral, el desempleo es un factor predictor de recaída que requiere una respuesta de misericordia y justicia inmediata."</div>
+    </div>
+
+    <div class="pl">El Ver — Realidad</div>
+    <ul class="pts">
+      <li><span class="dot">V</span><span>El diagnóstico del §4.9 es preciso: "La ausencia de una tarea que ordene el día genera bloques de tiempo vacío que aumentan la vulnerabilidad ante el consumo, donde la droga aparece como una falsa anestesia para mitigar el dolor del desamparo." El desempleo no es solo una carencia económica: es una fractura de la identidad y del ritmo vital que la adicción aprovecha.</span></li>
+      <li><span class="dot">V</span><span>El §4.9 identifica también el extremo opuesto: el workaholism o adicción al trabajo. "La persona dependiente del trabajo basa su valor únicamente en la productividad, descuidando su salud y sus vínculos sagrados." En los procesos de recuperación, la compulsión por la sustancia puede ser reemplazada por esta laborodependencia que el sistema social aplaude pero que es otra forma de vacío.</span></li>
+    </ul>
+
+    <div class="pl">El Juzgar — Iluminación</div>
+    <ul class="pts">
+      <li><span class="dot">J</span><span>El §6.3.1 rescata el sentido sagrado del trabajo desde Génesis 2,15: "Tomó el Señor Dios al hombre y lo puso en el jardín del Edén para que lo cultivara y lo cuidara." El trabajo no es castigo ni mera supervivencia: es participación en la obra creadora de Dios. Esta antropología cambia radicalmente el lugar del trabajo en el proceso de recuperación: no es el final del camino sino su columna vertebral.</span></li>
+      <li><span class="dot">J</span><span>El trabajo cumple tres funciones simultáneas en el proceso de sanación (§6.3.1): es espejo de la identidad (a través de su obra, el hermano se reconoce como alguien que tiene algo para dar), ordenador del tiempo y del deseo (combate los bloques de tiempo vacío que disparan la compulsión) y motor del protagonismo comunitario (saca del aislamiento y convierte al asistido en sujeto activo del barrio).</span></li>
+    </ul>
+
+    <div class="pl">El Actuar — Propuesta</div>
+    <div class="act">
+      <div class="act-title">El trabajo en los procesos que acompañamos: diagnóstico</div>
+      <div class="act-body">El grupo evalúa los procesos de acompañamiento que tiene activos: ¿el trabajo está integrado desde el inicio o se propone como meta final? ¿hay laborterapia en los primeros tramos? ¿hay aprendizaje de oficios en los tramos intermedios? ¿hay acompañamiento de inserción laboral real en los tramos avanzados? El diagnóstico propio es el punto de partida.</div>
+    </div>
+    <div class="act">
+      <div class="act-title">¿Qué tiene para dar el hermano que acompañamos?</div>
+      <div class="act-body">El grupo toma tres personas (anonimizadas) de los procesos activos y responde: ¿qué sabe hacer? ¿qué le gusta? ¿qué hacía antes del consumo? ¿qué podría hacer hoy, aunque sea de forma mínima y protegida? El §6.3.1 propone que la laborterapia empieza por descubrir los talentos: "a través de su obra, el ser humano se reconoce a sí mismo como alguien que tiene algo para dar."</div>
+    </div>
+    <div class="act">
+      <div class="act-title">El tiempo vacío como disparador: mapear los momentos de riesgo</div>
+      <div class="act-body">El grupo identifica en los procesos que acompaña cuáles son los bloques de tiempo vacío más frecuentes (tardes del fin de semana, días sin actividad programada, etapas de transición). ¿Qué está haciendo la comunidad en esos momentos? ¿qué podría hacer? La laborterapia y las actividades comunitarias son respuestas directas a esos bloques.</div>
+    </div>
+
+    <div class="cita">
+      <div class="cita-lbl">Cita inspiradora · §6.3.1 — Gn 2,15</div>
+      <div class="cita-txt">"El trabajo es el eje vertebrador que otorga sentido a la vida cotidiana. Al trabajar, el ser humano no solo transforma las cosas, sino que se realiza a sí mismo como sujeto capaz y creativo. La laborterapia no es un premio al éxito, sino una herramienta pedagógica que ayuda a recuperar la autovaloración y los hábitos necesarios para la vida."</div>
+      <div class="cita-ref">Manual de la PLAPA, §6.3.1 — El trabajo como participación en la creación (CELAM 2026)</div>
+    </div>
+
+    <div class="ac-box">
+      <div class="ac-lbl">Autocuidado del agente</div>
+      <div class="ac-txt">El §4.9 advierte del workaholism como otra forma de adicción. El agente pastoral puede caer en él: la compulsión por "hacer más", por estar siempre disponible, por no poder parar. El facilitador invita al equipo a revisar: ¿hay en este equipo signos de adicción al trabajo pastoral? ¿se descansa? ¿se disfruta? La misericordia estructurada que se propone para los hermanos empieza por practicarla con uno mismo.</div>
+    </div>
+    <div class="ref">Referencias: §4.9, §6.3.1, Gn 2,15 — Manual de la PLAPA, CELAM 2026</div>
+  </div>
+</div>
+
+<!-- MÓDULO 2 -->
+<div id="m2" class="card" style="border-left:5px solid #BA7517">
+  <div class="ch">
+    <span class="cn">Módulo 2 · El Juzgar</span>
+    <div class="ct">Las 3T: Tierra, Techo y Trabajo como derechos sagrados e indisoluble tríada de justicia</div>
+    <div class="cs">Andamiaje de la recuperación sostenible · §6.3.2</div>
+  </div>
+  <div class="cb">
+    <div class="mf">
+      <div class="mf-lbl">Mensaje fuerza</div>
+      <div class="mf-txt">"La abstinencia es frágil si no está custodiada por una vida digna. Las 3T no son el premio al final de la meta, sino el andamiaje de justicia que permite que el hermano se sostenga en pie frente a las presiones del entorno y la marginalidad."</div>
+    </div>
+
+    <div class="tres-t">
+      <div class="t-card">
+        <div class="t-letra">T</div>
+        <div class="t-name">Tierra</div>
+        <div class="t-desc">Pertenencia, raíces y estabilidad. Permite proyectar un futuro que el consumo fragmenta en un presente perpetuo.</div>
+      </div>
+      <div class="t-card">
+        <div class="t-letra">T</div>
+        <div class="t-name">Techo</div>
+        <div class="t-desc">Protección e intimidad. Sin un lugar seguro, la persona permanece en alerta biológica crónica que dispara el deseo de consumo.</div>
+      </div>
+      <div class="t-card">
+        <div class="t-letra">T</div>
+        <div class="t-name">Trabajo</div>
+        <div class="t-desc">Sostenimiento y protagonismo. Motor que devuelve al sujeto su lugar en la economía popular e impide la deriva de la exclusión.</div>
+      </div>
+    </div>
+
+    <div class="pl">El Ver — Realidad</div>
+    <ul class="pts">
+      <li><span class="dot">V</span><span>La objeción más frecuente en los equipos: "primero que se cure, después vemos lo del trabajo y la vivienda." El §6.3.2 la invierte: "La abstinencia es frágil si no está custodiada por una vida digna. Las 3T no son el premio al final de la meta, sino el andamiaje de justicia que permite que el hermano se sostenga en pie." Sin ese andamiaje, la recaída es casi inevitable porque las condiciones estructurales no cambiaron.</span></li>
+      <li><span class="dot">V</span><span>El §6.3.2 identifica el nexo causal exacto: "El desamparo que produce la falta de estas dimensiones es el caldo de cultivo donde la narcocultura ofrece sus falsas promesas." El narcotráfico no seduce solo con la sustancia: seduce con tierra (territorio donde el joven tiene poder), techo (la esquina como refugio) y trabajo (el menudeo como fuente de ingreso). Las 3T son la respuesta estructural a esa seducción.</span></li>
+    </ul>
+
+    <div class="pl">El Juzgar — Iluminación</div>
+    <ul class="pts">
+      <li><span class="dot">J</span><span>Lc 4,18-19 funda teológicamente la tríada: "El Espíritu del Señor está sobre mí... me envió a anunciar a los pobres la Buena Noticia, a proclamar la libertad a los cautivos." El manual (§6.3.2) traduce esto en términos concretos: "Una espiritualidad que ignore la carne sufriente y las carencias materiales del hermano es una fe desencarnada. La misión eclesial incluye la caridad política que busca transformar las estructuras de pecado que niegan estos derechos fundamentales."</span></li>
+      <li><span class="dot">J</span><span>"El acceso a las 3T no es asistencialismo, sino restitución de derechos. No se trata de 'dar' de forma pasiva, sino de generar las condiciones para que el hermano, mediante su propio protagonismo y el apoyo de la comunidad, pueda habitar su tierra, cuidar su techo y dignificarse en su trabajo" (§6.3.2). La distinción entre asistencialismo y restitución de derechos no es semántica: define el rol del agente y el rol del acompañado.</span></li>
+    </ul>
+
+    <div class="pl">El Actuar — Propuesta</div>
+    <div class="act">
+      <div class="act-title">Diagnóstico de las 3T en los procesos activos</div>
+      <div class="act-body">El grupo evalúa para cada proceso de acompañamiento activo: ¿tiene tierra (pertenencia a un territorio y comunidad)? ¿tiene techo (lugar seguro donde descansar y reconstruir vínculos)? ¿tiene trabajo (en cualquiera de las tres etapas del §6.3.4)? El cuadro resultante muestra qué andamiaje está ausente y qué es lo más urgente de construir.</div>
+    </div>
+    <div class="act">
+      <div class="act-title">¿Qué puede hacer la comunidad pastoral en cada T?</div>
+      <div class="act-body">El grupo responde específicamente: ¿qué puede hacer la comunidad para ofrecer tierra (pertenencia, red, territorio seguro)? ¿qué para el techo (habitaciones transitorias, casas de familias de apoyo, articulación con organismos de vivienda)? ¿qué para el trabajo (laborterapia, oficios, contactos con empleadores solidarios)? Las tres preguntas generan un plan mínimo de acción.</div>
+    </div>
+    <div class="act">
+      <div class="act-title">Las 3T del narco vs. las 3T de la Iglesia</div>
+      <div class="act-body">El grupo reflexiona: ¿qué territorio, qué protección y qué fuente de ingreso ofrece el narcotráfico a los jóvenes del barrio? ¿qué ofrece la comunidad pastoral en esas mismas tres dimensiones? La comparación no es para demonizar al narco ni para romantizar a la Iglesia: es para ver con honestidad dónde el narco gana y la Iglesia pierde, y qué tendría que cambiar.</div>
+    </div>
+
+    <div class="cita">
+      <div class="cita-lbl">Cita inspiradora · §6.3.2 — Lc 4,18-19</div>
+      <div class="cita-txt">"Tierra, Techo y Trabajo son derechos sagrados porque permiten que la persona deje de ser un errante descartado para transformarse en un ciudadano con raíces, protección y propósito. No existe verdadera libertad sin una base material que la sustente."</div>
+      <div class="cita-ref">Manual de la PLAPA, §6.3.2 — Las 3T (CELAM 2026)</div>
+    </div>
+
+    <div class="ac-box">
+      <div class="ac-lbl">Autocuidado del agente</div>
+      <div class="ac-txt">El módulo de las 3T puede generar una sensación de impotencia frente a la magnitud de la tarea: ¿cómo puede una parroquia o un centro barrial resolver el problema de la vivienda o el empleo? El facilitador recuerda que la tarea no es resolverlo solo: es ser el hilo articulador entre las instituciones que sí pueden. El §6.4.1 es claro: el acompañamiento inespecífico une los fragmentos que el sistema administrativo suele separar. Esa función de articulador es poderosa y está al alcance de cualquier equipo.</div>
+    </div>
+    <div class="ref">Referencias: §6.3.2, Lc 4,18-19 — Manual de la PLAPA, CELAM 2026</div>
+  </div>
+</div>
+
+<!-- MÓDULO 3 -->
+<div id="m3" class="card" style="border-left:5px solid #BA7517">
+  <div class="ch">
+    <span class="cn">Módulo 3 · El Actuar</span>
+    <div class="ct">Misericordia Estructurada y gradualidad: las tres etapas del trabajo en la recuperación</div>
+    <div class="cs">De la laborterapia al empleo remunerado · §6.3.3, §6.3.4, §6.3.5</div>
+  </div>
+  <div class="cb">
+    <div class="mf">
+      <div class="mf-lbl">Mensaje fuerza</div>
+      <div class="mf-txt">"Una misericordia sin estructura es desidia; una estructura sin misericordia es crueldad. El equilibrio reside en una pedagogía que utiliza la firmeza de la regla para proteger la libertad que aún está débil."</div>
+    </div>
+
+    <div class="etapas">
+      <div class="etapa">
+        <div class="etapa-num">1</div>
+        <div class="etapa-txt"><strong>Laborterapia: el trabajo que organiza.</strong> En las fases iniciales, el fin no es la productividad sino la reorganización de la vida interior. Las tareas cotidianas de la comunidad funcionan como instrumento pedagógico para recuperar ritmos, disciplina y sentido de servicio. Del caos del consumo al orden de lo compartido.</div>
+      </div>
+      <div class="etapa">
+        <div class="etapa-num">2</div>
+        <div class="etapa-txt"><strong>Aprendizaje de oficios: el trabajo que capacita.</strong> Superada la crisis inicial, el hermano necesita redescubrir sus talentos. Esta etapa formativa busca que el sujeto adquiera competencias técnicas y habilidades sociales. Aprender un oficio devuelve la esperanza y permite proyectar un futuro posible fuera del circuito de la exclusión.</div>
+      </div>
+      <div class="etapa">
+        <div class="etapa-num">3</div>
+        <div class="etapa-txt"><strong>Empleo remunerado: el trabajo que integra.</strong> La inserción laboral real es el signo de la recuperación plena. El salario permite la independencia económica y familiar. El trabajo remunerado verifica que el hermano ha dejado de ser un objeto de asistencia para transformarse en un ciudadano protagonista de su propio pueblo.</div>
+      </div>
+    </div>
+
+    <div class="pl">El Ver — Realidad</div>
+    <ul class="pts">
+      <li><span class="dot">V</span><span>La tensión más frecuente en los equipos pastorales es la que el §6.3.3 describe con precisión: la acogida incondicional vs. la necesidad de un orden operativo. "Existe el riesgo de caer en un asistencialismo que, por evitar la exigencia, termina abandonando al hermano en su propio caos." La misericordia sin estructura no es más compasiva: es menos responsable.</span></li>
+      <li><span class="dot">V</span><span>El §6.3.5 aborda el tema más incómodo del proceso: el dinero. La objeción más frecuente: "darle dinero lo va a usar para consumir." La respuesta del manual: "el riesgo del dinero se mitiga con un control asistido y pedagógico; administrar el primer sueldo de forma acompañada ayuda a ganar seguridad y refuerza la confianza de la familia en el proceso" (§6.6.5). Negar el acceso al dinero de forma permanente reproduce la tutela, no la autonomía.</span></li>
+    </ul>
+
+    <div class="pl">El Juzgar — Iluminación</div>
+    <ul class="pts">
+      <li><span class="dot">J</span><span>La Misericordia Estructurada tiene tres fundamentos (§6.3.3): seguridad vincular y contención (el límite sano funciona como abrazo protector para quien viene del caos), reparación de la voluntad (pequeñas metas diarias que entrenan el músculo de la voluntad), y valor pedagógico del límite (el error es oportunidad de aprendizaje y perdón, no motivo de expulsión). Los tres se articulan en las tres etapas del trabajo del §6.3.4.</span></li>
+      <li><span class="dot">J</span><span>"Proponer una estructura es un signo de esperanza: es decirle al hermano que creemos en su capacidad de responder, de ser responsable y de protagonizar su propio proceso de vida nueva" (§6.3.3). El límite que nace del vínculo pastoral no se confunde con el sistema punitivo: nace del amor que cree en la persona más de lo que ella cree en sí misma.</span></li>
+    </ul>
+
+    <div class="pl">El Actuar — Propuesta</div>
+    <div class="act">
+      <div class="act-title">Diseñar un itinerario de trabajo gradual</div>
+      <div class="act-body">El grupo toma un proceso de acompañamiento activo y diseña el itinerario de trabajo gradual siguiendo las tres etapas del §6.3.4: ¿qué laborterapia puede ofrecer la comunidad hoy (tareas cotidianas, cuidado de espacios, preparación de comidas)? ¿qué oficio puede aprender (quién lo enseña, dónde, con qué recursos)? ¿qué empleo real podría ser el horizonte (cooperativa, empleador solidario, emprendimiento propio)?</div>
+    </div>
+    <div class="act">
+      <div class="act-title">El reglamento de la Misericordia Estructurada</div>
+      <div class="act-body">¿Tiene el equipo un reglamento de convivencia y de actividades para los procesos que acompaña? ¿fue construido con la participación de los propios acompañados? ¿es conocido y aceptado, o impuesto? El §6.3.3 especifica: "a diferencia de los sistemas punitivos, la estructura pastoral nace del vínculo y la projimidad. No se impone desde una autoridad lejana, sino que se vive en comunidad, donde quien acompaña se somete a la misma regla y ritmo de vida." Revisar el reglamento propio con ese criterio.</div>
+    </div>
+    <div class="act">
+      <div class="act-title">El primer sueldo: protocolo de acompañamiento financiero</div>
+      <div class="act-body">El grupo diseña un protocolo mínimo para acompañar la primera experiencia de ingreso remunerado en un proceso de recuperación: ¿quién acompaña? ¿cómo se planifica el gasto? ¿cuánta autonomía tiene el hermano y cuánto acompañamiento? El §6.3.5 propone que el dinero se use pedagógicamente como "termómetro de la madurez frente a la impulsividad", no como riesgo a eliminar.</div>
+    </div>
+
+    <div class="cita">
+      <div class="cita-lbl">Cita inspiradora · §6.3.3</div>
+      <div class="cita-txt">"La verdadera misericordia no es un sentimiento difuso ni una permisividad que deja al otro a la deriva. Es una caridad operante que se hace cargo de la fragilidad ajena proveyendo un entorno seguro y predecible. Una misericordia sin estructura es desidia; una estructura sin misericordia es crueldad."</div>
+      <div class="cita-ref">Manual de la PLAPA, §6.3.3 — La Misericordia Estructurada (CELAM 2026)</div>
+    </div>
+
+    <div class="ac-box">
+      <div class="ac-lbl">Autocuidado del agente</div>
+      <div class="ac-txt">La Misericordia Estructurada también protege al agente: la comunidad que no tiene estructura clara para los procesos que acompaña genera en sus agentes una carga emocional difusa y sin límites. ¿Hasta cuándo acompaño? ¿qué se espera de mí en cada etapa? ¿quién decide cuándo el hermano avanza a la siguiente etapa? Clarificar esas preguntas no es burocracia: es cuidado del agente y cuidado del proceso.</div>
+    </div>
+    <div class="ref">Referencias: §6.3.3, §6.3.4, §6.3.5 — Manual de la PLAPA, CELAM 2026</div>
+  </div>
+</div>
+
+<!-- MÓDULO 4 -->
+<div id="m4" class="card" style="border-left:5px solid #BA7517">
+  <div class="ch">
+    <span class="cn">Módulo 4 · Síntesis y revisión de vida</span>
+    <div class="ct">Economía solidaria y Barrio Comunitario: cuando las 3T se vuelven experienza concreta</div>
+    <div class="cs">Cooperativismo, microcréditos y el modelo del Barrio Comunitario · §6.6.5, §12.3.3, §12.4</div>
+  </div>
+  <div class="cb">
+    <div class="mf">
+      <div class="mf-lbl">Mensaje fuerza</div>
+      <div class="mf-txt">"La inclusión económica no es el premio al final del camino, sino una condición de justicia para que la recuperación sea sostenible y digna, permitiendo que el sujeto se reconozca nuevamente como ciudadano con derechos y responsabilidades."</div>
+    </div>
+
+    <div class="grid2">
+      <div class="g-item">
+        <div class="g-title">Cooperativismo</div>
+        <div class="g-body">Emprendimientos que contemplan la dinámica comunitaria y los tiempos del proceso artesanal. La lógica asamblearia como escuela de ciudadanía.</div>
+      </div>
+      <div class="g-item">
+        <div class="g-title">Reeducación financiera</div>
+        <div class="g-body">El dinero de forma pedagógica para transitar hacia una autonomía progresiva. Reemplazar la inmediatez de la calle por la planificación.</div>
+      </div>
+      <div class="g-item">
+        <div class="g-title">Microcréditos solidarios</div>
+        <div class="g-body">Financiamiento específico para laborterapia, aprendizaje de oficios, emprendimientos y vivienda. Acompañamiento integral al proceso.</div>
+      </div>
+      <div class="g-item">
+        <div class="g-title">Valoración de talentos propios</div>
+        <div class="g-body">Reconocer las herramientas que los sujetos ya poseen para disputar la economía barrial al narcotráfico desde la economía del cuidado.</div>
+      </div>
+    </div>
+
+    <div class="pl">El Ver — Realidad</div>
+    <ul class="pts">
+      <li><span class="dot">V</span><span>El Barrio Comunitario (§12.3.3) es la materialización más integral de las 3T en Argentina: "Partiendo del abrazo primario en el territorio (calle, comida, higiene) desarrollado en los Centros Barriales del Hogar de Cristo, este modelo avanza hacia la consolidación de un Barrio Comunitario en zonas rurales." Propone un proceso inverso de migración (de la ciudad al campo) para familias que buscan un cambio radical de vida, alejadas de la violencia y el consumo.</span></li>
+      <li><span class="dot">V</span><span>Los Microcréditos y Finanzas Solidarias (§12.4) se destinan a cuatro dimensiones: laborterapia, aprendizaje de oficios, emprendimientos productivos y vivienda. "Para que las finanzas solidarias cumplan su rol transformador, el equipo interdisciplinario debe aplicar una guía de tres pasos" (§12.4.2). Los microcréditos no son préstamos bancarios: son herramientas de restitución de derechos acompañadas por la comunidad.</span></li>
+    </ul>
+
+    <div class="pl">El Juzgar — Iluminación</div>
+    <ul class="pts">
+      <li><span class="dot">J</span><span>Los cinco ejes de la economía popular y solidaria (§6.6.5): el trabajo como lazo social, el cooperativismo en sectores populares, la reeducación financiera, la misericordia estructurada en la organización productiva, y la valoración de los talentos propios. "La inclusión social reconoce las herramientas que los sujetos ya poseen para disputar la economía barrial al narcotráfico" (§6.6.5). El narco recluta porque ofrece trabajo y dinero; la economía solidaria compite en ese mismo campo.</span></li>
+      <li><span class="dot">J</span><span>El Barrio Comunitario integra la Tierra (agroecología, cuidado ambiental, Laudato Si), el Techo (alojamiento transitorio y luego autoconstrucción con microcréditos) y el Trabajo (cooperativa de producción agroecológica y economías del cuidado). "Los referentes más antiguos asumen el rol de guiar a los recién llegados" (§12.3.3): el acompañante par como eje de la economía comunitaria.</span></li>
+    </ul>
+
+    <div class="pl">El Actuar — Propuesta</div>
+    <div class="act">
+      <div class="act-title">¿Qué tiene de economía solidaria lo que ya hacemos?</div>
+      <div class="act-body">El grupo identifica las prácticas de economía solidaria que ya existen en la comunidad (aunque no las llame así): el comedor, el taller de oficios, el grupo de madres que producen jabón, las familias que comparten herramientas. Nombrarlas y reconocerlas como economía solidaria les da un marco y un horizonte de crecimiento.</div>
+    </div>
+    <div class="act">
+      <div class="act-title">Diseñar el primer paso hacia una cooperativa o emprendimiento solidario</div>
+      <div class="act-body">Usando los cinco ejes del §6.6.5, el grupo diseña el primer paso concreto hacia un emprendimiento de economía solidaria en el territorio: ¿qué producir (qué talentos hay)? ¿con quién (quiénes participan)? ¿cómo organizarse (asamblea, roles, reglas)? ¿qué se necesita para empezar (recursos mínimos, local, materiales)? No hace falta que sea grande: hace falta que sea real.</div>
+    </div>
+    <div class="act">
+      <div class="act-title">Cierre: la economía que queremos construir</div>
+      <div class="act-body">El grupo redacta en una hoja: "En este territorio, queremos construir una economía que…" Tres líneas máximo. Cada participante lee su frase. El facilitador busca los puntos en común: esas convergencias son el horizonte compartido hacia donde el equipo camina. Se guarda en el cuaderno colectivo como referencia para el primer "Parar para seguir."</div>
+    </div>
+
+    <div class="cita">
+      <div class="cita-lbl">Cita inspiradora · §6.6.5 — Papa Francisco</div>
+      <div class="cita-txt">"El trabajo es una parte fundamental de la dignidad humana que permite al hombre cultivarse a sí mismo y sostener a su familia. La inclusión económica no es el premio al final del camino, sino una condición de justicia para que la recuperación sea sostenible y digna."</div>
+      <div class="cita-ref">Manual de la PLAPA, §6.6.5 — La economía popular y solidaria (CELAM 2026)</div>
+    </div>
+
+    <div class="ac-box">
+      <div class="ac-lbl">Autocuidado del agente — cierre del itinerario</div>
+      <div class="ac-txt">El itinerario cierra con la misma pregunta del §6.3.1: ¿qué hago el trabajo con el hombre? El agente pastoral también trabaja, también se cansa, también necesita sentir que lo que hace tiene sentido. El facilitador invita a que cada participante nombre una razón por la cual lo que hace en este equipo tiene valor más allá del resultado. Esa razón es el motor que sostiene el compromiso cuando los resultados no aparecen. Cerrar en silencio o con oración.</div>
+    </div>
+    <div class="ref">Referencias: §6.6.5, §12.3.3, §12.4 — Manual de la PLAPA, CELAM 2026</div>
+  </div>
+</div>
+
+</div>
+
+<script>
+function show(n,btn){
+  for(let i=1;i<=4;i++) document.getElementById('m'+i).classList.remove('active');
+  document.querySelectorAll('.btn').forEach(b=>b.classList.remove('on'));
+  document.getElementById('m'+n).classList.add('active');
+  btn.classList.add('on');
+}
+</script>

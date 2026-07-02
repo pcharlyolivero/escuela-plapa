@@ -1,0 +1,192 @@
+<meta charset="utf-8">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.r{font-family:var(--font-sans);color:var(--text-primary);padding:0 0 2rem}
+.p{background:#26215C;border-radius:12px;padding:1.1rem 1.3rem .9rem;margin-bottom:1.1rem}
+.ps{font-size:11px;font-weight:500;color:#AFA9EC;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.3rem}
+.pt{font-size:20px;font-weight:500;color:#fff;line-height:1.3;margin-bottom:.2rem}
+.psub{font-size:12px;color:#CECBF6;line-height:1.5;margin-bottom:.65rem}
+.db{background:#534AB7;border-radius:8px;padding:.5rem .8rem;margin-bottom:.75rem}
+.dl{font-size:9px;font-weight:500;color:#CECBF6;letter-spacing:.07em;text-transform:uppercase;margin-bottom:2px}
+.dt{font-size:12px;color:#fff;line-height:1.5}
+.pp{display:flex;flex-wrap:wrap;gap:4px}
+.pi{font-size:10px;font-weight:500;padding:2px 8px;border-radius:99px;background:#534AB7;color:#EEEDFE}
+.nv{display:flex;gap:5px;margin-bottom:1.1rem;flex-wrap:wrap}
+.b{border:0.5px solid var(--border-strong);background:var(--surface-2);border-radius:8px;padding:6px 12px;cursor:pointer;font-size:11px;font-family:var(--font-sans);color:var(--text-secondary);transition:background .15s}
+.b:hover{background:var(--surface-1)}
+.b.on{border:2px solid #534AB7;background:#EEEDFE;color:#26215C;font-weight:500}
+.c{border-radius:12px;border:0.5px solid var(--border);background:var(--surface-2);overflow:hidden;display:none;border-left:5px solid #534AB7}
+.c.a{display:block}
+.ch{padding:.75rem 1rem .6rem;border-bottom:0.5px solid var(--border)}
+.cn{display:inline-block;font-size:10px;font-weight:500;padding:2px 8px;border-radius:99px;margin-bottom:.4rem;background:#EEEDFE;color:#26215C}
+.ct{font-size:15px;font-weight:500;line-height:1.3;margin-bottom:.15rem;color:#3C3489}
+.cs{font-size:10px;color:var(--text-secondary);line-height:1.4}
+.cb{padding:.75rem 1rem}
+.mf{border-left:3px solid #534AB7;background:#EEEDFE;padding:.55rem .8rem;margin-bottom:.8rem}
+.ml{font-size:8px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:#534AB7;margin-bottom:2px}
+.mt{font-size:13px;font-weight:500;line-height:1.45;font-family:var(--font-voice);color:#26215C}
+.sl{font-size:8px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.35rem}
+.li{list-style:none;display:flex;flex-direction:column;gap:5px;margin-bottom:.75rem}
+.li li{display:flex;gap:8px;font-size:11px;color:var(--text-secondary);line-height:1.5}
+.d{width:16px;min-width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:500;margin-top:1px;background:#EEEDFE;color:#26215C}
+.ac{background:#EEEDFE;border-radius:7px;padding:.55rem .75rem;margin-bottom:5px}
+.at{font-size:10px;font-weight:500;color:#26215C;margin-bottom:2px}
+.ab{font-size:11px;color:#3C3489;line-height:1.45}
+.ci{border-radius:6px;padding:.55rem .75rem;background:#EEEDFE;margin-top:.75rem}
+.cl{font-size:8px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:#534AB7;margin-bottom:2px}
+.cx{font-size:10px;line-height:1.55;font-family:var(--font-voice);font-style:italic;color:#26215C}
+.cr{font-size:9px;margin-top:2px;font-style:normal;font-weight:500;color:#534AB7}
+.au{border-left:3px solid #534AB7;background:var(--surface-1);padding:.55rem .75rem;margin-top:.75rem}
+.al{font-size:8px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:#534AB7;margin-bottom:2px}
+.ax{font-size:11px;color:var(--text-secondary);line-height:1.5}
+.rf{font-size:9px;color:var(--text-muted);font-style:italic;margin-top:.6rem;padding-top:.5rem;border-top:0.5px solid var(--border)}
+.dg{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:.75rem}
+.di{background:#EEEDFE;border-radius:7px;padding:.5rem .65rem}
+.dn{font-size:11px;font-weight:500;color:#26215C;margin-bottom:3px}
+.dd{font-size:10px;color:#3C3489;line-height:1.4}
+.mg{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-bottom:.75rem}
+.mi{background:#EEEDFE;border-radius:6px;padding:.45rem .55rem;text-align:center}
+.me{font-size:16px;margin-bottom:3px}
+.mn{font-size:10px;font-weight:500;color:#26215C;margin-bottom:2px}
+.mb{font-size:9px;color:#3C3489;line-height:1.3}
+.vb{background:#EAF3DE;border-left:3px solid #3B6D11;border-radius:0 6px 6px 0;padding:.5rem .7rem;margin-bottom:.65rem}
+.vl{font-size:8px;font-weight:500;color:#27500A;letter-spacing:.06em;text-transform:uppercase;margin-bottom:2px}
+.vt{font-size:11px;color:#173404;line-height:1.45}
+.ty{display:flex;flex-direction:column;gap:4px;margin-bottom:.75rem}
+.ti{display:flex;gap:8px;align-items:flex-start}
+.tc{width:20px;min-width:20px;height:20px;background:#EEEDFE;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:500;color:#26215C;margin-top:1px}
+.tt{font-size:11px;color:var(--text-secondary);line-height:1.45;padding-top:1px}
+</style>
+
+<div class="r">
+
+<div class="p">
+  <p class="ps">Itinerario formativo 18 · PLAPA — CELAM 2026</p>
+  <h1 class="pt">El cerebro y la adicción sin tecnicismos</h1>
+  <p class="psub">Sistema de recompensa, neuroplasticidad, recaída y trayectorias de recuperación para agentes pastorales · 4 módulos</p>
+  <div class="db"><div class="dl">Destinatarios</div><div class="dt">Todo agente pastoral que quiere entender el funcionamiento biológico básico de la adicción para acompañar mejor. No requiere formación médica: traduce el §9.3 al lenguaje del territorio. Especialmente útil para agentes que acompañan familias que preguntan "¿por qué no puede parar?" y para equipos que necesitan un marco biológico para contextualizar las recaídas sin culpar.</div></div>
+  <div class="pp"><span class="pi">§9.3.1–9.3.7</span><span class="pi">Todo agente</span><span class="pi">4 sesiones</span><span class="pi">Nivel inicial–intermedio</span></div>
+</div>
+
+<div class="nv">
+  <button class="b on" onclick="show(1,this)">Módulo 1 · Dopamina: querer sin disfrutar</button>
+  <button class="b" onclick="show(2,this)">Módulo 2 · Cómo actúa la sustancia</button>
+  <button class="b" onclick="show(3,this)">Módulo 3 · Neuroplasticidad y esperanza</button>
+  <button class="b" onclick="show(4,this)">Módulo 4 · Recaída y trayectorias</button>
+</div>
+
+<div id="m1" class="c a">
+  <div class="ch"><span class="cn">Módulo 1 · El Ver</span><div class="ct">La dopamina no es la molécula del placer: es el motor del querer compulsivo</div><div class="cs">El sistema de recompensa y la distinción wanting/liking · §9.3.1</div></div>
+  <div class="cb">
+    <div class="mf"><div class="ml">Mensaje fuerza</div><div class="mt">"La adicción atrapa al sujeto en un bucle de persecución ansiosa: querer sin disfrutar. El hermano atrapado no es un buscador de placer inmoral, sino una persona cuya brújula motivacional ha sido secuestrada."</div></div>
+    <div class="dg">
+      <div class="di"><div class="dn">Wanting — Querer compulsivo</div><div class="dd">La dopamina impulsa a buscar la sustancia aunque ya no produzca placer. El cerebro asigna importancia máxima a la droga, subordinando todas las necesidades. Cuanto más consumo, más wanting y menos liking.</div></div>
+      <div class="di"><div class="dn">Liking — Gustar real</div><div class="dd">El placer auténtico, mediado por opioides endógenos. Con el uso crónico se desgasta: hay cada vez menos liking pero más wanting. El hermano busca compulsivamente algo que ya no lo satisface.</div></div>
+    </div>
+    <div class="sl">El Ver — Realidad</div>
+    <ul class="li">
+      <li><span class="d">V</span><span>"¿Por qué no puede parar si ya no le hace bien?" Porque la dopamina no regula el placer sino el deseo de buscar. "No es la sustancia la que genera la mayor oleada dopaminérgica, sino las señales del entorno que anuncian su llegada" (§9.3.1). El craving al pasar por la esquina no es una decisión: el cerebro respondió antes de que la voluntad pudiera intervenir.</span></li>
+      <li><span class="d">V</span><span>"Ya no disfruto la sustancia, la aborrezco, pero no puedo dejar de buscarla" (§9.3.6). Esa confesión es el wanting/liking disociado en palabras del hermano. El agente que conoce esa distinción puede recibirla sin juzgarla y sin simplificarla.</span></li>
+    </ul>
+    <div class="sl">El Juzgar — Iluminación</div>
+    <ul class="li">
+      <li><span class="d">J</span><span>El manual conecta wanting/liking con la visión tomista: "El ser humano posee un apetito concupiscible que puede descarrilarse, obsesionándose con la captura de un objeto —un querer ciego— incluso cuando este ha dejado de saciar" (§9.3.1). La neurociencia confirma lo que la teología medieval ya intuía.</span></li>
+      <li><span class="d">J</span><span>"Explicar que la adicción es un querer sin disfrutar desenmascara la falsedad de los paraísos artificiales de forma mucho más contundente que la simple denuncia moral" (§9.3.1). Esa explicación produce más compasión que culpa en la familia.</span></li>
+    </ul>
+    <div class="sl">El Actuar — Propuesta</div>
+    <div class="ac"><div class="at">Explicar el wanting/liking en palabras del barrio</div><div class="ab">El grupo practica en parejas: cada participante explica la distinción a alguien que hace el rol de madre que no entiende por qué su hijo sigue consumiendo. Dos frases máximo, sin tecnicismos. En plenario: ¿qué explicación fue más clara? ¿cuál generó más compasión que culpa?</div></div>
+    <div class="ac"><div class="at">Mapear los disparadores de wanting en el territorio</div><div class="ab">El grupo identifica los principales disparadores ambientales: lugares, personas, horarios, estados emocionales. El conocimiento de los disparadores permite anticipar el impulso en lugar de reaccionar cuando ya está activado.</div></div>
+    <div class="ci"><div class="cl">Cita inspiradora · §9.3.1</div><div class="cx">"Comprender esto permite al agente ver que el hermano no es un buscador de placer inmoral, sino una persona cuya brújula motivacional ha sido secuestrada, requiriendo el andamiaje de un amor responsable en comunidad para recuperar su libertad original."</div><div class="cr">Manual de la PLAPA, §9.3.1</div></div>
+    <div class="au"><div class="al">Autocuidado del agente</div><div class="ax">El wanting/liking también opera en la vida cotidiana del agente: scroll compulsivo, trabajo excesivo, preocupaciones rumiantes. Nombrar esos patrones propios no es equipararse con el hermano: es desarrollar la empatía biológica que hace al acompañamiento más auténtico.</div></div>
+    <div class="rf">Referencias: §9.3.1, §9.3.6 — Manual de la PLAPA, CELAM 2026</div>
+  </div>
+</div>
+
+<div id="m2" class="c">
+  <div class="ch"><span class="cn">Módulo 2 · El Juzgar</span><div class="ct">Tres maneras en que la sustancia actúa sobre el cerebro</div><div class="cs">Farmacodinámica sin tecnicismos y la definición integral de la adicción · §9.3.2, §9.3.3</div></div>
+  <div class="cb">
+    <div class="mf"><div class="ml">Mensaje fuerza</div><div class="mt">"La adicción es mejor comprendida como un patrón de aprendizaje profundo y persistente. Si el cerebro aprendió la adicción, puede también desaprender. La recuperación es un reaprendizaje: y eso es exactamente lo que la comunidad puede ofrecer."</div></div>
+    <div class="mg">
+      <div class="mi"><div class="me">🔑</div><div class="mn">El Impostor</div><div class="mb">Opioides y cannabinoides imitan neurotransmisores naturales. Engañan a los receptores con una llave falsa que envía mensajes anormales.</div></div>
+      <div class="mi"><div class="me">🌊</div><div class="mn">La Inundación</div><div class="mb">Estimulantes como la cocaína bloquean el reciclaje de dopamina. El cerebro se adapta a esa estimulación anormal y la necesita para funcionar.</div></div>
+      <div class="mi"><div class="me">⚙️</div><div class="mn">Daño Sistémico</div><div class="mb">La sustancia circula por todo el organismo: debilita inmunidad, afecta hígado y riñones. El cuerpo es una unidad que sufre de forma integral.</div></div>
+    </div>
+    <div class="sl">El Ver — Realidad</div>
+    <ul class="li">
+      <li><span class="d">V</span><span>Los tres mecanismos producen neuroadaptación: el cerebro ajusta su funcionamiento al nivel de estimulación de la sustancia. Sin ella queda desregulado. Eso explica los síntomas de abstinencia: no es "debilidad de carácter"; es biología. Nombrar eso como biología cambia todo el marco del acompañamiento.</span></li>
+      <li><span class="d">V</span><span>El §9.3.3 advierte contra el lenguaje de "enfermedad cerebral crónica irremediable": "Al reducir el padecimiento a un cerebro irremediablemente condicionado, se alimenta un fatalismo que debilita la motivación para el cambio." El agente que dice "su cerebro está dañado para siempre" con buenas intenciones puede estar quitándole esperanza al hermano.</span></li>
+    </ul>
+    <div class="sl">El Juzgar — Iluminación</div>
+    <ul class="li">
+      <li><span class="d">J</span><span>"El propio NIDA ha ido matizando su formulación: la adicción se produce en la intersección de la biología, la biografía y el entorno, y no exclusivamente dentro del cráneo del individuo" (§9.3.3). La definición integral —ni vicio ni enfermedad cerebral pura— es la más útil para el acompañamiento pastoral.</span></li>
+      <li><span class="d">J</span><span>"La neuroplasticidad es la base de la esperanza biológica: el mismo mecanismo que permitió al cerebro aprender la adicción es el que permite la reconstrucción de circuitos orientados al sentido y a la vida. La biología no cierra el horizonte; lo abre" (§9.3.3).</span></li>
+    </ul>
+    <div class="sl">El Actuar — Propuesta</div>
+    <div class="ac"><div class="at">Metáforas del barrio para los tres mecanismos</div><div class="ab">El grupo elabora una metáfora cotidiana para cada mecanismo: el impostor (llave falsa que daña la cerradura), la inundación (caño roto que satura el sistema), el daño sistémico (plaga que se extiende a toda la casa). Practicar la explicación en dos frases para un familiar.</div></div>
+    <div class="ac"><div class="at">Auditoría del lenguaje del equipo</div><div class="ab">¿Hay frases que alimentan el fatalismo ("ya está muy dañado")? ¿Frases que alimentan la culpa ("no quiere parar")? ¿Frases que alimentan la esperanza sin ser falsas ("el cerebro puede reorientarse con acompañamiento")? La auditoría revela las creencias implícitas del equipo.</div></div>
+    <div class="ci"><div class="cl">Cita inspiradora · §9.3.3</div><div class="cx">"La recuperación no consiste en reparar un órgano roto, sino en acompañar un reaprendizaje profundo, que es precisamente lo que la comunidad y el vínculo están llamados a ofrecer."</div><div class="cr">Manual de la PLAPA, §9.3.3</div></div>
+    <div class="au"><div class="al">Autocuidado del agente</div><div class="ax">El daño sistémico también aplica al agente en contextos de alta vulnerabilidad: el estrés crónico debilita el sistema inmunológico, afecta el sueño y la capacidad cognitiva. El autocuidado corporal es una responsabilidad pastoral que garantiza la sostenibilidad de la misión.</div></div>
+    <div class="rf">Referencias: §9.3.2, §9.3.3, §9.3.5 — Manual de la PLAPA, CELAM 2026</div>
+  </div>
+</div>
+
+<div id="m3" class="c">
+  <div class="ch"><span class="cn">Módulo 3 · El Actuar</span><div class="ct">Neuroplasticidad: el cerebro que puede cambiar, y el vínculo como entorno de reaprendizaje</div><div class="cs">La base biológica de la esperanza pastoral · §9.3.3, §8.4.7</div></div>
+  <div class="cb">
+    <div class="mf"><div class="ml">Mensaje fuerza</div><div class="mt">"El mismo mecanismo cerebral que permitió aprender la adicción es el que permite la recuperación. La neuroplasticidad es la base de la esperanza. Y el vínculo comunitario es el entorno donde esa plasticidad se activa a favor de la vida."</div></div>
+    <div class="vb"><div class="vl">Neuroplasticidad — definición pastoral</div><div class="vt">La neuroplasticidad es la capacidad del cerebro de reorganizar sus conexiones en respuesta a la experiencia repetida. El cerebro que aprendió a priorizar la sustancia puede aprender a priorizar el vínculo, el sentido y el proyecto de vida. No hay determinismo biológico: hay un cerebro que aprende, y la comunidad es un entorno de reaprendizaje.</div></div>
+    <div class="sl">El Ver — Realidad</div>
+    <ul class="li">
+      <li><span class="d">V</span><span>La neuroplasticidad tiene dos caras: es la causa del daño (el cerebro aprendió la adicción con la repetición del consumo) y es la base de la esperanza (el mismo cerebro puede reorientarse con la repetición del acompañamiento y los nuevos vínculos). El agente que entiende las dos caras habla de biología con esperanza fundamentada, no con alarma.</span></li>
+      <li><span class="d">V</span><span>"La capacidad de observar los propios movimientos interiores sin reaccionar automáticamente no es ajena a la tradición cristiana; es una disposición que los maestros espirituales han cultivado durante siglos" (§8.4.7). El examen de conciencia, la oración de quietud y la lectio divina activan los mismos circuitos que el mindfulness clínico. La pastoral tiene herramientas de neuroplasticidad con mil años de historia.</span></li>
+    </ul>
+    <div class="sl">El Juzgar — Iluminación</div>
+    <ul class="li">
+      <li><span class="d">J</span><span>"No se trata de un proceso patológico ajeno a las leyes del cerebro, sino de una manifestación extrema de su flexibilidad adaptativa" (§9.3.3). El hermano no tiene un cerebro roto: tiene uno que aprendió algo intensamente. Como cualquier aprendizaje intenso, requiere tiempo, repetición y entorno favorable para reorientarse. La comunidad es ese entorno.</span></li>
+      <li><span class="d">J</span><span>La presencia constante, los vínculos de apego seguro, los rituales comunitarios y la experiencia de sentido no son solo "apoyo emocional": son estímulos de neuroplasticidad que el cerebro registra. La comunidad no repara el cerebro: ofrece el entorno de experiencias donde puede reorganizarse. Esa es la base biológica del acompañamiento.</span></li>
+    </ul>
+    <div class="sl">El Actuar — Propuesta</div>
+    <div class="ac"><div class="at">Evaluar el dispositivo como entorno de neuroplasticidad</div><div class="ab">¿Qué elementos favorecen la neuroplasticidad positiva (experiencias nuevas repetidas, vínculos seguros, rutinas predecibles, silencio, celebración)? ¿Qué la dificultan (caos, imprevisibilidad, ausencia de rituales)? Para cada elemento dificultador: ¿qué cambio concreto lo mejoraría?</div></div>
+    <div class="ac"><div class="at">Diseñar un momento de práctica contemplativa</div><div class="ab">Un momento breve (5–10 min) de práctica contemplativa para el dispositivo: silencio guiado, respiración consciente, examen de conciencia breve. No como imposición religiosa sino como entrenamiento de la observación interior. La práctica que se diseña para los hermanos debería ser también parte de la vida del equipo.</div></div>
+    <div class="ci"><div class="cl">Cita inspiradora · §8.4.7</div><div class="cx">"La atención plena clínica y la contemplación cristiana no son incompatibles: la primera fortalece la base psicológica que la segunda necesita para desplegarse con mayor hondura."</div><div class="cr">Manual de la PLAPA, §8.4.7</div></div>
+    <div class="au"><div class="al">Autocuidado del agente</div><div class="ax">Los patrones de preocupación crónica, autoevaluación negativa o hiperresponsabilidad que muchos agentes desarrollan en contextos de alta demanda son también aprendizajes que el cerebro puede reorientar. Las prácticas de autocuidado —descanso, contemplación, movimiento físico— son inversión en la propia neuroplasticidad que sostiene la calidad del acompañamiento.</div></div>
+    <div class="rf">Referencias: §9.3.3, §9.3.5, §8.4.7 — Manual de la PLAPA, CELAM 2026</div>
+  </div>
+</div>
+
+<div id="m4" class="c">
+  <div class="ch"><span class="cn">Módulo 4 · Síntesis y revisión de vida</span><div class="ct">Las trayectorias de recuperación: nadie está sin solución</div><div class="cs">La recaída como señal, no como sentencia · §9.3.4</div></div>
+  <div class="cb">
+    <div class="mf"><div class="ml">Mensaje fuerza</div><div class="mt">"La gran mayoría de las personas con TUS alcanzan recuperación estable en un horizonte de cinco años. No existen personas irrecuperables. Lo que varía es el tiempo y el tipo de acompañamiento necesario."</div></div>
+    <div class="ty">
+      <div class="ti"><div class="tc">A</div><div class="tt"><strong>Recuperación temprana y sostenida:</strong> proceso relativamente lineal con pocas interrupciones. Infrecuente pero existente. No es el estándar; es una posibilidad.</div></div>
+      <div class="ti"><div class="tc">B</div><div class="tt"><strong>Recuperación con recaída significativa:</strong> la más frecuente. El proceso avanza, hay una recaída que requiere ajuste, el proceso retoma. La recaída no borró lo aprendido: se integra al proceso.</div></div>
+      <div class="ti"><div class="tc">C</div><div class="tt"><strong>Recuperación progresiva con dificultades:</strong> camino más largo, con múltiples ajustes, que converge igualmente en estabilidad. Lo que varía es el tiempo; la dirección general permanece.</div></div>
+      <div class="ti"><div class="tc">✓</div><div class="tt"><strong>Lo que todas comparten:</strong> no la ausencia de recaídas, sino la <em>dirección general hacia la recuperación</em> y la <em>continuidad del acompañamiento</em> a lo largo del proceso.</div></div>
+    </div>
+    <div class="sl">El Ver — Realidad</div>
+    <ul class="li">
+      <li><span class="d">V</span><span>"No existen personas irrecuperables. Las investigaciones a largo plazo muestran que incluso quienes atraviesan múltiples recaídas alcanzan, en su mayoría, recuperación sostenida" (§9.3.4). El único factor diferencial no es la gravedad del cuadro: es la continuidad del acompañamiento.</span></li>
+      <li><span class="d">V</span><span>"Reducir el acompañamiento en el momento de la recaída es el error más costoso que puede cometer un agente pastoral o clínico" (§9.3.4). La recaída es el momento de mayor vulnerabilidad y también el momento en que el hermano más necesita presencia. El equipo que abandona en ese momento reproduce la expulsión que el manual denuncia.</span></li>
+    </ul>
+    <div class="sl">El Juzgar — Iluminación</div>
+    <ul class="li">
+      <li><span class="d">J</span><span>Las tres objeciones refutadas: (1) "volvemos a cero" → la recaída no borra lo aprendido ni los vínculos construidos; (2) "no tiene motivación" → la recaída ocurre también en personas con alta motivación real; (3) "algunos no pueden" → no hay irrecuperables. El agente que entiende la recaída como señal ajusta; el que la entiende como fracaso abandona.</span></li>
+      <li><span class="d">J</span><span>"La recaída es un evento clínico que señala la necesidad de ajustar el acompañamiento, no una señal de que el proceso ha fracasado" (§9.3.4). La Iglesia como hospital de campaña (§7.9.3) no pregunta si el herido "merece" seguir siendo atendido.</span></li>
+    </ul>
+    <div class="sl">El Actuar — Propuesta</div>
+    <div class="ac"><div class="at">Diseñar el protocolo de respuesta ante la recaída</div><div class="ab">¿Qué ocurre en las primeras horas? ¿Quién interviene? ¿Se sostiene el vínculo? ¿Se ajusta el proceso o se expulsa? ¿Cómo se trabaja con la persona la recaída como señal? ¿Cómo se acompaña a la familia? El protocolo operacionaliza todo lo aprendido en el itinerario.</div></div>
+    <div class="ac"><div class="at">Recontar las trayectorias de recuperación del territorio</div><div class="ab">El grupo identifica tres o cuatro trayectorias del territorio (anónimas) que fueron del tipo B o C: con recaídas, con dificultades prolongadas, pero que llegaron a estabilidad. Recontar esas historias es la forma más poderosa de combatir el fatalismo: la historia del territorio es el mejor argumento pastoral.</div></div>
+    <div class="ac"><div class="at">Cierre: la biología al servicio de la esperanza</div><div class="ab">En ronda: "Después de este itinerario, ¿qué concepto de biología me da más esperanza para el acompañamiento?" El facilitador anota las respuestas en el cuaderno colectivo: ese mapa de esperanzas biológicas es la referencia más útil para la próxima vez que el equipo enfrente una recaída o una familia que perdió la fe.</div></div>
+    <div class="ci"><div class="cl">Cita inspiradora · §9.3.4</div><div class="cx">"No existen personas irrecuperables. Lo que varía es el tiempo y el tipo de acompañamiento necesario. La pastoral de la esperanza no abandona a nadie en el camino."</div><div class="cr">Manual de la PLAPA, §9.3.4</div></div>
+    <div class="au"><div class="al">Autocuidado del agente — cierre del itinerario</div><div class="ax">Las trayectorias de recuperación también aplican al equipo: hay crisis, recaídas del entusiasmo, agotamiento que parece definitivo. El equipo que entiende que las trayectorias de los hermanos no son lineales puede mirar su propia historia con la misma compasión. La dirección general importa más que la ausencia de dificultades en el camino.</div></div>
+    <div class="rf">Referencias: §9.3.4, §7.9.3, §8.3.1 — Manual de la PLAPA, CELAM 2026</div>
+  </div>
+</div>
+
+</div>
+
+<script>
+function show(n,e){for(let i=1;i<=4;i++)document.getElementById('m'+i).classList.remove('a');document.querySelectorAll('.b').forEach(b=>b.classList.remove('on'));document.getElementById('m'+n).classList.add('a');e.classList.add('on')}
+</script>

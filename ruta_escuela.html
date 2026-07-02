@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ruta Escolar | Escuela PLAPA</title>
+  <style>
+    :root {
+      --bg-color: #fcfbf9;
+      --text-main: #2d2d2d;
+      --text-muted: #5a5a5a;
+      --primary: #854F0B; 
+      --primary-dark: #412402;
+      --accent: #1D9E75; 
+      --surface: #ffffff;
+      --surface-2: #f9f7f2;
+      --border: #e2dfd8;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-serif: Georgia, "Times New Roman", serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    /* Navegación */
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .logo {
+      font-family: var(--font-serif);
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--primary-dark);
+      text-decoration: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      margin-left: 1.5rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    
+    .nav-links a:hover { color: var(--primary); }
+
+    /* Hero Section de la Ruta */
+    .ruta-hero {
+      padding: 4rem 5% 3rem;
+      text-align: center;
+      background: var(--primary-dark);
+      color: white;
+    }
+    
+    .ruta-icon { font-size: 3rem; margin-bottom: 1rem; }
+    
+    .ruta-hero h1 {
+      font-family: var(--font-serif);
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .ruta-hero p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+      color: #e2dfd8;
+    }
+
+    /* Contenedor del Timeline */
+    .timeline-container {
+      max-width: 800px;
+      margin: 4rem auto;
+      padding: 0 5%;
+    }
+
+    .etapa {
+      margin-bottom: 4rem;
+      position: relative;
+    }
+
+    .etapa-header {
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--border);
+    }
+    
+    .etapa-num {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    
+    .etapa-title {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      color: var(--primary-dark);
+    }
+    
+    .etapa-desc {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-top: 0.5rem;
+    }
+
+    /* Estilos de las Tarjetas */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 15px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.2rem;
+      border-left: 4px solid var(--primary);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+    }
+
+    .card-n {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 5px;
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+
+    .card-sub {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--primary-dark);
+      color: #e2dfd8;
+      text-align: center;
+      padding: 3rem 5%;
+      font-size: 0.9rem;
+      margin-top: 4rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="logo">Escuela PLAPA</a>
+    <nav class="nav-links">
+      <a href="index.html#ambitos">← Volver a Ámbitos</a>
+      <a href="catalogo_30_itinerarios_plapa_corregido.html">Catálogo Completo</a>
+    </nav>
+  </header>
+
+  <section class="ruta-hero">
+    <div class="ruta-icon">🏫</div>
+    <h1>Comunidad Escolar</h1>
+    <p>Una ruta orientada a educadores y equipos de orientación escolar para construir una prevención temprana y un andamiaje afectivo frente a las adicciones.</p>
+  </section>
+
+  <main class="timeline-container">
+    
+    <!-- Etapa 1 -->
+    <div class="etapa">
+      <div class="etapa-header">
+        <span class="etapa-num">Etapa 1</span>
+        <h2 class="etapa-title">Comprender el Mundo de los Estudiantes</h2>
+        <p class="etapa-desc">Para prevenir, la escuela primero debe entender los riesgos específicos y los entornos donde se mueven las infancias y adolescencias hoy.</p>
+      </div>
+      <div class="grid">
+        <a class="card" href="itinerario_22_infancias_adolescencias.html" style="border-left-color: #D4537E;">
+          <div class="card-n" style="color: #72243E;">Itinerario 22</div>
+          <div class="card-title">Infancias y adolescencias en riesgo</div>
+          <div class="card-sub">Las 3C de la vida, crianza comunitaria y pastoral preventiva para llegar antes del primer consumo experimental.</div>
+        </a>
+        <a class="card" href="itinerario_8_territorio_digital.html" style="border-left-color: #534AB7;">
+          <div class="card-n" style="color: #3C3489;">Itinerario 8</div>
+          <div class="card-title">El territorio digital como nuevo desafío</div>
+          <div class="card-sub">Redes sociales, FOMO y adicciones comportamentales. Entender el aula virtual y la vulnerabilidad en las pantallas.</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Etapa 2 -->
+    <div class="etapa">
+      <div class="etapa-header">
+        <span class="etapa-num">Etapa 2</span>
+        <h2 class="etapa-title">El Rol del Educador y la Escucha</h2>
+        <p class="etapa-desc">El docente suele ser la primera línea de contención. Estas herramientas ayudan a gestionar el dolor sin desbordarse.</p>
+      </div>
+      <div class="grid">
+        <a class="card" href="itinerario_13_pedagogia_ternura_trauma.html" style="border-left-color: #D85A30;">
+          <div class="card-n" style="color: #993C1D;">Itinerario 13</div>
+          <div class="card-title">Pedagogía de la ternura y sanación del trauma</div>
+          <div class="card-sub">Construcción de apego seguro en el aula y reparación vincular desde una mirada respetuosa hacia la historia del estudiante.</div>
+        </a>
+        <a class="card" href="itinerario_16_escucha_activa_herramientas.html" style="border-left-color: #D85A30;">
+          <div class="card-n" style="color: #993C1D;">Itinerario 16</div>
+          <div class="card-title">Escucha activa y herramientas psicológicas</div>
+          <div class="card-sub">Introspección, validación emocional y persuasión social aplicadas al entorno educativo diario.</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Etapa 3 -->
+    <div class="etapa">
+      <div class="etapa-header">
+        <span class="etapa-num">Etapa 3</span>
+        <h2 class="etapa-title">Construir la Prevención Institucional</h2>
+        <p class="etapa-desc">Pasar de la intervención individual del docente a un proyecto preventivo que involucre a toda la comunidad educativa.</p>
+      </div>
+      <div class="grid">
+        <a class="card" href="itinerario_28_prevencion_escolar_universitaria.html" style="border-left-color: #185FA5;">
+          <div class="card-n" style="color: #185FA5;">Itinerario 28</div>
+          <div class="card-title">Prevención escolar</div>
+          <div class="card-sub">La dicción frente a la adicción: cómo construir una comunidad educativa donde la palabra tenga lugar antes del vacío.</div>
+        </a>
+        <a class="card" href="itinerario_7_familia_comunitaria.html" style="border-left-color: #534AB7;">
+          <div class="card-n" style="color: #3C3489;">Itinerario 7</div>
+          <div class="card-title">Familia comunitaria y crianza compartida</div>
+          <div class="card-sub">El rol de la escuela como familia extendida para ampliar la mirada frente a contextos de orfandad funcional en los hogares.</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Etapa 4 -->
+    <div class="etapa">
+      <div class="etapa-header">
+        <span class="etapa-num">Etapa 4</span>
+        <h2 class="etapa-title">El Cuidado del Equipo Docente</h2>
+        <p class="etapa-desc">Las problemáticas sociales impactan directamente en la salud mental de los educadores. El autocuidado es prioritario.</p>
+      </div>
+      <div class="grid">
+        <a class="card" href="itinerario_29_cuidar_que_cuidan.html" style="border-left-color: #639922;">
+          <div class="card-n" style="color: #3B6D11;">Itinerario 29</div>
+          <div class="card-title">Cuidar a los que cuidan</div>
+          <div class="card-sub">Herramientas de autocuidado para el docente, gestión de la frustración y estrategias institucionales para "parar para seguir".</div>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p><strong>Escuela de la PLAPA</strong></p>
+    <p style="margin-top: 0.5rem; color: #a39e93;">Formación basada en el Manual de la PLAPA · Red de América Latina y el Caribe</p>
+  </footer>
+
+</body>
+</html>

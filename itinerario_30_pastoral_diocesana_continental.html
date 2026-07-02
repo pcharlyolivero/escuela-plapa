@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Itinerario 30 · Construir la pastoral diocesana y continental · PLAPA 2026</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Georgia,'Times New Roman',serif;background:#f5f3ee;color:#222;padding:0 0 3rem}
+  .portada{background:#412402;padding:2rem 2.5rem 1.5rem;color:#fff}
+  .portada-sup{font-size:11px;font-weight:700;color:#EF9F27;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem;font-family:Arial,sans-serif}
+  .portada-title{font-size:26px;font-weight:700;line-height:1.25;margin-bottom:.35rem}
+  .portada-sub{font-size:13px;color:#FAC775;line-height:1.55;margin-bottom:1rem}
+  .dest-box{background:#854F0B;border-radius:6px;padding:.7rem 1rem;margin-bottom:1rem}
+  .dest-lbl{font-size:9px;font-weight:700;color:#FAC775;letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px;font-family:Arial,sans-serif}
+  .dest-txt{font-size:12px;color:#fff;line-height:1.55}
+  .pills{display:flex;flex-wrap:wrap;gap:5px}
+  .pill{font-size:10px;font-weight:700;padding:3px 10px;border-radius:99px;background:#854F0B;color:#FAEEDA;font-family:Arial,sans-serif}
+  .nav{display:flex;background:#fff;border-bottom:2px solid #BA7517;flex-wrap:wrap}
+  .tab{padding:12px 18px;cursor:pointer;font-size:12px;font-family:Arial,sans-serif;color:#666;border:none;background:none;font-weight:600;letter-spacing:.03em;border-bottom:3px solid transparent;margin-bottom:-2px}
+  .tab:hover{color:#412402;background:#FFF8EE}
+  .tab.on{color:#412402;border-bottom-color:#BA7517;background:#FFF8EE}
+  .mod{display:none;max-width:900px;margin:0 auto;padding:2rem 2.5rem}
+  .mod.a{display:block}
+  .mod-tag{display:inline-block;font-size:10px;font-weight:700;padding:3px 10px;border-radius:99px;background:#FFF8EE;color:#412402;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.5rem;font-family:Arial,sans-serif}
+  .mod-title{font-size:20px;font-weight:700;color:#412402;line-height:1.3;margin-bottom:.3rem}
+  .mod-sub{font-size:12px;color:#888;font-family:Arial,sans-serif;margin-bottom:1.5rem}
+  .mf{border-left:4px solid #BA7517;background:#FFF8EE;padding:.8rem 1.1rem;margin-bottom:1.25rem;border-radius:0 6px 6px 0}
+  .mf-lbl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#854F0B;margin-bottom:4px;font-family:Arial,sans-serif}
+  .mf-txt{font-size:14px;font-style:italic;line-height:1.6;color:#412402}
+  .sec-lbl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#999;margin:1.1rem 0 .5rem;font-family:Arial,sans-serif}
+  .puntos{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:1rem}
+  .puntos li{display:flex;gap:10px;font-size:13px;color:#333;line-height:1.6}
+  .dot{width:20px;min-width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;margin-top:2px;background:#FFF8EE;color:#412402;font-family:Arial,sans-serif}
+  .act-box{background:#FFF8EE;border-radius:6px;padding:.75rem 1rem;margin-bottom:6px;border:1px solid #F0D4A0}
+  .act-title{font-size:12px;font-weight:700;color:#412402;margin-bottom:4px;font-family:Arial,sans-serif}
+  .act-body{font-size:12.5px;color:#633806;line-height:1.55}
+  .cita{background:#FFF8EE;border-radius:6px;padding:.8rem 1.1rem;margin-top:1.2rem;border-left:3px solid #BA7517}
+  .cita-lbl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#854F0B;margin-bottom:4px;font-family:Arial,sans-serif}
+  .cita-txt{font-size:12px;font-style:italic;line-height:1.6;color:#412402}
+  .cita-ref{font-size:10px;font-style:normal;font-weight:700;color:#854F0B;margin-top:3px;font-family:Arial,sans-serif}
+  .autocuidado{border-left:3px solid #BA7517;background:#f9f7f2;padding:.75rem 1rem;margin-top:1.2rem}
+  .auto-lbl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#854F0B;margin-bottom:4px;font-family:Arial,sans-serif}
+  .auto-txt{font-size:12.5px;color:#555;line-height:1.55}
+  .ref{font-size:10px;color:#aaa;font-style:italic;margin-top:1rem;padding-top:.75rem;border-top:1px solid #e5e0d8;font-family:Arial,sans-serif}
+  .tres-textos{display:flex;flex-direction:column;gap:6px;margin-bottom:1rem}
+  .texto{display:flex;gap:10px;align-items:flex-start}
+  .texto-ico{width:24px;min-width:24px;height:24px;background:#412402;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;font-family:Arial,sans-serif;flex-shrink:0}
+  .texto-txt{font-size:13px;color:#333;line-height:1.55;padding-top:2px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1.1rem}
+  .g-item{background:#FFF8EE;border-radius:6px;padding:.65rem .8rem;border:1px solid #F0D4A0}
+  .g-title{font-size:11px;font-weight:700;color:#412402;margin-bottom:3px;font-family:Arial,sans-serif}
+  .g-body{font-size:11px;color:#633806;line-height:1.4}
+  .mapa-niveles{display:flex;flex-direction:column;gap:0;margin-bottom:1.1rem}
+  .nivel{padding:.7rem 1rem;text-align:center;color:#fff;font-weight:700;font-family:Arial,sans-serif;font-size:13px}
+  .nivel-sub{font-size:10px;font-weight:400;color:#FAC775;margin-top:2px}
+  .n1{background:#26215C;border-radius:8px 8px 0 0}
+  .n2{background:#412402}
+  .n3{background:#633806}
+  .n4{background:#854F0B;border-radius:0 0 8px 8px}
+  @media(max-width:600px){.grid2{grid-template-columns:1fr}.mod{padding:1.2rem 1rem}.portada{padding:1.2rem}}
+  @media print{.nav{display:none}.mod{display:block!important;page-break-before:always}}
+</style>
+</head>
+<body>
+
+<div class="portada">
+  <p class="portada-sup">Itinerario formativo 30 · PLAPA — CELAM 2026</p>
+  <h1 class="portada-title">Construir la pastoral diocesana y continental</h1>
+  <p class="portada-sub">De la parroquia a la red latinoamericana: la pastoral de adicciones como expresión de sinodalidad y manual abierto · 4 módulos</p>
+  <div class="dest-box">
+    <div class="dest-lbl">Destinatarios</div>
+    <div class="dest-txt">Obispos, vicarios pastorales, coordinadores diocesanos de pastoral de adicciones y referentes nacionales que quieren articular la respuesta diocesana con la red continental de PLAPA-CELAM. Itinerario de cierre del catálogo completo de 30 itinerarios formativos, especialmente recomendado para encuentros diocesanos o continentales de formación de coordinadores.</div>
+  </div>
+  <div class="pills">
+    <span class="pill">§11.4</span>
+    <span class="pill">§11.8–11.9</span>
+    <span class="pill">§13.1–13.9</span>
+    <span class="pill">Coordinadores diocesanos y nacionales</span>
+    <span class="pill">4 sesiones</span>
+    <span class="pill">Nivel avanzado</span>
+  </div>
+</div>
+
+<div class="nav">
+  <button class="tab on" onclick="show(1,this)">Módulo 1 · La Pastoral Diocesana</button>
+  <button class="tab" onclick="show(2,this)">Módulo 2 · El documento de unidad de PLAPA</button>
+  <button class="tab" onclick="show(3,this)">Módulo 3 · La epistemología ascendente como legado</button>
+  <button class="tab" onclick="show(4,this)">Módulo 4 · El manual abierto: rolling release e inculturación</button>
+</div>
+
+<!-- MÓDULO 1 -->
+<div id="m1" class="mod a">
+  <span class="mod-tag">Módulo 1 · El Ver</span>
+  <h2 class="mod-title">La Pastoral Diocesana: una necesidad pastoral, no una opción administrativa</h2>
+  <p class="mod-sub">Misión, visión y objetivos de la pastoral de adicciones a nivel de Iglesia particular · §11.4</p>
+
+  <div class="mf">
+    <div class="mf-lbl">Mensaje fuerza</div>
+    <div class="mf-txt">"El problema de las adicciones no reconoce fronteras parroquiales. Afecta a familias de toda la diócesis, desborda la capacidad de respuesta de una sola comunidad y exige una mirada que pueda abarcar el territorio en su conjunto."</div>
+  </div>
+
+  <div class="mapa-niveles">
+    <div class="nivel n1">Centro Barrial / Parroquia<div class="nivel-sub">Itinerario 25 — el mediocampo territorial</div></div>
+    <div class="nivel n2">Pastoral Diocesana<div class="nivel-sub">§11.4 — articula la red de toda la Iglesia particular</div></div>
+    <div class="nivel n3">Pastoral Nacional<div class="nivel-sub">§11.8 — conferencias episcopales y políticas públicas nacionales</div></div>
+    <div class="nivel n4">PLAPA Continental<div class="nivel-sub">§11.9, §13 — CELAM, red latinoamericana, manual abierto</div></div>
+  </div>
+
+  <p class="sec-lbl">El Ver — Realidad</p>
+  <ul class="puntos">
+    <li><span class="dot">V</span><span>El §11.4 enumera tres razones por las que la dimensión diocesana no es opcional: permite conocer con precisión la realidad del territorio (sin un mapa diocesano "cada parroquia actúa de manera aislada, repitiendo esfuerzos o dejando sin atención a quienes más lo necesitan"); hace posible articular una red de acompañamiento que ninguna parroquia podría sostener sola; y es el lugar propio de la communio eclesial donde el obispo puede impulsar una respuesta unitaria.</span></li>
+    <li><span class="dot">V</span><span>La misión diocesana se articula en tres dimensiones (§11.4.1): "que la Iglesia cuide a sus hijos" (cuidado integral, no solo espiritual), "que la Iglesia sea la familia de los más rotos" (citando a Benedicto XVI: "la Iglesia es la familia de Dios en el mundo"), y "que la Iglesia profundice su opción por el Evangelio de la vida" (defensa de toda vida humana desde su inicio hasta su fin natural).</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Juzgar — Iluminación</p>
+  <ul class="puntos">
+    <li><span class="dot">J</span><span>"Una pastoral diocesana de adicciones es, en ese sentido, una expresión concreta de la sinodalidad: caminar juntos hacia quienes más lo necesitan" (§11.4). Esta afirmación conecta directamente con el Módulo 3 de este itinerario: la sinodalidad no es solo un método de elaboración del manual (que se desarrollará en el §13.2), sino el principio organizativo de la pastoral diocesana misma.</span></li>
+    <li><span class="dot">J</span><span>Los diez objetivos del §11.4.3 muestran que la pastoral diocesana no se limita a "coordinar lo que ya existe": incluye sensibilizar, identificar actores, tejer redes, desarrollar respuestas donde falten, producir reflexión propia, anunciar el Evangelio, incidir en políticas públicas, formar agentes y —de manera explícita en el séptimo objetivo de las actividades— "cuidar la salud integral de quienes" trabajan en la pastoral, conectando directamente con el Itinerario 29.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Actuar — Propuesta</p>
+  <div class="act-box">
+    <div class="act-title">Mapear el estado de la pastoral diocesana de adicciones propia</div>
+    <div class="act-body">El grupo evalúa: ¿existe una pastoral diocesana de adicciones constituida formalmente? ¿hay un coordinador diocesano nombrado? ¿hay un mapa de las respuestas existentes en las distintas parroquias y centros barriales de la diócesis? Si no existe, identificar el primer paso institucional para constituirla.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Revisar los diez objetivos del §11.4.3 con la realidad diocesana</div>
+    <div class="act-body">El grupo recorre los diez objetivos del §11.4.3 y evalúa el grado de cumplimiento de cada uno en la diócesis propia: ¿hay sensibilización activa? ¿se identificaron los actores que ya responden al tema? ¿hay redes tejidas entre ellos? Identificar los tres objetivos más urgentes de desarrollar.</div>
+  </div>
+
+  <div class="cita">
+    <div class="cita-lbl">Cita inspiradora · §11.4.1 — Benedicto XVI</div>
+    <div class="cita-txt">"La Iglesia es la familia de Dios en el mundo. La pastoral de adicciones debe ser el rostro acogedor de una Iglesia samaritana que no teme abrazar a quienes están más heridos por la vida."</div>
+    <div class="cita-ref">Manual de la PLAPA, §11.4.1 — Misión de la Pastoral Diocesana (CELAM 2026)</div>
+  </div>
+
+  <div class="autocuidado">
+    <div class="auto-lbl">Autocuidado del agente</div>
+    <div class="auto-txt">Coordinar una pastoral diocesana implica una carga de gestión y articulación institucional muy distinta a la del agente de territorio. El facilitador recuerda que el coordinador diocesano necesita también su propio espacio de cuidado (Itinerario 29), adaptado a las exigencias específicas de un rol que combina dimensión pastoral, organizativa y de incidencia política.</div>
+  </div>
+  <p class="ref">Referencias: §11.4, §11.4.1, §11.4.3 — Manual de la PLAPA, CELAM 2026</p>
+</div>
+
+<!-- MÓDULO 2 -->
+<div id="m2" class="mod">
+  <span class="mod-tag">Módulo 2 · El Juzgar</span>
+  <h2 class="mod-title">El documento de unidad de PLAPA: el "Sí" continental que dio origen al manual</h2>
+  <p class="mod-sub">300 agentes de 13 países construyendo una mirada compartida · §11.9</p>
+
+  <div class="mf">
+    <div class="mf-lbl">Mensaje fuerza</div>
+    <div class="mf-txt">"Convocados por el Consejo Episcopal Latinoamericano, compartiendo en espíritu sinodal, nos hemos reunido virtualmente representantes de diversos proyectos pastorales, servicios y comunidades eclesiales de 13 países de nuestra América para reflexionar y analizar la oportunidad de dar vida a una Pastoral de Adicciones Latinoamericana."</div>
+  </div>
+
+  <p class="sec-lbl">El Ver — Realidad</p>
+  <ul class="puntos">
+    <li><span class="dot">V</span><span>El §11.9 reproduce el Documento de Unidad del encuentro continental de febrero de 2023, el acto fundacional de la PLAPA. Sus cinco afirmaciones de "SÍ" condensan toda la antropología que sostiene el manual: la dignidad inalienable de la persona, el sujeto de la pastoral como "persona rota y descartada", la comprensión bio-psico-social-espiritual del ser humano, la familia y comunidad también como sujetos pastorales, y la importancia central de los acompañantes pares.</span></li>
+    <li><span class="dot">V</span><span>El documento también reconoce honestamente las dificultades del campo: "es necesario remarcar el daño que genera el consumo", "hay naturalización de algunos consumos, como el alcohol", "nos preocupa la facilidad al acceso a sustancias, drogas sintéticas, psicofármacos." No es un documento triunfalista: nombra los desafíos reales con la misma honestidad con la que afirma sus convicciones.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Juzgar — Iluminación</p>
+  <ul class="puntos">
+    <li><span class="dot">J</span><span>"Existe una alta relación entre consumo, delincuencia y cárcel; el narcomenudeo que superpone los roles de consumidor y vendedor desde las mismas víctimas que lo asumen como sustento de vida" (§11.9). Este reconocimiento temprano, en el documento fundacional de 2023, es la semilla teórica que el manual desarrolla in extenso en los Itinerarios 22 y 23 sobre captación de menores y pastoral carcelaria.</span></li>
+    <li><span class="dot">J</span><span>"La familia es clave: puede ser proveedora o no de herramientas para procesar emociones, fundamentales para los procesos de recuperación, pero también puede favorecer el consumo, desarrollar codependencias, y hasta ser obstáculo en los procesos de recuperación" (§11.9). Esta visión matizada y no idealizada de la familia, presente ya en el documento fundacional, es coherente con todo el desarrollo posterior del manual sobre familia comunitaria (Itinerario 7) y crianza compartida.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Actuar — Propuesta</p>
+  <div class="act-box">
+    <div class="act-title">Leer el Documento de Unidad completo en grupo</div>
+    <div class="act-body">El grupo lee el §11.9 completo (el documento de unidad de PLAPA) en voz alta, deteniéndose en cada afirmación. ¿Qué resuena con la experiencia propia? ¿qué genera preguntas? El documento fundacional es, en sí mismo, una herramienta formativa que sintetiza en pocas páginas todo el espíritu del manual de 540 páginas.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Redactar el "Sí" diocesano propio</div>
+    <div class="act-body">Inspirándose en la estructura del documento de unidad continental, el grupo redacta una versión breve y propia: "Decimos que SÍ a..." con tres o cuatro afirmaciones que sinteticen el compromiso específico de la diócesis o el equipo con la pastoral de adicciones. Ese documento puede convertirse en una declaración fundacional local.</div>
+  </div>
+
+  <div class="cita">
+    <div class="cita-lbl">Cita inspiradora · §11.9 — Documento de Unidad PLAPA, 2023</div>
+    <div class="cita-txt">"La dignidad de la persona, inalienable dignidad de hija de Dios, en la que no importa cómo estemos o qué hayamos hecho, siempre vale la pena, siempre hay esperanza. La persona en consumo es considerada siempre sujeto de derechos."</div>
+    <div class="cita-ref">Manual de la PLAPA, §11.9 — La Pastoral Latinoamericana de Acompañamiento y Prevención de las Adicciones (CELAM 2026)</div>
+  </div>
+
+  <div class="autocuidado">
+    <div class="auto-lbl">Autocuidado del agente</div>
+    <div class="auto-txt">Conocer el origen continental del manual —300 agentes de 13 países construyendo juntos esta mirada— puede ser una fuente profunda de aliento para el agente que se siente solo en su territorio específico. El facilitador invita a que el equipo se reconozca como parte de algo mucho mayor que su propia parroquia: una red continental que lo sostiene y lo precede.</div>
+  </div>
+  <p class="ref">Referencias: §11.9 — Manual de la PLAPA, CELAM 2026</p>
+</div>
+
+<!-- MÓDULO 3 -->
+<div id="m3" class="mod">
+  <span class="mod-tag">Módulo 3 · El Actuar</span>
+  <h2 class="mod-title">La epistemología ascendente como legado: sinodalidad en la práctica</h2>
+  <p class="mod-sub">El saber que nace de la escucha del territorio, no de marcos teóricos preestablecidos · §13.1, §13.2</p>
+
+  <div class="mf">
+    <div class="mf-lbl">Mensaje fuerza</div>
+    <div class="mf-txt">"Más allá de los contenidos técnicos y pastorales, este manual deja como principal legado una metodología de trabajo que hemos denominado epistemología ascendente. Este enfoque parte de la premisa de que el saber no se impone desde marcos teóricos preestablecidos, sino que nace de la escucha atenta de los territorios."</div>
+  </div>
+
+  <div class="tres-textos">
+    <div class="texto"><div class="texto-ico">1</div><div class="texto-txt"><strong>El manual como reflejo, no como punto de llegada (§13.1):</strong> "este manual no constituye un punto de llegada, sino el reflejo de un camino eclesial compartido que nace del clamor de nuestros pueblos." Todas las propuestas del Actuar "no son teorías abstractas, sino líneas de acción probadas... que ya están transformando realidades en diversos territorios."</div></div>
+    <div class="texto"><div class="texto-ico">2</div><div class="texto-txt"><strong>300 agentes constitutivos, no solo consultivos (§13.2):</strong> "el proceso de elaboración ha sido un ejercicio concreto de sinodalidad. La participación de cerca de 300 agentes no fue solo consultiva, sino constitutiva del texto." El manual no fue escrito por expertos y luego "validado" por el territorio: fue construido desde el territorio mismo.</div></div>
+    <div class="texto"><div class="texto-ico">3</div><div class="texto-txt"><strong>La tecnología al servicio de la comunión (§13.2):</strong> "el uso de inteligencia artificial y la sistematización de desgrabaciones de reuniones virtuales permitieron procesar un volumen inmenso de aportes sin sacrificar la riqueza original de los testimonios ni la particularidad de los lenguajes locales." La IA aquí no reemplazó el pensamiento humano: salvaguardó la participación comunitaria a una escala que de otro modo hubiera sido inmanejable.</div></div>
+  </div>
+
+  <p class="sec-lbl">El Ver — Realidad</p>
+  <ul class="puntos">
+    <li><span class="dot">V</span><span>"Desde la PLAPA, nos ofrecemos como un nexo para que cualquier comunidad o agente pastoral pueda vincularse con las experiencias descritas en este material. Creemos en la importancia de las reuniones bilaterales y el intercambio de prácticas; por ello, facilitaremos las conexiones necesarias para que nadie se sienta solo en esta misión" (§13.1). Esta no es solo una afirmación retórica: la red PLAPA se ofrece activamente como conector entre territorios.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Juzgar — Iluminación</p>
+  <ul class="puntos">
+    <li><span class="dot">J</span><span>La epistemología ascendente que el §13.2 describe es la misma metodología que organiza cada uno de los 30 itinerarios de este catálogo formativo: cada uno parte de un "Ver" anclado en el diagnóstico territorial del manual antes de avanzar al "Juzgar" teológico y al "Actuar" concreto. Esta es la coherencia metodológica más profunda entre el proceso de elaboración del manual y el proceso formativo que estos itinerarios proponen.</span></li>
+    <li><span class="dot">J</span><span>"El conocimiento aquí plasmado es, por tanto, un saber situado que reconoce la autoridad de quienes caminan día a día junto a los más vulnerados" (§13.2). Esta afirmación dignifica explícitamente el saber territorial de cada agente que ha recorrido este catálogo de itinerarios: su experiencia cotidiana no es "menos científica" que el saber académico, sino una forma de autoridad reconocida por el propio manual.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Actuar — Propuesta</p>
+  <div class="act-box">
+    <div class="act-title">Aportar la propia experiencia a la red continental</div>
+    <div class="act-body">El grupo identifica: ¿qué experiencia, práctica o aprendizaje propio del territorio podría aportarse a la red PLAPA para enriquecer futuras versiones del manual (que se desarrolla en el Módulo 4 como "rolling release")? El manual no está cerrado: el equipo que ha recorrido este catálogo formativo tiene algo valioso para devolver a la red que originó el material.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Practicar la epistemología ascendente en la formación continua</div>
+    <div class="act-body">El grupo evalúa: ¿cómo se construyen actualmente las decisiones pastorales del equipo o la diócesis? ¿se escucha primero al territorio o se aplican marcos teóricos preestablecidos? Diseñar un mecanismo concreto (consultas territoriales, encuestas a agentes de base) que asegure que la epistemología ascendente sea una práctica real, no solo un principio declarado.</div>
+  </div>
+
+  <div class="cita">
+    <div class="cita-lbl">Cita inspiradora · §13.2</div>
+    <div class="cita-txt">"El conocimiento aquí plasmado es un saber situado que reconoce la autoridad de quienes caminan día a día junto a los más vulnerados. La sinodalidad en la práctica demuestra que es posible tejer redes de pensamiento colectivo que sostengan la esperanza y la acción en toda la región."</div>
+    <div class="cita-ref">Manual de la PLAPA, §13.2 — La metodología como legado: Sinodalidad en la práctica (CELAM 2026)</div>
+  </div>
+
+  <div class="autocuidado">
+    <div class="auto-lbl">Autocuidado del agente</div>
+    <div class="auto-txt">Reconocer la propia experiencia territorial como "saber con autoridad" puede ser liberador para agentes que sienten que su falta de formación académica los descalifica frente a "los expertos." El facilitador refuerza este reconocimiento: el manual mismo, en su origen, validó el saber de 300 agentes de base como constitutivo, no solo consultivo. Esa misma dignidad aplica a cada participante de este itinerario.</div>
+  </div>
+  <p class="ref">Referencias: §13.1, §13.2 — Manual de la PLAPA, CELAM 2026</p>
+</div>
+
+<!-- MÓDULO 4 -->
+<div id="m4" class="mod">
+  <span class="mod-tag">Módulo 4 · Síntesis y revisión de vida</span>
+  <h2 class="mod-title">El manual abierto: rolling release, inculturación territorial y el horizonte de esperanza</h2>
+  <p class="mod-sub">Un material en actualización continua, no una obra terminada · §13.3, §13.4</p>
+
+  <div class="mf">
+    <div class="mf-lbl">Mensaje fuerza</div>
+    <div class="mf-txt">"Este documento se presenta bajo la modalidad de rolling release, lo que significa que no se considera una obra terminada ni estática, sino un material en actualización continua. Este manual es, en esencia, un compromiso con el aprendizaje permanente."</div>
+  </div>
+
+  <div class="grid2">
+    <div class="g-item">
+      <div class="g-title">Rolling Release (§13.3)</div>
+      <div class="g-body">El manual evoluciona al ritmo de los desafíos. La versión digital es el eje del dinamismo. Un equipo curador evalúa e incorpora sistemáticamente las contribuciones de la comunidad, asegurando coherencia técnica y pastoral.</div>
+    </div>
+    <div class="g-item">
+      <div class="g-title">Inculturación territorial (§13.4)</div>
+      <div class="g-body">"No pretende imponer un modelo único ni recetas infalibles." Requiere "un ejercicio previo de escucha de la propia realidad." No se trasladan experiencias mecánicamente: se extraen principios subyacentes para que cada equipo dé su propia respuesta creativa.</div>
+    </div>
+  </div>
+
+  <p class="sec-lbl">El Ver — Realidad</p>
+  <ul class="puntos">
+    <li><span class="dot">V</span><span>El catálogo de 30 itinerarios formativos que este proceso ha producido es, en sí mismo, una aplicación concreta del principio de inculturación territorial: cada itinerario parte de las citas exactas y la realidad descrita en el manual, pero las actividades propuestas requieren que cada equipo las adapte a su contexto específico. El manual "cobra vida cuando se encarna en el lenguaje y las prácticas de los barrios, las parroquias y los centros de acompañamiento" (§13.4).</span></li>
+    <li><span class="dot">V</span><span>"La aplicación de las herramientas aquí descritas requiere un ejercicio previo de escucha de la propia realidad. No se trata de trasladar experiencias de un país a otro sin mediación" (§13.4). Esta advertencia aplica directamente a este mismo catálogo de itinerarios: las actividades propuestas son sugerencias a inculturar, no protocolos rígidos a aplicar mecánicamente.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Juzgar — Iluminación</p>
+  <ul class="puntos">
+    <li><span class="dot">J</span><span>El concepto de manual "rolling release" tiene una implicación teológica profunda: la pastoral de adicciones, como toda acción de la Iglesia en el mundo, está sujeta al discernimiento permanente y a la corrección fraterna desde la experiencia. No hay un texto definitivo y cerrado que agote la sabiduría pastoral sobre las adicciones: hay un proceso vivo de aprendizaje comunitario que continúa más allá de la publicación del manual.</span></li>
+    <li><span class="dot">J</span><span>"Solo a través de una mirada situada y comprometida con el territorio, el acompañamiento podrá ser verdaderamente eficaz y transformador, evitando respuestas desencarnadas que no respondan al clamor real de nuestros hermanos" (§13.4). Esta es la advertencia final que cierra el catálogo entero: ningún itinerario, por completo que sea, reemplaza la escucha viva del territorio concreto donde cada equipo trabaja.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Actuar — Propuesta</p>
+  <div class="act-box">
+    <div class="act-title">Diseñar el proceso de inculturación de los 30 itinerarios</div>
+    <div class="act-body">El grupo revisa los 30 itinerarios recorridos (o el plan para recorrerlos) y discute: ¿qué adaptaciones necesita el catálogo para el territorio propio? ¿hay realidades locales que los itinerarios no contemplan y que deberían añadirse? ¿hay actividades que no funcionan en el contexto cultural específico y necesitan rediseñarse? El catálogo es un punto de partida, no un destino final.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Conectar con la red PLAPA para futuras actualizaciones</div>
+    <div class="act-body">El grupo evalúa: ¿conviene establecer contacto formal con la red PLAPA-CELAM para aportar la experiencia de implementación de estos itinerarios? Esa retroalimentación puede enriquecer tanto al manual (en su modalidad rolling release) como al propio territorio, que se beneficiaría de conocer otras experiencias similares en el continente.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Cierre del catálogo completo: el horizonte de esperanza</div>
+    <div class="act-body">El grupo cierra el proceso formativo completo de los 30 itinerarios con un momento de gratitud y compromiso renovado. ¿Qué cambió en la mirada del equipo después de recorrer este catálogo? ¿qué compromiso concreto asume cada participante para el próximo año? El §13.10 del manual cierra con "Un horizonte de esperanza: La luz en el camino" — una imagen que puede inspirar el cierre litúrgico de este itinerario final, con una celebración que agradezca el camino recorrido y encomiende el camino que falta.</div>
+  </div>
+
+  <div class="cita">
+    <div class="cita-lbl">Cita inspiradora · §13.4</div>
+    <div class="cita-txt">"El manual se presenta como un marco de referencia que cobra vida cuando se encarna en el lenguaje y las prácticas de los barrios, las parroquias y los centros de acompañamiento de nuestra región. La inculturación no es solo una adaptación técnica, sino un acto de respeto por la historia de cada pueblo y la dignidad de cada persona."</div>
+    <div class="cita-ref">Manual de la PLAPA, §13.4 — Criterios de aplicación e inculturación territorial (CELAM 2026)</div>
+  </div>
+
+  <div class="autocuidado">
+    <div class="auto-lbl">Autocuidado del agente — cierre del catálogo de 30 itinerarios</div>
+    <div class="auto-txt">El Itinerario 30 cierra no solo una sesión formativa, sino un proceso completo de 30 itinerarios construidos sobre la totalidad del Manual de la PLAPA. El facilitador invita al equipo a reconocer el camino recorrido: desde el Itinerario 1 (la llaga como punto de partida) hasta este, que cierra mirando hacia la red continental y el horizonte de futuro. Como el manual mismo, este catálogo formativo "no constituye un punto de llegada, sino el reflejo de un camino eclesial compartido" (§13.1). El equipo que ha llegado hasta aquí no termina: continúa, inculturando, adaptando y aportando su propia experiencia a la red más amplia que sostiene a toda la Iglesia latinoamericana en su respuesta a las adicciones.</div>
+  </div>
+  <p class="ref">Referencias: §13.1, §13.2, §13.3, §13.4 — Manual de la PLAPA, CELAM 2026</p>
+</div>
+
+<script>
+function show(n,btn){
+  for(let i=1;i<=4;i++) document.getElementById('m'+i).className='mod';
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  document.getElementById('m'+n).className='mod a';
+  btn.classList.add('on');
+}
+</script>
+</body>
+</html>

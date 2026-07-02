@@ -1,0 +1,335 @@
+<meta charset="utf-8">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.root{font-family:var(--font-sans);color:var(--text-primary);padding:0 0 2rem}
+.portada{background:#993C1D;border-radius:12px;padding:1.25rem 1.5rem 1rem;margin-bottom:1.25rem}
+.portada-sup{font-size:11px;font-weight:500;color:#F0997B;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.35rem}
+.portada-title{font-size:20px;font-weight:500;color:#fff;line-height:1.3;margin-bottom:.25rem}
+.portada-sub{font-size:12px;color:#FADBCF;line-height:1.55;margin-bottom:.75rem}
+.dest-box{background:#712B13;border-radius:8px;padding:.55rem .85rem;margin-bottom:.85rem}
+.dest-lbl{font-size:9px;font-weight:500;color:#FADBCF;letter-spacing:.07em;text-transform:uppercase;margin-bottom:3px}
+.dest-txt{font-size:12px;color:#fff;line-height:1.5}
+.portada-pills{display:flex;flex-wrap:wrap;gap:5px}
+.portada-pill{font-size:11px;font-weight:500;padding:2px 9px;border-radius:99px;background:#712B13;color:#FAECE7}
+.nav{display:flex;gap:6px;margin-bottom:1.25rem;flex-wrap:wrap}
+.btn{border:0.5px solid var(--border-strong);background:var(--surface-2);border-radius:8px;padding:7px 14px;cursor:pointer;font-size:12px;font-family:var(--font-sans);color:var(--text-secondary);transition:background .15s}
+.btn:hover{background:var(--surface-1)}
+.btn.on{border:2px solid #D85A30;background:#FAECE7;color:#4A1B0C;font-weight:500}
+.card{border-radius:12px;border:0.5px solid var(--border);background:var(--surface-2);overflow:hidden;display:none}
+.card.active{display:block}
+.ch{padding:.85rem 1.1rem .7rem;border-bottom:0.5px solid var(--border)}
+.cn{display:inline-block;font-size:11px;font-weight:500;padding:2px 9px;border-radius:99px;margin-bottom:.5rem;background:#FAECE7;color:#4A1B0C}
+.ct{font-size:16px;font-weight:500;line-height:1.3;margin-bottom:.2rem;color:#712B13}
+.cs{font-size:11px;color:var(--text-secondary);line-height:1.45}
+.cb{padding:.85rem 1.1rem}
+.mf{border-left:3px solid #D85A30;background:#FAECE7;padding:.65rem .9rem;margin-bottom:.9rem}
+.mf-lbl{font-size:9px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:#993C1D;margin-bottom:3px}
+.mf-txt{font-size:14px;font-weight:500;line-height:1.5;font-family:var(--font-voice);color:#4A1B0C}
+.pl{font-size:9px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.4rem}
+.pts{list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:.9rem}
+.pts li{display:flex;gap:9px;font-size:12px;color:var(--text-secondary);line-height:1.55}
+.dot{width:18px;min-width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:500;margin-top:1px;background:#FAECE7;color:#712B13}
+.act{background:#FAECE7;border-radius:8px;padding:.65rem .85rem;margin-bottom:6px}
+.act-title{font-size:11px;font-weight:500;color:#4A1B0C;margin-bottom:3px}
+.act-body{font-size:12px;color:#712B13;line-height:1.5}
+.cita{border-radius:7px;padding:.65rem .85rem;background:#FAECE7;margin-top:.85rem}
+.cita-lbl{font-size:9px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:#993C1D;margin-bottom:3px}
+.cita-txt{font-size:11px;line-height:1.6;font-family:var(--font-voice);font-style:italic;color:#4A1B0C}
+.cita-ref{font-size:10px;margin-top:3px;font-style:normal;font-weight:500;color:#993C1D}
+.ac-box{border-left:3px solid #D85A30;background:var(--surface-1);padding:.65rem .85rem;margin-top:.85rem}
+.ac-lbl{font-size:9px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:#993C1D;margin-bottom:3px}
+.ac-txt{font-size:12px;color:var(--text-secondary);line-height:1.55}
+.ref{font-size:10px;color:var(--text-muted);font-style:italic;margin-top:.75rem;padding-top:.6rem;border-top:0.5px solid var(--border)}
+.cuatro-comp{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:.85rem}
+.comp{background:#FAECE7;border-radius:7px;padding:.55rem .7rem}
+.comp-n{font-size:11px;font-weight:500;color:#4A1B0C;margin-bottom:2px}
+.comp-b{font-size:10px;color:#712B13;line-height:1.4}
+.cinco-trampa{display:flex;flex-direction:column;gap:5px;margin-bottom:.85rem}
+.trampa{display:flex;gap:9px;align-items:flex-start}
+.trampa-ico{width:20px;min-width:20px;height:20px;background:#FAECE7;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:500;color:#4A1B0C;margin-top:1px}
+.trampa-txt{font-size:12px;color:var(--text-secondary);line-height:1.5;padding-top:1px}
+.cuatro-ejes{display:flex;flex-direction:column;gap:5px;margin-bottom:.85rem}
+.eje-item{display:flex;gap:9px;align-items:flex-start}
+.eje-ico{width:20px;min-width:20px;height:20px;background:#FAECE7;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:500;color:#4A1B0C;margin-top:1px}
+.eje-txt{font-size:12px;color:var(--text-secondary);line-height:1.5;padding-top:1px}
+.cinco-auto{display:flex;flex-direction:column;gap:5px;margin-bottom:.85rem}
+</style>
+
+<div class="root">
+
+<div class="portada">
+  <p class="portada-sup">Itinerario formativo 16 · PLAPA — CELAM 2026</p>
+  <h1 class="portada-title">Escucha activa y herramientas psicológicas básicas</h1>
+  <p class="portada-sub">Autoeficacia, diario de emociones, introspección guiada y persuasión social para agentes pastorales no especialistas · 4 módulos</p>
+  <div class="dest-box">
+    <div class="dest-lbl">Destinatarios</div>
+    <div class="dest-txt">Todo agente pastoral que acompaña personas en procesos de recuperación: voluntarios de base, catequistas, animadores de centros barriales, referentes comunitarios y acompañantes pares que quieren fortalecer su práctica de escucha y sus herramientas básicas de acompañamiento. No requiere formación psicológica previa; es el itinerario más accesible del bloque de psiquis. Puede funcionar como introducción práctica a los Itinerarios 13–15.</div>
+  </div>
+  <div class="portada-pills">
+    <span class="portada-pill">§8.7.1–8.7.3</span>
+    <span class="portada-pill">§8.3.5</span>
+    <span class="portada-pill">§8.7.4</span>
+    <span class="portada-pill">Todo agente con práctica de acompañamiento</span>
+    <span class="portada-pill">4 sesiones</span>
+    <span class="portada-pill">Nivel inicial–intermedio</span>
+  </div>
+</div>
+
+<div class="nav">
+  <button class="btn on" onclick="show(1,this)">Módulo 1 · La escucha activa</button>
+  <button class="btn" onclick="show(2,this)">Módulo 2 · Las cinco trampas del diálogo</button>
+  <button class="btn" onclick="show(3,this)">Módulo 3 · Autoeficacia e introspección</button>
+  <button class="btn" onclick="show(4,this)">Módulo 4 · El autocuidado del agente</button>
+</div>
+
+<!-- MÓDULO 1 -->
+<div id="m1" class="card active" style="border-left:5px solid #D85A30">
+  <div class="ch">
+    <span class="cn">Módulo 1 · El Ver</span>
+    <div class="ct">La escucha activa no es silencio: es una presencia plena y consciente</div>
+    <div class="cs">Componentes técnicos y obstáculos internos del acompañante · §8.7.1</div>
+  </div>
+  <div class="cb">
+    <div class="mf">
+      <div class="mf-lbl">Mensaje fuerza</div>
+      <div class="mf-txt">"La escucha activa es el primer medicamento en el proceso de recuperación. No busca imponer una verdad externa, sino permitir que aparezca la historia de vida del sujeto, validando su palabra como el eje de su propia transformación."</div>
+    </div>
+
+    <div class="cuatro-comp">
+      <div class="comp">
+        <div class="comp-n">Atención activa</div>
+        <div class="comp-b">Preocuparse por todos los niveles de comunicación (verbal y no verbal). Contacto visual y gestos de aliento que comunican presencia real.</div>
+      </div>
+      <div class="comp">
+        <div class="comp-n">Parafraseo</div>
+        <div class="comp-b">Repetir el contenido expresado con las propias palabras para verificar comprensión y demostrar que el mensaje fue captado con precisión.</div>
+      </div>
+      <div class="comp">
+        <div class="comp-n">Reflejo de sentimientos</div>
+        <div class="comp-b">Percibir y expresar el estado emocional del otro. Demostrar empatía compartiendo la comprensión de su punto de vista sin juzgar.</div>
+      </div>
+      <div class="comp">
+        <div class="comp-n">Resumen</div>
+        <div class="comp-b">Reunir los puntos principales de la conversación para evitar malentendidos y preparar al sujeto para el siguiente paso en su proceso.</div>
+      </div>
+    </div>
+
+    <div class="pl">El Ver — Realidad</div>
+    <ul class="pts">
+      <li><span class="dot">V</span><span>La objeción más frecuente: "escuchar es un proceso meramente pasivo que consiste en guardar silencio." El §8.7.1 la refuta desde la primera línea: "La escucha activa es activa porque requiere una participación dinámica del sistema nervioso y la voluntad de sintonizar con el mundo interior ajeno. No es ausencia de acción, sino una presencia plena y consciente." El silencio sin presencia no es escucha: es distancia.</span></li>
+      <li><span class="dot">V</span><span>El §8.7.1 identifica también los obstáculos internos que bloquean la escucha genuina: "La reactividad emocional, la autorreferencialidad (pensar en la propia respuesta mientras el otro habla) y los prejuicios que llevan a calificar las acciones ajenas como viciosas." El agente que trabaja estos obstáculos en sí mismo desarrolla una capacidad de escucha que ninguna técnica puede reemplazar.</span></li>
+    </ul>
+
+    <div class="pl">El Juzgar — Iluminación</div>
+    <ul class="pts">
+      <li><span class="dot">J</span><span>"El objetivo no es ser un sabio que imparte lecciones, sino un guía al costado. La persona sana cuando puede simbolizar su propio dolor a través de la palabra, recuperando su autonomía en lugar de recibir órdenes" (§8.7.1). Esta frase resume la diferencia entre el acompañante y el consejero: el consejero habla; el acompañante escucha hasta que el otro puede hablar por sí mismo.</span></li>
+      <li><span class="dot">J</span><span>"La comunicación es integral. Las señales no verbales a menudo revelan más sobre el sufrimiento que el discurso racionalizado; por ello, la atención a lo corporal es indispensable para captar la totalidad del mensaje" (§8.7.1). El hermano que dice "estoy bien" mientras evita el contacto visual, se mueve inquieto o tiene el cuerpo cerrado está comunicando algo distinto de lo que dicen sus palabras. La escucha activa lee los dos registros.</span></li>
+    </ul>
+
+    <div class="pl">El Actuar — Propuesta</div>
+    <div class="act">
+      <div class="act-title">Práctica de los cuatro componentes en tríos</div>
+      <div class="act-body">El grupo se divide en tríos: un hablante (cuenta una situación cotidiana no traumática), un escuchante (practica los cuatro componentes: atención activa, parafraseo, reflejo de sentimientos, resumen), un observador (anota qué componentes se usaron y cuáles faltaron). Tres minutos por rol, se rota. Al final en plenario: ¿qué fue más difícil? ¿cuál de los cuatro componentes se usó menos? ¿qué obstáculo interno apareció?</div>
+    </div>
+    <div class="act">
+      <div class="act-title">Auditoría de obstáculos internos propios</div>
+      <div class="act-body">El grupo trabaja en silencio primero: cada participante escribe honestamente cuál de los tres obstáculos internos del §8.7.1 (reactividad emocional, autorreferencialidad, prejuicios) le resulta más difícil de manejar cuando escucha a alguien en situación de consumo. Luego comparte en pareja. El obstáculo nombrado es el que más necesita trabajo. El que no se nombra sigue operando en silencio.</div>
+    </div>
+
+    <div class="cita">
+      <div class="cita-lbl">Cita inspiradora · §8.7.1</div>
+      <div class="cita-txt">"La escucha activa es una habilidad compleja que trasciende el simple silencio. Requiere una receptividad intensa, concentración y paciencia para constituirse como un acto de hospitalidad hacia el corazón del otro. No se trata de una técnica mecánica, sino de una disposición espiritual y psicológica."</div>
+      <div class="cita-ref">Manual de la PLAPA, §8.7.1 — La naturaleza de la escucha activa (CELAM 2026)</div>
+    </div>
+
+    <div class="ac-box">
+      <div class="ac-lbl">Autocuidado del agente</div>
+      <div class="ac-txt">La escucha activa intensa tiene un costo energético real. El acompañante que practica los cuatro componentes con plena presencia sale de la conversación más cansado que el que "escucha" mientras piensa en otra cosa. Ese cansancio es una señal de que la escucha fue genuina, no un fallo del agente. Reconocerlo permite gestionar mejor la cantidad de conversaciones profundas que se pueden sostener por día sin perder calidad.</div>
+    </div>
+    <div class="ref">Referencias: §8.7.1, §7.5.4 — Manual de la PLAPA, CELAM 2026</div>
+  </div>
+</div>
+
+<!-- MÓDULO 2 -->
+<div id="m2" class="card" style="border-left:5px solid #D85A30">
+  <div class="ch">
+    <span class="cn">Módulo 2 · El Juzgar</span>
+    <div class="ct">Las cinco trampas del diálogo motivacional: lo que destruye el vínculo sin que nos demos cuenta</div>
+    <div class="cs">Identificar y evitar los errores más frecuentes del acompañamiento · §8.3.5</div>
+  </div>
+  <div class="cb">
+    <div class="mf">
+      <div class="mf-lbl">Mensaje fuerza</div>
+      <div class="mf-txt">"El acompañamiento debe basarse en la hospitalidad y la escucha activa, reconociendo que la persona es experta en su propia vida. Imponer una verdad externa o una autoridad jerárquica anula la autonomía del sujeto y refuerza el estigma que impide la sanación integral."</div>
+    </div>
+
+    <div class="cinco-trampa">
+      <div class="trampa"><div class="trampa-ico">1</div><div class="trampa-txt"><strong>Trampa de la interrogación (Pregunta-Respuesta):</strong> usar exclusivamente preguntas cerradas, situando al usuario en un rol pasivo y al acompañante en rol de experto. Impide que la persona explore sus propios motivos internos.</div></div>
+      <div class="trampa"><div class="trampa-ico">2</div><div class="trampa-txt"><strong>Trampa de la moralización y el juicio:</strong> calificar la conducta como mala o viciosa. Genera vergüenza y culpa que paralizan la recuperación y llevan al sujeto a ocultar su consumo por miedo a la humillación.</div></div>
+      <div class="trampa"><div class="trampa-ico">3</div><div class="trampa-txt"><strong>Trampa del experto o de la autoridad:</strong> actuar con prepotencia académica o dar órdenes. El vínculo debe ser "de cuerpo a cuerpo": el acompañante es un guía al costado, no un supervisor desde arriba.</div></div>
+      <div class="trampa"><div class="trampa-ico">4</div><div class="trampa-txt"><strong>Trampa de la reactividad y la discusión:</strong> intentar vencer al usuario con argumentos lógicos. Si el acompañante se pone a la defensiva o juzga, el hermano deja de compartir información vital para su proceso.</div></div>
+      <div class="trampa"><div class="trampa-ico">5</div><div class="trampa-txt"><strong>Trampa de la interpretación excesiva:</strong> dar significados complejos o etiquetas diagnósticas antes de que el usuario pueda simbolizar su propio dolor. Lleva a conclusiones cerradas que ignoran la singularidad del ser.</div></div>
+    </div>
+
+    <div class="pl">El Ver — Realidad</div>
+    <ul class="pts">
+      <li><span class="dot">V</span><span>Las cinco trampas no son errores de mala voluntad: son tendencias naturales del acompañante que la presión del rol activa. El agente que quiere ayudar tiende a dar respuestas (trampa 2 y 3), a hacer preguntas para obtener información (trampa 1) y a defender su punto de vista cuando el hermano lo cuestiona (trampa 4). Nombrar esas tendencias como "trampas" no es para culpar al agente: es para hacerlas visibles antes de que dañen el vínculo.</span></li>
+    </ul>
+
+    <div class="pl">El Juzgar — Iluminación</div>
+    <ul class="pts">
+      <li><span class="dot">J</span><span>"Aunque el límite es necesario, el límite más sano es la ternura y la comprensión. La confrontación debe ser cuidadosa y basada en la realidad del vínculo, no en un juicio condenatorio que solo aumenta la resistencia al cambio" (§8.3.5). La corrección que el hermano puede escuchar no es la más verdadera ni la más urgente: es la que nace de un vínculo de confianza que la convierte en tolerable.</span></li>
+      <li><span class="dot">J</span><span>"El acompañante acompaña, no manda. El objetivo es pasar de una voluntad heterónoma, dictada por otros, a una autonomía progresiva donde el sujeto asuma la responsabilidad de sus elecciones" (§8.3.5). El acompañante que evita las cinco trampas no renuncia a la verdad: la propone de una manera que el hermano puede recibirla. La verdad dicha desde la trampa genera resistencia; la misma verdad dicha desde el vínculo genera reflexión.</span></li>
+    </ul>
+
+    <div class="pl">El Actuar — Propuesta</div>
+    <div class="act">
+      <div class="act-title">Identificar las trampas propias</div>
+      <div class="act-body">El grupo trabaja en silencio: cada participante piensa en una conversación reciente de acompañamiento donde algo "no funcionó", donde el hermano se cerró o la conversación tomó un rumbo negativo. ¿Cuál de las cinco trampas pudo haber operado? No para culparse: para aprender. La trampa identificada es información valiosa para la próxima conversación.</div>
+    </div>
+    <div class="act">
+      <div class="act-title">Roleplay: la conversación sin trampas</div>
+      <div class="act-body">El grupo practica en pares: uno en rol de hermano que minimiza su consumo ("no es para tanto, yo lo controlo"), otro en rol de acompañante. Primera ronda: el acompañante puede caer en cualquier trampa. Segunda ronda: el acompañante usa solo parafraseo, reflejo de sentimientos y preguntas abiertas, sin juzgar ni discutir. Comparar las dos rondas en plenario: ¿qué cambió en la disposición del "hermano"?</div>
+    </div>
+
+    <div class="cita">
+      <div class="cita-lbl">Cita inspiradora · §8.3.5</div>
+      <div class="cita-txt">"El acompañamiento debe basarse en la hospitalidad y la escucha activa, reconociendo que la persona es experta en su propia vida. Imponer una verdad externa o una autoridad jerárquica anula la autonomía del sujeto y refuerza el estigma que impide la sanación integral."</div>
+      <div class="cita-ref">Manual de la PLAPA, §8.3.5 — Las trampas del diálogo motivacional (CELAM 2026)</div>
+    </div>
+
+    <div class="ac-box">
+      <div class="ac-lbl">Autocuidado del agente</div>
+      <div class="ac-txt">Caer en una de las cinco trampas no invalida el proceso ni al agente. El §8.3.5 dice que el límite correcto es "la ternura": eso aplica también al propio error. El agente que puede reconocer "caí en la trampa de la moralización en esa conversación" y volver al vínculo sin autoflagelación es el que más rápido aprende. La perfección no es el criterio; la conciencia y la corrección sí lo son.</div>
+    </div>
+    <div class="ref">Referencias: §8.3.5 — Manual de la PLAPA, CELAM 2026</div>
+  </div>
+</div>
+
+<!-- MÓDULO 3 -->
+<div id="m3" class="card" style="border-left:5px solid #D85A30">
+  <div class="ch">
+    <span class="cn">Módulo 3 · El Actuar</span>
+    <div class="ct">Autoeficacia, afirmación e introspección: tres herramientas para el acompañante no especialista</div>
+    <div class="cs">Fortalecer la confianza del hermano y acompañar su mirada interior · §8.7.2, §8.7.3</div>
+  </div>
+  <div class="cb">
+    <div class="mf">
+      <div class="mf-lbl">Mensaje fuerza</div>
+      <div class="mf-txt">"La palabra del acompañante actúa como una fuerza externa que permite al individuo reconsiderar su potencial, creyendo en sus habilidades para triunfar antes incluso de que él mismo pueda percibirlas."</div>
+    </div>
+
+    <div class="pl">El Ver — Realidad</div>
+    <ul class="pts">
+      <li><span class="dot">V</span><span>La autoeficacia es "la creencia de una persona en su habilidad para tener éxito en una situación particular" (§8.7.2). En contextos de exclusión extrema, esa creencia ha sido sistemáticamente destruida: años de fracasos, mensajes de inutilidad del entorno, estigma social. El agente que practica la afirmación no está siendo "positivo y superficial": está devolviendo al hermano una imagen de sí mismo que el sistema borró.</span></li>
+      <li><span class="dot">V</span><span>La introspección y el diario de emociones (§8.7.3) son herramientas que muchos agentes pastorales no consideran porque las asocian con la psicoterapia formal. El manual las presenta como instrumentos accesibles para todo acompañante: "En casos de baja escolaridad, la introspección puede facilitarse mediante el diálogo empático, el arte o el acompañamiento de pares que ayuden al sujeto a poner en palabras lo que siente."</span></li>
+    </ul>
+
+    <div class="pl">El Juzgar — Iluminación</div>
+
+    <div class="cuatro-ejes">
+      <div class="eje-item"><div class="eje-ico">1</div><div class="eje-txt"><strong>Afirmación como validación del ser (§8.7.2):</strong> afirmar implica declaraciones sinceras y positivas que validan a la persona más allá de sus actos. Refuerza éxitos pequeños y demuestra que el acompañante reconoce el esfuerzo y el valor intrínseco del sujeto. Transforma el "no me lo merezco" en "puedo hacerlo."</div></div>
+      <div class="eje-item"><div class="eje-ico">2</div><div class="eje-txt"><strong>Persuasión social como antídoto a la duda (§8.7.2):</strong> la palabra del acompañante actúa como fuerza externa que permite al individuo reconsiderar su potencial. La motivación interna a menudo se despierta a través de quien confía en el usuario antes que él mismo.</div></div>
+      <div class="eje-item"><div class="eje-ico">3</div><div class="eje-txt"><strong>Diario de emociones como ancla frente al caos (§8.7.3):</strong> el registro de emociones ayuda a identificar conductas negativas y pensamientos rígidos. Al nombrar lo que siente, el paciente permite que la parte racional del cerebro recupere el control sobre los impulsos emocionales.</div></div>
+      <div class="eje-item"><div class="eje-ico">4</div><div class="eje-txt"><strong>Introspección como examen de conciencia (§8.7.3):</strong> desde la perspectiva pastoral, la introspección se eleva al examen de conciencia, donde la persona reconoce la presencia de Dios en su jornada y fortalece su voluntad para el cambio.</div></div>
+    </div>
+
+    <div class="pl">El Actuar — Propuesta</div>
+    <div class="act">
+      <div class="act-title">Practicar la afirmación sincera</div>
+      <div class="act-body">El grupo practica en parejas: cada participante piensa en una persona del territorio que acompaña y formula tres afirmaciones sinceras sobre esa persona (fortalezas concretas, pequeños logros, rasgos de dignidad que el proceso ha revelado). No elogios vacíos: afirmaciones basadas en algo real y observable. Luego reflexión: ¿le hemos dicho esto a esa persona? ¿por qué no? ¿qué nos detiene?</div>
+    </div>
+    <div class="act">
+      <div class="act-title">Introducir el diario de emociones en el dispositivo</div>
+      <div class="act-body">El grupo diseña una versión adaptada del diario de emociones para el territorio propio: ¿qué formato es accesible (escrito, oral, con dibujos)? ¿quién lo facilita? ¿con qué frecuencia? ¿cómo se usa en el acompañamiento individual? El diario no es una tarea: es una herramienta de vínculo. El acompañante que pregunta "¿qué escribiste esta semana?" está convirtiendo el registro en una puerta de conversación.</div>
+    </div>
+    <div class="act">
+      <div class="act-title">El propio diario de emociones: cinco minutos ahora</div>
+      <div class="act-body">El facilitador propone cinco minutos de escritura libre: "¿Qué estoy sintiendo en relación al trabajo pastoral de esta semana?" No se comparte obligatoriamente. El objetivo es que cada participante experimente la herramienta antes de proponerla a otros. La herramienta que el agente no ha practicado en sí mismo la propone con menos autenticidad.</div>
+    </div>
+
+    <div class="cita">
+      <div class="cita-lbl">Cita inspiradora · §8.7.3</div>
+      <div class="cita-txt">"Desde la perspectiva pastoral, la introspección se eleva al examen de conciencia, donde la persona reconoce la presencia de Dios en su jornada y fortalece su voluntad para el cambio. No hay oposición entre acción e introspección: el servicio comunitario cobra su verdadero sentido cuando nace de un corazón que se conoce a sí mismo."</div>
+      <div class="cita-ref">Manual de la PLAPA, §8.7.3 — La introspección y el diario de emociones (CELAM 2026)</div>
+    </div>
+
+    <div class="ac-box">
+      <div class="ac-lbl">Autocuidado del agente</div>
+      <div class="ac-txt">La afirmación que el agente practica hacia los hermanos también se la necesita para sí mismo. ¿El equipo tiene momentos de afirmación mutua? ¿se celebran los logros del equipo con la misma frecuencia que se analizan las dificultades? ¿alguien en el equipo dice en voz alta lo que el otro hace bien? La autoeficacia del equipo se construye igual que la del hermano: con afirmaciones sinceras, pequeños logros celebrados y persuasión social mutua.</div>
+    </div>
+    <div class="ref">Referencias: §8.7.2, §8.7.3 — Manual de la PLAPA, CELAM 2026</div>
+  </div>
+</div>
+
+<!-- MÓDULO 4 -->
+<div id="m4" class="card" style="border-left:5px solid #D85A30">
+  <div class="ch">
+    <span class="cn">Módulo 4 · Síntesis y revisión de vida</span>
+    <div class="ct">El autocuidado del agente: una dimensión intrínseca de la misión</div>
+    <div class="cs">Los cinco pilares del autocuidado pastoral · §8.7.4</div>
+  </div>
+  <div class="cb">
+    <div class="mf">
+      <div class="mf-lbl">Mensaje fuerza</div>
+      <div class="mf-txt">"El autocuidado no debe considerarse un complemento opcional, sino una dimensión intrínseca y vital de la misión que garantiza que el servicio sea humanizante y sostenible en el tiempo."</div>
+    </div>
+
+    <div class="cinco-auto">
+      <div class="eje-item"><div class="eje-ico">1</div><div class="eje-txt"><strong>Sostenibilidad de la misión:</strong> para cuidar bien es imperativo preservar la propia salud. El agotamiento extremo impide la continuidad de la tarea y hace que el servicio se vuelva insostenible, afectando la calidad del acompañamiento a largo plazo.</div></div>
+      <div class="eje-item"><div class="eje-ico">2</div><div class="eje-txt"><strong>Prevención del trauma secundario:</strong> los cuidadores están expuestos a estrés postraumático derivado de cargar con el dolor y las heridas de los usuarios. Protocolos de detección de burnout y fatiga por compasión permiten procesar este impacto.</div></div>
+      <div class="eje-item"><div class="eje-ico">3</div><div class="eje-txt"><strong>Identidad del sanador herido:</strong> el acompañante debe reconocer su propia vulnerabilidad y necesidad de ternura. Aceptar las propias llagas permite que el pastor se deje cuidar por la comunidad sin situarse en una posición de superioridad que bloquee el vínculo real.</div></div>
+      <div class="eje-item"><div class="eje-ico">4</div><div class="eje-txt"><strong>Calidad del cuidado:</strong> un agente desgastado pierde la capacidad de escucha activa y empatía. El autocuidado permite realizar las pausas necesarias para que el encuentro con el otro sea siempre un gesto de amor y no una carga mecánica o burocrática.</div></div>
+      <div class="eje-item"><div class="eje-ico">5</div><div class="eje-txt"><strong>Establecimiento de límites sanos:</strong> el cuidado implica aprender a decir no y a retirarse al banco de suplentes cuando las fuerzas flaquean, reconociendo que nadie puede solo y que la comunidad es el soporte último de la tarea.</div></div>
+    </div>
+
+    <div class="pl">El Ver — Realidad</div>
+    <ul class="pts">
+      <li><span class="dot">V</span><span>Las tres objeciones más resistentes del campo pastoral frente al autocuidado: (1) "el acompañamiento es un sacrificio total que debe asumirse como participación en la cruz", (2) "los recursos deben centrarse en el usuario, no en el agente", (3) "la fe y la oración son suficientes para sostener al cuidador." El §8.7.4 refuta las tres con la misma lógica: "Dios no pide sacrificios que destruyan la propia vida. Cuidar de uno mismo es una forma de honrar el don de la vida y garantizar que el servicio pueda continuar."</span></li>
+    </ul>
+
+    <div class="pl">El Juzgar — Iluminación</div>
+    <ul class="pts">
+      <li><span class="dot">J</span><span>"La fe no anula la biología ni las leyes de la psiquis. Es necesario integrar la vida espiritual con hábitos saludables, ejercicio y apoyo entre pares para que la salud integral del agente esté en óptimas condiciones para la misión" (§8.7.4). La espiritualidad encarnada que el manual propone para el acompañamiento de los hermanos se aplica también al agente: el cuerpo, la psique y el espíritu del cuidador también son parte de la misión.</span></li>
+      <li><span class="dot">J</span><span>"El acompañante debe reconocer su propia vulnerabilidad y necesidad de ternura. Aceptar las propias llagas permite que el pastor se deje cuidar por la comunidad" (§8.7.4). El Itinerario 10 (acompañantes pares) describía al "sanador herido" como la figura con mayor credibilidad en el acompañamiento. El §8.7.4 lo confirma desde la psicología: la vulnerabilidad reconocida no debilita al agente; lo humaniza y hace posible el vínculo real.</span></li>
+    </ul>
+
+    <div class="pl">El Actuar — Propuesta</div>
+    <div class="act">
+      <div class="act-title">Diagnóstico de autocuidado del equipo</div>
+      <div class="act-body">El grupo evalúa cada uno de los cinco pilares del §8.7.4 para el equipo actual: ¿hay sostenibilidad en la carga de trabajo? ¿hay protocolo de detección de burnout? ¿hay espacios donde los agentes pueden mostrar su vulnerabilidad sin perder el rol? ¿hay celebración de los logros? ¿hay cultura del "banco de suplentes"? Para cada pilar: una fortaleza y un desafío. Sin autocomplacencia ni autoflagelación.</div>
+    </div>
+    <div class="act">
+      <div class="act-title">Diseñar el protocolo de autocuidado del equipo</div>
+      <div class="act-body">El grupo diseña (o revisa) el protocolo de autocuidado colectivo: frecuencia de los encuentros de revisión de vida, quién los facilita, qué espacio hay para hablar de lo que afecta al agente (no solo lo que le pasa al hermano), quién detecta señales de burnout y cómo actúa. El protocolo no reemplaza la fe: garantiza que la fe tenga un soporte humano que la haga sostenible en el tiempo.</div>
+    </div>
+    <div class="act">
+      <div class="act-title">Cierre: la escucha que me debía a mí mismo</div>
+      <div class="act-body">El itinerario empezó con la escucha activa hacia el hermano. Cierra con la escucha activa hacia uno mismo. El facilitador guía: cinco minutos de silencio donde cada participante se hace a sí mismo las cuatro preguntas del §8.7.1: ¿qué estoy comunicando verbalmente sobre cómo estoy? ¿qué dice mi cuerpo que mis palabras no dicen? ¿qué sentimiento estoy evitando nombrar? ¿cuál es el resumen honesto de cómo me encuentro en este momento del año? No se comparte: se recibe como regalo de autocuidado al cierre del itinerario.</div>
+    </div>
+
+    <div class="cita">
+      <div class="cita-lbl">Cita inspiradora · §8.7.4</div>
+      <div class="cita-txt">"El autocuidado no debe considerarse un complemento opcional, sino una dimensión intrínseca y vital de la misión que garantiza que el servicio sea humanizante y sostenible en el tiempo."</div>
+      <div class="cita-ref">Manual de la PLAPA, §8.7.4 — El autocuidado de los agentes pastorales (CELAM 2026)</div>
+    </div>
+
+    <div class="ac-box">
+      <div class="ac-lbl">Autocuidado del agente — cierre del itinerario</div>
+      <div class="ac-txt">El Itinerario 16 es el único cuyo Módulo 4 está completamente dedicado al autocuidado del agente como tema central, no como nota al pie. Esa estructura es deliberada: las herramientas que los módulos 1–3 proponen para el acompañamiento de los hermanos son exactamente las que el agente necesita practicar consigo mismo. La escucha activa propia, la autoeficacia del equipo, la introspección regular y el autocuidado colectivo no son el final de la formación: son su base.</div>
+    </div>
+    <div class="ref">Referencias: §8.7.4, §8.7.1, §8.7.2, §8.7.3 — Manual de la PLAPA, CELAM 2026</div>
+  </div>
+</div>
+
+</div>
+
+<script>
+function show(n,btn){
+  for(let i=1;i<=4;i++) document.getElementById('m'+i).classList.remove('active');
+  document.querySelectorAll('.btn').forEach(b=>b.classList.remove('on'));
+  document.getElementById('m'+n).classList.add('active');
+  btn.classList.add('on');
+}
+</script>

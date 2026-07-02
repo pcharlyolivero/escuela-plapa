@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Itinerario 24 · Hermanos en situación de calle y movilidad humana · PLAPA 2026</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Georgia,'Times New Roman',serif;background:#f5f3ee;color:#222;padding:0 0 3rem}
+  .portada{background:#412402;padding:2rem 2.5rem 1.5rem;color:#fff}
+  .portada-sup{font-size:11px;font-weight:700;color:#EF9F27;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem;font-family:Arial,sans-serif}
+  .portada-title{font-size:26px;font-weight:700;line-height:1.25;margin-bottom:.35rem}
+  .portada-sub{font-size:13px;color:#FAC775;line-height:1.55;margin-bottom:1rem}
+  .dest-box{background:#854F0B;border-radius:6px;padding:.7rem 1rem;margin-bottom:1rem}
+  .dest-lbl{font-size:9px;font-weight:700;color:#FAC775;letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px;font-family:Arial,sans-serif}
+  .dest-txt{font-size:12px;color:#fff;line-height:1.55}
+  .pills{display:flex;flex-wrap:wrap;gap:5px}
+  .pill{font-size:10px;font-weight:700;padding:3px 10px;border-radius:99px;background:#854F0B;color:#FAEEDA;font-family:Arial,sans-serif}
+  .nav{display:flex;background:#fff;border-bottom:2px solid #BA7517;flex-wrap:wrap}
+  .tab{padding:12px 18px;cursor:pointer;font-size:12px;font-family:Arial,sans-serif;color:#666;border:none;background:none;font-weight:600;letter-spacing:.03em;border-bottom:3px solid transparent;margin-bottom:-2px}
+  .tab:hover{color:#412402;background:#FFF8EE}
+  .tab.on{color:#412402;border-bottom-color:#BA7517;background:#FFF8EE}
+  .mod{display:none;max-width:900px;margin:0 auto;padding:2rem 2.5rem}
+  .mod.a{display:block}
+  .mod-tag{display:inline-block;font-size:10px;font-weight:700;padding:3px 10px;border-radius:99px;background:#FFF8EE;color:#412402;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.5rem;font-family:Arial,sans-serif}
+  .mod-title{font-size:20px;font-weight:700;color:#412402;line-height:1.3;margin-bottom:.3rem}
+  .mod-sub{font-size:12px;color:#888;font-family:Arial,sans-serif;margin-bottom:1.5rem}
+  .mf{border-left:4px solid #BA7517;background:#FFF8EE;padding:.8rem 1.1rem;margin-bottom:1.25rem;border-radius:0 6px 6px 0}
+  .mf-lbl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#854F0B;margin-bottom:4px;font-family:Arial,sans-serif}
+  .mf-txt{font-size:14px;font-style:italic;line-height:1.6;color:#412402}
+  .sec-lbl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#999;margin:1.1rem 0 .5rem;font-family:Arial,sans-serif}
+  .puntos{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:1rem}
+  .puntos li{display:flex;gap:10px;font-size:13px;color:#333;line-height:1.6}
+  .dot{width:20px;min-width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;margin-top:2px;background:#FFF8EE;color:#412402;font-family:Arial,sans-serif}
+  .act-box{background:#FFF8EE;border-radius:6px;padding:.75rem 1rem;margin-bottom:6px;border:1px solid #F0D4A0}
+  .act-title{font-size:12px;font-weight:700;color:#412402;margin-bottom:4px;font-family:Arial,sans-serif}
+  .act-body{font-size:12.5px;color:#633806;line-height:1.55}
+  .cita{background:#FFF8EE;border-radius:6px;padding:.8rem 1.1rem;margin-top:1.2rem;border-left:3px solid #BA7517}
+  .cita-lbl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#854F0B;margin-bottom:4px;font-family:Arial,sans-serif}
+  .cita-txt{font-size:12px;font-style:italic;line-height:1.6;color:#412402}
+  .cita-ref{font-size:10px;font-style:normal;font-weight:700;color:#854F0B;margin-top:3px;font-family:Arial,sans-serif}
+  .autocuidado{border-left:3px solid #BA7517;background:#f9f7f2;padding:.75rem 1rem;margin-top:1.2rem}
+  .auto-lbl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#854F0B;margin-bottom:4px;font-family:Arial,sans-serif}
+  .auto-txt{font-size:12.5px;color:#555;line-height:1.55}
+  .ref{font-size:10px;color:#aaa;font-style:italic;margin-top:1rem;padding-top:.75rem;border-top:1px solid #e5e0d8;font-family:Arial,sans-serif}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1.1rem}
+  .g-item{background:#FFF8EE;border-radius:6px;padding:.65rem .8rem;border:1px solid #F0D4A0}
+  .g-title{font-size:11px;font-weight:700;color:#412402;margin-bottom:3px;font-family:Arial,sans-serif}
+  .g-body{font-size:11px;color:#633806;line-height:1.4}
+  .cinco{display:flex;flex-direction:column;gap:6px;margin-bottom:1rem}
+  .cinco-item{display:flex;gap:10px;align-items:flex-start}
+  .cinco-num{width:22px;min-width:22px;height:22px;background:#FFF8EE;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#412402;margin-top:1px;font-family:Arial,sans-serif;flex-shrink:0}
+  .cinco-txt{font-size:13px;color:#333;line-height:1.55;padding-top:2px}
+  @media(max-width:600px){.grid2{grid-template-columns:1fr}.mod{padding:1.2rem 1rem}.portada{padding:1.2rem}}
+  @media print{.nav{display:none}.mod{display:block!important;page-break-before:always}}
+</style>
+</head>
+<body>
+
+<div class="portada">
+  <p class="portada-sup">Itinerario formativo 24 · PLAPA — CELAM 2026</p>
+  <h1 class="portada-title">Hermanos en situación de calle y movilidad humana</h1>
+  <p class="portada-sub">Falsa libertad, red vincular de la calle, desarraigo migrante y la dignidad ontológica del que no tiene techo ni tierra · 4 módulos</p>
+  <div class="dest-box">
+    <div class="dest-lbl">Destinatarios</div>
+    <div class="dest-txt">Agentes de calle, equipos de centros barriales que atienden personas en situación de calle, y comunidades pastorales en territorios con presencia migrante significativa. También útil para parroquias fronterizas o de tránsito migratorio que necesitan integrar la dimensión de movilidad humana en su pastoral de adicciones. Nivel intermedio: requiere disposición al trabajo de calle y a la lectura de realidades complejas de desarraigo.</div>
+  </div>
+  <div class="pills">
+    <span class="pill">§4.10</span>
+    <span class="pill">§6.6.6</span>
+    <span class="pill">Agentes de calle</span>
+    <span class="pill">4 sesiones</span>
+    <span class="pill">Nivel intermedio</span>
+  </div>
+</div>
+
+<div class="nav">
+  <button class="tab on" onclick="show(1,this)">Módulo 1 · La falsa libertad de la calle</button>
+  <button class="tab" onclick="show(2,this)">Módulo 2 · La familia alternativa de la calle</button>
+  <button class="tab" onclick="show(3,this)">Módulo 3 · El hermano migrante</button>
+  <button class="tab" onclick="show(4,this)">Módulo 4 · Las cinco dimensiones de la movilidad humana</button>
+</div>
+
+<!-- MÓDULO 1 -->
+<div id="m1" class="mod a">
+  <span class="mod-tag">Módulo 1 · El Ver</span>
+  <h2 class="mod-title">La falsa libertad de la calle: la expresión más cruda de la cultura del descarte</h2>
+  <p class="mod-sub">Diagnóstico territorial de la situación de calle · §4.10</p>
+
+  <div class="mf">
+    <div class="mf-lbl">Mensaje fuerza</div>
+    <div class="mf-txt">"Se detecta que muchos hermanos perciben la calle, de manera paradójica, como un espacio de falsa libertad; ante la ausencia de normas y redes de apoyo, esta autonomía aparente los mantiene alejados de los organismos gubernamentales y perpetúa ciclos de marginalización extrema."</div>
+  </div>
+
+  <p class="sec-lbl">El Ver — Realidad</p>
+  <ul class="puntos">
+    <li><span class="dot">V</span><span>El §4.10 reconoce en la situación de calle "una de las expresiones más crudas de la cultura del descarte." No es solo carencia de recursos: "responde a una trayectoria de vulnerabilidad múltiple marcada por rupturas profundas en los vínculos familiares, abandonos tempranos y duelos que no han sido gestionados." Detrás de cada persona en situación de calle hay una historia de pérdidas no procesadas.</span></li>
+    <li><span class="dot">V</span><span>La paradoja de la "falsa libertad" es clave para entender por qué muchos hermanos resisten las propuestas de ayuda institucional: la calle, sin normas que la persona no eligió y que la lastimaron, ofrece una autonomía que —aunque destructiva— se siente más segura que volver a someterse a sistemas que ya la traicionaron antes. Ofrecer "ayuda" sin entender esa lógica produce rechazo, no acercamiento.</span></li>
+    <li><span class="dot">V</span><span>"El uso de sustancias psicoactivas funciona como un intento autoterapéutico para anestesiar una realidad que se ha vuelto intolerable. La sustancia es utilizada como una herramienta para procesar el impacto del frío, el hambre y la soledad" (§4.10). El consumo en la calle no es solo evasión emocional: es también una respuesta al sufrimiento físico extremo de vivir a la intemperie.</span></li>
+    <li><span class="dot">V</span><span>El sistema de salud formal "encuentra un tope o límite ante la marginalidad de la calle" (§4.10): exige documentación, estabilidad habitacional y horarios que la persona en situación de calle no puede sostener. "Esta rigidez burocrática resulta expulsiva y deriva en una alta tasa de muertes absolutamente prevenibles por enfermedades infecciosas como la tuberculosis, el VIH y la hepatitis C."</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Juzgar — Iluminación</p>
+  <ul class="puntos">
+    <li><span class="dot">J</span><span>"El estigma social los vuelve invisibles ante la ciudadanía, privándolos no solo del acceso a derechos básicos como la vivienda, sino del reconocimiento fundamental de ser llamados por su propio nombre" (§4.10). La invisibilidad no es solo institucional: es interpersonal. La persona que cruza la calle cada día sin que nadie la mire ni la nombre experimenta una forma de muerte social antes de cualquier muerte biológica.</span></li>
+    <li><span class="dot">J</span><span>La pregunta pastoral correcta no es "¿por qué no acepta la ayuda?" sino "¿qué tipo de ayuda respeta la autonomía sin abandonar la responsabilidad?" El §11.1.7-11.1.8 sobre centros barriales describe ese equilibrio: el centro barrial no exige abandonar la calle como condición de entrada; ofrece un lugar donde volver sin perder la pertenencia a la red que ya tiene.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Actuar — Propuesta</p>
+  <div class="act-box">
+    <div class="act-title">Practicar el reconocimiento por el nombre</div>
+    <div class="act-body">El grupo identifica: ¿cuántas personas en situación de calle del territorio el equipo conoce por su nombre? ¿hay un registro o memoria colectiva de quiénes son? Nombrar a alguien no es solo un gesto simbólico: es el primer paso de la dignidad recuperada que el §4.10 describe como derecho negado. Diseñar una práctica concreta para conocer y nombrar a más personas del territorio.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">La salida de calle como acompañamiento, no como condición</div>
+    <div class="act-body">El grupo evalúa: ¿el dispositivo exige dejar la calle como condición de entrada o acompaña a la persona donde está? ¿hay flexibilidad horaria, de documentación, de presentación personal? El §4.10 advierte que la rigidez burocrática es expulsiva: revisar el propio dispositivo con esa advertencia en mente.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Identificar las muertes prevenibles del territorio</div>
+    <div class="act-body">El grupo reflexiona honestamente: ¿hay personas del territorio que murieron por enfermedades prevenibles (tuberculosis, VIH, hepatitis) por falta de acceso a tratamiento adaptado a su situación de calle? ¿qué hubiera hecho la diferencia? El recuerdo de esas muertes —sin culpa retrospectiva, con compromiso futuro— es el motor más fuerte para mejorar el protocolo de acceso a salud del dispositivo.</div>
+  </div>
+
+  <div class="cita">
+    <div class="cita-lbl">Cita inspiradora · §4.10</div>
+    <div class="cita-txt">"El diagnóstico destaca que el estigma social los vuelve invisibles ante la ciudadanía, privándolos no solo del acceso a derechos básicos como la vivienda, sino del reconocimiento fundamental de ser llamados por su propio nombre."</div>
+    <div class="cita-ref">Manual de la PLAPA, §4.10 — Nuestros hermanos en la calle (CELAM 2026)</div>
+  </div>
+
+  <div class="autocuidado">
+    <div class="auto-lbl">Autocuidado del agente</div>
+    <div class="auto-txt">El trabajo de calle expone al agente a niveles de sufrimiento humano y de impotencia que pueden ser abrumadores: el frío que no se puede resolver con una visita, el hambre que la sustancia anestesia mejor que cualquier intervención pastoral, la muerte que llega antes de que el proceso avance. El facilitador recuerda que el agente de calle necesita supervisión específica, límites claros de horario y disponibilidad, y un equipo que sostenga lo que un solo agente no puede cargar solo.</div>
+  </div>
+  <p class="ref">Referencias: §4.10, §11.1.7–11.1.8 — Manual de la PLAPA, CELAM 2026</p>
+</div>
+
+<!-- MÓDULO 2 -->
+<div id="m2" class="mod">
+  <span class="mod-tag">Módulo 2 · El Juzgar</span>
+  <h2 class="mod-title">La familia alternativa de la calle: por qué la persona no quiere irse de donde está</h2>
+  <p class="mod-sub">Lazos vinculares en el territorio de la calle como obstáculo y como recurso · §4.10</p>
+
+  <div class="mf">
+    <div class="mf-lbl">Mensaje fuerza</div>
+    <div class="mf-txt">"Ante la orfandad funcional de sus hogares de origen, las personas en situación de calle tejen lazos de apoyo mutuo en el propio territorio de la calle, conformando una red vincular que opera como una familia alternativa. Estos vínculos son tan significativos que a menudo se convierten en un factor de añoranza que dificulta los procesos de recuperación."</div>
+  </div>
+
+  <div class="grid2">
+    <div class="g-item">
+      <div class="g-title">Lo que la red de calle ofrece</div>
+      <div class="g-body">Pertenencia inmediata sin condiciones previas. Compañía frente a la soledad extrema. Códigos compartidos y un lenguaje propio. Protección mutua básica. Reconocimiento de pares que comparten la misma experiencia de exclusión.</div>
+    </div>
+    <div class="g-item">
+      <div class="g-title">Por qué dificulta la recuperación</div>
+      <div class="g-body">Romper esos vínculos al ingresar a un dispositivo se vive como una nueva pérdida, no como una ganancia. La comunidad de pertenencia que el dispositivo ofrece debe ser tan significativa como la que se deja, o la persona vuelve.</div>
+    </div>
+  </div>
+
+  <p class="sec-lbl">El Ver — Realidad</p>
+  <ul class="puntos">
+    <li><span class="dot">V</span><span>La objeción más frecuente entre equipos de calle: "¿por qué prefiere quedarse en la calle con esa gente en lugar de venir al centro?" El §4.10 responde con precisión: esos vínculos "son tan significativos que a menudo se convierten en un factor de añoranza que dificulta los procesos de recuperación si no se ofrece una comunidad de pertenencia similar." No es resistencia irracional: es fidelidad a los únicos vínculos disponibles.</span></li>
+    <li><span class="dot">V</span><span>La red de calle nace de la misma orfandad funcional que el Itinerario 22 describe en niños: "ante la orfandad funcional de sus hogares de origen, las personas en situación de calle tejen lazos de apoyo mutuo en el propio territorio de la calle" (§4.10). El adulto en situación de calle muchas veces fue el niño con orfandad funcional que el sistema no alcanzó a tiempo.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Juzgar — Iluminación</p>
+  <ul class="puntos">
+    <li><span class="dot">J</span><span>El criterio pastoral que se desprende del §4.10 es exigente: el dispositivo que quiere ofrecer una alternativa real a la red de calle necesita igualar o superar la calidad del vínculo que esa red ofrece, no solo su seguridad material. Un centro barrial con techo y comida pero sin calidez vincular real perderá ante la calle, aunque parezca "objetivamente mejor."</span></li>
+    <li><span class="dot">J</span><span>"No hay sanación sin enraizamiento" (§6.6.6, sobre movilidad humana, aplicable también a la situación de calle). La sanación de la persona en situación de calle no consiste solo en sacarla de la calle: consiste en ofrecerle raíces nuevas que sean tan reales como las que está dejando. El §6.5.5 sobre tejedoras del cuidado y acompañantes pares describe exactamente ese tipo de raíz que puede competir con la red de calle.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Actuar — Propuesta</p>
+  <div class="act-box">
+    <div class="act-title">Mapear los vínculos de calle de las personas que acompañamos</div>
+    <div class="act-body">El grupo identifica, sin juzgar, las redes vinculares de calle de las personas en proceso: ¿quiénes son sus compañeros habituales? ¿qué significan esos vínculos para ellos? ¿hay alguno que pueda ser invitado también al dispositivo, en lugar de pedir que la persona elija entre la red de calle y el centro barrial? Incorporar a la red existente puede ser más eficaz que pedir que se abandone.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Evaluar la calidad vincular real del dispositivo</div>
+    <div class="act-body">El grupo se pregunta honestamente: ¿el centro barrial ofrece un vínculo tan cálido y significativo como el que la persona tiene en la calle? ¿hay calidez humana real o solo prestación de servicios? La comparación es incómoda pero necesaria: si el dispositivo pierde en calidez frente a la calle, ningún recurso material compensará esa diferencia.</div>
+  </div>
+
+  <div class="cita">
+    <div class="cita-lbl">Cita inspiradora · §4.10</div>
+    <div class="cita-txt">"Las personas en situación de calle tejen lazos de apoyo mutuo en el propio territorio de la calle, conformando una red vincular que opera como una familia alternativa."</div>
+    <div class="cita-ref">Manual de la PLAPA, §4.10 — Nuestros hermanos en la calle (CELAM 2026)</div>
+  </div>
+
+  <div class="autocuidado">
+    <div class="auto-lbl">Autocuidado del agente</div>
+    <div class="auto-txt">El agente que comprende la red de calle como "familia alternativa" puede experimentar una tensión legítima: ¿no estoy a veces compitiendo con vínculos que, aunque frágiles, son reales para la persona? El facilitador recuerda que la pastoral no busca destruir esos vínculos sino ofrecer algo adicional, no sustitutivo por la fuerza. Esa distinción ayuda al agente a no sentir el rechazo de la persona como fracaso personal.</div>
+  </div>
+  <p class="ref">Referencias: §4.10, §6.6.6, §6.5.5 — Manual de la PLAPA, CELAM 2026</p>
+</div>
+
+<!-- MÓDULO 3 -->
+<div id="m3" class="mod">
+  <span class="mod-tag">Módulo 3 · El Actuar</span>
+  <h2 class="mod-title">El hermano migrante: desarraigo, dignidad ontológica y el riesgo del consumo como respuesta al desprecio</h2>
+  <p class="mod-sub">La movilidad humana como clave de lectura pastoral · §6.6.6</p>
+
+  <div class="mf">
+    <div class="mf-lbl">Mensaje fuerza</div>
+    <div class="mf-txt">"Todo migrante posee una dignidad inalienable; por tanto, la Iglesia debe actuar como un 'hospital de campaña' que acoja la orfandad y la vulnerabilidad extrema que el proceso migratorio suele generar, reconociendo que no hay sanación sin enraizamiento."</div>
+  </div>
+
+  <p class="sec-lbl">El Ver — Realidad</p>
+  <ul class="puntos">
+    <li><span class="dot">V</span><span>El §6.6.6 refuta la objeción de que la migración es "un tema estrictamente político o sociológico que no debería ocupar un lugar central en un manual de adicciones." Su respuesta: "aunque la migración tenga aristas políticas, su raíz es humana; la vulnerabilidad que genera la falta de tierra, techo y trabajo es un condicionante directo del consumo que la misión evangelizadora no puede ignorar." El migrante sin las 3T (§6.3.2) tiene el mismo riesgo estructural que cualquier hermano en pobreza extrema, multiplicado por el desarraigo.</span></li>
+    <li><span class="dot">V</span><span>"El desarraigo y la falta de red suelen potenciar la vulnerabilidad social" (§6.6.6). El migrante llega sin la red vincular que protege a quienes nacieron en el territorio: sin familia extendida, sin amigos de infancia, sin conocimiento del sistema local. Esa ausencia de red es exactamente el factor que el §8.5.3 (familias de acogida) identifica como el más decisivo para el riesgo de consumo.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Juzgar — Iluminación</p>
+  <ul class="puntos">
+    <li><span class="dot">J</span><span>"Aunque la adicción tenga una base biológica, la recuperación es un proceso vincular; ignorar la cultura del otro es una forma de fragmentación administrativa que impide generar el vínculo de confianza necesario para que la persona se sienta amada en su totalidad" (§6.6.6). El equipo pastoral que acompaña a un migrante sin considerar su cultura, su idioma, su forma de nombrar el dolor, reproduce el mismo error de fragmentación que el Itinerario 10 denuncia para los sistemas institucionales: trata un fragmento de la persona, no su totalidad.</span></li>
+    <li><span class="dot">J</span><span>Mt 25,35 funda teológicamente todo el artículo: "Fui forastero y me hospedaste." La hospitalidad al migrante no es una opción pastoral entre otras: es un criterio de juicio final en el Evangelio. La comunidad que acompaña adicciones sin acompañar también el desarraigo migrante está descuidando una de las formas más explícitas de encuentro con Cristo que el Evangelio describe.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Actuar — Propuesta</p>
+  <div class="act-box">
+    <div class="act-title">Mapear la presencia migrante en el territorio</div>
+    <div class="act-body">El grupo identifica: ¿hay población migrante significativa en el territorio? ¿de dónde proceden? ¿qué situación de vulnerabilidad enfrentan (documentación, empleo, vivienda)? ¿hay migrantes en los procesos de acompañamiento actuales? El diagnóstico del territorio propio es el punto de partida para cualquier abordaje diferenciado.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Inculturar la pastoral: el lenguaje que el migrante necesita</div>
+    <div class="act-body">El grupo reflexiona: ¿cómo se nombra el dolor, la fe y la esperanza en la cultura de origen de los migrantes del territorio? ¿hay devociones, santos o expresiones de fe propias de su cultura que el dispositivo podría incorporar? La inculturación de la pastoral no es relativismo: es la condición para que el hermano migrante "descubra a un Dios que camina con él en su propia historia" (§6.6.6).</div>
+  </div>
+
+  <div class="cita">
+    <div class="cita-lbl">Cita inspiradora · §6.6.6 — Mt 25,35</div>
+    <div class="cita-txt">"Fui forastero y me hospedaste. La Iglesia debe actuar como un 'hospital de campaña' que acoja la orfandad y la vulnerabilidad extrema que el proceso migratorio suele generar, reconociendo que no hay sanación sin enraizamiento."</div>
+    <div class="cita-ref">Manual de la PLAPA, §6.6.6 — El abordaje de la movilidad humana (CELAM 2026)</div>
+  </div>
+
+  <div class="autocuidado">
+    <div class="auto-lbl">Autocuidado del agente</div>
+    <div class="auto-txt">El acompañamiento de migrantes puede confrontar al agente con sus propios prejuicios culturales, muchas veces inconscientes. El facilitador propone un espacio de honestidad: ¿qué presupuestos tenemos sobre las personas migrantes del territorio? ¿de dónde vienen esos presupuestos? La hospitalidad evangélica empieza por examinar las propias resistencias antes de proponerla a la comunidad.</div>
+  </div>
+  <p class="ref">Referencias: §6.6.6, Mt 25,35, §6.3.2 — Manual de la PLAPA, CELAM 2026</p>
+</div>
+
+<!-- MÓDULO 4 -->
+<div id="m4" class="mod">
+  <span class="mod-tag">Módulo 4 · Síntesis y revisión de vida</span>
+  <h2 class="mod-title">Las cinco dimensiones de la movilidad humana: un programa pastoral integral</h2>
+  <p class="mod-sub">De la denuncia de la invisibilidad a la inculturación de la esperanza · §6.6.6</p>
+
+  <div class="mf">
+    <div class="mf-lbl">Mensaje fuerza</div>
+    <div class="mf-txt">"La movilidad humana es un signo de los tiempos que requiere una pastoral específica que respete las culturas y la riqueza espiritual de cada pueblo."</div>
+  </div>
+
+  <div class="cinco">
+    <div class="cinco-item"><div class="cinco-num">1</div><div class="cinco-txt"><strong>Reconocimiento de la dignidad ontológica:</strong> denunciar la práctica social de considerar a los migrantes como sujetos de segunda clase, que agrava su invisibilidad y el riesgo de recurrir al consumo como escape frente al desprecio.</div></div>
+    <div class="cinco-item"><div class="cinco-num">2</div><div class="cinco-txt"><strong>Impacto en la configuración territorial:</strong> la migración transforma los barrios; la comunidad organizada debe introducirse en estas nuevas realidades para integrar a los migrantes en sus círculos de cuidado, evitando que el aislamiento los empuje hacia las redes del narcotráfico.</div></div>
+    <div class="cinco-item"><div class="cinco-num">3</div><div class="cinco-txt"><strong>Respuesta educativa y de nivelación:</strong> proponer estrategias de refuerzo pedagógico para niños y adolescentes migrantes que han visto interrumpida su escolaridad, ofreciéndoles espacios promocionales que generen pertenencia.</div></div>
+    <div class="cinco-item"><div class="cinco-num">4</div><div class="cinco-txt"><strong>Acompañamiento en el encierro:</strong> los migrantes privados de libertad enfrentan una soledad mayor por la falta de red biográfica; el acompañamiento debe ser diferenciado para evitar que el desarraigo derive en una reincidencia en el consumo.</div></div>
+    <div class="cinco-item"><div class="cinco-num">5</div><div class="cinco-txt"><strong>Inculturación de la pastoral:</strong> la espiritualidad propuesta debe adaptar su lenguaje para que el hermano migrante descubra a un Dios que camina con él en su propia historia, transformando el dolor del viaje en un proceso de resurrección comunitaria.</div></div>
+  </div>
+
+  <p class="sec-lbl">El Ver — Realidad</p>
+  <ul class="puntos">
+    <li><span class="dot">V</span><span>Las cinco dimensiones del §6.6.6 no son compartimentos aislados: forman un programa integral que va desde el reconocimiento de la dignidad (lo más básico) hasta la inculturación espiritual (lo más profundo). Un dispositivo que solo trabaja la Dimensión 1 (denunciar la discriminación) sin avanzar hacia las otras cuatro queda en el nivel del discurso sin traducirse en acompañamiento concreto.</span></li>
+    <li><span class="dot">V</span><span>La Dimensión 2 conecta directamente con el Itinerario 22 sobre captación del narcotráfico: "evitando que el aislamiento los empuje hacia las redes del narcotráfico" (§6.6.6). El joven migrante recién llegado, sin red de pertenencia, es exactamente el perfil que el narcotráfico busca captar con la oferta de pertenencia inmediata que el Itinerario 22 describe.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Juzgar — Iluminación</p>
+  <ul class="puntos">
+    <li><span class="dot">J</span><span>La Dimensión 4 (acompañamiento en el encierro) conecta con el Itinerario 23: el migrante privado de libertad enfrenta el abismo de la libertad descrito en el §4.12, multiplicado por la ausencia de cualquier red familiar local que pueda recibirlo al egreso. La intersección entre movilidad humana y pastoral carcelaria es uno de los casos más complejos y menos atendidos del territorio.</span></li>
+    <li><span class="dot">J</span><span>La síntesis de todo el itinerario está en una sola frase del §6.6.6: "no hay sanación sin enraizamiento." Tanto el hermano en situación de calle (Módulos 1 y 2) como el hermano migrante (Módulo 3) comparten la misma carencia fundamental: la falta de raíces, de tierra propia, de un lugar donde pertenecer sin condiciones. La pastoral que puede ofrecer enraizamiento real —no solo asistencia material— es la que produce sanación duradera.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Actuar — Propuesta</p>
+  <div class="act-box">
+    <div class="act-title">Auditar el dispositivo con las cinco dimensiones</div>
+    <div class="act-body">El grupo evalúa el estado del dispositivo en cada una de las cinco dimensiones del §6.6.6: ¿se denuncia la discriminación hacia los migrantes (D1)? ¿hay integración activa en los círculos de cuidado (D2)? ¿hay refuerzo pedagógico para niños migrantes (D3)? ¿hay protocolo diferenciado para migrantes privados de libertad (D4)? ¿hay inculturación real del lenguaje pastoral (D5)? Identificar la dimensión más débil como prioridad de trabajo.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Diseñar un espacio de refuerzo pedagógico para niños migrantes</div>
+    <div class="act-body">Si hay niños migrantes en el territorio con escolaridad interrumpida, el grupo diseña los elementos mínimos de un espacio de refuerzo pedagógico: ¿quién puede facilitarlo? ¿con qué frecuencia? ¿qué materiales se necesitan? Ese espacio cumple una doble función: nivelación educativa y generación de pertenencia, exactamente lo que la Dimensión 3 propone.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Cierre: el enraizamiento como horizonte común</div>
+    <div class="act-body">El grupo cierra el itinerario reflexionando sobre la frase central: "no hay sanación sin enraizamiento." ¿Qué significa ofrecer raíces a alguien que perdió las suyas, sea por situación de calle o por migración? ¿qué puede hacer concretamente el equipo para ser esa raíz? Cerrar con la oración de la hospitalidad: "Fui forastero y me hospedaste", pidiendo la gracia de reconocer a Cristo en cada hermano sin techo o sin tierra propia que el territorio presenta.</div>
+  </div>
+
+  <div class="cita">
+    <div class="cita-lbl">Cita inspiradora · §6.6.6</div>
+    <div class="cita-txt">"La antropología cristiana afirma que todo migrante posee una dignidad inalienable; por tanto, la Iglesia debe actuar como un 'hospital de campaña' que acoja la orfandad y la vulnerabilidad extrema que el proceso migratorio suele generar, reconociendo que no hay sanación sin enraizamiento."</div>
+    <div class="cita-ref">Manual de la PLAPA, §6.6.6 — El abordaje de la movilidad humana y la interculturalidad (CELAM 2026)</div>
+  </div>
+
+  <div class="autocuidado">
+    <div class="auto-lbl">Autocuidado del agente — cierre del itinerario</div>
+    <div class="auto-txt">El itinerario cierra con la pregunta que la falta de enraizamiento le hace a cada agente: ¿dónde están mis propias raíces? ¿quién me hospedó cuando yo era forastero, de alguna manera, en algún momento de mi vida? El agente que reconoce su propia experiencia de desarraigo —aunque haya sido distinta en grado a la del hermano en situación de calle o del migrante— tiene una conexión empírica con la búsqueda de enraizamiento que el itinerario describe. Esa conexión es la base de un acompañamiento que no mira desde arriba, sino desde la fraternidad.</div>
+  </div>
+  <p class="ref">Referencias: §6.6.6, §4.10, §4.12, §6.3.2, §8.5.3 — Manual de la PLAPA, CELAM 2026</p>
+</div>
+
+<script>
+function show(n,btn){
+  for(let i=1;i<=4;i++) document.getElementById('m'+i).className='mod';
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  document.getElementById('m'+n).className='mod a';
+  btn.classList.add('on');
+}
+</script>
+</body>
+</html>

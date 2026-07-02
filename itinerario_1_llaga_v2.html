@@ -1,0 +1,165 @@
+<meta charset="utf-8">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.root{font-family:var(--font-sans);color:var(--text-primary);padding:0 0 2rem}
+.portada{background:#085041;border-radius:12px;padding:1.25rem 1.5rem 1rem;margin-bottom:1.25rem}
+.portada-sup{font-size:11px;font-weight:500;color:#5DCAA5;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.35rem}
+.portada-title{font-size:20px;font-weight:500;color:#fff;line-height:1.3;margin-bottom:.25rem}
+.portada-sub{font-size:12px;color:#9FE1CB;line-height:1.55;margin-bottom:.75rem}
+.dest-box{background:#1D9E75;border-radius:8px;padding:.55rem .85rem;margin-bottom:.85rem}
+.dest-lbl{font-size:9px;font-weight:500;color:#9FE1CB;letter-spacing:.07em;text-transform:uppercase;margin-bottom:3px}
+.dest-txt{font-size:12px;color:#fff;line-height:1.5}
+.portada-pills{display:flex;flex-wrap:wrap;gap:5px}
+.portada-pill{font-size:11px;font-weight:500;padding:2px 9px;border-radius:99px;background:#1D9E75;color:#fff}
+.nav{display:flex;gap:6px;margin-bottom:1.25rem;flex-wrap:wrap}
+.btn{border:0.5px solid var(--border-strong);background:var(--surface-2);border-radius:8px;padding:7px 14px;cursor:pointer;font-size:12px;font-family:var(--font-sans);color:var(--text-secondary);transition:background .15s}
+.btn:hover{background:var(--surface-1)}
+.btn.on{border:2px solid #1D9E75;background:#E1F5EE;color:#085041;font-weight:500}
+.card{border-radius:12px;border:0.5px solid var(--border);background:var(--surface-2);overflow:hidden;display:none}
+.card.active{display:block}
+.ch{padding:.85rem 1.1rem .7rem;border-bottom:0.5px solid var(--border)}
+.cn{display:inline-block;font-size:11px;font-weight:500;padding:2px 9px;border-radius:99px;margin-bottom:.5rem;background:#E1F5EE;color:#085041}
+.ct{font-size:16px;font-weight:500;line-height:1.3;margin-bottom:.2rem;color:#085041}
+.cs{font-size:11px;color:var(--text-secondary);line-height:1.45}
+.cb{padding:.85rem 1.1rem}
+.mf{border-left:3px solid #1D9E75;background:#E1F5EE;padding:.65rem .9rem;margin-bottom:.9rem}
+.mf-lbl{font-size:9px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:#0F6E56;margin-bottom:3px}
+.mf-txt{font-size:14px;font-weight:500;line-height:1.5;font-family:var(--font-voice);color:#085041}
+.pl{font-size:9px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.4rem}
+.pts{list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:.9rem}
+.pts li{display:flex;gap:9px;font-size:12px;color:var(--text-secondary);line-height:1.55}
+.dot{width:18px;min-width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:500;margin-top:1px;background:#E1F5EE;color:#085041}
+.act{background:#E1F5EE;border-radius:8px;padding:.65rem .85rem;margin-bottom:6px}
+.act-title{font-size:11px;font-weight:500;color:#085041;margin-bottom:3px}
+.act-body{font-size:12px;color:#0F6E56;line-height:1.5}
+.cita{border-radius:7px;padding:.65rem .85rem;background:#E1F5EE;margin-top:.85rem}
+.cita-lbl{font-size:9px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:#0F6E56;margin-bottom:3px}
+.cita-txt{font-size:11px;line-height:1.6;font-family:var(--font-voice);font-style:italic;color:#085041}
+.cita-ref{font-size:10px;margin-top:3px;font-style:normal;font-weight:500;color:#0F6E56}
+.ac-box{border-left:3px solid #1D9E75;background:var(--surface-1);padding:.65rem .85rem;margin-top:.85rem}
+.ac-lbl{font-size:9px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:#0F6E56;margin-bottom:3px}
+.ac-txt{font-size:12px;color:var(--text-secondary);line-height:1.55}
+.ref{font-size:10px;color:var(--text-muted);font-style:italic;margin-top:.75rem;padding-top:.6rem;border-top:0.5px solid var(--border)}
+</style>
+<h2 class="sr-only">Itinerario 1: La llaga como punto de partida. Epistemología ascendente y Ver–Juzgar–Actuar como método de vida pastoral.</h2>
+<div class="root">
+<div class="portada">
+  <p class="portada-sup">Itinerario formativo 1 · PLAPA — CELAM 2026</p>
+  <h1 class="portada-title">La llaga como punto de partida</h1>
+  <p class="portada-sub">Epistemología ascendente y Ver–Juzgar–Actuar como método de vida pastoral · 4 módulos</p>
+  <div class="dest-box">
+    <div class="dest-lbl">Destinatarios</div>
+    <div class="dest-txt">Todo agente pastoral sin distinción de perfil ni experiencia previa: voluntarios de base, catequistas, animadores juveniles, referentes parroquiales. Es el itinerario de entrada al método de la PLAPA y no requiere formación técnica previa. Sirve también como introducción para equipos que van a facilitar otros itinerarios.</div>
+  </div>
+  <div class="portada-pills">
+    <span class="portada-pill">§2.1–2.2</span>
+    <span class="portada-pill">Todo perfil</span>
+    <span class="portada-pill">4 sesiones</span>
+    <span class="portada-pill">Nivel inicial</span>
+  </div>
+</div>
+<div class="nav">
+  <button class="btn on" onclick="show(1,this)">Módulo 1 · El Ver</button>
+  <button class="btn" onclick="show(2,this)">Módulo 2 · El Juzgar</button>
+  <button class="btn" onclick="show(3,this)">Módulo 3 · El Actuar</button>
+  <button class="btn" onclick="show(4,this)">Módulo 4 · Síntesis y revisión de vida</button>
+</div>
+<div id="m1" class="card active" style="border-left:5px solid #1D9E75">
+  <div class="ch"><span class="cn">Módulo 1 · El Ver</span><div class="ct">Observar no es recolectar datos: es recibir en el corazón</div><div class="cs">La realidad como punto de partida teológico · §1.1, §2.1, §4 (introducción)</div></div>
+  <div class="cb">
+    <div class="mf"><div class="mf-lbl">Mensaje fuerza</div><div class="mf-txt">"Observar es ante todo un acto de recepción: recibir en el corazón y dejarse conmover por el rostro sufriente de quienes habitan las periferias."</div></div>
+    <div class="pl">El Ver — Realidad</div>
+    <ul class="pts">
+      <li><span class="dot">V</span><span>La mayoría de los agentes llegan al territorio con respuestas ya preparadas. La epistemología ascendente invierte esto: primero se escucha, después se pregunta, al final se propone. El saber que no nació de la llaga llega tarde y llega desde afuera.</span></li>
+      <li><span class="dot">V</span><span>El diagnóstico del manual es sinodal: no estadístico ni académico, sino formado por las percepciones convergentes de 300 agentes pastorales de 18 países. «La mirada sinodal tiene una autoridad propia que no necesita disfrazarse de dato técnico para ser escuchada» (§2.2).</span></li>
+    </ul>
+    <div class="pl">El Juzgar — Iluminación</div>
+    <ul class="pts">
+      <li><span class="dot">J</span><span>La epistemología descendente impone teorías desde arriba y termina fragmentando la realidad del sujeto. La ascendente «integra las piezas de la vida rota para recomponer la dignidad, en lugar de analizar al individuo como un objeto dividido en categorías» (§2.1).</span></li>
+      <li><span class="dot">J</span><span>El modelo de Emaús ilumina el Ver: «Al igual que Jesús caminó con los discípulos desorientados, la Iglesia debe caminar con la persona en situación de dependencia, acompañarla en su realidad sin juzgarla de entrada» (§5.9.4).</span></li>
+    </ul>
+    <div class="pl">El Actuar — Propuesta</div>
+    <div class="act"><div class="act-title">Ejercicio de escucha territorial</div><div class="act-body">Salir en duplas al barrio o al ámbito de trabajo. No intervenir: solo observar y anotar. Al volver: ¿qué me llamó la atención? ¿qué me movió por dentro? ¿qué pregunta me quedó? Las preguntas que surgen son el primer material de trabajo.</div></div>
+    <div class="act"><div class="act-title">La pregunta antes que la respuesta</div><div class="act-body">Cada participante formula una pregunta que le genera el territorio que camina. El grupo escucha sin responder. El facilitador ayuda a identificar qué dimensión toca cada pregunta: ¿el barrio? ¿la familia? ¿la biología? ¿el espíritu?</div></div>
+    <div class="cita"><div class="cita-lbl">Cita inspiradora · §1.1</div><div class="cita-txt">"No es un texto elaborado desde un escritorio, sino una herramienta que brota del contacto con la realidad y de una reflexión pastoral que nace desde el pueblo y con el pueblo."</div><div class="cita-ref">Manual de la PLAPA, §1.1 — Presentación (CELAM 2026)</div></div>
+    <div class="ac-box"><div class="ac-lbl">Autocuidado del agente</div><div class="ac-txt">El primer contacto profundo con el territorio puede generar impacto emocional: tristeza, rabia, impotencia. Cerrar la sesión con un momento de silencio y palabra libre: ¿qué me generó ver esto? No hay respuestas correctas. El agente que no procesa lo que ve termina construyendo muros, no puentes.</div></div>
+    <div class="ref">Referencias: §1.1, §2.1, §2.2, §4 (introducción), §5.9.4 — Manual de la PLAPA, CELAM 2026</div>
+  </div>
+</div>
+<div id="m2" class="card" style="border-left:5px solid #1D9E75">
+  <div class="ch"><span class="cn">Módulo 2 · El Juzgar</span><div class="ct">Las preguntas suben desde el barro; las respuestas se ordenan con rigor</div><div class="cs">El discernimiento como ascenso desde la llaga a la teoría · §2.2, §Juzgar (introducción)</div></div>
+  <div class="cb">
+    <div class="mf"><div class="mf-lbl">Mensaje fuerza</div><div class="mf-txt">"Las preguntas suben desde el barro del territorio; las respuestas se ordenan con el rigor de una tradición intelectual que la Iglesia ha probado durante siglos."</div></div>
+    <div class="pl">El Ver — Realidad</div>
+    <ul class="pts">
+      <li><span class="dot">V</span><span>Con frecuencia el agente siente que «no sabe lo suficiente» para discernir. El manual muestra que el Juzgar no empieza en los libros sino en las preguntas que el territorio le genera. El método escolástico llega después: organiza lo que ya se vio y se vivió (§2.2).</span></li>
+      <li><span class="dot">V</span><span>El Juzgar del manual está construido en función de las preguntas que surgen en el corazón y en la práctica cotidiana del agente pastoral. Cada artículo nació de una tensión real que los agentes llevaron a las reuniones sinodales.</span></li>
+    </ul>
+    <div class="pl">El Juzgar — Iluminación</div>
+    <ul class="pts">
+      <li><span class="dot">J</span><span>El Juzgar tiene cuatro dimensiones que ascienden desde lo más visible a lo más profundo: ser social → espíritu humano → psiquis → organismo. «La droga no es el centro del problema, sino el síntoma final y visible de fracturas mucho más profundas» (§Juzgar, introducción).</span></li>
+      <li><span class="dot">J</span><span>«No podemos discernir el daño biológico de la sustancia sin considerar la dignidad ontológica del espíritu que la habita. El ser humano es un espíritu encarnado» (§Juzgar, introducción). Juzgar bien exige no fragmentar al sujeto en categorías estancas.</span></li>
+    </ul>
+    <div class="pl">El Actuar — Propuesta</div>
+    <div class="act"><div class="act-title">Del territorio a la pregunta escolástica</div><div class="act-body">Tomando las preguntas surgidas en el Módulo 1, el grupo aprende a formularlas en la estructura del manual: «¿Es válido que…?» → plantea objeciones → busca el criterio de discernimiento → responde. Se practica con un caso real del territorio de cada participante.</div></div>
+    <div class="act"><div class="act-title">Las cuatro dimensiones como mapa</div><div class="act-body">Con la historia de Marcelo (introducción al Actuar), el grupo ubica cada elemento de la situación en una de las cuatro dimensiones. ¿Qué es social? ¿Espiritual? ¿Psíquico? ¿Biológico? La persona siempre aparece como unidad.</div></div>
+    <div class="cita"><div class="cita-lbl">Cita inspiradora · §Juzgar (introducción)</div><div class="cita-txt">"Tras haber recibido la realidad de nuestros pueblos en la etapa anterior, entramos ahora en un proceso de iluminación donde buscamos comprender la naturaleza del problema en todas sus dimensiones para orientar nuestra respuesta."</div><div class="cita-ref">Manual de la PLAPA, introducción al Juzgar (CELAM 2026)</div></div>
+    <div class="ac-box"><div class="ac-lbl">Autocuidado del agente</div><div class="ac-txt">El Juzgar puede generar la sensación de que «todavía falta mucho por saber». El manual no pide que el agente sea experto en todas las dimensiones, sino que sepa cuándo derivar y hacia dónde. El que juzga bien no es el que más sabe, sino el que sabe qué preguntas hacerse.</div></div>
+    <div class="ref">Referencias: §2.1–2.2, §Juzgar (introducción) — Manual de la PLAPA, CELAM 2026</div>
+  </div>
+</div>
+<div id="m3" class="card" style="border-left:5px solid #1D9E75">
+  <div class="ch"><span class="cn">Módulo 3 · El Actuar</span><div class="ct">El Actuar no es un protocolo: es una mirada encarnada cada vez de nuevo</div><div class="cs">La verificación del método en la carne de la historia real · §Actuar (introducción), §11.1</div></div>
+  <div class="cb">
+    <div class="mf"><div class="mf-lbl">Mensaje fuerza</div><div class="mf-txt">"Un manual que pudiera decirle al agente exactamente qué hacer en cada situación no lo estaría formando, lo estaría reemplazando. Lo que este manual ofrece es una mirada capaz de ver al otro como un ser completo, roto pero no muerto."</div></div>
+    <div class="pl">El Ver — Realidad</div>
+    <ul class="pts">
+      <li><span class="dot">V</span><span>Muchos agentes esperan que el manual les dé el protocolo correcto. El diagnóstico real es que ningún protocolo puede reemplazar la presencia encarnada. El Actuar ofrece propuestas, experiencias y criterios —no recetas— porque la situación de cada persona es irreducible a un trámite.</span></li>
+      <li><span class="dot">V</span><span>La historia de Marcelo muestra un Actuar que no siguió ningún protocolo: siguió el vínculo. «Nadie le aplicó un protocolo. Hubo una silla, un plato de comida, alguien que empezó a acordarse de su nombre» (introducción al Actuar).</span></li>
+    </ul>
+    <div class="pl">El Juzgar — Iluminación</div>
+    <ul class="pts">
+      <li><span class="dot">J</span><span>«Allí, en la parroquia, en la escuela, en la cárcel, en la calle, el agente descubrirá que los criterios aprendidos necesitan ser encarnados cada vez de nuevo, en cada persona, en cada momento. Eso no es una debilidad del método: es su mayor virtud» (§Actuar, introducción).</span></li>
+      <li><span class="dot">J</span><span>El Actuar cierra el ciclo y lo vuelve a abrir: lo que se hace en el territorio genera nuevas preguntas que retroalimentan el Ver y el Juzgar. El método VJA no es lineal sino espiral.</span></li>
+    </ul>
+    <div class="pl">El Actuar — Propuesta</div>
+    <div class="act"><div class="act-title">Diseñar un pequeño actuar territorial</div><div class="act-body">Cada participante (o dupla) diseña una acción concreta y acotada para las próximas dos semanas: una visita, una escucha, un gesto, un recurso compartido. Debe ser pequeño y verificable. Se anota en el cuaderno colectivo y se revisa en la próxima sesión.</div></div>
+    <div class="act"><div class="act-title">Revisión del ciclo VJA en un caso propio</div><div class="act-body">Cada participante trae un caso real (anonimizado) y lo recorre: ¿Qué vi? ¿Qué discerní? ¿Qué hice? ¿Qué generó ese hacer? ¿Qué nueva pregunta emergió? El grupo acompaña sin juzgar, ofreciendo solo preguntas que ayuden a profundizar.</div></div>
+    <div class="cita"><div class="cita-lbl">Cita inspiradora · §Actuar (introducción)</div><div class="cita-txt">"Todo lo que se ha iluminado en esta parte del manual —la dignidad, la libertad, el vínculo, el trauma, la biología, el espíritu— converge en un solo gesto pastoral: el de quedarse al lado sin soltar."</div><div class="cita-ref">Manual de la PLAPA, introducción al Actuar (CELAM 2026)</div></div>
+    <div class="ac-box"><div class="ac-lbl">Autocuidado del agente</div><div class="ac-txt">El Actuar puede generar frustración cuando los resultados no aparecen. «Si no descubrimos la luz en el camino, entonces tarde o temprano la frustración nos ganará» (§1.3). El antídoto no es el éxito del otro, sino la fidelidad al gesto. El agente que cuida su esperanza puede sostener la del otro.</div></div>
+    <div class="ref">Referencias: §Actuar (introducción), historia de Marcelo, §1.3, §11.1 — Manual de la PLAPA, CELAM 2026</div>
+  </div>
+</div>
+<div id="m4" class="card" style="border-left:5px solid #1D9E75">
+  <div class="ch"><span class="cn">Módulo 4 · Síntesis y revisión de vida</span><div class="ct">El método como forma permanente de ser agente pastoral</div><div class="cs">Integrar el VJA en la vida cotidiana del equipo · §2.2, §13.2–13.6</div></div>
+  <div class="cb">
+    <div class="mf"><div class="mf-lbl">Mensaje fuerza</div><div class="mf-txt">"Lo que este manual propone no es un método para aplicar de vez en cuando. Es una forma de mirar, de escuchar y de actuar que el agente encarna hasta que se vuelve segunda naturaleza."</div></div>
+    <div class="pl">El Ver — Realidad</div>
+    <ul class="pts">
+      <li><span class="dot">V</span><span>La mayoría de los equipos actúan sin reflexionar sobre su propio método. La epistemología ascendente propone detenerse a preguntar qué generó el contacto con la realidad, antes de medir resultados.</span></li>
+      <li><span class="dot">V</span><span>El rolling release del manual es la misma lógica a escala institucional: el manual se actualiza porque quienes lo usan siguen generando preguntas desde el territorio. Los agentes no son usuarios del método; son co-autores de sus próximas versiones (§13.3).</span></li>
+    </ul>
+    <div class="pl">El Juzgar — Iluminación</div>
+    <ul class="pts">
+      <li><span class="dot">J</span><span>La sinodalidad en la práctica (§13.2) es el VJA aplicado al equipo: ver juntos, juzgar juntos, actuar juntos con criterios compartidos. Ningún agente debería hacer este recorrido solo. El método es comunitario por naturaleza.</span></li>
+      <li><span class="dot">J</span><span>La revisión de vida es la forma histórica que la Iglesia latinoamericana encontró para institucionalizar el VJA. El agente que la practica regularmente no necesita «aplicar el método»: lo vive.</span></li>
+    </ul>
+    <div class="pl">El Actuar — Propuesta</div>
+    <div class="act"><div class="act-title">Revisión de vida en equipo (mensual)</div><div class="act-body">El grupo instituye un encuentro mensual con la estructura VJA: ¿Qué vimos este mes? ¿Qué nos iluminó o desconcertó? ¿Qué hicimos y qué generó? ¿Qué pregunta nueva emergió? Facilitador rotativo. El cuaderno colectivo es la memoria del equipo.</div></div>
+    <div class="act"><div class="act-title">Compromiso personal y comunitario</div><div class="act-body">Cada participante escribe: una pregunta que se lleva del itinerario, un gesto concreto que va a sostener, y una persona del equipo a quien va a acompañar cuando llegue la frustración. Se guarda y se retoma en el próximo encuentro mensual.</div></div>
+    <div class="act"><div class="act-title">Contribuir al rolling release</div><div class="act-body">El equipo identifica al menos una situación territorial que el manual no cubre o cubre insuficientemente. La formula como pregunta y la envía al equipo curador de la PLAPA. El itinerario formativo se convierte así en aporte continental (§13.5–13.6).</div></div>
+    <div class="cita"><div class="cita-lbl">Cita inspiradora · §13.2</div><div class="cita-txt">"La red continental de la PLAPA es simultáneamente la garantía de que ningún territorio quede solo y el laboratorio donde se prueban nuevas respuestas."</div><div class="cita-ref">Manual de la PLAPA, §13.2 — Un Manual Abierto (CELAM 2026)</div></div>
+    <div class="ac-box"><div class="ac-lbl">Autocuidado del agente — cierre del itinerario</div><div class="ac-txt">El itinerario termina; el método no. El agente que practica VJA regularmente desarrolla una resiliencia distinta: no porque tenga más respuestas, sino porque confía más en sus preguntas. Cerrar con una oración o momento de silencio donde cada participante nombre algo por lo que está agradecido de este recorrido.</div></div>
+    <div class="ref">Referencias: §2.2, §13.2–13.3, §13.5–13.6 — Manual de la PLAPA, CELAM 2026</div>
+  </div>
+</div>
+</div>
+<script>
+function show(n,btn){
+  for(let i=1;i<=4;i++) document.getElementById('m'+i).classList.remove('active');
+  document.querySelectorAll('.btn').forEach(b=>b.classList.remove('on'));
+  document.getElementById('m'+n).classList.add('active');
+  btn.classList.add('on');
+}
+</script>

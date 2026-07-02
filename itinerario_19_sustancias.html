@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Itinerario 19 · Sustancias específicas · PLAPA 2026</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Georgia,'Times New Roman',serif;background:#f5f3ee;color:#222;min-height:100vh;padding:0 0 3rem}
+  .portada{background:#412402;padding:2rem 2.5rem 1.5rem;color:#fff}
+  .portada-sup{font-size:11px;font-weight:700;color:#EF9F27;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem;font-family:Arial,sans-serif}
+  .portada-title{font-size:26px;font-weight:700;line-height:1.25;margin-bottom:.35rem}
+  .portada-sub{font-size:13px;color:#FAC775;line-height:1.55;margin-bottom:1rem}
+  .dest-box{background:#6B3A08;border-radius:6px;padding:.7rem 1rem;margin-bottom:1rem}
+  .dest-lbl{font-size:9px;font-weight:700;color:#FAC775;letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px;font-family:Arial,sans-serif}
+  .dest-txt{font-size:12px;color:#fff;line-height:1.55}
+  .pills{display:flex;flex-wrap:wrap;gap:5px}
+  .pill{font-size:10px;font-weight:700;padding:3px 10px;border-radius:99px;background:#6B3A08;color:#FAEEDA;font-family:Arial,sans-serif}
+  .nav{display:flex;background:#fff;border-bottom:2px solid #BA7517;flex-wrap:wrap}
+  .tab{padding:12px 20px;cursor:pointer;font-size:12px;font-family:Arial,sans-serif;color:#666;border:none;background:none;font-weight:600;letter-spacing:.03em;border-bottom:3px solid transparent;margin-bottom:-2px}
+  .tab:hover{color:#412402;background:#FFF8EE}
+  .tab.on{color:#412402;border-bottom-color:#BA7517;background:#FFF8EE}
+  .mod{display:none;max-width:900px;margin:0 auto;padding:2rem 2.5rem}
+  .mod.a{display:block}
+  .mod-header{margin-bottom:1.5rem}
+  .mod-tag{display:inline-block;font-size:10px;font-weight:700;padding:3px 10px;border-radius:99px;background:#FAEEDA;color:#412402;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.5rem;font-family:Arial,sans-serif}
+  .mod-title{font-size:20px;font-weight:700;color:#412402;line-height:1.3;margin-bottom:.3rem}
+  .mod-sub{font-size:12px;color:#888;font-family:Arial,sans-serif}
+  .mf{border-left:4px solid #BA7517;background:#FFF8EE;padding:.8rem 1.1rem;margin-bottom:1.25rem;border-radius:0 6px 6px 0}
+  .mf-lbl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#854F0B;margin-bottom:4px;font-family:Arial,sans-serif}
+  .mf-txt{font-size:14px;font-style:italic;line-height:1.6;color:#412402}
+  .sec-lbl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#999;margin:1.1rem 0 .5rem;font-family:Arial,sans-serif}
+  .puntos{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:1rem}
+  .puntos li{display:flex;gap:10px;font-size:13px;color:#333;line-height:1.6}
+  .dot{width:20px;min-width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;margin-top:2px;background:#FAEEDA;color:#412402;font-family:Arial,sans-serif}
+  .actividad{background:#FFF8EE;border-radius:6px;padding:.75rem 1rem;margin-bottom:6px;border:1px solid #F0D4A0}
+  .act-title{font-size:12px;font-weight:700;color:#412402;margin-bottom:4px;font-family:Arial,sans-serif}
+  .act-body{font-size:12.5px;color:#633806;line-height:1.55}
+  .cita{background:#FFF8EE;border-radius:6px;padding:.8rem 1.1rem;margin-top:1.2rem;border-left:3px solid #BA7517}
+  .cita-lbl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#854F0B;margin-bottom:4px;font-family:Arial,sans-serif}
+  .cita-txt{font-size:12px;font-style:italic;line-height:1.6;color:#412402}
+  .cita-ref{font-size:10px;font-style:normal;font-weight:700;color:#854F0B;margin-top:3px;font-family:Arial,sans-serif}
+  .autocuidado{border-left:3px solid #BA7517;background:#f9f7f2;padding:.75rem 1rem;margin-top:1.2rem}
+  .auto-lbl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#854F0B;margin-bottom:4px;font-family:Arial,sans-serif}
+  .auto-txt{font-size:12.5px;color:#555;line-height:1.55}
+  .ref{font-size:10px;color:#aaa;font-style:italic;margin-top:1rem;padding-top:.75rem;border-top:1px solid #e5e0d8;font-family:Arial,sans-serif}
+  /* Grillas */
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:1.1rem}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1.1rem}
+  .g-item{background:#FFF8EE;border-radius:6px;padding:.6rem .75rem;border:1px solid #F0D4A0}
+  .g-title{font-size:11px;font-weight:700;color:#412402;margin-bottom:3px;font-family:Arial,sans-serif}
+  .g-body{font-size:11px;color:#633806;line-height:1.4}
+  .alerta{background:#FFF0ED;border-left:3px solid #D85A30;border-radius:0 6px 6px 0;padding:.6rem .9rem;margin-bottom:.9rem}
+  .alerta-lbl{font-size:9px;font-weight:700;color:#993C1D;letter-spacing:.07em;text-transform:uppercase;margin-bottom:3px;font-family:Arial,sans-serif}
+  .alerta-txt{font-size:12px;color:#4A1B0C;line-height:1.5}
+  @media print{.nav{display:none}.mod{display:block!important;page-break-before:always}}
+  @media(max-width:600px){.grid3{grid-template-columns:1fr 1fr}.mod{padding:1.2rem 1rem}.portada{padding:1.2rem}}
+</style>
+</head>
+<body>
+
+<div class="portada">
+  <p class="portada-sup">Itinerario formativo 19 · PLAPA — CELAM 2026</p>
+  <h1 class="portada-title">Sustancias específicas: lo que el agente necesita saber</h1>
+  <p class="portada-sub">Cannabis, alcohol, NSP, fentanilo y vapers: baja percepción de riesgo y pastoral diferenciada · 4 módulos</p>
+  <div class="dest-box">
+    <div class="dest-lbl">Destinatarios</div>
+    <div class="dest-txt">Agentes pastorales que acompañan personas en situación de consumo y necesitan conocimientos básicos sobre las sustancias presentes en el territorio. Educadores y catequistas que trabajan prevención en escuelas. No requiere formación médica: el itinerario traduce el §9.1 al lenguaje del territorio con las precisiones que el manual propone como indispensables para el acompañamiento informado.</div>
+  </div>
+  <div class="pills">
+    <span class="pill">§9.1.1–9.1.5</span>
+    <span class="pill">Agentes y educadores</span>
+    <span class="pill">4 sesiones</span>
+    <span class="pill">Nivel inicial–intermedio</span>
+  </div>
+</div>
+
+<div class="nav">
+  <button class="tab on" onclick="show(1,this)">Módulo 1 · Las siete familias</button>
+  <button class="tab" onclick="show(2,this)">Módulo 2 · Cannabis y baja percepción</button>
+  <button class="tab" onclick="show(3,this)">Módulo 3 · NSP, fentanilo y vapers</button>
+  <button class="tab" onclick="show(4,this)">Módulo 4 · Alcohol y pastoral diferenciada</button>
+</div>
+
+<!-- MÓDULO 1 -->
+<div id="m1" class="mod a">
+  <div class="mod-header">
+    <span class="mod-tag">Módulo 1 · El Ver</span>
+    <h2 class="mod-title">Las siete familias de sustancias: un mapa de orientación, no un manual de farmacología</h2>
+    <p class="mod-sub">Clasificación funcional según el efecto en el sistema nervioso central · §9.1.1, §9.1.2</p>
+  </div>
+
+  <div class="mf">
+    <div class="mf-lbl">Mensaje fuerza</div>
+    <div class="mf-txt">"Una sustancia psicoactiva es cualquier compuesto químico que afecta al sistema nervioso central modificando el comportamiento, la percepción o el estado de ánimo. La psicoactividad es un criterio biológico, no jurídico. El organismo no diferencia entre licitud o ilicitud."</div>
+  </div>
+
+  <div class="grid3">
+    <div class="g-item"><div class="g-title">Estimulantes</div><div class="g-body">Cocaína, anfetaminas, nicotina, cafeína. Aumentan alerta, energía y euforia. Elevan frecuencia cardíaca.</div></div>
+    <div class="g-item"><div class="g-title">Depresores</div><div class="g-body">Alcohol, benzodiacepinas, barbitúricos. Disminuyen actividad del SNC. Relajación, somnolencia, lentitud de reflejos.</div></div>
+    <div class="g-item"><div class="g-title">Opioides</div><div class="g-body">Morfina, heroína, fentanilo, codeína. Bloquean el dolor. Alto potencial adictivo. Riesgo de muerte por depresión respiratoria.</div></div>
+    <div class="g-item"><div class="g-title">Alucinógenos</div><div class="g-body">LSD, psilocibina (hongos), mescalina (peyote). Distorsiones sensoriales profundas. Alteran pensamiento y estado de ánimo.</div></div>
+    <div class="g-item"><div class="g-title">Disociativos</div><div class="g-body">Ketamina, PCP. Sensación de separación mente-cuerpo, analgesia y despersonalización.</div></div>
+    <div class="g-item"><div class="g-title">Empatógenos</div><div class="g-body">MDMA (éxtasis), MDA. Empatía emocional intensa, sociabilidad. Liberación masiva de serotonina.</div></div>
+    <div class="g-item" style="grid-column:1/-1"><div class="g-title">Cannabinoides</div><div class="g-body">Cannabis (THC). Relajación, alteración de memoria y percepción del tiempo. Efectos cruzados: simultáneamente depresor, estimulante suave y levemente alucinógeno según dosis y variedad. Esta complejidad explica por qué se lo subestima.</div></div>
+  </div>
+
+  <p class="sec-lbl">El Ver — Realidad</p>
+  <ul class="puntos">
+    <li><span class="dot">V</span><span>"Ninguna categoría es un compartimiento hermético. Muchas sustancias producen efectos que cruzan las fronteras de una sola categoría" (§9.1.2). El cannabis produce simultáneamente efectos depresores, estimulantes y levemente alucinógenos. Esa complejidad farmacológica es una de las razones por las que se lo subestima: su perfil polifacético alimenta la percepción errónea de que es una sustancia "suave."</span></li>
+    <li><span class="dot">V</span><span>"El alcohol es responsable de aproximadamente 2,6 millones de muertes anuales en el mundo (4,7% de todas las defunciones), superando el impacto sanitario de muchas drogas ilícitas" (§9.1.5). El agente que conoce esta cifra puede acompañar conversaciones sobre sustancias sin reproducir el sesgo social que naturaliza el alcohol y demoniza el cannabis.</span></li>
+    <li><span class="dot">V</span><span>La distinción legal/ilegal no determina el nivel de daño biológico: la psicoactividad es un criterio de la farmacología, no del derecho. El organismo metaboliza las sustancias según su composición química, no según su estatus jurídico (§9.1.5).</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Juzgar — Iluminación</p>
+  <ul class="puntos">
+    <li><span class="dot">J</span><span>"Lo que el agente pastoral y el profesional necesitan no es memorizar categorías rígidas, sino comprender que cada grupo indica un perfil predominante de riesgo y de daño que orienta la respuesta" (§9.1.2). Un hermano que consume un depresor enfrenta peligros distintos a quien consume un estimulante: esa diferencia tiene consecuencias prácticas directas para el acompañamiento y la articulación con salud.</span></li>
+    <li><span class="dot">J</span><span>La Tríada de Zinberg (sujeto–sustancia–contexto) es el principio integrador: "la experiencia concreta de consumo depende siempre de la interacción entre el sujeto, la sustancia y el contexto" (§9.1.2). El problema no es solo la sustancia, sino el vínculo que el sujeto establece con ella para llenar vacíos o anestesiar una vida percibida como insoportable.</span></li>
+    <li><span class="dot">J</span><span>Los opioides se clasifican en categoría propia (separada de los depresores generales) porque actúan sobre un sistema de receptores específico (mu, kappa, delta) y porque su riesgo clínico —la crisis respiratoria por sobredosis— demanda protocolos de emergencia diferenciados como la administración de naloxona (§9.1.2). Ese dato tiene valor práctico directo para los equipos territoriales.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Actuar — Propuesta</p>
+  <div class="actividad"><div class="act-title">¿Qué sustancias están presentes en nuestro territorio?</div><div class="act-body">El grupo mapea las sustancias más frecuentes en el territorio concreto: ¿cuáles circulan? ¿a qué edades aparecen? ¿cuáles son visibles y cuáles silenciosas? ¿hay nuevas sustancias que el equipo no reconoce? El mapa territorial de sustancias es el punto de partida de cualquier prevención informada y de cualquier conversación con servicios de salud.</div></div>
+  <div class="actividad"><div class="act-title">La Tríada de Zinberg aplicada a un caso real</div><div class="act-body">El grupo practica con un caso del territorio (anonimizado): ¿cuál es la sustancia? ¿quién es el sujeto (historia, vulnerabilidades, fortalezas)? ¿cuál es el contexto (barrio, familia, presiones)? La misma sustancia en distinto sujeto y contexto produce efectos y riesgos completamente diferentes. El acompañamiento pastoral es siempre sobre la tríada, no solo sobre la molécula.</div></div>
+  <div class="actividad"><div class="act-title">La diferencia entre medicamento y sustancia psicoactiva</div><div class="act-body">El grupo trabaja la distinción del §9.1.1: la mayoría de los medicamentos comunes son hidrosolubles y no atraviesan la barrera hematoencefálica; las SPA son liposolubles y sí la atraviesan. Practicar la explicación para un familiar que pregunta: "¿Por qué el médico puede darle morfina y eso está bien, pero la heroína es un problema?" La respuesta precisa refuerza la credibilidad del agente en el diálogo con familias.</div></div>
+
+  <div class="cita">
+    <div class="cita-lbl">Cita inspiradora · §9.1.2</div>
+    <div class="cita-txt">"Quien ha experimentado el malestar de un día sin café comprende, en escala menor, el mismo mecanismo biológico que subyace a toda dependencia. Es esa experiencia cotidiana la que puede convertirse en una puerta de empatía hacia quienes acompañamos."</div>
+    <div class="cita-ref">Manual de la PLAPA, §9.1.2 — Clasificación funcional (CELAM 2026)</div>
+  </div>
+
+  <div class="autocuidado">
+    <div class="auto-lbl">Autocuidado del agente</div>
+    <div class="auto-txt">La frase del café del §9.1.2 es la puerta de empatía más accesible de todo el capítulo. El agente que reconoce su propia micro-dependencia —café, nicotina, alcohol social— sin dramatizarla pero sin negarla tiene una conexión empírica con el proceso del hermano que ninguna clase magistral puede dar. Nombrar eso con el equipo no es equipararse con quien consume heroína: es desarrollar la empatía biológica que hace al acompañamiento más auténtico y menos juzgador.</div>
+  </div>
+  <p class="ref">Referencias: §9.1.1, §9.1.2 — Manual de la PLAPA, CELAM 2026</p>
+</div>
+
+<!-- MÓDULO 2 -->
+<div id="m2" class="mod">
+  <div class="mod-header">
+    <span class="mod-tag">Módulo 2 · El Juzgar</span>
+    <h2 class="mod-title">Cannabis y baja percepción de riesgo: la más consumida y más subestimada</h2>
+    <p class="mod-sub">Por qué la percepción social contradice la evidencia científica · §9.1.4</p>
+  </div>
+
+  <div class="mf">
+    <div class="mf-lbl">Mensaje fuerza</div>
+    <div class="mf-txt">"El cannabis es la sustancia ilícita de mayor consumo en América Latina, especialmente entre adolescentes. Su origen vegetal y los procesos de legalización han instalado la percepción de que es inofensiva. Esta percepción constituye hoy uno de los principales obstáculos para la prevención efectiva."</div>
+  </div>
+
+  <div class="alerta">
+    <div class="alerta-lbl">Dato clave · §9.1.4</div>
+    <div class="alerta-txt">La concentración de THC en las variedades actuales puede ser hasta <strong>diez veces superior</strong> a la de décadas anteriores, haciendo obsoletas las comparaciones con el consumo histórico. El 9% de los consumidores desarrolla un Trastorno por Uso de Cannabis; ese porcentaje asciende al <strong>17% en quienes inician en la adolescencia</strong>. El cerebro no completa su maduración hasta los 25 años: el cannabis interfiere directamente con ese proceso, afectando memoria, atención y regulación emocional.</div>
+  </div>
+
+  <p class="sec-lbl">El Ver — Realidad</p>
+  <ul class="puntos">
+    <li><span class="dot">V</span><span>El §9.1.4 identifica cinco fuentes de la baja percepción de riesgo: (1) "es una planta, no una droga" (naturalización); (2) "no genera dependencia real" (confusión entre dependencia física y psicológica); (3) "si se legalizó es porque no hace daño" (confusión entre legalización y seguridad); (4) "es menos dañina que el alcohol" (comparación que no disminuye el riesgo de ninguna de las dos); (5) "el uso medicinal avala su inocuidad" (confusión entre CBD terapéutico y THC recreativo). Las cinco son comprensibles; las cinco están refutadas por la evidencia.</span></li>
+    <li><span class="dot">V</span><span>El §9.1.4 describe el síndrome amotivacional: "El consumo regular de cannabis está asociado a un aumento de la ansiedad, la depresión y una pérdida progresiva del interés en los vínculos, el estudio y los proyectos de vida." En contextos de exclusión, donde el proyecto de vida ya es frágil, ese síndrome puede ser devastador y muchas veces pasa desapercibido porque se confunde con "la personalidad del pibe."</span></li>
+    <li><span class="dot">V</span><span>El riesgo de psicosis en personas vulnerables: "El THC puede desencadenar episodios psicóticos en personas con predisposición genética —especialmente antecedentes familiares de esquizofrenia— que pueden cronificarse" (§9.1.4). El agente que no conoce ese riesgo no puede hacer las preguntas de historia familiar que permiten detectarlo antes de que ocurra.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Juzgar — Iluminación</p>
+  <ul class="puntos">
+    <li><span class="dot">J</span><span>La distinción uso medicinal vs. uso recreativo es técnica, no moral: "La medicina utiliza principalmente el cannabidiol (CBD), un componente sin efecto psicoactivo significativo, bajo prescripción controlada y en dosis precisas para condiciones específicas como la epilepsia refractaria o el dolor crónico. Equiparar ambos usos es tan inexacto como equiparar el uso médico de la morfina con el consumo callejero de heroína" (§9.1.4). El agente que conoce esa distinción puede responder a la objeción "pero es medicinal" con precisión y sin moralismo.</span></li>
+    <li><span class="dot">J</span><span>"La respuesta pastoral no debe ser el pánico sino la información clara: del mismo modo que un padre acompaña a su hijo si lo encuentra consumiendo alcohol, debe estar preparado para acompañarlo si lo encuentra consumiendo cannabis, con la misma serenidad y la misma firmeza" (§9.1.4). La serenidad y la firmeza juntas: esa es la postura que el manual propone y que la pastoral diferenciada encarna.</span></li>
+    <li><span class="dot">J</span><span>El adolescente que consume cannabis para dormir, no pensar o tolerar la ansiedad social está usando la sustancia como intento autoterapéutico de un dolor que nadie nombró. El agente pastoral que ve eso no se enfoca en la molécula: se enfoca en el dolor que la molécula estaba tapando. La pregunta no es "¿por qué consume cannabis?" sino "¿qué no puede soportar sin el cannabis?"</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Actuar — Propuesta</p>
+  <div class="actividad"><div class="act-title">¿Qué saben los jóvenes del territorio sobre el cannabis?</div><div class="act-body">El grupo mapea la percepción de riesgo del cannabis entre los adolescentes del territorio: ¿qué mitos circulan? ¿cuál de las cinco objeciones del §9.1.4 es la más frecuente en el barrio? Identificar los mitos locales es el primer paso para diseñar una prevención que los aborde directamente, sin alarmismo y con los datos precisos que el manual ofrece.</div></div>
+  <div class="actividad"><div class="act-title">Preparar la conversación con los padres sobre cannabis</div><div class="act-body">El grupo diseña los puntos clave de una conversación con padres que descubren que su hijo consume cannabis: ¿qué decirles para que no entren en pánico? ¿qué preguntas hacerles para evaluar la situación (¿cuándo empezó? ¿qué dice sentir sin el cannabis? ¿hay antecedentes familiares de psicosis?)? ¿cuándo es preocupación legítima que requiere derivación? El §9.1.4 da los datos; el agente los traduce al lenguaje de la familia concreta.</div></div>
+  <div class="actividad"><div class="act-title">Uso medicinal vs. uso recreativo: practicar la distinción</div><div class="act-body">El grupo practica en parejas la explicación de la diferencia entre CBD medicinal y THC recreativo, para poder responder con precisión cuando alguien en el territorio diga "pero el cannabis es medicinal." Sin moralismo, sin condena, con información exacta del §9.1.4. La credibilidad preventiva del agente depende de esa precisión.</div></div>
+
+  <div class="cita">
+    <div class="cita-lbl">Cita inspiradora · §9.1.4</div>
+    <div class="cita-txt">"Esta percepción de bajo riesgo constituye hoy uno de los principales obstáculos para la prevención efectiva en los territorios. La evidencia científica no respalda la percepción social dominante que lo presenta como inofensivo."</div>
+    <div class="cita-ref">Manual de la PLAPA, §9.1.4 — El cannabis y la baja percepción de riesgo (CELAM 2026)</div>
+  </div>
+
+  <div class="autocuidado">
+    <div class="auto-lbl">Autocuidado del agente</div>
+    <div class="auto-txt">El tema del cannabis puede generar tensiones en el equipo si hay miembros con posiciones muy distintas —desde "hay que prohibir todo" hasta "no es para tanto." El facilitador cuida que la conversación se base en los datos del §9.1.4, no en opiniones previas ni en experiencias personales con la sustancia. El manual no toma posición sobre la legalización: toma posición sobre la evidencia del daño, especialmente en adolescentes, y sobre la responsabilidad preventiva del agente. Esa distinción ayuda a mantener el enfoque.</div>
+  </div>
+  <p class="ref">Referencias: §9.1.4 — Manual de la PLAPA, CELAM 2026</p>
+</div>
+
+<!-- MÓDULO 3 -->
+<div id="m3" class="mod">
+  <div class="mod-header">
+    <span class="mod-tag">Módulo 3 · El Actuar</span>
+    <h2 class="mod-title">NSP, fentanilo y vapers: los riesgos que el territorio todavía no nombra</h2>
+    <p class="mod-sub">Lo que el agente necesita saber de las amenazas emergentes · §9.1.3, §9.1.5</p>
+  </div>
+
+  <div class="mf">
+    <div class="mf-lbl">Mensaje fuerza</div>
+    <div class="mf-txt">"Las NSP aparecen a razón de 500 nuevas por año. El fentanilo tiene una potencia hasta cien veces superior a la morfina. La diferencia entre la dosis deseada y la dosis letal es mínima. Los consumidores desconocen qué están ingiriendo."</div>
+  </div>
+
+  <div class="grid2">
+    <div class="g-item">
+      <div class="g-title">Nuevas Sustancias Psicoactivas (NSP)</div>
+      <div class="g-body">~500 nuevas por año. Potencia extrema, carácter impredecible, sin fiscalización inmediata. Se venden simulando ser sustancias conocidas. Los servicios de emergencia no pueden identificar el componente exacto: "cócteles químicos" que impiden el tratamiento adecuado.</div>
+    </div>
+    <div class="g-item">
+      <div class="g-title">Fentanilo y opioides sintéticos</div>
+      <div class="g-body">Potencia hasta 100 veces superior a la morfina. Adulterante oculto en heroína, cocaína y pastillas que imitan analgésicos. Margen mínimo entre dosis deseada y dosis letal. Muerte por depresión respiratoria en minutos. <strong>Naloxona como antídoto de emergencia.</strong></div>
+    </div>
+    <div class="g-item">
+      <div class="g-title">Vapers y dispositivos de nicotina</div>
+      <div class="g-body">Misma sustancia (nicotina), mismo mecanismo adictivo, marketing de bajo riesgo. Sin olor del cigarrillo tradicional: invisibiliza el consumo ante padres y docentes. Alta penetración en adolescentes. Nicotine pouches como variante más reciente.</div>
+    </div>
+    <div class="g-item">
+      <div class="g-title">Adulteración y policonsumo</div>
+      <div class="g-body">Pastillas vendidas como éxtasis o metanfetamina que contienen fentanilo. Marihuana adulterada con NSP. El riesgo del policonsumo (dos o más sustancias simultáneas) multiplica exponencialmente los daños. El hermano puede no saber lo que consumió.</div>
+    </div>
+  </div>
+
+  <p class="sec-lbl">El Ver — Realidad</p>
+  <ul class="puntos">
+    <li><span class="dot">V</span><span>"El término 'nuevas' no significa que sean inofensivas, sino que han empezado a circular recientemente y su potencial adictivo es poco conocido. El hecho de que no estén sujetas a fiscalización internacional inmediata es un desafío legal, pero no disminuye su toxicidad real" (§9.1.3). El agente que no conoce las NSP puede estar acompañando a alguien cuya sustancia no aparece en ningún mapa de riesgo conocido.</span></li>
+    <li><span class="dot">V</span><span>Los vapers y dispositivos de nicotina son "la misma sustancia psicoactiva —la nicotina— con una presentación comercial que suele asociarse a menor daño y mayor aceptación social. Esta percepción de bajo riesgo, análoga a la que se analiza sobre el cannabis, constituye en sí misma un factor de vulnerabilidad" (§9.1.5). El agente que no conoce los vapers puede estar viendo su consumo sin reconocerlo.</span></li>
+    <li><span class="dot">V</span><span>El peligro de la adulteración oculta: "los opioides sintéticos se utilizan a menudo como adulterante barato y potente que se añade a otras drogas como la heroína o la cocaína, o se convierten en píldoras que imitan analgésicos recetados. El usuario consume estas sustancias sin saber qué está ingiriendo" (§9.1.3). La sobredosis puede ocurrir en el primer consumo de una sustancia que el hermano creía conocer.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Juzgar — Iluminación</p>
+  <ul class="puntos">
+    <li><span class="dot">J</span><span>"No es una cuestión de voluntad pura: estas sustancias generan una hiperactividad en el circuito de recompensa mucho más violenta que las naturales, 'enseñando' al cerebro a buscarlas de manera compulsiva y anulando la capacidad de la corteza prefrontal para frenar el impulso" (§9.1.3). Las NSP no son "drogas más fuertes": son sustancias que secuestran el cerebro con una velocidad e intensidad que los mecanismos de autocontrol no pueden contrarrestar.</span></li>
+    <li><span class="dot">J</span><span>"Desde el criterio biológico que fundamenta este manual, se trata de la misma sustancia y del mismo mecanismo adictivo, independientemente del dispositivo que la entregue" (§9.1.5, sobre vapers). El vaper no es "menos dañino" que el cigarrillo: es la misma nicotina con mejor marketing y mayor invisibilidad. La pastoral diferenciada lo nombra con precisión.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Actuar — Propuesta</p>
+  <div class="actividad"><div class="act-title">¿Hay NSP, fentanilo o vapers en nuestro territorio?</div><div class="act-body">El grupo mapea: ¿hay presencia confirmada o sospechada de NSP o fentanilo en el territorio? ¿los jóvenes mencionan sustancias o pastillas que el equipo no reconoce? ¿hay muertes recientes por sobredosis que podrían estar vinculadas a adulteración? ¿hay vapers visibles en las escuelas o en los espacios de la comunidad? El diagnóstico puede ser incompleto: lo importante es empezar a preguntar con los datos del §9.1.3.</div></div>
+  <div class="actividad"><div class="act-title">Protocolo de emergencia por sobredosis de opioides</div><div class="act-body">El grupo evalúa: ¿sabe reconocer una sobredosis de opioides (respiración muy lenta o ausente, piel azulada o grisácea, pérdida de conciencia, labios azules)? ¿hay naloxona disponible en el territorio o en el dispositivo? ¿sabe cómo se administra (intranasalmente o por inyección) y que puede necesitarse una segunda dosis? Si no existe protocolo, diseñar uno mínimo y capacitar a todo el equipo. Una sobredosis de fentanilo puede ser fatal en minutos.</div></div>
+  <div class="actividad"><div class="act-title">Identificar los vapers en el entorno</div><div class="act-body">El grupo practica el reconocimiento de vapers y dispositivos de nicotina que circulan en el territorio: ¿cuáles conocen? ¿cómo se ven? ¿cómo se usan? ¿qué argumentos usan los adolescentes para defender su uso ("es solo vapor", "no tiene nicotina", "es mucho menos dañino que fumar")? Preparar las respuestas informadas del §9.1.5 para cada argumento.</div></div>
+
+  <div class="cita">
+    <div class="cita-lbl">Cita inspiradora · §9.1.3</div>
+    <div class="cita-txt">"Las NSP y los opioides sintéticos presentan riesgos significativamente mayores debido a tres pilares fundamentales: su potencia extrema, su carácter impredecible y la dificultad de respuesta médica."</div>
+    <div class="cita-ref">Manual de la PLAPA, §9.1.3 — Riesgos de las nuevas sustancias psicoactivas (CELAM 2026)</div>
+  </div>
+
+  <div class="autocuidado">
+    <div class="auto-lbl">Autocuidado del agente</div>
+    <div class="auto-txt">La información sobre fentanilo y sobredosis puede generar ansiedad en el equipo, especialmente si hay jóvenes del territorio en riesgo real. El facilitador cuida que la información empodere —ahora sabemos qué buscar y cómo actuar— y no paralice —esto es demasiado para nosotros. El conocimiento sobre sustancias no convierte al agente en experto médico: le da las herramientas para detectar riesgos y articular rápidamente con los equipos de emergencia que sí pueden actuar. Saber cuándo llamar y qué decir ya es salvar una vida.</div>
+  </div>
+  <p class="ref">Referencias: §9.1.3, §9.1.5 — Manual de la PLAPA, CELAM 2026</p>
+</div>
+
+<!-- MÓDULO 4 -->
+<div id="m4" class="mod">
+  <div class="mod-header">
+    <span class="mod-tag">Módulo 4 · Síntesis y revisión de vida</span>
+    <h2 class="mod-title">Alcohol, nicotina y la pastoral diferenciada: no es la misma respuesta para cada sustancia</h2>
+    <p class="mod-sub">Sustancias legales, Tríada de Zinberg y prevención situada · §9.1.2, §9.1.5, §9.4</p>
+  </div>
+
+  <div class="mf">
+    <div class="mf-lbl">Mensaje fuerza</div>
+    <div class="mf-txt">"La legalidad no modifica la farmacología. El organismo metaboliza las sustancias basándose en su composición química, no en su estatus jurídico. El alcohol es responsable de 2,6 millones de muertes anuales: más que muchas drogas ilícitas juntas."</div>
+  </div>
+
+  <p class="sec-lbl">El Ver — Realidad</p>
+  <ul class="puntos">
+    <li><span class="dot">V</span><span>El §4.3 denuncia una incoherencia que vale la pena nombrar en el propio equipo: la escuela que "naturaliza el alcohol en sus propios eventos para recaudar fondos" mientras tiene programa de prevención de drogas. ¿La parroquia sirve vino en sus eventos? ¿El club barrial vende cerveza? ¿El equipo bebe alcohol socialmente? La pastoral diferenciada empieza por la honestidad sobre las sustancias legales que el propio entorno normaliza.</span></li>
+    <li><span class="dot">V</span><span>El §9.1.5 identifica un proceso de marketing idéntico al del cannabis: "La emergencia de los cigarrillos electrónicos (vapers), los dispositivos de tabaco calentado (como el IQOS) y las bolsas de nicotina (nicotine pouches) representa nuevos vectores de entrega de la misma sustancia —la nicotina— con una presentación que suele asociarse a menor daño." La industria del tabaco aprendió del cannabis: presentación nueva, misma sustancia, misma adicción.</span></li>
+    <li><span class="dot">V</span><span>El alcohol es el depresor del SNC más extendido y uno de los más dañinos: "Su consumo abundante debilita el sistema inmunológico y es un factor de riesgo para enfermedades graves" (§9.1.5). En contextos de vulnerabilidad extrema —donde el sistema inmunológico ya está comprometido por mala nutrición y estrés crónico— el impacto sistémico del alcohol es aún más severo.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Juzgar — Iluminación</p>
+  <ul class="puntos">
+    <li><span class="dot">J</span><span>La Tríada de Zinberg (sujeto–sustancia–contexto) es la síntesis más útil del capítulo 9 para el agente pastoral: "La distinción legal/ilegal no determina el nivel de daño; lo que importa es la relación del sujeto con la sustancia en su contexto específico" (§9.1.2, tabla integradora). Un adolescente que bebe alcohol en una familia con historia de alcoholismo tiene un perfil de riesgo radicalmente distinto al de un adulto que bebe una copa en una cena familiar. Misma sustancia, distinto sujeto, distinto contexto, distinto riesgo.</span></li>
+    <li><span class="dot">J</span><span>"Las consecuencias del consumo no son solo neurológicas, sino que afectan al organismo en su conjunto" (§9.2.2). La pastoral que solo mira la conducta ("dejó de consumir") sin mirar el cuerpo ("¿cómo está su hígado, su sistema inmune, su sueño, su alimentación?") aborda la mitad del problema. Conocer las consecuencias sistémicas de cada sustancia permite al agente hacer preguntas de salud que complementan el acompañamiento espiritual y facilitan la articulación con servicios médicos.</span></li>
+    <li><span class="dot">J</span><span>"Incluir las sustancias legales en la categoría de SPA permite entender que el problema no es solo la sustancia, sino el vínculo que el sujeto establece con ella para intentar llenar vacíos existenciales o anestesiar una vida insoportable" (§9.1.5). La persona que bebe alcohol compulsivamente y la que consume heroína están haciendo lo mismo desde la lógica del vínculo: buscando algo que les falta. La sustancia es distinta; la búsqueda es la misma. Y esa comprensión es la base de la compasión pastoral.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Actuar — Propuesta</p>
+  <div class="actividad"><div class="act-title">Auditar la relación de la comunidad con las sustancias legales</div><div class="act-body">El grupo responde con honestidad: ¿se sirve alcohol en los eventos de la comunidad pastoral? ¿hay consciencia del mensaje que eso envía a los hermanos en proceso de recuperación que participan de esos eventos? ¿se habla del alcohol y el tabaco en los mismos términos que de las drogas ilícitas, o se los trata como "normales"? La coherencia preventiva empieza por la propia comunidad. La auditoría no es para condenar: es para ver.</div></div>
+  <div class="actividad"><div class="act-title">Diseñar la prevención diferenciada por sustancia</div><div class="act-body">El grupo toma las tres sustancias más presentes en el territorio y para cada una diseña un mensaje preventivo diferenciado, con los datos precisos del §9.1: ¿qué necesita saber el joven sobre el cannabis que no sea alarmismo ni minimización? ¿sobre el alcohol que no sea moralismo ni normalización? ¿sobre los vapers que no sea ignorancia ni demonización? La prevención efectiva habla de la sustancia que circula en el territorio concreto, con datos reales y lenguaje accesible.</div></div>
+  <div class="actividad"><div class="act-title">Cierre: lo que aprendí que cambia mi acompañamiento</div><div class="act-body">El grupo cierra en ronda: "Después de este itinerario, ¿qué dato sobre sustancias aprendí que cambia algo concreto de mi acompañamiento pastoral?" No hay respuesta incorrecta. El facilitador anota las respuestas en el cuaderno colectivo: ese mapa de descubrimientos es la medida más honesta de lo que el itinerario produjo. Cerrar con gratitud por los hermanos del territorio que inspiraron cada pregunta.</div></div>
+
+  <div class="cita">
+    <div class="cita-lbl">Cita inspiradora · §9.1.5</div>
+    <div class="cita-txt">"Esta clasificación no implica ningún juicio moral sobre el consumo de café: quien ha experimentado el malestar de un día sin él comprende, en escala menor, el mismo mecanismo biológico que subyace a toda dependencia. Es precisamente esa experiencia cotidiana la que puede convertirse en una puerta de empatía hacia quienes acompañamos."</div>
+    <div class="cita-ref">Manual de la PLAPA, §9.1.5 — Inclusión de sustancias legales (CELAM 2026)</div>
+  </div>
+
+  <div class="autocuidado">
+    <div class="auto-lbl">Autocuidado del agente — cierre del itinerario</div>
+    <div class="auto-txt">El itinerario cierra con la pregunta que el §9.1.5 abre sobre el café y que aplica a cada agente: ¿qué sustancia o comportamiento usás vos para aliviar el estrés del trabajo pastoral? No como acusación: como pregunta de honestidad que fundamenta la empatía. El agente que puede responder esa pregunta sin defensividad —reconociendo su propia experiencia con el mecanismo biológico de la dependencia— acompaña desde la fraternidad, no desde la superioridad moral. Esa es la diferencia que el §9.1 intenta producir en quien lo lee con atención.</div>
+  </div>
+  <p class="ref">Referencias: §9.1.2, §9.1.5, §9.2.2, §4.3 — Manual de la PLAPA, CELAM 2026</p>
+</div>
+
+<script>
+function show(n,btn){
+  for(let i=1;i<=4;i++) document.getElementById('m'+i).className='mod';
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  document.getElementById('m'+n).className='mod a';
+  btn.classList.add('on');
+}
+</script>
+</body>
+</html>

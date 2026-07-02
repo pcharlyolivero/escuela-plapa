@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ruta Cárceles y Pospenados | Escuela PLAPA</title>
+  <style>
+    :root {
+      --bg-color: #fcfbf9;
+      --text-main: #2d2d2d;
+      --text-muted: #5a5a5a;
+      --primary: #854F0B; 
+      --primary-dark: #412402;
+      --accent: #1D9E75; 
+      --surface: #ffffff;
+      --surface-2: #f9f7f2;
+      --border: #e2dfd8;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-serif: Georgia, "Times New Roman", serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body { font-family: var(--font-sans); background-color: var(--bg-color); color: var(--text-main); line-height: 1.6; }
+
+    header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+    .logo { font-family: var(--font-serif); font-weight: 700; font-size: 1.25rem; color: var(--primary-dark); text-decoration: none; }
+    .nav-links a { text-decoration: none; color: var(--text-muted); margin-left: 1.5rem; font-size: 0.9rem; font-weight: 500; }
+    
+    .ruta-hero { padding: 4rem 5% 3rem; text-align: center; background: var(--primary-dark); color: white; }
+    .ruta-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .ruta-hero h1 { font-family: var(--font-serif); font-size: 2.5rem; margin-bottom: 1rem; }
+    .ruta-hero p { font-size: 1.1rem; max-width: 600px; margin: 0 auto; color: #e2dfd8; }
+
+    .timeline-container { max-width: 800px; margin: 4rem auto; padding: 0 5%; }
+    .etapa { margin-bottom: 4rem; }
+    .etapa-header { margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--border); }
+    .etapa-num { font-size: 0.85rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.3rem; }
+    .etapa-title { font-family: var(--font-serif); font-size: 1.8rem; color: var(--primary-dark); }
+    .etapa-desc { color: var(--text-muted); font-size: 1.05rem; margin-top: 0.5rem; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem; border-left: 4px solid var(--primary); text-decoration: none; color: inherit; display: block; transition: transform 0.2s; }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 8px 16px rgba(0,0,0,0.08); }
+    .card-n { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--primary); margin-bottom: 5px; }
+    .card-title { font-size: 1.1rem; font-weight: 700; color: var(--primary-dark); line-height: 1.3; margin-bottom: 8px; }
+    .card-sub { font-size: 0.9rem; color: var(--text-muted); line-height: 1.45; }
+    
+    footer { background: var(--primary-dark); color: #e2dfd8; text-align: center; padding: 3rem 5%; font-size: 0.9rem; margin-top: 4rem; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="logo">Escuela PLAPA</a>
+    <nav class="nav-links">
+      <a href="index.html#ambitos">← Volver a Ámbitos</a>
+      <a href="catalogo_30_itinerarios_plapa_corregido.html">Catálogo Completo</a>
+    </nav>
+  </header>
+
+  <section class="ruta-hero">
+    <div class="ruta-icon">🕊️</div>
+    <h1>Cárceles y Pospenados</h1>
+    <p>Acompañamiento integral para hermanos en contexto de encierro y el desafío de la reinserción al recuperar la libertad.</p>
+  </section>
+
+  <main class="timeline-container">
+    
+    <div class="etapa">
+      <div class="etapa-header">
+        <span class="etapa-num">Etapa 1</span>
+        <h2 class="etapa-title">El Contexto Intramuros</h2>
+        <p class="etapa-desc">Entender la realidad del encierro y la relación entre consumo, delincuencia y sistema penal.</p>
+      </div>
+      <div class="grid">
+        <a class="card" href="itinerario_23_carceles_pospenados.html" style="border-left-color: #D4537E;">
+          <div class="card-n" style="color: #72243E;">Itinerario 23</div>
+          <div class="card-title">Pastoral en cárceles</div>
+          <div class="card-sub">Acompañamiento intramuros y la complejidad de la reintegración al egreso.</div>
+        </a>
+        <a class="card" href="itinerario_9_drama_trabajo_3T.html" style="border-left-color: #534AB7;">
+          <div class="card-n" style="color: #3C3489;">Itinerario 9</div>
+          <div class="card-title">El drama del trabajo y las 3T</div>
+          <div class="card-sub">La relación entre la exclusión del mercado laboral y el narcomenudeo como vía de subsistencia en contextos de vulnerabilidad.</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="etapa">
+      <div class="etapa-header">
+        <span class="etapa-num">Etapa 2</span>
+        <h2 class="etapa-title">El Desafío de la Libertad</h2>
+        <p class="etapa-desc">Construir capital de recuperación para evitar la reincidencia y sostener la nueva vida fuera de la cárcel.</p>
+      </div>
+      <div class="grid">
+        <a class="card" href="itinerario_17_capital_recuperacion.html" style="border-left-color: #D85A30;">
+          <div class="card-n" style="color: #993C1D;">Itinerario 17</div>
+          <div class="card-title">Capital de recuperación</div>
+          <div class="card-sub">Los ocho dominios necesarios para que el proceso de recuperación sea sostenible en la vida pospenada.</div>
+        </a>
+        <a class="card" href="itinerario_12_vacio_existencial_reconexion.html" style="border-left-color: #D85A30;">
+          <div class="card-n" style="color: #993C1D;">Itinerario 12</div>
+          <div class="card-title">Vacío existencial y reconexión</div>
+          <div class="card-sub">La reparación del sentido como eje central para quienes regresan a la calle tras el encierro.</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="etapa">
+      <div class="etapa-header">
+        <span class="etapa-num">Etapa 3</span>
+        <h2 class="etapa-title">Acompañamiento del Agente</h2>
+        <p class="etapa-desc">El desgaste y la realidad compleja que afrontan quienes visitan o acompañan el egreso carcelario.</p>
+      </div>
+      <div class="grid">
+        <a class="card" href="itinerario_29_cuidar_que_cuidan.html" style="border-left-color: #639922;">
+          <div class="card-n" style="color: #3B6D11;">Itinerario 29</div>
+          <div class="card-title">Cuidar a los que cuidan</div>
+          <div class="card-sub">Gestión del trauma vicario, duelo y desgaste pastoral en contextos de alta violencia.</div>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p><strong>Escuela de la PLAPA</strong></p>
+    <p style="margin-top: 0.5rem; color: #a39e93;">Formación basada en el Manual de la PLAPA · Red de América Latina y el Caribe</p>
+  </footer>
+
+</body>
+</html>

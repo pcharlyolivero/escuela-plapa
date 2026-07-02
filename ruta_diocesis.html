@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ruta Diocesana | Escuela PLAPA</title>
+  <style>
+    :root {
+      --bg-color: #fcfbf9;
+      --text-main: #2d2d2d;
+      --text-muted: #5a5a5a;
+      --primary: #854F0B; 
+      --primary-dark: #412402;
+      --accent: #1D9E75; 
+      --surface: #ffffff;
+      --border: #e2dfd8;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-serif: Georgia, "Times New Roman", serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body { font-family: var(--font-sans); background-color: var(--bg-color); color: var(--text-main); line-height: 1.6; }
+
+    header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 1rem 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+    .logo { font-family: var(--font-serif); font-weight: 700; font-size: 1.25rem; color: var(--primary-dark); text-decoration: none; }
+    .nav-links a { text-decoration: none; color: var(--text-muted); margin-left: 1.5rem; font-size: 0.9rem; font-weight: 500; }
+    
+    .ruta-hero { padding: 4rem 5% 3rem; text-align: center; background: var(--primary-dark); color: white; }
+    .ruta-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .ruta-hero h1 { font-family: var(--font-serif); font-size: 2.5rem; margin-bottom: 1rem; }
+    .ruta-hero p { font-size: 1.1rem; max-width: 600px; margin: 0 auto; color: #e2dfd8; }
+
+    .timeline-container { max-width: 800px; margin: 4rem auto; padding: 0 5%; }
+    .etapa { margin-bottom: 4rem; }
+    .etapa-header { margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--border); }
+    .etapa-num { font-size: 0.85rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.1em; display: block; margin-bottom: 0.3rem; }
+    .etapa-title { font-family: var(--font-serif); font-size: 1.8rem; color: var(--primary-dark); }
+    .etapa-desc { color: var(--text-muted); font-size: 1.05rem; margin-top: 0.5rem; }
+
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem; border-left: 4px solid var(--primary); text-decoration: none; color: inherit; display: block; transition: transform 0.2s; }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 8px 16px rgba(0,0,0,0.08); }
+    .card-n { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--primary); margin-bottom: 5px; }
+    .card-title { font-size: 1.1rem; font-weight: 700; color: var(--primary-dark); line-height: 1.3; margin-bottom: 8px; }
+    .card-sub { font-size: 0.9rem; color: var(--text-muted); line-height: 1.45; }
+    
+    footer { background: var(--primary-dark); color: #e2dfd8; text-align: center; padding: 3rem 5%; font-size: 0.9rem; margin-top: 4rem; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="logo">Escuela PLAPA</a>
+    <nav class="nav-links">
+      <a href="index.html#ambitos">← Volver a Ámbitos</a>
+      <a href="catalogo_30_itinerarios_plapa_corregido.html">Catálogo Completo</a>
+    </nav>
+  </header>
+
+  <section class="ruta-hero">
+    <div class="ruta-icon">🗺️</div>
+    <h1>Diócesis y Articulación Institucional</h1>
+    <p>Formación estratégica para articular la respuesta eclesial, incidir en políticas públicas y fortalecer la red continental.</p>
+  </section>
+
+  <main class="timeline-container">
+    
+    <div class="etapa">
+      <div class="etapa-header">
+        <span class="etapa-num">Etapa 1</span>
+        <h2 class="etapa-title">Arquitectura de la Pastoral</h2>
+        <p class="etapa-desc">La dimensión diocesana no es una opción administrativa, es el lugar de la sinodalidad y el cuidado unitario.</p>
+      </div>
+      <div class="grid">
+        <a class="card" href="itinerario_30_pastoral_diocesana_continental.html" style="border-left-color: #639922;">
+          <div class="card-n" style="color: #3B6D11;">Itinerario 30</div>
+          <div class="card-title">Pastoral diocesana y continental</div>
+          <div class="card-sub">Sinodalidad, arquitectura de niveles y la importancia de una pastoral de adicciones eclesial.</div>
+        </a>
+        <a class="card" href="itinerario_5_magisterio_adicciones.html" style="border-left-color: #1D9E75;">
+          <div class="card-n" style="color: #085041;">Itinerario 5</div>
+          <div class="card-title">Magisterio y adicciones</div>
+          <div class="card-sub">Fundamentar la acción pastoral en la evolución del pensamiento de la Iglesia desde Juan Pablo II hasta hoy.</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="etapa">
+      <div class="etapa-header">
+        <span class="etapa-num">Etapa 2</span>
+        <h2 class="etapa-title">Caridad Política e Incidencia</h2>
+        <p class="etapa-desc">Transformar la realidad desde el acompañamiento personal hacia la incidencia en políticas públicas.</p>
+      </div>
+      <div class="grid">
+        <a class="card" href="itinerario_4_caridad_politica.html" style="border-left-color: #1D9E75;">
+          <div class="card-n" style="color: #085041;">Itinerario 4</div>
+          <div class="card-title">Caridad política como misión</div>
+          <div class="card-sub">Del acompañamiento individual a la transformación de las estructuras de pecado en el territorio.</div>
+        </a>
+        <a class="card" href="itinerario_11_microcreditos_finanzas_solidarias.html" style="border-left-color: #534AB7;">
+          <div class="card-n" style="color: #3C3489;">Itinerario 11</div>
+          <div class="card-title">Microcréditos y finanzas</div>
+          <div class="card-sub">La economía popular como herramienta estructural de reintegración y justicia para la recuperación.</div>
+        </a>
+      </div>
+    </div>
+
+    <div class="etapa">
+      <div class="etapa-header">
+        <span class="etapa-num">Etapa 3</span>
+        <h2 class="etapa-title">El Manual como Red Viva</h2>
+        <p class="etapa-desc">La modalidad de *rolling release* y la invitación a participar en una red continental que trasciende fronteras.</p>
+      </div>
+      <div class="grid">
+        <a class="card" href="itinerario_30_pastoral_diocesana_continental.html" style="border-left-color: #639922;">
+          <div class="card-n" style="color: #3B6D11;">Itinerario 30</div>
+          <div class="card-title">El manual abierto</div>
+          <div class="card-sub">Entender la actualización continua y cómo aportar la experiencia territorial a la red PLAPA-CELAM.</div>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p><strong>Escuela de la PLAPA</strong></p>
+    <p style="margin-top: 0.5rem; color: #a39e93;">Formación basada en el Manual de la PLAPA · Red de América Latina y el Caribe</p>
+  </footer>
+
+</body>
+</html>

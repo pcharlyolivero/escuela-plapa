@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Itinerario 28 · Prevención escolar y universitaria · PLAPA 2026</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Georgia,'Times New Roman',serif;background:#f5f3ee;color:#222;padding:0 0 3rem}
+  .portada{background:#993C1D;padding:2rem 2.5rem 1.5rem;color:#fff}
+  .portada-sup{font-size:11px;font-weight:700;color:#F0997B;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem;font-family:Arial,sans-serif}
+  .portada-title{font-size:26px;font-weight:700;line-height:1.25;margin-bottom:.35rem}
+  .portada-sub{font-size:13px;color:#FADBCF;line-height:1.55;margin-bottom:1rem}
+  .dest-box{background:#712B13;border-radius:6px;padding:.7rem 1rem;margin-bottom:1rem}
+  .dest-lbl{font-size:9px;font-weight:700;color:#FADBCF;letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px;font-family:Arial,sans-serif}
+  .dest-txt{font-size:12px;color:#fff;line-height:1.55}
+  .pills{display:flex;flex-wrap:wrap;gap:5px}
+  .pill{font-size:10px;font-weight:700;padding:3px 10px;border-radius:99px;background:#712B13;color:#FAECE7;font-family:Arial,sans-serif}
+  .nav{display:flex;background:#fff;border-bottom:2px solid #D85A30;flex-wrap:wrap}
+  .tab{padding:12px 18px;cursor:pointer;font-size:12px;font-family:Arial,sans-serif;color:#666;border:none;background:none;font-weight:600;letter-spacing:.03em;border-bottom:3px solid transparent;margin-bottom:-2px}
+  .tab:hover{color:#993C1D;background:#FAECE7}
+  .tab.on{color:#993C1D;border-bottom-color:#D85A30;background:#FAECE7}
+  .mod{display:none;max-width:900px;margin:0 auto;padding:2rem 2.5rem}
+  .mod.a{display:block}
+  .mod-tag{display:inline-block;font-size:10px;font-weight:700;padding:3px 10px;border-radius:99px;background:#FAECE7;color:#4A1B0C;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.5rem;font-family:Arial,sans-serif}
+  .mod-title{font-size:20px;font-weight:700;color:#712B13;line-height:1.3;margin-bottom:.3rem}
+  .mod-sub{font-size:12px;color:#888;font-family:Arial,sans-serif;margin-bottom:1.5rem}
+  .mf{border-left:4px solid #D85A30;background:#FAECE7;padding:.8rem 1.1rem;margin-bottom:1.25rem;border-radius:0 6px 6px 0}
+  .mf-lbl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#993C1D;margin-bottom:4px;font-family:Arial,sans-serif}
+  .mf-txt{font-size:14px;font-style:italic;line-height:1.6;color:#4A1B0C}
+  .sec-lbl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#999;margin:1.1rem 0 .5rem;font-family:Arial,sans-serif}
+  .puntos{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:1rem}
+  .puntos li{display:flex;gap:10px;font-size:13px;color:#333;line-height:1.6}
+  .dot{width:20px;min-width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;margin-top:2px;background:#FAECE7;color:#4A1B0C;font-family:Arial,sans-serif}
+  .act-box{background:#FAECE7;border-radius:6px;padding:.75rem 1rem;margin-bottom:6px;border:1px solid #F0997B}
+  .act-title{font-size:12px;font-weight:700;color:#4A1B0C;margin-bottom:4px;font-family:Arial,sans-serif}
+  .act-body{font-size:12.5px;color:#712B13;line-height:1.55}
+  .cita{background:#FAECE7;border-radius:6px;padding:.8rem 1.1rem;margin-top:1.2rem;border-left:3px solid #D85A30}
+  .cita-lbl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#993C1D;margin-bottom:4px;font-family:Arial,sans-serif}
+  .cita-txt{font-size:12px;font-style:italic;line-height:1.6;color:#4A1B0C}
+  .cita-ref{font-size:10px;font-style:normal;font-weight:700;color:#993C1D;margin-top:3px;font-family:Arial,sans-serif}
+  .autocuidado{border-left:3px solid #D85A30;background:#faf3f0;padding:.75rem 1rem;margin-top:1.2rem}
+  .auto-lbl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#993C1D;margin-bottom:4px;font-family:Arial,sans-serif}
+  .auto-txt{font-size:12.5px;color:#555;line-height:1.55}
+  .ref{font-size:10px;color:#aaa;font-style:italic;margin-top:1rem;padding-top:.75rem;border-top:1px solid #f0d4c5;font-family:Arial,sans-serif}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1.1rem}
+  .g-item{background:#FAECE7;border-radius:6px;padding:.65rem .8rem;border:1px solid #F0997B}
+  .g-title{font-size:11px;font-weight:700;color:#4A1B0C;margin-bottom:3px;font-family:Arial,sans-serif}
+  .g-body{font-size:11px;color:#712B13;line-height:1.4}
+  .seis-acciones{display:flex;flex-direction:column;gap:6px;margin-bottom:1rem}
+  .accion{display:flex;gap:10px;align-items:flex-start}
+  .accion-ico{width:24px;min-width:24px;height:24px;background:#993C1D;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;font-family:Arial,sans-serif;flex-shrink:0}
+  .accion-txt{font-size:13px;color:#333;line-height:1.55;padding-top:2px}
+  .tres-roles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:1.1rem}
+  .rol-card{background:#712B13;border-radius:8px;padding:.85rem .8rem;color:#fff;text-align:center}
+  .rol-n{font-size:14px;font-weight:700;margin-bottom:.4rem;color:#F0997B}
+  .rol-d{font-size:11px;color:#FADBCF;line-height:1.45}
+  @media(max-width:600px){.grid2,.tres-roles{grid-template-columns:1fr}.mod{padding:1.2rem 1rem}.portada{padding:1.2rem}}
+  @media print{.nav{display:none}.mod{display:block!important;page-break-before:always}}
+</style>
+</head>
+<body>
+
+<div class="portada">
+  <p class="portada-sup">Itinerario formativo 28 · PLAPA — CELAM 2026</p>
+  <h1 class="portada-title">Prevención escolar y universitaria</h1>
+  <p class="portada-sub">De la "dicción" frente a la adicción a la proyección vital: la escuela y la universidad como espacios profundamente preventivos · 4 módulos</p>
+  <div class="dest-box">
+    <div class="dest-lbl">Destinatarios</div>
+    <div class="dest-txt">Docentes, directivos y equipos de orientación de escuelas católicas, capellanes universitarios y agentes de pastoral universitaria. También útil para agentes pastorales que articulan con instituciones educativas del territorio y para equipos que diseñan programas de prevención escolar. Nivel inicial–intermedio: no requiere formación clínica previa.</div>
+  </div>
+  <div class="pills">
+    <span class="pill">§11.2.1</span>
+    <span class="pill">§11.2.2</span>
+    <span class="pill">Docentes y pastoral universitaria</span>
+    <span class="pill">4 sesiones</span>
+    <span class="pill">Nivel inicial–intermedio</span>
+  </div>
+</div>
+
+<div class="nav">
+  <button class="tab on" onclick="show(1,this)">Módulo 1 · La escuela como hospital de campaña</button>
+  <button class="tab" onclick="show(2,this)">Módulo 2 · La proyección vital y la pedagogía de la esperanza</button>
+  <button class="tab" onclick="show(3,this)">Módulo 3 · Seis acciones preventivas concretas</button>
+  <button class="tab" onclick="show(4,this)">Módulo 4 · La universidad: docencia, investigación y extensión</button>
+</div>
+
+<!-- MÓDULO 1 -->
+<div id="m1" class="mod a">
+  <span class="mod-tag">Módulo 1 · El Ver</span>
+  <h2 class="mod-title">La escuela como hospital de campaña: de la "adicción" a la "dicción"</h2>
+  <p class="mod-sub">Contención y acompañamiento como primer gesto preventivo · §11.2.1</p>
+
+  <div class="mf">
+    <div class="mf-lbl">Mensaje fuerza</div>
+    <div class="mf-txt">"En contraste con la 'adicción' —entendida aquí como aquello que obtura o silencia— la escuela debe ser un espacio para la 'dicción': un lugar donde cada estudiante pueda encontrar y expresar su propia voz."</div>
+  </div>
+
+  <p class="sec-lbl">El Ver — Realidad</p>
+  <ul class="puntos">
+    <li><span class="dot">V</span><span>El §11.2.1 advierte contra el error más frecuente en prevención escolar: "si reducimos la prevención a la transmisión de información sobre sustancias o a intervenciones esporádicas frente a emergentes —como pueden ser los 'talleres sobre adicciones'— corremos el riesgo de quedarnos en la superficie del problema." La charla informativa puntual no es prevención: es, en el mejor de los casos, un complemento menor de la verdadera tarea preventiva.</span></li>
+    <li><span class="dot">V</span><span>"Cuando una escuela hace bien lo propio, se vuelve profundamente preventiva" (§11.2.1). Esta es la tesis central del itinerario: la prevención no es un programa adicional al currículo, sino el resultado de que la escuela cumpla bien su función esencial de educar, vincular y dar sentido.</span></li>
+    <li><span class="dot">V</span><span>"La escuela funciona muchas veces como un verdadero 'hospital de campaña'. Allí llegan niños, adolescentes y también adultos con heridas profundas. Pero para que esas heridas puedan ser alojadas y acompañadas, es necesario que los adultos no pasen de largo, que no queden atrincherados únicamente en cuestiones funcionales o burocráticas que terminan generando distancia e indiferencia" (§11.2.1). Esta imagen conecta directamente con la eclesiología del hospital de campaña que el manual desarrolla en el §7.9.3.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Juzgar — Iluminación</p>
+  <ul class="puntos">
+    <li><span class="dot">J</span><span>"Cuando alguien atraviesa la experiencia escolar como un anónimo, como alguien no reconocido, la escuela no solo deja de prevenir, sino que puede convertirse en un ámbito que predispone a la evasión" (§11.2.1). El anonimato escolar no es neutro: es activamente generador de vulnerabilidad. La escuela que no nombra ni reconoce a sus estudiantes está, sin proponérselo, abriendo una puerta al consumo como salida.</span></li>
+    <li><span class="dot">J</span><span>"Las adicciones hunden sus raíces en una profunda orfandad afectiva, en el debilitamiento de los vínculos y en la dificultad para encontrar sentido. No se trata solamente de 'no saber algunas cosas', sino de una disposición existencial" (§11.2.1). El consumo no es un problema de información faltante que un taller pueda solucionar: es un problema de sentido y de vínculo que solo una cultura institucional completa puede abordar.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Actuar — Propuesta</p>
+  <div class="act-box">
+    <div class="act-title">Evaluar la cultura institucional del cuidado</div>
+    <div class="act-body">El grupo de docentes revisa con honestidad: ¿cómo nos vinculamos en esta escuela? ¿qué lugar damos a la palabra de los estudiantes? ¿cómo abordamos los conflictos? ¿qué experiencias de pertenencia ofrecemos? Estas cuatro preguntas del §11.2.1 son el instrumento de autoevaluación más directo que el manual propone para una institución educativa.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">¿Quiénes en la escuela conocen a cada estudiante por su nombre?</div>
+    <div class="act-body">El grupo identifica: ¿hay estudiantes que pasan por la institución prácticamente anónimos? ¿quién podría ser el adulto de referencia que los reconozca? Diseñar un mecanismo institucional (tutorías, espacios de diálogo) que asegure que ningún estudiante atraviese la experiencia escolar sin ser nombrado.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">De la "adicción" a la "dicción": un proyecto concreto</div>
+    <div class="act-body">El grupo diseña un espacio concreto donde los estudiantes puedan "encontrar y expresar su propia voz" (radio escolar, revista, asamblea estudiantil, espacio de arte). El proyecto no necesita ser ambicioso: necesita ser un lugar real donde la voz silenciada pueda emerger.</div>
+  </div>
+
+  <div class="cita">
+    <div class="cita-lbl">Cita inspiradora · §11.2.1</div>
+    <div class="cita-txt">"La escuela puede convertirse en un lugar habitable, un espacio que convoque a estar presentes. Y esto ocurre, sobre todo, a través de los vínculos cotidianos."</div>
+    <div class="cita-ref">Manual de la PLAPA, §11.2.1 — La prevención escolar (CELAM 2026)</div>
+  </div>
+
+  <div class="autocuidado">
+    <div class="auto-lbl">Autocuidado del agente</div>
+    <div class="auto-txt">Los docentes que sostienen este tipo de presencia cercana —escuchar, sostener, habilitar la palabra— pueden experimentar un desgaste emocional considerable, especialmente en contextos de alta vulnerabilidad. El facilitador recuerda que ningún docente puede sostener esa presencia solo: la articulación entre quien recibe en la portería, los tutores y los equipos de orientación —que el §11.2.1 describe como necesaria— protege también al docente individual de cargar toda la responsabilidad emocional sin apoyo institucional.</div>
+  </div>
+  <p class="ref">Referencias: §11.2.1, §7.9.3 — Manual de la PLAPA, CELAM 2026</p>
+</div>
+
+<!-- MÓDULO 2 -->
+<div id="m2" class="mod">
+  <span class="mod-tag">Módulo 2 · El Juzgar</span>
+  <h2 class="mod-title">La proyección vital: educar porque esperamos algo bueno del porvenir</h2>
+  <p class="mod-sub">La pedagogía de la esperanza como antídoto frente a la falta de horizontes · §11.2.1</p>
+
+  <div class="mf">
+    <div class="mf-lbl">Mensaje fuerza</div>
+    <div class="mf-txt">"Educamos porque esperamos; y esperamos algo bueno de las personas y del porvenir. La escuela está llamada a ser un antídoto frente a la falta de horizontes."</div>
+  </div>
+
+  <p class="sec-lbl">El Ver — Realidad</p>
+  <ul class="puntos">
+    <li><span class="dot">V</span><span>El §11.2.1 define la proyección vital con precisión: "tiene que ver con el sentido que cada uno le da a su existencia, con los horizontes hacia los cuales quiere caminar y con aquello que considera valioso. No se limita únicamente a metas concretas, sino que incluye preguntas mucho más profundas: qué tipo de persona quiero llegar a ser, qué vínculos deseo construir, qué valores quiero encarnar." Esta definición va mucho más allá de la orientación vocacional tradicional.</span></li>
+    <li><span class="dot">V</span><span>"Cuando la propuesta educativa aparece vacía de sentido, incolora, insalubre o incluso 'indigerible', también puede producir daño. Además de favorecer, en muchos casos, la deserción escolar, genera escepticismo respecto de la propia posibilidad de proyectar la vida" (§11.2.1). Una escuela mediocre o desconectada del sentido no es neutralmente ineficaz: produce un daño activo en la capacidad de los estudiantes de imaginar un futuro.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Juzgar — Iluminación</p>
+  <ul class="puntos">
+    <li><span class="dot">J</span><span>"Una de las funciones esenciales de la escuela consiste en abrir horizontes, animarse a preguntar por los fines y no únicamente por los medios. La educación no puede reducirse a brindar herramientas o habilidades para sobrevivir; debe también ofrecer sentidos que permitan aspirar a una vida plena" (§11.2.1). Esta distinción entre "herramientas para sobrevivir" y "sentidos para una vida plena" es la clave teológica de todo el módulo: la prevención que solo enseña a evitar drogas sin ofrecer un horizonte de sentido es incompleta.</span></li>
+    <li><span class="dot">J</span><span>"Los estudiantes necesitan poder reconocerse como protagonistas de su propio proyecto vital. Un proyecto que alcanza plenitud cuando se piensa desde la perspectiva del servicio, la comunión y la apertura a los demás" (§11.2.1). La proyección vital no se completa en el éxito individual: se completa en la apertura al servicio y a los demás. Es una visión de la prevención profundamente arraigada en la antropología cristiana del manual.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Actuar — Propuesta</p>
+  <div class="act-box">
+    <div class="act-title">Evaluar la pedagogía de la esperanza en el currículo</div>
+    <div class="act-body">El grupo de docentes revisa: ¿hay espacios curriculares o extracurriculares donde los estudiantes puedan reflexionar sobre el sentido de su vida más allá de las calificaciones y la orientación vocacional tradicional? ¿se habla de "qué tipo de persona quiero llegar a ser" o solo de "qué carrera voy a estudiar"?</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Diseñar un proyecto de servicio para estudiantes</div>
+    <div class="act-body">Siguiendo la idea de que la proyección vital "alcanza plenitud desde la perspectiva del servicio", el grupo diseña un proyecto concreto donde los estudiantes puedan servir a otros (visitas a un centro barrial, voluntariado, acompañamiento a compañeros más jóvenes). El servicio como experiencia formativa de sentido, no como obligación curricular vacía.</div>
+  </div>
+
+  <div class="cita">
+    <div class="cita-lbl">Cita inspiradora · §11.2.1</div>
+    <div class="cita-txt">"La escuela es un lugar privilegiado para desarrollar una verdadera 'pedagogía de la esperanza'. Quizás este sea hoy uno de sus mayores desafíos."</div>
+    <div class="cita-ref">Manual de la PLAPA, §11.2.1 — La prevención escolar (CELAM 2026)</div>
+  </div>
+
+  <div class="autocuidado">
+    <div class="auto-lbl">Autocuidado del agente</div>
+    <div class="auto-txt">El docente que está llamado a sostener "la pedagogía de la esperanza" necesita él mismo tener esperanza viva sobre su tarea, en un contexto educativo a menudo desgastado por la burocracia y el desánimo. El facilitador invita a que el equipo docente recupere también para sí mismo la pregunta de la proyección vital: ¿qué sentido tiene para cada uno la tarea de educar en este territorio concreto?</div>
+  </div>
+  <p class="ref">Referencias: §11.2.1 — Manual de la PLAPA, CELAM 2026</p>
+</div>
+
+<!-- MÓDULO 3 -->
+<div id="m3" class="mod">
+  <span class="mod-tag">Módulo 3 · El Actuar</span>
+  <h2 class="mod-title">Seis acciones preventivas concretas: de la escucha a la articulación territorial</h2>
+  <p class="mod-sub">Orientaciones prácticas ya probadas en escuelas de la región · §11.2.1</p>
+
+  <div class="mf">
+    <div class="mf-lbl">Mensaje fuerza</div>
+    <div class="mf-txt">"Compartimos aquí algunas acciones y orientaciones concretas que ya se practican en muchas de nuestras escuelas, y que revisten un carácter preventivo."</div>
+  </div>
+
+  <div class="seis-acciones">
+    <div class="accion"><div class="accion-ico">1</div><div class="accion-txt"><strong>Espacios de escucha:</strong> tutorías, espacios de diálogo, disponibilidad de los docentes, lugares donde acercarse. "Escuchar a tiempo puede cambiar una historia."</div></div>
+    <div class="accion"><div class="accion-ico">2</div><div class="accion-txt"><strong>Apostar por la comunidad educativa:</strong> actividades de integración entre alumnos, padres, docentes, personal no docente y directivos; espacios de participación; cuidado del clima entre todos. "Cuando alguien se siente parte, se protege más la vida."</div></div>
+    <div class="accion"><div class="accion-ico">3</div><div class="accion-txt"><strong>Protagonismo de los jóvenes:</strong> grupos de pares, líderes juveniles, proyectos impulsados por estudiantes. "Los jóvenes no son solo destinatarios, son protagonistas. Pueden cuidarse entre ellos y ser parte de la respuesta."</div></div>
+    <div class="accion"><div class="accion-ico">4</div><div class="accion-txt"><strong>Trabajo con las familias:</strong> encuentros con padres, espacios de diálogo, acompañamiento. "La escuela y la familia se necesitan mutuamente. Juntas pueden sostener mejor a los chicos."</div></div>
+    <div class="accion"><div class="accion-ico">5</div><div class="accion-txt"><strong>Formación de docentes:</strong> capacitaciones, espacios de reflexión, acompañamiento institucional. "El educador es clave. Necesita herramientas, pero también sostén para su tarea."</div></div>
+    <div class="accion"><div class="accion-ico">6</div><div class="accion-txt"><strong>Articulación con el territorio:</strong> vínculo con parroquias, centros barriales, derivaciones acompañadas. "La escuela no está sola. Forma parte de una red más amplia de cuidado."</div></div>
+  </div>
+
+  <p class="sec-lbl">El Ver — Realidad</p>
+  <ul class="puntos">
+    <li><span class="dot">V</span><span>Las seis acciones no son un protocolo a implementar de forma simultánea y exhaustiva: el manual las presenta como "orientaciones concretas que ya se practican en muchas de nuestras escuelas", es decir, una caja de herramientas de la que cada institución puede tomar lo que pueda sostener realmente, según sus recursos y su contexto.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Juzgar — Iluminación</p>
+  <ul class="puntos">
+    <li><span class="dot">J</span><span>La Acción 3 (protagonismo de los jóvenes) es la que más se distingue de los modelos tradicionales de prevención escolar, generalmente diseñados desde el adulto hacia el estudiante. El reconocimiento de que "los jóvenes pueden cuidarse entre ellos y ser parte de la respuesta" implica delegar agencia real, no solo simbólica, a los propios estudiantes.</span></li>
+    <li><span class="dot">J</span><span>La Acción 6 (articulación con el territorio) conecta directamente con el Itinerario 25 (centros barriales): "vínculo con parroquias, centros barriales, derivaciones acompañadas." La escuela que articula con el centro barrial del territorio multiplica su capacidad preventiva sin necesidad de resolver todo internamente.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Actuar — Propuesta</p>
+  <div class="act-box">
+    <div class="act-title">Elegir dos acciones para fortalecer este año</div>
+    <div class="act-body">El grupo evalúa las seis acciones en la escuela actual y elige dos para fortalecer concretamente este año lectivo, con un plan de implementación realista. No se trata de implementar las seis a la vez: dos bien sostenidas valen más que seis superficiales.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Diseñar la articulación con la parroquia o centro barrial del territorio</div>
+    <div class="act-body">Si la escuela aún no tiene un vínculo activo con la parroquia o el centro barrial cercano, el grupo diseña el primer contacto: ¿quién puede establecer esa relación? ¿qué tipo de articulación sería más útil (derivaciones, actividades conjuntas, formación compartida)?</div>
+  </div>
+
+  <div class="cita">
+    <div class="cita-lbl">Cita inspiradora · §11.2.1</div>
+    <div class="cita-txt">"Allí donde existe una verdadera comunidad educativa, existe también un ámbito profundamente preventivo."</div>
+    <div class="cita-ref">Manual de la PLAPA, §11.2.1 — La prevención escolar (CELAM 2026)</div>
+  </div>
+
+  <div class="autocuidado">
+    <div class="auto-lbl">Autocuidado del agente</div>
+    <div class="auto-txt">La Acción 5 (formación de docentes) incluye explícitamente "espacios de reflexión" y "acompañamiento institucional" como parte de la formación, no solo capacitaciones técnicas. El facilitador recuerda al equipo directivo que el cuidado del docente es parte constitutiva de la prevención escolar, no un beneficio adicional: un docente sin sostén institucional difícilmente puede sostener la presencia cercana que la prevención requiere.</div>
+  </div>
+  <p class="ref">Referencias: §11.2.1 — Manual de la PLAPA, CELAM 2026</p>
+</div>
+
+<!-- MÓDULO 4 -->
+<div id="m4" class="mod">
+  <span class="mod-tag">Módulo 4 · Síntesis y revisión de vida</span>
+  <h2 class="mod-title">La universidad: docencia, investigación y extensión al servicio del territorio</h2>
+  <p class="mod-sub">Tres roles que deben coordinarse para no descontextualizarse · §11.2.2</p>
+
+  <div class="mf">
+    <div class="mf-lbl">Mensaje fuerza</div>
+    <div class="mf-txt">"Cuando la Universidad se aleja de los territorios, su investigación no se pone al servicio de sus necesidades y su docencia termina repitiendo los mismos conocimientos, muchas veces descontextualizados. Por el contrario, cuando estos tres roles están bien integrados, la Universidad aporta al Desarrollo Humano Integral de un modo mucho más pleno."</div>
+  </div>
+
+  <div class="tres-roles">
+    <div class="rol-card">
+      <div class="rol-n">Docencia</div>
+      <div class="rol-d">Transmisión del conocimiento. No solo para futuros especialistas (médicos, psicólogos, trabajadores sociales): todas las carreras pueden formar profesionales sensibles y técnicamente preparados frente a las adicciones.</div>
+    </div>
+    <div class="rol-card">
+      <div class="rol-n">Investigación</div>
+      <div class="rol-d">Producción del conocimiento. Línea de investigación aplicada que vincule los dispositivos territoriales con la academia, generando datos científicos que incidan en las políticas de drogas vigentes.</div>
+    </div>
+    <div class="rol-card">
+      <div class="rol-n">Extensión</div>
+      <div class="rol-d">La relación con el territorio. El puente que evita que la docencia y la investigación queden descontextualizadas de la realidad concreta de los barrios.</div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="g-item">
+      <div class="g-title">Educación y Profesorados</div>
+      <div class="g-body">Talleres educativos adaptados para personas en tratamiento: lengua materna, lenguas extranjeras, literatura, cultura.</div>
+    </div>
+    <div class="g-item">
+      <div class="g-title">Ingenierías y Carreras Técnicas</div>
+      <div class="g-body">Talleres prácticos (mecánica, informática, electricidad) orientados a capacitar y calificar mano de obra para inserción laboral.</div>
+    </div>
+    <div class="g-item">
+      <div class="g-title">Ciencias Económicas</div>
+      <div class="g-body">Talleres de emprendimiento y finanzas personales, capacitando en cooperativas y microemprendimientos.</div>
+    </div>
+    <div class="g-item">
+      <div class="g-title">Artes, Diseño y Comunicación</div>
+      <div class="g-body">Arteterapia, música y diseño como herramientas de expresión emocional; campañas comunitarias de prevención sin estigmas.</div>
+    </div>
+  </div>
+
+  <p class="sec-lbl">El Ver — Realidad</p>
+  <ul class="puntos">
+    <li><span class="dot">V</span><span>"El conocimiento universitario es la mejor defensa contra el castigo. Un profesional formado sabe que el consumo es un tema de salud y no un delito. Esto garantiza que los programas traten a las personas con dignidad" (§11.2.2). La formación universitaria adecuada en adicciones tiene un efecto que va más allá de la técnica: cambia la posición ética del futuro profesional frente a las personas en consumo.</span></li>
+    <li><span class="dot">V</span><span>El §11.2.2 conecta el abordaje de adicciones con los Objetivos de Desarrollo Sostenible de la ONU: Erradicación de la Pobreza (ODS 1), Salud y Bienestar (ODS 3), Igualdad de Género (ODS 5), Reducción de las Desigualdades (ODS 10) y Paz, Justicia e Instituciones Eficaces (ODS 16). Esta vinculación da a la pastoral de adicciones un lenguaje común con la agenda global de desarrollo que puede facilitar alianzas institucionales.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Juzgar — Iluminación</p>
+  <ul class="puntos">
+    <li><span class="dot">J</span><span>El "Desplazamiento Epistemológico" que propone el §11.2.2 es clave: "es necesario reducir la actual desproporción hacia los enfoques neurocientíficos reduccionistas que aíslan el fenómeno en el cerebro individual. Ese conocimiento es importante, pero no el único necesario." Esta crítica a la sobrerrepresentación de la neurociencia en la investigación académica es coherente con el modelo biopsicosocial-espiritual de todo el manual.</span></li>
+    <li><span class="dot">J</span><span>La metodología de "ir desnudo a escuchar" al territorio (Grounded Theory, §11.2.2) describe la actitud investigativa que el manual propone: "permitiendo que las categorías analíticas y terapéuticas emerjan directamente de la voz de los coordinadores y protagonistas barriales." Esta es la epistemología ascendente que organiza todo el manual, aplicada ahora al campo de la investigación académica.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Actuar — Propuesta</p>
+  <div class="act-box">
+    <div class="act-title">Identificar universidades aliadas en el territorio</div>
+    <div class="act-body">El grupo identifica: ¿hay universidades (especialmente católicas) en la región con las que la pastoral podría articular? ¿qué carreras tienen más potencial de aporte (educación, ingeniería, artes, ciencias económicas)? Diseñar un primer contacto institucional para proponer alguna de las líneas del §11.2.2.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Proponer una línea de extensión universitaria concreta</div>
+    <div class="act-body">El grupo diseña una propuesta concreta de extensión universitaria para el territorio: un taller de oficios con una carrera técnica, un proyecto de arteterapia con la carrera de artes, una capacitación en finanzas personales con ciencias económicas. La propuesta concreta es más persuasiva que una solicitud genérica de "colaboración."</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Cierre: el banco de datos del territorio</div>
+    <div class="act-body">El grupo cierra reflexionando sobre cómo la experiencia territorial acumulada (los itinerarios formativos, las prácticas exitosas, los aprendizajes de años de trabajo) podría convertirse en insumo de investigación si se sistematiza y se comparte con una universidad aliada. ¿Qué de lo que el equipo ya sabe podría convertirse en conocimiento científico útil para otros territorios? Cerrar valorando el saber territorial acumulado como un recurso valioso en sí mismo.</div>
+  </div>
+
+  <div class="cita">
+    <div class="cita-lbl">Cita inspiradora · §11.2.2</div>
+    <div class="cita-txt">"Es necesario promover un diálogo horizontal entre la universidad y el territorio, bajo la premisa metodológica de 'ir desnudo a escuchar' al territorio, permitiendo que las categorías analíticas y terapéuticas emerjan directamente de la voz de los coordinadores y protagonistas barriales."</div>
+    <div class="cita-ref">Manual de la PLAPA, §11.2.2 — Las universidades (CELAM 2026)</div>
+  </div>
+
+  <div class="autocuidado">
+    <div class="auto-lbl">Autocuidado del agente — cierre del itinerario</div>
+    <div class="auto-txt">El itinerario sobre prevención escolar y universitaria cierra con un reconocimiento: el equipo que ha recorrido los 28 itinerarios anteriores ya posee un saber territorial valioso que la academia necesita escuchar "desnuda", sin pretender corregirlo desde teorías ajenas a la experiencia. Esa inversión de la relación habitual entre territorio y academia —donde el territorio enseña tanto como aprende— es una forma de dignidad recuperada para los agentes pastorales que muchas veces se sienten "menos preparados" frente a los títulos universitarios. El saber vivido tiene tanto valor como el saber teórico, y el manual lo reconoce explícitamente.</div>
+  </div>
+  <p class="ref">Referencias: §11.2.2, §11.2.1 — Manual de la PLAPA, CELAM 2026</p>
+</div>
+
+<script>
+function show(n,btn){
+  for(let i=1;i<=4;i++) document.getElementById('m'+i).className='mod';
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  document.getElementById('m'+n).className='mod a';
+  btn.classList.add('on');
+}
+</script>
+</body>
+</html>

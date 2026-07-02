@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Itinerario 25 · Cómo abrir y sostener un centro barrial · PLAPA 2026</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Georgia,'Times New Roman',serif;background:#f5f3ee;color:#222;padding:0 0 3rem}
+  .portada{background:#27500A;padding:2rem 2.5rem 1.5rem;color:#fff}
+  .portada-sup{font-size:11px;font-weight:700;color:#97C459;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem;font-family:Arial,sans-serif}
+  .portada-title{font-size:26px;font-weight:700;line-height:1.25;margin-bottom:.35rem}
+  .portada-sub{font-size:13px;color:#C0DD97;line-height:1.55;margin-bottom:1rem}
+  .dest-box{background:#3B6D11;border-radius:6px;padding:.7rem 1rem;margin-bottom:1rem}
+  .dest-lbl{font-size:9px;font-weight:700;color:#C0DD97;letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px;font-family:Arial,sans-serif}
+  .dest-txt{font-size:12px;color:#fff;line-height:1.55}
+  .pills{display:flex;flex-wrap:wrap;gap:5px}
+  .pill{font-size:10px;font-weight:700;padding:3px 10px;border-radius:99px;background:#3B6D11;color:#EAF3DE;font-family:Arial,sans-serif}
+  .nav{display:flex;background:#fff;border-bottom:2px solid #3B6D11;flex-wrap:wrap}
+  .tab{padding:12px 18px;cursor:pointer;font-size:12px;font-family:Arial,sans-serif;color:#666;border:none;background:none;font-weight:600;letter-spacing:.03em;border-bottom:3px solid transparent;margin-bottom:-2px}
+  .tab:hover{color:#27500A;background:#EAF3DE}
+  .tab.on{color:#27500A;border-bottom-color:#3B6D11;background:#EAF3DE}
+  .mod{display:none;max-width:900px;margin:0 auto;padding:2rem 2.5rem}
+  .mod.a{display:block}
+  .mod-tag{display:inline-block;font-size:10px;font-weight:700;padding:3px 10px;border-radius:99px;background:#EAF3DE;color:#27500A;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.5rem;font-family:Arial,sans-serif}
+  .mod-title{font-size:20px;font-weight:700;color:#27500A;line-height:1.3;margin-bottom:.3rem}
+  .mod-sub{font-size:12px;color:#888;font-family:Arial,sans-serif;margin-bottom:1.5rem}
+  .mf{border-left:4px solid #3B6D11;background:#EAF3DE;padding:.8rem 1.1rem;margin-bottom:1.25rem;border-radius:0 6px 6px 0}
+  .mf-lbl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#3B6D11;margin-bottom:4px;font-family:Arial,sans-serif}
+  .mf-txt{font-size:14px;font-style:italic;line-height:1.6;color:#173404}
+  .sec-lbl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#999;margin:1.1rem 0 .5rem;font-family:Arial,sans-serif}
+  .puntos{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:1rem}
+  .puntos li{display:flex;gap:10px;font-size:13px;color:#333;line-height:1.6}
+  .dot{width:20px;min-width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;margin-top:2px;background:#EAF3DE;color:#27500A;font-family:Arial,sans-serif}
+  .act-box{background:#EAF3DE;border-radius:6px;padding:.75rem 1rem;margin-bottom:6px;border:1px solid #C0DD97}
+  .act-title{font-size:12px;font-weight:700;color:#173404;margin-bottom:4px;font-family:Arial,sans-serif}
+  .act-body{font-size:12.5px;color:#27500A;line-height:1.55}
+  .cita{background:#EAF3DE;border-radius:6px;padding:.8rem 1.1rem;margin-top:1.2rem;border-left:3px solid #3B6D11}
+  .cita-lbl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#3B6D11;margin-bottom:4px;font-family:Arial,sans-serif}
+  .cita-txt{font-size:12px;font-style:italic;line-height:1.6;color:#173404}
+  .cita-ref{font-size:10px;font-style:normal;font-weight:700;color:#3B6D11;margin-top:3px;font-family:Arial,sans-serif}
+  .autocuidado{border-left:3px solid #3B6D11;background:#f6f9f1;padding:.75rem 1rem;margin-top:1.2rem}
+  .auto-lbl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#3B6D11;margin-bottom:4px;font-family:Arial,sans-serif}
+  .auto-txt{font-size:12.5px;color:#555;line-height:1.55}
+  .ref{font-size:10px;color:#aaa;font-style:italic;margin-top:1rem;padding-top:.75rem;border-top:1px solid #d9e8c8;font-family:Arial,sans-serif}
+  .tres-ejes{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:1.1rem}
+  .eje{background:#27500A;border-radius:8px;padding:.85rem .8rem;color:#fff}
+  .eje-n{font-size:13px;font-weight:700;margin-bottom:.4rem;color:#97C459}
+  .eje-d{font-size:11px;color:#C0DD97;line-height:1.45}
+  .pasos{display:flex;flex-direction:column;gap:6px;margin-bottom:1rem}
+  .paso{display:flex;gap:10px;align-items:flex-start}
+  .paso-num{width:24px;min-width:24px;height:24px;background:#27500A;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;font-family:Arial,sans-serif;flex-shrink:0}
+  .paso-txt{font-size:13px;color:#333;line-height:1.55;padding-top:2px}
+  @media(max-width:600px){.tres-ejes{grid-template-columns:1fr}.mod{padding:1.2rem 1rem}.portada{padding:1.2rem}}
+  @media print{.nav{display:none}.mod{display:block!important;page-break-before:always}}
+</style>
+</head>
+<body>
+
+<div class="portada">
+  <p class="portada-sup">Itinerario formativo 25 · PLAPA — CELAM 2026</p>
+  <h1 class="portada-title">Cómo abrir y sostener un centro barrial</h1>
+  <p class="portada-sub">El mediocampo de la pastoral de adicciones: cercanía, gestión y acompañamiento como tres ejes simultáneos · 4 módulos</p>
+  <div class="dest-box">
+    <div class="dest-lbl">Destinatarios</div>
+    <div class="dest-txt">Párrocos, coordinadores diocesanos y equipos pastorales que quieren iniciar un centro barrial donde todavía no existe, o que ya tienen uno en funcionamiento y quieren revisar su metodología desde los tres ejes del manual. No requiere experiencia previa en dispositivos de adicciones: el itinerario está diseñado precisamente para quien está empezando desde cero. Nivel inicial–intermedio.</div>
+  </div>
+  <div class="pills">
+    <span class="pill">§11.1.7</span>
+    <span class="pill">§11.1.8</span>
+    <span class="pill">Coordinadores y párrocos</span>
+    <span class="pill">4 sesiones</span>
+    <span class="pill">Nivel inicial–intermedio</span>
+  </div>
+</div>
+
+<div class="nav">
+  <button class="tab on" onclick="show(1,this)">Módulo 1 · El centro barrial como mediocampo</button>
+  <button class="tab" onclick="show(2,this)">Módulo 2 · Los tres ejes</button>
+  <button class="tab" onclick="show(3,this)">Módulo 3 · Quiénes lo sostienen</button>
+  <button class="tab" onclick="show(4,this)">Módulo 4 · Cómo comenzar</button>
+</div>
+
+<!-- MÓDULO 1 -->
+<div id="m1" class="mod a">
+  <span class="mod-tag">Módulo 1 · El Ver</span>
+  <h2 class="mod-title">El centro barrial como mediocampo: la ventaja que solo la parroquia tiene</h2>
+  <p class="mod-sub">Por qué la inserción territorial previa es el recurso más valioso · §11.1.7</p>
+
+  <div class="mf">
+    <div class="mf-lbl">Mensaje fuerza</div>
+    <div class="mf-txt">"La parroquia tiene una ventaja que ningún otro actor del sistema posee: ya está en el barrio. No llega al territorio; vive en él. Conoce las familias, conoce la historia, conoce los nombres. Esa inserción previa es el fundamento sobre el que se puede montar un centro barrial."</div>
+  </div>
+
+  <p class="sec-lbl">El Ver — Realidad</p>
+  <ul class="puntos">
+    <li><span class="dot">V</span><span>"El consumo problemático de sustancias no es solo un problema de salud individual: es, ante todo, un síntoma de exclusión. Detrás de cada persona que consume hay casi siempre una historia de orfandad afectiva, de derechos vulnerados, de vínculos rotos. Por eso, una respuesta que se limite a lo clínico o a lo espiritual sin enraizarse en el territorio donde esa persona vive, trabaja y sufre, llega siempre tarde y llega siempre desde afuera" (§11.1.7). El diagnóstico fundamental que justifica el centro barrial es este: cualquier intervención que no esté enraizada en el territorio llega demasiado tarde.</span></li>
+    <li><span class="dot">V</span><span>La definición precisa de qué es y qué no es un centro barrial: "no es un centro de salud, ni una comunidad terapéutica, ni un comedor. Es algo diferente y más básico: un espacio de acogida y vínculo desde el cual se articula todo lo demás. Es, para usar una imagen del lenguaje deportivo, el mediocampo: por allí pasa la pelota" (§11.1.7). Esta definición evita dos errores comunes: pretender que el centro barrial haga el trabajo de una clínica, o subestimar su función creyendo que "solo" recibe gente.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Juzgar — Iluminación</p>
+  <ul class="puntos">
+    <li><span class="dot">J</span><span>"Sin ese nodo territorial, las intervenciones quedan fragmentadas y las personas quedan solas en el trayecto entre un dispositivo y otro" (§11.1.7). Esta afirmación conecta directamente con el diagnóstico del Itinerario 10 sobre fragmentación institucional: el centro barrial es la respuesta concreta y replicable a ese problema. No resuelve la fragmentación del sistema, pero ofrece el acompañamiento inespecífico que une los fragmentos para la persona concreta.</span></li>
+    <li><span class="dot">J</span><span>"El consumo problemático es, entre otras cosas, una enfermedad espiritual. La persona que consume ha perdido con frecuencia la convicción de que su vida vale la pena vivirse. Por eso el centro barrial no es solo un dispositivo social: es un espacio donde se engendra sentido" (§11.1.7). Esta afirmación cierra el círculo teológico: el centro barrial no es un servicio social con capellanía agregada. Es, en su esencia, un espacio donde el sentido perdido puede reaparecer.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Actuar — Propuesta</p>
+  <div class="act-box">
+    <div class="act-title">¿Tiene la parroquia la ventaja territorial que el §11.1.7 describe?</div>
+    <div class="act-body">El grupo evalúa honestamente: ¿conoce realmente la parroquia las familias del barrio? ¿conoce los nombres de las personas en situación de consumo? ¿tiene historia y presencia previa en el territorio, o es relativamente nueva o distante? Si la ventaja territorial es débil, el primer trabajo antes de abrir un centro barrial es fortalecer esa presencia: visitas, conocimiento del barrio, vínculos previos.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Definir qué NO va a ser el centro barrial</div>
+    <div class="act-body">El grupo discute explícitamente los límites: el centro barrial no reemplaza a un centro de salud, no es una comunidad terapéutica residencial, no es un comedor exclusivamente. Tener claros esos límites desde el inicio evita la frustración de intentar ser todo y terminar siendo ineficaz en todo. ¿Qué es específicamente lo que el centro barrial sí va a ofrecer?</div>
+  </div>
+
+  <div class="cita">
+    <div class="cita-lbl">Cita inspiradora · §11.1.7</div>
+    <div class="cita-txt">"La parroquia que abre un centro barrial no está ofreciendo un servicio adicional: está siendo lo que desde siempre fue llamada a ser. Un lugar donde los excluidos encuentran lugar. Una familia grande que recibe la vida como viene."</div>
+    <div class="cita-ref">Manual de la PLAPA, §11.1.7 — Los Centros Barriales (CELAM 2026)</div>
+  </div>
+
+  <div class="autocuidado">
+    <div class="auto-lbl">Autocuidado del agente</div>
+    <div class="auto-txt">La idea de abrir un centro barrial puede generar entusiasmo desbordado en algunos agentes, con el riesgo de comprometer recursos y energía más allá de lo sostenible. El facilitador recuerda que el §11.1.8 (Módulo 4) insiste: "no hace falta tener todo resuelto para empezar." El entusiasmo bien canalizado empieza pequeño y crece con el tiempo; el entusiasmo mal canalizado promete demasiado y se quema rápido.</div>
+  </div>
+  <p class="ref">Referencias: §11.1.7 — Manual de la PLAPA, CELAM 2026</p>
+</div>
+
+<!-- MÓDULO 2 -->
+<div id="m2" class="mod">
+  <span class="mod-tag">Módulo 2 · El Juzgar</span>
+  <h2 class="mod-title">Los tres ejes: cercanía, gestión y acompañamiento como actitudes simultáneas</h2>
+  <p class="mod-sub">No son etapas: son tres dimensiones permanentes del mismo gesto · §11.1.7</p>
+
+  <div class="mf">
+    <div class="mf-lbl">Mensaje fuerza</div>
+    <div class="mf-txt">"La metodología del centro barrial se sostiene sobre tres ejes que no son etapas sino actitudes permanentes y simultáneas. Cercanía, gestión y acompañamiento se ejercen siempre juntos, desde el primer día."</div>
+  </div>
+
+  <div class="tres-ejes">
+    <div class="eje">
+      <div class="eje-n">Cercanía</div>
+      <div class="eje-d">Hacer lugar. Recibir la vida como viene, sin condicionar el acceso. La persona llega como es, con sus heridas abiertas. Gestos concretos: un plato de comida, un nombre recordado, una visita al domicilio. La inclusión real es siempre cuerpo a cuerpo. Mirada integral de toda la historia, no solo el consumo.</div>
+    </div>
+    <div class="eje">
+      <div class="eje-n">Gestión</div>
+      <div class="eje-d">Articulación en red. El centro no reemplaza al sistema de salud, la escuela o lo judicial: los conecta con la persona. Actúa como interfaz que acompaña cada trámite, derivación, internación, egreso. La función de nodo en la red es irreemplazable.</div>
+    </div>
+    <div class="eje">
+      <div class="eje-n">Acompañamiento</div>
+      <div class="eje-d">Continuidad del vínculo en el tiempo. Los procesos son largos, no lineales, atravesados por recaídas. El sistema formal trabaja por episodios; el centro barrial trabaja por historias. Sostiene antes del problema, durante el tratamiento y después del egreso.</div>
+    </div>
+  </div>
+
+  <p class="sec-lbl">El Ver — Realidad</p>
+  <ul class="puntos">
+    <li><span class="dot">V</span><span>La cercanía como primer gesto tiene una formulación precisa que evita el asistencialismo paralizante: "Esta cercanía se construye con gestos concretos: un plato de comida, un nombre recordado, una visita al domicilio, el acompañamiento a un turno médico. No son gestos auxiliares al acompañamiento: son el acompañamiento mismo en sus primeras formas" (§11.1.7). El error frecuente es pensar que esos gestos son "lo previo" al verdadero acompañamiento; el manual los define como el acompañamiento ya en marcha.</span></li>
+    <li><span class="dot">V</span><span>"Muchas veces lo que falla no es la existencia de los recursos sino el acceso a ellos. La burocracia expulsa; los horarios excluyen; los formularios atemorizan" (§11.1.7). Este diagnóstico justifica por qué la gestión es un eje central y no un detalle administrativo: la diferencia entre que un recurso exista y que la persona pueda acceder a él es precisamente el trabajo del centro barrial.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Juzgar — Iluminación</p>
+  <ul class="puntos">
+    <li><span class="dot">J</span><span>"El sistema formal de salud trabaja por episodios; el centro barrial trabaja por historias" (§11.1.7). Esta distinción es la clave teórica del tercer eje: mientras el hospital cierra el episodio cuando termina el tratamiento, el centro barrial sigue presente antes, durante y después, sin un punto de cierre administrativo. Esa continuidad es lo que permite acompañar las recaídas sin que se interpreten como fracasos del proceso.</span></li>
+    <li><span class="dot">J</span><span>Los tres ejes operan simultáneamente desde el primer encuentro, no en secuencia: el mismo gesto de recibir a alguien con un plato de comida (cercanía) puede incluir preguntar por su situación de documentación (gestión) y comprometerse a seguir presente la semana siguiente (acompañamiento). Pensar los tres ejes como etapas separadas fragmenta lo que el manual propone como un único movimiento integrado.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Actuar — Propuesta</p>
+  <div class="act-box">
+    <div class="act-title">Evaluar los tres ejes en el centro barrial actual</div>
+    <div class="act-body">Si el centro barrial ya existe, el grupo evalúa cada eje: ¿hay cercanía real (gestos concretos, conocimiento de nombres, visitas) o solo prestación de servicios? ¿hay gestión activa (articulación con otros dispositivos, acompañamiento de trámites) o el centro funciona aislado? ¿hay continuidad del vínculo más allá de episodios puntuales? Identificar el eje más débil como prioridad de fortalecimiento.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Diseñar el primer gesto de cercanía</div>
+    <div class="act-body">Si el centro está por iniciarse, el grupo diseña el primer gesto concreto de cercanía: ¿un plato de comida compartido? ¿una ronda de presentaciones donde se aprenden los nombres? ¿una primera visita a una familia del territorio? El gesto inicial no necesita ser grande: necesita ser genuino y replicable cada semana.</div>
+  </div>
+
+  <div class="cita">
+    <div class="cita-lbl">Cita inspiradora · §11.1.7</div>
+    <div class="cita-txt">"La inclusión real, no discursiva, es siempre cuerpo a cuerpo. Cada persona es sagrada; ninguna vida está de sobra."</div>
+    <div class="cita-ref">Manual de la PLAPA, §11.1.7 — Los Centros Barriales (CELAM 2026)</div>
+  </div>
+
+  <div class="autocuidado">
+    <div class="auto-lbl">Autocuidado del agente</div>
+    <div class="auto-txt">Sostener los tres ejes simultáneamente —cercanía, gestión y acompañamiento— puede ser exigente para un equipo pequeño. El facilitador recuerda que no se necesita un agente especializado en cada eje desde el primer día: los tres pueden estar presentes de manera incipiente y crecer con el tiempo. La perfección de los tres ejes no es condición para empezar.</div>
+  </div>
+  <p class="ref">Referencias: §11.1.7 — Manual de la PLAPA, CELAM 2026</p>
+</div>
+
+<!-- MÓDULO 3 -->
+<div id="m3" class="mod">
+  <span class="mod-tag">Módulo 3 · El Actuar</span>
+  <h2 class="mod-title">Quiénes sostienen el centro: voluntarios con arraigo y acompañantes pares</h2>
+  <p class="mod-sub">No se necesita un equipo de profesionales para funcionar · §11.1.7</p>
+
+  <div class="mf">
+    <div class="mf-lbl">Mensaje fuerza</div>
+    <div class="mf-txt">"El centro barrial no requiere un equipo de profesionales para funcionar. Su fuerza está en los voluntarios con arraigo territorial y en los acompañantes pares: personas que han atravesado ellas mismas situaciones de consumo y exclusión, y que por eso tienen una credibilidad que ningún técnico externo puede igualar."</div>
+  </div>
+
+  <p class="sec-lbl">El Ver — Realidad</p>
+  <ul class="puntos">
+    <li><span class="dot">V</span><span>La objeción más frecuente de los párrocos que dudan en abrir un centro barrial: "no tenemos profesionales formados, no podemos hacer esto bien." El §11.1.7 la refuta directamente: "el centro barrial no requiere un equipo de profesionales para funcionar." La fuerza del dispositivo no está en la credencial técnica, sino en el arraigo territorial y la experiencia vivida.</span></li>
+    <li><span class="dot">V</span><span>"El acompañante par no acompaña desde la teoría sino desde la experiencia del dolor, la caída y la posibilidad real de recomenzar. Su presencia dice lo que ningún discurso puede decir: que el cambio es posible porque ya ocurrió en alguien de carne y hueso, de ese barrio, con esa historia" (§11.1.7). Esta es la misma figura que el Itinerario 10 desarrolla en profundidad; aquí se confirma como pilar fundacional del centro barrial, no como un complemento opcional.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Juzgar — Iluminación</p>
+  <ul class="puntos">
+    <li><span class="dot">J</span><span>El rol específico del agente pastoral o referente eclesial dentro de este esquema no es ser el experto técnico, sino "sostener la mística del conjunto, garantizar que el centro no pierda su identidad de acogida incondicional, y articular con las redes más amplias" (§11.1.7). El sacerdote o coordinador pastoral no necesita saber de psicología clínica: necesita custodiar el sentido y la identidad del espacio.</span></li>
+    <li><span class="dot">J</span><span>La combinación de voluntarios con arraigo y acompañantes pares produce un equipo con dos fuentes de legitimidad distintas y complementarias: el conocimiento del territorio (voluntarios) y el conocimiento de la experiencia (pares). Ninguna de las dos por sí sola sustituye a la otra; juntas forman el tejido humano que sostiene el centro barrial.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Actuar — Propuesta</p>
+  <div class="act-box">
+    <div class="act-title">Identificar a los voluntarios con arraigo territorial</div>
+    <div class="act-body">El grupo identifica: ¿quiénes en la comunidad parroquial tienen arraigo real en el barrio (viven ahí, conocen a las familias, tienen historia compartida)? ¿están dispuestos a formarse para este rol? La lista de candidatos no necesita ser larga: dos o tres personas comprometidas son suficientes para empezar.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Identificar a los posibles acompañantes pares</div>
+    <div class="act-body">El grupo identifica: ¿hay personas en el territorio con experiencia de recuperación que podrían acompañar como pares? ¿están en una etapa de estabilidad suficiente (§6.5.5)? ¿qué formación básica necesitarían antes de empezar? Acercarse a esas personas con respeto y sin presión es el primer paso de un proceso que puede tomar tiempo.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Definir el rol específico del referente eclesial</div>
+    <div class="act-body">El grupo clarifica: ¿quién va a custodiar la mística e identidad del centro? ¿quién va a articular con la diócesis y con las redes externas? Ese rol no necesita ser ejercido por el párroco mismo, pero sí necesita estar claramente asignado para que el centro no pierda su anclaje eclesial con el paso del tiempo.</div>
+  </div>
+
+  <div class="cita">
+    <div class="cita-lbl">Cita inspiradora · §11.1.7</div>
+    <div class="cita-txt">"El acompañante par no acompaña desde la teoría sino desde la experiencia del dolor, la caída y la posibilidad real de recomenzar."</div>
+    <div class="cita-ref">Manual de la PLAPA, §11.1.7 — Los Centros Barriales (CELAM 2026)</div>
+  </div>
+
+  <div class="autocuidado">
+    <div class="auto-lbl">Autocuidado del agente</div>
+    <div class="auto-txt">Los voluntarios con arraigo territorial y los acompañantes pares pueden experimentar un desgaste particular: están dando desde su propia vida, su propio barrio, su propia historia de dolor. El facilitador recuerda que el §11.1.8 incluye la formación como condición de sustentabilidad: "sin ella, el desgaste hace que los voluntarios abandonen y el centro se cierre." Cuidar a quienes sostienen el centro no es opcional: es lo que garantiza que el centro siga existiendo.</div>
+  </div>
+  <p class="ref">Referencias: §11.1.7, §6.5.5 — Manual de la PLAPA, CELAM 2026</p>
+</div>
+
+<!-- MÓDULO 4 -->
+<div id="m4" class="mod">
+  <span class="mod-tag">Módulo 4 · Síntesis y revisión de vida</span>
+  <h2 class="mod-title">Cómo comenzar: cinco pasos concretos sin esperar a tener todo resuelto</h2>
+  <p class="mod-sub">No hace falta un plan perfecto: hace falta una puerta abierta · §11.1.8</p>
+
+  <div class="mf">
+    <div class="mf-lbl">Mensaje fuerza</div>
+    <div class="mf-txt">"No hace falta tener todo resuelto para empezar. Hace falta un espacio físico, un grupo pequeño de personas dispuestas a recibir, y la decisión de no juzgar a quien llegue. El resto se construye caminando."</div>
+  </div>
+
+  <div class="pasos">
+    <div class="paso">
+      <div class="paso-num">1</div>
+      <div class="paso-txt"><strong>Mapear el territorio:</strong> ¿quiénes son las personas en situación de consumo en el barrio? ¿dónde están? ¿qué recursos existen ya en la zona (centros de salud, programas municipales, organizaciones comunitarias)?</div>
+    </div>
+    <div class="paso">
+      <div class="paso-num">2</div>
+      <div class="paso-txt"><strong>Identificar referentes:</strong> ¿hay personas en la comunidad con experiencia de recuperación que podrían acompañar como pares? ¿hay voluntarios con arraigo en el barrio dispuestos a formarse?</div>
+    </div>
+    <div class="paso">
+      <div class="paso-num">3</div>
+      <div class="paso-txt"><strong>Abrir el espacio:</strong> un horario fijo, un lugar conocido, una puerta que siempre esté abierta. La regularidad genera confianza; la confianza genera vínculo; el vínculo genera proceso.</div>
+    </div>
+    <div class="paso">
+      <div class="paso-num">4</div>
+      <div class="paso-txt"><strong>Articular con la red:</strong> conocer los dispositivos disponibles en el territorio (centros de salud, comunidades terapéuticas, programas de empleo, defensorías) y construir relaciones concretas con sus referentes. El centro barrial no puede hacer todo solo.</div>
+    </div>
+    <div class="paso">
+      <div class="paso-num">5</div>
+      <div class="paso-txt"><strong>Formarse:</strong> el acompañamiento de personas con consumo problemático requiere herramientas. La formación de los agentes no es un lujo sino una condición de sustentabilidad. Sin ella, el desgaste hace que los voluntarios abandonen y el centro se cierre.</div>
+    </div>
+  </div>
+
+  <p class="sec-lbl">El Ver — Realidad</p>
+  <ul class="puntos">
+    <li><span class="dot">V</span><span>El §11.1.8 cita Gn 4,9 ("¿Dónde está tu hermano?") como fundamento del mapeo territorial. La pregunta de Dios a Caín no es solo retórica: es la pregunta que toda comunidad pastoral necesita hacerse antes de actuar. Mapear el territorio es, en el fondo, responder con seriedad a esa pregunta bíblica fundacional.</span></li>
+    <li><span class="dot">V</span><span>"Un horario fijo, un lugar conocido, una puerta que siempre esté abierta" (§11.1.8) son los tres requisitos mínimos del Paso 3, y son deliberadamente simples. No se exige infraestructura compleja ni presupuesto significativo: se exige regularidad. La regularidad —no la sofisticación— es lo que construye confianza en contextos donde la confianza ha sido traicionada muchas veces.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Juzgar — Iluminación</p>
+  <ul class="puntos">
+    <li><span class="dot">J</span><span>El orden de los cinco pasos no es casual: mapear antes de actuar evita la improvisación; identificar referentes antes de abrir evita empezar solo; abrir con regularidad antes de articular con la red da un punto de anclaje estable; articular con la red antes de formarse en profundidad asegura que la formación responda a necesidades reales detectadas en la práctica. La secuencia es pedagógicamente intencional.</span></li>
+    <li><span class="dot">J</span><span>El Paso 5 (formarse) cierra el círculo con una afirmación que vale para todo el manual: "la formación de los agentes no es un lujo sino una condición de sustentabilidad." Este mismo itinerario, junto con los otros 29 del catálogo, es una respuesta concreta a esa exigencia. El equipo que recorre estos itinerarios está cumpliendo el quinto paso del §11.1.8.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Actuar — Propuesta</p>
+  <div class="act-box">
+    <div class="act-title">Realizar el mapeo del territorio (Paso 1)</div>
+    <div class="act-body">El grupo dedica el tiempo necesario a mapear: personas en situación de consumo conocidas, recursos ya existentes en la zona, organizaciones comunitarias activas. Este mapeo puede tomar varias semanas y no es un ejercicio de una sola sesión: es el cimiento de todo lo que sigue.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Definir la fecha y el lugar de apertura (Paso 3)</div>
+    <div class="act-body">Si el grupo ya tiene avanzados los Pasos 1 y 2, define concretamente: ¿qué día y horario fijo tendrá el centro? ¿en qué espacio físico (puede ser una habitación del salón parroquial)? La fecha concreta de apertura convierte la intención en compromiso.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Cierre: el primer nombre que vamos a aprender</div>
+    <div class="act-body">El grupo cierra el itinerario con un compromiso muy concreto: nombrar a la primera persona del territorio a quien el centro barrial va a recibir y conocer por su nombre. No es simbólico: es el primer paso real. Cerrar con una oración pidiendo la gracia de ser, como dice el §11.1.7, "una familia grande que recibe la vida como viene."</div>
+  </div>
+
+  <div class="cita">
+    <div class="cita-lbl">Cita inspiradora · §11.1.8 — Gn 4,9</div>
+    <div class="cita-txt">"¿Dónde está tu hermano? No hace falta tener todo resuelto para empezar. Hace falta un espacio físico, un grupo pequeño de personas dispuestas a recibir, y la decisión de no juzgar a quien llegue. El resto se construye caminando."</div>
+    <div class="cita-ref">Manual de la PLAPA, §11.1.8 — Cómo comenzar (CELAM 2026)</div>
+  </div>
+
+  <div class="autocuidado">
+    <div class="auto-lbl">Autocuidado del agente — cierre del itinerario</div>
+    <div class="auto-txt">El itinerario cierra con la advertencia que el propio §11.1.8 incluye dentro de sus cinco pasos: la formación es condición de sustentabilidad, y sin ella "el desgaste hace que los voluntarios abandonen y el centro se cierre." El equipo que está empezando un centro barrial necesita planificar desde el primer día los espacios de supervisión, descanso y formación continua, no como un agregado para "cuando haya tiempo", sino como parte constitutiva del proyecto desde su diseño inicial.</div>
+  </div>
+  <p class="ref">Referencias: §11.1.8, §11.1.7, Gn 4,9 — Manual de la PLAPA, CELAM 2026</p>
+</div>
+
+<script>
+function show(n,btn){
+  for(let i=1;i<=4;i++) document.getElementById('m'+i).className='mod';
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  document.getElementById('m'+n).className='mod a';
+  btn.classList.add('on');
+}
+</script>
+</body>
+</html>

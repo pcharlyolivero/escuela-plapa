@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ruta Barrio Popular | Escuela PLAPA</title>
+  <style>
+    :root {
+      --bg-color: #fcfbf9;
+      --text-main: #2d2d2d;
+      --text-muted: #5a5a5a;
+      --primary: #854F0B; 
+      --primary-dark: #412402;
+      --accent: #1D9E75; 
+      --surface: #ffffff;
+      --surface-2: #f9f7f2;
+      --border: #e2dfd8;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-serif: Georgia, "Times New Roman", serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    /* Navegación */
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .logo {
+      font-family: var(--font-serif);
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--primary-dark);
+      text-decoration: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      margin-left: 1.5rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    
+    .nav-links a:hover { color: var(--primary); }
+
+    /* Hero Section de la Ruta */
+    .ruta-hero {
+      padding: 4rem 5% 3rem;
+      text-align: center;
+      background: var(--primary-dark);
+      color: white;
+    }
+    
+    .ruta-icon { font-size: 3rem; margin-bottom: 1rem; }
+    
+    .ruta-hero h1 {
+      font-family: var(--font-serif);
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .ruta-hero p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto;
+      color: #e2dfd8;
+    }
+
+    /* Contenedor del Timeline */
+    .timeline-container {
+      max-width: 800px;
+      margin: 4rem auto;
+      padding: 0 5%;
+    }
+
+    .etapa {
+      margin-bottom: 4rem;
+      position: relative;
+    }
+
+    .etapa-header {
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--border);
+    }
+    
+    .etapa-num {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+    
+    .etapa-title {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      color: var(--primary-dark);
+    }
+    
+    .etapa-desc {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-top: 0.5rem;
+    }
+
+    /* Estilos de las Tarjetas */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 15px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.2rem;
+      border-left: 4px solid var(--primary);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+    }
+
+    .card-n {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 5px;
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+
+    .card-sub {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--primary-dark);
+      color: #e2dfd8;
+      text-align: center;
+      padding: 3rem 5%;
+      font-size: 0.9rem;
+      margin-top: 4rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index.html" class="logo">Escuela PLAPA</a>
+    <nav class="nav-links">
+      <a href="index.html#ambitos">← Volver a Ámbitos</a>
+      <a href="catalogo_30_itinerarios_plapa_corregido.html">Catálogo Completo</a>
+    </nav>
+  </header>
+
+  <section class="ruta-hero">
+    <div class="ruta-icon">🏘️</div>
+    <h1>Barrio Popular y Centros Barriales</h1>
+    <p>Una hoja de ruta para quienes están fundando o sosteniendo espacios de umbral bajo en la trinchera comunitaria.</p>
+  </section>
+
+  <main class="timeline-container">
+    
+    <!-- Etapa 1 -->
+    <div class="etapa">
+      <div class="etapa-header">
+        <span class="etapa-num">Etapa 1</span>
+        <h2 class="etapa-title">Pisando el Territorio</h2>
+        <p class="etapa-desc">Acercarse a la realidad del barrio exige una espiritualidad encarnada y una lectura clara del entramado social y económico.</p>
+      </div>
+      <div class="grid">
+        <a class="card" href="itinerario_3_mistica_v2.html" style="border-left-color: #1D9E75;">
+          <div class="card-n" style="color: #1D9E75;">Itinerario 3</div>
+          <div class="card-title">Mística de la proximidad</div>
+          <div class="card-sub">Achicar distancias, callejear y tocar la carne sufriente como espiritualidad fundante para sostener la mirada en el barrio.</div>
+        </a>
+        <a class="card" href="itinerario_6_leer_territorio.html" style="border-left-color: #534AB7;">
+          <div class="card-n" style="color: #534AB7;">Itinerario 6</div>
+          <div class="card-title">Leer el territorio sin romantizarlo</div>
+          <div class="card-sub">Diagnóstico barrial crudo: identificar las lógicas del narcotráfico, la ausencia del Estado y las redes informales de cuidado.</div>
+        </a>
+        <a class="card" href="itinerario_9_drama_trabajo_3T.html" style="border-left-color: #534AB7;">
+          <div class="card-n" style="color: #534AB7;">Itinerario 9</div>
+          <div class="card-title">El drama del trabajo y las 3T</div>
+          <div class="card-sub">Comprender el desempleo estructural y la economía popular (Tierra, Techo, Trabajo) como andamiaje de justicia.</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Etapa 2 -->
+    <div class="etapa">
+      <div class="etapa-header">
+        <span class="etapa-num">Etapa 2</span>
+        <h2 class="etapa-title">El Dispositivo Institucional</h2>
+        <p class="etapa-desc">El paso de la buena voluntad espontánea a la construcción de un espacio organizado y en red.</p>
+      </div>
+      <div class="grid">
+        <a class="card" href="itinerario_25_centros_barriales.html" style="border-left-color: #185FA5;">
+          <div class="card-n" style="color: #185FA5;">Itinerario 25</div>
+          <div class="card-title">Abrir y sostener un centro barrial</div>
+          <div class="card-sub">El corazón de esta ruta: los tres ejes del centro barrial, cómo comenzar desde cero y la gestión de la sustentabilidad.</div>
+        </a>
+        <a class="card" href="itinerario_10_superar_fragmentacion.html" style="border-left-color: #534AB7;">
+          <div class="card-n" style="color: #534AB7;">Itinerario 10</div>
+          <div class="card-title">Superar la fragmentación institucional</div>
+          <div class="card-sub">Un centro barrial no puede trabajar solo. Estrategias de acompañamiento inespecífico y trabajo en red horizontal.</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Etapa 3 -->
+    <div class="etapa">
+      <div class="etapa-header">
+        <span class="etapa-num">Etapa 3</span>
+        <h2 class="etapa-title">Abordajes Específicos</h2>
+        <p class="etapa-desc">Profundizar en las particularidades de la exclusión que se viven a diario en los barrios populares.</p>
+      </div>
+      <div class="grid">
+        <a class="card" href="itinerario_20_biologia_pobreza.html" style="border-left-color: #BA7517;">
+          <div class="card-n" style="color: #BA7517;">Itinerario 20</div>
+          <div class="card-title">Biología, pobreza y vulnerabilidad</div>
+          <div class="card-sub">Cómo la cicatriz biológica de la exclusión impacta en el embarazo, las infancias y el consumo en contextos de pobreza extrema.</div>
+        </a>
+        <a class="card" href="itinerario_21_mujeres_consumo.html" style="border-left-color: #D4537E;">
+          <div class="card-n" style="color: #D4537E;">Itinerario 21</div>
+          <div class="card-title">Mujeres en situación de consumo</div>
+          <div class="card-sub">Abordaje de la feminización de la pobreza y reducción de daños con perspectiva de género en los barrios.</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Etapa 4 -->
+    <div class="etapa">
+      <div class="etapa-header">
+        <span class="etapa-num">Etapa 4</span>
+        <h2 class="etapa-title">Sostenibilidad Integral</h2>
+        <p class="etapa-desc">Garantizar que tanto el proyecto económico de quienes se recuperan como la salud de quienes acompañan perdure en el tiempo.</p>
+      </div>
+      <div class="grid">
+        <a class="card" href="itinerario_11_microcreditos_finanzas_solidarias.html" style="border-left-color: #534AB7;">
+          <div class="card-n" style="color: #534AB7;">Itinerario 11</div>
+          <div class="card-title">Microcréditos y finanzas solidarias</div>
+          <div class="card-sub">Herramientas concretas de economía popular para la reintegración y autonomía de quienes asisten al centro.</div>
+        </a>
+        <a class="card" href="itinerario_29_cuidar_que_cuidan.html" style="border-left-color: #639922;">
+          <div class="card-n" style="color: #639922;">Itinerario 29</div>
+          <div class="card-title">Cuidar a los que cuidan</div>
+          <div class="card-sub">Esencial en el barrio: acompañamiento del duelo, desgaste emocional y cómo sostener al equipo a largo plazo.</div>
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p><strong>Escuela de la PLAPA</strong></p>
+    <p style="margin-top: 0.5rem; color: #a39e93;">Formación basada en el Manual de la PLAPA · Red de América Latina y el Caribe</p>
+  </footer>
+
+</body>
+</html>

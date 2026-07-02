@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Itinerario 26 · Modelo ambulatorio vs. residencial · PLAPA 2026</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Georgia,'Times New Roman',serif;background:#f5f3ee;color:#222;padding:0 0 3rem}
+  .portada{background:#1A3A5C;padding:2rem 2.5rem 1.5rem;color:#fff}
+  .portada-sup{font-size:11px;font-weight:700;color:#85B7EB;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem;font-family:Arial,sans-serif}
+  .portada-title{font-size:26px;font-weight:700;line-height:1.25;margin-bottom:.35rem}
+  .portada-sub{font-size:13px;color:#B5D4F4;line-height:1.55;margin-bottom:1rem}
+  .dest-box{background:#0C3059;border-radius:6px;padding:.7rem 1rem;margin-bottom:1rem}
+  .dest-lbl{font-size:9px;font-weight:700;color:#85B7EB;letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px;font-family:Arial,sans-serif}
+  .dest-txt{font-size:12px;color:#fff;line-height:1.55}
+  .pills{display:flex;flex-wrap:wrap;gap:5px}
+  .pill{font-size:10px;font-weight:700;padding:3px 10px;border-radius:99px;background:#0C3059;color:#B5D4F4;font-family:Arial,sans-serif}
+  .nav{display:flex;background:#fff;border-bottom:2px solid #2A5A8A;flex-wrap:wrap}
+  .tab{padding:12px 18px;cursor:pointer;font-size:12px;font-family:Arial,sans-serif;color:#666;border:none;background:none;font-weight:600;letter-spacing:.03em;border-bottom:3px solid transparent;margin-bottom:-2px}
+  .tab:hover{color:#1A3A5C;background:#EEF4FB}
+  .tab.on{color:#1A3A5C;border-bottom-color:#2A5A8A;background:#EEF4FB}
+  .mod{display:none;max-width:900px;margin:0 auto;padding:2rem 2.5rem}
+  .mod.a{display:block}
+  .mod-tag{display:inline-block;font-size:10px;font-weight:700;padding:3px 10px;border-radius:99px;background:#E6F1FB;color:#1A3A5C;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.5rem;font-family:Arial,sans-serif}
+  .mod-title{font-size:20px;font-weight:700;color:#1A3A5C;line-height:1.3;margin-bottom:.3rem}
+  .mod-sub{font-size:12px;color:#888;font-family:Arial,sans-serif;margin-bottom:1.5rem}
+  .mf{border-left:4px solid #2A5A8A;background:#E6F1FB;padding:.8rem 1.1rem;margin-bottom:1.25rem;border-radius:0 6px 6px 0}
+  .mf-lbl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#185FA5;margin-bottom:4px;font-family:Arial,sans-serif}
+  .mf-txt{font-size:14px;font-style:italic;line-height:1.6;color:#1A3A5C}
+  .sec-lbl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#999;margin:1.1rem 0 .5rem;font-family:Arial,sans-serif}
+  .puntos{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:1rem}
+  .puntos li{display:flex;gap:10px;font-size:13px;color:#333;line-height:1.6}
+  .dot{width:20px;min-width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;margin-top:2px;background:#E6F1FB;color:#1A3A5C;font-family:Arial,sans-serif}
+  .act-box{background:#E6F1FB;border-radius:6px;padding:.75rem 1rem;margin-bottom:6px;border:1px solid #B5D4F4}
+  .act-title{font-size:12px;font-weight:700;color:#1A3A5C;margin-bottom:4px;font-family:Arial,sans-serif}
+  .act-body{font-size:12.5px;color:#2A5A8A;line-height:1.55}
+  .cita{background:#E6F1FB;border-radius:6px;padding:.8rem 1.1rem;margin-top:1.2rem;border-left:3px solid #2A5A8A}
+  .cita-lbl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#185FA5;margin-bottom:4px;font-family:Arial,sans-serif}
+  .cita-txt{font-size:12px;font-style:italic;line-height:1.6;color:#1A3A5C}
+  .cita-ref{font-size:10px;font-style:normal;font-weight:700;color:#185FA5;margin-top:3px;font-family:Arial,sans-serif}
+  .autocuidado{border-left:3px solid #2A5A8A;background:#f7f9fc;padding:.75rem 1rem;margin-top:1.2rem}
+  .auto-lbl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#185FA5;margin-bottom:4px;font-family:Arial,sans-serif}
+  .auto-txt{font-size:12.5px;color:#555;line-height:1.55}
+  .ref{font-size:10px;color:#aaa;font-style:italic;margin-top:1rem;padding-top:.75rem;border-top:1px solid #dde5f0;font-family:Arial,sans-serif}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1.1rem}
+  .g-item{background:#E6F1FB;border-radius:6px;padding:.65rem .8rem;border:1px solid #B5D4F4}
+  .g-title{font-size:11px;font-weight:700;color:#1A3A5C;margin-bottom:3px;font-family:Arial,sans-serif}
+  .g-body{font-size:11px;color:#2A5A8A;line-height:1.4}
+  .alerta{background:#FFF0ED;border-left:3px solid #D85A30;border-radius:0 6px 6px 0;padding:.65rem .9rem;margin-bottom:.9rem}
+  .alerta-lbl{font-size:9px;font-weight:700;color:#993C1D;letter-spacing:.07em;text-transform:uppercase;margin-bottom:3px;font-family:Arial,sans-serif}
+  .alerta-txt{font-size:12px;color:#4A1B0C;line-height:1.5}
+  .cuatro-dim{display:flex;flex-direction:column;gap:6px;margin-bottom:1rem}
+  .dim{display:flex;gap:10px;align-items:flex-start}
+  .dim-ico{width:24px;min-width:24px;height:24px;background:#1A3A5C;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;font-family:Arial,sans-serif;flex-shrink:0}
+  .dim-txt{font-size:13px;color:#333;line-height:1.55;padding-top:2px}
+  .seis-comp{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1.1rem}
+  @media(max-width:600px){.grid2,.seis-comp{grid-template-columns:1fr}.mod{padding:1.2rem 1rem}.portada{padding:1.2rem}}
+  @media print{.nav{display:none}.mod{display:block!important;page-break-before:always}}
+</style>
+</head>
+<body>
+
+<div class="portada">
+  <p class="portada-sup">Itinerario formativo 26 · PLAPA — CELAM 2026</p>
+  <h1 class="portada-title">Modelo ambulatorio vs. residencial</h1>
+  <p class="portada-sub">Comunidades terapéuticas, tratamiento ambulatorio y la articulación entre dispositivos como continuo de cuidado · 4 módulos</p>
+  <div class="dest-box">
+    <div class="dest-lbl">Destinatarios</div>
+    <div class="dest-txt">Coordinadores de dispositivos pastorales que necesitan decidir qué modalidad de acompañamiento ofrecer o cómo articular ambas. Equipos de comunidades terapéuticas que quieren evaluar su propio modelo desde los criterios del manual, y equipos parroquiales que están considerando iniciar un dispositivo ambulatorio en su territorio. Nivel intermedio: se asume familiaridad con los conceptos básicos de acompañamiento del manual.</div>
+  </div>
+  <div class="pills">
+    <span class="pill">§11.6</span>
+    <span class="pill">§11.7</span>
+    <span class="pill">Coordinadores de dispositivos</span>
+    <span class="pill">4 sesiones</span>
+    <span class="pill">Nivel intermedio</span>
+  </div>
+</div>
+
+<div class="nav">
+  <button class="tab on" onclick="show(1,this)">Módulo 1 · Las cuatro dimensiones del residencial</button>
+  <button class="tab" onclick="show(2,this)">Módulo 2 · Criterios de discernimiento</button>
+  <button class="tab" onclick="show(3,this)">Módulo 3 · Por qué el ambulatorio es prioritario</button>
+  <button class="tab" onclick="show(4,this)">Módulo 4 · El continuo de cuidado</button>
+</div>
+
+<!-- MÓDULO 1 -->
+<div id="m1" class="mod a">
+  <span class="mod-tag">Módulo 1 · El Ver</span>
+  <h2 class="mod-title">Las cuatro dimensiones del proceso residencial: la comunidad terapéutica como espacio integral</h2>
+  <p class="mod-sub">Biológica, psicológica, social y espiritual trabajadas simultáneamente · §11.6.1</p>
+
+  <div class="mf">
+    <div class="mf-lbl">Mensaje fuerza</div>
+    <div class="mf-txt">"El abordaje residencial despliega las cuatro dimensiones que este manual ha propuesto como constitutivas de la persona. No como compartimentos estancos sino como facetas de una misma unidad que se trabajan de manera simultánea en la convivencia diaria."</div>
+  </div>
+
+  <div class="cuatro-dim">
+    <div class="dim"><div class="dim-ico">B</div><div class="dim-txt"><strong>Dimensión biológica:</strong> rutinas estructuradas, alimentación adecuada, actividad física, descanso y seguimiento médico. Las rutinas saludables no son un reglamento disciplinario sino "una pedagogía biológica del reaprendizaje" que aprovecha la neuroplasticidad.</div></div>
+    <div class="dim"><div class="dim-ico">P</div><div class="dim-txt"><strong>Dimensión psicológica:</strong> autoconocimiento, reconocimiento emocional, habilidades de afrontamiento. La patología dual "es la norma y no la excepción en los territorios": el abordaje sana la fractura interna que sostiene el consumo, no solo el síntoma visible.</div></div>
+    <div class="dim"><div class="dim-ico">S</div><div class="dim-txt"><strong>Dimensión social:</strong> la comunidad terapéutica como "laboratorio de convivencia" donde se aprenden nuevas formas de relación. El trabajo familiar es parte constitutiva, no un complemento. El trabajo es una dimensión sagrada de la identidad, no un premio final.</div></div>
+    <div class="dim"><div class="dim-ico">E</div><div class="dim-txt"><strong>Dimensión espiritual:</strong> el despertar espiritual debe ocurrir en libertad, nunca por coerción. Lectio Divina, Eucaristía, confesión, retiros como caminos de reconexión. La espiritualidad universal es la puerta; la vida sacramental es la casa a la que esa puerta puede abrirse.</div></div>
+  </div>
+
+  <p class="sec-lbl">El Ver — Realidad</p>
+  <ul class="puntos">
+    <li><span class="dot">V</span><span>El §11.6.1 enfatiza que las cuatro dimensiones se trabajan "de manera simultánea en la convivencia diaria", no como cuatro programas separados que el residente atraviesa en secuencia. La fortaleza específica del modelo residencial está precisamente en esa simultaneidad: la dimensión biológica (la rutina de levantarse) y la dimensión espiritual (el momento de oración matutina) ocurren en el mismo día, articuladas.</span></li>
+    <li><span class="dot">V</span><span>En la dimensión espiritual, el manual es explícito sobre el límite ético fundamental: "esto no significa imponer prácticas religiosas como condición de permanencia. La participación debe promoverse siempre desde la invitación y el acompañamiento humano, nunca desde la coerción o el señalamiento" (§11.6.1). Una comunidad terapéutica cristiana que condiciona la permanencia a la práctica religiosa traiciona el espíritu del manual.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Juzgar — Iluminación</p>
+  <ul class="puntos">
+    <li><span class="dot">J</span><span>"Como enseña el artículo 7.1.4, la espiritualidad universal es la puerta; la vida comunitaria y sacramental es la casa a la que esa puerta puede abrirse. El hermano que no profesa una fe puede encontrar en el clima espiritual de la comunidad —el silencio, el cuidado, la belleza, el ritmo de la vida compartida— el suelo donde su propia búsqueda comience a germinar" (§11.6.1). Esta imagen resuelve la tensión entre identidad cristiana de la comunidad y acogida incondicional de quien no comparte esa fe.</span></li>
+    <li><span class="dot">J</span><span>"El objetivo no es únicamente lograr abstinencia, sino restaurar el bienestar físico y la capacidad funcional de la persona" (§11.6.1). Esta afirmación sobre la dimensión biológica desafía el criterio de éxito más extendido en el campo: la abstinencia. El manual propone un criterio más amplio e integral: el bienestar funcional de la persona en sus cuatro dimensiones.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Actuar — Propuesta</p>
+  <div class="act-box">
+    <div class="act-title">Auditar la comunidad terapéutica con las cuatro dimensiones</div>
+    <div class="act-body">Si el equipo coordina o conoce una comunidad terapéutica, evaluar cada dimensión: ¿hay seguimiento médico y articulación con salud mental (biológica)? ¿hay terapia individual y grupal real (psicológica)? ¿hay trabajo activo con las familias y procesos de reintegración laboral (social)? ¿hay espacio espiritual ofrecido desde la invitación, no la imposición (espiritual)? Identificar la dimensión más débil.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Revisar el lenguaje sobre el "éxito" del proceso residencial</div>
+    <div class="act-body">El grupo reflexiona: ¿cómo mide el dispositivo el éxito de un proceso residencial? ¿solo abstinencia o también bienestar funcional, vínculos restaurados y sentido recuperado? Ajustar los criterios de evaluación según las cuatro dimensiones evita reducir el proceso a un solo indicador.</div>
+  </div>
+
+  <div class="cita">
+    <div class="cita-lbl">Cita inspiradora · §11.6.1</div>
+    <div class="cita-txt">"La neuroplasticidad que permitió al cerebro aprender la adicción es la misma que permite trazar nuevos caminos: las rutinas saludables no son un reglamento disciplinario sino una pedagogía biológica del reaprendizaje."</div>
+    <div class="cita-ref">Manual de la PLAPA, §11.6.1 — Las dimensiones del proceso residencial (CELAM 2026)</div>
+  </div>
+
+  <div class="autocuidado">
+    <div class="auto-lbl">Autocuidado del agente</div>
+    <div class="auto-txt">El trabajo en comunidad terapéutica residencial implica convivencia cotidiana intensa con personas en procesos de alta complejidad. El facilitador recuerda que el equipo residencial necesita su propio espacio de descanso fuera del ámbito de la comunidad, turnos claros, y supervisión regular que aborde el desgaste específico de la convivencia 24 horas.</div>
+  </div>
+  <p class="ref">Referencias: §11.6.1, §7.1.4 — Manual de la PLAPA, CELAM 2026</p>
+</div>
+
+<!-- MÓDULO 2 -->
+<div id="m2" class="mod">
+  <span class="mod-tag">Módulo 2 · El Juzgar</span>
+  <h2 class="mod-title">Criterios de discernimiento: cuándo una comunidad terapéutica traiciona el Evangelio que dice profesar</h2>
+  <p class="mod-sub">Cuatro alertas que toda comunidad cristiana necesita examinar en sí misma · §11.6.2, §11.6.3</p>
+
+  <div class="mf">
+    <div class="mf-lbl">Mensaje fuerza</div>
+    <div class="mf-txt">"No toda comunidad terapéutica que se declare cristiana responde automáticamente al espíritu de este manual. Cuando una propuesta residencial desarrolla una dimensión pero niega alguna otra, lo que está negando es la correcta comprensión de la persona humana."</div>
+  </div>
+
+  <div class="alerta">
+    <div class="alerta-lbl">Cuatro alertas de discernimiento · §11.6.3</div>
+    <div class="alerta-txt">
+    <strong>1.</strong> Trabajar lo espiritual pero rechazar la atención médica o psiquiátrica → espiritualismo reductor.<br>
+    <strong>2.</strong> Trabajar lo biológico y conductual pero prohibir o ignorar la dimensión espiritual → biologicismo.<br>
+    <strong>3.</strong> Aislar al residente de todo contacto con su familia y su territorio → contradice la comprensión relacional de la persona.<br>
+    <strong>4.</strong> Utilizar la humillación, el castigo físico o la coerción religiosa como herramientas "terapéuticas" → niega la dignidad ontológica inalienable.
+    </div>
+  </div>
+
+  <p class="sec-lbl">El Ver — Realidad</p>
+  <ul class="puntos">
+    <li><span class="dot">V</span><span>"Estos criterios no son un juicio externo sobre las comunidades existentes, muchas de las cuales realizan una tarea admirable con recursos escasos. Son una brújula que el manual ofrece para que cada comunidad pueda evaluarse a sí misma con honestidad y crecer hacia una mayor integralidad" (§11.6.3). El propósito de los cuatro criterios no es condenar sino ofrecer una herramienta de autoevaluación honesta.</span></li>
+    <li><span class="dot">V</span><span>"El acto de llamar por el nombre es el gesto fundamental de restauración de la dignidad ontológica. En la comunidad terapéutica, ese gesto se repite cientos de veces al día" (§11.6.2). Esta frase sintetiza la metodología más profunda del modelo residencial: no es un programa de actividades sino una repetición constante de gestos de dignidad.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Juzgar — Iluminación</p>
+  <ul class="puntos">
+    <li><span class="dot">J</span><span>"El trato respetuoso y la existencia de normas claras pero humanizadas forman parte de lo que el manual denomina misericordia estructurada: un marco de convivencia que no es ni la rigidez del cuartel ni la anomia de la calle, sino la firmeza amorosa de un hogar que cuida porque pone límites y pone límites porque cuida" (§11.6.2). Esta definición conecta directamente con el Itinerario 14 y aplica los mismos principios al contexto residencial específicamente.</span></li>
+    <li><span class="dot">J</span><span>La cuarta alerta —humillación, castigo físico o coerción religiosa— es la más grave porque "niega la dignidad ontológica que el artículo 7.1.3 declara inalienable." Algunas comunidades terapéuticas con buenas intenciones pueden caer en prácticas de este tipo bajo la idea de "disciplina necesaria." El manual es categórico: ninguna técnica terapéutica puede fundarse en la negación de la dignidad de la persona.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Actuar — Propuesta</p>
+  <div class="act-box">
+    <div class="act-title">Aplicar las cuatro alertas a la comunidad propia</div>
+    <div class="act-body">Con honestidad y sin defensividad, el grupo revisa la comunidad terapéutica que coordina o conoce de cerca con las cuatro alertas del §11.6.3: ¿hay alguna de las cuatro presente, aunque sea de forma incipiente? El ejercicio no busca culpar sino identificar áreas de crecimiento concretas.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">El gesto del nombre: practicarlo conscientemente</div>
+    <div class="act-body">El grupo diseña cómo intensificar el gesto de llamar por el nombre en la vida cotidiana de la comunidad: ¿se usa el nombre en cada interacción o se cae en apodos despersonalizantes o en referencias funcionales ("el de la cama 3")? Ese gesto repetido cientos de veces al día, como dice el §11.6.2, es el corazón metodológico de la restauración de dignidad.</div>
+  </div>
+
+  <div class="cita">
+    <div class="cita-lbl">Cita inspiradora · §11.6.3</div>
+    <div class="cita-txt">"Estos criterios son una brújula que el manual ofrece para que cada comunidad pueda evaluarse a sí misma con honestidad y crecer hacia una mayor integralidad."</div>
+    <div class="cita-ref">Manual de la PLAPA, §11.6.3 — Criterios de discernimiento (CELAM 2026)</div>
+  </div>
+
+  <div class="autocuidado">
+    <div class="auto-lbl">Autocuidado del agente</div>
+    <div class="auto-txt">El examen honesto de las cuatro alertas puede generar incomodidad si el equipo reconoce alguna práctica problemática en su propia comunidad. El facilitador recuerda que el reconocimiento honesto es el primer paso del cambio, no una confesión de fracaso. Ninguna comunidad es perfecta desde el inicio: lo que el manual pide es la disposición a crecer hacia la integralidad.</div>
+  </div>
+  <p class="ref">Referencias: §11.6.2, §11.6.3, §7.1.3 — Manual de la PLAPA, CELAM 2026</p>
+</div>
+
+<!-- MÓDULO 3 -->
+<div id="m3" class="mod">
+  <span class="mod-tag">Módulo 3 · El Actuar</span>
+  <h2 class="mod-title">Por qué el modelo ambulatorio es prioritario: identidad propia, no versión reducida</h2>
+  <p class="mod-sub">Accesibilidad, preservación de vínculos y ética del cuidado · §11.7.1, §11.7.2</p>
+
+  <div class="mf">
+    <div class="mf-lbl">Mensaje fuerza</div>
+    <div class="mf-txt">"El tratamiento ambulatorio no es una versión reducida o de menor jerarquía del tratamiento residencial. Es una modalidad con identidad propia que en muchos contextos de la región representa la única modalidad de acompañamiento accesible para la mayoría de las personas con consumos problemáticos."</div>
+  </div>
+
+  <div class="grid2">
+    <div class="g-item">
+      <div class="g-title">Accesibilidad territorial</div>
+      <div class="g-body">Las comunidades residenciales son escasas, costosas o inaccesibles para los más vulnerables. El ambulatorio despliega respuesta donde la persona vive, sin exigir desarraigo que muchos (mujeres con hijos, trabajadores informales, adolescentes escolarizados) no pueden sostener.</div>
+    </div>
+    <div class="g-item">
+      <div class="g-title">Preservación de los vínculos</div>
+      <div class="g-body">No se sana al sujeto en ambiente protegido para devolverlo a un territorio inalterado: se acompaña la transformación del sujeto y de su entorno simultáneamente. Coherente con el enfoque sistémico del manual.</div>
+    </div>
+    <div class="g-item">
+      <div class="g-title">Coherencia con la ética del cuidado</div>
+      <div class="g-body">No condiciona el acceso al acompañamiento: basta con llegar. Especialmente relevante en etapas tempranas (precontemplación y contemplación) donde exigir internación funciona como barrera que aleja en lugar de recibir.</div>
+    </div>
+    <div class="g-item">
+      <div class="g-title">Un error frecuente a corregir</div>
+      <div class="g-body">Pensar que el ambulatorio es solo para "casos menos graves." Acompaña eficazmente un espectro amplio: inicios de consumo, transición post-residencial, patología dual estabilizada, mujeres con hijos, adolescentes escolarizados, personas en situación de calle.</div>
+    </div>
+  </div>
+
+  <p class="sec-lbl">El Ver — Realidad</p>
+  <ul class="puntos">
+    <li><span class="dot">V</span><span>"Una concepción frecuente pero errónea limita el tratamiento ambulatorio a los casos 'menos graves' o 'menos compulsivos'" (§11.7.2). Esta corrección es central: el ambulatorio no es el escalón inferior de una jerarquía con el residencial arriba. Es la modalidad prioritaria para la mayoría de los casos en el contexto latinoamericano, y el residencial es la excepción reservada para situaciones específicas de riesgo vital o ausencia total de red.</span></li>
+    <li><span class="dot">V</span><span>"El criterio de derivación no debe basarse únicamente en la gravedad del consumo, sino en una evaluación integral que considere el capital de recuperación del sujeto, la presencia o ausencia de red vincular, la existencia de patología dual y las condiciones concretas de vida" (§11.7.2). Esta es la conexión directa con el Itinerario 17 (capital de recuperación): el criterio de derivación entre modalidades usa exactamente ese marco.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Juzgar — Iluminación</p>
+  <ul class="puntos">
+    <li><span class="dot">J</span><span>El listado de personas para quienes el ambulatorio es preferible —mujeres con hijos a cargo, adolescentes escolarizados, personas en situación de calle en su primera etapa de acercamiento— conecta directamente con los Itinerarios 21, 22 y 24. El manual aplica de forma consistente el principio de no exigir condiciones de acceso que la persona no puede cumplir sin perder algo valioso (la custodia de los hijos, la escolaridad, la red de calle).</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Actuar — Propuesta</p>
+  <div class="act-box">
+    <div class="act-title">Revisar los criterios de derivación del territorio</div>
+    <div class="act-body">El grupo evalúa: ¿cómo decide actualmente el equipo cuándo derivar a un dispositivo residencial y cuándo sostener el acompañamiento ambulatorio? ¿se basa principalmente en la gravedad del consumo o en la evaluación integral que el §11.7.2 propone (capital de recuperación, red vincular, patología dual, condiciones de vida)? Ajustar el criterio si está sesgado hacia la gravedad como único factor.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Identificar a quienes el ambulatorio puede acompañar mejor</div>
+    <div class="act-body">El grupo revisa los siete perfiles del §11.7.2 (inicio de consumo, post-residencial, patología dual estabilizada, mujeres con hijos, adolescentes escolarizados, personas en situación de calle) y verifica: ¿el dispositivo ambulatorio del territorio está preparado para acompañar a cada uno de esos perfiles, o hay alguno que sistemáticamente queda fuera?</div>
+  </div>
+
+  <div class="cita">
+    <div class="cita-lbl">Cita inspiradora · §11.7.1</div>
+    <div class="cita-txt">"La persona no necesita internarse para ser acompañada; basta con que llegue. Esta flexibilidad es especialmente relevante para quienes se encuentran en etapas tempranas del proceso de cambio, donde la exigencia de una internación puede funcionar como barrera de acceso que termina alejando al hermano en lugar de recibirlo."</div>
+    <div class="cita-ref">Manual de la PLAPA, §11.7.1 — Por qué el modelo ambulatorio es prioritario (CELAM 2026)</div>
+  </div>
+
+  <div class="autocuidado">
+    <div class="auto-lbl">Autocuidado del agente</div>
+    <div class="auto-txt">El modelo ambulatorio puede generar en el equipo la sensación de "no estar haciendo suficiente" frente a la imagen más intensiva y visible del modelo residencial. El facilitador recuerda que el §11.7.1 es explícito: el ambulatorio "no es una versión reducida." Acompañar a alguien en su territorio, sin desarraigarla, es un trabajo tan válido y exigente como el acompañamiento residencial, aunque tenga una forma distinta.</div>
+  </div>
+  <p class="ref">Referencias: §11.7.1, §11.7.2 — Manual de la PLAPA, CELAM 2026</p>
+</div>
+
+<!-- MÓDULO 4 -->
+<div id="m4" class="mod">
+  <span class="mod-tag">Módulo 4 · Síntesis y revisión de vida</span>
+  <h2 class="mod-title">El continuo de cuidado: ambulatorio y residencial como momentos de un mismo camino</h2>
+  <p class="mod-sub">Componentes del dispositivo ambulatorio y la articulación entre modalidades · §11.6.5, §11.7.3, §11.7.4</p>
+
+  <div class="mf">
+    <div class="mf-lbl">Mensaje fuerza</div>
+    <div class="mf-txt">"La comunidad terapéutica y el tratamiento ambulatorio no son alternativas excluyentes sino momentos de un continuo de cuidado. El desafío de la pastoral es construir la articulación entre dispositivos para que la persona no quede atrapada en uno solo ni caiga en los vacíos entre ellos."</div>
+  </div>
+
+  <div class="seis-comp">
+    <div class="g-item"><div class="g-title">Acompañamiento individual</div><div class="g-body">Espacios regulares de escucha y seguimiento. Puede ser realizado por profesionales o por acompañantes pares formados, según la complejidad del caso.</div></div>
+    <div class="g-item"><div class="g-title">Trabajo grupal</div><div class="g-body">Grupos terapéuticos o de autoayuda como laboratorio de vínculos sanos donde ensayar nuevas formas de relacionarse.</div></div>
+    <div class="g-item"><div class="g-title">Trabajo con la familia</div><div class="g-body">Encuentros familiares, grupos de padres e intervenciones domiciliarias. No se acompaña solo a la persona sino a la red que la sostiene o la expulsa.</div></div>
+    <div class="g-item"><div class="g-title">Atención psiquiátrica y médica</div><div class="g-body">Articulación indispensable con servicios de salud del territorio para patología dual o deterioro físico significativo.</div></div>
+    <div class="g-item"><div class="g-title">Actividades promocionales</div><div class="g-body">Talleres de oficios, deporte, arte. No son complementos del tratamiento: son parte del tratamiento, bajo el paradigma de "llegar antes."</div></div>
+    <div class="g-item"><div class="g-title">Acompañamiento espiritual</div><div class="g-body">Oración, lectura orante, retiros breves, para quienes lo deseen, fortaleciendo la dimensión del sentido y la trascendencia.</div></div>
+  </div>
+
+  <p class="sec-lbl">El Ver — Realidad</p>
+  <ul class="puntos">
+    <li><span class="dot">V</span><span>"Una persona puede iniciar su proceso en un acompañamiento ambulatorio parroquial, requerir en un momento de crisis una internación en una comunidad terapéutica, y regresar al dispositivo ambulatorio para sostener su proceso en el territorio" (§11.6.5). Este tránsito fluido entre modalidades es exactamente lo que el manual propone como ideal, frente al modelo binario donde ambulatorio y residencial compiten por la persona.</span></li>
+    <li><span class="dot">V</span><span>"Otra persona puede egresar de la comunidad y encontrar en el acompañamiento ambulatorio la red de contención que necesita para no quedar en el vacío que este manual ha descrito como 'el abismo de la libertad'" (§11.6.5). Esta conexión directa con el Itinerario 23 muestra que el abismo de la libertad no es exclusivo del egreso carcelario: es el mismo fenómeno al egreso de cualquier dispositivo residencial sin red de continuidad.</span></li>
+    <li><span class="dot">V</span><span>"La parroquia, la capilla, el centro barrial o el Hogar de Cristo pueden funcionar como sedes de un dispositivo ambulatorio que no requiere una infraestructura hospitalaria para operar. Lo que requiere es un equipo formado, una organización de los tiempos, y la decisión institucional de abrir las puertas a esta modalidad" (§11.7.4). Esta afirmación conecta el Itinerario 26 directamente con el Itinerario 25: el centro barrial puede ser la sede natural del modelo ambulatorio.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Juzgar — Iluminación</p>
+  <ul class="puntos">
+    <li><span class="dot">J</span><span>"El ingreso a una comunidad terapéutica no debe pensarse como la única respuesta posible ni como un destino permanente. La ética del cuidado exige que el tránsito entre modalidades sea acompañado y que ningún tramo del camino quede sin red" (§11.6.5). El criterio teológico que sostiene toda la articulación es la ética del cuidado: ningún momento de la trayectoria de la persona puede quedar sin acompañamiento, sea cual sea la modalidad vigente en ese momento.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Actuar — Propuesta</p>
+  <div class="act-box">
+    <div class="act-title">Mapear el continuo de cuidado del territorio</div>
+    <div class="act-body">El grupo dibuja el mapa de dispositivos del territorio: ¿hay comunidad terapéutica residencial cercana? ¿hay dispositivo ambulatorio articulado con ella? ¿qué sucede cuando alguien egresa del residencial: hay continuidad ambulatoria o queda en el vacío? Identificar los "tramos sin red" del continuo de cuidado local.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Auditar los seis componentes del dispositivo ambulatorio propio</div>
+    <div class="act-body">Si el territorio ya tiene un dispositivo ambulatorio (o está diseñando uno), el grupo evalúa cada uno de los seis componentes del §11.7.3: ¿hay acompañamiento individual? ¿trabajo grupal? ¿trabajo con familias? ¿articulación psiquiátrica? ¿actividades promocionales? ¿espacio espiritual? Identificar los componentes ausentes como prioridad de desarrollo.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Cierre: diseñar el protocolo de tránsito entre modalidades</div>
+    <div class="act-body">El grupo diseña un protocolo mínimo de tránsito: ¿cómo se deriva de ambulatorio a residencial en caso de crisis? ¿cómo se recibe a alguien que egresa del residencial? ¿quién es el responsable de sostener la continuidad en cada transición? Ese protocolo es el que evita que la persona "caiga en los vacíos entre dispositivos" que el §11.6.5 advierte.</div>
+  </div>
+
+  <div class="cita">
+    <div class="cita-lbl">Cita inspiradora · §11.6.5</div>
+    <div class="cita-txt">"El desafío de la pastoral es construir la articulación entre dispositivos para que la persona no quede atrapada en uno solo ni caiga en los vacíos entre ellos. La ética del cuidado exige que el tránsito entre modalidades sea acompañado y que ningún tramo del camino quede sin red."</div>
+    <div class="cita-ref">Manual de la PLAPA, §11.6.5 — La articulación con el modelo ambulatorio (CELAM 2026)</div>
+  </div>
+
+  <div class="autocuidado">
+    <div class="auto-lbl">Autocuidado del agente — cierre del itinerario</div>
+    <div class="auto-txt">El itinerario cierra con la pregunta que el continuo de cuidado le hace al equipo: ¿el equipo mismo funciona como un continuo articulado, o cada agente trabaja en su propio compartimento (el que hace residencial, el que hace ambulatorio) sin comunicación entre sí? La articulación que se propone para los dispositivos empieza por la articulación entre las personas del propio equipo. Cerrar con el compromiso de fortalecer esa comunicación interna como condición de cualquier continuo de cuidado externo.</div>
+  </div>
+  <p class="ref">Referencias: §11.6.5, §11.7.3, §11.7.4 — Manual de la PLAPA, CELAM 2026</p>
+</div>
+
+<script>
+function show(n,btn){
+  for(let i=1;i<=4;i++) document.getElementById('m'+i).className='mod';
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  document.getElementById('m'+n).className='mod a';
+  btn.classList.add('on');
+}
+</script>
+</body>
+</html>

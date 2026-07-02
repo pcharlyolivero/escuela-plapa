@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Itinerario 27 · La Pastoral de la Sobriedad · PLAPA 2026</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:Georgia,'Times New Roman',serif;background:#f5f3ee;color:#222;padding:0 0 3rem}
+  .portada{background:#26215C;padding:2rem 2.5rem 1.5rem;color:#fff}
+  .portada-sup{font-size:11px;font-weight:700;color:#AFA9EC;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.4rem;font-family:Arial,sans-serif}
+  .portada-title{font-size:26px;font-weight:700;line-height:1.25;margin-bottom:.35rem}
+  .portada-sub{font-size:13px;color:#CECBF6;line-height:1.55;margin-bottom:1rem}
+  .dest-box{background:#534AB7;border-radius:6px;padding:.7rem 1rem;margin-bottom:1rem}
+  .dest-lbl{font-size:9px;font-weight:700;color:#CECBF6;letter-spacing:.08em;text-transform:uppercase;margin-bottom:3px;font-family:Arial,sans-serif}
+  .dest-txt{font-size:12px;color:#fff;line-height:1.55}
+  .pills{display:flex;flex-wrap:wrap;gap:5px}
+  .pill{font-size:10px;font-weight:700;padding:3px 10px;border-radius:99px;background:#534AB7;color:#EEEDFE;font-family:Arial,sans-serif}
+  .nav{display:flex;background:#fff;border-bottom:2px solid #534AB7;flex-wrap:wrap}
+  .tab{padding:12px 18px;cursor:pointer;font-size:12px;font-family:Arial,sans-serif;color:#666;border:none;background:none;font-weight:600;letter-spacing:.03em;border-bottom:3px solid transparent;margin-bottom:-2px}
+  .tab:hover{color:#26215C;background:#EEEDFE}
+  .tab.on{color:#26215C;border-bottom-color:#534AB7;background:#EEEDFE}
+  .mod{display:none;max-width:900px;margin:0 auto;padding:2rem 2.5rem}
+  .mod.a{display:block}
+  .mod-tag{display:inline-block;font-size:10px;font-weight:700;padding:3px 10px;border-radius:99px;background:#EEEDFE;color:#26215C;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.5rem;font-family:Arial,sans-serif}
+  .mod-title{font-size:20px;font-weight:700;color:#26215C;line-height:1.3;margin-bottom:.3rem}
+  .mod-sub{font-size:12px;color:#888;font-family:Arial,sans-serif;margin-bottom:1.5rem}
+  .mf{border-left:4px solid #534AB7;background:#EEEDFE;padding:.8rem 1.1rem;margin-bottom:1.25rem;border-radius:0 6px 6px 0}
+  .mf-lbl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#534AB7;margin-bottom:4px;font-family:Arial,sans-serif}
+  .mf-txt{font-size:14px;font-style:italic;line-height:1.6;color:#26215C}
+  .sec-lbl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#999;margin:1.1rem 0 .5rem;font-family:Arial,sans-serif}
+  .puntos{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:1rem}
+  .puntos li{display:flex;gap:10px;font-size:13px;color:#333;line-height:1.6}
+  .dot{width:20px;min-width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;margin-top:2px;background:#EEEDFE;color:#26215C;font-family:Arial,sans-serif}
+  .act-box{background:#EEEDFE;border-radius:6px;padding:.75rem 1rem;margin-bottom:6px;border:1px solid #CECBF6}
+  .act-title{font-size:12px;font-weight:700;color:#26215C;margin-bottom:4px;font-family:Arial,sans-serif}
+  .act-body{font-size:12.5px;color:#3C3489;line-height:1.55}
+  .cita{background:#EEEDFE;border-radius:6px;padding:.8rem 1.1rem;margin-top:1.2rem;border-left:3px solid #534AB7}
+  .cita-lbl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#534AB7;margin-bottom:4px;font-family:Arial,sans-serif}
+  .cita-txt{font-size:12px;font-style:italic;line-height:1.6;color:#26215C}
+  .cita-ref{font-size:10px;font-style:normal;font-weight:700;color:#534AB7;margin-top:3px;font-family:Arial,sans-serif}
+  .autocuidado{border-left:3px solid #534AB7;background:#f8f7fc;padding:.75rem 1rem;margin-top:1.2rem}
+  .auto-lbl{font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#534AB7;margin-bottom:4px;font-family:Arial,sans-serif}
+  .auto-txt{font-size:12.5px;color:#555;line-height:1.55}
+  .ref{font-size:10px;color:#aaa;font-style:italic;margin-top:1rem;padding-top:.75rem;border-top:1px solid #ddd9f0;font-family:Arial,sans-serif}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1.1rem}
+  .g-item{background:#EEEDFE;border-radius:6px;padding:.65rem .8rem;border:1px solid #CECBF6}
+  .g-title{font-size:11px;font-weight:700;color:#26215C;margin-bottom:3px;font-family:Arial,sans-serif}
+  .g-body{font-size:11px;color:#3C3489;line-height:1.4}
+  .doce-pasos{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-bottom:1.1rem}
+  .paso-mini{background:#26215C;color:#fff;border-radius:5px;padding:.4rem .3rem;text-align:center;font-size:10px;font-weight:700;font-family:Arial,sans-serif}
+  .cinco-frentes{display:flex;flex-direction:column;gap:6px;margin-bottom:1rem}
+  .frente{display:flex;gap:10px;align-items:flex-start}
+  .frente-num{width:24px;min-width:24px;height:24px;background:#26215C;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;font-family:Arial,sans-serif;flex-shrink:0}
+  .frente-txt{font-size:13px;color:#333;line-height:1.55;padding-top:2px}
+  @media(max-width:600px){.grid2{grid-template-columns:1fr}.doce-pasos{grid-template-columns:repeat(2,1fr)}.mod{padding:1.2rem 1rem}.portada{padding:1.2rem}}
+  @media print{.nav{display:none}.mod{display:block!important;page-break-before:always}}
+</style>
+</head>
+<body>
+
+<div class="portada">
+  <p class="portada-sup">Itinerario formativo 27 · PLAPA — CELAM 2026</p>
+  <h1 class="portada-title">La Pastoral de la Sobriedad</h1>
+  <p class="portada-sub">El Grupo de Autoayuda, los 12 Pasos del Programa Nueva Vida y el Agente de Sobriedad como portador de esperanza · 4 módulos</p>
+  <div class="dest-box">
+    <div class="dest-lbl">Destinatarios</div>
+    <div class="dest-txt">Coordinadores que quieren implementar o fortalecer un Grupo de Autoayuda en su parroquia o diócesis, agentes pastorales interesados en el modelo de los 12 Pasos desde una perspectiva explícitamente evangelizadora, y equipos que buscan un dispositivo replicable, de bajo costo y alto impacto comunitario. Nivel inicial–intermedio: no requiere formación clínica previa.</div>
+  </div>
+  <div class="pills">
+    <span class="pill">§12.2</span>
+    <span class="pill">Coordinadores y agentes</span>
+    <span class="pill">4 sesiones</span>
+    <span class="pill">Nivel inicial–intermedio</span>
+  </div>
+</div>
+
+<div class="nav">
+  <button class="tab on" onclick="show(1,this)">Módulo 1 · La identidad del Grupo de Autoayuda</button>
+  <button class="tab" onclick="show(2,this)">Módulo 2 · Los 12 Pasos del Programa Nueva Vida</button>
+  <button class="tab" onclick="show(3,this)">Módulo 3 · La dinámica del encuentro pastoral</button>
+  <button class="tab" onclick="show(4,this)">Módulo 4 · Los cinco frentes y el Agente de Sobriedad</button>
+</div>
+
+<!-- MÓDULO 1 -->
+<div id="m1" class="mod a">
+  <span class="mod-tag">Módulo 1 · El Ver</span>
+  <h2 class="mod-title">La identidad del Grupo de Autoayuda: elegir la vida desde la fe compartida</h2>
+  <p class="mod-sub">Origen, alcance y fundamento bíblico de la Pastoral de la Sobriedad · §12.2, §12.2.1</p>
+
+  <div class="mf">
+    <div class="mf-lbl">Mensaje fuerza</div>
+    <div class="mf-txt">"Ante una cultura que mercantiliza el descarte, esta pastoral responde al llamado bíblico de Deuteronomio 30,19, transformando la búsqueda de la sobriedad en una opción radical por elegir la vida."</div>
+  </div>
+
+  <p class="sec-lbl">El Ver — Realidad</p>
+  <ul class="puntos">
+    <li><span class="dot">V</span><span>La Pastoral de la Sobriedad nace en Brasil (CNBB) "como respuesta concreta de la Iglesia al desafío lanzado por el Papa San Juan Pablo II de combatir el flagelo de las adicciones" (§12.2). No es una adaptación cristiana de un modelo secular: nace desde el interior de la Iglesia con una misión explícitamente evangelizadora desde el inicio.</span></li>
+    <li><span class="dot">V</span><span>El alcance del Grupo de Autoayuda es más amplio de lo que el nombre "pastoral de la sobriedad" podría sugerir. El §12.2.1 lo especifica: trabaja con dependencias a sustancias lícitas e ilícitas, comportamientos (mentira, terquedad, rechazo, manías, egoísmo, falta de perdón), trastornos de salud mental (ansiedad, depresión, fobias, ataques de pánico) y compulsiones (juego, apuestas en línea, compras, tecnologías, codependencia emocional).</span></li>
+    <li><span class="dot">V</span><span>Esta amplitud de alcance es una decisión metodológica deliberada: el grupo no se organiza alrededor de una sustancia específica sino alrededor de la experiencia compartida de la lucha por la sobriedad en sentido amplio. Eso permite que personas con diferentes "ataduras" (en el lenguaje del programa) se reconozcan mutuamente sin necesidad de compartir exactamente el mismo problema.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Juzgar — Iluminación</p>
+  <ul class="puntos">
+    <li><span class="dot">J</span><span>El lema institucional —"Sobriedad y paz, solo por hoy gracias a Dios"— sintetiza tres elementos que el itinerario va a desarrollar: la sobriedad como meta concreta, la paz como fruto espiritual, y "solo por hoy" como la temporalidad propia del programa de los 12 Pasos, que no exige una promesa de por vida sino el compromiso renovado cada día.</span></li>
+    <li><span class="dot">J</span><span>"La fuerza del grupo constituye un recurso eficaz para restaurar el equilibrio emocional, espiritual, social y comunitario a través de la ayuda mutua y de un modelo sistémico y conductual que involucra a toda la familia" (§12.2.1). El Grupo de Autoayuda no es solo un espacio de contención individual: está diseñado desde su origen para integrar a la familia, en coherencia con el enfoque sistémico que todo el manual sostiene.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Actuar — Propuesta</p>
+  <div class="act-box">
+    <div class="act-title">¿Existe ya un Grupo de Autoayuda en la diócesis o región?</div>
+    <div class="act-body">El grupo investiga si la Pastoral de la Sobriedad u otro Grupo de Autoayuda similar ya tiene presencia en la diócesis o región. Si existe, contactar para conocer la experiencia antes de iniciar un proyecto propio. Si no existe, evaluar el contacto con cnbb3@sobriedade.org.br para conocer el modelo en profundidad.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Mapear el alcance necesario en el territorio propio</div>
+    <div class="act-body">El grupo identifica: ¿qué tipo de "ataduras" son más frecuentes en el territorio? ¿solo consumo de sustancias o también compulsiones, trastornos de ansiedad, codependencia? El alcance amplio del §12.2.1 sugiere que un grupo de autoayuda bien diseñado puede responder a un espectro de necesidades más amplio que el que el equipo inicialmente imagina.</div>
+  </div>
+
+  <div class="cita">
+    <div class="cita-lbl">Cita inspiradora · §12.2 — Dt 30,19</div>
+    <div class="cita-txt">"Pongo hoy delante de ti la vida y la muerte, la bendición y la maldición. Elige la vida."</div>
+    <div class="cita-ref">Manual de la PLAPA, §12.2 — La Pastoral de la Sobriedad (CELAM 2026)</div>
+  </div>
+
+  <div class="autocuidado">
+    <div class="auto-lbl">Autocuidado del agente</div>
+    <div class="auto-txt">El alcance amplio del Grupo de Autoayuda —desde sustancias hasta compulsiones y trastornos de ansiedad— puede hacer que el agente sienta que necesita formación especializada en todas esas áreas. El facilitador recuerda que el modelo de autoayuda funciona precisamente porque no requiere un experto en cada tema: requiere un facilitador formado en la dinámica del grupo (Módulo 3) y la fe compartida que sostiene el proceso.</div>
+  </div>
+  <p class="ref">Referencias: §12.2, §12.2.1, Dt 30,19 — Manual de la PLAPA, CELAM 2026</p>
+</div>
+
+<!-- MÓDULO 2 -->
+<div id="m2" class="mod">
+  <span class="mod-tag">Módulo 2 · El Juzgar</span>
+  <h2 class="mod-title">Los 12 Pasos del Programa Nueva Vida: de admitir a celebrar</h2>
+  <p class="mod-sub">Una metodología gradual de conversión a la luz del Evangelio · §12.2.2</p>
+
+  <div class="mf">
+    <div class="mf-lbl">Mensaje fuerza</div>
+    <div class="mf-txt">"El programa no se limita solo a bloquear el uso de sustancias, sino que propone el redescubrimiento de la dignidad y el verdadero sentido de la vida, fomentando la terapia del amor incondicional y el apoyo mutuo."</div>
+  </div>
+
+  <div class="doce-pasos">
+    <div class="paso-mini">1. Admitir</div>
+    <div class="paso-mini">2. Confiar</div>
+    <div class="paso-mini">3. Entregar</div>
+    <div class="paso-mini">4. Arrepentirse</div>
+    <div class="paso-mini">5. Confesar</div>
+    <div class="paso-mini">6. Renacer</div>
+    <div class="paso-mini">7. Reparar</div>
+    <div class="paso-mini">8. Profesar la fe</div>
+    <div class="paso-mini">9. Orar y vigilar</div>
+    <div class="paso-mini">10. Servir</div>
+    <div class="paso-mini">11. Celebrar</div>
+    <div class="paso-mini">12. Festejar</div>
+  </div>
+
+  <p class="sec-lbl">El Ver — Realidad</p>
+  <ul class="puntos">
+    <li><span class="dot">V</span><span>Los 12 Pasos del Programa Nueva Vida siguen una estructura reconocible para quien conoce el modelo de Alcohólicos Anónimos, pero con un lenguaje explícitamente cristiano que lo distingue: "confesar" y "profesar la fe" no son metáforas espirituales genéricas sino referencias directas a los sacramentos católicos. El programa integra la tradición de los 12 Pasos con la vida sacramental de la Iglesia.</span></li>
+    <li><span class="dot">V</span><span>"Es un proceso gradual que requiere perseverancia en la búsqueda de la sobriedad y en la conversión de vida a la luz del Evangelio" (§12.2.2). La gradualidad es un elemento metodológico central: nadie pasa del Paso 1 al Paso 12 rápidamente. Cada paso requiere su tiempo de maduración antes de avanzar al siguiente.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Juzgar — Iluminación</p>
+  <ul class="puntos">
+    <li><span class="dot">J</span><span>El orden de los 12 Pasos tiene una lógica espiritual precisa: comienza con la admisión de la propia impotencia (Paso 1), atraviesa la confianza en un poder superior (Pasos 2-3), pasa por el examen de conciencia y la reparación (Pasos 4-7), continúa con la profesión de fe activa (Pasos 8-9), y culmina en el servicio a otros y la celebración comunitaria (Pasos 10-12). Es, en esencia, un itinerario de conversión que va del reconocimiento de la herida a la entrega generosa al servicio de los demás.</span></li>
+    <li><span class="dot">J</span><span>Los pasos finales —servir, celebrar, festejar— son tan importantes como los iniciales. Un programa que se queda solo en la admisión de la impotencia y el arrepentimiento, sin llegar al servicio y la celebración, está incompleto. La alegría y la fiesta son parte constitutiva del proceso, no un agregado opcional al final.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Actuar — Propuesta</p>
+  <div class="act-box">
+    <div class="act-title">Recorrer los 12 Pasos en clave personal (para el equipo)</div>
+    <div class="act-body">Antes de proponer el programa a otros, el grupo recorre los 12 Pasos en clave personal: ¿hay algo que cada uno necesita admitir, confiar, entregar o reparar en su propia vida? El ejercicio no busca confesión pública sino familiarizar al equipo con la profundidad espiritual del recorrido que va a proponer a otros.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Diseñar el ritmo del programa para el territorio</div>
+    <div class="act-body">El grupo diseña: ¿cuánto tiempo se dedicaría a cada paso? ¿con qué frecuencia se reúne el grupo? ¿cómo se acompaña a quien avanza más lento que el resto? La gradualidad que el §12.2.2 exige no admite apuro: el equipo necesita aceptar que el proceso puede tomar meses o años para cada persona.</div>
+  </div>
+
+  <div class="cita">
+    <div class="cita-lbl">Cita inspiradora · §12.2.2</div>
+    <div class="cita-txt">"Ofrece un camino de esperanza y transformación para quienes desean liberarse de las ataduras del sufrimiento y vivir plenamente en todas sus dimensiones."</div>
+    <div class="cita-ref">Manual de la PLAPA, §12.2.2 — El Programa Nueva Vida: Los 12 Pasos (CELAM 2026)</div>
+  </div>
+
+  <div class="autocuidado">
+    <div class="auto-lbl">Autocuidado del agente</div>
+    <div class="auto-txt">El recorrido personal por los 12 Pasos puede tocar fibras profundas en los propios agentes del equipo. El facilitador cuida que el ejercicio del Módulo 2 sea opcional en su profundidad: cada persona comparte lo que está dispuesta a compartir, y nadie es forzado a una vulnerabilidad que no eligió. La terapia del amor incondicional empieza por respetar los ritmos de cada uno dentro del propio equipo.</div>
+  </div>
+  <p class="ref">Referencias: §12.2.2 — Manual de la PLAPA, CELAM 2026</p>
+</div>
+
+<!-- MÓDULO 3 -->
+<div id="m3" class="mod">
+  <span class="mod-tag">Módulo 3 · El Actuar</span>
+  <h2 class="mod-title">La dinámica del encuentro pastoral: cinco reglas que sostienen la confianza del grupo</h2>
+  <p class="mod-sub">Carácter abierto, separación por vínculos, escucha respetuosa, confidencialidad y terapia del amor · §12.2.3</p>
+
+  <div class="mf">
+    <div class="mf-lbl">Mensaje fuerza</div>
+    <div class="mf-txt">"La Pastoral de la Sobriedad se diferencia de otros grupos civiles por su carácter explícitamente evangelizador. El núcleo del encuentro es el Grupo de Autoayuda, donde se proclama con fe: 'Piedad Redentora de Cristo: danos la sobriedad'."</div>
+  </div>
+
+  <div class="grid2">
+    <div class="g-item">
+      <div class="g-title">Carácter abierto e inclusivo</div>
+      <div class="g-body">Cualquier persona puede participar. No se limita a las drogodependencias, sino que amplía su alcance a diversos tipos de adicciones, compulsiones, pecados y sufrimientos.</div>
+    </div>
+    <div class="g-item">
+      <div class="g-title">Separación por vínculos afectivos</div>
+      <div class="g-body">No se divide a los participantes por su condición o sustancia, sino que se separa a miembros de una misma familia o personas con lazos cercanos, para evitar confrontaciones, juicios o inhibiciones recíprocas.</div>
+    </div>
+    <div class="g-item">
+      <div class="g-title">Escucha respetuosa</div>
+      <div class="g-body">Espacio seguro donde se puede hablar sin ser juzgado. Está estrictamente prohibido dar consejos, emitir opiniones o interrumpir a quien comparte su testimonio.</div>
+    </div>
+    <div class="g-item">
+      <div class="g-title">Confidencialidad</div>
+      <div class="g-body">El secreto y el sigilo absoluto sobre lo compartido en la reunión es la base de la confianza grupal. Sin esa garantía, nadie comparte con honestidad.</div>
+    </div>
+  </div>
+
+  <p class="sec-lbl">El Ver — Realidad</p>
+  <ul class="puntos">
+    <li><span class="dot">V</span><span>La regla de la separación por vínculos afectivos (§12.2.3) es una decisión metodológica poco intuitiva pero muy sabia: el grupo no agrupa "a todos los que consumen alcohol" en un lado y "a todos los que consumen cocaína" en otro, sino que separa a los miembros de una misma familia entre distintos grupos para que cada uno pueda compartir con libertad sin la presencia de quien ya lo conoce íntimamente y podría inhibirlo.</span></li>
+    <li><span class="dot">V</span><span>La prohibición estricta de "dar consejos, emitir opiniones o interrumpir a quien comparte su testimonio" (§12.2.3) es una de las reglas más difíciles de sostener en la práctica, porque la tentación de aconsejar es fuerte cuando se escucha a alguien sufrir. Pero esa misma restricción es la que genera el espacio seguro: nadie teme ser corregido o juzgado al hablar.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Juzgar — Iluminación</p>
+  <ul class="puntos">
+    <li><span class="dot">J</span><span>"Terapia del Amor y el Perdón: al abrir el corazón y escuchar al otro, los participantes se vuelven sensibles al dolor ajeno, estimulando un cambio en la conducta personal" (§12.2.3). El mecanismo de transformación del grupo no es la instrucción ni el consejo: es la escucha mutua que genera empatía, y esa empatía es la que produce el cambio de conducta. Es un modelo radicalmente distinto al de la terapia directiva.</span></li>
+    <li><span class="dot">J</span><span>La jaculatoria del encuentro —"Piedad Redentora de Cristo: danos la sobriedad"— ancla todo el dinamismo grupal en la dependencia explícita de la gracia. El grupo no confía únicamente en la fuerza de voluntad colectiva ni en la técnica psicológica: confía en que la sobriedad es un don que se pide y se recibe, no solo un logro que se conquista.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Actuar — Propuesta</p>
+  <div class="act-box">
+    <div class="act-title">Practicar la escucha sin consejo</div>
+    <div class="act-body">El grupo practica en parejas: uno comparte una dificultad personal (no necesariamente de consumo), el otro escucha sin dar ningún consejo ni opinión, solo presencia y silencio activo. Al terminar: ¿qué tan difícil fue no aconsejar? ¿qué generó en quien hablaba sentirse escuchado sin ser corregido? Esta práctica es la base de la facilitación del Grupo de Autoayuda.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Diseñar el protocolo de confidencialidad del grupo propio</div>
+    <div class="act-body">El grupo redacta el compromiso de confidencialidad que regirá el futuro Grupo de Autoayuda: ¿qué se dice explícitamente al inicio de cada encuentro? ¿qué consecuencias tiene romper la confidencialidad? La claridad sobre esta regla desde el primer encuentro es la condición para que la confianza se construya con el tiempo.</div>
+  </div>
+
+  <div class="cita">
+    <div class="cita-lbl">Cita inspiradora · §12.2.3</div>
+    <div class="cita-txt">"Al abrir el corazón y escuchar al otro, los participantes se vuelven sensibles al dolor ajeno, estimulando un cambio en la conducta personal."</div>
+    <div class="cita-ref">Manual de la PLAPA, §12.2.3 — Dinámica del Encuentro Pastoral (CELAM 2026)</div>
+  </div>
+
+  <div class="autocuidado">
+    <div class="auto-lbl">Autocuidado del agente</div>
+    <div class="auto-txt">El agente que facilita el Grupo de Autoayuda escucha semana tras semana historias de sufrimiento profundo sin poder "resolver" nada con consejos, lo cual puede generar frustración acumulada. El facilitador recuerda que el rol del agente no es resolver: es sostener el espacio donde la sanación ocurre por la propia dinámica del grupo. Esa distinción ayuda al agente a no sentirse responsable de "arreglar" cada historia que escucha.</div>
+  </div>
+  <p class="ref">Referencias: §12.2.3 — Manual de la PLAPA, CELAM 2026</p>
+</div>
+
+<!-- MÓDULO 4 -->
+<div id="m4" class="mod">
+  <span class="mod-tag">Módulo 4 · Síntesis y revisión de vida</span>
+  <h2 class="mod-title">Los cinco frentes de acción y el Agente de Sobriedad: portador de esperanza, no técnico</h2>
+  <p class="mod-sub">Del grupo individual a la incidencia política · §12.2.4, §12.2.5</p>
+
+  <div class="mf">
+    <div class="mf-lbl">Mensaje fuerza</div>
+    <div class="mf-txt">"El Agente de Sobriedad no es un técnico o terapeuta clínico: es un portador de esperanza. Su misión es expresar, con humildad, el amor gratuito del Padre, sirviendo gratuitamente a ejemplo de María, haciendo de los excluidos los preferidos."</div>
+  </div>
+
+  <div class="cinco-frentes">
+    <div class="frente"><div class="frente-num">1</div><div class="frente-txt"><strong>Prevención:</strong> educación y sensibilización familiar y social para evitar el inicio de dependencias.</div></div>
+    <div class="frente"><div class="frente-num">2</div><div class="frente-txt"><strong>Intervención:</strong> acogida inmediata y orientación en momentos de crisis.</div></div>
+    <div class="frente"><div class="frente-num">3</div><div class="frente-txt"><strong>Recuperación:</strong> el camino de los 12 pasos e integración en la vida comunitaria.</div></div>
+    <div class="frente"><div class="frente-num">4</div><div class="frente-txt"><strong>Reintegración:</strong> apoyo para el regreso a la vida familiar, laboral y ciudadana.</div></div>
+    <div class="frente"><div class="frente-num">5</div><div class="frente-txt"><strong>Acción Política:</strong> participación e interlocución ante las secretarías de políticas sobre drogas para exigir y proponer políticas públicas que respeten la dignidad humana.</div></div>
+  </div>
+
+  <p class="sec-lbl">El Ver — Realidad</p>
+  <ul class="puntos">
+    <li><span class="dot">V</span><span>Los cinco frentes muestran que la Pastoral de la Sobriedad no se limita al Grupo de Autoayuda como espacio terapéutico cerrado: se proyecta hacia la prevención, la crisis, la reintegración social y, de manera notable, hacia la acción política. El Frente 5 conecta directamente con la dimensión de caridad política que el manual desarrolla en otros capítulos: la pastoral de adicciones no termina en el acompañamiento individual sino que incide en las políticas públicas.</span></li>
+    <li><span class="dot">V</span><span>El Papa Francisco describe la adicción como una "prisión invisible" (§12.2.5), una imagen que ilumina la misión del Agente de Sobriedad: no es un carcelero que vigila desde afuera, sino alguien que entra en la prisión invisible para acompañar desde dentro, con las herramientas de la fe, la palabra compartida y la vida en comunidad.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Juzgar — Iluminación</p>
+  <ul class="puntos">
+    <li><span class="dot">J</span><span>La definición del Agente de Sobriedad —"no es un técnico o terapeuta clínico, es un portador de esperanza"— marca una diferencia deliberada de identidad respecto a otros modelos de acompañamiento del manual. No reemplaza al acompañante par del Itinerario 10 ni al equipo interdisciplinario del Itinerario 13: tiene su propio perfil, centrado en el servicio gratuito a ejemplo de María, sin pretensión técnica.</span></li>
+    <li><span class="dot">J</span><span>"Sirviendo gratuitamente a ejemplo de María, nuestra madre y madre de todos, haciendo de los excluidos los preferidos" (§12.2.5). La referencia mariana sitúa al Agente de Sobriedad en una tradición espiritual específica: el servicio silencioso, sin protagonismo, que acompaña sin imponerse. Es un perfil distinto al del líder carismático o al del experto técnico.</span></li>
+  </ul>
+
+  <p class="sec-lbl">El Actuar — Propuesta</p>
+  <div class="act-box">
+    <div class="act-title">Diseñar el primer frente a implementar</div>
+    <div class="act-body">De los cinco frentes del §12.2.4, el grupo elige uno para iniciar (probablemente Recuperación, vía el Grupo de Autoayuda, o Prevención) y diseña los primeros pasos concretos. No es necesario implementar los cinco frentes simultáneamente: empezar por uno y crecer con el tiempo es coherente con la gradualidad que el programa mismo propone.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Identificar a los posibles Agentes de Sobriedad del territorio</div>
+    <div class="act-body">El grupo identifica: ¿quiénes en la comunidad tienen el perfil de "portador de esperanza" que el §12.2.5 describe, más allá de su formación técnica? ¿personas con experiencia de recuperación propia, con disposición al servicio gratuito, con capacidad de escucha sin juicio? Esos son los candidatos naturales para el rol.</div>
+  </div>
+  <div class="act-box">
+    <div class="act-title">Cierre: la prisión invisible y la llave de la fe</div>
+    <div class="act-body">El grupo cierra reflexionando sobre la imagen de la "prisión invisible" de Francisco: ¿qué prisiones invisibles existen en el territorio, más allá del consumo de sustancias (compulsiones, codependencia, ansiedad crónica)? ¿qué llave ofrece la fe compartida que ninguna otra herramienta puede dar? Cerrar con la jaculatoria del programa: "Piedad Redentora de Cristo: danos la sobriedad", como oración por todos los que el itinerario quiere alcanzar.</div>
+  </div>
+
+  <div class="cita">
+    <div class="cita-lbl">Cita inspiradora · §12.2.5 — Papa Francisco</div>
+    <div class="cita-txt">"Busca combatir esa 'prisión invisible' de las dependencias con las herramientas de la fe, la palabra compartida y la vida en comunidad."</div>
+    <div class="cita-ref">Manual de la PLAPA, §12.2.5 — El Agente de Sobriedad (CELAM 2026)</div>
+  </div>
+
+  <div class="autocuidado">
+    <div class="auto-lbl">Autocuidado del agente — cierre del itinerario</div>
+    <div class="auto-txt">El itinerario cierra con la pregunta que la identidad del Agente de Sobriedad le hace a cada participante: ¿puedo servir gratuitamente, sin protagonismo, a ejemplo de María, sin necesidad de ser reconocido como "el experto" que resuelve los problemas? Esa renuncia al protagonismo técnico es liberadora para muchos agentes pastorales que sienten la presión de tener que saber todo. El portador de esperanza no necesita saberlo todo: necesita estar presente, con fe, con humildad y con amor gratuito.</div>
+  </div>
+  <p class="ref">Referencias: §12.2.4, §12.2.5 · Contacto: cnbb3@sobriedade.org.br — Manual de la PLAPA, CELAM 2026</p>
+</div>
+
+<script>
+function show(n,btn){
+  for(let i=1;i<=4;i++) document.getElementById('m'+i).className='mod';
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('on'));
+  document.getElementById('m'+n).className='mod a';
+  btn.classList.add('on');
+}
+</script>
+</body>
+</html>

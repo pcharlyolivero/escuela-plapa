@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escuela de la PLAPA | Formación Pastoral</title>
+  <style>
+    :root {
+      --bg-color: #fcfbf9;
+      --text-main: #2d2d2d;
+      --text-muted: #5a5a5a;
+      --primary: #854F0B; /* Tono tierra/madera */
+      --primary-dark: #412402;
+      --accent: #1D9E75; /* Tono esperanza/territorio */
+      --surface: #ffffff;
+      --border: #e2dfd8;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-serif: Georgia, "Times New Roman", serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    /* Navegación */
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .logo {
+      font-family: var(--font-serif);
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--primary-dark);
+      text-decoration: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      margin-left: 1.5rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    
+    .nav-links a:hover { color: var(--primary); }
+
+    /* Hero Section */
+    .hero {
+      padding: 5rem 5%;
+      text-align: center;
+      background: linear-gradient(to bottom, #ffffff, #fcfbf9);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-kicker {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-size: 3rem;
+      line-height: 1.1;
+      color: var(--primary-dark);
+      margin-bottom: 1.5rem;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.8rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .btn:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+    /* Sección: El Manual */
+    .section { padding: 5rem 5%; max-width: 1100px; margin: 0 auto; }
+    
+    .manual-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: 2.2rem;
+      color: var(--primary-dark);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Sección: Metodología */
+    .metodologia { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    
+    .metodo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .metodo-card {
+      padding: 2rem;
+      background: var(--bg-color);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      border-top: 4px solid var(--accent);
+    }
+
+    .metodo-card:nth-child(2) { border-top-color: #534AB7; }
+    .metodo-card:nth-child(3) { border-top-color: #D85A30; }
+
+    .m-title {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--primary-dark);
+    }
+
+    /* Sección: Enfoque Práctico */
+    .practica-list {
+      list-style: none;
+      margin-top: 2rem;
+    }
+
+    .practica-list li {
+      position: relative;
+      padding-left: 2rem;
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
+    }
+
+    .practica-list li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--primary-dark);
+      color: #e2dfd8;
+      text-align: center;
+      padding: 3rem 5%;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px) {
+      .manual-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="#" class="logo">Escuela PLAPA</a>
+    <nav class="nav-links">
+      <a href="#metodologia">Método</a>
+      <a href="#practica">Enfoque</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-kicker">Formación para la Acción Pastoral</div>
+    <h1>Acompañar la vida como viene, transformar el territorio.</h1>
+    <p>Una propuesta de formación continua, encarnada y comunitaria para responder a la realidad de las adicciones y la vulnerabilidad en América Latina y el Caribe.</p>
+  <!-- Recuadro informativo (no clickeable) -->
+  <div style="display: block; max-width: 300px; margin: 0 auto; background: var(--primary); color: white; padding: 1.5rem; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+    <div style="font-family: var(--font-serif); font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem;">30 Itinerarios Interactivos</div>
+    <!-- <div style="font-size: 0.95rem; opacity: 0.9;">Accede a todo el catálogo formativo del Manual de la PLAPA organizado en bloques temáticos.</div>
+    <div style="margin-top: 1rem; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; background: rgba(255,255,255,0.2); padding: 0.4rem 1rem; border-radius: 20px; display: inline-block;">Recurso disponible abajo</div> -->
+  </div>
+  </section>
+
+  <section class="section" id="manual">
+    <div class="manual-grid">
+      <div>
+        <h2 class="section-title">Enraizados en el Manual de la PLAPA</h2>
+        <p style="margin-bottom: 1rem;">La Escuela de la PLAPA no es un compendio de teorías desconectadas. <strong>Todos y cada uno de nuestros itinerarios formativos nacen directamente del Manual de la PLAPA.</strong></p>
+        <p>Entendemos el Manual como un documento vivo que sistematiza la experiencia de los centros barriales, la pastoral de la calle y los equipos de acompañamiento. Nuestros módulos formativos traducen ese vasto recorrido en herramientas pedagógicas accesibles para que cualquier agente pastoral —desde el voluntario de base hasta los equipos técnicos— pueda nutrirse de una sabiduría comunitaria validada en la práctica.</p>
+      </div>
+      <div style="background: var(--surface); padding: 2rem; border-radius: 8px; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.03);">
+        <h3 style="font-family: var(--font-serif); margin-bottom: 1rem; color: var(--primary-dark);">Una propuesta estructurada</h3>
+        <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0.8rem;">✓ 30 itinerarios no reiterativos.</p>
+        <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0.8rem;">✓ 7 bloques temáticos especializados.</p>
+        <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0.8rem;">✓ Referenciación exacta a los parágrafos (§) del Manual.</p>
+        <p style="font-size: 0.95rem; color: var(--text-muted);">✓ Diseño escalable para realidades diocesanas y continentales.</p>
+      </div>
+    </div>
+  </section>
+
+
+    <!-- Sección HTML para insertar después de "Metodología" -->
+  <section class="ambitos-section" id="ambitos">
+    <div class="ambitos-header">
+      <h2 class="section-title">¿Desde dónde quieres responder?</h2>
+      <p>No tienes que hacer todos los itinerarios a la vez. Selecciona el ámbito en el que sirves o trabajas, y te propondremos una ruta de formación específica paso a paso.</p>
+    </div>
+    
+    <div class="ambitos-grid">
+      
+      <a href="ruta_parroquia.html" class="ambito-card">
+        <div class="ambito-ico">⛪</div>
+        <div class="ambito-title">Comunidad Parroquial</div>
+        <div class="ambito-desc">Para sacerdotes y laicos que buscan estructurar la acogida y la prevención en su parroquia.</div>
+        <div class="ambito-link">Ver ruta sugerida →</div>
+      </a>
+
+      <a href="ruta_sobriedad.html" class="ambito-card">
+        <div class="ambito-ico">🙏</div>
+        <div class="ambito-title">Pastoral de la Sobriedad</div>
+        <div class="ambito-desc">Grupos de autoayuda y el camino de libertad del programa "Nueva Vida".</div>
+        <div class="ambito-link">Ver ruta sugerida →</div>
+      </a>
+
+      <a href="ruta_barrio.html" class="ambito-card">
+        <div class="ambito-ico">🏘️</div>
+        <div class="ambito-title">Barrio Popular y Centros Barriales</div>
+        <div class="ambito-desc">Para quienes están fundando o sosteniendo centros barriales en la trinchera territorial.</div>
+        <div class="ambito-link">Ver ruta sugerida →</div>
+      </a>
+
+      <a href="ruta_calle.html" class="ambito-card">
+        <div class="ambito-ico">⛺</div>
+        <div class="ambito-title">Situación de Calle y Migrantes</div>
+        <div class="ambito-desc">Reducción de daños, medicina de calle y abordaje de la movilidad humana.</div>
+        <div class="ambito-link">Ver ruta sugerida →</div>
+      </a>
+
+      <a href="ruta_escuela.html" class="ambito-card">
+        <div class="ambito-ico">🏫</div>
+        <div class="ambito-title">Comunidad Escolar</div>
+        <div class="ambito-desc">Prevención temprana, territorio digital y andamiaje educativo frente a la orfandad.</div>
+        <div class="ambito-link">Ver ruta sugerida →</div>
+      </a>
+
+      <a href="ruta_universidades.html" class="ambito-card">
+        <div class="ambito-ico">🎓</div>
+        <div class="ambito-title">Comunidad Universitaria</div>
+        <div class="ambito-desc">Pensar y sanar: la universidad como espacio de incidencia, investigación y prevención.</div>
+        <div class="ambito-link">Ver ruta sugerida →</div>
+      </a>
+
+      <a href="ruta_carcel.html" class="ambito-card">
+        <div class="ambito-ico">🕊️</div>
+        <div class="ambito-title">Cárceles y Pospenados</div>
+        <div class="ambito-desc">Acompañamiento intramuros y reconstrucción del capital de recuperación al egresar.</div>
+        <div class="ambito-link">Ver ruta sugerida →</div>
+      </a>
+
+      <a href="ruta_trabajo_dinero.html" class="ambito-card">
+        <div class="ambito-ico">🔨</div>
+        <div class="ambito-title">Economía Popular</div>
+        <div class="ambito-desc">Trabajo digno, microcréditos y sustentabilidad para la recuperación.</div>
+        <div class="ambito-link">Ver ruta sugerida →</div>
+      </a>
+
+      <a href="ruta_terapeutica.html" class="ambito-card">
+        <div class="ambito-ico">🧠</div>
+        <div class="ambito-title">Instituciones y Equipos Técnicos</div>
+        <div class="ambito-desc">Neurobiología, patología dual, modelos ambulatorios y sanación del trauma.</div>
+        <div class="ambito-link">Ver ruta sugerida →</div>
+      </a>
+
+      <a href="ruta_diocesis.html" class="ambito-card">
+        <div class="ambito-ico">🗺️</div>
+        <div class="ambito-title">Diócesis y Articulación Institucional</div>
+        <div class="ambito-desc">Para referentes que necesitan articular redes amplias, incidir en políticas y cuidar a los equipos.</div>
+        <div class="ambito-link">Ver ruta sugerida →</div>
+      </a>
+
+    </div>
+  </section>
+
+  <section class="section metodologia" id="metodologia">
+    <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+      <h2 class="section-title">El Método: Ver, Juzgar y Actuar</h2>
+      <p>Adoptamos la epistemología ascendente. No miramos la realidad desde un escritorio, sino desde la llaga. Nuestra pedagogía asume la clásica estructura pastoral latinoamericana para garantizar que el aprendizaje transforme el entorno.</p>
+    </div>
+    
+    <div class="metodo-grid">
+      <div class="metodo-card">
+        <div class="m-title">1. VER</div>
+        <p><strong>Leer el territorio sin romantizarlo.</strong> Partimos de un diagnóstico encarnado. Analizamos la realidad del barrio, las nuevas sustancias, la orfandad funcional, la exclusión y el dolor de las infancias, adolescencias y familias en situación de consumo. Miramos de frente el drama humano.</p>
+      </div>
+      <div class="metodo-card">
+        <div class="m-title">2. JUZGAR</div>
+        <p><strong>Iluminar desde la mística y la ciencia.</strong> Pasamos por el tamiz del Magisterio de la Iglesia, la misericordia y la neurobiología de las adicciones. Integramos una mirada biopsicosocial y espiritual para comprender que el consumo es, muchas veces, el síntoma de un vacío existencial y estructural.</p>
+      </div>
+      <div class="metodo-card">
+        <div class="m-title">3. ACTUAR</div>
+        <p><strong>Caridad política y dispositivos concretos.</strong> La reflexión desemboca en la acción. Formamos para abrir centros barriales, establecer redes de economía popular (las 3T), practicar la reducción de daños y construir una pastoral preventiva e inculturada.</p>
+      </div>
+    </div>
+  </section>
+
+<!-- Agregar esta sección de estilos dentro de tu <style> existente -->
+  <style>
+    /* Estilos para la nueva sección de Ámbitos */
+    .ambitos-section { background: var(--bg-color); padding: 5rem 5%; }
+    .ambitos-header { text-align: center; margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto; }
+    .ambitos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .ambito-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .ambito-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+      border-color: var(--primary);
+    }
+    .ambito-ico {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .ambito-title {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      color: var(--primary-dark);
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+    .ambito-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+    .ambito-link {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .ambito-card:hover .ambito-link { color: var(--primary); }
+  </style>
+
+
+  <section class="section" id="practica">
+    <div class="manual-grid">
+      <div>
+        <h2 class="section-title">Orientación 100% Práctica</h2>
+        <p>La Escuela de la PLAPA está pensada para <strong>poner el cuerpo</strong>. Sabemos que quienes se acercan a formarse están, en su mayoría, sosteniendo la trinchera comunitaria en sus barrios.</p>
+        <ul class="practica-list">
+          <li><strong>Herramientas para no especialistas:</strong> Escucha activa, manejo del trauma y pedagogía de la ternura explicadas para voluntarios, sin tecnicismos paralizantes.</li>
+          <li><strong>Dispositivos claros:</strong> Guías paso a paso sobre cómo sostener un espacio ambulatorio, formar familias comunitarias y tejer redes institucionales para superar la fragmentación.</li>
+          <li><strong>Cuidado del equipo:</strong> Incluimos el autocuidado del agente pastoral ("Cuidar a los que cuidan") como un eje transversal e innegociable de la práctica.</li>
+        </ul>
+        <br>
+        <a href="catalogo_30_itinerarios_plapa_corregido.html" class="btn">Ir al Catálogo Interactivo</a>
+      </div>
+      <div style="text-align: center;">
+        <div style="background: #e9e7e0; border-radius: 50%; width: 300px; height: 300px; margin: 0 auto; display: flex; align-items: center; justify-content: center; border: 10px solid var(--surface); box-shadow: 0 10px 25px rgba(0,0,0,0.05);">
+          <span style="font-family: var(--font-serif); font-size: 1.2rem; color: var(--primary); font-style: italic; padding: 2rem;">"Achicar distancias,<br>callejear la fe<br>y tocar la carne sufriente"</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN FINAL: CATÁLOGO COMPLETO -->
+  <section class="section" id="catalogo">
+    <div style="text-align: center; padding: 4rem; background: var(--surface-2); border-radius: 12px; border: 1px solid var(--border);">
+      <h2 class="section-title">¿Prefieres navegar el catálogo completo?</h2>
+      <p style="margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto; color: var(--text-muted);">
+        Si buscas un itinerario específico o quieres tener una visión global de los 30 temas formativos surgidos del Manual de la PLAPA, puedes acceder a la biblioteca completa aquí.
+      </p>
+      <a href="catalogo_30_itinerarios_plapa_corregido.html" class="btn" style="background: var(--accent);">Acceder a los 30 Itinerarios</a>
+    </div>
+  </section>
+
+  <footer>
+    <p><strong>Escuela de la PLAPA</strong></p>
+    <p style="margin-top: 0.5rem; color: #a39e93;">Formación basada en el Manual de la PLAPA · Red de América Latina y el Caribe</p>
+  </footer>
+
+</body>
+</html>
