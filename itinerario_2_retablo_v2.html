@@ -15,7 +15,8 @@ html { font-size: 120%; } /* 1. AGREGA ESTA LÍNEA (Ajusta el % a tu gusto) */
 .portada-pill{font-size:11px;font-weight:500;padding:2px 9px;border-radius:99px;background:#854F0B;color:#FAEEDA}
 .nav{display:flex;gap:6px;margin-bottom:1.25rem;flex-wrap:wrap}
 .btn{border:0.5px solid var(--border-strong);background:var(--surface-2);border-radius:8px;padding:7px 14px;cursor:pointer;font-size:13px;font-family:var(--font-sans);color:var(--text-secondary);transition:background .15s}
-.btn:hover{background:var(--surface-1)}
+.btn-descarga{border:0.5px solid var(--border-strong);background:var(--surface-2);border-radius:8px;padding:7px 14px;cursor:pointer;font-size:13px;font-family:var(--font-sans);color:var(--text-secondary);transition:background .15s;text-decoration:none;display:inline-block}
+.btn-descarga:hover{background:var(--surface-1)}
 .btn.on{border:2px solid #BA7517;background:#FAEEDA;color:#412402;font-weight:500}
 .card{border-radius:12px;border:0.5px solid var(--border);background:var(--surface-2);overflow:hidden;display:none}
 .card.active{display:block}
@@ -81,11 +82,13 @@ html { font-size: 120%; } /* 1. AGREGA ESTA LÍNEA (Ajusta el % a tu gusto) */
 </div>
 
 <div class="nav">
-  <button class="btn on" onclick="show(1,this)">Módulo 1 · El Cristo de Isenheim</button>
+  <button class="btn on" onclick="show(1,this)">Módulo 1 · El Ver</button>
   <button class="btn" onclick="show(2,this)">Módulo 2 · Los que se quedan</button>
   <button class="btn" onclick="show(3,this)">Módulo 3 · Los que señalan y oran</button>
   <button class="btn" onclick="show(4,this)">Módulo 4 · El entierro y la esperanza</button>
+  <a href="Isenheim.png" download="Isenheim.png" class="btn-descarga">Descargar la Imagen</a>
 </div>
+
 <div id="m1" class="card active" style="border-left:5px solid #BA7517">
   <div class="ch"><span class="cn">Módulo 1 · El Ver</span><div class="ct">Un Cristo deformado por la cruz de la enfermedad</div><div class="cs">El Retablo como imagen fundante de la pastoral · §3.1</div></div>
   <div class="cb">
