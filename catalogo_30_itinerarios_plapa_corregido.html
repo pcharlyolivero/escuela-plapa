@@ -1,281 +1,835 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Catálogo</title>
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-.root{font-family:var(--font-sans);color:var(--text-primary);padding:0 0 1.5rem}
-.seg{margin-bottom:1.5rem}
-.seg-hdr{display:flex;align-items:center;gap:10px;margin-bottom:.75rem;padding-bottom:.5rem;border-bottom:0.5px solid var(--border)}
-.seg-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
-.seg-title{font-size:13px;font-weight:500;color:var(--text-primary)}
-.seg-count{font-size:11px;color:var(--text-muted);margin-left:auto}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
-.card{background:var(--surface-2);border:0.5px solid var(--border);border-radius:10px;padding:.75rem .85rem;border-left:3px solid}
-.card-n{font-size:10px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px}
-.card-title{font-size:13px;font-weight:500;color:var(--text-primary);line-height:1.4;margin-bottom:4px}
-.card-sub{font-size:11px;color:var(--text-secondary);line-height:1.45;margin-bottom:5px}
-.card-ref{font-size:10px;color:var(--text-muted);font-style:italic}
-.t-accent{border-left-color:#1D9E75}.t-n{color:#085041}
-.p-accent{border-left-color:#534AB7}.p-n{color:#3C3489}
-.r-accent{border-left-color:#D85A30}.r-n{color:#993C1D}
-.a-accent{border-left-color:#BA7517}.a-n{color:#854F0B}
-.k-accent{border-left-color:#D4537E}.k-n{color:#72243E}
-.b-accent{border-left-color:#378ADD}.b-n{color:#185FA5}
-.g-accent{border-left-color:#639922}.g-n{color:#3B6D11}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogo de los 30 Itinerarios | Escuela PLAPA</title>
+  <style>
+    :root {
+      --bg-color: #fcfbf9;
+      --text-main: #2d2d2d;
+      --text-muted: #5a5a5a;
+      --text-soft: #8a8578;
+      --primary: #854F0B;
+      --primary-dark: #412402;
+      --accent: #1D9E75;
+      --surface: #ffffff;
+      --surface-2: #f5f2ec;
+      --border: #e2dfd8;
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-serif: Georgia, "Times New Roman", serif;
 
-.card{text-decoration:none;color:inherit;display:block}
-.card:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.08);transition:.15s ease}
-</style>
+      /* Paleta de los 7 bloques temáticos */
+      --c-t: #1D9E75;   --c-t-dark: #085041;
+      --c-p: #534AB7;   --c-p-dark: #3C3489;
+      --c-r: #D85A30;   --c-r-dark: #993C1D;
+      --c-a: #BA7517;   --c-a-dark: #854F0B;
+      --c-k: #D4537E;   --c-k-dark: #72243E;
+      --c-b: #378ADD;   --c-b-dark: #185FA5;
+      --c-g: #639922;   --c-g-dark: #3B6D11;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .logo {
+      font-family: var(--font-serif);
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--primary-dark);
+      text-decoration: none;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      margin-left: 1.5rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--primary); }
+
+    /* Hero */
+    .hero {
+      padding: 4rem 5% 3rem;
+      text-align: center;
+      background: linear-gradient(to bottom, #ffffff, #fcfbf9);
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-kicker {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-family: var(--font-serif);
+      font-size: 2.6rem;
+      line-height: 1.15;
+      color: var(--primary-dark);
+      margin-bottom: 1.25rem;
+      max-width: 780px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* Índice rápido */
+    .index-bar {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 5%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+    }
+    .index-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0.4rem 0.85rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      font-weight: 500;
+      transition: all 0.15s ease;
+    }
+    .index-chip:hover {
+      color: var(--primary-dark);
+      border-color: var(--primary);
+      transform: translateY(-1px);
+    }
+    .index-chip::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--dot, var(--accent));
+    }
+
+    /* Bloques */
+    .bloques {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 5% 4rem;
+    }
+    .bloque {
+      margin-bottom: 3.5rem;
+      scroll-margin-top: 5rem;
+    }
+    .bloque-header {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--dot, var(--border));
+    }
+    .bloque-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      background: var(--dot);
+      position: relative;
+      top: 2px;
+    }
+    .bloque-title {
+      font-family: var(--font-serif);
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      flex-grow: 1;
+    }
+    .bloque-sub {
+      font-size: 0.85rem;
+      color: var(--text-soft);
+      font-style: italic;
+    }
+
+    /* Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    /* Card */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.08);
+      border-color: var(--dot);
+    }
+
+    /* Thumbnail */
+    .card-thumb {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: var(--surface-2);
+      overflow: hidden;
+    }
+    .card-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+      position: relative;
+      z-index: 1;
+    }
+    .card:hover .card-thumb img {
+      transform: scale(1.04);
+    }
+    /* Degradado de fondo por bloque (visible cuando no hay img) */
+    .card-thumb::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--dot) 0%, var(--dot-dark) 100%);
+      opacity: 0.9;
+      z-index: 0;
+    }
+    .card-num {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(255,255,255,0.95);
+      color: var(--dot-dark);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.65rem;
+      border-radius: 6px;
+      z-index: 2;
+      backdrop-filter: blur(4px);
+    }
+
+    /* Estado "Próximamente" */
+    .card.soon {
+      cursor: default;
+      opacity: 0.92;
+    }
+    .card.soon:hover {
+      transform: none;
+      box-shadow: none;
+      border-color: var(--border);
+    }
+    .card.soon .card-thumb {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card.soon .card-thumb::after {
+      content: "Próximamente";
+      position: absolute;
+      z-index: 3;
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: white;
+      background: rgba(0, 0, 0, 0.35);
+      padding: 0.55rem 1.3rem;
+      border-radius: 999px;
+      letter-spacing: 0.04em;
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+    .card.soon .card-num {
+      background: rgba(255, 255, 255, 0.75);
+    }
+
+    /* Cuerpo de la card */
+    .card-body {
+      padding: 1.1rem 1.15rem 1.25rem;
+      border-top: 3px solid var(--dot);
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-title {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      line-height: 1.3;
+      margin-bottom: 0.5rem;
+    }
+    .card-sub {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 0.85rem;
+      flex-grow: 1;
+    }
+    .card-ref {
+      font-size: 0.75rem;
+      color: var(--text-soft);
+      font-style: italic;
+      border-top: 1px solid var(--border);
+      padding-top: 0.6rem;
+    }
+
+    /* Colores por bloque */
+    .bloque.b-t { --dot: var(--c-t); --dot-dark: var(--c-t-dark); }
+    .bloque.b-p { --dot: var(--c-p); --dot-dark: var(--c-p-dark); }
+    .bloque.b-r { --dot: var(--c-r); --dot-dark: var(--c-r-dark); }
+    .bloque.b-a { --dot: var(--c-a); --dot-dark: var(--c-a-dark); }
+    .bloque.b-k { --dot: var(--c-k); --dot-dark: var(--c-k-dark); }
+    .bloque.b-b { --dot: var(--c-b); --dot-dark: var(--c-b-dark); }
+    .bloque.b-g { --dot: var(--c-g); --dot-dark: var(--c-g-dark); }
+
+    .index-chip.b-t { --dot: var(--c-t); }
+    .index-chip.b-p { --dot: var(--c-p); }
+    .index-chip.b-r { --dot: var(--c-r); }
+    .index-chip.b-a { --dot: var(--c-a); }
+    .index-chip.b-k { --dot: var(--c-k); }
+    .index-chip.b-b { --dot: var(--c-b); }
+    .index-chip.b-g { --dot: var(--c-g); }
+
+    /* CTA final */
+    .cta-final {
+      text-align: center;
+      padding: 3rem 5%;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+    }
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.8rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+    /* Footer */
+    footer {
+      background: var(--primary-dark);
+      color: #e2dfd8;
+      text-align: center;
+      padding: 3rem 5%;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.9rem; }
+      .grid { grid-template-columns: 1fr; }
+      .bloque-title { font-size: 1.3rem; }
+    }
+    .sr-only {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0,0,0,0);
+      white-space: nowrap; border: 0;
+    }
+  </style>
 </head>
 <body>
-<div class="root">
-<h2 class="sr-only">Catálogo de 30 itinerarios formativos no reiterativos surgidos del Manual de la PLAPA, organizados en siete bloques temáticos.</h2>
-<div class="seg">
-<div class="seg-hdr">
-<div class="seg-dot" style="background:#1D9E75"></div>
-<span class="seg-title">Fundamentos y mística · para todo agente</span>
-<span class="seg-count"></span>
-</div>
-<div class="grid">
-<a class="card t-accent" href="itinerario_1_llaga_v2.html">
-<div class="card-n t-n">Itinerario 1</div>
-<div class="card-title">La llaga como punto de partida</div>
-<div class="card-sub">Epistemología ascendente y Ver–Juzgar–Actuar como método de vida pastoral</div>
-<div class="card-ref">§2.1–2.2, §1.1</div>
-</a>
-<a class="card t-accent" href="itinerario_2_retablo_v2.html">
-<div class="card-n t-n">Itinerario 2</div>
-<div class="card-title">El Retablo de Isenheim como escuela espiritual</div>
-<div class="card-sub">Leer cada figura del retablo como espejo del acompañante y del acompañado</div>
-<div class="card-ref">§3.1–3.7</div>
-</a>
-<a class="card t-accent" href="itinerario_3_mistica_v2.html">
-<div class="card-n t-n">Itinerario 3</div>
-<div class="card-title">Mística de la proximidad</div>
-<div class="card-sub">Achicar distancias, callejear y tocar la carne sufriente como espiritualidad encarnada</div>
-<div class="card-ref">§6.7.3, §7.9.4</div>
-</a>
-<a class="card t-accent" href="itinerario_4_caridad_politica.html">
-<div class="card-n t-n">Itinerario 4</div>
-<div class="card-title">La caridad política como misión</div>
-<div class="card-sub">Del acompañamiento individual a la incidencia en políticas públicas y estructuras de pecado</div>
-<div class="card-ref">§6.7.1, §11.8.4</div>
-</a>
-<a class="card t-accent" href="itinerario_5_magisterio_adicciones.html">
-<div class="card-n t-n">Itinerario 5</div>
-<div class="card-title">Magisterio y adicciones</div>
-<div class="card-sub">Recorrido histórico desde Juan Pablo II hasta León XIV: cómo evolucionó la palabra de la Iglesia</div>
-<div class="card-ref">§5.1–5.10</div>
-</a>
-</div>
-</div>
-<div class="seg">
-<div class="seg-hdr">
-<div class="seg-dot" style="background:#534AB7"></div>
-<span class="seg-title">Ser social y territorio · para agentes comunitarios</span>
-<span class="seg-count"></span>
-</div>
-<div class="grid">
-<a class="card p-accent" href="itinerario_6_leer_territorio.html">
-<div class="card-n p-n">Itinerario 6</div>
-<div class="card-title">Leer el territorio sin romantizarlo</div>
-<div class="card-sub">Diagnóstico territorial participativo: barrio, parroquia, escuela, calle y narcotráfico</div>
-<div class="card-ref">§4.1–4.13, §6.1.3</div>
-</a>
-<a class="card p-accent" href="itinerario_7_familia_comunitaria.html">
-<div class="card-n p-n">Itinerario 7</div>
-<div class="card-title">Familia comunitaria y crianza compartida</div>
-<div class="card-sub">Ampliar la mirada familiar más allá de los vínculos biológicos en contextos de orfandad funcional</div>
-<div class="card-ref">§6.2.4, §6.2.8</div>
-</a>
-<a class="card p-accent" href="itinerario_8_territorio_digital.html">
-<div class="card-n p-n">Itinerario 8</div>
-<div class="card-title">El territorio digital como nuevo desafío</div>
-<div class="card-sub">Adicciones comportamentales, redes sociales, FOMO y pastoral en entornos virtuales</div>
-<div class="card-ref">§4.6, §6.1.4, §9.5.4</div>
-</a>
-<a class="card p-accent" href="itinerario_9_drama_trabajo_3T.html">
-<div class="card-n p-n">Itinerario 9</div>
-<div class="card-title">El drama del trabajo y las 3T</div>
-<div class="card-sub">Desempleo, economía popular y las 3T como andamiaje de justicia para la recuperación sostenible</div>
-<div class="card-ref">§4.9, §6.3.1–6.3.2</div>
-</a>
-<a class="card p-accent" href="itinerario_10_superar_fragmentacion.html">
-<div class="card-n p-n">Itinerario 10</div>
-<div class="card-title">Superar la fragmentación institucional</div>
-<div class="card-sub">Acompañamiento inespecífico y trabajo en red horizontal frente al descuartizamiento institucional</div>
-<div class="card-ref">§6.4.1–6.4.3</div>
-</a>
-<a class="card p-accent" href="itinerario_11_microcreditos_finanzas_solidarias.html">
-<div class="card-n p-n">Itinerario 11</div>
-<div class="card-title">Microcréditos y finanzas solidarias</div>
-<div class="card-sub">Economía popular como herramienta de reintegración: guía metodológica y casos concretos</div>
-<div class="card-ref">§6.6.5, §12.4</div>
-</a>
-</div>
-</div>
-<div class="seg">
-<div class="seg-hdr">
-<div class="seg-dot" style="background:#D85A30"></div>
-<span class="seg-title">Espíritu humano y psiquis · para equipos de acompañamiento</span>
-<span class="seg-count"></span>
-</div>
-<div class="grid">
-<a class="card r-accent" href="itinerario_12_vacio_existencial_reconexion.html">
-<div class="card-n r-n">Itinerario 12</div>
-<div class="card-title">Vacío existencial y reconexión espiritual</div>
-<div class="card-sub">La adicción como patología del espíritu: diagnóstico, acompañamiento y reparación del sentido</div>
-<div class="card-ref">§7.1–7.3, §5.2</div>
-</a>
-<a class="card r-accent" href="itinerario_13_pedagogia_ternura_trauma.html">
-<div class="card-n r-n">Itinerario 13</div>
-<div class="card-title">Pedagogía de la ternura y sanación del trauma</div>
-<div class="card-sub">Apego seguro, trauma, EMDR y reparación vincular desde la mirada biopsicosocial-espiritual</div>
-<div class="card-ref">§7.9.5, §8.2, §8.4</div>
-</a>
-<a class="card r-accent" href="itinerario_14_misericordia_estructurada.html">
-<div class="card-n r-n">Itinerario 14</div>
-<div class="card-title">Misericordia Estructurada en la práctica</div>
-<div class="card-sub">El equilibrio entre ternura y regla: seguridad vincular, reparación de la voluntad y límite pedagógico</div>
-<div class="card-ref">§6.3.3</div>
-</a>
-<a class="card r-accent" href="itinerario_15_patologia_dual.html">
-<div class="card-n r-n">Itinerario 15</div>
-<div class="card-title">Patología dual: cuando el dolor tiene doble nombre</div>
-<div class="card-sub">Cuatro modelos explicativos, criterios de derivación y abordaje integral en comunidades pastorales</div>
-<div class="card-ref">§9.5.1, §8.2</div>
-</a>
-<a class="card r-accent" href="itinerario_16_escucha_activa_herramientas.html">
-<div class="card-n r-n">Itinerario 16</div>
-<div class="card-title">Escucha activa y herramientas psicológicas básicas</div>
-<div class="card-sub">Autoeficacia, diario de emociones, introspección guiada y persuasión social para no especialistas</div>
-<div class="card-ref">§8.7.1–8.7.3</div>
-</a>
-<a class="card r-accent" href="itinerario_17_capital_recuperacion.html">
-<div class="card-n r-n">Itinerario 17</div>
-<div class="card-title">Capital de recuperación</div>
-<div class="card-sub">Los ocho dominios del capital de recuperación y el rol de las familias de acogida como sostén</div>
-<div class="card-ref">§8.5.1–8.5.4</div>
-</a>
-</div>
-</div>
-<div class="seg">
-<div class="seg-hdr">
-<div class="seg-dot" style="background:#BA7517"></div>
-<span class="seg-title">Sustancias y biología · para equipos con perfil técnico</span>
-<span class="seg-count"></span>
-</div>
-<div class="grid">
-<a class="card a-accent" href="itinerario_18_cerebro_adiccion_v3.html">
-<div class="card-n a-n">Itinerario 18</div>
-<div class="card-title">El cerebro y la adicción sin tecnicismos</div>
-<div class="card-sub">Sistema de recompensa, neuroplasticidad, recaída y trayectorias de recuperación para agentes pastorales</div>
-<div class="card-ref">§9.3.1–9.3.7</div>
-</a>
-<a class="card a-accent" href="itinerario_19_sustancias.html">
-<div class="card-n a-n">Itinerario 19</div>
-<div class="card-title">Sustancias específicas: lo que el agente necesita saber</div>
-<div class="card-sub">Cannabis, alcohol, nuevas sustancias psicoactivas y sustancias legales: baja percepción de riesgo y pastoral diferenciada</div>
-<div class="card-ref">§9.1.1–9.1.5</div>
-</a>
-<a class="card a-accent" href="itinerario_20_biologia_pobreza.html">
-<div class="card-n a-n">Itinerario 20</div>
-<div class="card-title">Biología, pobreza y vulnerabilidad</div>
-<div class="card-sub">Cicatriz biológica de la exclusión, vulnerabilidad en adolescentes, embarazo y consumo en contextos de pobreza extrema</div>
-<div class="card-ref">§9.4.1–9.4.6</div>
-</a>
-</div>
-</div>
-<div class="seg">
-<div class="seg-hdr">
-<div class="seg-dot" style="background:#D4537E"></div>
-<span class="seg-title">Poblaciones específicas · itinerarios diferenciados</span>
-<span class="seg-count"></span>
-</div>
-<div class="grid">
-<a class="card k-accent" href="itinerario_21_mujeres_consumo.html">
-<div class="card-n k-n">Itinerario 21</div>
-<div class="card-title">Pastoral con mujeres en situación de consumo</div>
-<div class="card-sub">Feminización de la pobreza, abordajes diferenciados, tejedoras del cuidado y reducción de daños con perspectiva de género</div>
-<div class="card-ref">§4.4, §6.6.1–6.6.3, §8.6.1</div>
-</a>
-<a class="card k-accent" href="itinerario_22_infancias_adolescencias.html">
-<div class="card-n k-n">Itinerario 22</div>
-<div class="card-title">Infancias y adolescencias en riesgo</div>
-<div class="card-sub">Las 3C de la vida, crianza comunitaria, protección de NNA y pastoral preventiva antes del primer consumo</div>
-<div class="card-ref">§4.5, §11.1.9–11.1.10</div>
-</a>
-<a class="card k-accent" href="itinerario_23_carceles_pospenados.html">
-<div class="card-n k-n">Itinerario 23</div>
-<div class="card-title">Pastoral en cárceles y pospenados</div>
-<div class="card-sub">Acompañamiento intramuros, reinserción al egreso y el modelo «Fortaleza» de reintegración social</div>
-<div class="card-ref">§4.12, §11.5, §12.5–12.6</div>
-</a>
-<a class="card k-accent" href="itinerario_24_calle_movilidad_humana.html">
-<div class="card-n k-n">Itinerario 24</div>
-<div class="card-title">Hermanos en situación de calle y movilidad humana</div>
-<div class="card-sub">Outreach, medicina de calle, reducción de daños y abordaje de interculturalidad y migrantes</div>
-<div class="card-ref">§4.10, §6.6.6, §12.9</div>
-</a>
-</div>
-</div>
-<div class="seg">
-<div class="seg-hdr">
-<div class="seg-dot" style="background:#378ADD"></div>
-<span class="seg-title">Dispositivos y propuestas concretas · para coordinadores</span>
-<span class="seg-count"></span>
-</div>
-<div class="grid">
-<a class="card b-accent" href="itinerario_25_centros_barriales.html">
-<div class="card-n b-n">Itinerario 25</div>
-<div class="card-title">Cómo abrir y sostener un centro barrial</div>
-<div class="card-sub">Los tres ejes del centro barrial, cómo comenzar, articulación en red y gestión de la sustentabilidad</div>
-<div class="card-ref">§11.1.7–11.1.8, §12.3</div>
-</a>
-<a class="card b-accent" href="itinerario_26_ambulatorio_residencial.html">
-<div class="card-n b-n">Itinerario 26</div>
-<div class="card-title">Modelo ambulatorio vs. residencial</div>
-<div class="card-sub">Por qué el ambulatorio es prioritario, sus componentes, criterios de derivación y relación con la comunidad terapéutica</div>
-<div class="card-ref">§11.6–11.7</div>
-</a>
-<a class="card b-accent" href="itinerario_27_pastoral_sobriedad.html">
-<div class="card-n b-n">Itinerario 27</div>
-<div class="card-title">La Pastoral de la Sobriedad</div>
-<div class="card-sub">Grupos de Autoayuda (GAA), programa «Nueva Vida» (12 Pasos adaptados) y el rol del agente de sobriedad</div>
-<div class="card-ref">§12.2</div>
-</a>
-<a class="card b-accent" href="itinerario_28_prevencion_escolar_universitaria.html">
-<div class="card-n b-n">Itinerario 28</div>
-<div class="card-title">Prevención escolar y universitaria</div>
-<div class="card-sub">La dicción frente a la adicción: construir comunidad educativa donde la palabra tenga lugar antes del vacío</div>
-<div class="card-ref">§11.2.1–11.2.2</div>
-</a>
-</div>
-</div>
-<div class="seg">
-<div class="seg-hdr">
-<div class="seg-dot" style="background:#639922"></div>
-<span class="seg-title">Sostenibilidad del agente y gestión de red · para referentes</span>
-<span class="seg-count"></span>
-</div>
-<div class="grid">
-<a class="card g-accent" href="itinerario_29_cuidar_que_cuidan.html">
-<div class="card-n g-n">Itinerario 29</div>
-<div class="card-title">Cuidar a los que cuidan</div>
-<div class="card-sub">Autocuidado del agente, acompañamiento del duelo por muertes en el equipo y «Parar para seguir»</div>
-<div class="card-ref">§6.7.2, §8.7.4, §11.1.14–11.1.15</div>
-</a>
-<a class="card g-accent" href="itinerario_30_pastoral_diocesana_continental.html">
-<div class="card-n g-n">Itinerario 30</div>
-<div class="card-title">Construir la pastoral diocesana y continental</div>
-<div class="card-sub">Del centro barrial a la pastoral nacional y la PLAPA: arquitectura de niveles, sinodalidad y rolling release</div>
-<div class="card-ref">§11.4, §11.8–11.9, §13.1–13.9</div>
-</a>
-</div>
-</div>
-</div>
+
+<header>
+  <a href="index.html" class="logo">Escuela PLAPA</a>
+  <nav class="nav-links">
+    <a href="index.html">Inicio</a>
+    <a href="index.html#metodologia">Método</a>
+    <a href="index.html#ambitos">Rutas por ámbito</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-kicker">Biblioteca formativa completa</div>
+  <h1>30 Itinerarios para acompañar la vida como viene</h1>
+  <p>Catálogo completo de los 30 itinerarios formativos surgidos del Manual de la PLAPA, organizados en siete bloques temáticos. Cada itinerario referencia los parágrafos (§) exactos del Manual.</p>
+</section>
+
+<nav class="index-bar" aria-label="Índice de bloques">
+  <a href="#b1" class="index-chip b-t">Fundamentos y mística</a>
+  <a href="#b2" class="index-chip b-p">Ser social y territorio</a>
+  <a href="#b3" class="index-chip b-r">Espíritu humano y psiquis</a>
+  <a href="#b4" class="index-chip b-a">Sustancias y biología</a>
+  <a href="#b5" class="index-chip b-k">Poblaciones específicas</a>
+  <a href="#b6" class="index-chip b-b">Dispositivos y propuestas</a>
+  <a href="#b7" class="index-chip b-g">Sostenibilidad y red</a>
+</nav>
+
+<main class="bloques">
+  <h2 class="sr-only">Catálogo de los 30 itinerarios organizados en 7 bloques temáticos.</h2>
+
+  <!-- ============ BLOQUE 1 · DISPONIBLES ============ -->
+  <section class="bloque b-t" id="b1">
+    <div class="bloque-header">
+      <span class="bloque-dot"></span>
+      <div class="bloque-title">Fundamentos y mística</div>
+      <div class="bloque-sub">para todo agente pastoral</div>
+    </div>
+    <div class="grid">
+
+      <a class="card" href="itinerario_1_llaga_v2.html">
+        <div class="card-thumb">
+          <img src="img/thumbnails/itinerario_01.webp" alt="Itinerario 1: La llaga como punto de partida" loading="lazy">
+          <span class="card-num">Itinerario 1</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">La llaga como punto de partida</div>
+          <div class="card-sub">Epistemología ascendente y Ver–Juzgar–Actuar como método de vida pastoral.</div>
+          <div class="card-ref">§2.1–2.2, §1.1</div>
+        </div>
+      </a>
+
+      <a class="card" href="itinerario_2_retablo_v2.html">
+        <div class="card-thumb">
+          <img src="img/thumbnails/itinerario_02.webp" alt="Itinerario 2: El Retablo de Isenheim" loading="lazy">
+          <span class="card-num">Itinerario 2</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">El Retablo de Isenheim como escuela espiritual</div>
+          <div class="card-sub">Leer cada figura del retablo como espejo del acompañante y del acompañado.</div>
+          <div class="card-ref">§3.1–3.7</div>
+        </div>
+      </a>
+
+      <a class="card" href="itinerario_3_mistica_v2.html">
+        <div class="card-thumb">
+          <img src="img/thumbnails/itinerario_03.webp" alt="Itinerario 3: Mística de la proximidad" loading="lazy">
+          <span class="card-num">Itinerario 3</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Mística de la proximidad</div>
+          <div class="card-sub">Achicar distancias, callejear y tocar la carne sufriente como espiritualidad encarnada.</div>
+          <div class="card-ref">§6.7.3, §7.9.4</div>
+        </div>
+      </a>
+
+      <a class="card" href="itinerario_4_caridad_politica.html">
+        <div class="card-thumb">
+          <img src="img/thumbnails/itinerario_04.webp" alt="Itinerario 4: La caridad política" loading="lazy">
+          <span class="card-num">Itinerario 4</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">La caridad política como misión</div>
+          <div class="card-sub">Del acompañamiento individual a la incidencia en políticas públicas y estructuras de pecado.</div>
+          <div class="card-ref">§6.7.1, §11.8.4</div>
+        </div>
+      </a>
+
+      <a class="card" href="itinerario_5_magisterio_adicciones.html">
+        <div class="card-thumb">
+          <img src="img/thumbnails/itinerario_05.webp" alt="Itinerario 5: Magisterio y adicciones" loading="lazy">
+          <span class="card-num">Itinerario 5</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Magisterio y adicciones</div>
+          <div class="card-sub">Recorrido histórico desde Juan Pablo II hasta León XIV: cómo evolucionó la palabra de la Iglesia.</div>
+          <div class="card-ref">§5.1–5.10</div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ============ BLOQUE 2 · PRÓXIMAMENTE ============ -->
+  <section class="bloque b-p" id="b2">
+    <div class="bloque-header">
+      <span class="bloque-dot"></span>
+      <div class="bloque-title">Ser social y territorio</div>
+      <div class="bloque-sub">para agentes comunitarios</div>
+    </div>
+    <div class="grid">
+
+      <div class="card soon">
+        <div class="card-thumb">
+          <span class="card-num">Itinerario 6</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Leer el territorio sin romantizarlo</div>
+          <div class="card-sub">Diagnóstico territorial participativo: barrio, parroquia, escuela, calle y narcotráfico.</div>
+          <div class="card-ref">§4.1–4.13, §6.1.3</div>
+        </div>
+      </div>
+
+      <div class="card soon">
+        <div class="card-thumb">
+          <span class="card-num">Itinerario 7</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Familia comunitaria y crianza compartida</div>
+          <div class="card-sub">Ampliar la mirada familiar más allá de los vínculos biológicos en contextos de orfandad funcional.</div>
+          <div class="card-ref">§6.2.4, §6.2.8</div>
+        </div>
+      </div>
+
+      <div class="card soon">
+        <div class="card-thumb">
+          <span class="card-num">Itinerario 8</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">El territorio digital como nuevo desafío</div>
+          <div class="card-sub">Adicciones comportamentales, redes sociales, FOMO y pastoral en entornos virtuales.</div>
+          <div class="card-ref">§4.6, §6.1.4, §9.5.4</div>
+        </div>
+      </div>
+
+      <div class="card soon">
+        <div class="card-thumb">
+          <span class="card-num">Itinerario 9</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">El drama del trabajo y las 3T</div>
+          <div class="card-sub">Desempleo, economía popular y las 3T como andamiaje de justicia para la recuperación sostenible.</div>
+          <div class="card-ref">§4.9, §6.3.1–6.3.2</div>
+        </div>
+      </div>
+
+      <div class="card soon">
+        <div class="card-thumb">
+          <span class="card-num">Itinerario 10</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Superar la fragmentación institucional</div>
+          <div class="card-sub">Acompañamiento inespecífico y trabajo en red horizontal frente al descuartizamiento institucional.</div>
+          <div class="card-ref">§6.4.1–6.4.3</div>
+        </div>
+      </div>
+
+      <div class="card soon">
+        <div class="card-thumb">
+          <span class="card-num">Itinerario 11</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Microcréditos y finanzas solidarias</div>
+          <div class="card-sub">Economía popular como herramienta de reintegración: guía metodológica y casos concretos.</div>
+          <div class="card-ref">§6.6.5, §12.4</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ BLOQUE 3 · PRÓXIMAMENTE ============ -->
+  <section class="bloque b-r" id="b3">
+    <div class="bloque-header">
+      <span class="bloque-dot"></span>
+      <div class="bloque-title">Espíritu humano y psiquis</div>
+      <div class="bloque-sub">para equipos de acompañamiento</div>
+    </div>
+    <div class="grid">
+
+      <div class="card soon">
+        <div class="card-thumb">
+          <span class="card-num">Itinerario 12</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Vacío existencial y reconexión espiritual</div>
+          <div class="card-sub">La adicción como patología del espíritu: diagnóstico, acompañamiento y reparación del sentido.</div>
+          <div class="card-ref">§7.1–7.3, §5.2</div>
+        </div>
+      </div>
+
+      <div class="card soon">
+        <div class="card-thumb">
+          <span class="card-num">Itinerario 13</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Pedagogía de la ternura y sanación del trauma</div>
+          <div class="card-sub">Apego seguro, trauma, EMDR y reparación vincular desde la mirada biopsicosocial-espiritual.</div>
+          <div class="card-ref">§7.9.5, §8.2, §8.4</div>
+        </div>
+      </div>
+
+      <div class="card soon">
+        <div class="card-thumb">
+          <span class="card-num">Itinerario 14</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Misericordia Estructurada en la práctica</div>
+          <div class="card-sub">El equilibrio entre ternura y regla: seguridad vincular, reparación de la voluntad y límite pedagógico.</div>
+          <div class="card-ref">§6.3.3</div>
+        </div>
+      </div>
+
+      <div class="card soon">
+        <div class="card-thumb">
+          <span class="card-num">Itinerario 15</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Patología dual: cuando el dolor tiene doble nombre</div>
+          <div class="card-sub">Cuatro modelos explicativos, criterios de derivación y abordaje integral en comunidades pastorales.</div>
+          <div class="card-ref">§9.5.1, §8.2</div>
+        </div>
+      </div>
+
+      <div class="card soon">
+        <div class="card-thumb">
+          <span class="card-num">Itinerario 16</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Escucha activa y herramientas psicológicas básicas</div>
+          <div class="card-sub">Autoeficacia, diario de emociones, introspección guiada y persuasión social para no especialistas.</div>
+          <div class="card-ref">§8.7.1–8.7.3</div>
+        </div>
+      </div>
+
+      <div class="card soon">
+        <div class="card-thumb">
+          <span class="card-num">Itinerario 17</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Capital de recuperación</div>
+          <div class="card-sub">Los ocho dominios del capital de recuperación y el rol de las familias de acogida como sostén.</div>
+          <div class="card-ref">§8.5.1–8.5.4</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ BLOQUE 4 · PRÓXIMAMENTE ============ -->
+  <section class="bloque b-a" id="b4">
+    <div class="bloque-header">
+      <span class="bloque-dot"></span>
+      <div class="bloque-title">Sustancias y biología</div>
+      <div class="bloque-sub">para equipos con perfil técnico</div>
+    </div>
+    <div class="grid">
+
+      <div class="card soon">
+        <div class="card-thumb">
+          <span class="card-num">Itinerario 18</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">El cerebro y la adicción sin tecnicismos</div>
+          <div class="card-sub">Sistema de recompensa, neuroplasticidad, recaída y trayectorias de recuperación para agentes pastorales.</div>
+          <div class="card-ref">§9.3.1–9.3.7</div>
+        </div>
+      </div>
+
+      <div class="card soon">
+        <div class="card-thumb">
+          <span class="card-num">Itinerario 19</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Sustancias específicas: lo que el agente necesita saber</div>
+          <div class="card-sub">Cannabis, alcohol, nuevas sustancias psicoactivas y sustancias legales: baja percepción de riesgo y pastoral diferenciada.</div>
+          <div class="card-ref">§9.1.1–9.1.5</div>
+        </div>
+      </div>
+
+      <div class="card soon">
+        <div class="card-thumb">
+          <span class="card-num">Itinerario 20</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Biología, pobreza y vulnerabilidad</div>
+          <div class="card-sub">Cicatriz biológica de la exclusión, vulnerabilidad en adolescentes, embarazo y consumo en contextos de pobreza extrema.</div>
+          <div class="card-ref">§9.4.1–9.4.6</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ BLOQUE 5 · PRÓXIMAMENTE ============ -->
+  <section class="bloque b-k" id="b5">
+    <div class="bloque-header">
+      <span class="bloque-dot"></span>
+      <div class="bloque-title">Poblaciones específicas</div>
+      <div class="bloque-sub">itinerarios diferenciados</div>
+    </div>
+    <div class="grid">
+
+      <div class="card soon">
+        <div class="card-thumb">
+          <span class="card-num">Itinerario 21</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Pastoral con mujeres en situación de consumo</div>
+          <div class="card-sub">Feminización de la pobreza, abordajes diferenciados, tejedoras del cuidado y reducción de daños con perspectiva de género.</div>
+          <div class="card-ref">§4.4, §6.6.1–6.6.3, §8.6.1</div>
+        </div>
+      </div>
+
+      <div class="card soon">
+        <div class="card-thumb">
+          <span class="card-num">Itinerario 22</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Infancias y adolescencias en riesgo</div>
+          <div class="card-sub">Las 3C de la vida, crianza comunitaria, protección de NNA y pastoral preventiva antes del primer consumo.</div>
+          <div class="card-ref">§4.5, §11.1.9–11.1.10</div>
+        </div>
+      </div>
+
+      <div class="card soon">
+        <div class="card-thumb">
+          <span class="card-num">Itinerario 23</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Pastoral en cárceles y pospenados</div>
+          <div class="card-sub">Acompañamiento intramuros, reinserción al egreso y el modelo «Fortaleza» de reintegración social.</div>
+          <div class="card-ref">§4.12, §11.5, §12.5–12.6</div>
+        </div>
+      </div>
+
+      <div class="card soon">
+        <div class="card-thumb">
+          <span class="card-num">Itinerario 24</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Hermanos en situación de calle y movilidad humana</div>
+          <div class="card-sub">Outreach, medicina de calle, reducción de daños y abordaje de interculturalidad y migrantes.</div>
+          <div class="card-ref">§4.10, §6.6.6, §12.9</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ BLOQUE 6 · PRÓXIMAMENTE ============ -->
+  <section class="bloque b-b" id="b6">
+    <div class="bloque-header">
+      <span class="bloque-dot"></span>
+      <div class="bloque-title">Dispositivos y propuestas concretas</div>
+      <div class="bloque-sub">para coordinadores</div>
+    </div>
+    <div class="grid">
+
+      <div class="card soon">
+        <div class="card-thumb">
+          <span class="card-num">Itinerario 25</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Cómo abrir y sostener un centro barrial</div>
+          <div class="card-sub">Los tres ejes del centro barrial, cómo comenzar, articulación en red y gestión de la sustentabilidad.</div>
+          <div class="card-ref">§11.1.7–11.1.8, §12.3</div>
+        </div>
+      </div>
+
+      <div class="card soon">
+        <div class="card-thumb">
+          <span class="card-num">Itinerario 26</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Modelo ambulatorio vs. residencial</div>
+          <div class="card-sub">Por qué el ambulatorio es prioritario, sus componentes, criterios de derivación y relación con la comunidad terapéutica.</div>
+          <div class="card-ref">§11.6–11.7</div>
+        </div>
+      </div>
+
+      <div class="card soon">
+        <div class="card-thumb">
+          <span class="card-num">Itinerario 27</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">La Pastoral de la Sobriedad</div>
+          <div class="card-sub">Grupos de Autoayuda (GAA), programa «Nueva Vida» (12 Pasos adaptados) y el rol del agente de sobriedad.</div>
+          <div class="card-ref">§12.2</div>
+        </div>
+      </div>
+
+      <div class="card soon">
+        <div class="card-thumb">
+          <span class="card-num">Itinerario 28</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Prevención escolar y universitaria</div>
+          <div class="card-sub">La dicción frente a la adicción: construir comunidad educativa donde la palabra tenga lugar antes del vacío.</div>
+          <div class="card-ref">§11.2.1–11.2.2</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ BLOQUE 7 · PRÓXIMAMENTE ============ -->
+  <section class="bloque b-g" id="b7">
+    <div class="bloque-header">
+      <span class="bloque-dot"></span>
+      <div class="bloque-title">Sostenibilidad del agente y gestión de red</div>
+      <div class="bloque-sub">para referentes</div>
+    </div>
+    <div class="grid">
+
+      <div class="card soon">
+        <div class="card-thumb">
+          <span class="card-num">Itinerario 29</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Cuidar a los que cuidan</div>
+          <div class="card-sub">Autocuidado del agente, acompañamiento del duelo por muertes en el equipo y «Parar para seguir».</div>
+          <div class="card-ref">§6.7.2, §8.7.4, §11.1.14–11.1.15</div>
+        </div>
+      </div>
+
+      <div class="card soon">
+        <div class="card-thumb">
+          <span class="card-num">Itinerario 30</span>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Construir la pastoral diocesana y continental</div>
+          <div class="card-sub">Del centro barrial a la pastoral nacional y la PLAPA: arquitectura de niveles, sinodalidad y rolling release.</div>
+          <div class="card-ref">§11.4, §11.8–11.9, §13.1–13.9</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<section class="cta-final">
+  <a href="index.html" class="btn">← Volver a la Escuela</a>
+</section>
+
+<footer>
+  <p><strong>Escuela de la PLAPA</strong></p>
+  <p style="margin-top: 0.5rem; color: #a39e93;">Formación basada en el Manual de la PLAPA · Red de América Latina y el Caribe</p>
+</footer>
+
 </body>
 </html>
