@@ -1,203 +1,1046 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
 <meta charset="utf-8">
-
+<title>Itinerario 2 · El Retablo de Isenheim · Escuela PLAPA</title>
 <style>
-html { font-size: 120%; } /* 1. AGREGA ESTA LÍNEA (Ajusta el % a tu gusto) */
-*{box-sizing:border-box;margin:0;padding:0}
-.root{font-family:var(--font-sans);color:var(--text-primary);padding:0 0 2rem; font-size: 1rem;} /* 2. AGREGA ESTO AL FINAL DE .ROOT */
-.portada{background:#412402;border-radius:12px;padding:1.25rem 1.5rem 1rem;margin-bottom:1.25rem}
-.portada-sup{font-size:11px;font-weight:500;color:#EF9F27;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.35rem}
-.portada-title{font-size:24px;font-weight:500;color:#fff;line-height:1.3;margin-bottom:.25rem}
-.portada-sub{font-size:13px;color:#FAC775;line-height:1.55;margin-bottom:.75rem}
-.dest-box{background:#854F0B;border-radius:8px;padding:.55rem .85rem;margin-bottom:.85rem}
-.dest-lbl{font-size:9px;font-weight:500;color:#FAC775;letter-spacing:.07em;text-transform:uppercase;margin-bottom:3px}
-.dest-txt{font-size:15px;color:#fff;line-height:1.5}
-.portada-pills{display:flex;flex-wrap:wrap;gap:5px}
-.portada-pill{font-size:11px;font-weight:500;padding:2px 9px;border-radius:99px;background:#854F0B;color:#FAEEDA}
-.nav{display:flex;gap:6px;margin-bottom:1.25rem;flex-wrap:wrap}
-.btn{border:0.5px solid var(--border-strong);background:var(--surface-2);border-radius:8px;padding:7px 14px;cursor:pointer;font-size:13px;font-family:var(--font-sans);color:var(--text-secondary);transition:background .15s}
-.btn-descarga{border:0.5px solid var(--border-strong);background:var(--surface-2);border-radius:8px;padding:7px 14px;cursor:pointer;font-size:13px;font-family:var(--font-sans);color:var(--text-secondary);transition:background .15s;text-decoration:none;display:inline-block}
-.btn-descarga:hover{background:var(--surface-1)}
-.btn.on{border:2px solid #BA7517;background:#FAEEDA;color:#412402;font-weight:500}
-.card{border-radius:12px;border:0.5px solid var(--border);background:var(--surface-2);overflow:hidden;display:none}
-.card.active{display:block}
-.ch{padding:.85rem 1.1rem .7rem;border-bottom:0.5px solid var(--border)}
-.cn{display:inline-block;font-size:11px;font-weight:500;padding:2px 9px;border-radius:99px;margin-bottom:.5rem;background:#FAEEDA;color:#412402}
-.ct{font-size:20px;font-weight:500;line-height:1.3;margin-bottom:.2rem;color:#633806}
-.cs{font-size:13px;color:var(--text-secondary);line-height:1.45}
-.cb{padding:.85rem 1.1rem}
-.mf{border-left:3px solid #BA7517;background:#FAEEDA;padding:.65rem .9rem;margin-bottom:.9rem}
-.mf-lbl{font-size:9px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:#854F0B;margin-bottom:3px}
-.mf-txt{font-size:17px;font-weight:500;line-height:1.5;font-family:var(--font-voice);color:#412402}
-.pl{font-size:9px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.4rem}
-.pts{list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:.9rem}
-.pts li{display:flex;gap:9px;font-size:15px;color:var(--text-secondary);line-height:1.55}
-.dot{width:18px;min-width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:500;margin-top:1px;background:#FAEEDA;color:#633806}
-.act{background:#FAEEDA;border-radius:8px;padding:.65rem .85rem;margin-bottom:6px}
-.act-title{font-size:11px;font-weight:500;color:#412402;margin-bottom:3px}
-.act-body{font-size:15px;color:#633806;line-height:1.5}
-.cita{border-radius:7px;padding:.65rem .85rem;background:#FAEEDA;margin-top:.85rem}
-.cita-lbl{font-size:9px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:#854F0B;margin-bottom:3px}
-.cita-txt{font-size:14px;line-height:1.6;font-family:var(--font-voice);font-style:italic;color:#412402}
-.cita-ref{font-size:10px;margin-top:3px;font-style:normal;font-weight:500;color:#854F0B}
-.ac-box{border-left:3px solid #BA7517;background:var(--surface-1);padding:.65rem .85rem;margin-top:.85rem}
-.ac-lbl{font-size:9px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:#854F0B;margin-bottom:3px}
-.ac-txt{font-size:14.5px;color:var(--text-secondary);line-height:1.55}
-.ref{font-size:10px;color:var(--text-muted);font-style:italic;margin-top:.75rem;padding-top:.6rem;border-top:0.5px solid var(--border)}
-.fig-row{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:.85rem}
-.fig{background:#FAEEDA;border-radius:7px;padding:.5rem .6rem;text-align:center}
-.fig-name{font-size:11px;font-weight:500;color:#412402;margin-bottom:2px}
-.fig-rol{font-size:10px;color:#854F0B;line-height:1.35}
+  :root {
+    /* Paleta marrón/dorado del Retablo — Itinerario 2 */
+    --i2-oscuro:  #412402;
+    --i2-medio:   #633806;
+    --i2-accent:  #854F0B;
+    --i2-dorado:  #BA7517;
+    --i2-suave:   #EF9F27;
+    --i2-claro:   #FAC775;
+    --i2-crema:   #FAEEDA;
+    --i2-fondo:   #FFFDF9;
+
+    --alerta:     #8B1A1A;
+    --alerta-bg:  #FDF7F7;
+
+    --texto:      #2A1F14;
+    --texto-2:    #5A4835;
+    --texto-3:    #8B7A65;
+    --borde:      #EBE1CE;
+
+    --font-serif: "Georgia", "Times New Roman", serif;
+    --font-sans:  "system-ui", -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: #E8DEC7;
+    padding: 2rem 1rem;
+    display: flex;
+    justify-content: center;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    line-height: 1.6;
+  }
+
+  .root {
+    background: var(--i2-fondo);
+    max-width: 860px;
+    width: 100%;
+    padding: 2.5rem;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(65, 36, 2, 0.1);
+  }
+
+  /* ─── PORTADA ────────────────────────────────────────── */
+  .portada {
+    background: var(--i2-oscuro);
+    border-radius: 12px;
+    padding: 2rem 2rem 1.75rem;
+    margin-bottom: 2rem;
+  }
+  .portada-sup {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--i2-suave);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .portada-title {
+    font-family: var(--font-serif);
+    font-size: 30px;
+    font-weight: normal;
+    color: #FFFFFF;
+    line-height: 1.25;
+    margin-bottom: 0.6rem;
+  }
+  .portada-sub {
+    font-size: 14.5px;
+    color: var(--i2-claro);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+    max-width: 640px;
+  }
+  .dest-box {
+    background: var(--i2-medio);
+    border-radius: 8px;
+    padding: 0.9rem 1.1rem;
+    margin-bottom: 1.1rem;
+  }
+  .dest-lbl {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--i2-claro);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .dest-txt {
+    font-size: 13px;
+    color: #FFF;
+    line-height: 1.6;
+  }
+  .portada-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .portada-pill {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 11px;
+    border-radius: 99px;
+    background: var(--i2-medio);
+    color: var(--i2-crema);
+  }
+
+  /* ─── VIDEO ──────────────────────────────────────────── */
+  .video-wrap {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .video-lbl {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--i2-oscuro);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .video-iframe {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  .video-iframe iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  /* ─── DESCARGA DEL RETABLO ───────────────────────────── */
+  .descarga-imagen {
+    background: #FFF;
+    border: 1px dashed var(--i2-dorado);
+    border-radius: 10px;
+    padding: 1.15rem 1.35rem;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .descarga-info {
+    flex: 1 1 300px;
+  }
+  .descarga-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--i2-accent);
+    margin-bottom: 6px;
+  }
+  .descarga-lbl::before {
+    content: '🖼️ ';
+  }
+  .descarga-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.5;
+  }
+  .descarga-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--i2-dorado);
+    color: #FFF;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.18s;
+    white-space: nowrap;
+  }
+  .descarga-link:hover {
+    background: var(--i2-accent);
+  }
+
+  /* ─── SELECTOR DE MODALIDAD ──────────────────────────── */
+  .mode-selector {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 1.5rem;
+    background: #FFF;
+    padding: 6px;
+    border-radius: 10px;
+    border: 1px solid var(--borde);
+    max-width: max-content;
+    flex-wrap: wrap;
+  }
+  .mode-btn {
+    border: none;
+    background: transparent;
+    color: var(--texto-2);
+    padding: 8px 16px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .mode-btn.on {
+    background: var(--i2-dorado);
+    color: #FFF;
+    font-weight: 600;
+  }
+  .root.mode-individual .mode-g { display: none; }
+  .root.mode-grupal .mode-i { display: none; }
+
+  /* ─── NAVEGACIÓN ─────────────────────────────────────── */
+  .nav {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .btn {
+    border: 1px solid var(--borde);
+    background: #FFFFFF;
+    border-radius: 8px;
+    padding: 10px 16px;
+    cursor: pointer;
+    font-size: 12.5px;
+    font-weight: 500;
+    font-family: var(--font-sans);
+    color: var(--texto-2);
+    transition: all 0.18s ease;
+    text-align: left;
+  }
+  .btn:hover {
+    background: var(--i2-crema);
+    border-color: var(--i2-claro);
+    color: var(--i2-oscuro);
+  }
+  .btn.on {
+    border: 2px solid var(--i2-dorado);
+    background: var(--i2-crema);
+    color: var(--i2-oscuro);
+    font-weight: 600;
+    padding: 9px 15px;
+  }
+
+  /* ─── MÓDULOS ────────────────────────────────────────── */
+  .card {
+    border-radius: 12px;
+    border: 1px solid var(--borde);
+    background: #FFFFFF;
+    overflow: hidden;
+    display: none;
+    border-left: 6px solid var(--i2-dorado);
+  }
+  .card.active {
+    display: block;
+    animation: fadeIn 0.35s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .ch {
+    padding: 1.75rem 2rem 1.5rem;
+    border-bottom: 1px solid var(--borde);
+    background: var(--i2-crema);
+  }
+  .cn {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 99px;
+    margin-bottom: 0.85rem;
+    background: var(--i2-dorado);
+    color: #FFFFFF;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .ct {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 1.3;
+    color: var(--i2-oscuro);
+    margin-bottom: 0.4rem;
+  }
+  .cs {
+    font-size: 13px;
+    color: var(--i2-medio);
+    line-height: 1.55;
+    font-style: italic;
+  }
+
+  .cb { padding: 2rem; }
+
+  /* ─── CAJA DE RESONANCIA ─────────────────────────────── */
+  .resonancia {
+    border-left: 4px solid var(--i2-dorado);
+    background: var(--i2-crema);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .resonancia-lbl {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i2-accent);
+    margin-bottom: 8px;
+  }
+  .resonancia-txt {
+    font-family: var(--font-serif);
+    font-size: 16.5px;
+    line-height: 1.6;
+    font-style: italic;
+    color: var(--i2-oscuro);
+  }
+
+  /* ─── SECCIONES VER / JUZGAR / ACTUAR ────────────────── */
+  .pl {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i2-oscuro);
+    margin-top: 2.25rem;
+    margin-bottom: 1.1rem;
+    border-bottom: 1px solid var(--borde);
+    padding-bottom: 7px;
+  }
+  .pl:first-of-type { margin-top: 0.5rem; }
+
+  .pts {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 1.5rem;
+  }
+  .pts li {
+    display: flex;
+    gap: 14px;
+    font-size: 14.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+  .pts li strong {
+    color: var(--i2-oscuro);
+    font-weight: 600;
+  }
+  .dot {
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    background: var(--i2-dorado);
+    color: #FFFFFF;
+    margin-top: 2px;
+    font-family: var(--font-serif);
+  }
+  .dot.j { background: var(--i2-accent); }
+  .dot.a { background: var(--i2-oscuro); }
+
+  /* ─── GRILLA DE FIGURAS DEL RETABLO ──────────────────── */
+  .figuras {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 1.5rem;
+  }
+  .figura {
+    background: var(--i2-crema);
+    border-radius: 10px;
+    padding: 1.1rem 1.25rem;
+    border-top: 4px solid var(--i2-dorado);
+  }
+  .figura-n {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--i2-accent);
+    margin-bottom: 8px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .figura-t {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--i2-oscuro);
+    margin-bottom: 6px;
+  }
+  .figura-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.6;
+  }
+
+  /* ─── ACTIVIDADES ────────────────────────────────────── */
+  .act {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 1.15rem 1.35rem;
+    margin-bottom: 12px;
+    border-left: 4px solid var(--i2-dorado);
+  }
+  .act-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  .tag-ind {
+    background: var(--i2-oscuro);
+    color: var(--i2-crema);
+  }
+  .tag-gru {
+    background: var(--i2-dorado);
+    color: #FFF;
+  }
+  .act-title {
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: var(--i2-oscuro);
+    margin-bottom: 6px;
+    line-height: 1.35;
+  }
+  .act-body {
+    font-size: 14px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+  .act-body em {
+    color: var(--i2-medio);
+    font-style: italic;
+  }
+
+  /* ─── CITA INSPIRADORA ───────────────────────────────── */
+  .cita {
+    border-radius: 10px;
+    padding: 1.2rem 1.4rem;
+    background: linear-gradient(180deg, var(--i2-crema) 0%, #FFF 100%);
+    border: 1px solid var(--i2-claro);
+    margin-top: 2rem;
+  }
+  .cita-lbl {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i2-accent);
+    margin-bottom: 8px;
+  }
+  .cita-txt {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    line-height: 1.7;
+    font-style: italic;
+    color: var(--i2-oscuro);
+  }
+  .cita-ref {
+    font-size: 12px;
+    margin-top: 10px;
+    font-weight: 500;
+    color: var(--i2-medio);
+    font-style: normal;
+  }
+
+  /* ─── ALERTA PASTORAL ────────────────────────────────── */
+  .alerta {
+    border-left: 4px solid var(--alerta);
+    background: var(--alerta-bg);
+    padding: 1.15rem 1.35rem;
+    margin-top: 1.75rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .alerta-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--alerta);
+    margin-bottom: 8px;
+  }
+  .alerta-lbl::before {
+    content: '† ';
+    font-size: 14px;
+  }
+  .alerta-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+
+  /* ─── AUTOCUIDADO ────────────────────────────────────── */
+  .autocuidado {
+    border-left: 4px solid var(--i2-medio);
+    background: #F7F0E1;
+    padding: 1.15rem 1.35rem;
+    margin-top: 1.75rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .autocuidado-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i2-medio);
+    margin-bottom: 8px;
+  }
+  .autocuidado-lbl::before {
+    content: '❋ ';
+    color: var(--i2-dorado);
+  }
+  .autocuidado-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+
+  /* ─── REFERENCIAS ────────────────────────────────────── */
+  .ref {
+    font-size: 11.5px;
+    color: var(--texto-3);
+    font-style: italic;
+    margin-top: 1.75rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--borde);
+  }
+
+  /* ─── RESPONSIVE ─────────────────────────────────────── */
+  @media (max-width: 640px) {
+    body { padding: 1rem 0.5rem; }
+    .root { padding: 1.25rem; }
+    .portada { padding: 1.5rem 1.25rem; }
+    .portada-title { font-size: 24px; }
+    .ch { padding: 1.25rem 1.25rem 1rem; }
+    .ct { font-size: 20px; }
+    .cb { padding: 1.25rem; }
+    .figuras { grid-template-columns: 1fr; }
+    .btn { flex: 1 1 100%; }
+    .mode-selector { flex-direction: column; align-items: stretch; max-width: 100%; }
+    .mode-btn { text-align: center; }
+    .descarga-imagen { flex-direction: column; align-items: stretch; }
+    .descarga-link { justify-content: center; }
+  }
 </style>
-<!-- <h2 class="sr-only">Itinerario 2: El Retablo de Isenheim como escuela espiritual. Cuatro módulos sobre las figuras del retablo como espejo del acompañante y del acompañado.</h2> -->
-<div class="root">
-<div class="portada">
-  <p class="portada-sup">Itinerario formativo 2 · PLAPA — CELAM 2026</p>
-  <h1 class="portada-title">El Retablo de Isenheim como escuela espiritual</h1>
-  <p class="portada-sub">Leer cada figura del retablo como espejo del acompañante y del acompañado · 4 módulos</p>
-  <div class="dest-box">
-    <div class="dest-lbl">Destinatarios</div>
-    <div class="dest-txt">Todo agente pastoral con o sin experiencia previa. Especialmente útil para equipos que buscan profundizar su mística del acompañamiento desde la imagen central del manual. Puede usarse como retiro espiritual de equipo o como continuación natural del Itinerario 1. No requiere formación técnica; sí requiere disposición a la contemplación y al trabajo con imágenes.</div>
-  </div>
-  <div class="portada-pills">
-    <span class="portada-pill">§3.1–3.7</span>
-    <span class="portada-pill">Todo perfil</span>
-    <span class="portada-pill">4 sesiones</span>
-    <span class="portada-pill">Nivel inicial–intermedio</span>
-  </div>
-</div>
+</head>
+<body>
 
-<!-- NUEVO: Bloque del Video de Presentación Incrustado -->
-<div style="background: var(--surface-2); border: 0.5px solid var(--border); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
-  <p style="font-size: 11px; font-weight: 500; color: #085041; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; text-align: left;">
-    ▶️ Video de presentación
-  </p>
-  <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px;">
-    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
-      src="https://www.youtube.com/embed/BCU9dhpKRKo" 
-      title="Presentación del Itinerario" 
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-      allowfullscreen>
-    </iframe>
-  </div>
-</div>
+<div class="root mode-grupal">
 
-<div class="nav">
-  <button class="btn on" onclick="show(1,this)">Módulo 1 · El Ver</button>
-  <button class="btn" onclick="show(2,this)">Módulo 2 · Los que se quedan</button>
-  <button class="btn" onclick="show(3,this)">Módulo 3 · Los que señalan y oran</button>
-  <button class="btn" onclick="show(4,this)">Módulo 4 · El entierro y la esperanza</button>
-  <a href="Isenheim.png" download="Isenheim.png" class="btn-descarga">Descargar la Imagen</a>
-</div>
+  <!-- ═══ PORTADA ═════════════════════════════════════════ -->
+  <div class="portada">
+    <p class="portada-sup">Itinerario formativo 2 · Escuela PLAPA · CELAM 2026</p>
+    <h1 class="portada-title">El Retablo de Isenheim como escuela espiritual</h1>
+    <p class="portada-sub">Leer cada figura del retablo como espejo del acompañante y del acompañado. Del Cristo deformado por la enfermedad al entierro que anticipa la resurrección.</p>
 
-<div id="m1" class="card active" style="border-left:5px solid #BA7517">
-  <div class="ch"><span class="cn">Módulo 1 · El Ver</span><div class="ct">Un Cristo deformado por la cruz de la enfermedad</div><div class="cs">El Retablo como imagen fundante de la pastoral · §3.1</div></div>
-  <div class="cb">
-    <div class="mf"><div class="mf-lbl">Mensaje fuerza</div><div class="mf-txt">"Grünewald pintó un Cristo con las marcas del ergotismo para que los enfermos de Isenheim supieran que Dios conocía su dolor desde adentro. Cinco siglos después, ese Cristo roto sigue siendo el ícono de nuestra pastoral."</div></div>
-    <div class="pl">El Ver — Realidad</div>
-    <ul class="pts">
-      <li><span class="dot">V</span><span>Hoy son muchísimos los hombres y mujeres que, deformados, caminan como zombies por las calles de nuestras ciudades. El mundo los juzga, los estigmatiza y les da la espalda. Incluso muchas veces en nuestras comunidades lo hacemos, privándolos de la buena noticia del Evangelio (§3.1).</span></li>
-      <li><span class="dot">V</span><span>El ergotismo del siglo XVI ulceraba la piel, retorcía las manos, provocaba alucinaciones y llevaba a la muerte de los tejidos. El monasterio de San Antonio en Isenheim abrió sus puertas para recibir a esos enfermos. El primer gesto fue la acogida, no el diagnóstico (§3.1).</span></li>
-    </ul>
-    <div class="pl">El Juzgar — Iluminación</div>
-    <ul class="pts">
-      <li><span class="dot">J</span><span>"Un crucificado deformado por la cruz de la enfermedad, que en su mismo ser horrible logra transmitir el límite de la compasión y el amor desmesurado de Dios" (§3.1). La teología de la encarnación es el fundamento de toda la pastoral.</span></li>
-      <li><span class="dot">J</span><span>"Más que nunca, debemos volver a encontrar el modo y el lenguaje para decir que nuestro Señor no los juzga ni se aleja, sino que anonadándose se acerca y comparte su condición" (§3.1).</span></li>
-    </ul>
-    <div class="pl">El Actuar — Propuesta</div>
-    <div class="act"><div class="act-title">Contemplar la imagen en grupo</div><div class="act-body">El facilitador muestra el Retablo (§3.1, figura disponible en el manual). Cinco minutos de silencio contemplativo. Luego: ¿qué personaje te llamó? ¿qué sentiste al mirar al Cristo? No se buscan respuestas teológicas; se busca lo que movió el corazón.</div></div>
-    <div class="act"><div class="act-title">El Cristo y los "cristos rotos" de hoy</div><div class="act-body">El grupo identifica, sin nombrar personas concretas, un rostro del barrio que el Cristo de Isenheim podría representar. ¿Qué tiene de común con los enfermos del monasterio? ¿Qué le diría Dios a esa persona si pudiera pintarle un cuadro?</div></div>
-    <div class="cita"><div class="cita-lbl">Cita inspiradora · §3.1</div><div class="cita-txt">"En la imagen, nosotros vemos un Cristo sufriente que comparte el padecimiento de tantos hombres y mujeres con problemas de adicción. Clavado e impotente, está ahí, expresando su amor."</div><div class="cita-ref">Manual de la PLAPA, §3.1 — El Retablo de Isenheim (CELAM 2026)</div></div>
-    <div class="ac-box"><div class="ac-lbl">Autocuidado del agente</div><div class="ac-txt">Mirar el sufrimiento de frente puede generar movimientos internos inesperados: identificación, miedo, tristeza, o incluso indiferencia que inquieta. Todo eso es material de trabajo, no obstáculo. El agente que no puede mirarse en el Cristo de Isenheim todavía no está listo para acompañar a los cristos rotos del barrio.</div></div>
-    <div class="ref">Referencias: §3.1 — Manual de la PLAPA, CELAM 2026</div>
-  </div>
-</div>
-<div id="m2" class="card" style="border-left:5px solid #BA7517">
-  <div class="ch"><span class="cn">Módulo 2 · El Juzgar</span><div class="ct">María, Juan y la Magdalena: los que saben quedarse</div><div class="cs">El acompañamiento como presencia sin solución · §3.2–3.3</div></div>
-  <div class="cb">
-    <div class="mf"><div class="mf-lbl">Mensaje fuerza</div><div class="mf-txt">"La madre y el amigo no intentan bajar al hijo de la cruz mediante la fuerza, sino que lo acompañan. A través de la contemplación amorosa, reconocen la dignidad sagrada de la vida herida hasta el último momento."</div></div>
-    <div class="fig-row">
-      <div class="fig"><div class="fig-name">María</div><div class="fig-rol">La madre que ya no tiene palabras</div></div>
-      <div class="fig"><div class="fig-name">Juan</div><div class="fig-rol">La red de apoyo que no abandona</div></div>
-      <div class="fig"><div class="fig-name">Magdalena</div><div class="fig-rol">El dolor más agudo y desesperado</div></div>
-      <div class="fig"><div class="fig-name">Las tres</div><div class="fig-rol">La Iglesia que llora con sus hijos</div></div>
+    <div class="dest-box">
+      <div class="dest-lbl">Destinatarios</div>
+      <div class="dest-txt">Todo agente pastoral con o sin experiencia previa. Especialmente útil para equipos que buscan profundizar su mística del acompañamiento desde la imagen central del Manual. Puede usarse como retiro espiritual de equipo o como continuación natural del Itinerario 1. No requiere formación técnica; sí requiere disposición a la contemplación y al trabajo con imágenes.</div>
     </div>
-    <div class="pl">El Ver — Realidad</div>
-    <ul class="pts">
-      <li><span class="dot">V</span><span>María "se desploma hacia atrás, apareciendo ante el espectador como alguien que está más muerta que viva" (§3.2). Simboliza a las madres que asisten a la destrucción de sus hijos por el consumo, sintiendo que la vida se les escapa como arena entre los dedos sin que nada puedan hacer.</span></li>
-      <li><span class="dot">V</span><span>La Magdalena "se retuerce en una desesperación y un shock incontrolables" (§3.3). Para ella, Jesús "fue la única persona que la amó bien y que no quiso usarla" (§3.3). El acompañante que la recibe sin juzgarla ocupa ese mismo lugar.</span></li>
-    </ul>
-    <div class="pl">El Juzgar — Iluminación</div>
-    <ul class="pts">
-      <li><span class="dot">J</span><span>Juan "personifica a la comunidad o a la red de apoyo que no abandona a la madre en su hora más oscura" (§3.2). Su identidad profunda es saber permanecer. "En la realidad de las adicciones, amar significa quedarse al lado cuando no es posible resolver el problema de inmediato" (§3.2).</span></li>
-      <li><span class="dot">J</span><span>"Su figura es el testimonio del dolor puro que no huye de la cruz, permaneciendo presente incluso cuando la vida del hijo parece haberse convertido en una sombra" (§3.2, citando Evangelii Gaudium N°54).</span></li>
-    </ul>
-    <div class="pl">El Actuar — Propuesta</div>
-    <div class="act"><div class="act-title">¿Con quién me identifico?</div><div class="act-body">El grupo lee las descripciones de María, Juan y la Magdalena. Cada participante elige el personaje con el que más se identifica en su práctica pastoral actual y explica por qué en dos frases. No hay respuesta correcta.</div></div>
-    <div class="act"><div class="act-title">Mapear las madres del barrio</div><div class="act-body">¿Quiénes son las "Marías" del territorio: los familiares que están "más muertos que vivos" por la situación de su hijo? ¿Los conocemos? ¿Hay alguien que los esté acompañando? ¿Qué necesitarían de la comunidad?</div></div>
-    <div class="act"><div class="act-title">El gesto de Juan: sostener al que sostiene</div><div class="act-body">Juan no acompaña al crucificado directamente: acompaña a María. El grupo diseña un gesto concreto de acompañamiento a los familiares: una reunión, una llamada semanal, un grupo de apoyo mutuo.</div></div>
-    <div class="cita"><div class="cita-lbl">Cita inspiradora · §3.2</div><div class="cita-txt">"La identidad profunda de San Juan al pie de la cruz es la de saber permanecer. Su presencia, junto a la de María, es para el Jesús crucificado el único lugar sano donde puede mirar, buscar descanso y consuelo en medio del tormento."</div><div class="cita-ref">Manual de la PLAPA, §3.2 — La madre y el discípulo amado (CELAM 2026)</div></div>
-    <div class="ac-box"><div class="ac-lbl">Autocuidado del agente</div><div class="ac-txt">La figura de María advierte de un riesgo real: el agente que se "desploma" junto al acompañado pierde su propia capacidad de sostener. La diferencia entre Juan y María en el cuadro es que Juan llora pero no cae. El autocuidado no es distancia: es la condición para poder sostener sin derrumbarse.</div></div>
-    <div class="ref">Referencias: §3.2, §3.3, Evangelii Gaudium N°54 — Manual de la PLAPA, CELAM 2026</div>
-  </div>
-</div>
-<div id="m3" class="card" style="border-left:5px solid #BA7517">
-  <div class="ch"><span class="cn">Módulo 3 · El Actuar</span><div class="ct">Juan el Bautista, San Sebastián y San Antonio: señalar, testimoniar y orar</div><div class="cs">Los tres roles activos del acompañante · §3.4–3.6</div></div>
-  <div class="cb">
-    <div class="mf"><div class="mf-lbl">Mensaje fuerza</div><div class="mf-txt">"El Bautista señala, no protagoniza. Sebastián testimonia desde adentro del cuadro. Antonio ora desde la paz. Los tres enseñan que acompañar es una vocación con roles distintos y complementarios."</div></div>
-    <div class="fig-row">
-      <div class="fig"><div class="fig-name">Juan Bautista</div><div class="fig-rol">Señalar sin protagonizar</div></div>
-      <div class="fig"><div class="fig-name">El Cordero</div><div class="fig-rol">La solidaridad divina con el último</div></div>
-      <div class="fig"><div class="fig-name">San Sebastián</div><div class="fig-rol">El mártir que se mete en el cuadro</div></div>
-      <div class="fig"><div class="fig-name">San Antonio</div><div class="fig-rol">La Iglesia orante como sostén</div></div>
+
+    <div class="portada-pills">
+      <span class="portada-pill">Capítulo 3 · §3.1–3.7</span>
+      <span class="portada-pill">4 módulos</span>
+      <span class="portada-pill">Todo perfil</span>
+      <span class="portada-pill">Nivel inicial–intermedio</span>
+      <span class="portada-pill">Ver · Juzgar · Actuar · Síntesis</span>
     </div>
-    <div class="pl">El Ver — Realidad</div>
-    <ul class="pts">
-      <li><span class="dot">V</span><span>Juan el Bautista señala con un dedo preternatural al crucificado. "En nuestro contexto, representa el rol teológico de esta pastoral, que pretende recordar a la Iglesia que en las personas más rotas, vive el mismo Cristo Crucificado" (§3.4). El pastoral no lleva la salvación al territorio: la descubre ahí.</span></li>
-      <li><span class="dot">V</span><span>Hay una creencia de que Grünewald se autorretrató en San Sebastián. El artista no mira el dolor desde afuera: se pone a sí mismo en el cuadro. "La pastoral de adicciones se mete con obras y gestos en la vida cotidiana de los demás, achica distancias, se abaja hasta la humillación si es necesario" (§3.5).</span></li>
-    </ul>
-    <div class="pl">El Juzgar — Iluminación</div>
-    <ul class="pts">
-      <li><span class="dot">J</span><span>"Illum oportet crescere, me autem minui: Es preciso que Él crezca y que yo disminuya" (§3.4). La inscripción junto al Bautista resume el despojo del ego necesario tanto en la fe como en el acompañamiento.</span></li>
-      <li><span class="dot">J</span><span>San Antonio aparece en paz mientras un demonio intenta romper el cristal. "Esta imagen representa a los hombres y mujeres que, desde el silencio y la oración, proporcionan la raíz y el sostén espiritual necesarios para quienes luchan por cortar las cadenas que los atan" (§3.6).</span></li>
-    </ul>
-    <div class="pl">El Actuar — Propuesta</div>
-    <div class="act"><div class="act-title">¿Cuál es mi rol en el equipo?</div><div class="act-body">El grupo identifica los tres roles —Bautista (señalar/orientar), Sebastián (estar adentro/testimoniar), Antonio (orar/sostener desde atrás)— y cada participante reconoce cuál ejerce más naturalmente. ¿Tenemos los tres roles cubiertos en el equipo?</div></div>
-    <div class="act"><div class="act-title">El gesto del Bautista: "Él debe crecer, yo disminuir"</div><div class="act-body">Cada participante identifica un momento reciente en que ocupó demasiado el centro del proceso de alguien que acompaña. ¿Qué hubiera hecho el Bautista en su lugar? No se juzga: se aprende.</div></div>
-    <div class="act"><div class="act-title">Instituir la oración de sostenimiento</div><div class="act-body">Inspirándose en San Antonio, el equipo diseña un breve rito mensual de oración por las personas que acompaña y por las que fallecieron: nombrar, encender una vela, guardar silencio. La comunidad orante es la columna vertebral invisible del acompañamiento.</div></div>
-    <div class="cita"><div class="cita-lbl">Cita inspiradora · §3.4</div><div class="cita-txt">"A veces encarnado en un terapeuta, un guía espiritual, un acompañante par o un familiar, no busca ser el protagonista, sino que se limita a señalar la dignidad sagrada del hijo que sufre, y nos recuerda que incluso en ese cuerpo roto y lleno de llagas, habita la posibilidad de la redención."</div><div class="cita-ref">Manual de la PLAPA, §3.4 — Juan el Bautista y el Cordero de Dios (CELAM 2026)</div></div>
-    <div class="ac-box"><div class="ac-lbl">Autocuidado del agente</div><div class="ac-txt">San Sebastián tiene flechas en el cuerpo y sigue de pie. El manual no romantiza esto: "Detrás de Sebastián, una ventana muestra ángeles que sostienen una corona dorada sobre su cabeza" (§3.5). El agente que carga flechas necesita saber que hay una comunidad que lo sostiene desde atrás, como Antonio sostiene a quienes están en la trinchera.</div></div>
-    <div class="ref">Referencias: §3.4, §3.5, §3.6 — Manual de la PLAPA, CELAM 2026</div>
   </div>
-</div>
-<div id="m4" class="card" style="border-left:5px solid #BA7517">
-  <div class="ch"><span class="cn">Módulo 4 · Síntesis y revisión de vida</span><div class="ct">El entierro: la Iglesia que no suelta la mano ni cuando el mundo ya sepultó</div><div class="cs">La fidelidad más allá de la eficacia · §3.7</div></div>
-  <div class="cb">
-    <div class="mf"><div class="mf-lbl">Mensaje fuerza</div><div class="mf-txt">"La predella es el recordatorio de que la Iglesia es una madre que no suelta la mano de sus hijos, ni siquiera cuando el mundo ya les ha dado sepultura, pues su fe se asienta en un Dios que también fue enterrado y que promete la restauración de toda carne lastimada."</div></div>
-    <div class="pl">El Ver — Realidad</div>
-    <ul class="pts">
-      <li><span class="dot">V</span><span>La escena del entierro muestra el cuerpo de Jesús "hecho jirones, con una palidez verdosa y cadavérica, cubierto de llagas y heridas ulceradas" (§3.7). El manual elige esta crudeza a propósito: la pastoral de adicciones conoce de cerca la muerte, y no puede pretender que no.</span></li>
-      <li><span class="dot">V</span><span>Cada equipo pastoral tiene su propio entierro: personas que no sobrevivieron al consumo, procesos que terminaron en fracaso, vínculos que no se pudieron sostener. El diagnóstico honesto incluye esos duelos, no solo los logros (§3.7).</span></li>
-    </ul>
-    <div class="pl">El Juzgar — Iluminación</div>
-    <ul class="pts">
-      <li><span class="dot">J</span><span>"Mientras que la sociedad a menudo abandona a quienes no logran recuperarse, esta escena muestra a San Juan, la Virgen y la Magdalena sosteniendo y llorando sobre el cuerpo inanimado de Jesús, representando a la Iglesia que camina más allá de la lógica de la eficacia" (§3.7).</span></li>
-      <li><span class="dot">J</span><span>"El descenso al infierno de la adicción es un terreno ya habitado por Cristo, convirtiéndose en el paso previo necesario para la esperanza de la Resurrección que se muestra al abrir las puertas" (§3.7). Al abrirse los paneles, aparece la Resurrección. La estructura del retablo es la estructura de la esperanza pastoral.</span></li>
-    </ul>
-    <div class="pl">El Actuar — Propuesta</div>
-    <div class="act"><div class="act-title">Santuario de la memoria</div><div class="act-body">El grupo crea un espacio físico donde se colocan los nombres de quienes fallecieron: una pared, un cuaderno, una vela. "Esta persona existió, fue amada, y su vida tuvo un valor que la muerte no borra." La memoria comunitaria es una forma de justicia (§11.1.15).</div></div>
-    <div class="act"><div class="act-title">Nombrar los duelos del equipo</div><div class="act-body">En ronda, cada participante nombra un proceso que terminó en pérdida o fracaso. No se analiza ni se evalúa: se nombra y se honra. El facilitador cierra con un momento de silencio. Los equipos que no procesan sus duelos se queman o se endurecen.</div></div>
-    <div class="act"><div class="act-title">El Retablo como formación permanente</div><div class="act-body">El grupo decide qué figura del retablo usará como imagen de referencia para el próximo mes: ¿María? ¿el Bautista? ¿el entierro? ¿el cordero? El Retablo tiene siete figuras: siete meses de escuela espiritual.</div></div>
-    <div class="cita"><div class="cita-lbl">Cita inspiradora · §3.7</div><div class="cita-txt">"En la pastoral actual, esta escena se vincula con los santuarios de la misericordia, donde los rostros de quienes no sobrevivieron a la droga permanecen presentes en las oraciones de la comunidad. La Iglesia es una madre que no suelta la mano de sus hijos."</div><div class="cita-ref">Manual de la PLAPA, §3.7 — El entierro de Jesús (CELAM 2026)</div></div>
-    <div class="ac-box"><div class="ac-lbl">Autocuidado del agente — cierre del itinerario</div><div class="ac-txt">El Retablo no termina en el entierro: al abrirse sus paneles, aparece la Resurrección. El agente que pudo mirar de frente la muerte —la propia desolación, los propios fracasos— está en condiciones de reconocer también los signos de vida que brotan. El itinerario termina con esta pregunta: ¿dónde veo yo señales de resurrección en el territorio que camino?</div></div>
-    <div class="ref">Referencias: §3.7, §11.1.15 — Manual de la PLAPA, CELAM 2026</div>
+
+  <!-- ═══ VIDEO ═══════════════════════════════════════════ -->
+  <div class="video-wrap">
+    <p class="video-lbl">▶️ Video de presentación</p>
+    <div class="video-iframe">
+      <iframe
+        src="https://www.youtube.com/embed/BCU9dhpKRKo"
+        title="Presentación del Itinerario 02"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
   </div>
+
+  <!-- ═══ DESCARGA DEL RETABLO ════════════════════════════ -->
+  <div class="descarga-imagen">
+    <div class="descarga-info">
+      <div class="descarga-lbl">Imagen para la contemplación</div>
+      <div class="descarga-txt">El Retablo de Isenheim en alta resolución para proyectar en el grupo, imprimir o consultar durante los ejercicios.</div>
+    </div>
+    <a href="Isenheim.png" download="Isenheim.png" class="descarga-link">📥 Descargar imagen</a>
+  </div>
+
+  <!-- ═══ SELECTOR DE MODALIDAD ═══════════════════════════ -->
+  <div class="mode-selector">
+    <button class="mode-btn on" onclick="setMode('grupal', this)">👥 Hacer en comunidad</button>
+    <button class="mode-btn" onclick="setMode('individual', this)">👤 Hacer de forma individual</button>
+  </div>
+
+  <!-- ═══ NAVEGACIÓN ══════════════════════════════════════ -->
+  <div class="nav">
+    <button class="btn on" onclick="show(1,this)">Módulo 1 · El Cristo deformado</button>
+    <button class="btn" onclick="show(2,this)">Módulo 2 · Los que se quedan</button>
+    <button class="btn" onclick="show(3,this)">Módulo 3 · Los que señalan y oran</button>
+    <button class="btn" onclick="show(4,this)">Módulo 4 · El entierro y la esperanza</button>
+  </div>
+
+  <!-- ═══ MÓDULO 1 ════════════════════════════════════════ -->
+  <div id="m1" class="card active">
+    <div class="ch">
+      <span class="cn">Módulo 1 · El Ver</span>
+      <div class="ct">Un Cristo deformado por la cruz de la enfermedad</div>
+      <div class="cs">El Retablo como imagen fundante de la pastoral · §3.1</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"Grünewald pintó un Cristo con las marcas del ergotismo para que los enfermos de Isenheim supieran que Dios conocía su dolor desde adentro. Cinco siglos después, ese Cristo roto sigue siendo el ícono de nuestra pastoral."</div>
+      </div>
+
+      <div class="pl">El Ver — La imagen y el hospital</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>Isenheim, siglo XVI.</strong> En un pequeño pueblo cerca de la frontera entre Francia y Alemania, la Orden Antoniana abrió su monasterio como hospital para los enfermos de ergotismo — el <em>fuego de San Antonio</em>. El primer gesto de los monjes no fue el diagnóstico técnico: fue la acogida (§3.1).</span></li>
+        <li><span class="dot">V</span><span><strong>El ergotismo como llaga visible.</strong> Enfermedad terrible causada por un hongo del centeno. En su forma gangrenosa provocaba vasoconstricción severa, dolor extremo, necrosis y pérdida de miembros; en su forma convulsiva, espasmos y alucinaciones. Un ardor interior "como si la persona se estuviera quemando viva" (§3.1). El estigma social añadía humillación al padecimiento físico.</span></li>
+        <li><span class="dot">V</span><span><strong>Los zombies de las ciudades actuales.</strong> "Hoy son muchísimos los hombres y mujeres que, deformados, caminan como zombies por las calles de nuestras ciudades. El mundo los juzga, los estigmatiza y les da la espalda. Incluso muchas veces en nuestras comunidades lo hacemos, privándolos de la buena noticia del Evangelio" (§3.1). El paralelo con Isenheim no es literario: es teológico y pastoral.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Un Cristo con ergotismo</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>La teología de la encarnación como fundamento.</strong> Grünewald pintó en el centro del retablo un Cristo con las marcas del ergotismo: la piel ulcerada, las manos deformadas por el espasmo neuromuscular, los tendones tensados. "Un Cristo con ergotismo para hablar a los enfermos de ergotismo. Un crucificado deformado por la cruz de la enfermedad, que en su mismo ser horrible logra transmitir el límite de la compasión y el amor desmesurado de Dios" (§3.1).</span></li>
+        <li><span class="dot j">J</span><span><strong>El anonadamiento como método pastoral.</strong> "Más que nunca, debemos volver a encontrar el modo y el lenguaje para decir que nuestro Señor no los juzga ni se aleja, sino que por el contrario, anonadándose se acerca y comparte su condición" (§3.1). La kénosis no es solo dogma cristológico: es la clave del acompañamiento pastoral.</span></li>
+        <li><span class="dot j">J</span><span><strong>La unidad del Retablo está en el mensaje.</strong> ¿Qué tienen que ver San Sebastián, San Antonio Abad, el Bautista, la Magdalena y los orinales del hospital? No son contemporáneos ni comparten escena histórica. La unidad "no está en la pintura, sino en el sentido general de la obra" (§3.1). El mensaje: <em>Dios comparte y redime tu dolor; acá también se libra una lucha espiritual</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Contemplar la imagen en silencio</div>
+        <div class="mode-g">
+          <div class="act-body">El facilitador muestra el Retablo (imagen descargable arriba). Cinco minutos de silencio contemplativo. Luego, sin apurar: <em>¿qué personaje te llamó? ¿qué sentiste al mirar al Cristo? ¿qué figura te incomodó?</em> No se buscan respuestas teológicas: se busca lo que movió el corazón. El discernimiento vendrá después.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Abrí la imagen del Retablo y dedicale al menos diez minutos de contemplación silenciosa —sin celular, sin música, sin explicación previa. Después escribí en tu cuaderno: <em>¿qué personaje me llamó? ¿qué sentí al mirar al Cristo? ¿qué figura me incomodó y por qué?</em> El ejercicio es contemplativo antes que analítico.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">El Cristo y los "cristos rotos" de hoy</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo identifica, sin nombrar personas concretas, un rostro del barrio que el Cristo de Isenheim podría representar. <em>¿Qué tiene en común con los enfermos del monasterio? ¿qué le diría Dios a esa persona si pudiera pintarle un cuadro?</em> El ejercicio es teológico: los cuerpos rotos del barrio son ya lugar de revelación.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Traé a la mente un rostro concreto del territorio que camines —sin nombre, sin exposición. Escribí: <em>¿qué tiene en común con los enfermos del monasterio? ¿si Grünewald tuviera que pintarle un cuadro, qué elementos del retablo estarían?</em> El ejercicio ayuda a mirar con ojos teológicos lo que ya ves con ojos físicos.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §3.1 — Manual PLAPA</div>
+        <div class="cita-txt">"En la imagen, nosotros vemos un Cristo sufriente que comparte el padecimiento de tantos hombres y mujeres con problemas de adicción. Clavado e impotente, está ahí, expresando su amor."</div>
+        <div class="cita-ref">Manual de la PLAPA, §3.1 — El Retablo de Isenheim (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">La belleza estética del retablo puede convertirse en refugio contemplativo que evita el contacto real con los "cristos rotos" del barrio. Grünewald no pintó para museos: pintó para un hospital de enfermos infecciosos. La contemplación que no lleva al territorio traiciona la propia obra. La imagen es puerta de entrada, no punto de llegada.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">Mirar el sufrimiento de frente puede generar movimientos internos inesperados: identificación, miedo, tristeza, o incluso indiferencia que inquieta. Todo eso es material de trabajo, no obstáculo. El agente que no puede mirarse en el Cristo de Isenheim todavía no está listo para acompañar a los cristos rotos del barrio.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §3.1 — El Retablo de Isenheim (CELAM 2026).</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 2 ════════════════════════════════════════ -->
+  <div id="m2" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 2 · El Juzgar</span>
+      <div class="ct">María, Juan y la Magdalena: los que saben quedarse</div>
+      <div class="cs">El acompañamiento como presencia sin solución · §3.2, §3.3</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"La madre y el amigo no intentan bajar al hijo de la cruz mediante la fuerza, sino que lo acompañan. Reconocen la dignidad sagrada de la vida herida hasta el último momento."</div>
+      </div>
+
+      <div class="pl">Cuatro rostros al pie de la cruz</div>
+      <div class="figuras">
+        <div class="figura">
+          <div class="figura-n">Figura 1</div>
+          <div class="figura-t">María</div>
+          <div class="figura-txt">La madre que "aparece ante el espectador como alguien que está más muerta que viva" (§3.2). Símbolo de las madres que asisten a la destrucción de sus hijos.</div>
+        </div>
+        <div class="figura">
+          <div class="figura-n">Figura 2</div>
+          <div class="figura-t">Juan, el discípulo amado</div>
+          <div class="figura-txt">La red de apoyo que sostiene físicamente a la madre en su desmayo. La comunidad que no abandona (§3.2).</div>
+        </div>
+        <div class="figura">
+          <div class="figura-n">Figura 3</div>
+          <div class="figura-t">María Magdalena</div>
+          <div class="figura-txt">"Se retuerce en una desesperación y un shock incontrolables" (§3.3). El dolor puro que se aferra a lo único que la amó bien.</div>
+        </div>
+        <div class="figura">
+          <div class="figura-n">Figura 4</div>
+          <div class="figura-t">Las tres juntas</div>
+          <div class="figura-txt">La Iglesia que llora al pie de la cruz sin huir. Testimonio del dolor puro que no busca soluciones rápidas.</div>
+        </div>
+      </div>
+
+      <div class="pl">El Ver — Las madres y las Magdalenas de hoy</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>María, palidez extrema.</strong> "Se desploma hacia atrás, apareciendo ante el espectador como alguien que está más muerta que viva" (§3.2). Simboliza a las madres que asisten a la destrucción de sus hijos por el consumo, "sintiendo que la vida que aquellos a los que dieron a luz se les escapa como la arena entre los dedos sin que nada puedan hacer para detener el proceso" (§3.2).</span></li>
+        <li><span class="dot">V</span><span><strong>La Magdalena, aferrada al único vínculo sano.</strong> Se retuerce en desesperación, con los dedos rígidos por la fuerza con que aprieta las manos. "Para la Magdalena, Jesús fue la única persona que la amó bien y que no quiso usarla" (§3.3), en contraste con la realidad de tantas mujeres que solo han recibido violencia, desprecios y abusos. El agente que la recibe sin juzgarla ocupa ese mismo lugar de amor no instrumentalizante.</span></li>
+        <li><span class="dot">V</span><span><strong>El frasco de perfume y la farmacia del monasterio.</strong> A los pies de la Magdalena aparece su atributo tradicional: el frasco de ungüentos. Grünewald lo pintó semejante a los frascos médicos de la farmacia de Isenheim. "Para los enfermos de ergotismo y para los rotos de hoy, la Magdalena representa el acto de ungir y cuidar el cuerpo herido" (§3.3). El cuidado corporal —no solo espiritual— es tarea pastoral.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — La identidad de saber quedarse</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>Juan no acompaña al crucificado: acompaña a María.</strong> "Personifica a la comunidad o a la red de apoyo que no abandona a la madre en su hora más oscura" (§3.2). En la pastoral de adicciones, sostener al que sostiene es tan constitutivo como acompañar al que padece. Sin Juan, María se derrumba.</span></li>
+        <li><span class="dot j">J</span><span><strong>La identidad profunda de saber permanecer.</strong> "En la realidad de las adicciones, donde el entorno suele buscar soluciones rápidas o eficaces, Juan enseña que amar significa quedarse al lado de la madre y del hijo cuando no es posible resolver el problema de inmediato. Su presencia, junto a la de María, es para el Jesús crucificado el único lugar sano donde puede mirar, buscar descanso y consuelo en medio del tormento" (§3.2).</span></li>
+        <li><span class="dot j">J</span><span><strong>La compasión como capacidad amenazada.</strong> Francisco: "Casi sin advertirlo, nos volvemos incapaces de compadecernos ante los clamores de los otros, ya no lloramos ante el drama de los demás ni nos interesa cuidarlos" (Evangelii Gaudium N°54, citado en §3.2). La figura de María es antídoto: la Iglesia que aprende a llorar por sus hijos frente a un mundo que se cierra ante ellos.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">¿Con qué figura me identifico hoy?</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo relee las descripciones de María, Juan y la Magdalena. Cada participante elige el personaje con el que más se identifica <em>en su práctica pastoral actual</em>, y explica por qué en dos frases. No hay respuesta correcta ni jerarquía: el equipo necesita a los tres. La conversación revela qué energías predominan en el equipo y cuáles faltan.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Después de contemplar de nuevo la imagen, escribí honestamente: <em>¿con qué figura me identifico hoy en mi práctica pastoral? ¿por qué?</em> Y después la pregunta más incómoda: <em>¿cuál de las otras dos me está faltando encarnar?</em> No para culparte, sino para saber a qué estás llamado en esta etapa.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Mapear las Marías del barrio</div>
+        <div class="mode-g">
+          <div class="act-body">¿Quiénes son las "Marías" del territorio: los familiares que están "más muertos que vivos" por la situación de su hijo? <em>¿Los conocemos? ¿Hay alguien que los esté acompañando? ¿Qué necesitarían de la comunidad?</em> Se identifica al menos un caso concreto y un gesto pastoral posible.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Traé a la mente una María de tu territorio: una madre o familiar que está "más muerta que viva" por la situación de su hijo o hija. <em>¿Está acompañada? ¿Qué gesto concreto podés hacer esta semana para ser Juan a su lado?</em> Un llamado, una visita, una invitación. Chico, real, verificable.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">La Magdalena: recibir sin instrumentalizar</div>
+        <div class="mode-g">
+          <div class="act-body">Trabajo específico con la figura de la Magdalena y el §3.3: <em>¿cómo recibimos a las mujeres que llegan a la comunidad marcadas por la violencia, la explotación o el uso? ¿nuestra acogida las restaura como Jesús las restauró, o reproduce nuevas formas de utilización pastoral?</em> Discernimiento delicado, sin acusaciones.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Leé el §3.3 completo con calma. Preguntate: <em>¿cómo recibo en mi acompañamiento a las mujeres que han vivido violencia, explotación o abuso? ¿mi acogida las restaura, o pongo condiciones sutiles que las utilizan otra vez?</em> Es una pregunta espiritual profunda; anotala sin apurar la respuesta.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §3.2 — Manual PLAPA</div>
+        <div class="cita-txt">"La identidad profunda de San Juan al pie de la cruz es la de saber permanecer. Su presencia, junto a la de María, es para el Jesús crucificado el único lugar sano donde puede mirar, buscar descanso y consuelo en medio del tormento."</div>
+        <div class="cita-ref">Manual de la PLAPA, §3.2 — La madre y el discípulo amado (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">La figura de María advierte de un riesgo real: el agente que se "desploma" junto al acompañado pierde su propia capacidad de sostener. La diferencia entre Juan y María en el cuadro es que Juan llora pero no cae. El agente pastoral es más Juan que María — no porque la madre sea inferior, sino porque el rol específico del acompañante requiere permanecer en pie para sostener a los que caen.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">El módulo puede activar identificaciones inesperadas: el equipo que descubre que carga a demasiadas Marías, la agente que se identifica con la Magdalena por su propia historia, el varón que reconoce en Juan una vocación olvidada. Todo eso es material sagrado. El facilitador cuida los tiempos y no fuerza compartir. Contemplar el Retablo transforma a quien lo contempla.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §3.2 (La madre y el discípulo amado), §3.3 (María Magdalena) · Evangelii Gaudium N°54 — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 3 ════════════════════════════════════════ -->
+  <div id="m3" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 3 · El Actuar</span>
+      <div class="ct">Juan el Bautista, San Sebastián y San Antonio: señalar, testimoniar y orar</div>
+      <div class="cs">Los tres roles activos del acompañante · §3.4, §3.5, §3.6</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"El Bautista señala, no protagoniza. Sebastián testimonia desde adentro del cuadro. Antonio ora desde la paz. Los tres enseñan que acompañar es una vocación con roles distintos y complementarios."</div>
+      </div>
+
+      <div class="pl">Cuatro figuras al servicio del acompañamiento</div>
+      <div class="figuras">
+        <div class="figura">
+          <div class="figura-n">Figura 1</div>
+          <div class="figura-t">Juan Bautista</div>
+          <div class="figura-txt">El dedo preternatural que señala al crucificado. "Él debe crecer, yo disminuir": el despojo del ego del acompañante.</div>
+        </div>
+        <div class="figura">
+          <div class="figura-n">Figura 2</div>
+          <div class="figura-t">El Cordero</div>
+          <div class="figura-txt">La solidaridad divina con el último de la fila. "Comparte internamente su padecimiento" (§3.4).</div>
+        </div>
+        <div class="figura">
+          <div class="figura-n">Figura 3</div>
+          <div class="figura-t">San Sebastián</div>
+          <div class="figura-txt">El mártir que se pone dentro del cuadro. Grünewald se autorretrató en él: el acompañante que no mira desde afuera.</div>
+        </div>
+        <div class="figura">
+          <div class="figura-n">Figura 4</div>
+          <div class="figura-t">San Antonio Abad</div>
+          <div class="figura-txt">La Iglesia orante que sostiene desde el silencio. El báculo en Tau: comunidad que apoya para no derrumbarse.</div>
+        </div>
+      </div>
+
+      <div class="pl">El Ver — Roles complementarios, no rivales</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>El Bautista señala con un dedo preternatural.</strong> "En nuestro contexto, representa el rol teológico de esta pastoral, que pretende recordar a la Iglesia que en las personas más rotas vive el mismo Cristo Crucificado, que asume nuestras dolencias para salvarnos" (§3.4). El agente pastoral no lleva la salvación al territorio: la descubre ahí.</span></li>
+        <li><span class="dot">V</span><span><strong>El autorretrato de Grünewald como San Sebastián.</strong> Hay una creencia tradicional de que el artista se pintó a sí mismo en la figura del santo. "El artista (o en nuestro caso el cuidador) no mira el dolor desde fuera, sino que se pone a sí mismo en el cuadro. La pastoral de adicciones no se organiza en función de distancias terapéuticas que permiten objetividad" (§3.5).</span></li>
+        <li><span class="dot">V</span><span><strong>San Antonio en paz mientras un demonio ataca.</strong> "Esta imagen representa a los hombres y mujeres que, desde el silencio y la oración, proporcionan la raíz y el sostén espiritual necesarios para quienes luchan por cortar las cadenas que los atan y quienes trabajan en la trinchera de las adicciones" (§3.6). La comunidad orante es la columna vertebral invisible del acompañamiento.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Tres identidades del acompañante</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>"Illum oportet crescere, me autem minui".</strong> "Es preciso que Él crezca y que yo disminuya" (§3.4). La inscripción latina junto al Bautista resume el despojo del ego necesario tanto en la fe como en el acompañamiento. Para las familias, es también renuncia al control personal: dejar que sea el proceso de sanación y la gracia de Dios los que tomen el centro.</span></li>
+        <li><span class="dot j">J</span><span><strong>Achicar distancias, no sostenerlas.</strong> Francisco: "La comunidad evangelizadora se mete con obras y gestos en la vida cotidiana de los demás, achica distancias, se abaja hasta la humillación si es necesario, y asume la vida humana, tocando la carne sufriente de Cristo en el pueblo. Los evangelizadores tienen así «olor a oveja»" (Evangelii Gaudium N°24, citado en §3.5).</span></li>
+        <li><span class="dot j">J</span><span><strong>El báculo en Tau: apoyo cotidiano.</strong> San Antonio porta un báculo con forma de T, signo del poder curativo antoniano. "En la analogía del acompañamiento, este báculo representa a la comunidad y a la Iglesia orante que sirven de soporte físico y espiritual para evitar que el hijo roto termine de derrumbarse" (§3.6). Un símbolo de debilidad transformado en herramienta de salvación.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">¿Cuál es mi rol en el equipo?</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo identifica los tres roles —<em>Bautista</em> (señalar/orientar), <em>Sebastián</em> (estar adentro/testimoniar), <em>Antonio</em> (orar/sostener desde atrás)— y cada participante reconoce cuál ejerce más naturalmente. <em>¿Tenemos los tres roles cubiertos en el equipo? ¿alguno está sobrecargado? ¿algún rol se está descuidando?</em> Un equipo desbalanceado se agota.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Después de estudiar los tres roles, escribí: <em>¿cuál ejerzo naturalmente? ¿cuál me cuesta? ¿quiénes en mi red pastoral cubren los otros roles?</em> Los tres son necesarios. Si estás solo en el rol que hacés, buscá quién puede complementarte antes de agotarte.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">El gesto del Bautista: "Él debe crecer, yo disminuir"</div>
+        <div class="mode-g">
+          <div class="act-body">Cada participante identifica un momento reciente en que ocupó demasiado el centro del proceso de alguien que acompaña. <em>¿Qué hubiera hecho el Bautista en su lugar? ¿qué gesto de disminución habría bastado?</em> No se juzga: se aprende. El facilitador cuida que el ejercicio no derive en autocastigo.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Recordá un momento reciente en el que ocupaste demasiado el centro del proceso de alguien que acompañás —queriendo apurar, dando consejos no pedidos, tomando decisiones que no te tocaban. Escribí: <em>¿qué habría hecho el Bautista? ¿qué habría bastado?</em> Sin culpa: aprendizaje.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Instituir la oración de sostenimiento</div>
+        <div class="mode-g">
+          <div class="act-body">Inspirándose en San Antonio, el equipo diseña un rito mensual de oración por las personas que acompaña y por las que fallecieron: <em>nombrar, encender una vela, guardar silencio</em>. La comunidad orante es la columna vertebral invisible del acompañamiento. Sin este rito, el equipo pierde memoria y raíz espiritual.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Diseñá tu propio rito personal de sostenimiento espiritual: un momento fijo semanal donde nombrás en oración a las personas que acompañás, encendés una vela, guardás silencio. La Iglesia orante empieza por vos. Sin este anclaje, la acción pastoral se seca.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §3.4 — Manual PLAPA</div>
+        <div class="cita-txt">"A veces encarnado en un terapeuta, un guía espiritual, un acompañante par o un familiar, no busca ser el protagonista, sino que se limita a señalar la dignidad sagrada del hijo que sufre, y nos recuerda que incluso en ese cuerpo roto y lleno de llagas, habita la posibilidad de la redención."</div>
+        <div class="cita-ref">Manual de la PLAPA, §3.4 — Juan el Bautista y el Cordero de Dios (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">San Sebastián tiene flechas en el cuerpo y sigue de pie. El Manual no romantiza esto: "detrás de Sebastián, una ventana muestra ángeles que sostienen una corona dorada sobre su cabeza" (§3.5). El agente que carga flechas necesita saber que hay una comunidad que lo sostiene desde atrás, como Antonio sostiene a quienes están en la trinchera. Sebastián sin Antonio termina caído; Antonio sin Sebastián termina irrelevante. Los roles se necesitan mutuamente.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">Reconocer el propio rol es un acto de sanidad: el equipo que descubre quién es Bautista, quién Sebastián y quién Antonio libera a cada uno de exigirse lo que no le corresponde. Al Sebastián se le pide estar en la trinchera; no también predicar. Al Bautista se le pide señalar; no también sanar. Al Antonio se le pide orar; no también correr. Repartir mejor las cargas es autocuidado colectivo.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §3.4 (Juan el Bautista y el Cordero), §3.5 (San Sebastián), §3.6 (San Antonio Abad) · Evangelii Gaudium N°24 — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 4 ════════════════════════════════════════ -->
+  <div id="m4" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 4 · Síntesis</span>
+      <div class="ct">El entierro: la Iglesia que no suelta la mano ni cuando el mundo ya sepultó</div>
+      <div class="cs">La fidelidad más allá de la eficacia · §3.7</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"La predella es el recordatorio de que la Iglesia es una madre que no suelta la mano de sus hijos, ni siquiera cuando el mundo ya les ha dado sepultura, pues su fe se asienta en un Dios que también fue enterrado y que promete la restauración de toda carne lastimada."</div>
+      </div>
+
+      <div class="pl">El Ver — El realismo del entierro</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>La escena de mayor crudeza.</strong> La escena del entierro aparece en la parte inferior del Retablo, en la <em>predella</em>. "Constituye el punto de mayor realismo y crudeza" (§3.7). El cuerpo de Jesús "hecho jirones, con una palidez verdosa y cadavérica, cubierto de llagas y heridas ulceradas". El Manual elige esta crudeza a propósito: la pastoral de adicciones conoce de cerca la muerte, y no puede pretender que no.</span></li>
+        <li><span class="dot">V</span><span><strong>Los duelos del equipo.</strong> Cada equipo pastoral tiene su propio entierro: personas que no sobrevivieron al consumo, procesos que terminaron en fracaso, vínculos que no se pudieron sostener. El diagnóstico honesto incluye esos duelos, no solo los logros. Sin nombrarlos, el equipo se endurece o se quema.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — La Iglesia más allá de la eficacia</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>Quedarse cuando la sociedad abandona.</strong> "Mientras que la sociedad a menudo abandona a quienes no logran recuperarse, esta escena del Retablo muestra a San Juan, la Virgen y la Magdalena sosteniendo y llorando sobre el cuerpo inanimado de Jesús, representando de esta manera a la Iglesia que camina con las personas rotas más allá de la lógica de la eficacia" (§3.7). No es solo la Iglesia que celebra el éxito: es la que sabe quedarse en el silencio del sepulcro.</span></li>
+        <li><span class="dot j">J</span><span><strong>La dignidad no se pierde con la muerte.</strong> "Al igual que los discípulos preparan el cuerpo de Jesús con cuidado y reverencia, la comunidad de fe también reconoce la dignidad sagrada de aquellas personas que fallecieron en la calle o por sobredosis. Es la Iglesia que, lejos de juzgar, sigue rezando y honrando la memoria de sus hijos, confiando en que ninguna vida se pierde definitivamente para Dios" (§3.7).</span></li>
+        <li><span class="dot j">J</span><span><strong>El descenso al infierno como paso previo.</strong> "El descenso al infierno de la adicción es un terreno ya habitado por Cristo, convirtiéndose en el paso previo necesario para la esperanza de la Resurrección que se muestra al abrir las puertas" (§3.7). Al abrirse los paneles del retablo, aparece la Resurrección. La estructura material del retablo es la estructura teológica de la esperanza pastoral.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Santuario de la memoria</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo crea un espacio físico donde se colocan los nombres de quienes fallecieron: una pared, un cuaderno, una vela. <em>"Esta persona existió, fue amada, y su vida tuvo un valor que la muerte no borra"</em>. El §3.7 vincula esto con los santuarios de la misericordia: "los rostros de quienes no sobrevivieron a la droga permanecen presentes en las oraciones de la comunidad". La memoria comunitaria es una forma de justicia.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Elegí un lugar concreto —un cuaderno, un rincón de tu casa de oración, una vela— donde vas a registrar y sostener en oración a las personas que acompañaste y que no sobrevivieron. No es morboso: es una forma de justicia y de sanación. Los rostros que sostuviste merecen no ser olvidados.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Nombrar los duelos del equipo</div>
+        <div class="mode-g">
+          <div class="act-body">En ronda, cada participante nombra un proceso que terminó en pérdida o fracaso. <em>No se analiza ni se evalúa: se nombra y se honra.</em> El facilitador cierra con un momento de silencio. Los equipos que no procesan sus duelos se queman o se endurecen. Este ejercicio no reemplaza al duelo real, pero abre el espacio para que empiece.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Escribí en tu bitácora, sin apurar, los procesos de tu propio acompañamiento que terminaron en pérdida o fracaso. No para analizar: para honrar. Después cerrá con un tiempo de silencio o de oración. El agente que no procesa sus duelos termina construyendo distancias emocionales para sobrevivir.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">El Retablo como formación permanente</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo decide qué figura del retablo usará como imagen de referencia para el próximo mes: <em>¿María? ¿el Bautista? ¿San Antonio? ¿el entierro? ¿el cordero?</em> Cada mes una figura distinta como foco de discernimiento y oración compartida. El Retablo se convierte así en escuela espiritual permanente del equipo.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Elegí una figura del Retablo para acompañarte durante el próximo mes. Ponela como fondo de pantalla, imprimila, meditá con ella una vez por semana. Al final del mes, escribí en tu bitácora qué te enseñó. El Retablo tiene siete figuras principales: siete meses de escuela espiritual sin repetir.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §3.7 — Manual PLAPA</div>
+        <div class="cita-txt">"En la pastoral actual, esta escena se vincula con los santuarios de la misericordia, donde los rostros de quienes no sobrevivieron a la droga permanecen presentes en las oraciones de la comunidad. La Iglesia es una madre que no suelta la mano de sus hijos."</div>
+        <div class="cita-ref">Manual de la PLAPA, §3.7 — El entierro de Jesús (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">El Retablo no termina en el entierro: al abrirse sus paneles aparece la Resurrección. La estructura del retablo protege contra dos tentaciones: la Iglesia que solo celebra la resurrección sin haber pasado por el sepulcro (superficial), y la Iglesia que se queda solo en el sepulcro sin abrir los paneles (desesperanzada). El agente pastoral se educa a habitar la totalidad de la estructura, no una sola parte.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Cierre del itinerario · Autocuidado del agente</div>
+        <div class="autocuidado-txt">El agente que pudo mirar de frente la muerte —la propia desolación, los propios fracasos, los rostros que no sobrevivieron— está en condiciones de reconocer también los signos de vida que brotan. El itinerario termina con una pregunta: <em>¿dónde veo yo señales de resurrección en el territorio que camino?</em> No para responder rápido: para dejarla latir en el corazón hasta que aparezcan las respuestas.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §3.7 — El entierro de Jesús (CELAM 2026).</div>
+    </div>
+  </div>
+
 </div>
-</div>
+
 <script>
-function show(n,btn){
-  for(let i=1;i<=4;i++) document.getElementById('m'+i).classList.remove('active');
-  document.querySelectorAll('.btn').forEach(b=>b.classList.remove('on'));
-  document.getElementById('m'+n).classList.add('active');
-  btn.classList.add('on');
-}
+  function setMode(mode, btn) {
+    var root = document.querySelector('.root');
+    root.classList.remove('mode-grupal', 'mode-individual');
+    root.classList.add('mode-' + mode);
+    var buttons = document.querySelectorAll('.mode-btn');
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].classList.remove('on');
+    }
+    btn.classList.add('on');
+  }
+
+  function show(n, btn) {
+    for (var i = 1; i <= 4; i++) {
+      document.getElementById('m' + i).classList.remove('active');
+    }
+    document.querySelectorAll('.nav .btn').forEach(function(b) {
+      b.classList.remove('on');
+    });
+    document.getElementById('m' + n).classList.add('active');
+    btn.classList.add('on');
+    if (window.innerWidth < 640) {
+      document.getElementById('m' + n).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
 </script>
+
+</body>
+</html>

@@ -1,328 +1,952 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
 <meta charset="utf-8">
-
+<title>Itinerario 4 · La caridad política como misión · Escuela PLAPA</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-.root{font-family:var(--font-sans);color:var(--text-primary);padding:0 0 2rem}
-.portada{background:#173404;border-radius:12px;padding:1.25rem 1.5rem 1rem;margin-bottom:1.25rem}
-.portada-sup{font-size:11px;font-weight:500;color:#97C459;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.35rem}
-.portada-title{font-size:20px;font-weight:500;color:#fff;line-height:1.3;margin-bottom:.25rem}
-.portada-sub{font-size:12px;color:#C0DD97;line-height:1.55;margin-bottom:.85rem}
-.portada-pills{display:flex;flex-wrap:wrap;gap:5px}
-.portada-pill{font-size:11px;font-weight:500;padding:2px 9px;border-radius:99px;background:#3B6D11;color:#EAF3DE}
-.nav{display:flex;gap:6px;margin-bottom:1.25rem;flex-wrap:wrap}
-.btn{border:0.5px solid var(--border-strong);background:var(--surface-2);border-radius:8px;padding:7px 14px;cursor:pointer;font-size:12px;font-family:var(--font-sans);color:var(--text-secondary);transition:background .15s}
-.btn:hover{background:var(--surface-1)}
-.btn.on{border:2px solid #3B6D11;background:#EAF3DE;color:#173404;font-weight:500}
-.card{border-radius:12px;border:0.5px solid var(--border);background:var(--surface-2);overflow:hidden;display:none}
-.card.active{display:block}
-.ch{padding:.85rem 1.1rem .7rem;border-bottom:0.5px solid var(--border)}
-.cn{display:inline-block;font-size:11px;font-weight:500;padding:2px 9px;border-radius:99px;margin-bottom:.5rem;background:#EAF3DE;color:#173404}
-.ct{font-size:16px;font-weight:500;line-height:1.3;margin-bottom:.2rem;color:#27500A}
-.cs{font-size:11px;color:var(--text-secondary);line-height:1.45}
-.cb{padding:.85rem 1.1rem}
-.mf{border-left:3px solid #3B6D11;background:#EAF3DE;padding:.65rem .9rem;margin-bottom:.9rem}
-.mf-lbl{font-size:9px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:#3B6D11;margin-bottom:3px}
-.mf-txt{font-size:14px;font-weight:500;line-height:1.5;font-family:var(--font-voice);color:#173404}
-.pl{font-size:9px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:var(--text-muted);margin-bottom:.4rem}
-.pts{list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:.9rem}
-.pts li{display:flex;gap:9px;font-size:12px;color:var(--text-secondary);line-height:1.55}
-.dot{width:18px;min-width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:500;margin-top:1px;background:#EAF3DE;color:#27500A}
-.act{background:#EAF3DE;border-radius:8px;padding:.65rem .85rem;margin-bottom:6px}
-.act-title{font-size:11px;font-weight:500;color:#173404;margin-bottom:3px}
-.act-body{font-size:12px;color:#27500A;line-height:1.5}
-.cita{border-radius:7px;padding:.65rem .85rem;background:#EAF3DE;margin-top:.85rem}
-.cita-lbl{font-size:9px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:#3B6D11;margin-bottom:3px}
-.cita-txt{font-size:11px;line-height:1.6;font-family:var(--font-voice);font-style:italic;color:#173404}
-.cita-ref{font-size:10px;margin-top:3px;font-style:normal;font-weight:500;color:#3B6D11}
-.ac-box{border-left:3px solid #3B6D11;background:var(--surface-1);padding:.65rem .85rem;margin-top:.85rem}
-.ac-lbl{font-size:9px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;color:#3B6D11;margin-bottom:3px}
-.ac-txt{font-size:12px;color:var(--text-secondary);line-height:1.55}
-.ref{font-size:10px;color:var(--text-muted);font-style:italic;margin-top:.75rem;padding-top:.6rem;border-top:0.5px solid var(--border)}
-.ejes{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:.85rem}
-.eje{background:#EAF3DE;border-radius:7px;padding:.5rem .65rem}
-.eje-n{font-size:10px;font-weight:500;color:#3B6D11;margin-bottom:2px}
-.eje-txt{font-size:11px;color:#27500A;line-height:1.4}
+  :root {
+    /* Paleta verde oliva PLAPA — Itinerario 4 */
+    --i4-oscuro:  #173404;
+    --i4-medio:   #27500A;
+    --i4-accent:  #3B6D11;
+    --i4-suave:   #5A9421;
+    --i4-claro:   #97C459;
+    --i4-suave2:  #C0DD97;
+    --i4-crema:   #EAF3DE;
+    --i4-fondo:   #FDFDFA;
+
+    --alerta:     #8B1A1A;
+    --alerta-bg:  #FDF7F7;
+
+    --texto:      #1C2814;
+    --texto-2:    #4B5A3D;
+    --texto-3:    #8A9979;
+    --borde:      #E1EAD3;
+
+    --font-serif: "Georgia", "Times New Roman", serif;
+    --font-sans:  "system-ui", -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: #DDE6CC;
+    padding: 2rem 1rem;
+    display: flex;
+    justify-content: center;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    line-height: 1.6;
+  }
+
+  .root {
+    background: var(--i4-fondo);
+    max-width: 860px;
+    width: 100%;
+    padding: 2.5rem;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(23, 52, 4, 0.08);
+  }
+
+  /* ─── PORTADA ────────────────────────────────────────── */
+  .portada {
+    background: var(--i4-oscuro);
+    border-radius: 12px;
+    padding: 2rem 2rem 1.75rem;
+    margin-bottom: 2rem;
+  }
+  .portada-sup {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--i4-claro);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .portada-title {
+    font-family: var(--font-serif);
+    font-size: 30px;
+    font-weight: normal;
+    color: #FFFFFF;
+    line-height: 1.25;
+    margin-bottom: 0.6rem;
+  }
+  .portada-sub {
+    font-size: 14.5px;
+    color: var(--i4-suave2);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+    max-width: 640px;
+  }
+  .dest-box {
+    background: var(--i4-medio);
+    border-radius: 8px;
+    padding: 0.9rem 1.1rem;
+    margin-bottom: 1.1rem;
+  }
+  .dest-lbl {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--i4-suave2);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .dest-txt {
+    font-size: 13px;
+    color: #FFF;
+    line-height: 1.6;
+  }
+  .portada-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .portada-pill {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 11px;
+    border-radius: 99px;
+    background: var(--i4-medio);
+    color: var(--i4-crema);
+  }
+
+  /* ─── VIDEO ──────────────────────────────────────────── */
+  .video-wrap {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .video-lbl {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--i4-oscuro);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .video-iframe {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  .video-iframe iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  /* ─── SELECTOR DE MODALIDAD ──────────────────────────── */
+  .mode-selector {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 1.5rem;
+    background: #FFF;
+    padding: 6px;
+    border-radius: 10px;
+    border: 1px solid var(--borde);
+    max-width: max-content;
+    flex-wrap: wrap;
+  }
+  .mode-btn {
+    border: none;
+    background: transparent;
+    color: var(--texto-2);
+    padding: 8px 16px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .mode-btn.on {
+    background: var(--i4-accent);
+    color: #FFF;
+    font-weight: 600;
+  }
+  .root.mode-individual .mode-g { display: none; }
+  .root.mode-grupal .mode-i { display: none; }
+
+  /* ─── NAVEGACIÓN ─────────────────────────────────────── */
+  .nav {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .btn {
+    border: 1px solid var(--borde);
+    background: #FFFFFF;
+    border-radius: 8px;
+    padding: 10px 16px;
+    cursor: pointer;
+    font-size: 12.5px;
+    font-weight: 500;
+    font-family: var(--font-sans);
+    color: var(--texto-2);
+    transition: all 0.18s ease;
+    text-align: left;
+  }
+  .btn:hover {
+    background: var(--i4-crema);
+    border-color: var(--i4-claro);
+    color: var(--i4-oscuro);
+  }
+  .btn.on {
+    border: 2px solid var(--i4-accent);
+    background: var(--i4-crema);
+    color: var(--i4-oscuro);
+    font-weight: 600;
+    padding: 9px 15px;
+  }
+
+  /* ─── MÓDULOS ────────────────────────────────────────── */
+  .card {
+    border-radius: 12px;
+    border: 1px solid var(--borde);
+    background: #FFFFFF;
+    overflow: hidden;
+    display: none;
+    border-left: 6px solid var(--i4-accent);
+  }
+  .card.active {
+    display: block;
+    animation: fadeIn 0.35s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .ch {
+    padding: 1.75rem 2rem 1.5rem;
+    border-bottom: 1px solid var(--borde);
+    background: var(--i4-crema);
+  }
+  .cn {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 99px;
+    margin-bottom: 0.85rem;
+    background: var(--i4-accent);
+    color: #FFFFFF;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .ct {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 1.3;
+    color: var(--i4-oscuro);
+    margin-bottom: 0.4rem;
+  }
+  .cs {
+    font-size: 13px;
+    color: var(--i4-medio);
+    line-height: 1.55;
+    font-style: italic;
+  }
+
+  .cb { padding: 2rem; }
+
+  /* ─── CAJA DE RESONANCIA ─────────────────────────────── */
+  .resonancia {
+    border-left: 4px solid var(--i4-accent);
+    background: var(--i4-crema);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .resonancia-lbl {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i4-accent);
+    margin-bottom: 8px;
+  }
+  .resonancia-txt {
+    font-family: var(--font-serif);
+    font-size: 16.5px;
+    line-height: 1.6;
+    font-style: italic;
+    color: var(--i4-oscuro);
+  }
+
+  /* ─── SECCIONES VER / JUZGAR / ACTUAR ────────────────── */
+  .pl {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i4-oscuro);
+    margin-top: 2.25rem;
+    margin-bottom: 1.1rem;
+    border-bottom: 1px solid var(--borde);
+    padding-bottom: 7px;
+  }
+  .pl:first-of-type { margin-top: 0.5rem; }
+
+  .pts {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 1.5rem;
+  }
+  .pts li {
+    display: flex;
+    gap: 14px;
+    font-size: 14.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+  .pts li strong {
+    color: var(--i4-oscuro);
+    font-weight: 600;
+  }
+  .dot {
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    background: var(--i4-accent);
+    color: #FFFFFF;
+    margin-top: 2px;
+    font-family: var(--font-serif);
+  }
+  .dot.j { background: var(--i4-medio); }
+  .dot.a { background: var(--i4-oscuro); }
+
+  /* ─── GRILLA 5 EJES DE CARIDAD POLÍTICA ──────────────── */
+  .ejes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 1.5rem;
+  }
+  .eje {
+    background: var(--i4-crema);
+    border-radius: 10px;
+    padding: 1.1rem 1.25rem;
+    border-top: 4px solid var(--i4-accent);
+  }
+  .eje.full { grid-column: 1 / -1; }
+  .eje-n {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--i4-accent);
+    margin-bottom: 8px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .eje-t {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--i4-oscuro);
+    margin-bottom: 6px;
+  }
+  .eje-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.6;
+  }
+
+  /* ─── ACTIVIDADES ────────────────────────────────────── */
+  .act {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 1.15rem 1.35rem;
+    margin-bottom: 12px;
+    border-left: 4px solid var(--i4-accent);
+  }
+  .act-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  .tag-ind {
+    background: var(--i4-oscuro);
+    color: var(--i4-crema);
+  }
+  .tag-gru {
+    background: var(--i4-accent);
+    color: #FFF;
+  }
+  .act-title {
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: var(--i4-oscuro);
+    margin-bottom: 6px;
+    line-height: 1.35;
+  }
+  .act-body {
+    font-size: 14px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+  .act-body em {
+    color: var(--i4-medio);
+    font-style: italic;
+  }
+
+  /* ─── CITA INSPIRADORA ───────────────────────────────── */
+  .cita {
+    border-radius: 10px;
+    padding: 1.2rem 1.4rem;
+    background: linear-gradient(180deg, var(--i4-crema) 0%, #FFF 100%);
+    border: 1px solid var(--i4-claro);
+    margin-top: 2rem;
+  }
+  .cita-lbl {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i4-accent);
+    margin-bottom: 8px;
+  }
+  .cita-txt {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    line-height: 1.7;
+    font-style: italic;
+    color: var(--i4-oscuro);
+  }
+  .cita-ref {
+    font-size: 12px;
+    margin-top: 10px;
+    font-weight: 500;
+    color: var(--i4-medio);
+    font-style: normal;
+  }
+
+  /* ─── ALERTA PASTORAL ────────────────────────────────── */
+  .alerta {
+    border-left: 4px solid var(--alerta);
+    background: var(--alerta-bg);
+    padding: 1.15rem 1.35rem;
+    margin-top: 1.75rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .alerta-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--alerta);
+    margin-bottom: 8px;
+  }
+  .alerta-lbl::before {
+    content: '† ';
+    font-size: 14px;
+  }
+  .alerta-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+
+  /* ─── AUTOCUIDADO ────────────────────────────────────── */
+  .autocuidado {
+    border-left: 4px solid var(--i4-medio);
+    background: #F2F6E8;
+    padding: 1.15rem 1.35rem;
+    margin-top: 1.75rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .autocuidado-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i4-medio);
+    margin-bottom: 8px;
+  }
+  .autocuidado-lbl::before {
+    content: '❋ ';
+    color: var(--i4-accent);
+  }
+  .autocuidado-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+
+  /* ─── REFERENCIAS ────────────────────────────────────── */
+  .ref {
+    font-size: 11.5px;
+    color: var(--texto-3);
+    font-style: italic;
+    margin-top: 1.75rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--borde);
+  }
+
+  /* ─── RESPONSIVE ─────────────────────────────────────── */
+  @media (max-width: 640px) {
+    body { padding: 1rem 0.5rem; }
+    .root { padding: 1.25rem; }
+    .portada { padding: 1.5rem 1.25rem; }
+    .portada-title { font-size: 24px; }
+    .ch { padding: 1.25rem 1.25rem 1rem; }
+    .ct { font-size: 20px; }
+    .cb { padding: 1.25rem; }
+    .ejes { grid-template-columns: 1fr; }
+    .btn { flex: 1 1 100%; }
+    .mode-selector { flex-direction: column; align-items: stretch; max-width: 100%; }
+    .mode-btn { text-align: center; }
+  }
 </style>
+</head>
+<body>
 
-<!-- <h2 class="sr-only">Itinerario formativo 4: La caridad política como misión. Cuatro módulos sobre el paso del acompañamiento individual a la incidencia en políticas públicas y estructuras de pecado, basados en §6.7.1, §7.9.5, §4.14 y §11.8 del Manual de la PLAPA.</h2>-->
+<div class="root mode-grupal">
 
-<div class="root">
+  <!-- ═══ PORTADA ═════════════════════════════════════════ -->
+  <div class="portada">
+    <p class="portada-sup">Itinerario formativo 4 · Escuela PLAPA · CELAM 2026</p>
+    <h1 class="portada-title">La caridad política como misión</h1>
+    <p class="portada-sub">Del acompañamiento individual a la incidencia en políticas públicas y estructuras de pecado. Del barrio a la voz profética continental.</p>
 
-<div class="portada">
-  <p class="portada-sup">Itinerario formativo 4 · PLAPA — CELAM 2026</p>
-  <h1 class="portada-title">La caridad política como misión</h1>
-  <p class="portada-sub">Del acompañamiento individual a la incidencia en políticas públicas y estructuras de pecado · Para agentes con inserción institucional · 4 módulos</p>
-  <div class="portada-pills">
-    <span class="portada-pill">§6.7.1</span>
-    <span class="portada-pill">§7.9.5</span>
-    <span class="portada-pill">§4.14</span>
-    <span class="portada-pill">§11.8.4</span>
-    <span class="portada-pill">Nivel intermedio–avanzado</span>
+    <div class="dest-box">
+      <div class="dest-lbl">Destinatarios</div>
+      <div class="dest-txt">Agentes pastorales con inserción institucional o vocación de incidencia pública: coordinadores diocesanos y nacionales, referentes de comunicación, cuadros de organizaciones eclesiales, teólogos y laicos comprometidos con la política. Requiere haber recorrido previamente los itinerarios de base (1, 2 o 3) o experiencia equivalente. Es el itinerario más exigente en términos de discernimiento social y político.</div>
+    </div>
+
+    <div class="portada-pills">
+      <span class="portada-pill">§4.14, §6.7.1, §7.9.5, §11.8.4</span>
+      <span class="portada-pill">4 módulos</span>
+      <span class="portada-pill">Nivel intermedio–avanzado</span>
+      <span class="portada-pill">Ver · Juzgar · Actuar · Síntesis</span>
+    </div>
   </div>
-</div>
 
-<!-- NUEVO: Bloque del Video de Presentación Incrustado -->
-<div style="background: var(--surface-2); border: 0.5px solid var(--border); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
-  <p style="font-size: 11px; font-weight: 500; color: #085041; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; text-align: left;">
-    ▶️ Video de presentación
-  </p>
-  <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px;">
-    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
-      src="https://www.youtube.com/embed/mqmHnrzMga0"  
-      title="Presentación del Itinerario" 
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-      allowfullscreen>
-    </iframe>
+  <!-- ═══ VIDEO ═══════════════════════════════════════════ -->
+  <div class="video-wrap">
+    <p class="video-lbl">▶️ Video de presentación</p>
+    <div class="video-iframe">
+      <iframe
+        src="https://www.youtube.com/embed/mqmHnrzMga0"
+        title="Presentación del Itinerario 04"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
   </div>
-</div>
 
-
-<div class="nav">
-  <button class="btn on" onclick="show(1,this)">Módulo 1 · El Estado que falla</button>
-  <button class="btn" onclick="show(2,this)">Módulo 2 · Las estructuras de pecado</button>
-  <button class="btn" onclick="show(3,this)">Módulo 3 · Los cinco ejes de la caridad política</button>
-  <button class="btn" onclick="show(4,this)">Módulo 4 · La voz profética continental</button>
-</div>
-
-<!-- MÓDULO 1 -->
-<div id="m1" class="card active" style="border-left:5px solid #3B6D11">
-  <div class="ch">
-    <span class="cn">Módulo 1 · El Ver</span>
-    <div class="ct">El Estado que falla, la Iglesia que queda y el vacío que ocupa el narco</div>
-    <div class="cs">Diagnóstico de las políticas públicas en el territorio · §4.14</div>
+  <!-- ═══ SELECTOR DE MODALIDAD ═══════════════════════════ -->
+  <div class="mode-selector">
+    <button class="mode-btn on" onclick="setMode('grupal', this)">👥 Hacer en comunidad</button>
+    <button class="mode-btn" onclick="setMode('individual', this)">👤 Hacer de forma individual</button>
   </div>
-  <div class="cb">
-    <div class="mf">
-      <div class="mf-lbl">Mensaje fuerza</div>
-      <div class="mf-txt">"Ante el repliegue institucional del Estado, la tarea de acompañamiento queda delegada de hecho en la sociedad civil y las comunidades de fe. El narcotráfico avanza por donde el Estado se retira."</div>
-    </div>
 
-    <div class="pl">El Ver — Realidad</div>
-    <ul class="pts">
-      <li><span class="dot">V</span><span>El diagnóstico del manual es contundente: "Las respuestas del Estado suelen ser insuficientes, tardías o inexistentes" (§4.14). La burocracia opera con casillas estancas —salud, justicia, vivienda, desarrollo social— que no se comunican entre sí. Para acceder a un tratamiento se exigen documentos que el Estado mismo no garantiza. El sistema expulsa a quien más necesita ser incluido.</span></li>
-      <li><span class="dot">V</span><span>El manual identifica las políticas sanitizantes: "Se centran en tratar de limpiar el espacio público bajo un enfoque punitivo y criminalizante, considerando a las personas en situación de consumo o de calle como estorbos urbanos que deben ser removidos" (§4.14). El gasto público se concentra en la guerra al narcotráfico mientras la atención a las víctimas queda desfinanciada.</span></li>
-      <li><span class="dot">V</span><span>"La burocracia no puede construir los vínculos de confianza, pertenencia y afecto que el diagnóstico territorial señala como los únicos elementos capaces de restaurar el lazo social" (§4.14). El Estado puede dar subsidios; no puede dar comunidad. Esa es la tarea específica de la Iglesia, y también su argumento político más sólido.</span></li>
-    </ul>
-
-    <div class="pl">El Juzgar — Iluminación</div>
-    <ul class="pts">
-      <li><span class="dot">J</span><span>El manual describe una situación de orfandad institucional: "Las estadísticas indican una desproporción en el gasto público, donde los presupuestos para prevención son mínimos en comparación con otras áreas" (§4.14). Esta desproporción no es un error técnico: es una opción política. Nombrarla como tal es el primer acto de la caridad política.</span></li>
-      <li><span class="dot">J</span><span>"La narcopolítica debilita el Estado de derecho: la corrupción de sectores del poder judicial, policial y político permite que el narcotráfico actúe como un organizador social ante la retirada de las instituciones legítimas" (§4.14). El agente pastoral que lee este diagnóstico ya no puede limitarse a ayudar individualmente sin preguntarse qué estructura generó esa necesidad.</span></li>
-    </ul>
-
-    <div class="pl">El Actuar — Propuesta</div>
-    <div class="act">
-      <div class="act-title">Diagnóstico de políticas públicas en el territorio propio</div>
-      <div class="act-body">El grupo mapea: ¿qué servicios del Estado existen en el territorio? ¿a quiénes llegan efectivamente? ¿quiénes quedan afuera y por qué? ¿hay políticas sanitizantes activas? ¿la Pastoral fue convocada alguna vez a participar en el diseño de una política pública local? Las respuestas son el punto de partida del Actuar político.</div>
-    </div>
-    <div class="act">
-      <div class="act-title">La pregunta que no nos hacemos</div>
-      <div class="act-body">¿Por qué esta persona está en esta situación? La caridad política empieza cuando el agente deja de responder solo con asistencia y empieza a preguntarse qué estructura generó la necesidad que está atendiendo. El grupo practica esto con tres casos reales del territorio: ¿qué política pública, qué ausencia del Estado, qué decisión política está detrás?</div>
-    </div>
-
-    <div class="cita">
-      <div class="cita-lbl">Cita inspiradora · §4.14</div>
-      <div class="cita-txt">"El Estado es capaz de otorgar subsidios o beneficios administrativos, pero carece de la flexibilidad necesaria para generar comunidad. La burocracia no puede construir los vínculos de confianza, pertenencia y afecto que el diagnóstico territorial señala como los únicos elementos capaces de restaurar el lazo social."</div>
-      <div class="cita-ref">Manual de la PLAPA, §4.14 — Los Estados y las políticas públicas (CELAM 2026)</div>
-    </div>
-
-    <div class="ac-box">
-      <div class="ac-lbl">Autocuidado del agente</div>
-      <div class="ac-txt">El diagnóstico político puede generar rabia, impotencia o cinismo. Los tres son comprensibles; el cinismo es el más peligroso porque paraliza. El agente que puede nombrar su rabia sin quedarse en ella está en condiciones de transformarla en acción. La revisión de vida del equipo incluye también revisar el estado emocional frente a las estructuras que se denuncia.</div>
-    </div>
-    <div class="ref">Referencias: §4.14 — Manual de la PLAPA, CELAM 2026</div>
+  <!-- ═══ NAVEGACIÓN ══════════════════════════════════════ -->
+  <div class="nav">
+    <button class="btn on" onclick="show(1,this)">Módulo 1 · El Estado que falla</button>
+    <button class="btn" onclick="show(2,this)">Módulo 2 · Estructuras de pecado</button>
+    <button class="btn" onclick="show(3,this)">Módulo 3 · Los cinco ejes</button>
+    <button class="btn" onclick="show(4,this)">Módulo 4 · La voz profética continental</button>
   </div>
-</div>
 
-<!-- MÓDULO 2 -->
-<div id="m2" class="card" style="border-left:5px solid #3B6D11">
-  <div class="ch">
-    <span class="cn">Módulo 2 · El Juzgar</span>
-    <div class="ct">El narcotráfico como estructura de pecado: teología del mal sistémico</div>
-    <div class="cs">Juan Pablo II, Francisco y la Doctrina Social de la Iglesia · §5.9.1, §7.9.5</div>
-  </div>
-  <div class="cb">
-    <div class="mf">
-      <div class="mf-lbl">Mensaje fuerza</div>
-      <div class="mf-txt">"Ambos papas coinciden en identificar al narcotráfico no como un simple delito económico, sino como una estructura de pecado que alimenta una cultura de la muerte. La fe y la defensa de la dignidad son inseparables."</div>
+  <!-- ═══ MÓDULO 1 ════════════════════════════════════════ -->
+  <div id="m1" class="card active">
+    <div class="ch">
+      <span class="cn">Módulo 1 · El Ver</span>
+      <div class="ct">El Estado que falla, la Iglesia que queda y el vacío que ocupa el narco</div>
+      <div class="cs">Diagnóstico de las políticas públicas en el territorio · §4.14</div>
     </div>
+    <div class="cb">
 
-    <div class="pl">El Ver — Realidad</div>
-    <ul class="pts">
-      <li><span class="dot">V</span><span>El agente pastoral que trabaja en el territorio conoce el narcotráfico en su dimensión personal: el joven captado, la familia destruida, el muerto en la esquina. Pero el manual propone que hay que leerlo también en su dimensión estructural: "El narcotráfico actúa como un organizador social ante la retirada de las instituciones legítimas" (§4.14). No es solo un delito: es un sistema de gobierno paralelo.</span></li>
-      <li><span class="dot">V</span><span>El manual reconoce tres niveles de esta estructura: el económico (lavado de activos, articulación con tráfico de armas y trata), el político (narcopolítica, corrupción judicial y policial) y el cultural (la narcocultura como horizonte de sentido para jóvenes sin otro proyecto de vida). La pastoral que solo trabaja el nivel personal sin leer los otros dos niveles termina siendo ineficaz (§5.9.1).</span></li>
-    </ul>
-
-    <div class="pl">El Juzgar — Iluminación</div>
-    <ul class="pts">
-      <li><span class="dot">J</span><span>Juan Pablo II definió la adicción como "patología del espíritu" y el narcotráfico como parte de la "cultura de la muerte". Francisco lo inscribió en la "cultura del descarte": el joven que no estudia ni trabaja se convierte en material descartable que el narco aprovecha. Los dos papas coinciden en que "los traficantes son mercaderes de muerte que lucran con la destrucción de sus hermanos" (§5.9.1).</span></li>
-      <li><span class="dot">J</span><span>"La caridad política empodera a la persona para que pase de ser un asistido a ser un sujeto activo en un diálogo fraterno con su entorno" (§7.9.5). El Evangelio no solo consuela a las víctimas del sistema: las convierte en sujetos que interpelan al sistema. La caridad política es, en ese sentido, una forma de evangelización.</span></li>
-      <li><span class="dot">J</span><span>Miqueas 6,8: "¿Qué pide de ti el Señor? Practicar la justicia, amar la misericordia, caminar humildemente con tu Dios." El manual cita este versículo al abrir el §6.7.1 para recordar que la justicia estructural no es una opción extra para los pastorales sociales: es parte constitutiva de la misión de cualquier agente de fe.</span></li>
-    </ul>
-
-    <div class="pl">El Actuar — Propuesta</div>
-    <div class="act">
-      <div class="act-title">Los tres niveles del narcotráfico en mi territorio</div>
-      <div class="act-body">El grupo analiza la presencia del narcotráfico en el territorio propio en sus tres dimensiones: económica (¿qué negocios controla? ¿qué fuentes de ingreso ofrece?), política (¿hay corrupción local visible? ¿quién teme denunciar?) y cultural (¿qué imagen proyecta sobre los jóvenes? ¿qué alternativas existen?). Sin nombrar personas ni poner en riesgo a nadie.</div>
-    </div>
-    <div class="act">
-      <div class="act-title">Del pecado personal al pecado estructural</div>
-      <div class="act-body">El grupo trabaja la distinción teológica entre pecado personal (el individuo que eligió mal) y pecado estructural (la estructura que reduce las opciones disponibles). Usando la historia de Marcelo: ¿qué pecados personales hay en su historia? ¿qué pecados estructurales? ¿cuál de los dos puede atender la pastoral individual? ¿cuál requiere la caridad política?</div>
-    </div>
-
-    <div class="cita">
-      <div class="cita-lbl">Cita inspiradora · §5.9.1</div>
-      <div class="cita-txt">"Ambos papas coinciden en identificar al narcotráfico no como un simple delito económico, sino como una estructura de pecado que alimenta una cultura de la muerte, inseparable de otros crímenes globales como el tráfico de armas, el lavado de activos y la trata de personas."</div>
-      <div class="cita-ref">Manual de la PLAPA, §5.9.1 — El Magisterio Eclesial (CELAM 2026)</div>
-    </div>
-
-    <div class="ac-box">
-      <div class="ac-lbl">Autocuidado del agente</div>
-      <div class="ac-txt">El agente que trabaja en territorios con presencia del narcotráfico puede estar expuesto a presiones, amenazas o situaciones de miedo real. El manual reconoce esto: "La pastoral puede instrumentar los medios para canalizar denuncias en los organismos apropiados, si fuera necesario" (§11.8.4). La caridad política incluye también proteger a quienes están en la trinchera. Ningún agente debe denunciar solo y sin red de respaldo institucional.</div>
-    </div>
-    <div class="ref">Referencias: §4.14, §5.9.1, §7.9.5, Mi 6,8 — Manual de la PLAPA, CELAM 2026</div>
-  </div>
-</div>
-
-<!-- MÓDULO 3 -->
-<div id="m3" class="card" style="border-left:5px solid #3B6D11">
-  <div class="ch">
-    <span class="cn">Módulo 3 · El Actuar</span>
-    <div class="ct">Los cinco ejes de la caridad política: de la denuncia a la alianza</div>
-    <div class="cs">Instrumentos concretos de incidencia pastoral · §6.7.1</div>
-  </div>
-  <div class="cb">
-    <div class="mf">
-      <div class="mf-lbl">Mensaje fuerza</div>
-      <div class="mf-txt">"El ejercicio de la caridad política permite que la Iglesia sea una voz profética en el espacio público, transformando las condiciones de injusticia en escenarios de libertad y protagonismo para los hermanos más vulnerabilizados."</div>
-    </div>
-
-    <div class="ejes">
-      <div class="eje">
-        <div class="eje-n">Eje 1 · Denuncia profética</div>
-        <div class="eje-txt">Desmitificar la narcopolítica y denunciar las políticas sanitizantes que tratan a las personas como estorbos.</div>
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"Ante el repliegue institucional del Estado, la tarea de acompañamiento queda delegada de hecho en la sociedad civil y las comunidades de fe. El narcotráfico avanza por donde el Estado se retira."</div>
       </div>
-      <div class="eje">
-        <div class="eje-n">Eje 2 · Incidencia en el Estado</div>
-        <div class="eje-txt">Exigir que el Estado asuma sus obligaciones en salud, identidad y vivienda. La Iglesia como hilo articulador.</div>
-      </div>
-      <div class="eje">
-        <div class="eje-n">Eje 3 · Alianza para el bien común</div>
-        <div class="eje-txt">Articular universidad, sector empresarial y comunidad organizada para construir políticas basadas en la realidad territorial.</div>
-      </div>
-      <div class="eje">
-        <div class="eje-n">Eje 4 · Reocupación democrática</div>
-        <div class="eje-txt">Animar a habitar clubes, mutuales y centros barriales como antídoto al individualismo que el narco aprovecha.</div>
-      </div>
-      <div class="eje">
-        <div class="eje-n">Eje 5 · Derecho al cuidado</div>
-        <div class="eje-txt">Promover el derecho autónomo a cuidar, ser cuidado y al autocuidado, especialmente para los invisibilizados por el sistema penal o sanitario.</div>
-      </div>
-      <div class="eje">
-        <div class="eje-n">Síntesis</div>
-        <div class="eje-txt">"La caridad política transforma el miedo en organización y ofrece un relato de esperanza frente a la dictadura del narcotráfico."</div>
-      </div>
-    </div>
 
-    <div class="pl">El Ver — Realidad</div>
-    <ul class="pts">
-      <li><span class="dot">V</span><span>La objeción más frecuente es que la Iglesia debería limitarse a la esfera espiritual. El manual la refuta desde la propia teología: "La Iglesia no es una ONG, pero su compromiso social es la encarnación de la misericordia de Cristo, que se hace cargo de la integridad del hombre en todas sus dimensiones" (§6.7.1). La caridad política no es opcional: es constitutiva de la misión.</span></li>
-    </ul>
+      <div class="pl">El Ver — Cuatro diagnósticos del §4.14</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>Respuestas insuficientes, tardías o inexistentes.</strong> "Las respuestas del Estado suelen ser insuficientes, tardías o inexistentes" (§4.14). Mientras el crimen organizado se consolida mediante una ingeniería económica global, la burocracia estatal no logra habitar los espacios de mayor vulnerabilidad.</span></li>
+        <li><span class="dot">V</span><span><strong>Políticas sanitizantes.</strong> El manual identifica esta categoría: acciones que "se centran en tratar de limpiar el espacio público bajo un enfoque punitivo y criminalizante, considerando a las personas en situación de consumo o de calle como estorbos urbanos que deben ser removidos o escondidos" (§4.14). El gasto se concentra en la guerra al narcotráfico mientras la atención a las víctimas queda desfinanciada.</span></li>
+        <li><span class="dot">V</span><span><strong>Fragmentación administrativa.</strong> "El Estado opera mediante casillas burocráticas estancas —salud, justicia, vivienda, desarrollo social— que no se comunican entre sí" (§4.14). Sistema expulsivo: para acceder a un tratamiento se exigen documentos que el Estado mismo no garantiza. El sistema formal encuentra un tope ante la marginalidad porque presupone condiciones basales que los sectores más postergados no poseen.</span></li>
+        <li><span class="dot">V</span><span><strong>Orfandad institucional y narcopolítica.</strong> "Las estadísticas indican una desproporción en el gasto público, donde los presupuestos para prevención son mínimos en comparación con otras áreas" (§4.14). Y: "la corrupción de sectores del poder judicial, policial y político permite que el narcotráfico actúe como un organizador social ante la retirada de las instituciones legítimas". El vacío del Estado no queda vacío: lo ocupa una estructura paralela.</span></li>
+      </ul>
 
-    <div class="pl">El Juzgar — Iluminación</div>
-    <ul class="pts">
-      <li><span class="dot">J</span><span>"Aunque el Estado tiene la responsabilidad primaria, este no tiene la capacidad de generar por sí solo vínculos de pertenencia; la Iglesia aporta el saber territorial y la experiencia de familia que la rigidez administrativa no puede ofrecer" (§6.7.1). Este es el argumento político específico de la pastoral: no reemplaza al Estado, pero hace lo que el Estado no puede hacer.</span></li>
-      <li><span class="dot">J</span><span>"La caridad política nace de respuestas pastorales que demuestran ser eficaces para devolver la dignidad. Se debe exigir que el sistema las transforme en políticas de cuidado permanentes basadas en el testimonio territorial" (§7.9.5). El modelo del centro barrial no es solo una experiencia local: es un argumento para una política pública de acompañamiento comunitario a escala nacional.</span></li>
-    </ul>
+      <div class="pl">El Juzgar — La Iglesia hace lo que el Estado no puede</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>El Estado puede dar subsidios; no puede dar comunidad.</strong> "El Estado es capaz de otorgar subsidios o beneficios administrativos, pero carece de la flexibilidad necesaria para generar comunidad. La burocracia no puede construir los vínculos de confianza, pertenencia y afecto que el diagnóstico territorial señala como los únicos elementos capaces de restaurar el lazo social" (§4.14). Ese es el aporte específico de la Iglesia — y también su argumento político más sólido.</span></li>
+        <li><span class="dot j">J</span><span><strong>El presupuesto revela la política.</strong> La desproporción del gasto público no es un error técnico: es una <em>opción política</em>. Nombrarla como tal es el primer acto de la caridad política. La Iglesia no tiene por qué proponer políticas fiscales alternativas: sí tiene que nombrar honestamente que asignar más presupuesto a la guerra que a la prevención es una decisión con consecuencias humanas.</span></li>
+      </ul>
 
-    <div class="pl">El Actuar — Propuesta</div>
-    <div class="act">
-      <div class="act-title">Identificar el eje más urgente en el territorio propio</div>
-      <div class="act-body">El grupo recorre los cinco ejes del §6.7.1 y evalúa cuál es el más urgente y cuál es el más viable en su territorio concreto. No se trata de hacer los cinco: se trata de elegir uno con criterio y profundidad. Mejor un eje bien trabajado que cinco ejes superficiales.</div>
-    </div>
-    <div class="act">
-      <div class="act-title">Del testimonio a la política pública</div>
-      <div class="act-body">El equipo identifica una práctica pastoral que funciona en el territorio y que podría fundamentar una demanda de política pública: el centro barrial, el grupo de autoayuda, el programa de acompañamiento par. ¿A qué organismo estatal debería presentarse? ¿en qué instancia? ¿con qué evidencia? Se diseña el primer paso concreto.</div>
-    </div>
-    <div class="act">
-      <div class="act-title">Construir la alianza</div>
-      <div class="act-body">El grupo mapea actores del territorio con quienes podría construir el Eje 3: ¿hay universidades con presencia local? ¿empresas de la economía popular? ¿organizaciones de la sociedad civil? La caridad política no se hace solos. Se identifica un actor concreto y se diseña el primer contacto.</div>
-    </div>
+      <div class="pl">El Actuar — Propuesta pastoral</div>
 
-    <div class="cita">
-      <div class="cita-lbl">Cita inspiradora · §6.7.1 · Mi 6,8</div>
-      <div class="cita-txt">"¿Qué pide de ti el Señor? Practicar la justicia, amar la misericordia, caminar humildemente con tu Dios." La caridad política es la traducción estructural de esta tríada: no se practica la justicia sin incidir en las estructuras que la niegan.</div>
-      <div class="cita-ref">Manual de la PLAPA, §6.7.1 — El Ser Social (CELAM 2026)</div>
-    </div>
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Diagnóstico de políticas públicas en el territorio propio</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo mapea: <em>¿qué servicios del Estado existen en el territorio? ¿a quiénes llegan efectivamente? ¿quiénes quedan afuera y por qué? ¿hay políticas sanitizantes activas? ¿la Pastoral fue convocada alguna vez a participar en el diseño de una política pública local?</em> Las respuestas son el punto de partida del Actuar político.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Hacé el mapeo por tu cuenta y con lo que sabés del territorio: <em>servicios estatales presentes, población efectivamente atendida, población excluida y razones, presencia de políticas sanitizantes, canales de diálogo institucional</em>. El diagnóstico honesto es el fundamento de toda incidencia.</div>
+        </div>
+      </div>
 
-    <div class="ac-box">
-      <div class="ac-lbl">Autocuidado del agente</div>
-      <div class="ac-txt">La incidencia política puede generar desgaste de otro tipo: reuniones interminables, burocracia, resistencia institucional, sensación de ineficacia. El manual propone que la caridad política no reemplaza al acompañamiento directo sino que lo complementa. El agente que se queda solo en la incidencia sin el contacto con las personas pierde el suelo. La callejeada y la caridad política se necesitan mutuamente.</div>
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">La pregunta que no nos hacemos</div>
+        <div class="mode-g">
+          <div class="act-body">La caridad política empieza cuando el agente deja de responder solo con asistencia y empieza a preguntarse <em>¿por qué esta persona está en esta situación?</em> El grupo practica esto con tres casos reales del territorio: <em>¿qué política pública, qué ausencia del Estado, qué decisión política está detrás?</em> El ejercicio revela dónde termina la asistencia y dónde debería empezar la incidencia.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Tomá tres casos reales del territorio que caminás. Sobre cada uno, escribí honestamente: <em>¿qué política pública, qué ausencia del Estado, qué decisión política está detrás de esta situación individual?</em> El ejercicio no busca culpar al sistema para eximir a la persona: busca ver la estructura que la persona no ve.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §4.14 — Manual PLAPA</div>
+        <div class="cita-txt">"El Estado es capaz de otorgar subsidios o beneficios administrativos, pero carece de la flexibilidad necesaria para generar comunidad. La burocracia no puede construir los vínculos de confianza, pertenencia y afecto que el diagnóstico territorial señala como los únicos elementos capaces de restaurar el lazo social."</div>
+        <div class="cita-ref">Manual de la PLAPA, §4.14 — Los Estados y las políticas públicas (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">La caridad política no es sustituir al Estado. El §4.14 es explícito: "la tarea de acompañamiento queda delegada de hecho en la sociedad civil". Ese "de hecho" no es una legitimación: es una denuncia. La Iglesia que asume permanentemente lo que el Estado no hace termina liberando al Estado de su responsabilidad. La incidencia política empieza cuando la Iglesia deja de ser cómplice silencioso del repliegue estatal.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">El diagnóstico político puede generar rabia, impotencia o cinismo. Los tres son comprensibles; el cinismo es el más peligroso porque paraliza. El agente que puede nombrar su rabia sin quedarse en ella está en condiciones de transformarla en acción. La revisión de vida del equipo incluye también revisar el estado emocional frente a las estructuras que se denuncia. Un agente que rumia impotencia no incide: se apaga.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §4.14 — Los Estados y las políticas públicas (CELAM 2026).</div>
     </div>
-    <div class="ref">Referencias: §6.7.1, §7.9.5, Mi 6,8 — Manual de la PLAPA, CELAM 2026</div>
   </div>
-</div>
 
-<!-- MÓDULO 4 -->
-<div id="m4" class="card" style="border-left:5px solid #3B6D11">
-  <div class="ch">
-    <span class="cn">Módulo 4 · Síntesis y revisión de vida</span>
-    <div class="ct">La voz profética continental: del barrio a la Conferencia Episcopal</div>
-    <div class="cs">La arquitectura de la incidencia pastoral en escala · §11.8.4, §13.8</div>
+  <!-- ═══ MÓDULO 2 ════════════════════════════════════════ -->
+  <div id="m2" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 2 · El Juzgar</span>
+      <div class="ct">El narcotráfico como estructura de pecado: teología del mal sistémico</div>
+      <div class="cs">Juan Pablo II, Francisco y la construcción de la caridad política · §5.9.1, §7.9.5</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"Ambos papas coinciden en identificar al narcotráfico no como un simple delito económico, sino como una estructura de pecado que alimenta una cultura de la muerte. La fe y la defensa de la dignidad son inseparables."</div>
+      </div>
+
+      <div class="pl">El Ver — Tres niveles del narcotráfico</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>El nivel personal.</strong> El agente pastoral que trabaja en el territorio conoce el narcotráfico en su dimensión personal: <em>el joven captado, la familia destruida, el muerto en la esquina</em>. Este es el nivel más visible y el que primero interpela pastoralmente. Pero es solo el síntoma.</span></li>
+        <li><span class="dot">V</span><span><strong>El nivel estructural.</strong> El Manual propone leerlo también estructuralmente: "el narcotráfico actúa como un organizador social ante la retirada de las instituciones legítimas" (§4.14). No es solo un delito: es un <em>sistema de gobierno paralelo</em>. Trabajarlo solo en el nivel personal es como tratar la fiebre sin buscar la infección.</span></li>
+        <li><span class="dot">V</span><span><strong>El nivel cultural.</strong> El §5.9.1 lo articula: coincidencia magisterial de Juan Pablo II y Francisco en identificar al narcotráfico como "estructura de pecado" y "cultura de la muerte", inseparable de otros crímenes globales como el tráfico de armas, el lavado de activos y la trata de personas. La narcocultura ofrece a los jóvenes sin proyecto de vida un horizonte de sentido perverso. La pastoral que solo trabaja el nivel personal sin leer los otros dos termina siendo ineficaz.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Coincidencia magisterial y caridad política</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>Coincidencia teológica de fondo (§5.9.1).</strong> "Ambos papas coinciden en identificar al narcotráfico no como un simple delito económico, sino como una estructura de pecado que alimenta una cultura de la muerte" (§5.9.1). Juan Pablo II lo formuló como "cultura de la muerte" y "mercaderes de muerte" (Evangelium Vitae); Francisco lo inscribió en la "cultura del descarte" (Evangelii Gaudium, Fratelli Tutti). El agente puede citar la continuidad magisterial ante cualquier interlocutor institucional.</span></li>
+        <li><span class="dot j">J</span><span><strong>Del asistido al sujeto activo.</strong> "La caridad política empodera a la persona para que pase de ser un asistido a ser un sujeto activo en un diálogo fraterno con su entorno" (§7.9.5). El Evangelio no solo consuela a las víctimas del sistema: las convierte en sujetos que interpelan al sistema. La caridad política es, en ese sentido, una forma de evangelización.</span></li>
+        <li><span class="dot j">J</span><span><strong>Justicia estructural como parte constitutiva de la misión.</strong> Miqueas 6,8: <em>"¿Qué pide de ti el Señor? Practicar la justicia, amar la misericordia, caminar humildemente con tu Dios"</em> (citado al abrir §6.7.1). La justicia estructural no es una opción extra para pastoralistas sociales: es parte constitutiva de la misión de cualquier agente de fe. Trabajar por la misericordia sin trabajar por la justicia es truncar la tríada bíblica.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Los tres niveles del narcotráfico en mi territorio</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo analiza la presencia del narcotráfico en el territorio propio en sus tres dimensiones: <em>económica</em> (¿qué negocios controla? ¿qué fuentes de ingreso ofrece?), <em>política</em> (¿hay corrupción local visible? ¿quién teme denunciar?), y <em>cultural</em> (¿qué imagen proyecta sobre los jóvenes? ¿qué alternativas existen?). <strong>Regla estricta:</strong> sin nombrar personas ni poner en riesgo a nadie del equipo.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Escribí para vos, con lo que sabés del territorio, un breve análisis de los tres niveles: económico, político y cultural. <em>El ejercicio se guarda en la bitácora personal, no se comparte por chats ni redes.</em> Analizar por escrito ayuda a poner distancia crítica; compartir en canales inseguros es imprudente en este tipo de trabajo.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Del pecado personal al pecado estructural</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo trabaja la distinción teológica entre <em>pecado personal</em> (el individuo que eligió mal) y <em>pecado estructural</em> (la estructura que reduce las opciones disponibles). Usando la historia de Marcelo (Cap. 8) o un caso propio: <em>¿qué pecados personales hay en su historia? ¿qué pecados estructurales? ¿cuál de los dos puede atender la pastoral individual? ¿cuál requiere la caridad política?</em></div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Elegí un caso concreto y separá en dos columnas los factores de pecado personal y los de pecado estructural. Preguntate: <em>¿en cuál de los dos he estado invirtiendo mi energía pastoral? ¿por qué el otro me cuesta más? ¿qué habilidades me faltan para trabajar el que no vengo trabajando?</em></div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §5.9.1 — Manual PLAPA</div>
+        <div class="cita-txt">"Ambos papas coinciden en identificar al narcotráfico no como un simple delito económico, sino como una estructura de pecado que alimenta una cultura de la muerte, inseparable de otros crímenes globales como el tráfico de armas, el lavado de activos y la trata de personas."</div>
+        <div class="cita-ref">Manual de la PLAPA, §5.9.1 — El Narcotráfico como Cultura de la Muerte (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">El agente que trabaja en territorios con presencia del narcotráfico puede estar expuesto a presiones, amenazas o situaciones de miedo real. El Manual reconoce esto: "La pastoral puede instrumentar los medios para canalizar denuncias en los organismos apropiados, si fuera necesario" (§11.8.4). La caridad política incluye también proteger a quienes están en la trinchera. <strong>Ningún agente debe denunciar solo y sin red de respaldo institucional</strong>. La incidencia siempre pasa por la Pastoral Nacional o Diocesana; nunca por decisión individual.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">Ver el pecado estructural puede generar sensación de estar frente a algo demasiado grande. La caridad política, sin espiritualidad que la sostenga, deriva en burnout activista. El agente que se activa políticamente sin oración, sin comunidad, sin dirección espiritual termina o quemado o resentido. La indignación evangélica es distinta de la ideológica: la evangélica se sostiene desde el Evangelio, no desde la utopía.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §4.14, §5.9.1 (El Narcotráfico como Cultura de la Muerte), §7.9.5 (La construcción de la caridad política) · Miqueas 6,8 — CELAM 2026.</div>
+    </div>
   </div>
-  <div class="cb">
-    <div class="mf">
-      <div class="mf-lbl">Mensaje fuerza</div>
-      <div class="mf-txt">"La voz profética debe señalar con valentía y prudencia los problemas del narcotráfico, el crimen organizado y la corrupción, siempre desde la defensa de la dignidad humana. Es la voz de aquellos cuya voz no es escuchada."</div>
-    </div>
 
-    <div class="pl">El Ver — Realidad</div>
-    <ul class="pts">
-      <li><span class="dot">V</span><span>"Quienes están en el territorio no pueden denunciar allí, por el riesgo que corre su propia vida. La pastoral puede instrumentar los medios para canalizar esas denuncias en los organismos apropiados" (§11.8.4). Hay una función institucional que solo puede cumplir la Pastoral Nacional o Continental: ser la voz de quienes no pueden hablar sin poner en riesgo su vida.</span></li>
-      <li><span class="dot">V</span><span>La Pastoral Nacional tiene también la función de producir conocimiento: "Un equipo enfocado en el tema tiene la tarea de estudiar, reflexionar y ofrecer insumos a la Conferencia Episcopal para denunciar las estructuras de pecado" (§11.8.4). El análisis territorial que hacen los agentes de base se convierte, a través de la red pastoral, en insumo para la voz profética institucional.</span></li>
-    </ul>
+  <!-- ═══ MÓDULO 3 ════════════════════════════════════════ -->
+  <div id="m3" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 3 · El Actuar</span>
+      <div class="ct">Los cinco ejes de la caridad política: de la denuncia a la alianza</div>
+      <div class="cs">Instrumentos concretos de incidencia pastoral · §6.7.1</div>
+    </div>
+    <div class="cb">
 
-    <div class="pl">El Juzgar — Iluminación</div>
-    <ul class="pts">
-      <li><span class="dot">J</span><span>El manual describe una arquitectura de niveles: del centro barrial a la pastoral diocesana, de la diocesana a la nacional, de la nacional a la PLAPA continental. Esta arquitectura no es burocracia: es la garantía de que la experiencia del territorio llegue a los espacios donde se toman las decisiones que afectan al territorio (§11.8, §11.9).</span></li>
-      <li><span class="dot">J</span><span>"La Pastoral debe incidir en la esfera pública exigiendo a las autoridades la vigencia del Estado de Derecho, el acceso universal a la salud y políticas de cuidados que prioricen la rehabilitación sobre la criminalización" (§11.8.4). Estos no son deseos piadosos: son demandas políticas concretas respaldadas por el testimonio territorial de miles de agentes pastorales en 18 países.</span></li>
-    </ul>
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"El ejercicio de la caridad política permite que la Iglesia sea una voz profética en el espacio público, transformando las condiciones de injusticia en escenarios de libertad y protagonismo para los hermanos más vulnerabilizados."</div>
+      </div>
 
-    <div class="pl">El Actuar — Propuesta</div>
-    <div class="act">
-      <div class="act-title">Conectar el barrio con la Conferencia Episcopal</div>
-      <div class="act-body">El grupo identifica el canal concreto que existe (o debería existir) para que la experiencia territorial llegue a la pastoral diocesana o nacional: ¿hay una referente diocesana de pastoral de adicciones? ¿la pastoral nacional recibe informes del territorio? ¿alguien sistematiza lo que los agentes ven? Si no existe ese canal, diseñar el primer paso para crearlo.</div>
-    </div>
-    <div class="act">
-      <div class="act-title">Redactar una demanda política fundada</div>
-      <div class="act-body">El grupo redacta en una hoja: una demanda concreta dirigida a una autoridad local o nacional (el municipio, el ministerio de salud, el legislador del distrito), fundada en el testimonio territorial del equipo. No más de tres párrafos: diagnóstico, argumento, demanda. Se firma colectivamente. Se envía o se presenta. La caridad política necesita destinatarios concretos.</div>
-    </div>
-    <div class="act">
-      <div class="act-title">Contribuir a la voz continental de la PLAPA</div>
-      <div class="act-body">El equipo identifica una situación de su territorio que ilustra un problema estructural regional (una política sanitizante local, una práctica de criminalización, una ausencia estatal sistemática). La sistematiza brevemente y la envía al equipo curador del manual o a la coordinación de la PLAPA. Las voces del territorio son el insumo de la voz continental (§13.5–13.6).</div>
-    </div>
+      <div class="pl">Los cinco ejes estratégicos (§6.7.1)</div>
+      <div class="ejes">
+        <div class="eje">
+          <div class="eje-n">Eje 1</div>
+          <div class="eje-t">Denuncia profética</div>
+          <div class="eje-txt">Desmitificar la narcopolítica y denunciar las políticas "sanitizantes" que pretenden limpiar el espacio público tratando a las personas en consumo como desechos o delincuentes.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Eje 2</div>
+          <div class="eje-t">Incidencia en el Estado como garante</div>
+          <div class="eje-txt">Exigir que el Estado asuma sus obligaciones constitucionales en salud, identidad y vivienda. La Iglesia actúa como hilo que articula respuestas fragmentadas para que lleguen efectivamente al territorio.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Eje 3</div>
+          <div class="eje-t">Alianza para el bien común</div>
+          <div class="eje-txt">Articular universidad (investigación), sector empresarial (empleo) y comunidad organizada (presencia territorial) para construir políticas públicas basadas en la realidad y no en el escritorio.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Eje 4</div>
+          <div class="eje-t">Reocupación de espacios democráticos</div>
+          <div class="eje-txt">Animar a habitar clubes, mutuales y centros barriales como antídoto al individualismo que el narcotráfico aprovecha para ocupar el territorio.</div>
+        </div>
+        <div class="eje full">
+          <div class="eje-n">Eje 5</div>
+          <div class="eje-t">Defensa del derecho al cuidado</div>
+          <div class="eje-txt">Promover el derecho autónomo e ineludible a cuidar, ser cuidado y al autocuidado, especialmente para las poblaciones que los sistemas penal o sanitario han invisibilizado.</div>
+        </div>
+      </div>
 
-    <div class="cita">
-      <div class="cita-lbl">Cita inspiradora · §11.8.4</div>
-      <div class="cita-txt">"La Pastoral debe incidir en la esfera pública exigiendo a las autoridades la vigencia del Estado de Derecho, el acceso universal a la salud y políticas de cuidados que prioricen la rehabilitación sobre la criminalización. Es la voz de aquellos cuya voz no es escuchada en un sistema que privilegia el lucro sobre la vida humana."</div>
-      <div class="cita-ref">Manual de la PLAPA, §11.8.4 — La voz profética y la incidencia en las políticas públicas (CELAM 2026)</div>
-    </div>
+      <div class="pl">El Ver — La caridad política no es opcional</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>La objeción de fondo.</strong> "La Iglesia debería limitarse a la esfera espiritual". El §6.7.1 la refuta desde la propia teología: "La Iglesia no es una ONG, pero su compromiso social es la encarnación de la misericordia de Cristo, que se hace cargo de la integridad del hombre en todas sus dimensiones". La caridad política no es opcional: es <em>constitutiva</em> de la misión.</span></li>
+        <li><span class="dot">V</span><span><strong>Frente a territorios peligrosos.</strong> Otra objeción real: en territorios dominados por narcocultura, la incidencia puede ser peligrosa e inútil. El §6.7.1 responde: "Precisamente donde impera la cultura de la muerte es donde la comunidad organizada debe entrar para dignificar la vida. La caridad política permite transformar el miedo en organización y ofrecer un relato de esperanza frente a la dictadura del narcotráfico". El peligro no exime, pero sí exige prudencia y respaldo institucional.</span></li>
+      </ul>
 
-    <div class="ac-box">
-      <div class="ac-lbl">Autocuidado del agente — cierre del itinerario</div>
-      <div class="ac-txt">El itinerario cierra con la pregunta que fundó al profeta Miqueas: ¿qué pide de mí el Señor en este territorio concreto, con esta estructura de pecado concreta? La respuesta no es igual para todos: depende del rol, del lugar, de los recursos disponibles. El agente que puede responder esa pregunta con honestidad —sin voluntarismo ni resignación— tiene la claridad que necesita para actuar.</div>
+      <div class="pl">El Juzgar — El argumento político específico</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>El aporte que solo la Iglesia hace.</strong> "Aunque el Estado tiene la responsabilidad primaria, este no tiene la capacidad de generar por sí solo vínculos de pertenencia; la Iglesia aporta el saber territorial y la experiencia de familia que la rigidez administrativa no puede ofrecer" (§6.7.1). Este es el argumento político específico de la pastoral: no reemplaza al Estado, pero hace lo que el Estado no puede hacer. Con ese argumento puede sentarse en cualquier mesa de política pública.</span></li>
+        <li><span class="dot j">J</span><span><strong>Del testimonio a la política pública.</strong> "La caridad política nace de respuestas pastorales que demuestran ser eficaces para devolver la dignidad. Se debe exigir que el sistema las transforme en políticas de cuidado permanentes basadas en el testimonio territorial" (§7.9.5). El modelo del centro barrial, del grupo de autoayuda, del acompañante par no es solo una experiencia local: es un argumento para una política pública de acompañamiento comunitario a escala nacional.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Identificar el eje más urgente en el territorio propio</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo recorre los cinco ejes del §6.7.1 y evalúa cuál es el más <em>urgente</em> y cuál es el más <em>viable</em> en su territorio concreto. No se trata de hacer los cinco: se trata de elegir uno con criterio y profundidad. Mejor un eje bien trabajado que cinco ejes superficiales. La caridad política requiere estrategia, no dispersión.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Sobre los cinco ejes del §6.7.1, hacé una doble evaluación: <em>¿cuál es el más urgente en mi territorio? ¿cuál es el más viable para mí en este momento?</em> Muchas veces urgencia y viabilidad no coinciden. Empezá por el más viable: el sostén de la práctica genera capacidad para lo urgente.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Del testimonio a la política pública</div>
+        <div class="mode-g">
+          <div class="act-body">El equipo identifica una práctica pastoral que funciona en el territorio y que podría fundamentar una demanda de política pública: <em>el centro barrial, el grupo de autoayuda, el programa de acompañamiento par</em>. ¿A qué organismo estatal debería presentarse? ¿en qué instancia? ¿con qué evidencia? Se diseña el primer paso concreto. La incidencia empieza con destinatario, no con manifiesto.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Elegí una práctica pastoral que conocés y que podría fundamentar una política pública. Redactá una hoja de ruta breve: <em>a qué organismo dirigirla, con qué evidencia, en qué instancia, con quiénes aliarme para hacerlo</em>. Sin ese trabajo previo, la denuncia se queda en gesto simbólico.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Construir la alianza</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo mapea actores del territorio con quienes podría construir el Eje 3: <em>¿hay universidades con presencia local? ¿empresas de la economía popular? ¿organizaciones de la sociedad civil?</em> La caridad política no se hace solos. Se identifica un actor concreto y se diseña el primer contacto. Alianzas silenciosas y sostenidas transforman más que declaraciones ruidosas y esporádicas.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Escribí una lista de posibles aliados en tu territorio para cada uno de los cinco ejes. Identificá cuáles de esos aliados ya conocés personalmente y cuáles habría que empezar a conocer. La construcción de la caridad política se sostiene en vínculos, no en documentos.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §6.7.1 · Miqueas 6,8 — Manual PLAPA</div>
+        <div class="cita-txt">"¿Qué pide de ti el Señor? Practicar la justicia, amar la misericordia, caminar humildemente con tu Dios. La caridad política es la traducción estructural de esta tríada: no se practica la justicia sin incidir en las estructuras que la niegan."</div>
+        <div class="cita-ref">Manual de la PLAPA, §6.7.1 — El ejercicio de la caridad política como misión eclesial (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">La incidencia política puede generar desgaste de otro tipo: <em>reuniones interminables, burocracia, resistencia institucional, sensación de ineficacia</em>. El Manual propone que la caridad política no reemplaza al acompañamiento directo: lo complementa. El agente que se queda solo en la incidencia sin el contacto con las personas pierde el suelo del que habla. La callejeada y la caridad política se necesitan mutuamente.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">La incidencia política es un trabajo de largo plazo. El agente que espera resultados en meses termina frustrado; los procesos institucionales operan en años. Sostener la esperanza sin resultados visibles requiere una espiritualidad robusta: <em>oración, comunidad, dirección espiritual</em>. Sin eso, la caridad política se agota antes de dar frutos. El §7.9.5 lo formula: la caridad política se construye, no se declara.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §6.7.1 (El ejercicio de la caridad política), §7.9.5 (La construcción de la caridad política) · Miqueas 6,8 — CELAM 2026.</div>
     </div>
-    <div class="ref">Referencias: §11.8.4, §11.8–11.9, §13.5–13.6, §13.8 — Manual de la PLAPA, CELAM 2026</div>
   </div>
-</div>
+
+  <!-- ═══ MÓDULO 4 ════════════════════════════════════════ -->
+  <div id="m4" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 4 · Síntesis</span>
+      <div class="ct">La voz profética continental: del barrio a la Conferencia Episcopal</div>
+      <div class="cs">La arquitectura de la incidencia pastoral en escala · §11.8.4, §13.8</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"La voz profética debe señalar con valentía y prudencia los problemas del narcotráfico, el crimen organizado y la corrupción, siempre desde la defensa de la dignidad humana. Es la voz de aquellos cuya voz no es escuchada."</div>
+      </div>
+
+      <div class="pl">El Ver — Función institucional de la Pastoral Nacional</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>Canalizar denuncias que no pueden hacerse en el territorio.</strong> "Quienes están en el territorio no pueden denunciar allí, por el riesgo que corre su propia vida. La pastoral puede instrumentar los medios para canalizar esas denuncias en los organismos apropiados, si fuera necesario" (§11.8.4). Hay una función institucional que <em>solo</em> puede cumplir la Pastoral Nacional o Continental: ser la voz de quienes no pueden hablar sin poner en riesgo su vida.</span></li>
+        <li><span class="dot">V</span><span><strong>Producir insumos para la voz profética episcopal.</strong> "Un equipo enfocado en el tema tiene la tarea de estudiar, reflexionar y ofrecer insumos a la Conferencia Episcopal para denunciar las estructuras de pecado" (§11.8.4). El análisis territorial que hacen los agentes de base se convierte, a través de la red pastoral, en insumo para la voz profética institucional. Sin ese pasaje, los obispos hablan sin territorio y los agentes trabajan sin voz.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — La arquitectura de la incidencia</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>Del centro barrial a la PLAPA continental.</strong> El Manual describe una arquitectura de niveles: del centro barrial a la Pastoral Diocesana, de la diocesana a la Nacional (§11.8), de la nacional a la PLAPA continental (§11.9). Esta arquitectura no es burocracia: es la <em>garantía de que la experiencia del territorio llegue a los espacios donde se toman las decisiones que afectan al territorio</em>. Cortocircuitar la arquitectura debilita la voz.</span></li>
+        <li><span class="dot j">J</span><span><strong>Rehabilitación sobre criminalización.</strong> "La Pastoral debe incidir en la esfera pública exigiendo a las autoridades la vigencia del Estado de Derecho, el acceso universal a la salud y políticas de cuidados que prioricen la rehabilitación sobre la criminalización" (§11.8.4). Estas no son declaraciones piadosas: son <em>demandas políticas concretas</em> respaldadas por el testimonio territorial de miles de agentes pastorales en 18 países.</span></li>
+        <li><span class="dot j">J</span><span><strong>Dimensión profética como parte del Manual mismo.</strong> El §13.8 del Manual formaliza la dimensión profética como parte de la propia identidad de la PLAPA: "la misión de la Iglesia y de la red de la PLAPA incluye la tarea de denunciar las estructuras que asfixian la vida en nuestros territorios" (§13.8). La caridad política no es una desviación del Manual: es su culminación.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Conectar el barrio con la Conferencia Episcopal</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo identifica el canal concreto que existe (o debería existir) para que la experiencia territorial llegue a la pastoral diocesana o nacional: <em>¿hay un referente diocesano de pastoral de adicciones? ¿la pastoral nacional recibe informes del territorio? ¿alguien sistematiza lo que los agentes ven?</em> Si no existe ese canal, diseñar el primer paso para crearlo.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Investigá y registrá en tu cuaderno: <em>¿quién es el referente diocesano de pastoral de adicciones en tu diócesis? ¿existe pastoral nacional en tu país? ¿cómo se envían insumos hacia ellos?</em> Si los canales no existen, mapear la ausencia es el primer paso para construirlos.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Redactar una demanda política fundada</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo redacta en una hoja: <em>una demanda concreta dirigida a una autoridad local o nacional</em> (el municipio, el ministerio de salud, un legislador), fundada en el testimonio territorial del equipo. <strong>No más de tres párrafos:</strong> diagnóstico, argumento, demanda. Se firma colectivamente. Se envía o se presenta por los canales institucionales apropiados. La caridad política necesita destinatarios concretos.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Redactá vos mismo una demanda política concreta —tres párrafos: diagnóstico, argumento, demanda— dirigida a una autoridad concreta. Antes de enviarla, consultala con tu referente diocesano o coordinador pastoral. La incidencia individual descoordinada puede debilitar el trabajo colectivo. La coordinación no es censura: es cuidado del testimonio compartido.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Contribuir a la voz continental de la PLAPA</div>
+        <div class="mode-g">
+          <div class="act-body">El equipo identifica una situación de su territorio que ilustra un problema estructural regional: <em>una política sanitizante local, una práctica de criminalización, una ausencia estatal sistemática</em>. La sistematiza brevemente y la envía al equipo curador del manual o a la coordinación de la PLAPA (§13.5). Las voces del territorio son el insumo de la voz continental.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Escribí una nota breve documentando una situación estructural de tu territorio que crees que trasciende lo local. Envíala por los canales de la PLAPA (§13.5). Un testimonio bien documentado desde un barrio concreto vale más que un manifiesto abstracto. La voz continental se teje con voces territoriales verificables.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §11.8.4 — Manual PLAPA</div>
+        <div class="cita-txt">"La Pastoral debe incidir en la esfera pública exigiendo a las autoridades la vigencia del Estado de Derecho, el acceso universal a la salud y políticas de cuidados que prioricen la rehabilitación sobre la criminalización. Es la voz de aquellos cuya voz no es escuchada en un sistema que privilegia el lucro sobre la vida humana."</div>
+        <div class="cita-ref">Manual de la PLAPA, §11.8.4 — La voz profética y la incidencia en las políticas públicas (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">La voz profética institucional no reemplaza al agente de base ni compite con él. La cadena funciona en las dos direcciones: <em>los agentes suben información al episcopado; el episcopado baja respaldo a los agentes</em>. Un obispo que denuncia sin escuchar al territorio queda vacío; un agente que denuncia sin respaldo del episcopado queda expuesto. La articulación —no la sustitución— es la clave.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Cierre del itinerario · Autocuidado del agente</div>
+        <div class="autocuidado-txt">El itinerario cierra con la pregunta que fundó al profeta Miqueas: <em>¿qué pide de mí el Señor en este territorio concreto, con esta estructura de pecado concreta?</em> La respuesta no es igual para todos: depende del rol, del lugar, de los recursos disponibles. El agente que puede responder esa pregunta con honestidad —sin voluntarismo ni resignación— tiene la claridad que necesita para actuar. Ni todo depende de mí, ni nada depende de mí. Ese equilibrio es la salud espiritual del profeta.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §11.8.4 (La voz profética y la incidencia en las políticas públicas), §11.8 (Pastoral Nacional), §11.9 (PLAPA), §13.5 (Mecanismos de colaboración), §13.8 (Dimensión profética e incidencia política) — CELAM 2026.</div>
+    </div>
+  </div>
 
 </div>
 
 <script>
-function show(n,btn){
-  for(let i=1;i<=4;i++) document.getElementById('m'+i).classList.remove('active');
-  document.querySelectorAll('.btn').forEach(b=>b.classList.remove('on'));
-  document.getElementById('m'+n).classList.add('active');
-  btn.classList.add('on');
-}
+  function setMode(mode, btn) {
+    var root = document.querySelector('.root');
+    root.classList.remove('mode-grupal', 'mode-individual');
+    root.classList.add('mode-' + mode);
+    var buttons = document.querySelectorAll('.mode-btn');
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].classList.remove('on');
+    }
+    btn.classList.add('on');
+  }
+
+  function show(n, btn) {
+    for (var i = 1; i <= 4; i++) {
+      document.getElementById('m' + i).classList.remove('active');
+    }
+    document.querySelectorAll('.nav .btn').forEach(function(b) {
+      b.classList.remove('on');
+    });
+    document.getElementById('m' + n).classList.add('active');
+    btn.classList.add('on');
+    if (window.innerWidth < 640) {
+      document.getElementById('m' + n).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
 </script>
+
+</body>
+</html>
