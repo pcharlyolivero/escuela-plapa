@@ -3,6 +3,21 @@
 <head>
 <meta charset="utf-8">
 <title>Itinerario 5 · Magisterio y Adicciones · Escuela PLAPA</title>
+<script>
+  // ═══ GUARD DE SESIÓN ═══════════════════════════════════
+  (function() {
+    try {
+      var stored = localStorage.getItem('escuela_plapa_sesion');
+      var sesion = stored ? JSON.parse(stored) : null;
+      if (!sesion || !sesion.token) {
+        var currentFile = window.location.pathname.split('/').pop() || 'index.html';
+        window.location.replace('login.html?next=' + encodeURIComponent(currentFile));
+      }
+    } catch (e) {
+      window.location.replace('login.html');
+    }
+  })();
+</script>
 <style>
   :root {
     /* Paleta burgundy PLAPA — Itinerario 5 */
@@ -32,7 +47,8 @@
     background: #E9E2E5;
     padding: 2rem 1rem;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     font-family: var(--font-sans);
     color: var(--texto);
     line-height: 1.6;
@@ -142,6 +158,103 @@
     font-weight: 600;
     padding: 9px 15px;
   }
+  .btn.btn-alt {
+    background: var(--i5-crema);
+    color: var(--i5-medio);
+    border-color: var(--i5-claro);
+  }
+  .btn.btn-alt:hover {
+    background: var(--i5-claro);
+    color: var(--i5-oscuro);
+  }
+  .btn.btn-alt.on {
+    background: var(--i5-medio);
+    border-color: var(--i5-oscuro);
+    color: #FFFFFF;
+  }
+  .nav-sep {
+    display: inline-block;
+    width: 1px;
+    background: var(--borde);
+    margin: 0 6px;
+    align-self: stretch;
+  }
+
+  /* ─── HEADER SUPERIOR ─────────────────────────────────── */
+  .top-header {
+    background: #FFFFFF;
+    border-bottom: 1px solid var(--borde);
+    padding: 0.85rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    max-width: 860px;
+    width: 100%;
+    margin: 0 auto 1rem;
+    border-radius: 10px;
+  }
+  .top-logo {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--i5-oscuro);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .top-logo:hover { color: var(--i5-medio); }
+  .top-right { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
+  .top-link {
+    font-size: 0.88rem;
+    color: var(--texto-2);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.15s;
+  }
+  .top-link:hover { background: var(--i5-crema); color: var(--i5-oscuro); }
+  .top-user {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 10px 5px 5px;
+    background: var(--i5-crema);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: var(--i5-oscuro);
+  }
+  .top-user-icon {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--i5-accent);
+    color: #FFF;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .top-user-nombre {
+    font-weight: 500;
+    max-width: 140px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .top-logout {
+    background: transparent;
+    border: none;
+    color: var(--texto-3);
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-family: var(--font-sans);
+    padding: 6px 10px;
+    border-radius: 6px;
+    transition: all 0.15s;
+  }
+  .top-logout:hover { color: var(--alerta); background: var(--alerta-bg); }
 
   /* ─── MÓDULOS ────────────────────────────────────────── */
   .card {
@@ -538,6 +651,415 @@
     border-top: 1px dashed var(--borde);
   }
 
+  /* ─── FORO / MURO DEL CAMINO ─────────────────────────── */
+  .foro-vista {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 1.5rem;
+    background: var(--i5-crema);
+    padding: 6px;
+    border-radius: 10px;
+    max-width: max-content;
+    flex-wrap: wrap;
+  }
+  .foro-vista-btn {
+    border: none;
+    background: transparent;
+    color: var(--texto-2);
+    padding: 8px 16px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .foro-vista-btn.on { background: var(--i5-medio); color: #FFF; font-weight: 600; }
+
+  .foro-pautas {
+    background: var(--alerta-bg);
+    border-left: 4px solid var(--alerta);
+    padding: 1.15rem 1.35rem;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 1.75rem;
+  }
+  .foro-pautas-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--alerta);
+    margin-bottom: 8px;
+  }
+  .foro-pautas-lbl::before { content: '† '; }
+  .foro-pautas ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+  .foro-pautas li {
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    padding-left: 14px;
+    position: relative;
+  }
+  .foro-pautas li::before {
+    content: '·';
+    position: absolute;
+    left: 4px;
+    color: var(--alerta);
+    font-weight: 700;
+  }
+
+  .foro-form {
+    background: var(--i5-fondo);
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .foro-form-lbl {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--i5-oscuro);
+    margin-bottom: 12px;
+  }
+  .foro-form-row { display: flex; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+  .foro-form-row label {
+    font-size: 12.5px;
+    color: var(--texto-2);
+    align-self: center;
+    font-weight: 500;
+  }
+  .foro-form select {
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    padding: 7px 10px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+    cursor: pointer;
+  }
+  .foro-form textarea {
+    width: 100%;
+    min-height: 90px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+    resize: vertical;
+    line-height: 1.55;
+    margin-bottom: 10px;
+  }
+  .foro-form textarea:focus, .foro-form select:focus {
+    outline: none;
+    border-color: var(--i5-medio);
+  }
+  .foro-form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .foro-form-info { font-size: 11.5px; color: var(--texto-3); font-style: italic; }
+  .foro-btn {
+    background: var(--i5-medio);
+    color: #FFF;
+    border: none;
+    border-radius: 7px;
+    padding: 9px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    transition: background 0.18s;
+  }
+  .foro-btn:hover { background: var(--i5-oscuro); }
+  .foro-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .foro-lista { display: flex; flex-direction: column; gap: 14px; }
+  .foro-vacio {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: var(--texto-3);
+    font-size: 13.5px;
+    font-style: italic;
+    background: var(--i5-crema);
+    border-radius: 10px;
+  }
+  .comment {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-left: 3px solid var(--i5-claro);
+    border-radius: 10px;
+    padding: 1rem 1.15rem;
+  }
+  .comment-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .comment-autor { font-size: 13.5px; font-weight: 600; color: var(--i5-oscuro); }
+  .comment-pais { font-size: 12px; color: var(--i5-medio); font-weight: 500; }
+  .comment-pais::before { content: ' · '; color: var(--texto-3); }
+  .comment-modulo {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: var(--i5-crema);
+    color: var(--i5-medio);
+    margin-left: 6px;
+  }
+  .comment-fecha { font-size: 11.5px; color: var(--texto-3); }
+  .comment-texto {
+    font-size: 14px;
+    color: var(--texto);
+    line-height: 1.65;
+    margin-bottom: 10px;
+    white-space: pre-wrap;
+  }
+  .comment-actions { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+  .react-btn {
+    background: var(--i5-crema);
+    border: 1px solid transparent;
+    border-radius: 99px;
+    padding: 4px 10px;
+    font-size: 12.5px;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    color: var(--texto-2);
+    transition: all 0.15s;
+  }
+  .react-btn:hover { background: var(--i5-claro); }
+  .react-btn.on {
+    background: var(--i5-claro);
+    color: var(--i5-oscuro);
+    border-color: var(--i5-medio);
+    font-weight: 600;
+  }
+  .react-count { margin-left: 4px; font-weight: 600; }
+  .reply-btn {
+    background: transparent;
+    border: none;
+    color: var(--i5-medio);
+    font-size: 12.5px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    margin-left: auto;
+    font-family: var(--font-sans);
+  }
+  .reply-btn:hover { background: var(--i5-crema); color: var(--i5-oscuro); }
+  .comment-replies {
+    margin-top: 12px;
+    padding-left: 1rem;
+    border-left: 2px dashed var(--borde);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .reply {
+    background: var(--i5-fondo);
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+  }
+  .reply-form {
+    background: var(--i5-crema);
+    border-radius: 8px;
+    padding: 0.8rem;
+    margin-top: 10px;
+    display: none;
+  }
+  .reply-form.on { display: block; }
+  .reply-form textarea {
+    width: 100%;
+    min-height: 60px;
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    resize: vertical;
+    background: #FFF;
+    margin-bottom: 8px;
+  }
+  .reply-form-actions { display: flex; gap: 6px; justify-content: flex-end; }
+  .reply-form-cancel {
+    background: transparent;
+    border: 1px solid var(--borde);
+    color: var(--texto-2);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 12.5px;
+    cursor: pointer;
+    font-family: var(--font-sans);
+  }
+
+  /* ─── EVALUACIÓN (M6) ────────────────────────────────── */
+  .eval-nota {
+    background: var(--i5-crema);
+    border-left: 4px solid var(--i5-medio);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+  .eval-nota-lbl {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i5-medio);
+    margin-bottom: 6px;
+  }
+  .eval-nota-txt strong { color: var(--i5-oscuro); }
+  .eval-nota-txt em { color: var(--i5-medio); font-style: italic; }
+
+  .eval-q { margin-bottom: 1.5rem; }
+  .eval-q > label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--i5-oscuro);
+    margin-bottom: 8px;
+    line-height: 1.55;
+  }
+  .eval-q textarea {
+    width: 100%;
+    min-height: 100px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+    resize: vertical;
+    line-height: 1.6;
+    transition: border-color 0.15s;
+  }
+  .eval-q textarea:focus, .eval-q input:focus {
+    outline: none;
+    border-color: var(--i5-medio);
+    box-shadow: 0 0 0 3px rgba(114, 36, 62, 0.1);
+  }
+  .eval-q input[type="date"] {
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 9px 12px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+  }
+  .eval-fecha { max-width: 320px; }
+
+  .eval-scale-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .eval-radio { flex: 1; min-width: 55px; cursor: pointer; position: relative; }
+  .eval-radio input { position: absolute; opacity: 0; pointer-events: none; }
+  .eval-radio span {
+    display: block;
+    text-align: center;
+    padding: 12px 8px;
+    background: var(--i5-crema);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    color: var(--i5-medio);
+    font-size: 15px;
+    transition: all 0.15s;
+  }
+  .eval-radio:hover span { background: var(--i5-claro); }
+  .eval-radio input:checked + span {
+    background: var(--i5-medio);
+    border-color: var(--i5-oscuro);
+    color: #FFF;
+  }
+
+  .eval-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: var(--i5-crema);
+    border: 1px solid var(--i5-claro);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+  .eval-check input {
+    margin-top: 4px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--i5-medio);
+    flex-shrink: 0;
+  }
+  .eval-check label { font-size: 13.5px; color: var(--texto-2); cursor: pointer; }
+  .eval-check label strong { color: var(--i5-oscuro); }
+  .eval-check label em { color: var(--i5-medio); font-style: italic; }
+
+  .eval-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 1rem; }
+  .eval-btn-guardar { background: var(--i5-oscuro); }
+  .eval-btn-guardar:hover { background: var(--i5-medio); }
+  .eval-btn-imprimir {
+    background: transparent;
+    color: var(--i5-medio);
+    border: 1px solid var(--i5-medio);
+  }
+  .eval-btn-imprimir:hover { background: var(--i5-crema); color: var(--i5-oscuro); }
+
+  .eval-msg {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    display: none;
+    margin-bottom: 1rem;
+  }
+  .eval-msg.on { display: block; }
+  .eval-msg.exito {
+    background: var(--i5-crema);
+    color: var(--i5-oscuro);
+    border-left: 3px solid var(--i5-medio);
+  }
+  .eval-msg.error {
+    background: var(--alerta-bg);
+    color: var(--alerta);
+    border-left: 3px solid var(--alerta);
+  }
+
+  @media print {
+    body { background: #FFF; padding: 0; }
+    .root { box-shadow: none; padding: 1rem; max-width: 100%; }
+    .top-header, .portada, .nav { display: none !important; }
+    .card { display: none !important; }
+    #m6.card { display: block !important; break-inside: avoid; border: none; }
+    .eval-actions, .eval-msg { display: none !important; }
+    .ch { background: transparent; }
+    .eval-q textarea, .eval-q input[type="date"] {
+      border: none;
+      border-bottom: 1px solid #999;
+      border-radius: 0;
+      background: transparent;
+    }
+  }
+
   /* ─── RESPONSIVE ─────────────────────────────────────── */
   @media (max-width: 640px) {
     body { padding: 1rem 0.5rem; }
@@ -549,10 +1071,30 @@
     .cb { padding: 1.25rem; }
     .papa-grid, .ejes { grid-template-columns: 1fr; }
     .btn { flex: 1 1 100%; }
+    .top-header { padding: 0.75rem 1rem; }
+    .top-user-nombre { max-width: 90px; }
+    .top-link { font-size: 0.82rem; padding: 5px 8px; }
+    .foro-vista { max-width: 100%; flex-direction: column; align-items: stretch; }
+    .foro-vista-btn { text-align: center; }
+    .comment-head { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .reply-btn { margin-left: 0; }
   }
 </style>
 </head>
 <body>
+
+<!-- ═══ HEADER SUPERIOR ═════════════════════════════════ -->
+<header class="top-header">
+  <a href="index.html" class="top-logo">Escuela PLAPA</a>
+  <div class="top-right">
+    <a href="catalogo_30_itinerarios_plapa_corregido.html" class="top-link">← Catálogo</a>
+    <div class="top-user" id="topUser" style="display:none;">
+      <span class="top-user-icon" id="topUserIcon">?</span>
+      <span class="top-user-nombre" id="topUserNombre">—</span>
+    </div>
+    <button class="top-logout" onclick="cerrarSesion()" title="Cerrar sesión">Salir</button>
+  </div>
+</header>
 
 <div class="root">
 
@@ -592,10 +1134,37 @@
 
   <!-- ═══ NAVEGACIÓN ══════════════════════════════════════ -->
   <div class="nav">
-    <button class="btn on" onclick="show(1,this)">Módulo 1 · Raíz Antropológica</button>
+    <button class="btn on" onclick="show(0,this)">▶ Video introductorio</button>
+    <button class="btn" onclick="show(1,this)">Módulo 1 · Raíz Antropológica</button>
     <button class="btn" onclick="show(2,this)">Módulo 2 · Crisis Sistémica</button>
     <button class="btn" onclick="show(3,this)">Módulo 3 · Ética del Cuidado</button>
     <button class="btn" onclick="show(4,this)">Módulo 4 · Dimensión Profética</button>
+    <span class="nav-sep" aria-hidden="true"></span>
+    <button class="btn btn-alt" onclick="show(5,this)">🌱 Muro del camino</button>
+    <button class="btn btn-alt" onclick="show(6,this)">✍ Evaluación</button>
+  </div>
+
+  <!-- ═══ VIDEO INTRODUCTORIO ═════════════════════════════ -->
+  <div id="m0" class="card active">
+    <div class="ch">
+      <span class="cn">Presentación audiovisual</span>
+      <div class="ct">Video introductorio al itinerario</div>
+      <div class="cs">Una aproximación al Magisterio de la Iglesia sobre las adicciones · Recomendado antes de comenzar los módulos</div>
+    </div>
+    <div class="cb">
+      <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; background: #000;">
+        <iframe
+          src="https://www.youtube.com/embed/_O1UCbxZ1vA" 
+          title="Video introductorio del Itinerario 5"
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <p style="font-size: 13.5px; color: var(--texto-2); line-height: 1.65; margin-top: 1.5rem;">
+        Este video ofrece una síntesis pastoral del itinerario que vas a recorrer. Verlo antes ayuda a situar el marco teológico general; volver a verlo al terminar el Módulo 4 permite integrar lo trabajado con una nueva mirada.
+      </p>
+    </div>
   </div>
 
   <!-- ═══ MÓDULO 1 ════════════════════════════════════════ -->
@@ -956,20 +1525,433 @@
     </div>
   </div>
 
+  <!-- ═══ MÓDULO 5 · MURO DEL CAMINO (FORO) ═══════════════ -->
+  <div id="m5" class="card">
+    <div class="ch">
+      <span class="cn">Espacio comunitario · Muro</span>
+      <div class="ct">Voces de quienes también recorren este itinerario</div>
+      <div class="cs">El Manual crece con quienes lo caminan · §13.3, §13.5</div>
+    </div>
+    <div class="cb">
+
+      <div class="foro-vista">
+        <button class="foro-vista-btn on" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
+        <button class="foro-vista-btn" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
+      </div>
+
+      <div class="foro-pautas">
+        <div class="foro-pautas-lbl">Antes de publicar</div>
+        <ul>
+          <li>Compartí solo experiencias propias o del equipo. No expongas historias ajenas ni datos que identifiquen a terceras personas.</li>
+          <li>Cuidá a quien lea después: evitá descripciones que puedan retraumatizar.</li>
+          <li>Tu aporte será revisado por el equipo PLAPA antes de publicarse.</li>
+        </ul>
+      </div>
+
+      <div class="foro-form" id="foroForm">
+        <div class="foro-form-lbl">Dejar mi palabra</div>
+        <div class="foro-form-row">
+          <label for="foroModulo">¿Sobre qué momento del itinerario?</label>
+          <select id="foroModulo">
+            <option value="">General del itinerario</option>
+            <option value="1">Módulo 1 · Raíz Antropológica</option>
+            <option value="2">Módulo 2 · Crisis Sistémica</option>
+            <option value="3">Módulo 3 · Ética del Cuidado</option>
+            <option value="4">Módulo 4 · Dimensión Profética</option>
+          </select>
+        </div>
+        <textarea id="foroTexto" placeholder="Escribí tu comentario, pregunta o testimonio de camino..."></textarea>
+        <div class="foro-form-actions">
+          <div class="foro-form-info">Aparecerá en el muro luego de la revisión del equipo.</div>
+          <button class="foro-btn" id="foroEnviar" onclick="enviarComentario()">Enviar para revisión</button>
+        </div>
+      </div>
+
+      <div class="foro-lista" id="foroLista">
+        <div class="foro-vacio">Cargando el muro...</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 6 · EVALUACIÓN ══════════════════════════ -->
+  <div id="m6" class="card">
+    <div class="ch">
+      <span class="cn">Cierre del itinerario · Evaluación</span>
+      <div class="ct">Revisión de vida en clave Ver–Juzgar–Actuar</div>
+      <div class="cs">No es un examen: es un discernimiento sobre lo que el Magisterio te confrontó</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Antes de comenzar</div>
+        <div class="resonancia-txt">"El Magisterio de la Iglesia sobre las adicciones no es un archivo doctrinal: es una palabra viva que pide ser encarnada en tu territorio. De Juan Pablo II a León XIV, del <em>Evangelium Vitae</em> al <em>Dilexi te</em>, la línea es la misma: la persona antes que la sustancia, la reintegración antes que la reinserción, la voz profética antes que la neutralidad técnica. Este es el momento de nombrar dónde el itinerario tocó tu práctica —y dónde te desafía a fundamentar mejor lo que ya hacés." Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
+      </div>
+
+      <div class="eval-nota">
+        <span class="eval-nota-lbl">🕊 Uso pastoral</span>
+        <div class="eval-nota-txt">Esta evaluación es <strong>tuya</strong>. Podés guardarla en tu bitácora personal (queda solo con vos) y, si lo decidís, compartirla con el equipo PLAPA como aporte al <em>rolling release</em> del Manual (§13.5). Compartir es voluntario.</div>
+      </div>
+
+      <div class="pl">El Ver — Qué se hizo visible</div>
+      <div class="eval-q">
+        <label for="evalVer">¿Qué texto del Magisterio (encíclica, discurso, documento) te confrontó con más fuerza en este itinerario? ¿Qué realidad de tu propia práctica pastoral se hizo más visible al leerlo?</label>
+        <textarea id="evalVer" data-eval="ver" placeholder="Escribí con calma, sin apurarte..."></textarea>
+      </div>
+
+      <div class="pl">El Juzgar — Qué iluminó, qué preguntas quedaron abiertas</div>
+      <div class="eval-q">
+        <label for="evalJuzgar1">De la línea de continuidad del Magisterio (Juan Pablo II, Francisco, León XIV), del paso de la reinserción a la reintegración (§5.7), de la voz profética continental: ¿qué te iluminó de manera nueva? ¿Qué idea sentís que ya no podrás dejar de lado?</label>
+        <textarea id="evalJuzgar1" data-eval="juzgar1" placeholder="Nombralo con precisión..."></textarea>
+      </div>
+      <div class="eval-q">
+        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos? La tensión entre la posición de la Iglesia y las políticas públicas de reducción de daños, entre la doctrina y las prácticas de campo, entre lo que decís cuando te consultan y lo que hacés cuando acompañás — ¿dónde te dejaron incómodo/a? Las preguntas abiertas son también fruto (§13.3).</label>
+        <textarea id="evalJuzgar2" data-eval="juzgar2" placeholder="Las que siguen ardiendo..."></textarea>
+      </div>
+
+      <div class="pl">El Actuar — Compromiso concreto</div>
+      <div class="eval-q">
+        <label for="evalActuar">¿Qué gesto pastoral concreto vas a intentar en las próximas semanas a partir de lo caminado? Puede ser una formación al equipo con un texto magisterial específico, una intervención pública fundamentada, una respuesta preparada para las consultas frecuentes que recibís. Nombralo con nombre, tiempo y lugar. Un compromiso vago no es un compromiso.</label>
+        <textarea id="evalActuar" data-eval="actuar" placeholder="Ej.: El próximo encuentro de formación de agentes (jueves 21), voy a leer con el equipo el discurso de León XIV del 26 de junio de 2025 y a discutir qué de nuestra intervención en el centro barrial cambia a partir de ahí..."></textarea>
+      </div>
+      <div class="eval-q eval-fecha">
+        <label for="evalFecha">Fecha en la que vas a volver a revisar si pudiste sostenerlo</label>
+        <input type="date" id="evalFecha" data-eval="fecha_revision">
+      </div>
+
+      <div class="pl">Autocuidado y equipo</div>
+      <div class="eval-q eval-scale">
+        <label>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</label>
+        <div class="eval-scale-row">
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="1" data-eval="animo"><span>1</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="2" data-eval="animo"><span>2</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="3" data-eval="animo"><span>3</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="4" data-eval="animo"><span>4</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="5" data-eval="animo"><span>5</span></label>
+        </div>
+      </div>
+      <div class="eval-q">
+        <label for="evalCuidado">Trabajar el Magisterio en clave pastoral tiene una fatiga específica: la de sostener una palabra doctrinal exigente en medio de prácticas de campo que no siempre la reflejan, y la de responder por la Iglesia cuando te toca representarla. ¿Cómo vas a cuidarte de eso? ¿A quién del equipo se lo vas a decir?</label>
+        <textarea id="evalCuidado" data-eval="cuidado" placeholder="El agente que cuida su esperanza puede sostener la del otro..."></textarea>
+      </div>
+
+      <div class="pl">Cierre</div>
+
+      <div class="eval-check">
+        <input type="checkbox" id="evalCompartir">
+        <label for="evalCompartir"><strong>Compartir con el equipo PLAPA</strong> como aporte al <em>rolling release</em> del Manual. Solo se envían tus respuestas si marcás esta casilla. Si no la marcás, la evaluación queda solo en tu bitácora.</label>
+      </div>
+
+      <div class="eval-actions">
+        <button class="foro-btn eval-btn-guardar" onclick="guardarEvaluacion()">Guardar en mi bitácora</button>
+        <button class="foro-btn eval-btn-imprimir" onclick="imprimirEvaluacion()">🖨 Imprimir / PDF</button>
+      </div>
+
+      <div id="evalMsg" class="eval-msg"></div>
+
+      <div class="autocuidado" style="margin-top: 2rem;">
+        <div class="autocuidado-lbl">Cierre del itinerario</div>
+        <div class="autocuidado-txt">Cerrar bien un itinerario también es autocuidado: celebrar lo caminado, agradecer al equipo, reconocer los propios límites y renovar la esperanza. Este itinerario termina con gratitud: por la línea del Magisterio que nos precede, por las palabras que ya no vamos a poder ignorar, por el equipo que hizo posible fundamentar lo que la práctica ya sabía.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §5.1–5.10 (Capítulo 5 completo: Magisterio y Adicciones), §13.2 (Sinodalidad), §13.3 (Rolling release), §13.5 (Mecanismos de colaboración), §13.8 (Dimensión profética) · Evangelium Vitae · Familiaris Consortio · Catecismo de la Iglesia Católica · Iglesia, droga y toxicomanía (2001) · Discursos de Francisco · León XIV (26 de junio de 2025) · Dilexi te (4 de octubre de 2025) · Magnifica Humanitas (25 de mayo de 2026) — CELAM 2026.</div>
+
+    </div>
+  </div>
+
 </div>
 
 <script>
   function show(n, btn) {
-    for (let i = 1; i <= 4; i++) {
-      document.getElementById('m' + i).classList.remove('active');
+    for (let i = 0; i <= 6; i++) {
+      var el = document.getElementById('m' + i);
+      if (el) el.classList.remove('active');
     }
-    document.querySelectorAll('.btn').forEach(b => b.classList.remove('on'));
+    document.querySelectorAll('.nav .btn').forEach(function(b) { b.classList.remove('on'); });
     document.getElementById('m' + n).classList.add('active');
     btn.classList.add('on');
     if (window.innerWidth < 640) {
       document.getElementById('m' + n).scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+    if (n === 5 && typeof cargarComentarios === 'function') cargarComentarios();
+    if (n === 6 && typeof restaurarEvaluacion === 'function') restaurarEvaluacion();
   }
+
+  // ═══ MURO DEL CAMINO — FORO SUPABASE ══════════════════
+  var SUPABASE_URL = 'https://TU-PROYECTO.supabase.co';  // TODO: config
+  var SUPABASE_ANON_KEY = 'TU_ANON_KEY';                  // TODO: config
+  var ITINERARIO_ID = 'itinerario_5_magisterio';
+  var ITINERARIO_TITULO = 'Magisterio y Adicciones';
+
+  var vistaForo = 'itinerario';
+  var sesion = null;
+  var EMOJIS = ['🙏', '❤️', '💡', '🕊️'];
+
+  function supaHeaders() {
+    var h = { 'apikey': SUPABASE_ANON_KEY, 'Content-Type': 'application/json' };
+    if (sesion && sesion.token) { h['Authorization'] = 'Bearer ' + sesion.token; }
+    return h;
+  }
+
+  function escapeHtml(s) {
+    if (!s) return '';
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+  }
+
+  function formatFecha(iso) {
+    if (!iso) return '';
+    try {
+      var d = new Date(iso);
+      return d.toLocaleDateString('es', { day:'numeric', month:'short', year:'numeric' });
+    } catch (e) { return ''; }
+  }
+
+  function cargarComentarios() {
+    var contenedor = document.getElementById('foroLista');
+    contenedor.innerHTML = '<div class="foro-vacio">Cargando el muro...</div>';
+    fetch(SUPABASE_URL + '/rest/v1/rpc/comentarios_para_itinerario', {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({ p_itinerario: ITINERARIO_ID, p_scope: vistaForo })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) { renderComentarios(data || []); })
+    .catch(function() {
+      contenedor.innerHTML = '<div class="foro-vacio">No se pudo cargar el muro. Intentá de nuevo más tarde.</div>';
+    });
+  }
+
+  function renderComentarios(comentarios) {
+    var contenedor = document.getElementById('foroLista');
+    if (!comentarios || comentarios.length === 0) {
+      contenedor.innerHTML = '<div class="foro-vacio">Aún no hay palabras publicadas en este muro. Podés ser vos quien empiece la conversación.</div>';
+      return;
+    }
+    var raices = comentarios.filter(function(c) { return !c.parent_id; });
+    var respuestasPor = {};
+    comentarios.filter(function(c) { return c.parent_id; }).forEach(function(c) {
+      if (!respuestasPor[c.parent_id]) respuestasPor[c.parent_id] = [];
+      respuestasPor[c.parent_id].push(c);
+    });
+    contenedor.innerHTML = raices.map(function(c) {
+      return renderComment(c, respuestasPor[c.id] || []);
+    }).join('');
+  }
+
+  function renderComment(c, respuestas) {
+    var modLbl = c.modulo ? '<span class="comment-modulo">Módulo ' + c.modulo + '</span>' : '';
+    var paisLbl = c.pais ? '<span class="comment-pais">' + escapeHtml(c.pais) + '</span>' : '';
+    var globalLbl = (vistaForo === 'global' && c.itinerario_titulo)
+      ? '<span class="comment-modulo">' + escapeHtml(c.itinerario_titulo) + '</span>' : '';
+    var reacciones = c.reacciones || {};
+    var misReacc = c.mis_reacciones || [];
+    var reaccBtns = EMOJIS.map(function(e) {
+      var count = reacciones[e] || 0;
+      var mine = misReacc.indexOf(e) >= 0;
+      return '<button class="react-btn ' + (mine?'on':'') + '" onclick="toggleReaccion(\'' + c.id + '\', \'' + e + '\')">' + e + (count>0 ? '<span class="react-count">' + count + '</span>' : '') + '</button>';
+    }).join('');
+    var respuestasHtml = respuestas.length
+      ? '<div class="comment-replies">' + respuestas.map(renderReply).join('') + '</div>' : '';
+    return '<div class="comment" id="c-' + c.id + '">' +
+        '<div class="comment-head">' +
+          '<div><span class="comment-autor">' + escapeHtml(c.autor_nombre || 'Anónimo') + '</span>' + paisLbl + modLbl + globalLbl + '</div>' +
+          '<span class="comment-fecha">' + formatFecha(c.created_at) + '</span>' +
+        '</div>' +
+        '<div class="comment-texto">' + escapeHtml(c.texto) + '</div>' +
+        '<div class="comment-actions">' + reaccBtns +
+          '<button class="reply-btn" onclick="toggleReplyForm(\'' + c.id + '\')">↩ Responder</button>' +
+        '</div>' +
+        '<div class="reply-form" id="rf-' + c.id + '">' +
+          '<textarea placeholder="Escribí tu respuesta..." id="rt-' + c.id + '"></textarea>' +
+          '<div class="reply-form-actions">' +
+            '<button class="reply-form-cancel" onclick="toggleReplyForm(\'' + c.id + '\')">Cancelar</button>' +
+            '<button class="foro-btn" onclick="enviarRespuestaDesde(\'' + c.id + '\')">Enviar</button>' +
+          '</div>' +
+        '</div>' + respuestasHtml + '</div>';
+  }
+
+  function renderReply(r) {
+    var paisLbl = r.pais ? '<span class="comment-pais">' + escapeHtml(r.pais) + '</span>' : '';
+    return '<div class="reply"><div class="comment-head">' +
+        '<div><span class="comment-autor">' + escapeHtml(r.autor_nombre || 'Anónimo') + '</span>' + paisLbl + '</div>' +
+        '<span class="comment-fecha">' + formatFecha(r.created_at) + '</span></div>' +
+      '<div class="comment-texto">' + escapeHtml(r.texto) + '</div></div>';
+  }
+
+  function enviarComentario() {
+    if (!sesion) { window.location.href = 'login.html'; return; }
+    var texto = document.getElementById('foroTexto').value.trim();
+    var modulo = document.getElementById('foroModulo').value;
+    if (!texto) return;
+    var btn = document.getElementById('foroEnviar');
+    btn.disabled = true; btn.textContent = 'Enviando...';
+    fetch(SUPABASE_URL + '/rest/v1/foro_comentarios', {
+      method: 'POST', headers: supaHeaders(),
+      body: JSON.stringify({
+        itinerario_id: ITINERARIO_ID, parent_id: null,
+        modulo: modulo ? parseInt(modulo) : null, texto: texto
+      })
+    })
+    .then(function() {
+      document.getElementById('foroTexto').value = '';
+      document.getElementById('foroModulo').value = '';
+      btn.textContent = '✓ Enviado — pendiente de revisión';
+      setTimeout(function() { btn.textContent = 'Enviar para revisión'; btn.disabled = false; }, 3000);
+    })
+    .catch(function() { btn.textContent = 'Error al enviar'; btn.disabled = false; });
+  }
+
+  function enviarRespuestaDesde(parentId) {
+    if (!sesion) { window.location.href = 'login.html'; return; }
+    var textarea = document.getElementById('rt-' + parentId);
+    var texto = textarea.value.trim();
+    if (!texto) return;
+    fetch(SUPABASE_URL + '/rest/v1/foro_comentarios', {
+      method: 'POST', headers: supaHeaders(),
+      body: JSON.stringify({ itinerario_id: ITINERARIO_ID, parent_id: parentId, texto: texto })
+    })
+    .then(function() {
+      textarea.value = '';
+      document.getElementById('rf-' + parentId).classList.remove('on');
+      alert('Tu respuesta será revisada por el equipo antes de publicarse.');
+    })
+    .catch(function() { alert('Error al enviar la respuesta.'); });
+  }
+
+  function toggleReaccion(comentarioId, emoji) {
+    if (!sesion) { window.location.href = 'login.html'; return; }
+    fetch(SUPABASE_URL + '/rest/v1/rpc/toggle_reaccion', {
+      method: 'POST', headers: supaHeaders(),
+      body: JSON.stringify({ p_comentario: comentarioId, p_emoji: emoji })
+    })
+    .then(function() { cargarComentarios(); }).catch(function() {});
+  }
+
+  function toggleReplyForm(id) {
+    if (!sesion) { window.location.href = 'login.html'; return; }
+    document.getElementById('rf-' + id).classList.toggle('on');
+  }
+
+  function setVistaForo(v, btn) {
+    vistaForo = v;
+    document.querySelectorAll('.foro-vista-btn').forEach(function(b) { b.classList.remove('on'); });
+    btn.classList.add('on');
+    cargarComentarios();
+  }
+
+  // ═══ EVALUACIÓN — REVISIÓN DE VIDA VJA ═════════════════
+  var EVAL_STORAGE_KEY = 'eval_' + ITINERARIO_ID;
+
+  function recolectarEvaluacion() {
+    var datos = {};
+    document.querySelectorAll('[data-eval]').forEach(function(el) {
+      var key = el.getAttribute('data-eval');
+      if (el.type === 'radio') { if (el.checked) datos[key] = el.value; }
+      else { datos[key] = el.value; }
+    });
+    datos.compartir_con_equipo = document.getElementById('evalCompartir').checked;
+    return datos;
+  }
+
+  function autoguardarBorrador() {
+    try { localStorage.setItem(EVAL_STORAGE_KEY, JSON.stringify(recolectarEvaluacion())); } catch (e) {}
+  }
+
+  function restaurarEvaluacion() {
+    try {
+      var stored = localStorage.getItem(EVAL_STORAGE_KEY);
+      if (!stored) return;
+      var datos = JSON.parse(stored);
+      document.querySelectorAll('[data-eval]').forEach(function(el) {
+        var key = el.getAttribute('data-eval');
+        if (datos[key] == null) return;
+        if (el.type === 'radio') { if (el.value === datos[key]) el.checked = true; }
+        else { el.value = datos[key]; }
+      });
+      if (datos.compartir_con_equipo) { document.getElementById('evalCompartir').checked = true; }
+    } catch (e) {}
+  }
+
+  function mostrarEvalMsg(texto, tipo) {
+    var el = document.getElementById('evalMsg');
+    el.className = 'eval-msg on ' + (tipo || 'exito');
+    el.textContent = texto;
+    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function guardarEvaluacion() {
+    var datos = recolectarEvaluacion();
+    var minimoTexto = (datos.ver || '').trim() + (datos.actuar || '').trim();
+    if (minimoTexto.length < 30) {
+      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos "El Ver" y "El Actuar" merecen unos renglones honestos.', 'error');
+      return;
+    }
+    if (!sesion) { window.location.href = 'login.html'; return; }
+    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario', {
+      method: 'POST',
+      headers: Object.assign({}, supaHeaders(), { 'Prefer': 'resolution=merge-duplicates' }),
+      body: JSON.stringify({
+        itinerario_id: ITINERARIO_ID,
+        respuestas: datos,
+        compartir_con_equipo: datos.compartir_con_equipo === true
+      })
+    })
+    .then(function(r) {
+      if (r.ok) {
+        var msg = datos.compartir_con_equipo
+          ? '✓ Evaluación guardada en tu bitácora y compartida con el equipo PLAPA. Gracias por el aporte.'
+          : '✓ Evaluación guardada en tu bitácora. Queda solo con vos.';
+        mostrarEvalMsg(msg, 'exito');
+      } else {
+        mostrarEvalMsg('Guardado localmente. No pudimos sincronizar con la Escuela — reintentá más tarde.', 'error');
+      }
+    })
+    .catch(function() {
+      mostrarEvalMsg('Guardado localmente. Sin conexión con la Escuela — reintentá cuando tengas internet.', 'error');
+    });
+  }
+
+  function imprimirEvaluacion() {
+    autoguardarBorrador();
+    window.print();
+  }
+
+  // ═══ HEADER: USUARIO Y CERRAR SESIÓN ══════════════════
+  function actualizarHeaderUsuario() {
+    if (!sesion || !sesion.nombre) return;
+    var nombre = sesion.nombre.trim();
+    if (!nombre) return;
+    var partes = nombre.split(/\s+/);
+    var iniciales = (partes[0][0] || '') + (partes.length > 1 ? (partes[partes.length-1][0] || '') : '');
+    document.getElementById('topUserIcon').textContent = iniciales.toUpperCase();
+    document.getElementById('topUserNombre').textContent = nombre.split(' ')[0];
+    document.getElementById('topUserNombre').title = nombre;
+    document.getElementById('topUser').style.display = 'flex';
+  }
+
+  function cerrarSesion() {
+    if (!confirm('¿Cerrar sesión y volver al ingreso?')) return;
+    try { localStorage.removeItem('escuela_plapa_sesion'); } catch (e) {}
+    window.location.href = 'login.html';
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    try {
+      var stored = localStorage.getItem('escuela_plapa_sesion');
+      if (stored) sesion = JSON.parse(stored);
+    } catch (e) {}
+    actualizarHeaderUsuario();
+    cargarComentarios();
+    restaurarEvaluacion();
+    var evalTimeout;
+    document.querySelectorAll('#m6 [data-eval], #m6 #evalCompartir').forEach(function(el) {
+      el.addEventListener('input', function() {
+        clearTimeout(evalTimeout);
+        evalTimeout = setTimeout(autoguardarBorrador, 500);
+      });
+      el.addEventListener('change', autoguardarBorrador);
+    });
+  });
 </script>
 
 </body>

@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ingresar · Escuela PLAPA</title>
+<style>
+  :root {
+    /* Paleta Escuela PLAPA (coherente con index.html) */
+    --bg-color:    #fcfbf9;
+    --text-main:   #2d2d2d;
+    --text-muted:  #5a5a5a;
+    --text-soft:   #8a8578;
+    --primary:     #854F0B;
+    --primary-dark:#412402;
+    --accent:      #1D9E75;
+    --accent-dark: #085041;
+    --surface:     #ffffff;
+    --surface-2:   #f5f2ec;
+    --border:      #e2dfd8;
+    --alerta:      #8B1A1A;
+    --alerta-bg:   #FDF7F7;
+    --exito:       #085041;
+    --exito-bg:    #E1F5EE;
+
+    --font-sans:  system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-serif: Georgia, "Times New Roman", serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    font-family: var(--font-sans);
+    background: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--primary-dark);
+    text-decoration: none;
+  }
+  .header-back {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    text-decoration: none;
+  }
+  .header-back:hover { color: var(--primary); }
+
+  main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1rem;
+  }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(66, 36, 2, 0.06);
+    max-width: 460px;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .card-head {
+    padding: 1.75rem 2rem 1.25rem;
+    text-align: center;
+    background: linear-gradient(180deg, #ffffff, var(--surface-2));
+    border-bottom: 1px solid var(--border);
+  }
+  .kicker {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+  .card-title {
+    font-family: var(--font-serif);
+    font-size: 1.6rem;
+    color: var(--primary-dark);
+    line-height: 1.2;
+    margin-bottom: 0.4rem;
+  }
+  .card-sub {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    max-width: 380px;
+    margin: 0 auto;
+  }
+
+  .tabs {
+    display: flex;
+    background: var(--surface-2);
+    border-bottom: 1px solid var(--border);
+  }
+  .tab {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 0.9rem 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.18s;
+  }
+  .tab:hover { color: var(--primary); }
+  .tab.on {
+    color: var(--primary-dark);
+    background: var(--surface);
+    border-bottom-color: var(--accent);
+    font-weight: 600;
+  }
+
+  .card-body { padding: 1.75rem 2rem 2rem; }
+
+  .view { display: none; }
+  .view.on { display: block; }
+
+  .field {
+    margin-bottom: 1.1rem;
+  }
+  .field label {
+    display: block;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--primary-dark);
+    margin-bottom: 6px;
+    letter-spacing: 0.02em;
+  }
+  .field label .req { color: var(--alerta); font-weight: 700; }
+  .field input,
+  .field select {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 10px 12px;
+    font-size: 0.95rem;
+    font-family: var(--font-sans);
+    color: var(--text-main);
+    background: var(--surface);
+    transition: border-color 0.15s;
+  }
+  .field input:focus,
+  .field select:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(29, 158, 117, 0.12);
+  }
+  .field-hint {
+    font-size: 0.78rem;
+    color: var(--text-soft);
+    margin-top: 5px;
+    font-style: italic;
+  }
+
+  .row2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  @media (max-width: 480px) { .row2 { grid-template-columns: 1fr; } }
+
+  .check {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 1.1rem;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .check input { margin-top: 3px; }
+  .check a { color: var(--primary); }
+
+  .btn {
+    width: 100%;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    padding: 0.85rem 1rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: var(--font-sans);
+    cursor: pointer;
+    transition: background 0.18s, transform 0.08s;
+    margin-top: 0.4rem;
+  }
+  .btn:hover { background: var(--primary-dark); }
+  .btn:active { transform: translateY(1px); }
+  .btn:disabled { opacity: 0.55; cursor: not-allowed; }
+  .btn.accent { background: var(--accent); }
+  .btn.accent:hover { background: var(--accent-dark); }
+
+  .link-row {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+  .link-row a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .link-row a:hover { text-decoration: underline; }
+
+  .msg {
+    padding: 10px 14px;
+    border-radius: 7px;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-bottom: 1.1rem;
+    display: none;
+  }
+  .msg.on { display: block; }
+  .msg.error {
+    background: var(--alerta-bg);
+    color: var(--alerta);
+    border-left: 3px solid var(--alerta);
+  }
+  .msg.exito {
+    background: var(--exito-bg);
+    color: var(--exito);
+    border-left: 3px solid var(--exito);
+  }
+
+  .next-notice {
+    background: var(--surface-2);
+    border-radius: 7px;
+    padding: 10px 14px;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin-bottom: 1.25rem;
+    text-align: center;
+  }
+  .next-notice strong { color: var(--primary-dark); }
+
+  footer {
+    text-align: center;
+    padding: 1.5rem 5%;
+    color: var(--text-soft);
+    font-size: 0.8rem;
+    border-top: 1px solid var(--border);
+    background: var(--surface);
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo">Escuela PLAPA</a>
+  <a href="catalogo_30_itinerarios_plapa_corregido.html" class="header-back">← Catálogo</a>
+</header>
+
+<main>
+  <div class="card">
+    <div class="card-head">
+      <div class="kicker">Escuela de la PLAPA</div>
+      <h1 class="card-title">Formación pastoral continua</h1>
+      <p class="card-sub">Ingresá para recorrer los itinerarios, dejar tu palabra en el muro y guardar tu evaluación.</p>
+    </div>
+
+    <div class="tabs">
+      <button class="tab on" data-view="login" onclick="cambiarVista('login', this)">Ingresar</button>
+      <button class="tab" data-view="registro" onclick="cambiarVista('registro', this)">Inscribirme</button>
+      <button class="tab" data-view="recuperar" onclick="cambiarVista('recuperar', this)">Olvidé mi contraseña</button>
+    </div>
+
+    <div class="card-body">
+
+      <div id="nextNotice" class="next-notice" style="display:none;">
+      <!--  Te llevaremos a <strong id="nextTitulo">tu itinerario</strong> después de ingresar.-->
+      </div>
+
+      <div id="msg" class="msg"></div>
+
+      <!-- ═══ INGRESAR ═══════════════════════════════════════ -->
+      <div class="view login on" id="viewLogin">
+        <div class="field">
+          <label for="loginEmail">Correo electrónico <span class="req">*</span></label>
+          <input type="email" id="loginEmail" autocomplete="email" required>
+        </div>
+        <div class="field">
+          <label for="loginPass">Contraseña <span class="req">*</span></label>
+          <input type="password" id="loginPass" autocomplete="current-password" required>
+        </div>
+        <button class="btn" id="btnLogin" onclick="hacerLogin()">Ingresar</button>
+        <div class="link-row">
+          ¿Todavía no estás inscripto? <a onclick="cambiarVistaPorNombre('registro')">Inscribirme</a>
+        </div>
+      </div>
+
+      <!-- ═══ INSCRIBIRME ════════════════════════════════════ -->
+      <div class="view" id="viewRegistro">
+        <div class="field">
+          <label for="regNombre">Nombre y apellido <span class="req">*</span></label>
+          <input type="text" id="regNombre" autocomplete="name" required>
+          <div class="field-hint">Aparecerá junto a tus comentarios en el muro.</div>
+        </div>
+
+        <div class="row2">
+          <div class="field">
+            <label for="regPais">País <span class="req">*</span></label>
+            <select id="regPais" required>
+              <option value="">Seleccioná...</option>
+              <option>Argentina</option>
+              <option>Bolivia</option>
+              <option>Brasil</option>
+              <option>Chile</option>
+              <option>Colombia</option>
+              <option>Costa Rica</option>
+              <option>Cuba</option>
+              <option>Ecuador</option>
+              <option>El Salvador</option>
+              <option>España</option>
+              <option>Estados Unidos</option>
+              <option>Guatemala</option>
+              <option>Haití</option>
+              <option>Honduras</option>
+              <option>México</option>
+              <option>Nicaragua</option>
+              <option>Panamá</option>
+              <option>Paraguay</option>
+              <option>Perú</option>
+              <option>Puerto Rico</option>
+              <option>República Dominicana</option>
+              <option>Uruguay</option>
+              <option>Venezuela</option>
+              <option>Otro</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="regComunidad">Comunidad o parroquia</label>
+            <input type="text" id="regComunidad" placeholder="Opcional">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="regRol">¿Desde dónde acompañás?</label>
+          <select id="regRol">
+            <option value="">Seleccioná...</option>
+            <option>Voluntario/a de base</option>
+            <option>Catequista</option>
+            <option>Animador/a juvenil</option>
+            <option>Referente parroquial</option>
+            <option>Agente en centro barrial</option>
+            <option>Sacerdote / Religioso/a</option>
+            <option>Equipo técnico</option>
+            <option>Otro</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="regEmail">Correo electrónico <span class="req">*</span></label>
+          <input type="email" id="regEmail" autocomplete="email" required>
+        </div>
+
+        <div class="row2">
+          <div class="field">
+            <label for="regPass">Contraseña <span class="req">*</span></label>
+            <input type="password" id="regPass" autocomplete="new-password" required minlength="8">
+            <div class="field-hint">Mínimo 8 caracteres.</div>
+          </div>
+          <div class="field">
+            <label for="regPass2">Repetí la contraseña <span class="req">*</span></label>
+            <input type="password" id="regPass2" autocomplete="new-password" required minlength="8">
+          </div>
+        </div>
+
+        <label class="check">
+          <input type="checkbox" id="regTerminos">
+          <span>Acepto las <a href="terminos.html" target="_blank">condiciones de uso</a> y la <a href="privacidad.html" target="_blank">política de privacidad</a> de la Escuela PLAPA.</span>
+        </label>
+
+        <button class="btn accent" id="btnRegistro" onclick="hacerRegistro()">Inscribirme en la Escuela</button>
+
+        <div class="link-row">
+          ¿Ya estás inscripto? <a onclick="cambiarVistaPorNombre('login')">Ingresar</a>
+        </div>
+      </div>
+
+      <!-- ═══ RECUPERAR CONTRASEÑA ═══════════════════════════ -->
+      <div class="view" id="viewRecuperar">
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+          Ingresá el correo con el que te inscribiste. Te enviaremos un enlace para elegir una nueva contraseña.
+        </p>
+        <div class="field">
+          <label for="recEmail">Correo electrónico <span class="req">*</span></label>
+          <input type="email" id="recEmail" autocomplete="email" required>
+        </div>
+        <button class="btn" id="btnRecuperar" onclick="hacerRecuperar()">Enviar enlace de recuperación</button>
+        <div class="link-row">
+          <a onclick="cambiarVistaPorNombre('login')">← Volver a ingresar</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div>Escuela PLAPA · CELAM 2026</div>
+  <div style="margin-top: 4px;">Formación basada en el Manual de la PLAPA</div>
+</footer>
+
+<script>
+  // ═══════════════════════════════════════════════════════
+  // BACKEND REQUERIDO (Supabase — mismo proyecto que app-plapa)
+  // ═══════════════════════════════════════════════════════
+  // 1) Supabase Auth activado con email/password.
+  //
+  // 2) Tabla `perfiles`:
+  //    - id (uuid, pk, fk auth.users.id)
+  //    - nombre (text)
+  //    - pais (text)
+  //    - comunidad (text, null)
+  //    - rol (text, null)
+  //    - created_at (timestamptz)
+  //
+  // 3) Trigger `on_auth_user_created`: al crear en auth.users,
+  //    inserta fila en perfiles con nombre/pais/comunidad/rol
+  //    tomados de raw_user_meta_data.
+  //
+  // 4) RLS en perfiles: SELECT solo propio o público según diseño;
+  //    INSERT/UPDATE solo dueño.
+  //
+  // 5) URL de redirección para recuperación: /login.html
+  //    (configurar en Supabase Dashboard → Auth → URL Configuration).
+  // ═══════════════════════════════════════════════════════
+
+  var SUPABASE_URL = 'https://arfurmzhngluupvgsmjw.supabase.co';
+  var SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFyZnVybXpobmdsdXVwdmdzbWp3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ0MDA2ODcsImV4cCI6MjA5OTk3NjY4N30.maQvikISFqChzfsC6uEs7jb-ijHvXVcP_4p5PaIuO_M';                   // TODO: config
+
+  // ─── Utilidades ─────────────────────────────────────────
+  function qs(name) {
+    var m = new RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+    return m ? decodeURIComponent(m[1]) : '';
+  }
+
+  function mostrarMsg(texto, tipo) {
+    var el = document.getElementById('msg');
+    el.className = 'msg on ' + (tipo || 'exito');
+    el.textContent = texto;
+    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+  function limpiarMsg() {
+    document.getElementById('msg').className = 'msg';
+  }
+
+  function cambiarVista(nombre, btn) {
+    document.querySelectorAll('.view').forEach(function(v) { v.classList.remove('on'); });
+    document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('on'); });
+    document.getElementById('view' + nombre.charAt(0).toUpperCase() + nombre.slice(1)).classList.add('on');
+    if (btn) { btn.classList.add('on'); }
+    else {
+      var tab = document.querySelector('.tab[data-view="' + nombre + '"]');
+      if (tab) tab.classList.add('on');
+    }
+    limpiarMsg();
+  }
+  function cambiarVistaPorNombre(nombre) { cambiarVista(nombre, null); }
+
+  // ─── Supabase Auth (llamadas REST directas) ─────────────
+  function supaAuthHeaders() {
+    return {
+      'apikey': SUPABASE_ANON_KEY,
+      'Content-Type': 'application/json'
+    };
+  }
+
+  function hacerLogin() {
+    var email = document.getElementById('loginEmail').value.trim();
+    var pass = document.getElementById('loginPass').value;
+    if (!email || !pass) {
+      mostrarMsg('Completá correo y contraseña.', 'error'); return;
+    }
+    var btn = document.getElementById('btnLogin');
+    btn.disabled = true; btn.textContent = 'Ingresando...';
+    limpiarMsg();
+
+    fetch(SUPABASE_URL + '/auth/v1/token?grant_type=password', {
+      method: 'POST',
+      headers: supaAuthHeaders(),
+      body: JSON.stringify({ email: email, password: pass })
+    })
+    .then(function(r) { return r.json().then(function(d) { return { ok: r.ok, data: d }; }); })
+    .then(function(res) {
+      if (!res.ok) {
+        mostrarMsg(traducirError(res.data.error_description || res.data.msg || 'No pudimos ingresar. Revisá tus datos.'), 'error');
+        btn.disabled = false; btn.textContent = 'Ingresar';
+        return;
+      }
+      // Traer perfil para tener nombre y país
+      cargarPerfilYGuardarSesion(res.data)
+        .then(function() {
+          mostrarMsg('¡Bienvenido/a! Redirigiendo...', 'exito');
+          setTimeout(irANext, 800);
+        })
+        .catch(function() {
+          // Aunque el perfil falle, guardar sesión mínima
+          guardarSesion({ token: res.data.access_token, refresh: res.data.refresh_token, user: res.data.user, nombre: '', pais: '' });
+          setTimeout(irANext, 500);
+        });
+    })
+    .catch(function() {
+      mostrarMsg('Error de conexión. Intentá de nuevo.', 'error');
+      btn.disabled = false; btn.textContent = 'Ingresar';
+    });
+  }
+
+  function hacerRegistro() {
+    var nombre = document.getElementById('regNombre').value.trim();
+    var pais = document.getElementById('regPais').value;
+    var comunidad = document.getElementById('regComunidad').value.trim();
+    var rol = document.getElementById('regRol').value;
+    var email = document.getElementById('regEmail').value.trim();
+    var pass = document.getElementById('regPass').value;
+    var pass2 = document.getElementById('regPass2').value;
+    var terminos = document.getElementById('regTerminos').checked;
+
+    if (!nombre || !pais || !email || !pass) {
+      mostrarMsg('Completá los campos obligatorios (marcados con *).', 'error'); return;
+    }
+    if (pass.length < 8) {
+      mostrarMsg('La contraseña debe tener al menos 8 caracteres.', 'error'); return;
+    }
+    if (pass !== pass2) {
+      mostrarMsg('Las contraseñas no coinciden.', 'error'); return;
+    }
+    if (!terminos) {
+      mostrarMsg('Necesitás aceptar las condiciones para inscribirte.', 'error'); return;
+    }
+
+    var btn = document.getElementById('btnRegistro');
+    btn.disabled = true; btn.textContent = 'Creando tu cuenta...';
+    limpiarMsg();
+
+    fetch(SUPABASE_URL + '/auth/v1/signup', {
+      method: 'POST',
+      headers: supaAuthHeaders(),
+      body: JSON.stringify({
+        email: email,
+        password: pass,
+        data: {  // se guarda en raw_user_meta_data; el trigger lo copia a perfiles
+          nombre: nombre,
+          pais: pais,
+          comunidad: comunidad,
+          rol: rol
+        }
+      })
+    })
+    .then(function(r) { return r.json().then(function(d) { return { ok: r.ok, data: d }; }); })
+    .then(function(res) {
+      if (!res.ok) {
+        mostrarMsg(traducirError(res.data.error_description || res.data.msg || 'No pudimos crear tu cuenta.'), 'error');
+        btn.disabled = false; btn.textContent = 'Inscribirme en la Escuela';
+        return;
+      }
+      // Si la config de Supabase requiere confirmación por email:
+      if (!res.data.access_token) {
+        mostrarMsg('¡Inscripción recibida! Te enviamos un correo para confirmar tu cuenta. Revisá tu bandeja.', 'exito');
+        btn.disabled = false; btn.textContent = 'Inscribirme en la Escuela';
+        return;
+      }
+      // Si no requiere confirmación, ya hay sesión
+      guardarSesion({
+        token: res.data.access_token,
+        refresh: res.data.refresh_token,
+        user: res.data.user,
+        nombre: nombre,
+        pais: pais
+      });
+      mostrarMsg('¡Bienvenido/a a la Escuela PLAPA! Redirigiendo...', 'exito');
+      setTimeout(irANext, 900);
+    })
+    .catch(function() {
+      mostrarMsg('Error de conexión. Intentá de nuevo.', 'error');
+      btn.disabled = false; btn.textContent = 'Inscribirme en la Escuela';
+    });
+  }
+
+  function hacerRecuperar() {
+    var email = document.getElementById('recEmail').value.trim();
+    if (!email) { mostrarMsg('Ingresá tu correo.', 'error'); return; }
+    var btn = document.getElementById('btnRecuperar');
+    btn.disabled = true; btn.textContent = 'Enviando...';
+    limpiarMsg();
+
+    fetch(SUPABASE_URL + '/auth/v1/recover', {
+      method: 'POST',
+      headers: supaAuthHeaders(),
+      body: JSON.stringify({ email: email })
+    })
+    .then(function(r) {
+      // Supabase suele devolver 200 aunque el email no exista (seguridad)
+      mostrarMsg('Si el correo existe en la Escuela, te enviamos un enlace para restablecer tu contraseña. Revisá tu bandeja.', 'exito');
+      btn.disabled = false; btn.textContent = 'Enviar enlace de recuperación';
+    })
+    .catch(function() {
+      mostrarMsg('Error de conexión. Intentá de nuevo.', 'error');
+      btn.disabled = false; btn.textContent = 'Enviar enlace de recuperación';
+    });
+  }
+
+  function cargarPerfilYGuardarSesion(authData) {
+    // Traer nombre y país desde tabla perfiles
+    return fetch(SUPABASE_URL + '/rest/v1/perfiles?id=eq.' + authData.user.id + '&select=nombre,pais,comunidad,rol', {
+      headers: {
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': 'Bearer ' + authData.access_token
+      }
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(rows) {
+      var perfil = (rows && rows[0]) || {};
+      guardarSesion({
+        token: authData.access_token,
+        refresh: authData.refresh_token,
+        user: authData.user,
+        nombre: perfil.nombre || '',
+        pais: perfil.pais || '',
+        comunidad: perfil.comunidad || '',
+        rol: perfil.rol || ''
+      });
+    });
+  }
+
+  function guardarSesion(datos) {
+    try {
+      localStorage.setItem('escuela_plapa_sesion', JSON.stringify(datos));
+    } catch (e) {}
+  }
+
+  function irANext() {
+    var next = qs('next');
+    if (next && esUrlSegura(next)) {
+      window.location.href = next;
+    } else {
+      window.location.href = 'catalogo_30_itinerarios_plapa_corregido.html';
+    }
+  }
+
+  function esUrlSegura(url) {
+    // Solo permite rutas relativas dentro del sitio (evita open redirect)
+    if (url.indexOf('//') === 0 || url.indexOf('http') === 0) return false;
+    return true;
+  }
+
+  function traducirError(msg) {
+    var m = String(msg).toLowerCase();
+    if (m.indexOf('invalid login') >= 0 || m.indexOf('invalid credentials') >= 0) return 'Correo o contraseña incorrectos.';
+    if (m.indexOf('email not confirmed') >= 0) return 'Todavía no confirmaste tu correo. Revisá tu bandeja de entrada.';
+    if (m.indexOf('already registered') >= 0 || m.indexOf('already exists') >= 0) return 'Ese correo ya está registrado. Podés ingresar o recuperar la contraseña.';
+    if (m.indexOf('password') >= 0 && m.indexOf('weak') >= 0) return 'La contraseña es demasiado débil.';
+    return msg;
+  }
+
+  // ─── Init ───────────────────────────────────────────────
+  document.addEventListener('DOMContentLoaded', function() {
+    // Si ya hay sesión activa, redirigir al next directamente
+    try {
+      var stored = localStorage.getItem('escuela_plapa_sesion');
+      if (stored) {
+        var s = JSON.parse(stored);
+        if (s && s.token) { irANext(); return; }
+      }
+    } catch (e) {}
+
+    // Mostrar aviso de "next"
+    var next = qs('next');
+    if (next && esUrlSegura(next)) {
+      var titulo = 'tu itinerario';
+      var m = next.match(/itinerario_\d+_([^\.]+)/);
+      if (m) titulo = 'el itinerario "' + m[1].replace(/_/g, ' ') + '"';
+      document.getElementById('nextTitulo').textContent = titulo;
+      document.getElementById('nextNotice').style.display = 'block';
+    }
+
+    // Enter para submit en cada vista
+    document.getElementById('loginPass').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') hacerLogin();
+    });
+    document.getElementById('regPass2').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') hacerRegistro();
+    });
+    document.getElementById('recEmail').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') hacerRecuperar();
+    });
+  });
+</script>
+
+</body>
+</html>
