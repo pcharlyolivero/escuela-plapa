@@ -3,21 +3,6 @@
 <head>
 <meta charset="utf-8">
 <title>Itinerario 3 · Mística de la proximidad · Escuela PLAPA</title>
-<script>
-  // ═══ GUARD DE SESIÓN ═══════════════════════════════════
-  (function() {
-    try {
-      var stored = localStorage.getItem('escuela_plapa_sesion');
-      var sesion = stored ? JSON.parse(stored) : null;
-      if (!sesion || !sesion.token) {
-        var currentFile = window.location.pathname.split('/').pop() || 'index.html';
-        window.location.replace('login.html?next=' + encodeURIComponent(currentFile));
-      }
-    } catch (e) {
-      window.location.replace('login.html');
-    }
-  })();
-</script>
 <style>
   :root {
     /* Paleta violeta PLAPA — Itinerario 3 */
@@ -268,7 +253,6 @@
     letter-spacing: -0.01em;
   }
   .top-logo:hover { color: var(--i3-medio); }
-  .top-right { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; }
   .top-link {
     font-size: 0.88rem;
     color: var(--texto-2);
@@ -278,48 +262,6 @@
     transition: all 0.15s;
   }
   .top-link:hover { background: var(--i3-crema); color: var(--i3-oscuro); }
-  .top-user {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 5px 10px 5px 5px;
-    background: var(--i3-crema);
-    border-radius: 20px;
-    font-size: 0.85rem;
-    color: var(--i3-oscuro);
-  }
-  .top-user-icon {
-    width: 26px; height: 26px;
-    border-radius: 50%;
-    background: var(--i3-accent);
-    color: #FFF;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.72rem;
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-  .top-user-nombre {
-    font-weight: 500;
-    max-width: 140px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .top-logout {
-    background: transparent;
-    border: none;
-    color: var(--texto-3);
-    cursor: pointer;
-    font-size: 0.85rem;
-    font-family: var(--font-sans);
-    padding: 6px 10px;
-    border-radius: 6px;
-    transition: all 0.15s;
-  }
-  .top-logout:hover { color: var(--alerta); background: var(--alerta-bg); }
-
   /* ─── MÓDULOS ────────────────────────────────────────── */
   .card {
     border-radius: 12px;
@@ -1041,7 +983,6 @@
     .mode-selector { flex-direction: column; align-items: stretch; max-width: 100%; }
     .mode-btn { text-align: center; }
     .top-header { padding: 0.75rem 1rem; }
-    .top-user-nombre { max-width: 90px; }
     .top-link { font-size: 0.82rem; padding: 5px 8px; }
     .foro-vista { max-width: 100%; flex-direction: column; align-items: stretch; }
     .foro-vista-btn { text-align: center; }
@@ -1055,14 +996,7 @@
 <!-- ═══ HEADER SUPERIOR ═════════════════════════════════ -->
 <header class="top-header">
   <a href="index.html" class="top-logo">Escuela PLAPA</a>
-  <div class="top-right">
-    <a href="catalogo_30_itinerarios_plapa_corregido.html" class="top-link">← Catálogo</a>
-    <div class="top-user" id="topUser" style="display:none;">
-      <span class="top-user-icon" id="topUserIcon">?</span>
-      <span class="top-user-nombre" id="topUserNombre">—</span>
-    </div>
-    <button class="top-logout" onclick="cerrarSesion()" title="Cerrar sesión">Salir</button>
-  </div>
+  <a href="catalogo_30_itinerarios_plapa_corregido.html" class="top-link">← Catálogo</a>
 </header>
 
 <div class="root mode-grupal">
@@ -1760,7 +1694,7 @@
   }
 
   function enviarComentario() {
-    if (!sesion) { window.location.href = 'login.html'; return; }
+    if (!sesion) { window.location.href = '/login'; return; }
     var texto = document.getElementById('foroTexto').value.trim();
     var modulo = document.getElementById('foroModulo').value;
     if (!texto) return;
@@ -1783,7 +1717,7 @@
   }
 
   function enviarRespuestaDesde(parentId) {
-    if (!sesion) { window.location.href = 'login.html'; return; }
+    if (!sesion) { window.location.href = '/login'; return; }
     var textarea = document.getElementById('rt-' + parentId);
     var texto = textarea.value.trim();
     if (!texto) return;
@@ -1800,7 +1734,7 @@
   }
 
   function toggleReaccion(comentarioId, emoji) {
-    if (!sesion) { window.location.href = 'login.html'; return; }
+    if (!sesion) { window.location.href = '/login'; return; }
     fetch(SUPABASE_URL + '/rest/v1/rpc/toggle_reaccion', {
       method: 'POST', headers: supaHeaders(),
       body: JSON.stringify({ p_comentario: comentarioId, p_emoji: emoji })
@@ -1809,7 +1743,7 @@
   }
 
   function toggleReplyForm(id) {
-    if (!sesion) { window.location.href = 'login.html'; return; }
+    if (!sesion) { window.location.href = '/login'; return; }
     document.getElementById('rf-' + id).classList.toggle('on');
   }
 
@@ -1867,7 +1801,7 @@
       mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos "El Ver" y "El Actuar" merecen unos renglones honestos.', 'error');
       return;
     }
-    if (!sesion) { window.location.href = 'login.html'; return; }
+    if (!sesion) { window.location.href = '/login'; return; }
     fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario', {
       method: 'POST',
       headers: Object.assign({}, supaHeaders(), { 'Prefer': 'resolution=merge-duplicates' }),
@@ -1897,31 +1831,11 @@
     window.print();
   }
 
-  // ═══ HEADER: USUARIO Y CERRAR SESIÓN ══════════════════
-  function actualizarHeaderUsuario() {
-    if (!sesion || !sesion.nombre) return;
-    var nombre = sesion.nombre.trim();
-    if (!nombre) return;
-    var partes = nombre.split(/\s+/);
-    var iniciales = (partes[0][0] || '') + (partes.length > 1 ? (partes[partes.length-1][0] || '') : '');
-    document.getElementById('topUserIcon').textContent = iniciales.toUpperCase();
-    document.getElementById('topUserNombre').textContent = nombre.split(' ')[0];
-    document.getElementById('topUserNombre').title = nombre;
-    document.getElementById('topUser').style.display = 'flex';
-  }
-
-  function cerrarSesion() {
-    if (!confirm('¿Cerrar sesión y volver al ingreso?')) return;
-    try { localStorage.removeItem('escuela_plapa_sesion'); } catch (e) {}
-    window.location.href = 'login.html';
-  }
-
   document.addEventListener('DOMContentLoaded', function() {
     try {
       var stored = localStorage.getItem('escuela_plapa_sesion');
       if (stored) sesion = JSON.parse(stored);
     } catch (e) {}
-    actualizarHeaderUsuario();
     cargarComentarios();
     restaurarEvaluacion();
     var evalTimeout;
