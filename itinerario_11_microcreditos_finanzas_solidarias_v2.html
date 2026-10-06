@@ -1,0 +1,2192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Itinerario 11 · Microcréditos y Finanzas Solidarias · Escuela PLAPA</title>
+<style>
+  :root {
+    /* Paleta violeta PLAPA — Itinerario 11 (bloque 2: Ser social y territorio) */
+    --i11-oscuro:  #26215C;
+    --i11-medio:   #3C3489;
+    --i11-accent:  #534AB7;
+    --i11-suave:   #7268D0;
+    --i11-claro:   #AFA9EC;
+    --i11-crema:   #EEEDFE;
+    --i11-fondo:   #FCFCFF;
+
+    --alerta:     #8B1A1A;
+    --alerta-bg:  #FDF7F7;
+
+    --texto:      #1E1B33;
+    --texto-2:    #4A4560;
+    --texto-3:    #8C89A0;
+    --borde:      #E4E2F0;
+
+    --font-serif: "Georgia", "Times New Roman", serif;
+    --font-sans:  "system-ui", -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: #DDD9EE;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    line-height: 1.6;
+  }
+
+  .root {
+    background: var(--i11-fondo);
+    max-width: 860px;
+    width: 100%;
+    padding: 2.5rem;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(38, 33, 92, 0.08);
+  }
+
+  /* ─── HEADER SUPERIOR (navegación entre páginas) ─── */
+  .top-header {
+    background: #FFFFFF;
+    border-bottom: 1px solid var(--borde);
+    padding: 0.85rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    max-width: 860px;
+    width: 100%;
+    margin: 0 auto 1rem;
+    border-radius: 10px;
+  }
+  .top-logo {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--i11-oscuro);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .top-logo:hover { color: var(--i11-medio); }
+  .top-link {
+    font-size: 0.88rem;
+    color: var(--texto-2);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.15s;
+  }
+  .top-link:hover {
+    background: var(--i11-crema);
+    color: var(--i11-oscuro);
+  }
+  @media (max-width: 640px) {
+    .top-header { padding: 0.75rem 1rem; }
+    .top-link { font-size: 0.82rem; padding: 5px 8px; }
+  }
+
+  /* ─── PORTADA ────────────────────────────────────────── */
+  .portada {
+    background: var(--i11-oscuro);
+    border-radius: 12px;
+    padding: 2rem 2rem 1.75rem;
+    margin-bottom: 2rem;
+  }
+  .portada-sup {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--i11-claro);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .portada-title {
+    font-family: var(--font-serif);
+    font-size: 30px;
+    font-weight: normal;
+    color: #FFFFFF;
+    line-height: 1.25;
+    margin-bottom: 0.6rem;
+  }
+  .portada-sub {
+    font-size: 14.5px;
+    color: var(--i11-claro);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+    max-width: 640px;
+  }
+  .dest-box {
+    background: var(--i11-medio);
+    border-radius: 8px;
+    padding: 0.9rem 1.1rem;
+    margin-bottom: 1.1rem;
+  }
+  .dest-lbl {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--i11-claro);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .dest-txt {
+    font-size: 13px;
+    color: #FFF;
+    line-height: 1.6;
+  }
+  .portada-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .portada-pill {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 11px;
+    border-radius: 99px;
+    background: var(--i11-medio);
+    color: var(--i11-crema);
+  }
+
+  /* ─── VIDEO ──────────────────────────────────────────── */
+  .video-wrap {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .video-lbl {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--i11-oscuro);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .video-iframe {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  .video-iframe iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  /* ─── SELECTOR DE MODALIDAD ──────────────────────────── */
+  .mode-selector {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 1.5rem;
+    background: #FFF;
+    padding: 6px;
+    border-radius: 10px;
+    border: 1px solid var(--borde);
+    max-width: max-content;
+    flex-wrap: wrap;
+  }
+  .mode-btn {
+    border: none;
+    background: transparent;
+    color: var(--texto-2);
+    padding: 8px 16px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .mode-btn.on {
+    background: var(--i11-accent);
+    color: #FFF;
+    font-weight: 600;
+  }
+  /* Control de visibilidad según modalidad */
+  .root.mode-individual .mode-g { display: none; }
+  .root.mode-grupal .mode-i { display: none; }
+
+  /* ─── NAVEGACIÓN ─────────────────────────────────────── */
+  .nav {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .btn {
+    border: 1px solid var(--borde);
+    background: #FFFFFF;
+    border-radius: 8px;
+    padding: 10px 16px;
+    cursor: pointer;
+    font-size: 12.5px;
+    font-weight: 500;
+    font-family: var(--font-sans);
+    color: var(--texto-2);
+    transition: all 0.18s ease;
+    text-align: left;
+  }
+  .btn:hover {
+    background: var(--i11-crema);
+    border-color: var(--i11-claro);
+    color: var(--i11-oscuro);
+  }
+  .btn.on {
+    border: 2px solid var(--i11-accent);
+    background: var(--i11-crema);
+    color: var(--i11-oscuro);
+    font-weight: 600;
+    padding: 9px 15px;
+  }
+  .btn.btn-alt {
+    background: var(--i11-crema);
+    color: var(--i11-medio);
+    border-color: var(--i11-claro);
+  }
+  .btn.btn-alt:hover {
+    background: var(--i11-claro);
+    color: var(--i11-oscuro);
+  }
+  .btn.btn-alt.on {
+    background: var(--i11-medio);
+    border-color: var(--i11-medio);
+    color: #FFFFFF;
+  }
+  .nav-sep {
+    display: inline-block;
+    width: 1px;
+    background: var(--borde);
+    margin: 0 6px;
+    align-self: stretch;
+  }
+
+  /* ─── MÓDULOS ────────────────────────────────────────── */
+  .card {
+    border-radius: 12px;
+    border: 1px solid var(--borde);
+    background: #FFFFFF;
+    overflow: hidden;
+    display: none;
+    border-left: 6px solid var(--i11-accent);
+  }
+  .card.active {
+    display: block;
+    animation: fadeIn 0.35s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .ch {
+    padding: 1.75rem 2rem 1.5rem;
+    border-bottom: 1px solid var(--borde);
+    background: var(--i11-crema);
+  }
+  .cn {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 99px;
+    margin-bottom: 0.85rem;
+    background: var(--i11-accent);
+    color: #FFFFFF;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .ct {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 1.3;
+    color: var(--i11-oscuro);
+    margin-bottom: 0.4rem;
+  }
+  .cs {
+    font-size: 13px;
+    color: var(--i11-medio);
+    line-height: 1.55;
+    font-style: italic;
+  }
+
+  .cb { padding: 2rem; }
+
+  /* ─── CAJA DE RESONANCIA ─────────────────────────────── */
+  .resonancia {
+    border-left: 4px solid var(--i11-accent);
+    background: var(--i11-crema);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .resonancia-lbl {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i11-accent);
+    margin-bottom: 8px;
+  }
+  .resonancia-txt {
+    font-family: var(--font-serif);
+    font-size: 16.5px;
+    line-height: 1.6;
+    font-style: italic;
+    color: var(--i11-oscuro);
+  }
+
+  /* ─── SECCIONES VER / JUZGAR / ACTUAR ────────────────── */
+  .pl {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i11-oscuro);
+    margin-top: 2.25rem;
+    margin-bottom: 1.1rem;
+    border-bottom: 1px solid var(--borde);
+    padding-bottom: 7px;
+  }
+  .pl:first-of-type { margin-top: 0.5rem; }
+
+  .pts {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 1.5rem;
+  }
+  .pts li {
+    display: flex;
+    gap: 14px;
+    font-size: 14.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+  .pts li strong {
+    color: var(--i11-oscuro);
+    font-weight: 600;
+  }
+  .dot {
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    background: var(--i11-accent);
+    color: #FFFFFF;
+    margin-top: 2px;
+    font-family: var(--font-serif);
+  }
+  .dot.j { background: var(--i11-medio); }
+  .dot.a { background: var(--i11-oscuro); }
+
+  /* ─── GRILLA DE ESCENARIOS / DIMENSIONES ─────────────── */
+  .ejes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 1.5rem;
+  }
+  .eje {
+    background: var(--i11-crema);
+    border-radius: 10px;
+    padding: 1.1rem 1.25rem;
+    border-top: 4px solid var(--i11-accent);
+  }
+  .eje-n {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--i11-accent);
+    margin-bottom: 8px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .eje-t {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--i11-oscuro);
+    margin-bottom: 6px;
+  }
+  .eje-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.6;
+  }
+
+  /* ─── ACTIVIDADES ────────────────────────────────────── */
+  .act {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 1.15rem 1.35rem;
+    margin-bottom: 12px;
+    border-left: 4px solid var(--i11-accent);
+  }
+  .act-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  .tag-ind {
+    background: var(--i11-oscuro);
+    color: var(--i11-crema);
+  }
+  .tag-gru {
+    background: var(--i11-accent);
+    color: #FFF;
+  }
+  .act-title {
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: var(--i11-oscuro);
+    margin-bottom: 6px;
+    line-height: 1.35;
+  }
+  .act-body {
+    font-size: 14px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+  .act-body em {
+    color: var(--i11-medio);
+    font-style: italic;
+  }
+
+  /* ─── CITA INSPIRADORA ───────────────────────────────── */
+  .cita {
+    border-radius: 10px;
+    padding: 1.2rem 1.4rem;
+    background: linear-gradient(180deg, var(--i11-crema) 0%, #FFF 100%);
+    border: 1px solid var(--i11-claro);
+    margin-top: 2rem;
+  }
+  .cita-lbl {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i11-accent);
+    margin-bottom: 8px;
+  }
+  .cita-txt {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    line-height: 1.7;
+    font-style: italic;
+    color: var(--i11-oscuro);
+  }
+  .cita-ref {
+    font-size: 12px;
+    margin-top: 10px;
+    font-weight: 500;
+    color: var(--i11-medio);
+    font-style: normal;
+  }
+
+  /* ─── ALERTA PASTORAL ────────────────────────────────── */
+  .alerta {
+    border-left: 4px solid var(--alerta);
+    background: var(--alerta-bg);
+    padding: 1.15rem 1.35rem;
+    margin-top: 1.75rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .alerta-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--alerta);
+    margin-bottom: 8px;
+  }
+  .alerta-lbl::before {
+    content: '† ';
+    font-size: 14px;
+  }
+  .alerta-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+
+  /* ─── AUTOCUIDADO ────────────────────────────────────── */
+  .autocuidado {
+    border-left: 4px solid var(--i11-medio);
+    background: #F4F2FB;
+    padding: 1.15rem 1.35rem;
+    margin-top: 1.75rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .autocuidado-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i11-medio);
+    margin-bottom: 8px;
+  }
+  .autocuidado-lbl::before {
+    content: '❋ ';
+    color: var(--i11-accent);
+  }
+  .autocuidado-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+
+  /* ─── LECTURA COMPLEMENTARIA ─────────────────────────── */
+  .lectura {
+    background: #FFF;
+    border: 1px dashed var(--i11-accent);
+    border-radius: 10px;
+    padding: 1.15rem 1.35rem;
+    margin-top: 1.75rem;
+  }
+  .lectura-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--i11-medio);
+    margin-bottom: 8px;
+  }
+  .lectura-lbl::before {
+    content: '📖 ';
+  }
+  .lectura-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+  .lectura-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--i11-accent);
+    color: #FFF;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.18s;
+  }
+  .lectura-link:hover {
+    background: var(--i11-oscuro);
+  }
+
+  /* ─── REFERENCIAS ────────────────────────────────────── */
+  .ref {
+    font-size: 11.5px;
+    color: var(--texto-3);
+    font-style: italic;
+    margin-top: 1.75rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--borde);
+  }
+
+  /* ─── FORO / MURO DEL CAMINO ─────────────────────────── */
+  .foro {
+    background: #FFFFFF;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    margin-top: 2rem;
+    overflow: hidden;
+    border-left: 6px solid var(--i11-medio);
+  }
+  .foro-head {
+    background: var(--i11-crema);
+    padding: 1.75rem 2rem 1.5rem;
+    border-bottom: 1px solid var(--borde);
+  }
+  .foro-lbl {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 99px;
+    margin-bottom: 0.85rem;
+    background: var(--i11-medio);
+    color: #FFFFFF;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .foro-title {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: normal;
+    line-height: 1.3;
+    color: var(--i11-oscuro);
+    margin-bottom: 0.4rem;
+  }
+  .foro-sub {
+    font-size: 13px;
+    color: var(--i11-medio);
+    line-height: 1.55;
+    font-style: italic;
+  }
+  .foro-body { padding: 2rem; }
+
+  .foro-vista {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 1.5rem;
+    background: var(--i11-crema);
+    padding: 6px;
+    border-radius: 10px;
+    max-width: max-content;
+    flex-wrap: wrap;
+  }
+  .foro-vista-btn {
+    border: none;
+    background: transparent;
+    color: var(--texto-2);
+    padding: 8px 16px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .foro-vista-btn.on {
+    background: var(--i11-medio);
+    color: #FFF;
+    font-weight: 600;
+  }
+
+  .foro-pautas {
+    background: var(--alerta-bg);
+    border-left: 4px solid var(--alerta);
+    padding: 1.15rem 1.35rem;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 1.75rem;
+  }
+  .foro-pautas-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--alerta);
+    margin-bottom: 8px;
+  }
+  .foro-pautas-lbl::before { content: '† '; }
+  .foro-pautas ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .foro-pautas li {
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    padding-left: 14px;
+    position: relative;
+  }
+  .foro-pautas li::before {
+    content: '·';
+    position: absolute;
+    left: 4px;
+    color: var(--alerta);
+    font-weight: 700;
+  }
+
+  .foro-form {
+    background: var(--i11-fondo);
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .foro-form-lbl {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--i11-oscuro);
+    margin-bottom: 12px;
+  }
+  .foro-form-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .foro-form-row label {
+    font-size: 12.5px;
+    color: var(--texto-2);
+    align-self: center;
+    font-weight: 500;
+  }
+  .foro-form select {
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    padding: 7px 10px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+    cursor: pointer;
+  }
+  .foro-form textarea {
+    width: 100%;
+    min-height: 90px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+    resize: vertical;
+    line-height: 1.55;
+    margin-bottom: 10px;
+  }
+  .foro-form textarea:focus,
+  .foro-form select:focus {
+    outline: none;
+    border-color: var(--i11-medio);
+  }
+  .foro-form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .foro-form-info {
+    font-size: 11.5px;
+    color: var(--texto-3);
+    font-style: italic;
+  }
+  .foro-btn {
+    background: var(--i11-medio);
+    color: #FFF;
+    border: none;
+    border-radius: 7px;
+    padding: 9px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    transition: background 0.18s;
+  }
+  .foro-btn:hover { background: var(--i11-oscuro); }
+  .foro-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .foro-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .foro-vacio {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: var(--texto-3);
+    font-size: 13.5px;
+    font-style: italic;
+    background: var(--i11-crema);
+    border-radius: 10px;
+  }
+  .comment {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-left: 3px solid var(--i11-suave);
+    border-radius: 10px;
+    padding: 1rem 1.15rem;
+  }
+  .comment-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .comment-autor {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--i11-oscuro);
+  }
+  .comment-pais {
+    font-size: 12px;
+    color: var(--i11-medio);
+    font-weight: 500;
+  }
+  .comment-pais::before { content: ' · '; color: var(--texto-3); }
+  .comment-modulo {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: var(--i11-crema);
+    color: var(--i11-medio);
+    margin-left: 6px;
+  }
+  .comment-fecha {
+    font-size: 11.5px;
+    color: var(--texto-3);
+  }
+  .comment-texto {
+    font-size: 14px;
+    color: var(--texto);
+    line-height: 1.65;
+    margin-bottom: 10px;
+    white-space: pre-wrap;
+  }
+  .comment-actions {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .react-btn {
+    background: var(--i11-crema);
+    border: 1px solid transparent;
+    border-radius: 99px;
+    padding: 4px 10px;
+    font-size: 12.5px;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    color: var(--texto-2);
+    transition: all 0.15s;
+  }
+  .react-btn:hover { background: var(--i11-claro); }
+  .react-btn.on {
+    background: var(--i11-suave);
+    color: #FFF;
+    border-color: var(--i11-medio);
+    font-weight: 600;
+  }
+  .react-count {
+    margin-left: 4px;
+    font-weight: 600;
+  }
+  .reply-btn {
+    background: transparent;
+    border: none;
+    color: var(--i11-medio);
+    font-size: 12.5px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    margin-left: auto;
+    font-family: var(--font-sans);
+  }
+  .reply-btn:hover {
+    background: var(--i11-crema);
+    color: var(--i11-oscuro);
+  }
+  .comment-replies {
+    margin-top: 12px;
+    padding-left: 1rem;
+    border-left: 2px dashed var(--borde);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .reply {
+    background: var(--i11-fondo);
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+  }
+  .reply-form {
+    background: var(--i11-crema);
+    border-radius: 8px;
+    padding: 0.8rem;
+    margin-top: 10px;
+    display: none;
+  }
+  .reply-form.on { display: block; }
+  .reply-form textarea {
+    width: 100%;
+    min-height: 60px;
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    resize: vertical;
+    background: #FFF;
+    margin-bottom: 8px;
+  }
+  .reply-form-actions {
+    display: flex;
+    gap: 6px;
+    justify-content: flex-end;
+  }
+  .reply-form-cancel {
+    background: transparent;
+    border: 1px solid var(--borde);
+    color: var(--texto-2);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 12.5px;
+    cursor: pointer;
+    font-family: var(--font-sans);
+  }
+
+  .foro-login {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--i11-crema);
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+  }
+  .foro-login-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .foro-login-link {
+    display: inline-block;
+    background: var(--i11-medio);
+    color: #FFF;
+    padding: 8px 18px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  /* ─── EVALUACIÓN (M6) ────────────────────────────────── */
+  .eval-nota {
+    background: var(--i11-crema);
+    border-left: 4px solid var(--i11-medio);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+  .eval-nota-lbl {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i11-medio);
+    margin-bottom: 6px;
+  }
+  .eval-nota-txt strong { color: var(--i11-oscuro); }
+  .eval-nota-txt em { color: var(--i11-medio); font-style: italic; }
+
+  .eval-q {
+    margin-bottom: 1.5rem;
+  }
+  .eval-q > label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--i11-oscuro);
+    margin-bottom: 8px;
+    line-height: 1.55;
+  }
+  .eval-q textarea {
+    width: 100%;
+    min-height: 100px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+    resize: vertical;
+    line-height: 1.6;
+    transition: border-color 0.15s;
+  }
+  .eval-q textarea:focus,
+  .eval-q input:focus {
+    outline: none;
+    border-color: var(--i11-medio);
+    box-shadow: 0 0 0 3px rgba(60, 52, 137, 0.1);
+  }
+  .eval-q input[type="date"] {
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 9px 12px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+  }
+  .eval-fecha { max-width: 320px; }
+
+  .eval-scale-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .eval-radio {
+    flex: 1;
+    min-width: 55px;
+    cursor: pointer;
+    position: relative;
+  }
+  .eval-radio input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .eval-radio span {
+    display: block;
+    text-align: center;
+    padding: 12px 8px;
+    background: var(--i11-crema);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    color: var(--i11-medio);
+    font-size: 15px;
+    transition: all 0.15s;
+  }
+  .eval-radio:hover span { background: var(--i11-claro); }
+  .eval-radio input:checked + span {
+    background: var(--i11-medio);
+    border-color: var(--i11-oscuro);
+    color: #FFF;
+  }
+
+  .eval-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: var(--i11-crema);
+    border: 1px solid var(--i11-claro);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+  .eval-check input {
+    margin-top: 4px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--i11-medio);
+    flex-shrink: 0;
+  }
+  .eval-check label {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    cursor: pointer;
+  }
+  .eval-check label strong { color: var(--i11-oscuro); }
+  .eval-check label em { color: var(--i11-medio); font-style: italic; }
+
+  .eval-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  .eval-btn-guardar {
+    background: var(--i11-oscuro);
+  }
+  .eval-btn-guardar:hover { background: var(--i11-medio); }
+  .eval-btn-imprimir {
+    background: transparent;
+    color: var(--i11-medio);
+    border: 1px solid var(--i11-medio);
+  }
+  .eval-btn-imprimir:hover {
+    background: var(--i11-crema);
+    color: var(--i11-oscuro);
+  }
+
+  .eval-msg {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    display: none;
+    margin-bottom: 1rem;
+  }
+  .eval-msg.on { display: block; }
+  .eval-msg.exito {
+    background: #EEEDFE;
+    color: var(--i11-oscuro);
+    border-left: 3px solid var(--i11-medio);
+  }
+  .eval-msg.error {
+    background: var(--alerta-bg);
+    color: var(--alerta);
+    border-left: 3px solid var(--alerta);
+  }
+
+  /* Estilos de impresión de la evaluación */
+  @media print {
+    body { background: #FFF; padding: 0; }
+    .root { box-shadow: none; padding: 1rem; max-width: 100%; }
+    .portada, .video-wrap, .mode-selector, .nav { display: none !important; }
+    .card { display: none !important; }
+    #m6.card { display: block !important; break-inside: avoid; border: none; }
+    .eval-actions, .eval-msg { display: none !important; }
+    .ch { background: transparent; }
+    .eval-q textarea, .eval-q input[type="date"] {
+      border: none;
+      border-bottom: 1px solid #999;
+      border-radius: 0;
+      background: transparent;
+    }
+  }
+
+  /* ─── RESPONSIVE ─────────────────────────────────────── */
+  @media (max-width: 640px) {
+    body { padding: 1rem 0.5rem; }
+    .root { padding: 1.25rem; }
+    .portada { padding: 1.5rem 1.25rem; }
+    .portada-title { font-size: 24px; }
+    .ch { padding: 1.25rem 1.25rem 1rem; }
+    .ct { font-size: 20px; }
+    .cb { padding: 1.25rem; }
+    .ejes { grid-template-columns: 1fr; }
+    .btn { flex: 1 1 100%; }
+    .mode-selector { flex-direction: column; align-items: stretch; max-width: 100%; }
+    .mode-btn { text-align: center; }
+    .foro-head { padding: 1.25rem; }
+    .foro-body { padding: 1.25rem; }
+    .foro-title { font-size: 19px; }
+    .foro-vista { max-width: 100%; flex-direction: column; align-items: stretch; }
+    .foro-vista-btn { text-align: center; }
+    .comment-head { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .reply-btn { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER SUPERIOR ═════════════════════════════════ -->
+<header class="top-header">
+  <a href="index.html" class="top-logo">Escuela PLAPA</a>
+  <a href="catalogo_30_itinerarios_plapa_corregido.html" class="top-link">← Catálogo</a>
+</header>
+
+<div class="root mode-grupal">
+
+  <!-- ═══ PORTADA ═════════════════════════════════════════ -->
+  <div class="portada">
+    <p class="portada-sup">Itinerario formativo 11 · Escuela PLAPA · CELAM 2026</p>
+    <h1 class="portada-title">Microcréditos y Finanzas Solidarias</h1>
+    <p class="portada-sub">Economía popular, fondos rotatorios y acompañamiento financiero como motor de identidad, autonomía y reintegración sostenible.</p>
+
+    <div class="dest-box">
+      <div class="dest-lbl">Destinatarios</div>
+      <div class="dest-txt">Coordinadores de centros barriales, referentes de comunidades terapéuticas y agentes pastorales que acompañan procesos de reintegración social y laboral. También útil para equipos que quieren implementar fondos rotatorios o emprendimientos solidarios en sus territorios, y para quienes trabajan con personas en recuperación en la etapa de inserción económica. Se asume familiaridad básica con la economía del barrio; no requiere formación técnica en finanzas.</div>
+    </div>
+
+    <div class="portada-pills">
+      <span class="portada-pill">§6.3.5 · §6.6.5 · §12.4 · §12.4.1 · §12.4.2</span>
+      <span class="portada-pill">4 módulos</span>
+      <span class="portada-pill">Coordinadores de reintegración</span>
+      <span class="portada-pill">Nivel intermedio</span>
+      <span class="portada-pill">Ver · Juzgar · Actuar · Síntesis</span>
+    </div>
+  </div>
+
+  <!-- ═══ VIDEO ═══════════════════════════════════════════ -->
+  
+  <!-- NUEVO: Bloque del Video de Presentación Incrustado -->
+<div style="background: var(--surface-2); border: 0.5px solid var(--border); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
+  <p style="font-size: 11px; font-weight: 500; color: #085041; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; text-align: left;">
+    ▶️ Video de presentación
+  </p>
+  <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px;">
+    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+      src="https://www.youtube.com/embed/PLACEHOLDER_ITIN11"
+      title="Presentación del Itinerario 06" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+  <!-- ═══ SELECTOR DE MODALIDAD ═══════════════════════════ -->
+  <div class="mode-selector">
+    <button class="mode-btn on" onclick="setMode('grupal', this)">👥 Hacer en comunidad</button>
+    <button class="mode-btn" onclick="setMode('individual', this)">👤 Hacer de forma individual</button>
+  </div>
+
+  <!-- ═══ NAVEGACIÓN ══════════════════════════════════════ -->
+  <div class="nav">
+    <button class="btn on" onclick="show(1,this)">Módulo 1 · El dinero como terreno pastoral</button>
+    <button class="btn" onclick="show(2,this)">Módulo 2 · El Fondo Rotatorio</button>
+    <button class="btn" onclick="show(3,this)">Módulo 3 · Cuatro líneas de financiamiento</button>
+    <button class="btn" onclick="show(4,this)">Módulo 4 · Los tres pasos del acompañamiento</button>
+    <span class="nav-sep" aria-hidden="true"></span>
+    <button class="btn btn-alt" onclick="show(5,this)">🌱 Muro del camino</button>
+    <button class="btn btn-alt" onclick="show(6,this)">✍ Evaluación</button>
+  </div>
+
+  <!-- ═══ MÓDULO 1 ════════════════════════════════════════ -->
+  <div id="m1" class="card active">
+    <div class="ch">
+      <span class="cn">Módulo 1 · El Ver</span>
+      <div class="ct">El dinero no es un riesgo que evitar: es un terreno que acompañar</div>
+      <div class="cs">La relación con el dinero como termómetro de madurez · §6.3.5, §12.4</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"El manejo del dinero, bajo un esquema de acompañamiento, permite verificar el paso del patrón compulsivo a la gratificación inmediata al patrón de planificación y proyección vital. Sin este ejercicio de realismo, la autonomía recuperada corre el riesgo de ser una ilusión que se quiebra al primer contacto con el mercado."</div>
+      </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>"Las personas en recuperación no deben manejar dinero": la objeción más extendida.</strong> El §6.3.5 la refuta con precisión: <em>"El riesgo no se elimina con la prohibición, sino que se gestiona con la pedagogía. El manejo acompañado del dinero en entornos seguros permite que el hermano aprenda a convivir con el estímulo sin ser gobernado por él."</em> Prohibir el dinero no forma la voluntad: la evita.</span></li>
+        <li><span class="dot">V</span><span><strong>La exclusión bancaria estructural.</strong> En los territorios de exclusión, <em>"el acceso al sistema bancario y crediticio formal está completamente vedado debido a las exigencias burocráticas y patrimoniales"</em> (§12.4). Sin cuenta bancaria, sin historial crediticio, sin documentación completa, el hermano que intenta reintegrarse económicamente choca con el mismo sistema que lo excluye. Las finanzas solidarias son la respuesta territorial a esa exclusión sistémica.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>Las tres funciones del dinero en la recuperación.</strong> El §6.3.5 define tres: <em>termómetro de madurez</em> (la capacidad de conservar y administrar recursos sin ceder al impulso verifica que el freno biológico y espiritual ha comenzado a funcionar), <em>reeducación financiera y planificación</em> (enseña a proyectar, ahorrar y cuidar la casa común), y <em>superación de la orfandad material</em> (manejar recursos propios devuelve la dignidad al sujeto).</span></li>
+        <li><span class="dot j">J</span><span><strong>El dinero como carne de la espiritualidad encarnada.</strong> <em>"No hay división entre la fe y la carne. Una espiritualidad sana es la que ayuda al hombre a ser libre en medio de sus circunstancias. El dinero, ordenado al bien de la familia y el servicio, deja de ser un motor de esclavitud para transformarse en un medio de justicia"</em> (§6.3.5). La economía solidaria no es un programa técnico añadido a la pastoral: es la carne de la espiritualidad encarnada que el Manual propone.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">¿Cómo tratamos el dinero en los procesos que acompañamos?</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo evalúa honestamente: <em>¿hay personas en procesos activos que ya deberían estar manejando dinero propio pero el equipo lo evita por precaución? ¿cuándo es la primera vez que acompañamos a alguien en la gestión de un ingreso? ¿hay un protocolo para eso o se improvisa?</em> El diagnóstico revela si el equipo está formando autonomía o perpetuando dependencia.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora los nombres (para vos) de personas que acompañás. Al lado de cada una: <em>¿ya deberían estar manejando dinero propio? ¿lo están? ¿alguien las acompaña en esa gestión?</em> Si evitás el tema por precaución, escribí por qué. La lucidez sobre esa evitación es el primer paso del acompañamiento financiero.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">El primer sueldo: una práctica de acompañamiento</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo diseña un protocolo mínimo para acompañar la primera experiencia de ingreso: <em>¿quién acompaña? ¿cómo se planifica el gasto juntos? ¿se destina algo al ahorro, algo a la familia, algo al proceso? ¿cómo se celebra?</em> El primer sueldo no es solo dinero: es la verificación de que la persona puede protagonizar su propia economía. Merece un ritual de reconocimiento.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Escribí en tu bitácora tu protocolo personal para el próximo "primer sueldo" que te toque acompañar: <em>¿cómo lo planificarías juntos? ¿qué proporción al ahorro, a la familia, al proceso? ¿cómo lo celebrarías?</em> El primer sueldo merece un ritual pastoral porque marca la transición de la asistencia al protagonismo.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">La transparencia financiera del equipo como testimonio</div>
+        <div class="mode-g">
+          <div class="act-body">Antes de acompañar a otros en la reeducación financiera, el grupo se pregunta: <em>¿hay transparencia en la gestión de los recursos del centro barrial? ¿los acompañados saben cómo se financia el dispositivo? ¿hay rendiciones periódicas visibles?</em> La transparencia financiera del equipo es un testimonio pastoral concreto: el hermano ve en el equipo lo que la reeducación financiera puede producir.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Escribí en tu bitácora tres prácticas concretas de transparencia financiera que tu comunidad ya tiene o podría empezar a tener. Al lado de cada una: <em>¿los acompañados la ven? ¿la entienden? ¿la comentan?</em> El testimonio de transparencia se hace visible o no existe.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §6.3.5</div>
+        <div class="cita-txt">"Quien viene de la exclusión o de la calle suele vivir en un presente perpetuo donde el recurso se agota instantáneamente. Utilizar el dinero de forma pedagógica enseña al hermano a proyectar, a ahorrar para su familia y a cuidar su casa común, devolviéndole su identidad de administrador responsable."</div>
+        <div class="cita-ref">Manual de la PLAPA, §6.3.5 — El dinero como signo de realismo y madurez (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">La reeducación financiera puede convertirse en <em>disciplinamiento moralista</em> si se plantea como "enseñarles a ahorrar como hace la gente decente". No es eso. Es acompañar a alguien a recuperar la capacidad de proyectar en el tiempo lo que la exclusión y el consumo le habían fracturado. La diferencia es de tono, pero define si la propuesta acoge o expulsa.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">El módulo puede generar en algunos agentes la pregunta: <em>¿y nosotros, cómo nos relacionamos con el dinero?</em> El equipo que no ha ordenado su propia relación con el dinero difícilmente pueda ordenar la de otros. La honestidad personal frente a esa pregunta —sin culpa moralista, con lucidez pastoral— es la condición del acompañamiento financiero que se propone hacia afuera.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §6.3.5 (El dinero como signo de realismo y madurez), §12.4 (Microcréditos y Finanzas Solidarias) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 2 ════════════════════════════════════════ -->
+  <div id="m2" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 2 · El Juzgar</span>
+      <div class="ct">El Fondo Rotatorio: projimidad y confianza recíproca como garantía</div>
+      <div class="cs">La alternativa territorial al sistema bancario que excluye · §12.4</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"Las Finanzas Solidarias representan la operativización de una economía que sirve a la vida de las personas y dice 'NO a una economía de exclusión e inequidad donde el dinero reina en lugar de servir'."</div>
+      </div>
+
+      <div class="pl">El Juzgar — Los dos principios del Fondo Rotatorio (§12.4)</div>
+      <div class="ejes">
+        <div class="eje">
+          <div class="eje-n">Principio 1</div>
+          <div class="eje-t">Circularidad</div>
+          <div class="eje-txt">No existe la acumulación especulativa ni el interés usurero. Cuando un emprendedor devuelve su crédito, ese mismo recurso financia el proyecto del siguiente compañero del barrio. El dinero sirve, no acumula.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Principio 2</div>
+          <div class="eje-t">Garantía Solidaria</div>
+          <div class="eje-txt">El compromiso y el aval del grupo o del Centro Barrial sostienen y respaldan a cada integrante. El pago de la cuota se convierte en un acto de responsabilidad colectiva: no se le falla al banco, se le falla al compañero.</div>
+        </div>
+      </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>El vínculo como única garantía.</strong> Un Fondo Rotatorio es un instrumento de préstamo comunitario donde el dinero circula de manera transparente (§12.4). A diferencia del crédito bancario —que exige historial, garantías patrimoniales y documentación que el hermano no tiene— el fondo rotatorio exige solo una cosa: el <em>vínculo de confianza con la comunidad</em>. Esa exigencia no es menor: es la más profunda que existe.</span></li>
+        <li><span class="dot">V</span><span><strong>Práctica territorial probada, no propuesta teórica.</strong> La estrategia fue impulsada por Cáritas y el Hogar de Cristo en Argentina y está siendo sistematizada como modelo replicable para América Latina (§12.4). El contacto del programa es <em>ecosol@caritas.org.ar</em>. El Manual documenta una práctica en curso para que otros equipos puedan adoptarla o adaptarla, no una hipótesis pastoral sin encarnación.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>El pago como acto de comunidad.</strong> La Garantía Solidaria invierte la lógica del crédito bancario: la responsabilidad ya no es individual frente a una institución impersonal, sino <em>colectiva frente a los compañeros</em>. Ese cambio de destinatario es lo que sostiene el fondo cuando aparece la primera dificultad: no se paga por miedo a la sanción, se paga por vínculo con el otro.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Evaluar la viabilidad de un Fondo Rotatorio en el territorio</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo responde tres preguntas del §12.4: <em>¿hay en el territorio personas en proceso de recuperación con un emprendimiento incipiente que necesita financiamiento? ¿hay una base comunitaria mínima (centro barrial, grupo pastoral, cooperativa) que pueda sostener la garantía solidaria? ¿hay alguien con capacidad de acompañamiento técnico básico?</em> Si las tres respuestas son afirmativas, el territorio está listo para un primer fondo rotatorio.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Escribí en tu bitácora las tres respuestas para tu territorio. Si alguna es negativa: <em>¿qué habría que construir primero para que sí lo sea?</em> El fondo rotatorio no arranca en la voluntad del equipo: arranca cuando las tres condiciones están dadas.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Contactar el programa de Finanzas Solidarias</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo evalúa si hay una iniciativa de Finanzas Solidarias en la diócesis o la región y, de no haberla, designa a alguien para contactar <em>ecosol@caritas.org.ar</em>. El objetivo no es replicar el modelo exactamente: es <em>aprender de la experiencia ya sistematizada antes de diseñar la propia</em>. El Manual ofrece el marco; la experiencia de Cáritas–Hogar de Cristo ofrece la metodología.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora si conocés alguna iniciativa de Finanzas Solidarias cercana. Si no, escribí el correo de contacto (<em>ecosol@caritas.org.ar</em>) y fechá cuándo lo vas a mandar. La consulta previa a diseñar es la mitad del ahorro de tiempo del proyecto.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Diseñar las reglas del primer fondo rotatorio</div>
+        <div class="mode-g">
+          <div class="act-body">Si el grupo decide avanzar, diseña colectivamente las reglas básicas: <em>monto inicial, criterios de acceso, cuotas de devolución, qué sucede en caso de incumplimiento, quién toma las decisiones</em>. El diseño participativo de las reglas es la primera práctica de la economía solidaria: <em>el fondo pertenece a la comunidad, no a una institución</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Bosquejá en tu bitácora las cinco reglas mínimas para un fondo rotatorio de tu territorio. Escribilas como propuesta, no como decisión: el diseño final tiene que ser colectivo para que el fondo pertenezca a la comunidad.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §12.4</div>
+        <div class="cita-txt">"Un Fondo Rotatorio es un instrumento de préstamo comunitario donde el dinero circula de manera transparente. Cuando un emprendedor o cooperativa devuelve su crédito, ese mismo recurso se utiliza de inmediato para financiar el proyecto de otro compañero del barrio."</div>
+        <div class="cita-ref">Manual de la PLAPA, §12.4 — Microcréditos y Finanzas Solidarias (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">Un fondo rotatorio sin reglas claras se convierte en subsidio disfrazado y muere en la primera crisis. Un fondo rotatorio con reglas rígidas se convierte en banco chico y traiciona el espíritu solidario. El equilibrio de la Misericordia Estructurada (§6.3.3) aplica exactamente aquí: <em>reglas firmes que nacen del vínculo, no de la desconfianza</em>. Sin esa doble tensión, el fondo se cae por un lado o por el otro.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">El Fondo Rotatorio pone a prueba la confianza comunitaria: cuando alguien no paga, el grupo siente la tensión entre la misericordia y la responsabilidad colectiva. El facilitador prepara al equipo para esa tensión <em>antes</em> de que ocurra. La Misericordia Estructurada (§6.3.3) aplica también aquí: el fondo tiene reglas porque el amor que lo sostiene quiere que dure, no que se agote en la primera dificultad.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §12.4 (Microcréditos y Finanzas Solidarias), §6.3.3 (Misericordia Estructurada) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 3 ════════════════════════════════════════ -->
+  <div id="m3" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 3 · El Actuar</span>
+      <div class="ct">Las cuatro líneas de financiamiento y los cinco ejes de la economía solidaria</div>
+      <div class="cs">Qué financia el microcrédito y cómo se articula con la recuperación · §12.4.1, §6.6.5</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"No se le presta dinero a un número impersonal, sino que se apoya un proyecto de vida. Las finanzas solidarias no son un servicio técnico: son la operativización de una economía que sirve a la persona."</div>
+      </div>
+
+      <div class="pl">El Ver — Las cuatro líneas de financiamiento (§12.4.1)</div>
+      <ul class="pts">
+        <li><span class="dot j">1</span><span><strong>Compra de insumos.</strong> Adquisición de materia prima indispensable para iniciar o garantizar la continuidad de la producción <em>sin depender de intermediarios abusivos</em>.</span></li>
+        <li><span class="dot j">2</span><span><strong>Maquinaria y herramientas.</strong> Equipamiento técnico que mejora la escala, los costos y la calidad del trabajo, <em>acelerando los procesos de autosuficiencia productiva</em>.</span></li>
+        <li><span class="dot j">3</span><span><strong>Mejoramiento del espacio.</strong> Arreglos de infraestructura, adecuación de talleres o comercialización. En contextos periurbanos, muchas veces impacta directamente en la mejora de la vivienda familiar (<em>la T de Techo</em>).</span></li>
+        <li><span class="dot j">4</span><span><strong>Fortalecimiento técnico.</strong> Financiamiento para capacitaciones en administración eficiente, diseño, marketing socio-comunitario y uso de redes sociales para la venta.</span></li>
+      </ul>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>Las cuatro líneas responden a cuatro barreras concretas.</strong> Las cuatro líneas del §12.4.1 no son categorías abstractas: responden a las cuatro barreras concretas que el emprendedor del barrio encuentra cuando intenta producir. <em>Sin insumos no puede producir. Sin herramientas no puede escalar. Sin espacio no puede vender. Sin capacitación no puede gestionar.</em> El microcrédito que no considera las cuatro líneas termina financiando solo una parte del problema.</span></li>
+        <li><span class="dot">V</span><span><strong>Los cinco ejes de la economía popular y solidaria (§6.6.5).</strong> Trabajo como lazo social, cooperativismo en sectores populares, reeducación financiera, misericordia estructurada en la organización productiva, y valoración de los talentos propios. <em>"La inclusión social reconoce las herramientas que los sujetos ya poseen para disputar la economía barrial al narcotráfico"</em> (§6.6.5). El microcrédito bien aplicado es la forma más concreta de disputarle ese terreno.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>La línea del Fortalecimiento Técnico contra el asistencialismo.</strong> La línea 4 es la que más resiste la mentalidad asistencialista: <em>¿para qué le enseño a alguien en recuperación a usar Instagram para vender?</em> El §12.4.1 responde implícitamente: porque la economía barrial ya funciona en esas plataformas, y el hermano que no sabe usarlas queda afuera del mercado donde puede competir sin títulos ni credenciales.</span></li>
+        <li><span class="dot j">J</span><span><strong>La línea del Mejoramiento del Espacio se enlaza con las 3T.</strong> La línea 3 conecta directamente con la T de Techo de las 3T (§6.3.2). El microcrédito que financia el techo de un taller productivo puede ser simultáneamente el que consolida la habitabilidad del hogar. Las cuatro líneas no son estancas: bien articuladas, <em>refuerzan el andamiaje de las 3T desde la economía solidaria</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Mapear los emprendimientos del territorio</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo identifica los emprendimientos productivos que ya existen en el territorio, especialmente entre personas en proceso de recuperación o sus familias: <em>¿qué producen? ¿qué necesitan para crecer? ¿cuál de las cuatro líneas de financiamiento les haría más diferencia?</em> El mapa de emprendimientos es el punto de partida del plan de microcréditos.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora los emprendimientos productivos que conocés en tu territorio (aunque sean muy pequeños). Al lado de cada uno, marcá cuál de las cuatro líneas del §12.4.1 le haría más diferencia hoy. Esa marca es el diagnóstico financiero mínimo del territorio.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Los talentos que el narcotráfico aprovecha y nosotros no</div>
+        <div class="mode-g">
+          <div class="act-body">El §6.6.5 propone <em>"valorar los talentos que los sujetos ya poseen para disputar la economía barrial al narcotráfico."</em> El grupo identifica: <em>¿qué habilidades, saberes o redes tienen los hermanos que acompañamos que el narco aprovecha (distribuir, organizar, convencer, moverse en el barrio) y la economía solidaria podría redirigir?</em> La economía solidaria no inventa capacidades: <em>las reorienta</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Escribí en tu bitácora una lista de talentos concretos que ves en las personas del territorio que hoy están al servicio de la economía del narco (o de trabajos precarios) y que la economía solidaria podría redirigir. Al lado de cada talento, un emprendimiento posible que lo usaría bien.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Diseñar un taller de reeducación financiera básica</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo diseña un taller de dos horas de reeducación financiera básica para personas en proceso de recuperación: <em>ingresos vs. gastos, ahorro mínimo, planificación de una compra, primer presupuesto</em>. Sin tecnicismos. Con situaciones del barrio. La metodología interactiva (§6.2.7) aplica también aquí: no charla magistral, sino ejercicios concretos con números reales del territorio.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Bosquejá en tu bitácora el esquema de un taller de dos horas de reeducación financiera básica para tu territorio: <em>bloque 1 (ingresos vs. gastos), bloque 2 (ahorro mínimo), bloque 3 (primer presupuesto de una compra concreta)</em>. Con nombres, precios y situaciones reales del barrio.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §6.6.5</div>
+        <div class="cita-txt">"La inclusión económica no es el premio al final del camino, sino una condición de justicia para que la recuperación sea sostenible y digna, permitiendo que el sujeto se reconozca nuevamente como ciudadano con derechos y responsabilidades."</div>
+        <div class="cita-ref">Manual de la PLAPA, §6.6.5 — Economía popular y solidaria (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">Financiar solo una de las cuatro líneas (solo insumos, o solo maquinaria) sin las otras suele producir emprendimientos que <em>no arrancan o mueren pronto</em>. El §12.4.1 propone las cuatro precisamente porque las cuatro barreras aparecen juntas en el territorio. El microcrédito bien pensado combina líneas; el mal pensado elige la más visible y deja fuera las que sostienen.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">El módulo puede generar en el equipo una sensación de <em>"esto es demasiado técnico para nosotros."</em> El facilitador recuerda que las finanzas solidarias no requieren un contador: requieren un acompañante que sabe escuchar un proyecto de vida y ayudar a ordenarlo. Las cuatro líneas de financiamiento son <em>una herramienta de diálogo, no de evaluación técnica</em>. El equipo que sabe hacer acompañamiento inespecífico ya tiene las habilidades básicas para hacer acompañamiento financiero.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §12.4.1 (Líneas de financiamiento), §6.6.5 (Economía popular y solidaria), §6.3.2 (Las 3T), §6.2.7 (Principios de intervención preventiva) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 4 ════════════════════════════════════════ -->
+  <div id="m4" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 4 · Síntesis</span>
+      <div class="ct">Los tres pasos del acompañamiento integral: identificar, formular y seguir</div>
+      <div class="cs">La metodología que humaniza el crédito · §12.4.2</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"No se le presta dinero a un número impersonal, sino que se apoya un proyecto de vida. El seguimiento es tanto técnico como humano: implica celebrar los logros comerciales y ajustar las dificultades personales antes de que pongan en riesgo el proceso."</div>
+      </div>
+
+      <div class="pl">El Juzgar — Los tres pasos de la guía metodológica (§12.4.2)</div>
+      <ul class="pts">
+        <li><span class="dot j">1</span><span><strong>Identificación.</strong> Escuchar atentamente la <em>necesidad real</em> del emprendedor o la cooperativa. Evaluar de forma conjunta la viabilidad y el potencial productivo del proyecto, asegurando que la persona cuente con los apoyos necesarios en materia de salud, documentación civil y estabilidad habitacional.</span></li>
+        <li><span class="dot j">2</span><span><strong>Formulación.</strong> Acompañar técnicamente al participante para <em>plasmar su idea en un plan concreto y ordenado</em> de ingresos, egresos y cálculo de costos, determinando con realismo el monto del microcrédito y un esquema de cuotas de devolución sustentable.</span></li>
+        <li><span class="dot j">3</span><span><strong>Seguimiento.</strong> Realizar <em>visitas periódicas y presenciales</em> al espacio de trabajo. Este paso es tanto técnico como humano: celebrar los logros comerciales, brindar herramientas administrativas en el campo de acción y ajustar las dificultades operativas o personales antes de que pongan en riesgo el proceso.</span></li>
+      </ul>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>La Identificación verifica el andamiaje de las 3T.</strong> El paso 1 requiere verificar que la persona <em>"cuente con los apoyos necesarios en materia de salud, documentación civil y estabilidad habitacional"</em> (§12.4.2). Esta verificación no es burocrática: es la constatación de que el andamiaje mínimo de las 3T está en pie. Un microcrédito entregado a alguien sin documentación, sin techo estable o sin acceso a salud es un crédito que probablemente <em>fracase antes de empezar</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>El Seguimiento distingue lo solidario de lo bancario.</strong> El paso 3 es el que más distingue a las finanzas solidarias del crédito bancario. <em>El banco visita al deudor cuando no paga. El acompañante solidario visita para celebrar cuando le va bien y para ajustar cuando encuentra dificultades.</em> <em>"Este paso es tanto técnico como humano"</em> (§12.4.2): la distinción resume todo el espíritu del itinerario.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>Los tres pasos son el VJA aplicado al campo financiero.</strong> La guía metodológica del §12.4.2 aplica la epistemología ascendente al campo financiero: primero se escucha la realidad concreta del emprendedor (<em>Identificación = Ver</em>), luego se elabora el discernimiento técnico sobre su proyecto (<em>Formulación = Juzgar</em>), y finalmente se acompaña el proceso real en el territorio (<em>Seguimiento = Actuar</em>). El VJA aplicado a la economía solidaria produce exactamente la misma estructura que cuando se aplica a la pastoral.</span></li>
+        <li><span class="dot j">J</span><span><strong>"Un proyecto de vida, no un número impersonal": la versión económica del Persona Primero.</strong> La frase que da título al §12.4.2 —<em>"no se le presta dinero a un número impersonal, sino que se apoya un proyecto de vida"</em>— es la versión económica del principio Persona Primero. El microcrédito que ignora la historia, los vínculos y las fragilidades del emprendedor es un instrumento financiero. El que los integra es un <em>instrumento pastoral</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Aplicar los tres pasos a un caso del territorio</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo toma un emprendimiento real del territorio (anonimizado) y lo recorre con los tres pasos del §12.4.2: <em>¿qué sabemos del emprendedor (Identificación)? ¿qué plan tiene y con qué recursos (Formulación)? ¿hay alguien que lo visita regularmente y celebra sus logros (Seguimiento)?</em> El ejercicio revela en qué paso está el equipo y qué falta.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Elegí un emprendimiento real del territorio y recorré los tres pasos en tu bitácora. Al final de cada paso, respondé: <em>¿qué falta? ¿quién podría hacerlo? ¿en qué plazo?</em> El diagnóstico honesto por paso genera el plan de trabajo específico.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">El mapa de finanzas solidarias del territorio</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo cierra el itinerario construyendo un <em>mapa de finanzas solidarias del territorio</em>: emprendimientos activos, necesidades de financiamiento identificadas, recursos disponibles (fondo rotatorio propio, articulación con Cáritas, cooperativas existentes) y personas con capacidad de acompañamiento técnico. El mapa es el plan de trabajo del equipo para los próximos seis meses.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Bosquejá en tu bitácora el mapa de finanzas solidarias de tu territorio con las cuatro capas: <em>emprendimientos activos, necesidades detectadas, recursos disponibles, personas con capacidad de acompañamiento</em>. La distancia entre las cuatro capas es tu plan de trabajo concreto.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Cierre: la economía que queremos ser</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo cierra con una frase que retoma el itinerario 9 desde la perspectiva financiera: <em>"En este territorio, queremos construir una economía que…"</em> Tres líneas máximo, escritas en silencio y leídas en voz alta. El facilitador busca los puntos en común y los nombra como el horizonte compartido del equipo hacia donde el itinerario apuntó.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Cerrá el itinerario escribiendo en tu bitácora: <em>"En este territorio, quiero acompañar una economía solidaria que…"</em>. Tres líneas máximo. Esa es tu brújula personal para las próximas decisiones concretas en el campo de las finanzas solidarias.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §12.4.2</div>
+        <div class="cita-txt">"No se le presta dinero a un número impersonal, sino que se apoya un proyecto de vida. El seguimiento implica celebrar los logros comerciales del emprendimiento, brindar herramientas administrativas en el campo de acción y ajustar las dificultades operativas o personales antes de que pongan en riesgo el proceso."</div>
+        <div class="cita-ref">Manual de la PLAPA, §12.4.2 — Guía Metodológica para el Acompañamiento Integral (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">Saltarse el paso de Identificación —<em>"esta persona necesita un préstamo, después vemos"</em>— es la fuente principal de fracaso de los microcréditos solidarios. La Identificación no es formalismo: es el gesto pastoral de asegurarse de que el andamiaje mínimo esté en pie antes de sumar una responsabilidad crediticia. Sin ese paso, el fondo rotatorio se convierte en <em>generador de nuevas exclusiones</em> en lugar de puerta de reintegración.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente — cierre del itinerario</div>
+        <div class="autocuidado-txt">El itinerario cierra con la pregunta que el paso de Seguimiento le hace al equipo: <em>¿hay alguien en el territorio a quien el equipo tendría que visitar esta semana para celebrar un logro que no celebró?</em> La economía solidaria que solo aparece cuando hay problemas reproduce la lógica del banco. La que aparece también para celebrar reproduce la lógica del Evangelio. Cerrar el itinerario con esa visita pendiente como <em>primer compromiso concreto</em>.</div>
+      </div>
+
+      <div class="lectura">
+        <div class="lectura-lbl">Lectura complementaria</div>
+        <div class="lectura-txt">Para profundizar en la práctica de los <strong>Fondos Rotatorios</strong> y el acompañamiento financiero integral en la tradición de la Familia Grande Hogar de Cristo y del programa de Finanzas Solidarias de Cáritas, ofrecemos este texto para la reflexión del equipo. Contacto directo del programa: <em>ecosol@caritas.org.ar</em>.</div>
+        <a href="ElMetodoFGHC.pdf" download class="lectura-link">📥 Descargar "ElMetodoFGHC.pdf"</a>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §12.4.2 (Guía Metodológica), §6.3.5 (El dinero como termómetro), §6.6.5 (Economía popular y solidaria) · Contacto: ecosol@caritas.org.ar — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 5 · MURO DEL CAMINO (FORO) ═══════════════ -->
+  <div id="m5" class="card">
+    <div class="ch">
+      <span class="cn">Espacio comunitario · Muro</span>
+      <div class="ct">Voces de quienes también recorren este itinerario</div>
+      <div class="cs">El Manual crece con quienes lo caminan · §13.3, §13.5</div>
+    </div>
+    <div class="cb">
+
+      <!-- Selector de vista: este itinerario / global -->
+      <div class="foro-vista">
+        <button class="foro-vista-btn on" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
+        <button class="foro-vista-btn" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
+      </div>
+
+      <!-- Pautas pastorales -->
+      <div class="foro-pautas">
+        <div class="foro-pautas-lbl">Antes de publicar</div>
+        <ul>
+          <li>Compartí solo experiencias propias o del equipo. No expongas historias ajenas ni datos que identifiquen a terceras personas.</li>
+          <li>Cuidá a quien lea después: evitá descripciones que puedan retraumatizar.</li>
+          <li>Tu aporte será revisado por el equipo PLAPA antes de publicarse.</li>
+        </ul>
+      </div>
+
+      <!-- Formulario nuevo comentario -->
+      <div class="foro-form" id="foroForm">
+        <div class="foro-form-lbl">Dejar mi palabra</div>
+        <div class="foro-form-row">
+          <label for="foroModulo">¿Sobre qué momento del itinerario?</label>
+          <select id="foroModulo">
+            <option value="">General del itinerario</option>
+            <option value="1">Módulo 1 · El dinero como terreno pastoral</option>
+            <option value="2">Módulo 2 · El Fondo Rotatorio</option>
+            <option value="3">Módulo 3 · Cuatro líneas de financiamiento</option>
+            <option value="4">Módulo 4 · Los tres pasos del acompañamiento</option>
+          </select>
+        </div>
+        <textarea id="foroTexto" placeholder="Escribí tu comentario, pregunta o testimonio de camino..."></textarea>
+        <div class="foro-form-actions">
+          <div class="foro-form-info">Aparecerá en el muro luego de la revisión del equipo.</div>
+          <button class="foro-btn" id="foroEnviar" onclick="enviarComentario()">Enviar para revisión</button>
+        </div>
+      </div>
+
+      <!-- Lista de comentarios -->
+      <div class="foro-lista" id="foroLista">
+        <div class="foro-vacio">Cargando el muro...</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 6 · EVALUACIÓN ══════════════════════════ -->
+  <div id="m6" class="card">
+    <div class="ch">
+      <span class="cn">Cierre del itinerario · Evaluación</span>
+      <div class="ct">Revisión de vida en clave Ver–Juzgar–Actuar</div>
+      <div class="cs">No es un examen: es un discernimiento sobre lo que este itinerario dejó en vos</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Antes de comenzar</div>
+        <div class="resonancia-txt">"La revisión de vida es la forma histórica que la Iglesia latinoamericana encontró para institucionalizar el Ver–Juzgar–Actuar. El agente que la practica no aplica el método: lo vive." Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
+      </div>
+
+      <div class="eval-nota">
+        <span class="eval-nota-lbl">🕊 Uso pastoral</span>
+        <div class="eval-nota-txt">Esta evaluación es <strong>tuya</strong>. Podés guardarla en tu bitácora personal (queda solo con vos) y, si lo decidís, compartirla con el equipo PLAPA como aporte al <em>rolling release</em> del Manual (§13.5). Compartir es voluntario.</div>
+      </div>
+
+      <div class="pl">El Ver — Qué se hizo visible</div>
+      <div class="eval-q">
+        <label for="evalVer">¿Qué realidad del territorio se hizo más visible para vos a lo largo de estos cuatro módulos? ¿Qué llagas emergieron con más fuerza? ¿Qué zonas del mapa estaban en blanco antes y ahora tienen contenido?</label>
+        <textarea id="evalVer" data-eval="ver" placeholder="Escribí con calma, sin apurarte..."></textarea>
+      </div>
+
+      <div class="pl">El Juzgar — Qué iluminó, qué preguntas quedaron abiertas</div>
+      <div class="eval-q">
+        <label for="evalJuzgar1">¿Qué del método del diagnóstico territorial te iluminó de manera nueva? ¿Qué idea del Manual sentís que ya no podrás dejar de lado?</label>
+        <textarea id="evalJuzgar1" data-eval="juzgar1" placeholder="Nombralo con precisión..."></textarea>
+      </div>
+      <div class="eval-q">
+        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos? Las preguntas abiertas son también fruto (§13.3).</label>
+        <textarea id="evalJuzgar2" data-eval="juzgar2" placeholder="Las que siguen ardiendo..."></textarea>
+      </div>
+
+      <div class="pl">El Actuar — Compromiso concreto</div>
+      <div class="eval-q">
+        <label for="evalActuar">¿Qué gesto pastoral concreto vas a intentar en las próximas semanas a partir del diagnóstico que hiciste? Nombralo con nombre, tiempo y lugar. Un compromiso vago no es un compromiso.</label>
+        <textarea id="evalActuar" data-eval="actuar" placeholder="Ej.: En la próxima reunión de equipo (jueves 25) voy a presentar el mapa territorial que construimos y proponer una callejeada específica al sector X del barrio..."></textarea>
+      </div>
+      <div class="eval-q eval-fecha">
+        <label for="evalFecha">Fecha en la que vas a volver a revisar si pudiste sostenerlo</label>
+        <input type="date" id="evalFecha" data-eval="fecha_revision">
+      </div>
+
+      <div class="pl">Autocuidado y equipo</div>
+      <div class="eval-q eval-scale">
+        <label>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</label>
+        <div class="eval-scale-row">
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="1" data-eval="animo"><span>1</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="2" data-eval="animo"><span>2</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="3" data-eval="animo"><span>3</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="4" data-eval="animo"><span>4</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="5" data-eval="animo"><span>5</span></label>
+        </div>
+      </div>
+      <div class="eval-q">
+        <label for="evalCuidado">¿Qué necesitás cuidar de vos mismo/a en las próximas semanas? ¿A quién del equipo se lo vas a decir?</label>
+        <textarea id="evalCuidado" data-eval="cuidado" placeholder="El agente que cuida su esperanza puede sostener la del otro (§1.3)..."></textarea>
+      </div>
+
+      <div class="pl">Cierre</div>
+
+      <div class="eval-check">
+        <input type="checkbox" id="evalCompartir">
+        <label for="evalCompartir"><strong>Compartir con el equipo PLAPA</strong> como aporte al <em>rolling release</em> del Manual. Solo se envían tus respuestas si marcás esta casilla. Si no la marcás, la evaluación queda solo en tu bitácora.</label>
+      </div>
+
+      <div class="eval-actions">
+        <button class="foro-btn eval-btn-guardar" onclick="guardarEvaluacion()">Guardar en mi bitácora</button>
+        <button class="foro-btn eval-btn-imprimir" onclick="imprimirEvaluacion()">🖨 Imprimir / PDF</button>
+      </div>
+
+      <div id="evalMsg" class="eval-msg"></div>
+
+      <div class="autocuidado" style="margin-top: 2rem;">
+        <div class="autocuidado-lbl">Cierre del itinerario</div>
+        <div class="autocuidado-txt">Cerrar bien un itinerario también es autocuidado: celebrar lo caminado, agradecer al equipo, reconocer los propios límites y renovar la esperanza. Este itinerario termina con gratitud: por el territorio que nos habló, por las llagas que dejamos de negar, por el equipo que hizo posible mirar sin apartar la mirada.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §1.3 (Prólogo), §6.1.3 (Evitar la romantización), §13.2 (Sinodalidad en la práctica), §13.3 (Rolling release), §13.5 (Mecanismos de colaboración) — CELAM 2026.</div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function setMode(mode, btn) {
+    var root = document.querySelector('.root');
+    root.classList.remove('mode-grupal', 'mode-individual');
+    root.classList.add('mode-' + mode);
+    var buttons = document.querySelectorAll('.mode-btn');
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].classList.remove('on');
+    }
+    btn.classList.add('on');
+  }
+
+  function show(n, btn) {
+    for (var i = 1; i <= 6; i++) {
+      var el = document.getElementById('m' + i);
+      if (el) el.classList.remove('active');
+    }
+    document.querySelectorAll('.nav .btn').forEach(function(b) {
+      b.classList.remove('on');
+    });
+    document.getElementById('m' + n).classList.add('active');
+    btn.classList.add('on');
+    if (window.innerWidth < 640) {
+      document.getElementById('m' + n).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    // Al abrir el muro, refrescar comentarios
+    if (n === 5 && typeof cargarComentarios === 'function') {
+      cargarComentarios();
+    }
+    // Al abrir la evaluación, restaurar borrador si existe
+    if (n === 6 && typeof restaurarEvaluacion === 'function') {
+      restaurarEvaluacion();
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════
+  // MURO DEL CAMINO — FORO SUPABASE
+  // ═══════════════════════════════════════════════════════
+  // BACKEND REQUERIDO (Supabase — mismo proyecto que app-plapa):
+  //
+  // 1) Tabla `foro_comentarios`:
+  //    - id (uuid, pk)
+  //    - itinerario_id (text)     — ej. 'itinerario_11_microcreditos_finanzas_solidarias'
+  //    - parent_id (uuid, null)   — null = comentario raíz; uuid = respuesta
+  //    - usuario_id (uuid, fk auth.users)
+  //    - autor_nombre (text)      — copiado del perfil al crear
+  //    - pais (text)              — copiado del perfil al crear
+  //    - modulo (int, null)       — 1..4 o null (general)
+  //    - texto (text)
+  //    - estado (text)            — 'pendiente' | 'publicado' | 'rechazado'
+  //    - created_at (timestamptz)
+  //
+  // 2) Tabla `foro_reacciones`:
+  //    - comentario_id (uuid, fk)
+  //    - usuario_id (uuid, fk)
+  //    - emoji (text) — '🙏' | '❤️' | '💡' | '🕊️'
+  //    - PK compuesta (comentario_id, usuario_id, emoji)
+  //
+  // 3) Vista/RPC `comentarios_para_itinerario(p_itinerario text, p_scope text)`:
+  //    devuelve los comentarios publicados con autor_nombre, pais, itinerario_titulo
+  //    (si scope='global'), agregado de reacciones y las del usuario actual.
+  //    scope: 'itinerario' filtra por p_itinerario; 'global' devuelve todos.
+  //
+  // 4) RPC `toggle_reaccion(p_comentario uuid, p_emoji text)`.
+  //
+  // 5) RLS:
+  //    - foro_comentarios: SELECT solo estado='publicado'; INSERT solo auth.uid()
+  //      con estado='pendiente' forzado.
+  //    - Moderadores (rol) pueden UPDATE estado.
+  //
+  // 6) Sesión: la Escuela PLAPA debe dejar el token JWT accesible
+  //    (localStorage 'escuela_plapa_sesion' con { token, nombre, pais }
+  //    o cookie según arquitectura de la Escuela).
+  // ═══════════════════════════════════════════════════════
+
+  var SUPABASE_URL = 'https://TU-PROYECTO.supabase.co';  // TODO: config
+  var SUPABASE_ANON_KEY = 'TU_ANON_KEY';                  // TODO: config
+  var ITINERARIO_ID = 'itinerario_11_microcreditos_finanzas_solidarias';
+  var ITINERARIO_TITULO = 'Microcréditos y Finanzas Solidarias';
+
+  var vistaForo = 'itinerario';
+  var sesion = null;
+  var EMOJIS = ['🙏', '❤️', '💡', '🕊️'];
+
+  function supaHeaders() {
+    var h = {
+      'apikey': SUPABASE_ANON_KEY,
+      'Content-Type': 'application/json'
+    };
+    if (sesion && sesion.token) {
+      h['Authorization'] = 'Bearer ' + sesion.token;
+    }
+    return h;
+  }
+
+  function escapeHtml(s) {
+    if (!s) return '';
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function formatFecha(iso) {
+    if (!iso) return '';
+    try {
+      var d = new Date(iso);
+      return d.toLocaleDateString('es', { day: 'numeric', month: 'short', year: 'numeric' });
+    } catch (e) { return ''; }
+  }
+
+  function cargarComentarios() {
+    var contenedor = document.getElementById('foroLista');
+    contenedor.innerHTML = '<div class="foro-vacio">Cargando el muro...</div>';
+
+    var url = SUPABASE_URL + '/rest/v1/rpc/comentarios_para_itinerario';
+    fetch(url, {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({
+        p_itinerario: ITINERARIO_ID,
+        p_scope: vistaForo
+      })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) { renderComentarios(data || []); })
+    .catch(function() {
+      contenedor.innerHTML = '<div class="foro-vacio">No se pudo cargar el muro. Intentá de nuevo más tarde.</div>';
+    });
+  }
+
+  function renderComentarios(comentarios) {
+    var contenedor = document.getElementById('foroLista');
+    if (!comentarios || comentarios.length === 0) {
+      contenedor.innerHTML = '<div class="foro-vacio">Aún no hay palabras publicadas en este muro. Podés ser vos quien empiece la conversación.</div>';
+      return;
+    }
+    var raices = comentarios.filter(function(c) { return !c.parent_id; });
+    var respuestasPor = {};
+    comentarios.filter(function(c) { return c.parent_id; }).forEach(function(c) {
+      if (!respuestasPor[c.parent_id]) respuestasPor[c.parent_id] = [];
+      respuestasPor[c.parent_id].push(c);
+    });
+    contenedor.innerHTML = raices.map(function(c) {
+      return renderComment(c, respuestasPor[c.id] || []);
+    }).join('');
+  }
+
+  function renderComment(c, respuestas) {
+    var modLbl = c.modulo ? '<span class="comment-modulo">Módulo ' + c.modulo + '</span>' : '';
+    var paisLbl = c.pais ? '<span class="comment-pais">' + escapeHtml(c.pais) + '</span>' : '';
+    var globalLbl = (vistaForo === 'global' && c.itinerario_titulo)
+      ? '<span class="comment-modulo">' + escapeHtml(c.itinerario_titulo) + '</span>'
+      : '';
+    var reacciones = c.reacciones || {};
+    var misReacc = c.mis_reacciones || [];
+    var reaccBtns = EMOJIS.map(function(e) {
+      var count = reacciones[e] || 0;
+      var mine = misReacc.indexOf(e) >= 0;
+      return '<button class="react-btn ' + (mine ? 'on' : '') + '" onclick="toggleReaccion(\'' + c.id + '\', \'' + e + '\')">' + e + (count > 0 ? '<span class="react-count">' + count + '</span>' : '') + '</button>';
+    }).join('');
+    var respuestasHtml = respuestas.length
+      ? '<div class="comment-replies">' + respuestas.map(renderReply).join('') + '</div>'
+      : '';
+    return '' +
+      '<div class="comment" id="c-' + c.id + '">' +
+        '<div class="comment-head">' +
+          '<div>' +
+            '<span class="comment-autor">' + escapeHtml(c.autor_nombre || 'Anónimo') + '</span>' +
+            paisLbl + modLbl + globalLbl +
+          '</div>' +
+          '<span class="comment-fecha">' + formatFecha(c.created_at) + '</span>' +
+        '</div>' +
+        '<div class="comment-texto">' + escapeHtml(c.texto) + '</div>' +
+        '<div class="comment-actions">' +
+          reaccBtns +
+          '<button class="reply-btn" onclick="toggleReplyForm(\'' + c.id + '\')">↩ Responder</button>' +
+        '</div>' +
+        '<div class="reply-form" id="rf-' + c.id + '">' +
+          '<textarea placeholder="Escribí tu respuesta..." id="rt-' + c.id + '"></textarea>' +
+          '<div class="reply-form-actions">' +
+            '<button class="reply-form-cancel" onclick="toggleReplyForm(\'' + c.id + '\')">Cancelar</button>' +
+            '<button class="foro-btn" onclick="enviarRespuestaDesde(\'' + c.id + '\')">Enviar</button>' +
+          '</div>' +
+        '</div>' +
+        respuestasHtml +
+      '</div>';
+  }
+
+  function renderReply(r) {
+    var paisLbl = r.pais ? '<span class="comment-pais">' + escapeHtml(r.pais) + '</span>' : '';
+    return '' +
+      '<div class="reply">' +
+        '<div class="comment-head">' +
+          '<div>' +
+            '<span class="comment-autor">' + escapeHtml(r.autor_nombre || 'Anónimo') + '</span>' +
+            paisLbl +
+          '</div>' +
+          '<span class="comment-fecha">' + formatFecha(r.created_at) + '</span>' +
+        '</div>' +
+        '<div class="comment-texto">' + escapeHtml(r.texto) + '</div>' +
+      '</div>';
+  }
+
+  function enviarComentario() {
+    if (!sesion) { window.location.href = '/login'; return; }
+    var texto = document.getElementById('foroTexto').value.trim();
+    var modulo = document.getElementById('foroModulo').value;
+    if (!texto) return;
+    var btn = document.getElementById('foroEnviar');
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+    fetch(SUPABASE_URL + '/rest/v1/foro_comentarios', {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({
+        itinerario_id: ITINERARIO_ID,
+        parent_id: null,
+        usuario_id: sesion.user ? sesion.user.id : null,
+        autor_nombre: sesion.nombre || '',
+        pais: sesion.pais || '',
+        modulo: modulo ? parseInt(modulo) : null,
+        texto: texto
+      })
+    })
+    .then(function() {
+      document.getElementById('foroTexto').value = '';
+      document.getElementById('foroModulo').value = '';
+      btn.textContent = '✓ Enviado — pendiente de revisión';
+      setTimeout(function() {
+        btn.textContent = 'Enviar para revisión';
+        btn.disabled = false;
+      }, 3000);
+    })
+    .catch(function() {
+      btn.textContent = 'Error al enviar';
+      btn.disabled = false;
+    });
+  }
+
+  function enviarRespuestaDesde(parentId) {
+    if (!sesion) { window.location.href = '/login'; return; }
+    var textarea = document.getElementById('rt-' + parentId);
+    var texto = textarea.value.trim();
+    if (!texto) return;
+    fetch(SUPABASE_URL + '/rest/v1/foro_comentarios', {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({
+        itinerario_id: ITINERARIO_ID,
+        parent_id: parentId,
+        usuario_id: sesion.user ? sesion.user.id : null,
+        autor_nombre: sesion.nombre || '',
+        pais: sesion.pais || '',
+        texto: texto
+      })
+    })
+    .then(function() {
+      textarea.value = '';
+      document.getElementById('rf-' + parentId).classList.remove('on');
+      alert('Tu respuesta será revisada por el equipo antes de publicarse.');
+    })
+    .catch(function() { alert('Error al enviar la respuesta.'); });
+  }
+
+  function toggleReaccion(comentarioId, emoji) {
+    if (!sesion) { window.location.href = '/login'; return; }
+    fetch(SUPABASE_URL + '/rest/v1/rpc/toggle_reaccion', {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({ p_comentario: comentarioId, p_emoji: emoji })
+    })
+    .then(function() { cargarComentarios(); })
+    .catch(function() {});
+  }
+
+  function toggleReplyForm(id) {
+    if (!sesion) { window.location.href = '/login'; return; }
+    document.getElementById('rf-' + id).classList.toggle('on');
+  }
+
+  function setVistaForo(v, btn) {
+    vistaForo = v;
+    var buttons = document.querySelectorAll('.foro-vista-btn');
+    for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove('on'); }
+    btn.classList.add('on');
+    cargarComentarios();
+  }
+
+  // ═══════════════════════════════════════════════════════
+  // EVALUACIÓN — REVISIÓN DE VIDA VJA
+  // ═══════════════════════════════════════════════════════
+  // BACKEND REQUERIDO:
+  //
+  // Tabla `evaluaciones_itinerario`:
+  //   - id (uuid, pk)
+  //   - usuario_id (uuid, fk auth.users)
+  //   - itinerario_id (text)
+  //   - respuestas (jsonb) — { ver, juzgar1, juzgar2, actuar, fecha_revision, animo, cuidado }
+  //   - compartir_con_equipo (bool)
+  //   - created_at, updated_at
+  //
+  // RLS: SELECT/UPDATE solo dueño. INSERT solo dueño.
+  // Solo moderadores del equipo PLAPA pueden ver evaluaciones donde
+  // compartir_con_equipo=true (via política RLS separada).
+  //
+  // Borrador: se autoguarda en localStorage para que no se pierda
+  // al cerrar el navegador antes de guardar formalmente.
+  // ═══════════════════════════════════════════════════════
+
+  var EVAL_STORAGE_KEY = 'eval_' + ITINERARIO_ID;
+
+  function recolectarEvaluacion() {
+    var datos = {};
+    document.querySelectorAll('[data-eval]').forEach(function(el) {
+      var key = el.getAttribute('data-eval');
+      if (el.type === 'radio') {
+        if (el.checked) datos[key] = el.value;
+      } else {
+        datos[key] = el.value;
+      }
+    });
+    datos.compartir_con_equipo = document.getElementById('evalCompartir').checked;
+    return datos;
+  }
+
+  function autoguardarBorrador() {
+    try {
+      localStorage.setItem(EVAL_STORAGE_KEY, JSON.stringify(recolectarEvaluacion()));
+    } catch (e) {}
+  }
+
+  function restaurarEvaluacion() {
+    try {
+      var stored = localStorage.getItem(EVAL_STORAGE_KEY);
+      if (!stored) return;
+      var datos = JSON.parse(stored);
+      document.querySelectorAll('[data-eval]').forEach(function(el) {
+        var key = el.getAttribute('data-eval');
+        if (datos[key] == null) return;
+        if (el.type === 'radio') {
+          if (el.value === datos[key]) el.checked = true;
+        } else {
+          el.value = datos[key];
+        }
+      });
+      if (datos.compartir_con_equipo) {
+        document.getElementById('evalCompartir').checked = true;
+      }
+    } catch (e) {}
+  }
+
+  function mostrarEvalMsg(texto, tipo) {
+    var el = document.getElementById('evalMsg');
+    el.className = 'eval-msg on ' + (tipo || 'exito');
+    el.textContent = texto;
+    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function guardarEvaluacion() {
+    var datos = recolectarEvaluacion();
+    var minimoTexto = (datos.ver || '').trim() + (datos.actuar || '').trim();
+    if (minimoTexto.length < 30) {
+      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos "El Ver" y "El Actuar" merecen unos renglones honestos.', 'error');
+      return;
+    }
+
+    // Guardar en Supabase (siempre queda en tu bitácora)
+    if (!sesion) { window.location.href = '/login'; return; }
+    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario', {
+      method: 'POST',
+      headers: Object.assign({}, supaHeaders(), { 'Prefer': 'resolution=merge-duplicates' }),
+      body: JSON.stringify({
+        itinerario_id: ITINERARIO_ID,
+        respuestas: datos,
+        compartir_con_equipo: datos.compartir_con_equipo === true
+      })
+    })
+    .then(function(r) {
+      if (r.ok) {
+        var msg = datos.compartir_con_equipo
+          ? '✓ Evaluación guardada en tu bitácora y compartida con el equipo PLAPA. Gracias por el aporte.'
+          : '✓ Evaluación guardada en tu bitácora. Queda solo con vos.';
+        mostrarEvalMsg(msg, 'exito');
+      } else {
+        mostrarEvalMsg('Guardado localmente. No pudimos sincronizar con la Escuela — reintentá más tarde.', 'error');
+      }
+    })
+    .catch(function() {
+      mostrarEvalMsg('Guardado localmente. Sin conexión con la Escuela — reintentá cuando tengas internet.', 'error');
+    });
+  }
+
+  function imprimirEvaluacion() {
+    autoguardarBorrador();
+    window.print();
+  }
+
+  // Init general del itinerario
+  document.addEventListener('DOMContentLoaded', function() {
+    // Leer sesión (el guard del <head> garantiza que existe)
+    try {
+      var stored = localStorage.getItem('escuela_plapa_sesion');
+      if (stored) sesion = JSON.parse(stored);
+    } catch (e) {}
+    // Cargar muro
+    cargarComentarios();
+
+    // Restaurar borrador de evaluación si existe
+    restaurarEvaluacion();
+
+    // Autoguardado del borrador de evaluación al escribir (con debounce)
+    var evalTimeout;
+    document.querySelectorAll('#m6 [data-eval], #m6 #evalCompartir').forEach(function(el) {
+      el.addEventListener('input', function() {
+        clearTimeout(evalTimeout);
+        evalTimeout = setTimeout(autoguardarBorrador, 500);
+      });
+      el.addEventListener('change', autoguardarBorrador);
+    });
+  });
+</script>
+
+</body>
+</html>

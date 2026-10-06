@@ -1,0 +1,2209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Itinerario 14 · Misericordia Estructurada en la práctica · Escuela PLAPA</title>
+<style>
+  :root {
+    /* Paleta naranja PLAPA — Itinerario 14 (bloque 3: Espíritu humano y psiquis) */
+    --i14-oscuro:  #4E1E0F;
+    --i14-medio:   #993C1D;
+    --i14-accent:  #D85A30;
+    --i14-suave:   #E88856;
+    --i14-claro:   #F5C3A5;
+    --i14-crema:   #FDF1E8;
+    --i14-fondo:   #FFFCF9;
+
+    --alerta:     #8B1A1A;
+    --alerta-bg:  #FDF7F7;
+
+    --texto:      #1E1B33;
+    --texto-2:    #4A4560;
+    --texto-3:    #8C89A0;
+    --borde:      #E4E2F0;
+
+    --font-serif: "Georgia", "Times New Roman", serif;
+    --font-sans:  "system-ui", -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: #F5D9C4;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    line-height: 1.6;
+  }
+
+  .root {
+    background: var(--i14-fondo);
+    max-width: 860px;
+    width: 100%;
+    padding: 2.5rem;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(38, 33, 92, 0.08);
+  }
+
+  /* ─── HEADER SUPERIOR (navegación entre páginas) ─── */
+  .top-header {
+    background: #FFFFFF;
+    border-bottom: 1px solid var(--borde);
+    padding: 0.85rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    max-width: 860px;
+    width: 100%;
+    margin: 0 auto 1rem;
+    border-radius: 10px;
+  }
+  .top-logo {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--i14-oscuro);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .top-logo:hover { color: var(--i14-medio); }
+  .top-link {
+    font-size: 0.88rem;
+    color: var(--texto-2);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.15s;
+  }
+  .top-link:hover {
+    background: var(--i14-crema);
+    color: var(--i14-oscuro);
+  }
+  @media (max-width: 640px) {
+    .top-header { padding: 0.75rem 1rem; }
+    .top-link { font-size: 0.82rem; padding: 5px 8px; }
+  }
+
+  /* ─── PORTADA ────────────────────────────────────────── */
+  .portada {
+    background: var(--i14-oscuro);
+    border-radius: 12px;
+    padding: 2rem 2rem 1.75rem;
+    margin-bottom: 2rem;
+  }
+  .portada-sup {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--i14-claro);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .portada-title {
+    font-family: var(--font-serif);
+    font-size: 30px;
+    font-weight: normal;
+    color: #FFFFFF;
+    line-height: 1.25;
+    margin-bottom: 0.6rem;
+  }
+  .portada-sub {
+    font-size: 14.5px;
+    color: var(--i14-claro);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+    max-width: 640px;
+  }
+  .dest-box {
+    background: var(--i14-medio);
+    border-radius: 8px;
+    padding: 0.9rem 1.1rem;
+    margin-bottom: 1.1rem;
+  }
+  .dest-lbl {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--i14-claro);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .dest-txt {
+    font-size: 13px;
+    color: #FFF;
+    line-height: 1.6;
+  }
+  .portada-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .portada-pill {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 11px;
+    border-radius: 99px;
+    background: var(--i14-medio);
+    color: var(--i14-crema);
+  }
+
+  /* ─── VIDEO ──────────────────────────────────────────── */
+  .video-wrap {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .video-lbl {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--i14-oscuro);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .video-iframe {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  .video-iframe iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  /* ─── SELECTOR DE MODALIDAD ──────────────────────────── */
+  .mode-selector {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 1.5rem;
+    background: #FFF;
+    padding: 6px;
+    border-radius: 10px;
+    border: 1px solid var(--borde);
+    max-width: max-content;
+    flex-wrap: wrap;
+  }
+  .mode-btn {
+    border: none;
+    background: transparent;
+    color: var(--texto-2);
+    padding: 8px 16px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .mode-btn.on {
+    background: var(--i14-accent);
+    color: #FFF;
+    font-weight: 600;
+  }
+  /* Control de visibilidad según modalidad */
+  .root.mode-individual .mode-g { display: none; }
+  .root.mode-grupal .mode-i { display: none; }
+
+  /* ─── NAVEGACIÓN ─────────────────────────────────────── */
+  .nav {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .btn {
+    border: 1px solid var(--borde);
+    background: #FFFFFF;
+    border-radius: 8px;
+    padding: 10px 16px;
+    cursor: pointer;
+    font-size: 12.5px;
+    font-weight: 500;
+    font-family: var(--font-sans);
+    color: var(--texto-2);
+    transition: all 0.18s ease;
+    text-align: left;
+  }
+  .btn:hover {
+    background: var(--i14-crema);
+    border-color: var(--i14-claro);
+    color: var(--i14-oscuro);
+  }
+  .btn.on {
+    border: 2px solid var(--i14-accent);
+    background: var(--i14-crema);
+    color: var(--i14-oscuro);
+    font-weight: 600;
+    padding: 9px 15px;
+  }
+  .btn.btn-alt {
+    background: var(--i14-crema);
+    color: var(--i14-medio);
+    border-color: var(--i14-claro);
+  }
+  .btn.btn-alt:hover {
+    background: var(--i14-claro);
+    color: var(--i14-oscuro);
+  }
+  .btn.btn-alt.on {
+    background: var(--i14-medio);
+    border-color: var(--i14-medio);
+    color: #FFFFFF;
+  }
+  .nav-sep {
+    display: inline-block;
+    width: 1px;
+    background: var(--borde);
+    margin: 0 6px;
+    align-self: stretch;
+  }
+
+  /* ─── MÓDULOS ────────────────────────────────────────── */
+  .card {
+    border-radius: 12px;
+    border: 1px solid var(--borde);
+    background: #FFFFFF;
+    overflow: hidden;
+    display: none;
+    border-left: 6px solid var(--i14-accent);
+  }
+  .card.active {
+    display: block;
+    animation: fadeIn 0.35s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .ch {
+    padding: 1.75rem 2rem 1.5rem;
+    border-bottom: 1px solid var(--borde);
+    background: var(--i14-crema);
+  }
+  .cn {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 99px;
+    margin-bottom: 0.85rem;
+    background: var(--i14-accent);
+    color: #FFFFFF;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .ct {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 1.3;
+    color: var(--i14-oscuro);
+    margin-bottom: 0.4rem;
+  }
+  .cs {
+    font-size: 13px;
+    color: var(--i14-medio);
+    line-height: 1.55;
+    font-style: italic;
+  }
+
+  .cb { padding: 2rem; }
+
+  /* ─── CAJA DE RESONANCIA ─────────────────────────────── */
+  .resonancia {
+    border-left: 4px solid var(--i14-accent);
+    background: var(--i14-crema);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .resonancia-lbl {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i14-accent);
+    margin-bottom: 8px;
+  }
+  .resonancia-txt {
+    font-family: var(--font-serif);
+    font-size: 16.5px;
+    line-height: 1.6;
+    font-style: italic;
+    color: var(--i14-oscuro);
+  }
+
+  /* ─── SECCIONES VER / JUZGAR / ACTUAR ────────────────── */
+  .pl {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i14-oscuro);
+    margin-top: 2.25rem;
+    margin-bottom: 1.1rem;
+    border-bottom: 1px solid var(--borde);
+    padding-bottom: 7px;
+  }
+  .pl:first-of-type { margin-top: 0.5rem; }
+
+  .pts {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 1.5rem;
+  }
+  .pts li {
+    display: flex;
+    gap: 14px;
+    font-size: 14.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+  .pts li strong {
+    color: var(--i14-oscuro);
+    font-weight: 600;
+  }
+  .dot {
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    background: var(--i14-accent);
+    color: #FFFFFF;
+    margin-top: 2px;
+    font-family: var(--font-serif);
+  }
+  .dot.j { background: var(--i14-medio); }
+  .dot.a { background: var(--i14-oscuro); }
+
+  /* ─── GRILLA DE ESCENARIOS / DIMENSIONES ─────────────── */
+  .ejes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 1.5rem;
+  }
+  .eje {
+    background: var(--i14-crema);
+    border-radius: 10px;
+    padding: 1.1rem 1.25rem;
+    border-top: 4px solid var(--i14-accent);
+  }
+  .eje-n {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--i14-accent);
+    margin-bottom: 8px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .eje-t {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--i14-oscuro);
+    margin-bottom: 6px;
+  }
+  .eje-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.6;
+  }
+
+  /* ─── ACTIVIDADES ────────────────────────────────────── */
+  .act {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 1.15rem 1.35rem;
+    margin-bottom: 12px;
+    border-left: 4px solid var(--i14-accent);
+  }
+  .act-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  .tag-ind {
+    background: var(--i14-oscuro);
+    color: var(--i14-crema);
+  }
+  .tag-gru {
+    background: var(--i14-accent);
+    color: #FFF;
+  }
+  .act-title {
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: var(--i14-oscuro);
+    margin-bottom: 6px;
+    line-height: 1.35;
+  }
+  .act-body {
+    font-size: 14px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+  .act-body em {
+    color: var(--i14-medio);
+    font-style: italic;
+  }
+
+  /* ─── CITA INSPIRADORA ───────────────────────────────── */
+  .cita {
+    border-radius: 10px;
+    padding: 1.2rem 1.4rem;
+    background: linear-gradient(180deg, var(--i14-crema) 0%, #FFF 100%);
+    border: 1px solid var(--i14-claro);
+    margin-top: 2rem;
+  }
+  .cita-lbl {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i14-accent);
+    margin-bottom: 8px;
+  }
+  .cita-txt {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    line-height: 1.7;
+    font-style: italic;
+    color: var(--i14-oscuro);
+  }
+  .cita-ref {
+    font-size: 12px;
+    margin-top: 10px;
+    font-weight: 500;
+    color: var(--i14-medio);
+    font-style: normal;
+  }
+
+  /* ─── ALERTA PASTORAL ────────────────────────────────── */
+  .alerta {
+    border-left: 4px solid var(--alerta);
+    background: var(--alerta-bg);
+    padding: 1.15rem 1.35rem;
+    margin-top: 1.75rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .alerta-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--alerta);
+    margin-bottom: 8px;
+  }
+  .alerta-lbl::before {
+    content: '† ';
+    font-size: 14px;
+  }
+  .alerta-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+
+  /* ─── AUTOCUIDADO ────────────────────────────────────── */
+  .autocuidado {
+    border-left: 4px solid var(--i14-medio);
+    background: #FFF6EF;
+    padding: 1.15rem 1.35rem;
+    margin-top: 1.75rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .autocuidado-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i14-medio);
+    margin-bottom: 8px;
+  }
+  .autocuidado-lbl::before {
+    content: '❋ ';
+    color: var(--i14-accent);
+  }
+  .autocuidado-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+
+  /* ─── LECTURA COMPLEMENTARIA ─────────────────────────── */
+  .lectura {
+    background: #FFF;
+    border: 1px dashed var(--i14-accent);
+    border-radius: 10px;
+    padding: 1.15rem 1.35rem;
+    margin-top: 1.75rem;
+  }
+  .lectura-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--i14-medio);
+    margin-bottom: 8px;
+  }
+  .lectura-lbl::before {
+    content: '📖 ';
+  }
+  .lectura-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+  .lectura-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--i14-accent);
+    color: #FFF;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.18s;
+  }
+  .lectura-link:hover {
+    background: var(--i14-oscuro);
+  }
+
+  /* ─── REFERENCIAS ────────────────────────────────────── */
+  .ref {
+    font-size: 11.5px;
+    color: var(--texto-3);
+    font-style: italic;
+    margin-top: 1.75rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--borde);
+  }
+
+  /* ─── FORO / MURO DEL CAMINO ─────────────────────────── */
+  .foro {
+    background: #FFFFFF;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    margin-top: 2rem;
+    overflow: hidden;
+    border-left: 6px solid var(--i14-medio);
+  }
+  .foro-head {
+    background: var(--i14-crema);
+    padding: 1.75rem 2rem 1.5rem;
+    border-bottom: 1px solid var(--borde);
+  }
+  .foro-lbl {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 99px;
+    margin-bottom: 0.85rem;
+    background: var(--i14-medio);
+    color: #FFFFFF;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .foro-title {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: normal;
+    line-height: 1.3;
+    color: var(--i14-oscuro);
+    margin-bottom: 0.4rem;
+  }
+  .foro-sub {
+    font-size: 13px;
+    color: var(--i14-medio);
+    line-height: 1.55;
+    font-style: italic;
+  }
+  .foro-body { padding: 2rem; }
+
+  .foro-vista {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 1.5rem;
+    background: var(--i14-crema);
+    padding: 6px;
+    border-radius: 10px;
+    max-width: max-content;
+    flex-wrap: wrap;
+  }
+  .foro-vista-btn {
+    border: none;
+    background: transparent;
+    color: var(--texto-2);
+    padding: 8px 16px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .foro-vista-btn.on {
+    background: var(--i14-medio);
+    color: #FFF;
+    font-weight: 600;
+  }
+
+  .foro-pautas {
+    background: var(--alerta-bg);
+    border-left: 4px solid var(--alerta);
+    padding: 1.15rem 1.35rem;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 1.75rem;
+  }
+  .foro-pautas-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--alerta);
+    margin-bottom: 8px;
+  }
+  .foro-pautas-lbl::before { content: '† '; }
+  .foro-pautas ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .foro-pautas li {
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    padding-left: 14px;
+    position: relative;
+  }
+  .foro-pautas li::before {
+    content: '·';
+    position: absolute;
+    left: 4px;
+    color: var(--alerta);
+    font-weight: 700;
+  }
+
+  .foro-form {
+    background: var(--i14-fondo);
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .foro-form-lbl {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--i14-oscuro);
+    margin-bottom: 12px;
+  }
+  .foro-form-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .foro-form-row label {
+    font-size: 12.5px;
+    color: var(--texto-2);
+    align-self: center;
+    font-weight: 500;
+  }
+  .foro-form select {
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    padding: 7px 10px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+    cursor: pointer;
+  }
+  .foro-form textarea {
+    width: 100%;
+    min-height: 90px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+    resize: vertical;
+    line-height: 1.55;
+    margin-bottom: 10px;
+  }
+  .foro-form textarea:focus,
+  .foro-form select:focus {
+    outline: none;
+    border-color: var(--i14-medio);
+  }
+  .foro-form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .foro-form-info {
+    font-size: 11.5px;
+    color: var(--texto-3);
+    font-style: italic;
+  }
+  .foro-btn {
+    background: var(--i14-medio);
+    color: #FFF;
+    border: none;
+    border-radius: 7px;
+    padding: 9px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    transition: background 0.18s;
+  }
+  .foro-btn:hover { background: var(--i14-oscuro); }
+  .foro-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .foro-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .foro-vacio {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: var(--texto-3);
+    font-size: 13.5px;
+    font-style: italic;
+    background: var(--i14-crema);
+    border-radius: 10px;
+  }
+  .comment {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-left: 3px solid var(--i14-suave);
+    border-radius: 10px;
+    padding: 1rem 1.15rem;
+  }
+  .comment-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .comment-autor {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--i14-oscuro);
+  }
+  .comment-pais {
+    font-size: 12px;
+    color: var(--i14-medio);
+    font-weight: 500;
+  }
+  .comment-pais::before { content: ' · '; color: var(--texto-3); }
+  .comment-modulo {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: var(--i14-crema);
+    color: var(--i14-medio);
+    margin-left: 6px;
+  }
+  .comment-fecha {
+    font-size: 11.5px;
+    color: var(--texto-3);
+  }
+  .comment-texto {
+    font-size: 14px;
+    color: var(--texto);
+    line-height: 1.65;
+    margin-bottom: 10px;
+    white-space: pre-wrap;
+  }
+  .comment-actions {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .react-btn {
+    background: var(--i14-crema);
+    border: 1px solid transparent;
+    border-radius: 99px;
+    padding: 4px 10px;
+    font-size: 12.5px;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    color: var(--texto-2);
+    transition: all 0.15s;
+  }
+  .react-btn:hover { background: var(--i14-claro); }
+  .react-btn.on {
+    background: var(--i14-suave);
+    color: #FFF;
+    border-color: var(--i14-medio);
+    font-weight: 600;
+  }
+  .react-count {
+    margin-left: 4px;
+    font-weight: 600;
+  }
+  .reply-btn {
+    background: transparent;
+    border: none;
+    color: var(--i14-medio);
+    font-size: 12.5px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    margin-left: auto;
+    font-family: var(--font-sans);
+  }
+  .reply-btn:hover {
+    background: var(--i14-crema);
+    color: var(--i14-oscuro);
+  }
+  .comment-replies {
+    margin-top: 12px;
+    padding-left: 1rem;
+    border-left: 2px dashed var(--borde);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .reply {
+    background: var(--i14-fondo);
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+  }
+  .reply-form {
+    background: var(--i14-crema);
+    border-radius: 8px;
+    padding: 0.8rem;
+    margin-top: 10px;
+    display: none;
+  }
+  .reply-form.on { display: block; }
+  .reply-form textarea {
+    width: 100%;
+    min-height: 60px;
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    resize: vertical;
+    background: #FFF;
+    margin-bottom: 8px;
+  }
+  .reply-form-actions {
+    display: flex;
+    gap: 6px;
+    justify-content: flex-end;
+  }
+  .reply-form-cancel {
+    background: transparent;
+    border: 1px solid var(--borde);
+    color: var(--texto-2);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 12.5px;
+    cursor: pointer;
+    font-family: var(--font-sans);
+  }
+
+  .foro-login {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--i14-crema);
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+  }
+  .foro-login-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .foro-login-link {
+    display: inline-block;
+    background: var(--i14-medio);
+    color: #FFF;
+    padding: 8px 18px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  /* ─── EVALUACIÓN (M6) ────────────────────────────────── */
+  .eval-nota {
+    background: var(--i14-crema);
+    border-left: 4px solid var(--i14-medio);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+  .eval-nota-lbl {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i14-medio);
+    margin-bottom: 6px;
+  }
+  .eval-nota-txt strong { color: var(--i14-oscuro); }
+  .eval-nota-txt em { color: var(--i14-medio); font-style: italic; }
+
+  .eval-q {
+    margin-bottom: 1.5rem;
+  }
+  .eval-q > label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--i14-oscuro);
+    margin-bottom: 8px;
+    line-height: 1.55;
+  }
+  .eval-q textarea {
+    width: 100%;
+    min-height: 100px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+    resize: vertical;
+    line-height: 1.6;
+    transition: border-color 0.15s;
+  }
+  .eval-q textarea:focus,
+  .eval-q input:focus {
+    outline: none;
+    border-color: var(--i14-medio);
+    box-shadow: 0 0 0 3px rgba(60, 52, 137, 0.1);
+  }
+  .eval-q input[type="date"] {
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 9px 12px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+  }
+  .eval-fecha { max-width: 320px; }
+
+  .eval-scale-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .eval-radio {
+    flex: 1;
+    min-width: 55px;
+    cursor: pointer;
+    position: relative;
+  }
+  .eval-radio input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .eval-radio span {
+    display: block;
+    text-align: center;
+    padding: 12px 8px;
+    background: var(--i14-crema);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    color: var(--i14-medio);
+    font-size: 15px;
+    transition: all 0.15s;
+  }
+  .eval-radio:hover span { background: var(--i14-claro); }
+  .eval-radio input:checked + span {
+    background: var(--i14-medio);
+    border-color: var(--i14-oscuro);
+    color: #FFF;
+  }
+
+  .eval-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: var(--i14-crema);
+    border: 1px solid var(--i14-claro);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+  .eval-check input {
+    margin-top: 4px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--i14-medio);
+    flex-shrink: 0;
+  }
+  .eval-check label {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    cursor: pointer;
+  }
+  .eval-check label strong { color: var(--i14-oscuro); }
+  .eval-check label em { color: var(--i14-medio); font-style: italic; }
+
+  .eval-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  .eval-btn-guardar {
+    background: var(--i14-oscuro);
+  }
+  .eval-btn-guardar:hover { background: var(--i14-medio); }
+  .eval-btn-imprimir {
+    background: transparent;
+    color: var(--i14-medio);
+    border: 1px solid var(--i14-medio);
+  }
+  .eval-btn-imprimir:hover {
+    background: var(--i14-crema);
+    color: var(--i14-oscuro);
+  }
+
+  .eval-msg {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    display: none;
+    margin-bottom: 1rem;
+  }
+  .eval-msg.on { display: block; }
+  .eval-msg.exito {
+    background: #FDF1E8;
+    color: var(--i14-oscuro);
+    border-left: 3px solid var(--i14-medio);
+  }
+  .eval-msg.error {
+    background: var(--alerta-bg);
+    color: var(--alerta);
+    border-left: 3px solid var(--alerta);
+  }
+
+  /* Estilos de impresión de la evaluación */
+  @media print {
+    body { background: #FFF; padding: 0; }
+    .root { box-shadow: none; padding: 1rem; max-width: 100%; }
+    .portada, .video-wrap, .mode-selector, .nav { display: none !important; }
+    .card { display: none !important; }
+    #m6.card { display: block !important; break-inside: avoid; border: none; }
+    .eval-actions, .eval-msg { display: none !important; }
+    .ch { background: transparent; }
+    .eval-q textarea, .eval-q input[type="date"] {
+      border: none;
+      border-bottom: 1px solid #999;
+      border-radius: 0;
+      background: transparent;
+    }
+  }
+
+  /* ─── RESPONSIVE ─────────────────────────────────────── */
+  @media (max-width: 640px) {
+    body { padding: 1rem 0.5rem; }
+    .root { padding: 1.25rem; }
+    .portada { padding: 1.5rem 1.25rem; }
+    .portada-title { font-size: 24px; }
+    .ch { padding: 1.25rem 1.25rem 1rem; }
+    .ct { font-size: 20px; }
+    .cb { padding: 1.25rem; }
+    .ejes { grid-template-columns: 1fr; }
+    .btn { flex: 1 1 100%; }
+    .mode-selector { flex-direction: column; align-items: stretch; max-width: 100%; }
+    .mode-btn { text-align: center; }
+    .foro-head { padding: 1.25rem; }
+    .foro-body { padding: 1.25rem; }
+    .foro-title { font-size: 19px; }
+    .foro-vista { max-width: 100%; flex-direction: column; align-items: stretch; }
+    .foro-vista-btn { text-align: center; }
+    .comment-head { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .reply-btn { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER SUPERIOR ═════════════════════════════════ -->
+<header class="top-header">
+  <a href="index.html" class="top-logo">Escuela PLAPA</a>
+  <a href="catalogo_30_itinerarios_plapa_corregido.html" class="top-link">← Catálogo</a>
+</header>
+
+<div class="root mode-grupal">
+
+  <!-- ═══ PORTADA ═════════════════════════════════════════ -->
+  <div class="portada">
+    <p class="portada-sup">Itinerario formativo 14 · Escuela PLAPA · CELAM 2026</p>
+    <h1 class="portada-title">Misericordia Estructurada en la práctica</h1>
+    <p class="portada-sub">El equilibrio entre ternura y regla: seguridad vincular, reparación de la voluntad y límite pedagógico. Del concepto al dispositivo concreto.</p>
+
+    <div class="dest-box">
+      <div class="dest-lbl">Destinatarios</div>
+      <div class="dest-txt">Coordinadores de centros barriales y comunidades terapéuticas que diseñan y sostienen dispositivos de acompañamiento. También útil para referentes pastorales que sienten la tensión entre la acogida incondicional y la necesidad de orden comunitario, y para equipos que quieren revisar su reglamento de convivencia desde la perspectiva del §6.3.3. Se asume experiencia de acompañamiento directo en dispositivos concretos; nivel intermedio.</div>
+    </div>
+
+    <div class="portada-pills">
+      <span class="portada-pill">§6.3.3 · §6.3.4 · §7.9.3 · §7.5.1</span>
+      <span class="portada-pill">4 módulos</span>
+      <span class="portada-pill">Coordinadores de dispositivos</span>
+      <span class="portada-pill">Nivel intermedio</span>
+      <span class="portada-pill">Ver · Juzgar · Actuar · Síntesis</span>
+    </div>
+  </div>
+
+  <!-- ═══ VIDEO ═══════════════════════════════════════════ -->
+  
+  <!-- NUEVO: Bloque del Video de Presentación Incrustado -->
+<div style="background: var(--surface-2); border: 0.5px solid var(--border); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
+  <p style="font-size: 11px; font-weight: 500; color: #085041; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; text-align: left;">
+    ▶️ Video de presentación
+  </p>
+  <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px;">
+    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+      src="https://www.youtube.com/embed/PLACEHOLDER_ITIN14"
+      title="Presentación del Itinerario 06" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+  <!-- ═══ SELECTOR DE MODALIDAD ═══════════════════════════ -->
+  <div class="mode-selector">
+    <button class="mode-btn on" onclick="setMode('grupal', this)">👥 Hacer en comunidad</button>
+    <button class="mode-btn" onclick="setMode('individual', this)">👤 Hacer de forma individual</button>
+  </div>
+
+  <!-- ═══ NAVEGACIÓN ══════════════════════════════════════ -->
+  <div class="nav">
+    <button class="btn on" onclick="show(1,this)">Módulo 1 · La tensión fundante</button>
+    <button class="btn" onclick="show(2,this)">Módulo 2 · Los tres fundamentos</button>
+    <button class="btn" onclick="show(3,this)">Módulo 3 · El hospital de campaña</button>
+    <button class="btn" onclick="show(4,this)">Módulo 4 · Diseñar el dispositivo</button>
+    <span class="nav-sep" aria-hidden="true"></span>
+    <button class="btn btn-alt" onclick="show(5,this)">🌱 Muro del camino</button>
+    <button class="btn btn-alt" onclick="show(6,this)">✍ Evaluación</button>
+  </div>
+
+  <!-- ═══ MÓDULO 1 ════════════════════════════════════════ -->
+  <div id="m1" class="card active">
+    <div class="ch">
+      <span class="cn">Módulo 1 · El Ver</span>
+      <div class="ct">La tensión entre acogida incondicional y norma pedagógica</div>
+      <div class="cs">Las dos trampas que el §6.3.3 nombra · §6.3.3</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"Una misericordia sin estructura es desidia; una estructura sin misericordia es crueldad. El equilibrio reside en una pedagogía que utiliza la firmeza de la regla para proteger la libertad que aún está débil."</div>
+      </div>
+
+      <div class="pl">El Ver — Las dos trampas del §6.3.3</div>
+      <div class="ejes">
+        <div class="eje">
+          <div class="eje-n">Trampa 1</div>
+          <div class="eje-t">La desidia</div>
+          <div class="eje-txt">La misericordia que, por evitar la exigencia, abandona al hermano en su propio caos. La "flexibilidad total" que se convierte en indiferencia. El amor que no cree en la capacidad del otro.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Trampa 2</div>
+          <div class="eje-t">La crueldad</div>
+          <div class="eje-txt">La estructura sin misericordia que replica los sistemas de control que ya expulsaron al hermano. La regla que nace de la autoridad lejana, no del vínculo y la projimidad.</div>
+        </div>
+      </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>Todo dispositivo vive esta tensión.</strong> El §6.3.3 la nombra desde la primera línea: <em>"Existe el riesgo de caer en un asistencialismo que, por evitar la exigencia, termina abandonando al hermano en su propio caos."</em> Los equipos que caen en la <em>trampa 1</em> tienen alta permanencia pero bajo protagonismo; los que caen en la <em>trampa 2</em> tienen mucha exigencia pero alta deserción. La Misericordia Estructurada es el nombre del equilibrio entre las dos.</span></li>
+        <li><span class="dot">V</span><span><strong>Las tres objeciones más frecuentes del territorio.</strong> El §6.3.3 las recoge: (1) <em>"la misericordia debe ser siempre incondicional y sin límites"</em>, (2) <em>"las estructuras rígidas replican los sistemas de control que ya expulsaron al hermano"</em>, (3) <em>"cualquier estructura es una carga insoportable para quien ya está suficientemente quebrado."</em> Las tres son comprensibles. Las tres son, sin embargo, formas de <em>no creer en la capacidad del hermano</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>Incondicional no es ilimitado.</strong> <em>"La gratuidad de Dios no es desorden. La misericordia estructurada transparenta un amor que quiere que el hermano crezca y se perfeccione. El límite es la expresión de un Dios que nos cuida impidiendo que nos autodestruyamos"</em> (§6.3.3). La objeción teológica (<em>"la misericordia debe ser incondicional"</em>) confunde <em>incondicional con ilimitada</em>. El amor incondicional puede —debe— poner límites cuando los límites cuidan la vida del amado.</span></li>
+        <li><span class="dot j">J</span><span><strong>La estructura como signo de esperanza.</strong> <em>"Proponer una estructura es un signo de esperanza: es decirle al hermano que creemos en su capacidad de responder, de ser responsable y de protagonizar su propio proceso de vida nueva"</em> (§6.3.3). El límite que nace del amor no desconfía del hermano: <em>confía en él más de lo que él confía en sí mismo en ese momento</em>. Esa confianza anticipada es la estructura más misericordiosa que un dispositivo puede ofrecer.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Diagnóstico: ¿en cuál de las dos trampas está el dispositivo?</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo evalúa honestamente el dispositivo actual con dos preguntas: <em>¿hay hermanos que permanecen indefinidamente sin asumir responsabilidades crecientes (trampa 1)? ¿hay hermanos que abandonan porque la exigencia supera el sostenimiento afectivo disponible (trampa 2)?</em> La respuesta revela dónde está el desequilibrio. No para culpar al equipo: para saber en qué dirección ajustar.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Escribí en tu bitácora los indicadores concretos que en tu experiencia señalan cada trampa (tiempo promedio de permanencia sin avanzar, tasa de deserción tras cambios de exigencia). Al lado, tu hipótesis sobre <em>hacia qué trampa se inclina tu dispositivo hoy</em>. La lucidez sobre el propio desbalance es la mitad de la corrección.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Responder a las tres objeciones desde la práctica</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo toma cada una de las tres objeciones del §6.3.3 y la recorre desde casos reales del territorio: <em>¿hay algún caso donde la "misericordia sin límite" terminó perjudicando al hermano? ¿hay algún caso donde la estructura rígida lo expulsó antes de tiempo? ¿hay algún caso donde la estructura amorosa funcionó como ancla?</em> Los casos concretos son la mejor refutación de las objeciones abstractas.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Escribí en tu bitácora un caso concreto (anonimizado) para cada una de las tres objeciones: uno donde la misericordia sin límite dañó, uno donde la estructura rígida expulsó, uno donde la Misericordia Estructurada funcionó. Esos tres casos son tu argumentario propio para las próximas conversaciones de equipo.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Nombrar los miedos que sostienen cada trampa</div>
+        <div class="mode-g">
+          <div class="act-body">El facilitador ayuda al grupo a nombrar los miedos subyacentes: la <em>trampa 1 nace del miedo a herir</em>; la <em>trampa 2 nace del miedo al caos</em>. Ambos miedos son legítimos y no desaparecen con voluntarismo. La conversación abierta sobre los propios miedos permite diseñar apoyos concretos: ¿qué necesita el equipo para no caer en su trampa preferida?</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora hacia cuál de los dos miedos te inclinás más (miedo a herir · miedo al caos). Al lado: <em>¿qué apoyo concreto podrías pedir al equipo para no caer en la trampa cuando ese miedo se activa?</em> Nombrar el propio miedo es el primer gesto de estructura para el propio proceso.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §6.3.3</div>
+        <div class="cita-txt">"La verdadera misericordia no es un sentimiento difuso ni una permisividad que deja al otro a la deriva. Es una caridad operante que se hace cargo de la fragilidad ajena proveyendo un entorno seguro y predecible."</div>
+        <div class="cita-ref">Manual de la PLAPA, §6.3.3 — La Misericordia Estructurada (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">La distinción entre las dos trampas puede convertirse en <em>etiquetado del equipo</em> ("vos sos de la trampa 1, yo soy de la trampa 2"). No es el objetivo. Ambas trampas son tendencias humanas comprensibles que aparecen en momentos distintos, con distintos hermanos, en distintas etapas. El diagnóstico es del dispositivo en conjunto, no de las personas individuales. Sin ese cuidado, el itinerario mismo puede reproducir la lógica que critica.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">El facilitador cuida que el diagnóstico no derive en culpa del equipo. Caer en una de las dos trampas es una <em>tendencia humana comprensible</em>: la trampa 1 nace del miedo a herir; la trampa 2 nace del miedo al caos. Ambos miedos son legítimos. La Misericordia Estructurada no elimina los miedos: <em>ofrece una pedagogía para actuar bien a pesar de ellos</em>.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §6.3.3 (La Misericordia Estructurada) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 2 ════════════════════════════════════════ -->
+  <div id="m2" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 2 · El Juzgar</span>
+      <div class="ct">Los tres fundamentos: seguridad vincular, reparación de la voluntad y valor pedagógico del límite</div>
+      <div class="cs">La teología del límite amoroso · §6.3.3</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"A diferencia de los sistemas punitivos, la estructura pastoral nace del vínculo y la projimidad. No se impone desde una autoridad lejana, sino que se vive en comunidad, donde quien acompaña se somete a la misma regla y ritmo de vida."</div>
+      </div>
+
+      <div class="pl">El Juzgar — Los tres fundamentos de la Misericordia Estructurada (§6.3.3)</div>
+      <ul class="pts">
+        <li><span class="dot j">1</span><span><strong>Seguridad vincular y contención.</strong> Para quien viene del caos de la calle o de la compulsión, el <em>límite sano funciona como un abrazo protector</em>. La estructura del trabajo y las normas comunitarias reducen la ansiedad al ofrecer un escenario donde el hermano sabe qué se espera de él y qué puede esperar del entorno. <em>La previsibilidad es una forma de amor</em>.</span></li>
+        <li><span class="dot j">2</span><span><strong>Reparación de la voluntad.</strong> La adicción desestructura la capacidad de decidir. La Misericordia Estructurada propone <em>pequeñas metas diarias</em> que permiten entrenar nuevamente el músculo de la voluntad, transformando la inercia en una intencionalidad orientada al bien. La voluntad no se repara con discursos: <em>se entrena con prácticas cotidianas</em>.</span></li>
+        <li><span class="dot j">3</span><span><strong>Valor pedagógico del límite.</strong> El límite no es un castigo, sino una <em>frontera que define el espacio de respeto mutuo</em>. Enseña que las propias acciones tienen consecuencias y que el error es una oportunidad de aprendizaje y perdón, no un motivo de expulsión definitiva. El límite bien puesto dice: <em>"Creo que podés mejor que esto."</em></span></li>
+      </ul>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>La seguridad vincular es también terapéutica.</strong> El primer fundamento conecta directamente con el §8.2.3 (TIT): <em>"Todo el equipo debe estar capacitado para identificar disparadores o señales de alerta emocional."</em> La estructura del dispositivo no es solo organizativa: es terapéutica. La rutina predecible, los horarios regulares y las normas claras <em>reducen la activación del sistema nervioso simpático</em> que la vida en situación de consumo mantuvo en alerta permanente.</span></li>
+        <li><span class="dot">V</span><span><strong>La voluntad se entrena, no se predica.</strong> El segundo fundamento es el más contraintuitivo: la voluntad dañada por el consumo no se repara con grandes decisiones. Se repara con pequeñas metas cumplidas que generan autoeficacia (§8.4.2). <em>"Lavar su taza después del desayuno, hacer la cama, llegar a tiempo"</em> no son detalles de orden doméstico: son <em>ejercicios de voluntad que el dispositivo ofrece como gimnasio de la libertad recuperada</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>El límite pastoral nace del vínculo, no de la autoridad.</strong> La clave diferencial del tercer fundamento: <em>"No se impone desde una autoridad lejana, sino que se vive en comunidad, donde quien acompaña se somete a la misma regla y ritmo de vida que quien es acompañado"</em> (§6.3.3). El director del centro que no cumple los mismos horarios que pide a los hermanos <em>invalida la estructura con su ejemplo</em>. El límite que se pide pero no se vive es autoritarismo, no Misericordia Estructurada.</span></li>
+        <li><span class="dot j">J</span><span><strong>Primero el amor, luego la estructura.</strong> El §7.9.3 ilumina desde otro ángulo: <em>"La misericordia organiza a la comunidad para amar antes que para estructurar."</em> El orden de las prioridades es fundamental: primero el amor, luego la estructura. <em>La estructura que llega antes que el amor es burocracia; la que llega después es pedagogía.</em> El hospital de campaña venda la herida antes de preguntar si el paciente tiene documentos.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Revisar el reglamento con los tres fundamentos</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo toma el reglamento de convivencia del dispositivo (si no existe, lo construye) y para cada norma pregunta: <em>¿nace del vínculo o de la autoridad? ¿genera seguridad vincular o ansiedad? ¿entrena la voluntad o la reemplaza? ¿fue construida con participación de los hermanos o impuesta desde arriba?</em> Las normas que no superan ese test necesitan ser revisadas o eliminadas.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora las tres reglas más importantes del dispositivo donde trabajás. Aplicá el test de los tres fundamentos a cada una. Las que no pasan el test son la próxima agenda de revisión del equipo.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Las pequeñas metas como gimnasio de la voluntad</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo diseña una secuencia de pequeñas metas diarias para cada etapa del proceso (primeros 30 días, primeros 3 meses, primeros 6 meses). No es la carga que se asigna al hermano: es el <em>andamiaje que el dispositivo ofrece para que la voluntad se entrene progresivamente</em>. La secuencia debería ser verificable, celebrada cuando se cumple y revisada sin culpa cuando no.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Bosquejá en tu bitácora una secuencia de pequeñas metas para los primeros 30 días de un proceso: tres tareas verificables por semana. Compartilas con el equipo. La voluntad se entrena mejor con un andamiaje diseñado que con exigencias improvisadas.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">¿Cumplimos los coordinadores las mismas reglas?</div>
+        <div class="mode-g">
+          <div class="act-body">La norma más exigente del §6.3.3: <em>"quien acompaña se somete a la misma regla y ritmo de vida que quien es acompañado."</em> El grupo revisa honestamente: <em>¿qué normas del dispositivo cumplen los hermanos y no cumplen los coordinadores (horarios, celulares, comida, uso de espacios comunes)? ¿qué privilegios diferencian a un grupo del otro?</em> Nombrar la brecha sin culpa es el primer paso para reducirla.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Escribí en tu bitácora tres normas que <em>pedís</em> y no <em>vivís</em> igual. Al lado de cada una, un ajuste concreto que podrías hacer para reducir la brecha. La coherencia entre lo que se pide y lo que se vive es la autoridad moral del dispositivo.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §6.3.3</div>
+        <div class="cita-txt">"La estructura pastoral nace del vínculo y la projimidad. No se impone desde una autoridad lejana, sino que se vive en comunidad, donde quien acompaña se somete a la misma regla y ritmo de vida que quien es acompañado. El límite se pone pensando en el bien del otro, y por amor."</div>
+        <div class="cita-ref">Manual de la PLAPA, §6.3.3 — La Misericordia Estructurada (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">Las <em>"pequeñas metas diarias"</em> pueden convertirse en <em>micromanagement disfrazado</em> si se transforman en un sistema de vigilancia constante que el hermano vive como control. La diferencia está en el <em>tono</em>: metas propuestas y celebradas con acompañamiento, no evaluadas y penalizadas con distancia. Sin ese cuidado, el gimnasio de la voluntad se convierte en el sistema disciplinario que el §6.3.3 justamente quiere superar.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">La norma de que <em>"quien acompaña se somete a la misma regla"</em> es la más exigente del §6.3.3 para el equipo. <em>¿Hay normas del dispositivo que los coordinadores no cumplen? ¿hay privilegios que los diferencian de los hermanos que acompañan?</em> Nombrar esa brecha sin castigarse es el primer paso para reducirla. El equipo que puede mirarse en ese espejo con honestidad tiene la coherencia necesaria para proponer la Misericordia Estructurada con autoridad moral.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §6.3.3 (Tres fundamentos), §7.9.3 (Hospital de campaña), §8.2.3 (TIT), §8.4.2 (Autoeficacia) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 3 ════════════════════════════════════════ -->
+  <div id="m3" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 3 · El Actuar</span>
+      <div class="ct">El hospital de campaña: amar antes de estructurar</div>
+      <div class="cs">La primacía de la herida sobre la norma · §7.9.3, §7.5.1</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"Es inútil preguntar a un herido por su colesterol si tiene llagas sangrantes; primero se curan las heridas. Se recibe la vida como viene, reconociendo el caos como lugar sagrado."</div>
+      </div>
+
+      <div class="pl">El Ver — Los cuatro principios del hospital de campaña (§7.9.3)</div>
+      <div class="ejes">
+        <div class="eje">
+          <div class="eje-n">Principio 1</div>
+          <div class="eje-t">Primacía de la persona sobre el orden</div>
+          <div class="eje-txt">El hospital de campaña no espera que el herido esté sano para recibirlo. Permite que el dolor del otro altere los esquemas. El vínculo afectivo es el primer paso de la sanación.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Principio 2</div>
+          <div class="eje-t">El límite eficaz: la ternura</div>
+          <div class="eje-txt">"La disciplina es necesaria, pero el límite más eficaz es la ternura. Forzar normas en la desolación genera rechazo; un entorno de amor incondicional permite que el cambio surja de la propia voluntad."</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Principio 3</div>
+          <div class="eje-t">Fe y técnica: complementarias</div>
+          <div class="eje-txt">El anuncio de la fe no invalida la técnica. "La ciencia proporciona los medios para tratar la maquinaria biológica dañada. Ignorar la biología sería una falta de responsabilidad pastoral."</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Principio 4</div>
+          <div class="eje-t">Acompañamiento inespecífico primero</div>
+          <div class="eje-txt">No se condiciona el amor al éxito de un tratamiento. Se "primerea" en la proximidad, ofreciendo el abrazo y la escucha activa antes de proponer cambios conductuales.</div>
+        </div>
+      </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>El primer filtro burocrático que excluye a quien más necesita.</strong> El §7.9.3 describe la tensión: <em>"la tendencia a exigir que el hermano se adecue primero a ciertas estructuras para ser recibido."</em> La pregunta burocrática de la primera entrevista (<em>"¿estás en condiciones de comprometerte con las normas del dispositivo?"</em>) puede ser el primer filtro que excluye a quien más necesita ser incluido. <em>El hospital de campaña vendajea primero, pregunta después.</em></span></li>
+        <li><span class="dot">V</span><span><strong>Fe y técnica: la falsa dicotomía.</strong> El §7.5.1 articula la relación: <em>"Si el amor es el medicamento supremo, el anuncio de la fe debería ser suficiente por sí solo."</em> El Manual refuta esa idea con claridad: <em>"La ciencia proporciona los medios para tratar la maquinaria biológica dañada. Ignorar la biología sería una falta de responsabilidad pastoral."</em> La Misericordia Estructurada <em>no elige entre fe y técnica: las articula</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>Primero la dignidad, luego el bien abrazado libremente.</strong> <em>"La misericordia no niega la verdad, la encarna en el tiempo del otro. Al no reducir a la persona a sus errores, se protege su dignidad ontológica, que es el suelo necesario para que el sujeto desee abrazar libremente el bien"</em> (§7.9.3). El orden de los verbos es teológicamente preciso: primero proteger la dignidad, luego el bien se abraza libremente. <em>El bien impuesto no es bien: es obediencia. El bien abrazado desde la dignidad restaurada es conversión.</em></span></li>
+        <li><span class="dot j">J</span><span><strong>"Primerear" la proximidad.</strong> <em>"Al no condicionar el amor al éxito de un tratamiento, se primerea en la proximidad"</em> (§7.9.3). Primerear la proximidad significa que el agente <em>sale al encuentro del hermano antes de que el hermano llegue a las condiciones</em>. El hospital de campaña no tiene sala de espera: <em>tiene equipo de emergencias que va al lugar donde el herido cayó</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">El protocolo de primera acogida: ¿vendaje primero o normas primero?</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo revisa el protocolo de primera acogida del dispositivo: <em>¿cuándo aparece el reglamento? ¿cuándo aparece la entrevista de admisión con sus exigencias? ¿hay un espacio previo de acogida incondicional antes de cualquier proceso de evaluación?</em> Si el reglamento aparece en la primera hora, el dispositivo está poniendo el orden antes del amor. Diseñar un protocolo donde <em>el abrazo precede al formulario</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Reconstruí en tu bitácora la secuencia real de la primera acogida en tu dispositivo. Marcá el momento en que aparecen las normas y el momento en que aparece el abrazo. Si el orden es <em>norma → abrazo</em>, ese es el próximo cambio de diseño concreto.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">La ternura como primer límite</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo practica en tríos: uno en el rol de <em>hermano que llega en situación de crisis</em> (sin documentación, bajo efectos de sustancias, agresivo o completamente retraído). Los otros dos en el rol de equipo de acogida. Regla: <em>los primeros cinco minutos son solo acogida, sin información, sin normas, sin evaluación</em>. Al terminar: ¿qué fue difícil? ¿qué funcionó? ¿qué reveló sobre el propio dispositivo?</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Recordá la última vez que recibiste a alguien en una crisis aguda. Anotá en tu bitácora: <em>¿los primeros cinco minutos fueron acogida o información? ¿qué te salió naturalmente hacer primero: contener o preguntar?</em> La respuesta muestra cuál es tu instinto y qué necesitás entrenar.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Articular fe y técnica en el dispositivo concreto</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo mapea cómo conviven actualmente la dimensión espiritual y la técnica en el dispositivo: <em>¿hay momentos de oración? ¿hay atención psicológica? ¿hay articulación entre ambas o son compartimentos separados? ¿el psicólogo sabe qué ocurre en el espacio de oración? ¿el acompañante espiritual conoce el diagnóstico psicológico?</em> La Misericordia Estructurada requiere que las dos dimensiones se hablen.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora si en tu dispositivo la dimensión espiritual y la técnica se hablan entre sí. Si no lo hacen, escribí <em>un gesto concreto</em> que podría abrir la conversación (una reunión, un formato de derivación, un espacio compartido de revisión de casos).</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §7.9.3</div>
+        <div class="cita-txt">"La Iglesia necesita con urgencia curar heridas y dar calor a los corazones. La misericordia organiza a la comunidad para amar antes que para estructurar. Es inútil preguntar a un herido por su colesterol si tiene llagas sangrantes; primero se curan las heridas."</div>
+        <div class="cita-ref">Manual de la PLAPA, §7.9.3 — La Iglesia como hospital de campaña (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">El principio <em>"amor antes de estructura"</em> puede ser mal leído como <em>"amor en lugar de estructura"</em>. No es así. El hospital de campaña también tiene protocolos —de triage, de derivación, de seguimiento— sin los cuales la buena intención colapsa en caos. La secuencia correcta no elimina la estructura: la <em>subordina al vínculo</em>. Sin esa distinción, el itinerario se cae hacia la trampa 1 (desidia) del Módulo 1.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">El protocolo de primera acogida que el dispositivo ofrece al hermano es <em>el espejo del que el equipo se da a sí mismo</em>. <em>¿Hay en el equipo un espacio donde quien llega con una crisis personal es recibido con acogida incondicional antes de que se le pidan rendiciones de cuenta? ¿o el equipo funciona solo como evaluador de resultados de los hermanos, sin que nadie cuide al cuidador?</em> El hospital de campaña necesita también una sala de recuperación para su propio personal.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §7.9.3 (Hospital de campaña), §7.5.1 (Fe y técnica), §7.9.4 (Encarnación) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 4 ════════════════════════════════════════ -->
+  <div id="m4" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 4 · Síntesis</span>
+      <div class="ct">El dispositivo que encarna la Misericordia Estructurada: diseño y revisión</div>
+      <div class="cs">Del concepto al dispositivo concreto · §6.3.3, §6.3.4, §7.9.3, §7.5.1</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"El límite que nace del amor no desconfía del hermano: confía en él más de lo que él confía en sí mismo en ese momento. Esa confianza anticipada es la estructura más misericordiosa que un dispositivo puede ofrecer."</div>
+      </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>Las decisiones concretas revelan la Misericordia Estructurada real.</strong> La Misericordia Estructurada no es un concepto abstracto: se encarna en decisiones concretas de diseño. <em>¿Cuándo aparece el reglamento? ¿cómo se manejan los incumplimientos? ¿qué sucede después de una recaída? ¿hay una secuencia de responsabilidades crecientes? ¿quién tiene el poder de establecer las normas?</em> Cada una de esas decisiones revela si el dispositivo practica la Misericordia Estructurada o alguna de las dos trampas.</span></li>
+        <li><span class="dot">V</span><span><strong>La gradualidad del §6.3.4 como esquema operativo.</strong> El §6.3.4 sobre la gradualidad del trabajo ofrece el mapa más operativo del itinerario: <em>laborterapia → aprendizaje de oficios → empleo remunerado</em>. Esta secuencia no es solo un plan de inserción laboral: es <em>el esquema de la Misericordia Estructurada aplicada a la dimensión del trabajo</em>. Empieza por lo que el hermano puede hacer hoy, aunque sea mínimo, y avanza artesanalmente según la madurez que va mostrando.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>"La gratuidad de Dios no es desorden": la síntesis en una frase.</strong> El amor de Dios —gratuito, incondicional, sin méritos previos— <em>no produce caos sino orden</em>. Pero es un orden que nace del amor, no del control. El dispositivo que encarna eso tiene normas que los propios hermanos entienden y abrazan porque <em>las perciben como expresión de que alguien cree en ellos</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>Ni misericordia ni estructura: las dos, integradas.</strong> El §7.5.1 cierra el argumento: <em>"La salud es el despliegue del máximo potencial de la persona, lo que exige una colaboración armoniosa entre la sabiduría de la fe y el saber de la ciencia."</em> La Misericordia Estructurada no elige entre misericordia y estructura, entre fe y técnica, entre amor y norma. <em>Las integra en un dispositivo concreto que las necesita a todas.</em></span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Diseñar el "Manual de la Misericordia Estructurada" del dispositivo</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo diseña (o revisa) el documento que rige el dispositivo con los criterios del §6.3.3: <em>¿cuál es la secuencia de acogida? ¿cuáles son las normas y por qué existen (¿protegen al hermano o al dispositivo?)? ¿qué sucede ante un incumplimiento? ¿qué sucede ante una recaída? ¿cómo se celebran los logros? ¿quién participó en la construcción de estas normas?</em> El documento resultante es el mapa de la Misericordia Estructurada en ese territorio concreto.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora el índice mínimo del <em>"Manual de la Misericordia Estructurada"</em> para tu dispositivo: seis apartados con una línea cada uno. Ese índice es la agenda de las próximas reuniones de equipo hasta que el documento exista.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">La recaída como oportunidad pedagógica</div>
+        <div class="mode-g">
+          <div class="act-body">El §8.3.1 sobre el Modelo Transteórico propone que la recaída <em>"no vuelve al punto de inicio": todo lo aprendido permanece</em>. El grupo diseña el protocolo de respuesta a la recaída en el dispositivo: <em>¿qué pasa en las primeras horas? ¿quién interviene? ¿se expulsa o se sostiene? ¿cómo se procesa con el hermano lo que pasó?</em> La respuesta a la recaída es <em>la prueba de fuego</em> de si el dispositivo practica la Misericordia Estructurada o el sistema punitivo.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Escribí en tu bitácora el protocolo actual (aunque no esté escrito) de tu dispositivo ante una recaída. Al lado: <em>¿ese protocolo practica la Misericordia Estructurada o alguna de las dos trampas?</em> Si es del segundo tipo, ese es el próximo rediseño urgente.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Cierre: carta del dispositivo al hermano que llega</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo redacta colectivamente una carta de bienvenida para quien llega al dispositivo por primera vez: <em>no un listado de normas, sino una declaración de intenciones</em>. <em>"Cuando llegás aquí, queremos que sepas que…"</em> Tres párrafos máximo. La carta revela con más claridad que cualquier reglamento si el dispositivo encarna la Misericordia Estructurada. Se lee en voz alta y se guarda como horizonte de referencia del equipo.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Escribí en tu bitácora tu propia carta de bienvenida al hermano que llega por primera vez al espacio donde acompañás. Tres párrafos. Empieza con <em>"Cuando llegás aquí, quiero que sepas que…"</em>. Esa carta es tu declaración pastoral concreta más honesta.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §7.5.1</div>
+        <div class="cita-txt">"La salud es el despliegue del máximo potencial de la persona, lo que exige una colaboración armoniosa entre la sabiduría de la fe y el saber de la ciencia. No existe superioridad en términos de exclusión, sino una complementariedad necesaria."</div>
+        <div class="cita-ref">Manual de la PLAPA, §7.5.1 — El anuncio de la fe y el abordaje técnico (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">Escribir un documento hermoso sobre la Misericordia Estructurada del dispositivo puede convertirse en <em>coartada</em> si la práctica cotidiana lo contradice. El documento es útil solo si es el reflejo de decisiones concretas que se están tomando —o el mapa de decisiones a tomar en un plazo determinado—. El documento sin plan de aterrizaje es <em>literatura pastoral</em> que engaña primero al equipo y después a los hermanos que llegan.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente — cierre del itinerario</div>
+        <div class="autocuidado-txt">El itinerario cierra con la pregunta que la <em>"carta de bienvenida"</em> le hace al equipo: <em>¿nos trataríamos a nosotros mismos con la misma Misericordia Estructurada que queremos ofrecer a los hermanos? ¿hay en el equipo normas claras y amorosas? ¿hay acogida incondicional cuando alguien falla? ¿hay celebración cuando alguien progresa?</em> El dispositivo que el equipo se da a sí mismo es <em>el modelo que puede ofrecer con autenticidad</em> a quienes acompaña.</div>
+      </div>
+
+      <div class="lectura">
+        <div class="lectura-lbl">Lectura complementaria</div>
+        <div class="lectura-txt">Para profundizar en la <strong>práctica cotidiana de la Misericordia Estructurada</strong> en dispositivos concretos de la Familia Grande Hogar de Cristo, con ejemplos de reglamentos, protocolos de acogida y respuestas a la recaída construidos comunitariamente, ofrecemos este texto para la reflexión del equipo.</div>
+        <a href="ElMetodoFGHC.pdf" download class="lectura-link">📥 Descargar "ElMetodoFGHC.pdf"</a>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §6.3.3 (La Misericordia Estructurada), §6.3.4 (Gradualidad del trabajo), §7.9.3 (Hospital de campaña), §7.5.1 (Fe y técnica), §8.3.1 (Modelo Transteórico) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 5 · MURO DEL CAMINO (FORO) ═══════════════ -->
+  <div id="m5" class="card">
+    <div class="ch">
+      <span class="cn">Espacio comunitario · Muro</span>
+      <div class="ct">Voces de quienes también recorren este itinerario</div>
+      <div class="cs">El Manual crece con quienes lo caminan · §13.3, §13.5</div>
+    </div>
+    <div class="cb">
+
+      <!-- Selector de vista: este itinerario / global -->
+      <div class="foro-vista">
+        <button class="foro-vista-btn on" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
+        <button class="foro-vista-btn" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
+      </div>
+
+      <!-- Pautas pastorales -->
+      <div class="foro-pautas">
+        <div class="foro-pautas-lbl">Antes de publicar</div>
+        <ul>
+          <li>Compartí solo experiencias propias o del equipo. No expongas historias ajenas ni datos que identifiquen a terceras personas.</li>
+          <li>Cuidá a quien lea después: evitá descripciones que puedan retraumatizar.</li>
+          <li>Tu aporte será revisado por el equipo PLAPA antes de publicarse.</li>
+        </ul>
+      </div>
+
+      <!-- Formulario nuevo comentario -->
+      <div class="foro-form" id="foroForm">
+        <div class="foro-form-lbl">Dejar mi palabra</div>
+        <div class="foro-form-row">
+          <label for="foroModulo">¿Sobre qué momento del itinerario?</label>
+          <select id="foroModulo">
+            <option value="">General del itinerario</option>
+            <option value="1">Módulo 1 · La tensión fundante</option>
+            <option value="2">Módulo 2 · Los tres fundamentos</option>
+            <option value="3">Módulo 3 · El hospital de campaña</option>
+            <option value="4">Módulo 4 · Diseñar el dispositivo</option>
+          </select>
+        </div>
+        <textarea id="foroTexto" placeholder="Escribí tu comentario, pregunta o testimonio de camino..."></textarea>
+        <div class="foro-form-actions">
+          <div class="foro-form-info">Aparecerá en el muro luego de la revisión del equipo.</div>
+          <button class="foro-btn" id="foroEnviar" onclick="enviarComentario()">Enviar para revisión</button>
+        </div>
+      </div>
+
+      <!-- Lista de comentarios -->
+      <div class="foro-lista" id="foroLista">
+        <div class="foro-vacio">Cargando el muro...</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 6 · EVALUACIÓN ══════════════════════════ -->
+  <div id="m6" class="card">
+    <div class="ch">
+      <span class="cn">Cierre del itinerario · Evaluación</span>
+      <div class="ct">Revisión de vida en clave Ver–Juzgar–Actuar</div>
+      <div class="cs">No es un examen: es un discernimiento sobre lo que este itinerario dejó en vos</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Antes de comenzar</div>
+        <div class="resonancia-txt">"La revisión de vida es la forma histórica que la Iglesia latinoamericana encontró para institucionalizar el Ver–Juzgar–Actuar. El agente que la practica no aplica el método: lo vive." Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
+      </div>
+
+      <div class="eval-nota">
+        <span class="eval-nota-lbl">🕊 Uso pastoral</span>
+        <div class="eval-nota-txt">Esta evaluación es <strong>tuya</strong>. Podés guardarla en tu bitácora personal (queda solo con vos) y, si lo decidís, compartirla con el equipo PLAPA como aporte al <em>rolling release</em> del Manual (§13.5). Compartir es voluntario.</div>
+      </div>
+
+      <div class="pl">El Ver — Qué se hizo visible</div>
+      <div class="eval-q">
+        <label for="evalVer">¿Qué realidad del territorio se hizo más visible para vos a lo largo de estos cuatro módulos? ¿Qué llagas emergieron con más fuerza? ¿Qué zonas del mapa estaban en blanco antes y ahora tienen contenido?</label>
+        <textarea id="evalVer" data-eval="ver" placeholder="Escribí con calma, sin apurarte..."></textarea>
+      </div>
+
+      <div class="pl">El Juzgar — Qué iluminó, qué preguntas quedaron abiertas</div>
+      <div class="eval-q">
+        <label for="evalJuzgar1">¿Qué del método del diagnóstico territorial te iluminó de manera nueva? ¿Qué idea del Manual sentís que ya no podrás dejar de lado?</label>
+        <textarea id="evalJuzgar1" data-eval="juzgar1" placeholder="Nombralo con precisión..."></textarea>
+      </div>
+      <div class="eval-q">
+        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos? Las preguntas abiertas son también fruto (§13.3).</label>
+        <textarea id="evalJuzgar2" data-eval="juzgar2" placeholder="Las que siguen ardiendo..."></textarea>
+      </div>
+
+      <div class="pl">El Actuar — Compromiso concreto</div>
+      <div class="eval-q">
+        <label for="evalActuar">¿Qué gesto pastoral concreto vas a intentar en las próximas semanas a partir del diagnóstico que hiciste? Nombralo con nombre, tiempo y lugar. Un compromiso vago no es un compromiso.</label>
+        <textarea id="evalActuar" data-eval="actuar" placeholder="Ej.: En la próxima reunión de equipo (jueves 25) voy a presentar el mapa territorial que construimos y proponer una callejeada específica al sector X del barrio..."></textarea>
+      </div>
+      <div class="eval-q eval-fecha">
+        <label for="evalFecha">Fecha en la que vas a volver a revisar si pudiste sostenerlo</label>
+        <input type="date" id="evalFecha" data-eval="fecha_revision">
+      </div>
+
+      <div class="pl">Autocuidado y equipo</div>
+      <div class="eval-q eval-scale">
+        <label>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</label>
+        <div class="eval-scale-row">
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="1" data-eval="animo"><span>1</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="2" data-eval="animo"><span>2</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="3" data-eval="animo"><span>3</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="4" data-eval="animo"><span>4</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="5" data-eval="animo"><span>5</span></label>
+        </div>
+      </div>
+      <div class="eval-q">
+        <label for="evalCuidado">¿Qué necesitás cuidar de vos mismo/a en las próximas semanas? ¿A quién del equipo se lo vas a decir?</label>
+        <textarea id="evalCuidado" data-eval="cuidado" placeholder="El agente que cuida su esperanza puede sostener la del otro (§1.3)..."></textarea>
+      </div>
+
+      <div class="pl">Cierre</div>
+
+      <div class="eval-check">
+        <input type="checkbox" id="evalCompartir">
+        <label for="evalCompartir"><strong>Compartir con el equipo PLAPA</strong> como aporte al <em>rolling release</em> del Manual. Solo se envían tus respuestas si marcás esta casilla. Si no la marcás, la evaluación queda solo en tu bitácora.</label>
+      </div>
+
+      <div class="eval-actions">
+        <button class="foro-btn eval-btn-guardar" onclick="guardarEvaluacion()">Guardar en mi bitácora</button>
+        <button class="foro-btn eval-btn-imprimir" onclick="imprimirEvaluacion()">🖨 Imprimir / PDF</button>
+      </div>
+
+      <div id="evalMsg" class="eval-msg"></div>
+
+      <div class="autocuidado" style="margin-top: 2rem;">
+        <div class="autocuidado-lbl">Cierre del itinerario</div>
+        <div class="autocuidado-txt">Cerrar bien un itinerario también es autocuidado: celebrar lo caminado, agradecer al equipo, reconocer los propios límites y renovar la esperanza. Este itinerario termina con gratitud: por el territorio que nos habló, por las llagas que dejamos de negar, por el equipo que hizo posible mirar sin apartar la mirada.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §1.3 (Prólogo), §6.1.3 (Evitar la romantización), §13.2 (Sinodalidad en la práctica), §13.3 (Rolling release), §13.5 (Mecanismos de colaboración) — CELAM 2026.</div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function setMode(mode, btn) {
+    var root = document.querySelector('.root');
+    root.classList.remove('mode-grupal', 'mode-individual');
+    root.classList.add('mode-' + mode);
+    var buttons = document.querySelectorAll('.mode-btn');
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].classList.remove('on');
+    }
+    btn.classList.add('on');
+  }
+
+  function show(n, btn) {
+    for (var i = 1; i <= 6; i++) {
+      var el = document.getElementById('m' + i);
+      if (el) el.classList.remove('active');
+    }
+    document.querySelectorAll('.nav .btn').forEach(function(b) {
+      b.classList.remove('on');
+    });
+    document.getElementById('m' + n).classList.add('active');
+    btn.classList.add('on');
+    if (window.innerWidth < 640) {
+      document.getElementById('m' + n).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    // Al abrir el muro, refrescar comentarios
+    if (n === 5 && typeof cargarComentarios === 'function') {
+      cargarComentarios();
+    }
+    // Al abrir la evaluación, restaurar borrador si existe
+    if (n === 6 && typeof restaurarEvaluacion === 'function') {
+      restaurarEvaluacion();
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════
+  // MURO DEL CAMINO — FORO SUPABASE
+  // ═══════════════════════════════════════════════════════
+  // BACKEND REQUERIDO (Supabase — mismo proyecto que app-plapa):
+  //
+  // 1) Tabla `foro_comentarios`:
+  //    - id (uuid, pk)
+  //    - itinerario_id (text)     — ej. 'itinerario_14_misericordia_estructurada'
+  //    - parent_id (uuid, null)   — null = comentario raíz; uuid = respuesta
+  //    - usuario_id (uuid, fk auth.users)
+  //    - autor_nombre (text)      — copiado del perfil al crear
+  //    - pais (text)              — copiado del perfil al crear
+  //    - modulo (int, null)       — 1..4 o null (general)
+  //    - texto (text)
+  //    - estado (text)            — 'pendiente' | 'publicado' | 'rechazado'
+  //    - created_at (timestamptz)
+  //
+  // 2) Tabla `foro_reacciones`:
+  //    - comentario_id (uuid, fk)
+  //    - usuario_id (uuid, fk)
+  //    - emoji (text) — '🙏' | '❤️' | '💡' | '🕊️'
+  //    - PK compuesta (comentario_id, usuario_id, emoji)
+  //
+  // 3) Vista/RPC `comentarios_para_itinerario(p_itinerario text, p_scope text)`:
+  //    devuelve los comentarios publicados con autor_nombre, pais, itinerario_titulo
+  //    (si scope='global'), agregado de reacciones y las del usuario actual.
+  //    scope: 'itinerario' filtra por p_itinerario; 'global' devuelve todos.
+  //
+  // 4) RPC `toggle_reaccion(p_comentario uuid, p_emoji text)`.
+  //
+  // 5) RLS:
+  //    - foro_comentarios: SELECT solo estado='publicado'; INSERT solo auth.uid()
+  //      con estado='pendiente' forzado.
+  //    - Moderadores (rol) pueden UPDATE estado.
+  //
+  // 6) Sesión: la Escuela PLAPA debe dejar el token JWT accesible
+  //    (localStorage 'escuela_plapa_sesion' con { token, nombre, pais }
+  //    o cookie según arquitectura de la Escuela).
+  // ═══════════════════════════════════════════════════════
+
+  var SUPABASE_URL = 'https://TU-PROYECTO.supabase.co';  // TODO: config
+  var SUPABASE_ANON_KEY = 'TU_ANON_KEY';                  // TODO: config
+  var ITINERARIO_ID = 'itinerario_14_misericordia_estructurada';
+  var ITINERARIO_TITULO = 'Misericordia Estructurada en la práctica';
+
+  var vistaForo = 'itinerario';
+  var sesion = null;
+  var EMOJIS = ['🙏', '❤️', '💡', '🕊️'];
+
+  function supaHeaders() {
+    var h = {
+      'apikey': SUPABASE_ANON_KEY,
+      'Content-Type': 'application/json'
+    };
+    if (sesion && sesion.token) {
+      h['Authorization'] = 'Bearer ' + sesion.token;
+    }
+    return h;
+  }
+
+  function escapeHtml(s) {
+    if (!s) return '';
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function formatFecha(iso) {
+    if (!iso) return '';
+    try {
+      var d = new Date(iso);
+      return d.toLocaleDateString('es', { day: 'numeric', month: 'short', year: 'numeric' });
+    } catch (e) { return ''; }
+  }
+
+  function cargarComentarios() {
+    var contenedor = document.getElementById('foroLista');
+    contenedor.innerHTML = '<div class="foro-vacio">Cargando el muro...</div>';
+
+    var url = SUPABASE_URL + '/rest/v1/rpc/comentarios_para_itinerario';
+    fetch(url, {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({
+        p_itinerario: ITINERARIO_ID,
+        p_scope: vistaForo
+      })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) { renderComentarios(data || []); })
+    .catch(function() {
+      contenedor.innerHTML = '<div class="foro-vacio">No se pudo cargar el muro. Intentá de nuevo más tarde.</div>';
+    });
+  }
+
+  function renderComentarios(comentarios) {
+    var contenedor = document.getElementById('foroLista');
+    if (!comentarios || comentarios.length === 0) {
+      contenedor.innerHTML = '<div class="foro-vacio">Aún no hay palabras publicadas en este muro. Podés ser vos quien empiece la conversación.</div>';
+      return;
+    }
+    var raices = comentarios.filter(function(c) { return !c.parent_id; });
+    var respuestasPor = {};
+    comentarios.filter(function(c) { return c.parent_id; }).forEach(function(c) {
+      if (!respuestasPor[c.parent_id]) respuestasPor[c.parent_id] = [];
+      respuestasPor[c.parent_id].push(c);
+    });
+    contenedor.innerHTML = raices.map(function(c) {
+      return renderComment(c, respuestasPor[c.id] || []);
+    }).join('');
+  }
+
+  function renderComment(c, respuestas) {
+    var modLbl = c.modulo ? '<span class="comment-modulo">Módulo ' + c.modulo + '</span>' : '';
+    var paisLbl = c.pais ? '<span class="comment-pais">' + escapeHtml(c.pais) + '</span>' : '';
+    var globalLbl = (vistaForo === 'global' && c.itinerario_titulo)
+      ? '<span class="comment-modulo">' + escapeHtml(c.itinerario_titulo) + '</span>'
+      : '';
+    var reacciones = c.reacciones || {};
+    var misReacc = c.mis_reacciones || [];
+    var reaccBtns = EMOJIS.map(function(e) {
+      var count = reacciones[e] || 0;
+      var mine = misReacc.indexOf(e) >= 0;
+      return '<button class="react-btn ' + (mine ? 'on' : '') + '" onclick="toggleReaccion(\'' + c.id + '\', \'' + e + '\')">' + e + (count > 0 ? '<span class="react-count">' + count + '</span>' : '') + '</button>';
+    }).join('');
+    var respuestasHtml = respuestas.length
+      ? '<div class="comment-replies">' + respuestas.map(renderReply).join('') + '</div>'
+      : '';
+    return '' +
+      '<div class="comment" id="c-' + c.id + '">' +
+        '<div class="comment-head">' +
+          '<div>' +
+            '<span class="comment-autor">' + escapeHtml(c.autor_nombre || 'Anónimo') + '</span>' +
+            paisLbl + modLbl + globalLbl +
+          '</div>' +
+          '<span class="comment-fecha">' + formatFecha(c.created_at) + '</span>' +
+        '</div>' +
+        '<div class="comment-texto">' + escapeHtml(c.texto) + '</div>' +
+        '<div class="comment-actions">' +
+          reaccBtns +
+          '<button class="reply-btn" onclick="toggleReplyForm(\'' + c.id + '\')">↩ Responder</button>' +
+        '</div>' +
+        '<div class="reply-form" id="rf-' + c.id + '">' +
+          '<textarea placeholder="Escribí tu respuesta..." id="rt-' + c.id + '"></textarea>' +
+          '<div class="reply-form-actions">' +
+            '<button class="reply-form-cancel" onclick="toggleReplyForm(\'' + c.id + '\')">Cancelar</button>' +
+            '<button class="foro-btn" onclick="enviarRespuestaDesde(\'' + c.id + '\')">Enviar</button>' +
+          '</div>' +
+        '</div>' +
+        respuestasHtml +
+      '</div>';
+  }
+
+  function renderReply(r) {
+    var paisLbl = r.pais ? '<span class="comment-pais">' + escapeHtml(r.pais) + '</span>' : '';
+    return '' +
+      '<div class="reply">' +
+        '<div class="comment-head">' +
+          '<div>' +
+            '<span class="comment-autor">' + escapeHtml(r.autor_nombre || 'Anónimo') + '</span>' +
+            paisLbl +
+          '</div>' +
+          '<span class="comment-fecha">' + formatFecha(r.created_at) + '</span>' +
+        '</div>' +
+        '<div class="comment-texto">' + escapeHtml(r.texto) + '</div>' +
+      '</div>';
+  }
+
+  function enviarComentario() {
+    if (!sesion) { window.location.href = '/login'; return; }
+    var texto = document.getElementById('foroTexto').value.trim();
+    var modulo = document.getElementById('foroModulo').value;
+    if (!texto) return;
+    var btn = document.getElementById('foroEnviar');
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+    fetch(SUPABASE_URL + '/rest/v1/foro_comentarios', {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({
+        itinerario_id: ITINERARIO_ID,
+        parent_id: null,
+        usuario_id: sesion.user ? sesion.user.id : null,
+        autor_nombre: sesion.nombre || '',
+        pais: sesion.pais || '',
+        modulo: modulo ? parseInt(modulo) : null,
+        texto: texto
+      })
+    })
+    .then(function() {
+      document.getElementById('foroTexto').value = '';
+      document.getElementById('foroModulo').value = '';
+      btn.textContent = '✓ Enviado — pendiente de revisión';
+      setTimeout(function() {
+        btn.textContent = 'Enviar para revisión';
+        btn.disabled = false;
+      }, 3000);
+    })
+    .catch(function() {
+      btn.textContent = 'Error al enviar';
+      btn.disabled = false;
+    });
+  }
+
+  function enviarRespuestaDesde(parentId) {
+    if (!sesion) { window.location.href = '/login'; return; }
+    var textarea = document.getElementById('rt-' + parentId);
+    var texto = textarea.value.trim();
+    if (!texto) return;
+    fetch(SUPABASE_URL + '/rest/v1/foro_comentarios', {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({
+        itinerario_id: ITINERARIO_ID,
+        parent_id: parentId,
+        usuario_id: sesion.user ? sesion.user.id : null,
+        autor_nombre: sesion.nombre || '',
+        pais: sesion.pais || '',
+        texto: texto
+      })
+    })
+    .then(function() {
+      textarea.value = '';
+      document.getElementById('rf-' + parentId).classList.remove('on');
+      alert('Tu respuesta será revisada por el equipo antes de publicarse.');
+    })
+    .catch(function() { alert('Error al enviar la respuesta.'); });
+  }
+
+  function toggleReaccion(comentarioId, emoji) {
+    if (!sesion) { window.location.href = '/login'; return; }
+    fetch(SUPABASE_URL + '/rest/v1/rpc/toggle_reaccion', {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({ p_comentario: comentarioId, p_emoji: emoji })
+    })
+    .then(function() { cargarComentarios(); })
+    .catch(function() {});
+  }
+
+  function toggleReplyForm(id) {
+    if (!sesion) { window.location.href = '/login'; return; }
+    document.getElementById('rf-' + id).classList.toggle('on');
+  }
+
+  function setVistaForo(v, btn) {
+    vistaForo = v;
+    var buttons = document.querySelectorAll('.foro-vista-btn');
+    for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove('on'); }
+    btn.classList.add('on');
+    cargarComentarios();
+  }
+
+  // ═══════════════════════════════════════════════════════
+  // EVALUACIÓN — REVISIÓN DE VIDA VJA
+  // ═══════════════════════════════════════════════════════
+  // BACKEND REQUERIDO:
+  //
+  // Tabla `evaluaciones_itinerario`:
+  //   - id (uuid, pk)
+  //   - usuario_id (uuid, fk auth.users)
+  //   - itinerario_id (text)
+  //   - respuestas (jsonb) — { ver, juzgar1, juzgar2, actuar, fecha_revision, animo, cuidado }
+  //   - compartir_con_equipo (bool)
+  //   - created_at, updated_at
+  //
+  // RLS: SELECT/UPDATE solo dueño. INSERT solo dueño.
+  // Solo moderadores del equipo PLAPA pueden ver evaluaciones donde
+  // compartir_con_equipo=true (via política RLS separada).
+  //
+  // Borrador: se autoguarda en localStorage para que no se pierda
+  // al cerrar el navegador antes de guardar formalmente.
+  // ═══════════════════════════════════════════════════════
+
+  var EVAL_STORAGE_KEY = 'eval_' + ITINERARIO_ID;
+
+  function recolectarEvaluacion() {
+    var datos = {};
+    document.querySelectorAll('[data-eval]').forEach(function(el) {
+      var key = el.getAttribute('data-eval');
+      if (el.type === 'radio') {
+        if (el.checked) datos[key] = el.value;
+      } else {
+        datos[key] = el.value;
+      }
+    });
+    datos.compartir_con_equipo = document.getElementById('evalCompartir').checked;
+    return datos;
+  }
+
+  function autoguardarBorrador() {
+    try {
+      localStorage.setItem(EVAL_STORAGE_KEY, JSON.stringify(recolectarEvaluacion()));
+    } catch (e) {}
+  }
+
+  function restaurarEvaluacion() {
+    try {
+      var stored = localStorage.getItem(EVAL_STORAGE_KEY);
+      if (!stored) return;
+      var datos = JSON.parse(stored);
+      document.querySelectorAll('[data-eval]').forEach(function(el) {
+        var key = el.getAttribute('data-eval');
+        if (datos[key] == null) return;
+        if (el.type === 'radio') {
+          if (el.value === datos[key]) el.checked = true;
+        } else {
+          el.value = datos[key];
+        }
+      });
+      if (datos.compartir_con_equipo) {
+        document.getElementById('evalCompartir').checked = true;
+      }
+    } catch (e) {}
+  }
+
+  function mostrarEvalMsg(texto, tipo) {
+    var el = document.getElementById('evalMsg');
+    el.className = 'eval-msg on ' + (tipo || 'exito');
+    el.textContent = texto;
+    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function guardarEvaluacion() {
+    var datos = recolectarEvaluacion();
+    var minimoTexto = (datos.ver || '').trim() + (datos.actuar || '').trim();
+    if (minimoTexto.length < 30) {
+      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos "El Ver" y "El Actuar" merecen unos renglones honestos.', 'error');
+      return;
+    }
+
+    // Guardar en Supabase (siempre queda en tu bitácora)
+    if (!sesion) { window.location.href = '/login'; return; }
+    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario', {
+      method: 'POST',
+      headers: Object.assign({}, supaHeaders(), { 'Prefer': 'resolution=merge-duplicates' }),
+      body: JSON.stringify({
+        itinerario_id: ITINERARIO_ID,
+        respuestas: datos,
+        compartir_con_equipo: datos.compartir_con_equipo === true
+      })
+    })
+    .then(function(r) {
+      if (r.ok) {
+        var msg = datos.compartir_con_equipo
+          ? '✓ Evaluación guardada en tu bitácora y compartida con el equipo PLAPA. Gracias por el aporte.'
+          : '✓ Evaluación guardada en tu bitácora. Queda solo con vos.';
+        mostrarEvalMsg(msg, 'exito');
+      } else {
+        mostrarEvalMsg('Guardado localmente. No pudimos sincronizar con la Escuela — reintentá más tarde.', 'error');
+      }
+    })
+    .catch(function() {
+      mostrarEvalMsg('Guardado localmente. Sin conexión con la Escuela — reintentá cuando tengas internet.', 'error');
+    });
+  }
+
+  function imprimirEvaluacion() {
+    autoguardarBorrador();
+    window.print();
+  }
+
+  // Init general del itinerario
+  document.addEventListener('DOMContentLoaded', function() {
+    // Leer sesión (el guard del <head> garantiza que existe)
+    try {
+      var stored = localStorage.getItem('escuela_plapa_sesion');
+      if (stored) sesion = JSON.parse(stored);
+    } catch (e) {}
+    // Cargar muro
+    cargarComentarios();
+
+    // Restaurar borrador de evaluación si existe
+    restaurarEvaluacion();
+
+    // Autoguardado del borrador de evaluación al escribir (con debounce)
+    var evalTimeout;
+    document.querySelectorAll('#m6 [data-eval], #m6 #evalCompartir').forEach(function(el) {
+      el.addEventListener('input', function() {
+        clearTimeout(evalTimeout);
+        evalTimeout = setTimeout(autoguardarBorrador, 500);
+      });
+      el.addEventListener('change', autoguardarBorrador);
+    });
+  });
+</script>
+
+</body>
+</html>

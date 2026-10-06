@@ -1,0 +1,2192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Itinerario 29 · Cuidar a los que cuidan · Escuela PLAPA</title>
+<style>
+  :root {
+    /* Paleta verde PLAPA — Itinerario 29 (bloque 7: Sostenibilidad y red) */
+    --i29-oscuro:  #203A07;
+    --i29-medio:   #3B6D11;
+    --i29-accent:  #639922;
+    --i29-suave:   #8BBC50;
+    --i29-claro:   #C2DD92;
+    --i29-crema:   #ECF5D9;
+    --i29-fondo:   #FBFDF6;
+
+    --alerta:     #8B1A1A;
+    --alerta-bg:  #FDF7F7;
+
+    --texto:      #1E1B33;
+    --texto-2:    #4A4560;
+    --texto-3:    #8C89A0;
+    --borde:      #E4E2F0;
+
+    --font-serif: "Georgia", "Times New Roman", serif;
+    --font-sans:  "system-ui", -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: #D3E6B4;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    line-height: 1.6;
+  }
+
+  .root {
+    background: var(--i29-fondo);
+    max-width: 860px;
+    width: 100%;
+    padding: 2.5rem;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(38, 33, 92, 0.08);
+  }
+
+  /* ─── HEADER SUPERIOR (navegación entre páginas) ─── */
+  .top-header {
+    background: #FFFFFF;
+    border-bottom: 1px solid var(--borde);
+    padding: 0.85rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    max-width: 860px;
+    width: 100%;
+    margin: 0 auto 1rem;
+    border-radius: 10px;
+  }
+  .top-logo {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--i29-oscuro);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .top-logo:hover { color: var(--i29-medio); }
+  .top-link {
+    font-size: 0.88rem;
+    color: var(--texto-2);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.15s;
+  }
+  .top-link:hover {
+    background: var(--i29-crema);
+    color: var(--i29-oscuro);
+  }
+  @media (max-width: 640px) {
+    .top-header { padding: 0.75rem 1rem; }
+    .top-link { font-size: 0.82rem; padding: 5px 8px; }
+  }
+
+  /* ─── PORTADA ────────────────────────────────────────── */
+  .portada {
+    background: var(--i29-oscuro);
+    border-radius: 12px;
+    padding: 2rem 2rem 1.75rem;
+    margin-bottom: 2rem;
+  }
+  .portada-sup {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--i29-claro);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .portada-title {
+    font-family: var(--font-serif);
+    font-size: 30px;
+    font-weight: normal;
+    color: #FFFFFF;
+    line-height: 1.25;
+    margin-bottom: 0.6rem;
+  }
+  .portada-sub {
+    font-size: 14.5px;
+    color: var(--i29-claro);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+    max-width: 640px;
+  }
+  .dest-box {
+    background: var(--i29-medio);
+    border-radius: 8px;
+    padding: 0.9rem 1.1rem;
+    margin-bottom: 1.1rem;
+  }
+  .dest-lbl {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--i29-claro);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .dest-txt {
+    font-size: 13px;
+    color: #FFF;
+    line-height: 1.6;
+  }
+  .portada-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .portada-pill {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 11px;
+    border-radius: 99px;
+    background: var(--i29-medio);
+    color: var(--i29-crema);
+  }
+
+  /* ─── VIDEO ──────────────────────────────────────────── */
+  .video-wrap {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .video-lbl {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--i29-oscuro);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .video-iframe {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  .video-iframe iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  /* ─── SELECTOR DE MODALIDAD ──────────────────────────── */
+  .mode-selector {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 1.5rem;
+    background: #FFF;
+    padding: 6px;
+    border-radius: 10px;
+    border: 1px solid var(--borde);
+    max-width: max-content;
+    flex-wrap: wrap;
+  }
+  .mode-btn {
+    border: none;
+    background: transparent;
+    color: var(--texto-2);
+    padding: 8px 16px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .mode-btn.on {
+    background: var(--i29-accent);
+    color: #FFF;
+    font-weight: 600;
+  }
+  /* Control de visibilidad según modalidad */
+  .root.mode-individual .mode-g { display: none; }
+  .root.mode-grupal .mode-i { display: none; }
+
+  /* ─── NAVEGACIÓN ─────────────────────────────────────── */
+  .nav {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .btn {
+    border: 1px solid var(--borde);
+    background: #FFFFFF;
+    border-radius: 8px;
+    padding: 10px 16px;
+    cursor: pointer;
+    font-size: 12.5px;
+    font-weight: 500;
+    font-family: var(--font-sans);
+    color: var(--texto-2);
+    transition: all 0.18s ease;
+    text-align: left;
+  }
+  .btn:hover {
+    background: var(--i29-crema);
+    border-color: var(--i29-claro);
+    color: var(--i29-oscuro);
+  }
+  .btn.on {
+    border: 2px solid var(--i29-accent);
+    background: var(--i29-crema);
+    color: var(--i29-oscuro);
+    font-weight: 600;
+    padding: 9px 15px;
+  }
+  .btn.btn-alt {
+    background: var(--i29-crema);
+    color: var(--i29-medio);
+    border-color: var(--i29-claro);
+  }
+  .btn.btn-alt:hover {
+    background: var(--i29-claro);
+    color: var(--i29-oscuro);
+  }
+  .btn.btn-alt.on {
+    background: var(--i29-medio);
+    border-color: var(--i29-medio);
+    color: #FFFFFF;
+  }
+  .nav-sep {
+    display: inline-block;
+    width: 1px;
+    background: var(--borde);
+    margin: 0 6px;
+    align-self: stretch;
+  }
+
+  /* ─── MÓDULOS ────────────────────────────────────────── */
+  .card {
+    border-radius: 12px;
+    border: 1px solid var(--borde);
+    background: #FFFFFF;
+    overflow: hidden;
+    display: none;
+    border-left: 6px solid var(--i29-accent);
+  }
+  .card.active {
+    display: block;
+    animation: fadeIn 0.35s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .ch {
+    padding: 1.75rem 2rem 1.5rem;
+    border-bottom: 1px solid var(--borde);
+    background: var(--i29-crema);
+  }
+  .cn {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 99px;
+    margin-bottom: 0.85rem;
+    background: var(--i29-accent);
+    color: #FFFFFF;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .ct {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 1.3;
+    color: var(--i29-oscuro);
+    margin-bottom: 0.4rem;
+  }
+  .cs {
+    font-size: 13px;
+    color: var(--i29-medio);
+    line-height: 1.55;
+    font-style: italic;
+  }
+
+  .cb { padding: 2rem; }
+
+  /* ─── CAJA DE RESONANCIA ─────────────────────────────── */
+  .resonancia {
+    border-left: 4px solid var(--i29-accent);
+    background: var(--i29-crema);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .resonancia-lbl {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i29-accent);
+    margin-bottom: 8px;
+  }
+  .resonancia-txt {
+    font-family: var(--font-serif);
+    font-size: 16.5px;
+    line-height: 1.6;
+    font-style: italic;
+    color: var(--i29-oscuro);
+  }
+
+  /* ─── SECCIONES VER / JUZGAR / ACTUAR ────────────────── */
+  .pl {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i29-oscuro);
+    margin-top: 2.25rem;
+    margin-bottom: 1.1rem;
+    border-bottom: 1px solid var(--borde);
+    padding-bottom: 7px;
+  }
+  .pl:first-of-type { margin-top: 0.5rem; }
+
+  .pts {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 1.5rem;
+  }
+  .pts li {
+    display: flex;
+    gap: 14px;
+    font-size: 14.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+  .pts li strong {
+    color: var(--i29-oscuro);
+    font-weight: 600;
+  }
+  .dot {
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    background: var(--i29-accent);
+    color: #FFFFFF;
+    margin-top: 2px;
+    font-family: var(--font-serif);
+  }
+  .dot.j { background: var(--i29-medio); }
+  .dot.a { background: var(--i29-oscuro); }
+
+  /* ─── GRILLA DE ESCENARIOS / DIMENSIONES ─────────────── */
+  .ejes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 1.5rem;
+  }
+  .eje {
+    background: var(--i29-crema);
+    border-radius: 10px;
+    padding: 1.1rem 1.25rem;
+    border-top: 4px solid var(--i29-accent);
+  }
+  .eje-n {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--i29-accent);
+    margin-bottom: 8px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .eje-t {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--i29-oscuro);
+    margin-bottom: 6px;
+  }
+  .eje-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.6;
+  }
+
+  /* ─── ACTIVIDADES ────────────────────────────────────── */
+  .act {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 1.15rem 1.35rem;
+    margin-bottom: 12px;
+    border-left: 4px solid var(--i29-accent);
+  }
+  .act-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  .tag-ind {
+    background: var(--i29-oscuro);
+    color: var(--i29-crema);
+  }
+  .tag-gru {
+    background: var(--i29-accent);
+    color: #FFF;
+  }
+  .act-title {
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: var(--i29-oscuro);
+    margin-bottom: 6px;
+    line-height: 1.35;
+  }
+  .act-body {
+    font-size: 14px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+  .act-body em {
+    color: var(--i29-medio);
+    font-style: italic;
+  }
+
+  /* ─── CITA INSPIRADORA ───────────────────────────────── */
+  .cita {
+    border-radius: 10px;
+    padding: 1.2rem 1.4rem;
+    background: linear-gradient(180deg, var(--i29-crema) 0%, #FFF 100%);
+    border: 1px solid var(--i29-claro);
+    margin-top: 2rem;
+  }
+  .cita-lbl {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i29-accent);
+    margin-bottom: 8px;
+  }
+  .cita-txt {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    line-height: 1.7;
+    font-style: italic;
+    color: var(--i29-oscuro);
+  }
+  .cita-ref {
+    font-size: 12px;
+    margin-top: 10px;
+    font-weight: 500;
+    color: var(--i29-medio);
+    font-style: normal;
+  }
+
+  /* ─── ALERTA PASTORAL ────────────────────────────────── */
+  .alerta {
+    border-left: 4px solid var(--alerta);
+    background: var(--alerta-bg);
+    padding: 1.15rem 1.35rem;
+    margin-top: 1.75rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .alerta-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--alerta);
+    margin-bottom: 8px;
+  }
+  .alerta-lbl::before {
+    content: '† ';
+    font-size: 14px;
+  }
+  .alerta-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+
+  /* ─── AUTOCUIDADO ────────────────────────────────────── */
+  .autocuidado {
+    border-left: 4px solid var(--i29-medio);
+    background: #F6FBEA;
+    padding: 1.15rem 1.35rem;
+    margin-top: 1.75rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .autocuidado-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i29-medio);
+    margin-bottom: 8px;
+  }
+  .autocuidado-lbl::before {
+    content: '❋ ';
+    color: var(--i29-accent);
+  }
+  .autocuidado-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+
+  /* ─── LECTURA COMPLEMENTARIA ─────────────────────────── */
+  .lectura {
+    background: #FFF;
+    border: 1px dashed var(--i29-accent);
+    border-radius: 10px;
+    padding: 1.15rem 1.35rem;
+    margin-top: 1.75rem;
+  }
+  .lectura-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--i29-medio);
+    margin-bottom: 8px;
+  }
+  .lectura-lbl::before {
+    content: '📖 ';
+  }
+  .lectura-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+  .lectura-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--i29-accent);
+    color: #FFF;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.18s;
+  }
+  .lectura-link:hover {
+    background: var(--i29-oscuro);
+  }
+
+  /* ─── REFERENCIAS ────────────────────────────────────── */
+  .ref {
+    font-size: 11.5px;
+    color: var(--texto-3);
+    font-style: italic;
+    margin-top: 1.75rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--borde);
+  }
+
+  /* ─── FORO / MURO DEL CAMINO ─────────────────────────── */
+  .foro {
+    background: #FFFFFF;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    margin-top: 2rem;
+    overflow: hidden;
+    border-left: 6px solid var(--i29-medio);
+  }
+  .foro-head {
+    background: var(--i29-crema);
+    padding: 1.75rem 2rem 1.5rem;
+    border-bottom: 1px solid var(--borde);
+  }
+  .foro-lbl {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 99px;
+    margin-bottom: 0.85rem;
+    background: var(--i29-medio);
+    color: #FFFFFF;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .foro-title {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: normal;
+    line-height: 1.3;
+    color: var(--i29-oscuro);
+    margin-bottom: 0.4rem;
+  }
+  .foro-sub {
+    font-size: 13px;
+    color: var(--i29-medio);
+    line-height: 1.55;
+    font-style: italic;
+  }
+  .foro-body { padding: 2rem; }
+
+  .foro-vista {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 1.5rem;
+    background: var(--i29-crema);
+    padding: 6px;
+    border-radius: 10px;
+    max-width: max-content;
+    flex-wrap: wrap;
+  }
+  .foro-vista-btn {
+    border: none;
+    background: transparent;
+    color: var(--texto-2);
+    padding: 8px 16px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .foro-vista-btn.on {
+    background: var(--i29-medio);
+    color: #FFF;
+    font-weight: 600;
+  }
+
+  .foro-pautas {
+    background: var(--alerta-bg);
+    border-left: 4px solid var(--alerta);
+    padding: 1.15rem 1.35rem;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 1.75rem;
+  }
+  .foro-pautas-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--alerta);
+    margin-bottom: 8px;
+  }
+  .foro-pautas-lbl::before { content: '† '; }
+  .foro-pautas ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .foro-pautas li {
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    padding-left: 14px;
+    position: relative;
+  }
+  .foro-pautas li::before {
+    content: '·';
+    position: absolute;
+    left: 4px;
+    color: var(--alerta);
+    font-weight: 700;
+  }
+
+  .foro-form {
+    background: var(--i29-fondo);
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .foro-form-lbl {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--i29-oscuro);
+    margin-bottom: 12px;
+  }
+  .foro-form-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .foro-form-row label {
+    font-size: 12.5px;
+    color: var(--texto-2);
+    align-self: center;
+    font-weight: 500;
+  }
+  .foro-form select {
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    padding: 7px 10px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+    cursor: pointer;
+  }
+  .foro-form textarea {
+    width: 100%;
+    min-height: 90px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+    resize: vertical;
+    line-height: 1.55;
+    margin-bottom: 10px;
+  }
+  .foro-form textarea:focus,
+  .foro-form select:focus {
+    outline: none;
+    border-color: var(--i29-medio);
+  }
+  .foro-form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .foro-form-info {
+    font-size: 11.5px;
+    color: var(--texto-3);
+    font-style: italic;
+  }
+  .foro-btn {
+    background: var(--i29-medio);
+    color: #FFF;
+    border: none;
+    border-radius: 7px;
+    padding: 9px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    transition: background 0.18s;
+  }
+  .foro-btn:hover { background: var(--i29-oscuro); }
+  .foro-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .foro-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .foro-vacio {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: var(--texto-3);
+    font-size: 13.5px;
+    font-style: italic;
+    background: var(--i29-crema);
+    border-radius: 10px;
+  }
+  .comment {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-left: 3px solid var(--i29-suave);
+    border-radius: 10px;
+    padding: 1rem 1.15rem;
+  }
+  .comment-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .comment-autor {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--i29-oscuro);
+  }
+  .comment-pais {
+    font-size: 12px;
+    color: var(--i29-medio);
+    font-weight: 500;
+  }
+  .comment-pais::before { content: ' · '; color: var(--texto-3); }
+  .comment-modulo {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: var(--i29-crema);
+    color: var(--i29-medio);
+    margin-left: 6px;
+  }
+  .comment-fecha {
+    font-size: 11.5px;
+    color: var(--texto-3);
+  }
+  .comment-texto {
+    font-size: 14px;
+    color: var(--texto);
+    line-height: 1.65;
+    margin-bottom: 10px;
+    white-space: pre-wrap;
+  }
+  .comment-actions {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .react-btn {
+    background: var(--i29-crema);
+    border: 1px solid transparent;
+    border-radius: 99px;
+    padding: 4px 10px;
+    font-size: 12.5px;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    color: var(--texto-2);
+    transition: all 0.15s;
+  }
+  .react-btn:hover { background: var(--i29-claro); }
+  .react-btn.on {
+    background: var(--i29-suave);
+    color: #FFF;
+    border-color: var(--i29-medio);
+    font-weight: 600;
+  }
+  .react-count {
+    margin-left: 4px;
+    font-weight: 600;
+  }
+  .reply-btn {
+    background: transparent;
+    border: none;
+    color: var(--i29-medio);
+    font-size: 12.5px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    margin-left: auto;
+    font-family: var(--font-sans);
+  }
+  .reply-btn:hover {
+    background: var(--i29-crema);
+    color: var(--i29-oscuro);
+  }
+  .comment-replies {
+    margin-top: 12px;
+    padding-left: 1rem;
+    border-left: 2px dashed var(--borde);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .reply {
+    background: var(--i29-fondo);
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+  }
+  .reply-form {
+    background: var(--i29-crema);
+    border-radius: 8px;
+    padding: 0.8rem;
+    margin-top: 10px;
+    display: none;
+  }
+  .reply-form.on { display: block; }
+  .reply-form textarea {
+    width: 100%;
+    min-height: 60px;
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    resize: vertical;
+    background: #FFF;
+    margin-bottom: 8px;
+  }
+  .reply-form-actions {
+    display: flex;
+    gap: 6px;
+    justify-content: flex-end;
+  }
+  .reply-form-cancel {
+    background: transparent;
+    border: 1px solid var(--borde);
+    color: var(--texto-2);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 12.5px;
+    cursor: pointer;
+    font-family: var(--font-sans);
+  }
+
+  .foro-login {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--i29-crema);
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+  }
+  .foro-login-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .foro-login-link {
+    display: inline-block;
+    background: var(--i29-medio);
+    color: #FFF;
+    padding: 8px 18px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  /* ─── EVALUACIÓN (M6) ────────────────────────────────── */
+  .eval-nota {
+    background: var(--i29-crema);
+    border-left: 4px solid var(--i29-medio);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+  .eval-nota-lbl {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i29-medio);
+    margin-bottom: 6px;
+  }
+  .eval-nota-txt strong { color: var(--i29-oscuro); }
+  .eval-nota-txt em { color: var(--i29-medio); font-style: italic; }
+
+  .eval-q {
+    margin-bottom: 1.5rem;
+  }
+  .eval-q > label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--i29-oscuro);
+    margin-bottom: 8px;
+    line-height: 1.55;
+  }
+  .eval-q textarea {
+    width: 100%;
+    min-height: 100px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+    resize: vertical;
+    line-height: 1.6;
+    transition: border-color 0.15s;
+  }
+  .eval-q textarea:focus,
+  .eval-q input:focus {
+    outline: none;
+    border-color: var(--i29-medio);
+    box-shadow: 0 0 0 3px rgba(60, 52, 137, 0.1);
+  }
+  .eval-q input[type="date"] {
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 9px 12px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+  }
+  .eval-fecha { max-width: 320px; }
+
+  .eval-scale-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .eval-radio {
+    flex: 1;
+    min-width: 55px;
+    cursor: pointer;
+    position: relative;
+  }
+  .eval-radio input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .eval-radio span {
+    display: block;
+    text-align: center;
+    padding: 12px 8px;
+    background: var(--i29-crema);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    color: var(--i29-medio);
+    font-size: 15px;
+    transition: all 0.15s;
+  }
+  .eval-radio:hover span { background: var(--i29-claro); }
+  .eval-radio input:checked + span {
+    background: var(--i29-medio);
+    border-color: var(--i29-oscuro);
+    color: #FFF;
+  }
+
+  .eval-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: var(--i29-crema);
+    border: 1px solid var(--i29-claro);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+  .eval-check input {
+    margin-top: 4px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--i29-medio);
+    flex-shrink: 0;
+  }
+  .eval-check label {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    cursor: pointer;
+  }
+  .eval-check label strong { color: var(--i29-oscuro); }
+  .eval-check label em { color: var(--i29-medio); font-style: italic; }
+
+  .eval-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  .eval-btn-guardar {
+    background: var(--i29-oscuro);
+  }
+  .eval-btn-guardar:hover { background: var(--i29-medio); }
+  .eval-btn-imprimir {
+    background: transparent;
+    color: var(--i29-medio);
+    border: 1px solid var(--i29-medio);
+  }
+  .eval-btn-imprimir:hover {
+    background: var(--i29-crema);
+    color: var(--i29-oscuro);
+  }
+
+  .eval-msg {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    display: none;
+    margin-bottom: 1rem;
+  }
+  .eval-msg.on { display: block; }
+  .eval-msg.exito {
+    background: #ECF5D9;
+    color: var(--i29-oscuro);
+    border-left: 3px solid var(--i29-medio);
+  }
+  .eval-msg.error {
+    background: var(--alerta-bg);
+    color: var(--alerta);
+    border-left: 3px solid var(--alerta);
+  }
+
+  /* Estilos de impresión de la evaluación */
+  @media print {
+    body { background: #FFF; padding: 0; }
+    .root { box-shadow: none; padding: 1rem; max-width: 100%; }
+    .portada, .video-wrap, .mode-selector, .nav { display: none !important; }
+    .card { display: none !important; }
+    #m6.card { display: block !important; break-inside: avoid; border: none; }
+    .eval-actions, .eval-msg { display: none !important; }
+    .ch { background: transparent; }
+    .eval-q textarea, .eval-q input[type="date"] {
+      border: none;
+      border-bottom: 1px solid #999;
+      border-radius: 0;
+      background: transparent;
+    }
+  }
+
+  /* ─── RESPONSIVE ─────────────────────────────────────── */
+  @media (max-width: 640px) {
+    body { padding: 1rem 0.5rem; }
+    .root { padding: 1.25rem; }
+    .portada { padding: 1.5rem 1.25rem; }
+    .portada-title { font-size: 24px; }
+    .ch { padding: 1.25rem 1.25rem 1rem; }
+    .ct { font-size: 20px; }
+    .cb { padding: 1.25rem; }
+    .ejes { grid-template-columns: 1fr; }
+    .btn { flex: 1 1 100%; }
+    .mode-selector { flex-direction: column; align-items: stretch; max-width: 100%; }
+    .mode-btn { text-align: center; }
+    .foro-head { padding: 1.25rem; }
+    .foro-body { padding: 1.25rem; }
+    .foro-title { font-size: 19px; }
+    .foro-vista { max-width: 100%; flex-direction: column; align-items: stretch; }
+    .foro-vista-btn { text-align: center; }
+    .comment-head { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .reply-btn { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER SUPERIOR ═════════════════════════════════ -->
+<header class="top-header">
+  <a href="index.html" class="top-logo">Escuela PLAPA</a>
+  <a href="catalogo_30_itinerarios_plapa_corregido.html" class="top-link">← Catálogo</a>
+</header>
+
+<div class="root mode-grupal">
+
+  <!-- ═══ PORTADA ═════════════════════════════════════════ -->
+  <div class="portada">
+    <p class="portada-sup">Itinerario formativo 29 · Escuela PLAPA · CELAM 2026</p>
+    <h1 class="portada-title">Cuidar a los que cuidan</h1>
+    <p class="portada-sub">Cinco principios de autocuidado pastoral y el acompañamiento del duelo cuando la muerte llega. Apertura del bloque 7.</p>
+
+    <div class="dest-box">
+      <div class="dest-lbl">Destinatarios</div>
+      <div class="dest-txt">Todo agente pastoral, coordinador de equipo y párroco responsable del bienestar de quienes sirven en la pastoral de adicciones. Especialmente recomendado como itinerario de cierre del proceso formativo completo, o como retiro anual del equipo. No requiere experiencia previa específica: aborda una necesidad universal de cualquier agente que acompaña sufrimiento humano de manera sostenida.</div>
+    </div>
+
+    <div class="portada-pills">
+      <span class="portada-pill">§11.1.14 · §11.1.15 · §3.7 · §6.7.2 · §8.7.4</span>
+      <span class="portada-pill">4 módulos</span>
+      <span class="portada-pill">Todo agente y coordinador</span>
+      <span class="portada-pill">Nivel inicial–intermedio</span>
+      <span class="portada-pill">Ver · Juzgar · Actuar · Síntesis</span>
+    </div>
+  </div>
+
+  <!-- ═══ VIDEO ═══════════════════════════════════════════ -->
+  
+  <!-- NUEVO: Bloque del Video de Presentación Incrustado -->
+<div style="background: var(--surface-2); border: 0.5px solid var(--border); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
+  <p style="font-size: 11px; font-weight: 500; color: #085041; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; text-align: left;">
+    ▶️ Video de presentación
+  </p>
+  <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px;">
+    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+      src="https://www.youtube.com/embed/PLACEHOLDER_ITIN29"
+      title="Presentación del Itinerario 29" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+  <!-- ═══ SELECTOR DE MODALIDAD ═══════════════════════════ -->
+  <div class="mode-selector">
+    <button class="mode-btn on" onclick="setMode('grupal', this)">👥 Hacer en comunidad</button>
+    <button class="mode-btn" onclick="setMode('individual', this)">👤 Hacer de forma individual</button>
+  </div>
+
+  <!-- ═══ NAVEGACIÓN ══════════════════════════════════════ -->
+  <div class="nav">
+    <button class="btn on" onclick="show(1,this)">Módulo 1 · Los cinco principios del cuidado</button>
+    <button class="btn" onclick="show(2,this)">Módulo 2 · Estrategias de acción parroquial</button>
+    <button class="btn" onclick="show(3,this)">Módulo 3 · El duelo en la pastoral de adicciones</button>
+    <button class="btn" onclick="show(4,this)">Módulo 4 · Permanecer: gestos de acompañamiento</button>
+    <span class="nav-sep" aria-hidden="true"></span>
+    <button class="btn btn-alt" onclick="show(5,this)">🌱 Muro del camino</button>
+    <button class="btn btn-alt" onclick="show(6,this)">✍ Evaluación</button>
+  </div>
+
+  <!-- ═══ MÓDULO 1 ════════════════════════════════════════ -->
+  <div id="m1" class="card active">
+    <div class="ch">
+      <span class="cn">Módulo 1 · El Ver</span>
+      <div class="ct">Los cinco principios del cuidado: humanizar la tarea y prevenir el burnout</div>
+      <div class="cs">Fundamentación y sentido del cuidado de los agentes pastorales · §11.1.14</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"El cuidado de los agentes pastorales es un elemento central del servicio. En él se dirime la calidad del acompañamiento brindado en la misión."</div>
+      </div>
+
+      <div class="pl">El Juzgar — Los cinco principios del cuidado (§11.1.14)</div>
+      <ul class="pts">
+        <li><span class="dot j">1</span><span><strong>Cultura del encuentro.</strong> Reconocer la vulnerabilidad propia y del otro a través de una mirada tierna que pregunte genuinamente por el estado del compañero. <em>No basta con preguntar "¿cómo estás?" de manera ritual</em>: se trata de <em>preguntar de verdad y escuchar la respuesta</em>.</span></li>
+        <li><span class="dot j">2</span><span><strong>La ternura como fuerza.</strong> Entender que <em>la ternura es el lenguaje de los más pequeños y una herramienta transformadora</em> en contextos de dolor. <em>La ternura no es debilidad</em>: es <em>la fuerza específica que sostiene en contextos de alta exigencia emocional</em>.</span></li>
+        <li><span class="dot j">3</span><span><strong>Reconocimiento de la propia herida.</strong> Aceptar que el cuidador <em>también es una persona vulnerable y rota psicoespiritualmente</em>, lo que permite un acompañamiento más horizontal y humano. <em>El agente que niega su propia fragilidad acompaña desde una falsa superioridad</em> que el hermano percibe y rechaza.</span></li>
+        <li><span class="dot j">4</span><span><strong>El descanso como parte de la misión.</strong> Siguiendo el mandato de Mc 6,31 (<em>"Vengan a descansar un poco"</em>), <em>el descanso no es una interrupción de la tarea, sino una condición necesaria para poder sostenerla en el tiempo</em>.</span></li>
+        <li><span class="dot j">5</span><span><strong>Gestión de límites y culpa.</strong> Aprender a trazar límites saludables <em>y soltar lo que no depende de uno mismo</em>, trabajando la culpa que genera detenerse.</span></li>
+      </ul>
+
+      <div class="cita">
+        <div class="cita-lbl">Oración de la Serenidad · §11.1.14</div>
+        <div class="cita-txt">"Señor, concédeme la Serenidad para aceptar las cosas que no puedo cambiar, valor para cambiar las que puedo, y sabiduría para reconocer la diferencia."</div>
+        <div class="cita-ref">Oración citada en §11.1.14 — tomada del Programa de los 12 Pasos (Itin 27)</div>
+      </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>En el cuidado del agente se dirime la calidad del acompañamiento.</strong> El §11.1.14 ubica el cuidado del agente <em>no como un beneficio adicional sino como el factor decisivo de calidad</em>: <em>"en él se dirime la calidad del acompañamiento brindado en la misión."</em> Un agente quemado, sin descanso ni límites claros, <em>no puede sostener la calidad de acompañamiento que el Manual propone</em>, por buena que sea su intención.</span></li>
+        <li><span class="dot">V</span><span><strong>Mc 6,31 como base bíblica: Jesús instruyó a descansar.</strong> El mandato de Mc 6,31 (<em>"Vengan a descansar un poco"</em>) es la base bíblica del Principio 4. <em>Jesús mismo, en medio de la multitud que reclamaba su atención, instruyó a sus discípulos a apartarse a descansar</em>. El descanso <em>no es una traición a la misión</em>: es parte de ella.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>Sanador herido: la propia vulnerabilidad reconocida protege.</strong> El Principio 3 (reconocimiento de la propia herida) conecta directamente con <em>la teología del "sanador herido"</em> que el Manual desarrolla en el Itinerario 10 sobre acompañantes pares: <em>"aceptar que el cuidador también es una persona vulnerable y rota psicoespiritualmente permite un acompañamiento más horizontal y humano."</em> <em>La negación de la propia herida no protege al agente</em>: lo aísla y lo expone a un colapso mayor <em>cuando la herida finalmente se manifiesta</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>La Serenidad: las mismas herramientas espirituales para el agente que para el acompañado.</strong> La Oración de la Serenidad, originalmente del programa de los 12 Pasos (Itinerario 27), <em>aparece aquí aplicada al propio agente pastoral</em>. Esa reutilización es significativa: <em>las mismas herramientas espirituales que el Manual propone para los hermanos en proceso de recuperación son necesarias para quienes los acompañan</em>. <em>Ningún agente está exento de necesitar serenidad, valor y sabiduría</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Evaluar los cinco principios en el equipo actual</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo evalúa honestamente cada principio: <em>¿hay cultura del encuentro real entre los miembros del equipo? ¿se practica la ternura entre sí, no solo hacia los hermanos acompañados? ¿pueden los agentes reconocer su propia vulnerabilidad sin temor a ser juzgados? ¿descansan de verdad? ¿saben trazar límites sin culpa?</em> Identificar el <em>principio más débil del equipo</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora los <em>cinco principios</em> y marcá para cada uno <em>fuerte/parcial/débil</em> en tu equipo. El más débil es la <em>agenda de los próximos meses</em>; empezar <em>por el que depende más de vos</em>.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Rezar juntos la Oración de la Serenidad</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo reza juntos la Oración de la Serenidad, <em>deteniéndose en cada frase</em>: <em>¿qué cosas no puedo cambiar en mi tarea pastoral y necesito aceptar? ¿qué cosas sí puedo cambiar y necesito el valor de encarar? ¿dónde necesito sabiduría para distinguir entre ambas?</em> Compartir en parejas <em>las respuestas personales</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Escribí en tu bitácora, en tres columnas: <em>lo que acepto, lo que cambio, lo que necesito distinguir</em>. Esa planilla simple es, en el fondo, <em>una revisión de vida completa del propio ministerio</em>.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Preguntar de verdad: la cultura del encuentro empieza por el "¿cómo estás?"</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo practica el Principio 1 en vivo: cada uno le pregunta a otro miembro del equipo <em>"¿cómo estás?"</em> y lo escucha <em>sin apurar la respuesta, sin corregir, sin aconsejar</em>. Después del ejercicio: <em>¿qué pasó cuando la pregunta fue genuina? ¿se instaló otra calidad de encuentro?</em> La cultura del encuentro <em>se construye en estas pequeñas prácticas repetidas</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Esta semana, en el equipo, <em>practicá tres "¿cómo estás?" genuinos</em> (uno por día es suficiente). Anotá después qué respuestas recibiste: la calidad de la pregunta <em>cambia la calidad de la respuesta</em>.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §11.1.14 — Mc 6,31</div>
+        <div class="cita-txt">"Vengan a descansar un poco. El descanso no es una interrupción de la tarea, sino una condición necesaria para poder sostenerla en el tiempo."</div>
+        <div class="cita-ref">Manual de la PLAPA, §11.1.14 — Cuidar a los que cuidan (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">La <em>ternura como fuerza</em> (Principio 2) no debe confundirse con <em>complacencia</em>. Un equipo que, en nombre de la ternura, deja pasar errores reiterados sin señalar, encubre faltas graves por evitar incomodidad, o renuncia a corregir <em>no cuida</em>: diluye. La ternura evangélica <em>incluye la corrección fraterna</em>; la ternura sentimental, la evita. El Principio 2 <em>se encarna en vínculos cálidos y honestos a la vez</em>, no en una cordialidad superficial que evita todo lo difícil.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">Este es el único itinerario del catálogo cuyo tema central es, <em>literalmente, el autocuidado del agente</em>. El facilitador puede tomarse la libertad de que <em>esta sesión sea más breve en contenido y más larga en silencio, descanso compartido y oración</em>. <em>La forma de la sesión puede encarnar el mensaje</em>: no se trata solo de hablar del descanso, sino de <em>practicarlo juntos en ese mismo encuentro</em>.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §11.1.14 (Cuidar a los que cuidan), Mc 6,31 (Vengan a descansar un poco), Itinerario 10 (Sanador herido), Itinerario 27 (Oración de la Serenidad) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 2 ════════════════════════════════════════ -->
+  <div id="m2" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 2 · El Juzgar</span>
+      <div class="ct">Estrategias de acción parroquial: institucionalizar el cuidado, no improvisarlo</div>
+      <div class="cs">Cinco mecanismos concretos que la parroquia puede implementar · §11.1.14</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"Para que el cuidado sea efectivo, la parroquia debe institucionalizar espacios y protocolos concretos. Cuidar a los que cuidan desde la parroquia implica pasar de una atención centrada únicamente en el éxito del tratamiento a una mirada integral que valore la salud física, mental y espiritual de sus servidores."</div>
+      </div>
+
+      <div class="pl">El Juzgar — Los cinco mecanismos institucionales (§11.1.14)</div>
+      <ul class="pts">
+        <li><span class="dot j">1</span><span><strong>Encuentros Fraternos ("Parar para seguir").</strong> Reuniones mensuales de los equipos <em>para compartir la vida, rezar y procesar las frustraciones propias del territorio</em>, reforzando la conciencia de trabajo en red.</span></li>
+        <li><span class="dot j">2</span><span><strong>Apostolado del Tiempo.</strong> Red de laicos voluntarios que <em>suplan temporalmente al cuidador primario en tareas administrativas o de acompañamiento básico</em>, permitiéndole tomar descansos breves o atender asuntos personales.</span></li>
+        <li><span class="dot j">3</span><span><strong>Protocolos de Emergencia (Guías ABC).</strong> Guías claras de acción ante crisis <em>para que el agente sepa cómo actuar sin recibir todo el impacto emocional de forma desordenada</em>.</span></li>
+        <li><span class="dot j">4</span><span><strong>Supervisión y Formación Continua.</strong> Espacios de escucha con profesionales o pares con experiencia <em>para supervisar el trabajo, orientar la vocación y evitar que el sufrimiento de los asistidos se lleve de forma personal al hogar</em>.</span></li>
+        <li><span class="dot j">5</span><span><strong>Recursos Espirituales y Lúdicos.</strong> Manuales de espiritualidad específicos (oraciones, música), experiencias de conexión con la naturaleza y actividades recreativas que ofrezcan <em>"un respiro para el alma."</em></span></li>
+      </ul>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>"Parar para seguir": detenerse como condición de continuar.</strong> El nombre del primer mecanismo —<em>"Parar para seguir"</em>— condensa la paradoja central de este itinerario: <em>detenerse no es abandonar la misión, sino la condición para poder continuarla</em>. Esta misma expresión aparece referenciada <em>en múltiples itinerarios anteriores del catálogo</em> (como cierre de actividades) precisamente porque es <em>el dispositivo de revisión de vida más recurrente que el Manual propone</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>Apostolado del Tiempo: responde al "no hay quien me reemplace".</strong> El Apostolado del Tiempo responde a un problema muy concreto: <em>muchos agentes pastorales no descansan porque "no hay quien los reemplace."</em> La solución que propone el §11.1.14 <em>no es pedirle al agente que se esfuerce más en organizarse</em>, sino <em>construir una red de suplentes que haga posible el descanso real</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>Guías ABC: protocolo como protección psicológica.</strong> Las <em>"Guías ABC"</em> de protocolos de emergencia evitan que el agente <em>"reciba todo el impacto emocional de forma desordenada"</em> (§11.1.14). Tener un protocolo claro ante una crisis (<em>una sobredosis, una recaída violenta, una situación de riesgo suicida</em>) no es solo eficiencia operativa: <em>es protección psicológica para el agente</em>, que puede actuar <em>desde un procedimiento conocido en lugar de improvisar bajo estrés extremo</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>Sin agentes cuidados, no hay esperanza sostenible.</strong> <em>"Solo a través de una comunidad que se cuida a sí misma en red, es posible sostener la esperanza en los lugares donde el descarte y el sufrimiento parecen prevalecer"</em> (§11.1.14, conclusión). Esta frase <em>conecta el cuidado del agente con la sostenibilidad misma de la misión pastoral</em>: <em>sin agentes cuidados, no hay esperanza sostenible para ofrecer a los hermanos</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Institucionalizar el "Parar para seguir"</div>
+        <div class="mode-g">
+          <div class="act-body">Si el equipo no tiene todavía un encuentro fraterno mensual regular, el grupo lo diseña ahora: <em>¿qué día del mes? ¿quién lo facilita? ¿qué estructura tendrá (compartir vida, oración, procesamiento de frustraciones)?</em> <em>Fijar la fecha del primer encuentro antes de cerrar esta sesión</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora <em>la fecha del próximo encuentro fraterno</em> y el responsable de facilitarlo. Sin fecha concreta, <em>el "Parar para seguir" se vuelve una buena intención</em>.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Diseñar el Apostolado del Tiempo del territorio</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo identifica candidatos para una red de laicos voluntarios que puedan suplir temporalmente a los agentes principales: <em>¿quiénes en la comunidad podrían asumir tareas básicas para liberar tiempo de descanso a los coordinadores?</em> Iniciar el reclutamiento, <em>aunque sea con dos o tres personas</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora los nombres de <em>tres personas</em> que podrían integrar el Apostolado del Tiempo. Convocalas esta semana. <em>El descanso del equipo depende de que esos nombres se vuelvan reales</em>.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Crear las primeras Guías ABC</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo diseña el protocolo de emergencia para la situación de crisis más frecuente en el territorio (por ejemplo, <em>una sobredosis o una crisis de violencia</em>): <em>¿qué pasos sigue el agente, en orden? ¿a quién llama? ¿qué dice y qué no dice?</em> Tener ese protocolo <em>escrito y accesible</em> reduce la carga emocional de improvisar en el momento de la crisis.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Escribí en tu bitácora el <em>protocolo ABC</em> para la crisis más frecuente del territorio (una página o menos, en pasos numerados). Al colocarlo visible en el espacio del equipo, <em>deja de depender de la memoria bajo presión</em>.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §11.1.14</div>
+        <div class="cita-txt">"Cuidar a los que cuidan desde la parroquia implica pasar de una atención centrada únicamente en el éxito del tratamiento a una mirada integral que valore la salud física, mental y espiritual de sus servidores."</div>
+        <div class="cita-ref">Manual de la PLAPA, §11.1.14 — Cuidar a los que cuidan (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">Los cinco mecanismos institucionales <em>no sustituyen el cuidado interpersonal cotidiano</em>. Un equipo que tiene <em>todos los protocolos, todos los encuentros, todas las supervisiones</em>, pero donde los agentes no se preguntan de verdad cómo están entre sí, <em>cumple el programa pero falla el cuidado</em>. Los mecanismos son <em>estructura</em>; el cuidado real es <em>vínculo</em>. Los dos juntos sostienen; ninguno solo alcanza.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">Pedir descanso o apoyo <em>puede generar culpa en agentes con una vocación muy intensa de servicio</em>. El facilitador recuerda que <em>institucionalizar estos mecanismos</em> —en lugar de dejarlos a la iniciativa individual de cada agente— <em>quita la carga de la culpa</em>: <em>no es "pedir un favor especial"</em>, es parte del diseño institucional del que <em>todos se benefician por igual</em>.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §11.1.14 (Estrategias parroquiales) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 3 ════════════════════════════════════════ -->
+  <div id="m3" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 3 · El Actuar</span>
+      <div class="ct">El duelo en la pastoral de adicciones: cuatro características que la comunidad necesita comprender</div>
+      <div class="cs">La muerte como compañera frecuente del territorio · §11.1.15</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"En la pastoral de adicciones, la muerte no es una posibilidad lejana: es una compañera frecuente. Hermanos que mueren por sobredosis en una esquina. Jóvenes asesinados por deudas con el narco. Madres que encuentran a sus hijos sin vida en una habitación."</div>
+      </div>
+
+      <div class="pl">El Ver — Las cuatro características del duelo en adicciones (§11.1.15)</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>Un duelo estigmatizado.</strong> <em>"La familia que pierde un hijo por sobredosis o por violencia asociada al consumo carga con un doble dolor: la pérdida y la vergüenza. La sociedad suele emitir un juicio implícito —'algo habrán hecho mal', 'se lo buscó'— que aísla a los deudos y les niega el derecho al consuelo público que se otorga naturalmente ante otras muertes"</em> (§11.1.15). <em>Esta soledad del duelo es una de las formas más crueles del descarte</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>Un duelo anticipado y prolongado.</strong> <em>"Muchas familias comienzan a hacer duelo mucho antes de la muerte física. El deterioro progresivo, las desapariciones, los internamientos, las recaídas sucesivas van generando una pérdida gradual de la persona que conocían. Cuando la muerte llega, a veces se experimenta como un alivio que inmediatamente genera culpa"</em> (§11.1.15). <em>El agente que acompaña a esa familia necesita comprender esa culpa sin juzgarla</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>Un duelo sin cierre.</strong> <em>"En contextos de violencia territorial, muchas familias no recuperan el cuerpo, no saben exactamente qué ocurrió, o la muerte queda impune. La imposibilidad de cerrar el ciclo agrava el sufrimiento y puede cronificarlo"</em> (§11.1.15). Este tipo de duelo <em>requiere paciencia extrema</em>: no hay un ritual que lo cierre de forma definitiva.</span></li>
+        <li><span class="dot">V</span><span><strong>Un duelo que alcanza al equipo pastoral.</strong> <em>"Los agentes que acompañan a personas con consumo problemático pierden hermanos con los que han caminado durante meses o años. Esas muertes dejan marcas profundas que, si no se elaboran, se acumulan hasta producir un agotamiento emocional que puede llevar al abandono de la tarea"</em> (§11.1.15). Este punto <em>conecta directamente con los Módulos 1 y 2 sobre el cuidado del agente</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>Prueba de fuego de la ética del cuidado: fidelidad ante el fracaso definitivo.</strong> <em>"El acompañamiento del duelo no es un agregado menor a la pastoral de adicciones. Es la prueba de fuego de la ética del cuidado: si la Iglesia acompaña solo mientras hay esperanza de recuperación y se retira cuando llega la muerte, entonces su presencia estaba condicionada al resultado y no a la dignidad de la persona"</em> (§11.1.15). Esta es <em>una de las afirmaciones más exigentes de todo el Manual</em>: el verdadero criterio de la calidad pastoral <em>no se mide en los éxitos, sino en la fidelidad ante el fracaso definitivo de la muerte</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>El Retablo de Isenheim: María, Juan y la Magdalena sostienen al crucificado.</strong> El §11.1.15 retoma la imagen del Retablo de Isenheim que el Itinerario 11 desarrolla en profundidad: <em>"María, Juan y la Magdalena no intentan resucitar al crucificado; lo sostienen, lo lloran y preparan su cuerpo con reverencia. Esa es la imagen de una comunidad que no abandona a sus muertos ni a quienes los lloran."</em> El duelo pastoral <em>se funda teológicamente en la predella del retablo, no en una técnica de gestión del duelo</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Identificar las muertes que el equipo ha cargado sin procesar</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo se da el espacio (<em>con la delicadeza que el tema requiere</em>) de nombrar a las personas del territorio que murieron por causas vinculadas al consumo en los últimos años. <em>No para reabrir heridas sin sostén</em>, sino para <em>reconocer el peso acumulado que el equipo carga, muchas veces en silencio</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">En tu bitácora, en silencio, nombrá a <em>las personas del territorio que ya no están</em>. Que ese nombrar sea <em>un acto de dignidad reparadora</em>: cada nombre pronunciado <em>desmiente el descarte social que les tocó</em>.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Evaluar cómo el equipo acompaña actualmente el duelo de las familias</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo revisa: <em>¿hay un protocolo claro de acompañamiento cuando muere alguien del territorio? ¿se ofrece la celebración de las exequias sin condiciones ni juicio? ¿hay seguimiento posterior a la familia o el acompañamiento termina con el funeral?</em></div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora el <em>protocolo de duelo</em> de tu dispositivo (si existe) o <em>escribí el primer esbozo</em> (si no existe). La ausencia de protocolo <em>significa que el momento más crítico queda librado a la improvisación</em>.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Nombrar la culpa complicada: cuando el alivio llega con la muerte</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo reflexiona sobre la segunda característica del duelo (<em>el alivio que genera culpa</em>): <em>¿cómo acompaña el equipo a una madre o un padre que, al perder al hijo tras años de deterioro, siente alivio y luego culpa feroz por sentirlo?</em> Esa culpa, <em>sin acompañamiento, puede volverse una herida permanente</em>. Diseñar <em>cómo nombrar esa culpa sin juzgarla</em> en el acompañamiento inmediato al duelo.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Escribí en tu bitácora <em>una frase</em> con la que podrías acompañar a alguien que sintió alivio con la muerte del hijo. Debe ser <em>una frase que normalice el sentimiento sin juzgarlo</em>, para que la persona no quede sola con la culpa.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §11.1.15</div>
+        <div class="cita-txt">"La Iglesia es una madre que no suelta la mano de sus hijos, ni siquiera cuando el mundo ya les ha dado sepultura."</div>
+        <div class="cita-ref">Manual de la PLAPA, §11.1.15 — El acompañamiento del duelo (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">El acompañamiento del duelo <em>nunca pretende "explicar" la muerte violenta ni darle "sentido inmediato"</em>. Las frases cristianas bienintencionadas (<em>"ahora está en paz", "Dios se lo llevó porque lo quería", "era su hora"</em>) frente a una madre que acaba de perder al hijo por el consumo <em>son violencia simbólica, no consuelo</em>. La pastoral que ha hecho el camino de este itinerario <em>sabe que el silencio compartido vale más que la explicación teológica apurada</em>. Permanecer, acompañar, sostener — <em>sin pretender dar sentido a lo que todavía no lo tiene</em>.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">Este módulo <em>puede tocar muertes muy presentes y recientes para el equipo</em>. El facilitador necesita <em>estar preparado para detener la actividad estructurada y simplemente sostener el silencio o el llanto si emerge</em>. <em>No hay actividad más importante en este momento</em> que permitir que <em>el duelo del propio equipo encuentre, también él, un espacio de elaboración</em>.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §11.1.15 (El acompañamiento del duelo), Itinerario 11 (Retablo de Isenheim) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 4 ════════════════════════════════════════ -->
+  <div id="m4" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 4 · Síntesis</span>
+      <div class="ct">Permanecer: cinco gestos concretos de acompañamiento del duelo</div>
+      <div class="cs">De las liturgias memoriales a los santuarios de la memoria · §11.1.15</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"Permanecer al lado de la familia que perdió a su hijo —sin explicaciones fáciles, sin moralismos, sin la tentación de encontrarle un sentido inmediato al sinsentido— es el acto pastoral más desnudo y más verdadero que una comunidad puede ofrecer. Es lo que hacen María, Juan y la Magdalena en la predella del Retablo: quedarse."</div>
+      </div>
+
+      <div class="pl">El Juzgar — Los cinco gestos de acompañamiento del duelo (§11.1.15)</div>
+      <ul class="pts">
+        <li><span class="dot j">1</span><span><strong>Liturgias memoriales.</strong> Celebraciones periódicas (<em>al menos una vez al año</em>) donde la comunidad nombre y recuerde a las personas que murieron por causas vinculadas al consumo. <em>Honran la memoria y rompen el aislamiento de las familias</em>.</span></li>
+        <li><span class="dot j">2</span><span><strong>Grupos de acompañamiento para familias en duelo.</strong> Espacios regulares donde <em>madres, padres, hermanos y parejas</em> que perdieron a alguien por la adicción <em>compartan su experiencia con otros</em>. No requieren conducción profesional especializada, aunque <em>se recomienda articulación para casos de duelo complicado</em>.</span></li>
+        <li><span class="dot j">3</span><span><strong>Acompañamiento personalizado en el momento de la muerte.</strong> Estar presente, acompañar los trámites, <em>ofrecer la celebración de las exequias sin condiciones ni juicio</em>. <em>La presencia incondicional en ese momento puede iniciar un vínculo de confianza duradero</em>.</span></li>
+        <li><span class="dot j">4</span><span><strong>Santuarios de la memoria.</strong> Espacios físicos (una pared, un altar, un rincón) con nombres o fotos de quienes ya no están. <em>Dicen: esta persona existió, fue amada, y su vida tuvo un valor que la muerte no borra</em>.</span></li>
+        <li><span class="dot j">5</span><span><strong>Espacios de elaboración para el equipo pastoral.</strong> Momentos dedicados donde el equipo <em>nombra a quienes perdió, expresa lo que siente y recibe el sostén de sus pares</em>. <em>No se resuelve con una oración rápida</em>: requiere tiempo dedicado.</span></li>
+      </ul>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>Temor al juicio de la Iglesia: por qué las familias se aíslan.</strong> <em>"En muchos casos, la familia teme que la Iglesia la rechace o la juzgue"</em> (§11.1.15, Gesto 3). Este temor explica por qué tantas familias se aíslan en su duelo: <em>anticipan el juicio que la sociedad ya les ha hecho sentir, y temen que la institución religiosa lo repita</em>. <em>El gesto de presencia incondicional desmiente activamente ese temor</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>Santuarios ya existen: nacen de la experiencia territorial.</strong> Los santuarios de la memoria (Gesto 4) que el §11.1.15 describe <em>ya existen en "algunos centros barriales y comunidades de la región"</em>, lo cual confirma que <em>esta práctica nació de la experiencia territorial concreta</em>, no de un diseño teórico previo.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>Secuencia temporal coherente: inmediato, mediano, largo plazo y paralelo.</strong> Los cinco gestos forman una secuencia temporal coherente: <em>el acompañamiento personalizado (Gesto 3) ocurre en el momento inmediato de la muerte</em>; <em>los grupos de acompañamiento (Gesto 2) sostienen el proceso en las semanas y meses siguientes</em>; <em>las liturgias memoriales (Gesto 1) y los santuarios (Gesto 4) dan continuidad a largo plazo</em>; y <em>los espacios de elaboración del equipo (Gesto 5) atraviesan todo el proceso de manera paralela</em>, cuidando a quienes cuidan a las familias.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Diseñar la primera liturgia memorial</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo diseña los elementos de una primera liturgia memorial anual: <em>¿en qué fecha? ¿qué estructura (Eucaristía, momento de nombrar a los fallecidos, espacio de oración por las familias)? ¿cómo se convoca a las familias del territorio?</em> Esta celebración <em>puede convertirse en una tradición anual del centro barrial o la parroquia</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora <em>la fecha propuesta</em> (puede ser el 2 de noviembre, un aniversario del centro, el Día de la Prevención) y los <em>cuatro elementos</em> litúrgicos. La planificación concreta <em>convierte la intención en celebración</em>.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Crear el santuario de la memoria del territorio</div>
+        <div class="mode-g">
+          <div class="act-body">Si no existe, el grupo diseña los elementos mínimos de un santuario de la memoria: <em>¿en qué espacio físico? ¿con qué formato (pared con nombres, altar con fotos, libro de memoria)? ¿cómo se invita a las familias a participar de su construcción?</em> Este espacio <em>se convierte en un recordatorio permanente de que ninguna vida está de sobra</em>, ni siquiera después de la muerte.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora el <em>espacio físico</em> y el <em>formato</em> del santuario. Un libro de nombres en el altar es <em>el inicio más viable</em>; después puede crecer. Lo que importa <em>es que ya exista</em>.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Cierre del itinerario: la permanencia como vocación</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo cierra el itinerario con un momento de silencio en memoria de todos los hermanos del territorio que ya no están, <em>nombrados uno por uno si el grupo lo desea</em>. Después del silencio, <em>una oración de acción de gracias por el camino formativo recorrido</em> y <em>por la vocación de permanecer</em>, que es, en última instancia, <em>la esencia de toda la Pastoral Latinoamericana de Acompañamiento y Prevención de las Adicciones</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Antes de cerrar la bitácora de este itinerario, escribí <em>una línea de compromiso personal</em> con la vocación de permanecer. Esa línea es la síntesis de todo lo recorrido: <em>la permanencia incondicional como forma pura del amor evangélico</em>.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §11.1.15</div>
+        <div class="cita-txt">"Permanecer al lado de la familia que perdió a su hijo —sin explicaciones fáciles, sin moralismos, sin la tentación de encontrarle un sentido inmediato al sinsentido— es el acto pastoral más desnudo y más verdadero que una comunidad puede ofrecer."</div>
+        <div class="cita-ref">Manual de la PLAPA, §11.1.15 — El acompañamiento del duelo: permanecer cuando la muerte llega (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">Las <em>liturgias memoriales</em> no deben convertirse en <em>victimización pública</em> ni en <em>uso político del dolor ajeno</em>. Nombrar a los que murieron por el consumo <em>dignifica cuando se hace con respeto a la privacidad y al consentimiento de las familias</em>; se vuelve indigno <em>cuando se instrumentaliza para denuncias políticas sin acuerdo de los deudos</em>, para campañas o para recaudación. La liturgia es memoria agradecida, no plataforma. Cada nombre leído <em>requiere, idealmente, el acuerdo previo de la familia</em>.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente — cierre del itinerario</div>
+        <div class="autocuidado-txt">El itinerario que abre con el cuidado del agente y cierra con el acompañamiento de la muerte <em>traza el círculo completo de la pastoral de adicciones</em>: <em>cuidar para poder permanecer, y permanecer incluso cuando ya no hay nada que "arreglar."</em> Esa permanencia —<em>sin condiciones, sin resultado garantizado, sin la necesidad de encontrar sentido inmediato</em>— <em>es la forma más pura del amor que el Evangelio propone</em>. El agente que ha llegado hasta aquí, <em>en este itinerario y en todo el catálogo</em>, lleva consigo <em>no solo conocimiento técnico y teológico, sino la vocación renovada de quedarse</em>.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §11.1.15 (El acompañamiento del duelo), §3.7 (Dignidad y vida), §6.7.2 (Comunidad y sostén vincular), §8.7.4 (Trabajo con familias) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 5 · MURO DEL CAMINO (FORO) ═══════════════ -->
+  <div id="m5" class="card">
+    <div class="ch">
+      <span class="cn">Espacio comunitario · Muro</span>
+      <div class="ct">Voces de quienes también recorren este itinerario</div>
+      <div class="cs">El Manual crece con quienes lo caminan · §13.3, §13.5</div>
+    </div>
+    <div class="cb">
+
+      <!-- Selector de vista: este itinerario / global -->
+      <div class="foro-vista">
+        <button class="foro-vista-btn on" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
+        <button class="foro-vista-btn" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
+      </div>
+
+      <!-- Pautas pastorales -->
+      <div class="foro-pautas">
+        <div class="foro-pautas-lbl">Antes de publicar</div>
+        <ul>
+          <li>Compartí solo experiencias propias o del equipo. No expongas historias ajenas ni datos que identifiquen a terceras personas.</li>
+          <li>Cuidá a quien lea después: evitá descripciones que puedan retraumatizar.</li>
+          <li>Tu aporte será revisado por el equipo PLAPA antes de publicarse.</li>
+        </ul>
+      </div>
+
+      <!-- Formulario nuevo comentario -->
+      <div class="foro-form" id="foroForm">
+        <div class="foro-form-lbl">Dejar mi palabra</div>
+        <div class="foro-form-row">
+          <label for="foroModulo">¿Sobre qué momento del itinerario?</label>
+          <select id="foroModulo">
+            <option value="">General del itinerario</option>
+            <option value="1">Módulo 1 · Los cinco principios del cuidado</option>
+            <option value="2">Módulo 2 · Estrategias de acción parroquial</option>
+            <option value="3">Módulo 3 · El duelo en la pastoral de adicciones</option>
+            <option value="4">Módulo 4 · Permanecer: gestos de acompañamiento</option>
+          </select>
+        </div>
+        <textarea id="foroTexto" placeholder="Escribí tu comentario, pregunta o testimonio de camino..."></textarea>
+        <div class="foro-form-actions">
+          <div class="foro-form-info">Aparecerá en el muro luego de la revisión del equipo.</div>
+          <button class="foro-btn" id="foroEnviar" onclick="enviarComentario()">Enviar para revisión</button>
+        </div>
+      </div>
+
+      <!-- Lista de comentarios -->
+      <div class="foro-lista" id="foroLista">
+        <div class="foro-vacio">Cargando el muro...</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 6 · EVALUACIÓN ══════════════════════════ -->
+  <div id="m6" class="card">
+    <div class="ch">
+      <span class="cn">Cierre del itinerario · Evaluación</span>
+      <div class="ct">Revisión de vida en clave Ver–Juzgar–Actuar</div>
+      <div class="cs">No es un examen: es un discernimiento sobre lo que este itinerario dejó en vos</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Antes de comenzar</div>
+        <div class="resonancia-txt">"La revisión de vida es la forma histórica que la Iglesia latinoamericana encontró para institucionalizar el Ver–Juzgar–Actuar. El agente que la practica no aplica el método: lo vive." Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
+      </div>
+
+      <div class="eval-nota">
+        <span class="eval-nota-lbl">🕊 Uso pastoral</span>
+        <div class="eval-nota-txt">Esta evaluación es <strong>tuya</strong>. Podés guardarla en tu bitácora personal (queda solo con vos) y, si lo decidís, compartirla con el equipo PLAPA como aporte al <em>rolling release</em> del Manual (§13.5). Compartir es voluntario.</div>
+      </div>
+
+      <div class="pl">El Ver — Qué se hizo visible</div>
+      <div class="eval-q">
+        <label for="evalVer">¿Qué realidad del territorio se hizo más visible para vos a lo largo de estos cuatro módulos? ¿Qué llagas emergieron con más fuerza? ¿Qué zonas del mapa estaban en blanco antes y ahora tienen contenido?</label>
+        <textarea id="evalVer" data-eval="ver" placeholder="Escribí con calma, sin apurarte..."></textarea>
+      </div>
+
+      <div class="pl">El Juzgar — Qué iluminó, qué preguntas quedaron abiertas</div>
+      <div class="eval-q">
+        <label for="evalJuzgar1">¿Qué del método del diagnóstico territorial te iluminó de manera nueva? ¿Qué idea del Manual sentís que ya no podrás dejar de lado?</label>
+        <textarea id="evalJuzgar1" data-eval="juzgar1" placeholder="Nombralo con precisión..."></textarea>
+      </div>
+      <div class="eval-q">
+        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos? Las preguntas abiertas son también fruto (§13.3).</label>
+        <textarea id="evalJuzgar2" data-eval="juzgar2" placeholder="Las que siguen ardiendo..."></textarea>
+      </div>
+
+      <div class="pl">El Actuar — Compromiso concreto</div>
+      <div class="eval-q">
+        <label for="evalActuar">¿Qué gesto pastoral concreto vas a intentar en las próximas semanas a partir del diagnóstico que hiciste? Nombralo con nombre, tiempo y lugar. Un compromiso vago no es un compromiso.</label>
+        <textarea id="evalActuar" data-eval="actuar" placeholder="Ej.: En la próxima reunión de equipo (jueves 25) voy a presentar el mapa territorial que construimos y proponer una callejeada específica al sector X del barrio..."></textarea>
+      </div>
+      <div class="eval-q eval-fecha">
+        <label for="evalFecha">Fecha en la que vas a volver a revisar si pudiste sostenerlo</label>
+        <input type="date" id="evalFecha" data-eval="fecha_revision">
+      </div>
+
+      <div class="pl">Autocuidado y equipo</div>
+      <div class="eval-q eval-scale">
+        <label>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</label>
+        <div class="eval-scale-row">
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="1" data-eval="animo"><span>1</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="2" data-eval="animo"><span>2</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="3" data-eval="animo"><span>3</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="4" data-eval="animo"><span>4</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="5" data-eval="animo"><span>5</span></label>
+        </div>
+      </div>
+      <div class="eval-q">
+        <label for="evalCuidado">¿Qué necesitás cuidar de vos mismo/a en las próximas semanas? ¿A quién del equipo se lo vas a decir?</label>
+        <textarea id="evalCuidado" data-eval="cuidado" placeholder="El agente que cuida su esperanza puede sostener la del otro (§1.3)..."></textarea>
+      </div>
+
+      <div class="pl">Cierre</div>
+
+      <div class="eval-check">
+        <input type="checkbox" id="evalCompartir">
+        <label for="evalCompartir"><strong>Compartir con el equipo PLAPA</strong> como aporte al <em>rolling release</em> del Manual. Solo se envían tus respuestas si marcás esta casilla. Si no la marcás, la evaluación queda solo en tu bitácora.</label>
+      </div>
+
+      <div class="eval-actions">
+        <button class="foro-btn eval-btn-guardar" onclick="guardarEvaluacion()">Guardar en mi bitácora</button>
+        <button class="foro-btn eval-btn-imprimir" onclick="imprimirEvaluacion()">🖨 Imprimir / PDF</button>
+      </div>
+
+      <div id="evalMsg" class="eval-msg"></div>
+
+      <div class="autocuidado" style="margin-top: 2rem;">
+        <div class="autocuidado-lbl">Cierre del itinerario</div>
+        <div class="autocuidado-txt">Cerrar bien un itinerario también es autocuidado: celebrar lo caminado, agradecer al equipo, reconocer los propios límites y renovar la esperanza. Este itinerario termina con gratitud: por el territorio que nos habló, por las llagas que dejamos de negar, por el equipo que hizo posible mirar sin apartar la mirada.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §1.3 (Prólogo), §6.1.3 (Evitar la romantización), §13.2 (Sinodalidad en la práctica), §13.3 (Rolling release), §13.5 (Mecanismos de colaboración) — CELAM 2026.</div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function setMode(mode, btn) {
+    var root = document.querySelector('.root');
+    root.classList.remove('mode-grupal', 'mode-individual');
+    root.classList.add('mode-' + mode);
+    var buttons = document.querySelectorAll('.mode-btn');
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].classList.remove('on');
+    }
+    btn.classList.add('on');
+  }
+
+  function show(n, btn) {
+    for (var i = 1; i <= 6; i++) {
+      var el = document.getElementById('m' + i);
+      if (el) el.classList.remove('active');
+    }
+    document.querySelectorAll('.nav .btn').forEach(function(b) {
+      b.classList.remove('on');
+    });
+    document.getElementById('m' + n).classList.add('active');
+    btn.classList.add('on');
+    if (window.innerWidth < 640) {
+      document.getElementById('m' + n).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    // Al abrir el muro, refrescar comentarios
+    if (n === 5 && typeof cargarComentarios === 'function') {
+      cargarComentarios();
+    }
+    // Al abrir la evaluación, restaurar borrador si existe
+    if (n === 6 && typeof restaurarEvaluacion === 'function') {
+      restaurarEvaluacion();
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════
+  // MURO DEL CAMINO — FORO SUPABASE
+  // ═══════════════════════════════════════════════════════
+  // BACKEND REQUERIDO (Supabase — mismo proyecto que app-plapa):
+  //
+  // 1) Tabla `foro_comentarios`:
+  //    - id (uuid, pk)
+  //    - itinerario_id (text)     — ej. 'itinerario_29_cuidar_que_cuidan'
+  //    - parent_id (uuid, null)   — null = comentario raíz; uuid = respuesta
+  //    - usuario_id (uuid, fk auth.users)
+  //    - autor_nombre (text)      — copiado del perfil al crear
+  //    - pais (text)              — copiado del perfil al crear
+  //    - modulo (int, null)       — 1..4 o null (general)
+  //    - texto (text)
+  //    - estado (text)            — 'pendiente' | 'publicado' | 'rechazado'
+  //    - created_at (timestamptz)
+  //
+  // 2) Tabla `foro_reacciones`:
+  //    - comentario_id (uuid, fk)
+  //    - usuario_id (uuid, fk)
+  //    - emoji (text) — '🙏' | '❤️' | '💡' | '🕊️'
+  //    - PK compuesta (comentario_id, usuario_id, emoji)
+  //
+  // 3) Vista/RPC `comentarios_para_itinerario(p_itinerario text, p_scope text)`:
+  //    devuelve los comentarios publicados con autor_nombre, pais, itinerario_titulo
+  //    (si scope='global'), agregado de reacciones y las del usuario actual.
+  //    scope: 'itinerario' filtra por p_itinerario; 'global' devuelve todos.
+  //
+  // 4) RPC `toggle_reaccion(p_comentario uuid, p_emoji text)`.
+  //
+  // 5) RLS:
+  //    - foro_comentarios: SELECT solo estado='publicado'; INSERT solo auth.uid()
+  //      con estado='pendiente' forzado.
+  //    - Moderadores (rol) pueden UPDATE estado.
+  //
+  // 6) Sesión: la Escuela PLAPA debe dejar el token JWT accesible
+  //    (localStorage 'escuela_plapa_sesion' con { token, nombre, pais }
+  //    o cookie según arquitectura de la Escuela).
+  // ═══════════════════════════════════════════════════════
+
+  var SUPABASE_URL = 'https://TU-PROYECTO.supabase.co';  // TODO: config
+  var SUPABASE_ANON_KEY = 'TU_ANON_KEY';                  // TODO: config
+  var ITINERARIO_ID = 'itinerario_29_cuidar_que_cuidan';
+  var ITINERARIO_TITULO = 'Cuidar a los que cuidan';
+
+  var vistaForo = 'itinerario';
+  var sesion = null;
+  var EMOJIS = ['🙏', '❤️', '💡', '🕊️'];
+
+  function supaHeaders() {
+    var h = {
+      'apikey': SUPABASE_ANON_KEY,
+      'Content-Type': 'application/json'
+    };
+    if (sesion && sesion.token) {
+      h['Authorization'] = 'Bearer ' + sesion.token;
+    }
+    return h;
+  }
+
+  function escapeHtml(s) {
+    if (!s) return '';
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function formatFecha(iso) {
+    if (!iso) return '';
+    try {
+      var d = new Date(iso);
+      return d.toLocaleDateString('es', { day: 'numeric', month: 'short', year: 'numeric' });
+    } catch (e) { return ''; }
+  }
+
+  function cargarComentarios() {
+    var contenedor = document.getElementById('foroLista');
+    contenedor.innerHTML = '<div class="foro-vacio">Cargando el muro...</div>';
+
+    var url = SUPABASE_URL + '/rest/v1/rpc/comentarios_para_itinerario';
+    fetch(url, {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({
+        p_itinerario: ITINERARIO_ID,
+        p_scope: vistaForo
+      })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) { renderComentarios(data || []); })
+    .catch(function() {
+      contenedor.innerHTML = '<div class="foro-vacio">No se pudo cargar el muro. Intentá de nuevo más tarde.</div>';
+    });
+  }
+
+  function renderComentarios(comentarios) {
+    var contenedor = document.getElementById('foroLista');
+    if (!comentarios || comentarios.length === 0) {
+      contenedor.innerHTML = '<div class="foro-vacio">Aún no hay palabras publicadas en este muro. Podés ser vos quien empiece la conversación.</div>';
+      return;
+    }
+    var raices = comentarios.filter(function(c) { return !c.parent_id; });
+    var respuestasPor = {};
+    comentarios.filter(function(c) { return c.parent_id; }).forEach(function(c) {
+      if (!respuestasPor[c.parent_id]) respuestasPor[c.parent_id] = [];
+      respuestasPor[c.parent_id].push(c);
+    });
+    contenedor.innerHTML = raices.map(function(c) {
+      return renderComment(c, respuestasPor[c.id] || []);
+    }).join('');
+  }
+
+  function renderComment(c, respuestas) {
+    var modLbl = c.modulo ? '<span class="comment-modulo">Módulo ' + c.modulo + '</span>' : '';
+    var paisLbl = c.pais ? '<span class="comment-pais">' + escapeHtml(c.pais) + '</span>' : '';
+    var globalLbl = (vistaForo === 'global' && c.itinerario_titulo)
+      ? '<span class="comment-modulo">' + escapeHtml(c.itinerario_titulo) + '</span>'
+      : '';
+    var reacciones = c.reacciones || {};
+    var misReacc = c.mis_reacciones || [];
+    var reaccBtns = EMOJIS.map(function(e) {
+      var count = reacciones[e] || 0;
+      var mine = misReacc.indexOf(e) >= 0;
+      return '<button class="react-btn ' + (mine ? 'on' : '') + '" onclick="toggleReaccion(\'' + c.id + '\', \'' + e + '\')">' + e + (count > 0 ? '<span class="react-count">' + count + '</span>' : '') + '</button>';
+    }).join('');
+    var respuestasHtml = respuestas.length
+      ? '<div class="comment-replies">' + respuestas.map(renderReply).join('') + '</div>'
+      : '';
+    return '' +
+      '<div class="comment" id="c-' + c.id + '">' +
+        '<div class="comment-head">' +
+          '<div>' +
+            '<span class="comment-autor">' + escapeHtml(c.autor_nombre || 'Anónimo') + '</span>' +
+            paisLbl + modLbl + globalLbl +
+          '</div>' +
+          '<span class="comment-fecha">' + formatFecha(c.created_at) + '</span>' +
+        '</div>' +
+        '<div class="comment-texto">' + escapeHtml(c.texto) + '</div>' +
+        '<div class="comment-actions">' +
+          reaccBtns +
+          '<button class="reply-btn" onclick="toggleReplyForm(\'' + c.id + '\')">↩ Responder</button>' +
+        '</div>' +
+        '<div class="reply-form" id="rf-' + c.id + '">' +
+          '<textarea placeholder="Escribí tu respuesta..." id="rt-' + c.id + '"></textarea>' +
+          '<div class="reply-form-actions">' +
+            '<button class="reply-form-cancel" onclick="toggleReplyForm(\'' + c.id + '\')">Cancelar</button>' +
+            '<button class="foro-btn" onclick="enviarRespuestaDesde(\'' + c.id + '\')">Enviar</button>' +
+          '</div>' +
+        '</div>' +
+        respuestasHtml +
+      '</div>';
+  }
+
+  function renderReply(r) {
+    var paisLbl = r.pais ? '<span class="comment-pais">' + escapeHtml(r.pais) + '</span>' : '';
+    return '' +
+      '<div class="reply">' +
+        '<div class="comment-head">' +
+          '<div>' +
+            '<span class="comment-autor">' + escapeHtml(r.autor_nombre || 'Anónimo') + '</span>' +
+            paisLbl +
+          '</div>' +
+          '<span class="comment-fecha">' + formatFecha(r.created_at) + '</span>' +
+        '</div>' +
+        '<div class="comment-texto">' + escapeHtml(r.texto) + '</div>' +
+      '</div>';
+  }
+
+  function enviarComentario() {
+    if (!sesion) { window.location.href = '/login'; return; }
+    var texto = document.getElementById('foroTexto').value.trim();
+    var modulo = document.getElementById('foroModulo').value;
+    if (!texto) return;
+    var btn = document.getElementById('foroEnviar');
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+    fetch(SUPABASE_URL + '/rest/v1/foro_comentarios', {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({
+        itinerario_id: ITINERARIO_ID,
+        parent_id: null,
+        usuario_id: sesion.user ? sesion.user.id : null,
+        autor_nombre: sesion.nombre || '',
+        pais: sesion.pais || '',
+        modulo: modulo ? parseInt(modulo) : null,
+        texto: texto
+      })
+    })
+    .then(function() {
+      document.getElementById('foroTexto').value = '';
+      document.getElementById('foroModulo').value = '';
+      btn.textContent = '✓ Enviado — pendiente de revisión';
+      setTimeout(function() {
+        btn.textContent = 'Enviar para revisión';
+        btn.disabled = false;
+      }, 3000);
+    })
+    .catch(function() {
+      btn.textContent = 'Error al enviar';
+      btn.disabled = false;
+    });
+  }
+
+  function enviarRespuestaDesde(parentId) {
+    if (!sesion) { window.location.href = '/login'; return; }
+    var textarea = document.getElementById('rt-' + parentId);
+    var texto = textarea.value.trim();
+    if (!texto) return;
+    fetch(SUPABASE_URL + '/rest/v1/foro_comentarios', {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({
+        itinerario_id: ITINERARIO_ID,
+        parent_id: parentId,
+        usuario_id: sesion.user ? sesion.user.id : null,
+        autor_nombre: sesion.nombre || '',
+        pais: sesion.pais || '',
+        texto: texto
+      })
+    })
+    .then(function() {
+      textarea.value = '';
+      document.getElementById('rf-' + parentId).classList.remove('on');
+      alert('Tu respuesta será revisada por el equipo antes de publicarse.');
+    })
+    .catch(function() { alert('Error al enviar la respuesta.'); });
+  }
+
+  function toggleReaccion(comentarioId, emoji) {
+    if (!sesion) { window.location.href = '/login'; return; }
+    fetch(SUPABASE_URL + '/rest/v1/rpc/toggle_reaccion', {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({ p_comentario: comentarioId, p_emoji: emoji })
+    })
+    .then(function() { cargarComentarios(); })
+    .catch(function() {});
+  }
+
+  function toggleReplyForm(id) {
+    if (!sesion) { window.location.href = '/login'; return; }
+    document.getElementById('rf-' + id).classList.toggle('on');
+  }
+
+  function setVistaForo(v, btn) {
+    vistaForo = v;
+    var buttons = document.querySelectorAll('.foro-vista-btn');
+    for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove('on'); }
+    btn.classList.add('on');
+    cargarComentarios();
+  }
+
+  // ═══════════════════════════════════════════════════════
+  // EVALUACIÓN — REVISIÓN DE VIDA VJA
+  // ═══════════════════════════════════════════════════════
+  // BACKEND REQUERIDO:
+  //
+  // Tabla `evaluaciones_itinerario`:
+  //   - id (uuid, pk)
+  //   - usuario_id (uuid, fk auth.users)
+  //   - itinerario_id (text)
+  //   - respuestas (jsonb) — { ver, juzgar1, juzgar2, actuar, fecha_revision, animo, cuidado }
+  //   - compartir_con_equipo (bool)
+  //   - created_at, updated_at
+  //
+  // RLS: SELECT/UPDATE solo dueño. INSERT solo dueño.
+  // Solo moderadores del equipo PLAPA pueden ver evaluaciones donde
+  // compartir_con_equipo=true (via política RLS separada).
+  //
+  // Borrador: se autoguarda en localStorage para que no se pierda
+  // al cerrar el navegador antes de guardar formalmente.
+  // ═══════════════════════════════════════════════════════
+
+  var EVAL_STORAGE_KEY = 'eval_' + ITINERARIO_ID;
+
+  function recolectarEvaluacion() {
+    var datos = {};
+    document.querySelectorAll('[data-eval]').forEach(function(el) {
+      var key = el.getAttribute('data-eval');
+      if (el.type === 'radio') {
+        if (el.checked) datos[key] = el.value;
+      } else {
+        datos[key] = el.value;
+      }
+    });
+    datos.compartir_con_equipo = document.getElementById('evalCompartir').checked;
+    return datos;
+  }
+
+  function autoguardarBorrador() {
+    try {
+      localStorage.setItem(EVAL_STORAGE_KEY, JSON.stringify(recolectarEvaluacion()));
+    } catch (e) {}
+  }
+
+  function restaurarEvaluacion() {
+    try {
+      var stored = localStorage.getItem(EVAL_STORAGE_KEY);
+      if (!stored) return;
+      var datos = JSON.parse(stored);
+      document.querySelectorAll('[data-eval]').forEach(function(el) {
+        var key = el.getAttribute('data-eval');
+        if (datos[key] == null) return;
+        if (el.type === 'radio') {
+          if (el.value === datos[key]) el.checked = true;
+        } else {
+          el.value = datos[key];
+        }
+      });
+      if (datos.compartir_con_equipo) {
+        document.getElementById('evalCompartir').checked = true;
+      }
+    } catch (e) {}
+  }
+
+  function mostrarEvalMsg(texto, tipo) {
+    var el = document.getElementById('evalMsg');
+    el.className = 'eval-msg on ' + (tipo || 'exito');
+    el.textContent = texto;
+    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function guardarEvaluacion() {
+    var datos = recolectarEvaluacion();
+    var minimoTexto = (datos.ver || '').trim() + (datos.actuar || '').trim();
+    if (minimoTexto.length < 30) {
+      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos "El Ver" y "El Actuar" merecen unos renglones honestos.', 'error');
+      return;
+    }
+
+    // Guardar en Supabase (siempre queda en tu bitácora)
+    if (!sesion) { window.location.href = '/login'; return; }
+    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario', {
+      method: 'POST',
+      headers: Object.assign({}, supaHeaders(), { 'Prefer': 'resolution=merge-duplicates' }),
+      body: JSON.stringify({
+        itinerario_id: ITINERARIO_ID,
+        respuestas: datos,
+        compartir_con_equipo: datos.compartir_con_equipo === true
+      })
+    })
+    .then(function(r) {
+      if (r.ok) {
+        var msg = datos.compartir_con_equipo
+          ? '✓ Evaluación guardada en tu bitácora y compartida con el equipo PLAPA. Gracias por el aporte.'
+          : '✓ Evaluación guardada en tu bitácora. Queda solo con vos.';
+        mostrarEvalMsg(msg, 'exito');
+      } else {
+        mostrarEvalMsg('Guardado localmente. No pudimos sincronizar con la Escuela — reintentá más tarde.', 'error');
+      }
+    })
+    .catch(function() {
+      mostrarEvalMsg('Guardado localmente. Sin conexión con la Escuela — reintentá cuando tengas internet.', 'error');
+    });
+  }
+
+  function imprimirEvaluacion() {
+    autoguardarBorrador();
+    window.print();
+  }
+
+  // Init general del itinerario
+  document.addEventListener('DOMContentLoaded', function() {
+    // Leer sesión (el guard del <head> garantiza que existe)
+    try {
+      var stored = localStorage.getItem('escuela_plapa_sesion');
+      if (stored) sesion = JSON.parse(stored);
+    } catch (e) {}
+    // Cargar muro
+    cargarComentarios();
+
+    // Restaurar borrador de evaluación si existe
+    restaurarEvaluacion();
+
+    // Autoguardado del borrador de evaluación al escribir (con debounce)
+    var evalTimeout;
+    document.querySelectorAll('#m6 [data-eval], #m6 #evalCompartir').forEach(function(el) {
+      el.addEventListener('input', function() {
+        clearTimeout(evalTimeout);
+        evalTimeout = setTimeout(autoguardarBorrador, 500);
+      });
+      el.addEventListener('change', autoguardarBorrador);
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,2184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Itinerario 27 · La Pastoral de la Sobriedad · Escuela PLAPA</title>
+<style>
+  :root {
+    /* Paleta azul PLAPA — Itinerario 27 (bloque 6: Dispositivos) */
+    --i27-oscuro:  #0C2C4E;
+    --i27-medio:   #185FA5;
+    --i27-accent:  #378ADD;
+    --i27-suave:   #6AA8E8;
+    --i27-claro:   #B4D4F2;
+    --i27-crema:   #E6F0FB;
+    --i27-fondo:   #FBFDFF;
+
+    --alerta:     #8B1A1A;
+    --alerta-bg:  #FDF7F7;
+
+    --texto:      #1E1B33;
+    --texto-2:    #4A4560;
+    --texto-3:    #8C89A0;
+    --borde:      #E4E2F0;
+
+    --font-serif: "Georgia", "Times New Roman", serif;
+    --font-sans:  "system-ui", -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: #CDDFF2;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    line-height: 1.6;
+  }
+
+  .root {
+    background: var(--i27-fondo);
+    max-width: 860px;
+    width: 100%;
+    padding: 2.5rem;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(38, 33, 92, 0.08);
+  }
+
+  /* ─── HEADER SUPERIOR (navegación entre páginas) ─── */
+  .top-header {
+    background: #FFFFFF;
+    border-bottom: 1px solid var(--borde);
+    padding: 0.85rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    max-width: 860px;
+    width: 100%;
+    margin: 0 auto 1rem;
+    border-radius: 10px;
+  }
+  .top-logo {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--i27-oscuro);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .top-logo:hover { color: var(--i27-medio); }
+  .top-link {
+    font-size: 0.88rem;
+    color: var(--texto-2);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.15s;
+  }
+  .top-link:hover {
+    background: var(--i27-crema);
+    color: var(--i27-oscuro);
+  }
+  @media (max-width: 640px) {
+    .top-header { padding: 0.75rem 1rem; }
+    .top-link { font-size: 0.82rem; padding: 5px 8px; }
+  }
+
+  /* ─── PORTADA ────────────────────────────────────────── */
+  .portada {
+    background: var(--i27-oscuro);
+    border-radius: 12px;
+    padding: 2rem 2rem 1.75rem;
+    margin-bottom: 2rem;
+  }
+  .portada-sup {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--i27-claro);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .portada-title {
+    font-family: var(--font-serif);
+    font-size: 30px;
+    font-weight: normal;
+    color: #FFFFFF;
+    line-height: 1.25;
+    margin-bottom: 0.6rem;
+  }
+  .portada-sub {
+    font-size: 14.5px;
+    color: var(--i27-claro);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+    max-width: 640px;
+  }
+  .dest-box {
+    background: var(--i27-medio);
+    border-radius: 8px;
+    padding: 0.9rem 1.1rem;
+    margin-bottom: 1.1rem;
+  }
+  .dest-lbl {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--i27-claro);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .dest-txt {
+    font-size: 13px;
+    color: #FFF;
+    line-height: 1.6;
+  }
+  .portada-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .portada-pill {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 11px;
+    border-radius: 99px;
+    background: var(--i27-medio);
+    color: var(--i27-crema);
+  }
+
+  /* ─── VIDEO ──────────────────────────────────────────── */
+  .video-wrap {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .video-lbl {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--i27-oscuro);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .video-iframe {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  .video-iframe iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  /* ─── SELECTOR DE MODALIDAD ──────────────────────────── */
+  .mode-selector {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 1.5rem;
+    background: #FFF;
+    padding: 6px;
+    border-radius: 10px;
+    border: 1px solid var(--borde);
+    max-width: max-content;
+    flex-wrap: wrap;
+  }
+  .mode-btn {
+    border: none;
+    background: transparent;
+    color: var(--texto-2);
+    padding: 8px 16px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .mode-btn.on {
+    background: var(--i27-accent);
+    color: #FFF;
+    font-weight: 600;
+  }
+  /* Control de visibilidad según modalidad */
+  .root.mode-individual .mode-g { display: none; }
+  .root.mode-grupal .mode-i { display: none; }
+
+  /* ─── NAVEGACIÓN ─────────────────────────────────────── */
+  .nav {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .btn {
+    border: 1px solid var(--borde);
+    background: #FFFFFF;
+    border-radius: 8px;
+    padding: 10px 16px;
+    cursor: pointer;
+    font-size: 12.5px;
+    font-weight: 500;
+    font-family: var(--font-sans);
+    color: var(--texto-2);
+    transition: all 0.18s ease;
+    text-align: left;
+  }
+  .btn:hover {
+    background: var(--i27-crema);
+    border-color: var(--i27-claro);
+    color: var(--i27-oscuro);
+  }
+  .btn.on {
+    border: 2px solid var(--i27-accent);
+    background: var(--i27-crema);
+    color: var(--i27-oscuro);
+    font-weight: 600;
+    padding: 9px 15px;
+  }
+  .btn.btn-alt {
+    background: var(--i27-crema);
+    color: var(--i27-medio);
+    border-color: var(--i27-claro);
+  }
+  .btn.btn-alt:hover {
+    background: var(--i27-claro);
+    color: var(--i27-oscuro);
+  }
+  .btn.btn-alt.on {
+    background: var(--i27-medio);
+    border-color: var(--i27-medio);
+    color: #FFFFFF;
+  }
+  .nav-sep {
+    display: inline-block;
+    width: 1px;
+    background: var(--borde);
+    margin: 0 6px;
+    align-self: stretch;
+  }
+
+  /* ─── MÓDULOS ────────────────────────────────────────── */
+  .card {
+    border-radius: 12px;
+    border: 1px solid var(--borde);
+    background: #FFFFFF;
+    overflow: hidden;
+    display: none;
+    border-left: 6px solid var(--i27-accent);
+  }
+  .card.active {
+    display: block;
+    animation: fadeIn 0.35s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .ch {
+    padding: 1.75rem 2rem 1.5rem;
+    border-bottom: 1px solid var(--borde);
+    background: var(--i27-crema);
+  }
+  .cn {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 99px;
+    margin-bottom: 0.85rem;
+    background: var(--i27-accent);
+    color: #FFFFFF;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .ct {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 1.3;
+    color: var(--i27-oscuro);
+    margin-bottom: 0.4rem;
+  }
+  .cs {
+    font-size: 13px;
+    color: var(--i27-medio);
+    line-height: 1.55;
+    font-style: italic;
+  }
+
+  .cb { padding: 2rem; }
+
+  /* ─── CAJA DE RESONANCIA ─────────────────────────────── */
+  .resonancia {
+    border-left: 4px solid var(--i27-accent);
+    background: var(--i27-crema);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .resonancia-lbl {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i27-accent);
+    margin-bottom: 8px;
+  }
+  .resonancia-txt {
+    font-family: var(--font-serif);
+    font-size: 16.5px;
+    line-height: 1.6;
+    font-style: italic;
+    color: var(--i27-oscuro);
+  }
+
+  /* ─── SECCIONES VER / JUZGAR / ACTUAR ────────────────── */
+  .pl {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i27-oscuro);
+    margin-top: 2.25rem;
+    margin-bottom: 1.1rem;
+    border-bottom: 1px solid var(--borde);
+    padding-bottom: 7px;
+  }
+  .pl:first-of-type { margin-top: 0.5rem; }
+
+  .pts {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 1.5rem;
+  }
+  .pts li {
+    display: flex;
+    gap: 14px;
+    font-size: 14.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+  .pts li strong {
+    color: var(--i27-oscuro);
+    font-weight: 600;
+  }
+  .dot {
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    background: var(--i27-accent);
+    color: #FFFFFF;
+    margin-top: 2px;
+    font-family: var(--font-serif);
+  }
+  .dot.j { background: var(--i27-medio); }
+  .dot.a { background: var(--i27-oscuro); }
+
+  /* ─── GRILLA DE ESCENARIOS / DIMENSIONES ─────────────── */
+  .ejes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 1.5rem;
+  }
+  .eje {
+    background: var(--i27-crema);
+    border-radius: 10px;
+    padding: 1.1rem 1.25rem;
+    border-top: 4px solid var(--i27-accent);
+  }
+  .eje-n {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--i27-accent);
+    margin-bottom: 8px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .eje-t {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--i27-oscuro);
+    margin-bottom: 6px;
+  }
+  .eje-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.6;
+  }
+
+  /* ─── ACTIVIDADES ────────────────────────────────────── */
+  .act {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 1.15rem 1.35rem;
+    margin-bottom: 12px;
+    border-left: 4px solid var(--i27-accent);
+  }
+  .act-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  .tag-ind {
+    background: var(--i27-oscuro);
+    color: var(--i27-crema);
+  }
+  .tag-gru {
+    background: var(--i27-accent);
+    color: #FFF;
+  }
+  .act-title {
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: var(--i27-oscuro);
+    margin-bottom: 6px;
+    line-height: 1.35;
+  }
+  .act-body {
+    font-size: 14px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+  .act-body em {
+    color: var(--i27-medio);
+    font-style: italic;
+  }
+
+  /* ─── CITA INSPIRADORA ───────────────────────────────── */
+  .cita {
+    border-radius: 10px;
+    padding: 1.2rem 1.4rem;
+    background: linear-gradient(180deg, var(--i27-crema) 0%, #FFF 100%);
+    border: 1px solid var(--i27-claro);
+    margin-top: 2rem;
+  }
+  .cita-lbl {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i27-accent);
+    margin-bottom: 8px;
+  }
+  .cita-txt {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    line-height: 1.7;
+    font-style: italic;
+    color: var(--i27-oscuro);
+  }
+  .cita-ref {
+    font-size: 12px;
+    margin-top: 10px;
+    font-weight: 500;
+    color: var(--i27-medio);
+    font-style: normal;
+  }
+
+  /* ─── ALERTA PASTORAL ────────────────────────────────── */
+  .alerta {
+    border-left: 4px solid var(--alerta);
+    background: var(--alerta-bg);
+    padding: 1.15rem 1.35rem;
+    margin-top: 1.75rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .alerta-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--alerta);
+    margin-bottom: 8px;
+  }
+  .alerta-lbl::before {
+    content: '† ';
+    font-size: 14px;
+  }
+  .alerta-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+
+  /* ─── AUTOCUIDADO ────────────────────────────────────── */
+  .autocuidado {
+    border-left: 4px solid var(--i27-medio);
+    background: #F5FAFE;
+    padding: 1.15rem 1.35rem;
+    margin-top: 1.75rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .autocuidado-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i27-medio);
+    margin-bottom: 8px;
+  }
+  .autocuidado-lbl::before {
+    content: '❋ ';
+    color: var(--i27-accent);
+  }
+  .autocuidado-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+
+  /* ─── LECTURA COMPLEMENTARIA ─────────────────────────── */
+  .lectura {
+    background: #FFF;
+    border: 1px dashed var(--i27-accent);
+    border-radius: 10px;
+    padding: 1.15rem 1.35rem;
+    margin-top: 1.75rem;
+  }
+  .lectura-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--i27-medio);
+    margin-bottom: 8px;
+  }
+  .lectura-lbl::before {
+    content: '📖 ';
+  }
+  .lectura-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+  .lectura-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--i27-accent);
+    color: #FFF;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.18s;
+  }
+  .lectura-link:hover {
+    background: var(--i27-oscuro);
+  }
+
+  /* ─── REFERENCIAS ────────────────────────────────────── */
+  .ref {
+    font-size: 11.5px;
+    color: var(--texto-3);
+    font-style: italic;
+    margin-top: 1.75rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--borde);
+  }
+
+  /* ─── FORO / MURO DEL CAMINO ─────────────────────────── */
+  .foro {
+    background: #FFFFFF;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    margin-top: 2rem;
+    overflow: hidden;
+    border-left: 6px solid var(--i27-medio);
+  }
+  .foro-head {
+    background: var(--i27-crema);
+    padding: 1.75rem 2rem 1.5rem;
+    border-bottom: 1px solid var(--borde);
+  }
+  .foro-lbl {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 99px;
+    margin-bottom: 0.85rem;
+    background: var(--i27-medio);
+    color: #FFFFFF;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .foro-title {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: normal;
+    line-height: 1.3;
+    color: var(--i27-oscuro);
+    margin-bottom: 0.4rem;
+  }
+  .foro-sub {
+    font-size: 13px;
+    color: var(--i27-medio);
+    line-height: 1.55;
+    font-style: italic;
+  }
+  .foro-body { padding: 2rem; }
+
+  .foro-vista {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 1.5rem;
+    background: var(--i27-crema);
+    padding: 6px;
+    border-radius: 10px;
+    max-width: max-content;
+    flex-wrap: wrap;
+  }
+  .foro-vista-btn {
+    border: none;
+    background: transparent;
+    color: var(--texto-2);
+    padding: 8px 16px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .foro-vista-btn.on {
+    background: var(--i27-medio);
+    color: #FFF;
+    font-weight: 600;
+  }
+
+  .foro-pautas {
+    background: var(--alerta-bg);
+    border-left: 4px solid var(--alerta);
+    padding: 1.15rem 1.35rem;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 1.75rem;
+  }
+  .foro-pautas-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--alerta);
+    margin-bottom: 8px;
+  }
+  .foro-pautas-lbl::before { content: '† '; }
+  .foro-pautas ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .foro-pautas li {
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    padding-left: 14px;
+    position: relative;
+  }
+  .foro-pautas li::before {
+    content: '·';
+    position: absolute;
+    left: 4px;
+    color: var(--alerta);
+    font-weight: 700;
+  }
+
+  .foro-form {
+    background: var(--i27-fondo);
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .foro-form-lbl {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--i27-oscuro);
+    margin-bottom: 12px;
+  }
+  .foro-form-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .foro-form-row label {
+    font-size: 12.5px;
+    color: var(--texto-2);
+    align-self: center;
+    font-weight: 500;
+  }
+  .foro-form select {
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    padding: 7px 10px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+    cursor: pointer;
+  }
+  .foro-form textarea {
+    width: 100%;
+    min-height: 90px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+    resize: vertical;
+    line-height: 1.55;
+    margin-bottom: 10px;
+  }
+  .foro-form textarea:focus,
+  .foro-form select:focus {
+    outline: none;
+    border-color: var(--i27-medio);
+  }
+  .foro-form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .foro-form-info {
+    font-size: 11.5px;
+    color: var(--texto-3);
+    font-style: italic;
+  }
+  .foro-btn {
+    background: var(--i27-medio);
+    color: #FFF;
+    border: none;
+    border-radius: 7px;
+    padding: 9px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    transition: background 0.18s;
+  }
+  .foro-btn:hover { background: var(--i27-oscuro); }
+  .foro-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .foro-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .foro-vacio {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: var(--texto-3);
+    font-size: 13.5px;
+    font-style: italic;
+    background: var(--i27-crema);
+    border-radius: 10px;
+  }
+  .comment {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-left: 3px solid var(--i27-suave);
+    border-radius: 10px;
+    padding: 1rem 1.15rem;
+  }
+  .comment-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .comment-autor {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--i27-oscuro);
+  }
+  .comment-pais {
+    font-size: 12px;
+    color: var(--i27-medio);
+    font-weight: 500;
+  }
+  .comment-pais::before { content: ' · '; color: var(--texto-3); }
+  .comment-modulo {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: var(--i27-crema);
+    color: var(--i27-medio);
+    margin-left: 6px;
+  }
+  .comment-fecha {
+    font-size: 11.5px;
+    color: var(--texto-3);
+  }
+  .comment-texto {
+    font-size: 14px;
+    color: var(--texto);
+    line-height: 1.65;
+    margin-bottom: 10px;
+    white-space: pre-wrap;
+  }
+  .comment-actions {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .react-btn {
+    background: var(--i27-crema);
+    border: 1px solid transparent;
+    border-radius: 99px;
+    padding: 4px 10px;
+    font-size: 12.5px;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    color: var(--texto-2);
+    transition: all 0.15s;
+  }
+  .react-btn:hover { background: var(--i27-claro); }
+  .react-btn.on {
+    background: var(--i27-suave);
+    color: #FFF;
+    border-color: var(--i27-medio);
+    font-weight: 600;
+  }
+  .react-count {
+    margin-left: 4px;
+    font-weight: 600;
+  }
+  .reply-btn {
+    background: transparent;
+    border: none;
+    color: var(--i27-medio);
+    font-size: 12.5px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    margin-left: auto;
+    font-family: var(--font-sans);
+  }
+  .reply-btn:hover {
+    background: var(--i27-crema);
+    color: var(--i27-oscuro);
+  }
+  .comment-replies {
+    margin-top: 12px;
+    padding-left: 1rem;
+    border-left: 2px dashed var(--borde);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .reply {
+    background: var(--i27-fondo);
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+  }
+  .reply-form {
+    background: var(--i27-crema);
+    border-radius: 8px;
+    padding: 0.8rem;
+    margin-top: 10px;
+    display: none;
+  }
+  .reply-form.on { display: block; }
+  .reply-form textarea {
+    width: 100%;
+    min-height: 60px;
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    resize: vertical;
+    background: #FFF;
+    margin-bottom: 8px;
+  }
+  .reply-form-actions {
+    display: flex;
+    gap: 6px;
+    justify-content: flex-end;
+  }
+  .reply-form-cancel {
+    background: transparent;
+    border: 1px solid var(--borde);
+    color: var(--texto-2);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 12.5px;
+    cursor: pointer;
+    font-family: var(--font-sans);
+  }
+
+  .foro-login {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--i27-crema);
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+  }
+  .foro-login-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .foro-login-link {
+    display: inline-block;
+    background: var(--i27-medio);
+    color: #FFF;
+    padding: 8px 18px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  /* ─── EVALUACIÓN (M6) ────────────────────────────────── */
+  .eval-nota {
+    background: var(--i27-crema);
+    border-left: 4px solid var(--i27-medio);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+  .eval-nota-lbl {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i27-medio);
+    margin-bottom: 6px;
+  }
+  .eval-nota-txt strong { color: var(--i27-oscuro); }
+  .eval-nota-txt em { color: var(--i27-medio); font-style: italic; }
+
+  .eval-q {
+    margin-bottom: 1.5rem;
+  }
+  .eval-q > label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--i27-oscuro);
+    margin-bottom: 8px;
+    line-height: 1.55;
+  }
+  .eval-q textarea {
+    width: 100%;
+    min-height: 100px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+    resize: vertical;
+    line-height: 1.6;
+    transition: border-color 0.15s;
+  }
+  .eval-q textarea:focus,
+  .eval-q input:focus {
+    outline: none;
+    border-color: var(--i27-medio);
+    box-shadow: 0 0 0 3px rgba(60, 52, 137, 0.1);
+  }
+  .eval-q input[type="date"] {
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 9px 12px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+  }
+  .eval-fecha { max-width: 320px; }
+
+  .eval-scale-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .eval-radio {
+    flex: 1;
+    min-width: 55px;
+    cursor: pointer;
+    position: relative;
+  }
+  .eval-radio input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .eval-radio span {
+    display: block;
+    text-align: center;
+    padding: 12px 8px;
+    background: var(--i27-crema);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    color: var(--i27-medio);
+    font-size: 15px;
+    transition: all 0.15s;
+  }
+  .eval-radio:hover span { background: var(--i27-claro); }
+  .eval-radio input:checked + span {
+    background: var(--i27-medio);
+    border-color: var(--i27-oscuro);
+    color: #FFF;
+  }
+
+  .eval-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: var(--i27-crema);
+    border: 1px solid var(--i27-claro);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+  .eval-check input {
+    margin-top: 4px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--i27-medio);
+    flex-shrink: 0;
+  }
+  .eval-check label {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    cursor: pointer;
+  }
+  .eval-check label strong { color: var(--i27-oscuro); }
+  .eval-check label em { color: var(--i27-medio); font-style: italic; }
+
+  .eval-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  .eval-btn-guardar {
+    background: var(--i27-oscuro);
+  }
+  .eval-btn-guardar:hover { background: var(--i27-medio); }
+  .eval-btn-imprimir {
+    background: transparent;
+    color: var(--i27-medio);
+    border: 1px solid var(--i27-medio);
+  }
+  .eval-btn-imprimir:hover {
+    background: var(--i27-crema);
+    color: var(--i27-oscuro);
+  }
+
+  .eval-msg {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    display: none;
+    margin-bottom: 1rem;
+  }
+  .eval-msg.on { display: block; }
+  .eval-msg.exito {
+    background: #E6F0FB;
+    color: var(--i27-oscuro);
+    border-left: 3px solid var(--i27-medio);
+  }
+  .eval-msg.error {
+    background: var(--alerta-bg);
+    color: var(--alerta);
+    border-left: 3px solid var(--alerta);
+  }
+
+  /* Estilos de impresión de la evaluación */
+  @media print {
+    body { background: #FFF; padding: 0; }
+    .root { box-shadow: none; padding: 1rem; max-width: 100%; }
+    .portada, .video-wrap, .mode-selector, .nav { display: none !important; }
+    .card { display: none !important; }
+    #m6.card { display: block !important; break-inside: avoid; border: none; }
+    .eval-actions, .eval-msg { display: none !important; }
+    .ch { background: transparent; }
+    .eval-q textarea, .eval-q input[type="date"] {
+      border: none;
+      border-bottom: 1px solid #999;
+      border-radius: 0;
+      background: transparent;
+    }
+  }
+
+  /* ─── RESPONSIVE ─────────────────────────────────────── */
+  @media (max-width: 640px) {
+    body { padding: 1rem 0.5rem; }
+    .root { padding: 1.25rem; }
+    .portada { padding: 1.5rem 1.25rem; }
+    .portada-title { font-size: 24px; }
+    .ch { padding: 1.25rem 1.25rem 1rem; }
+    .ct { font-size: 20px; }
+    .cb { padding: 1.25rem; }
+    .ejes { grid-template-columns: 1fr; }
+    .btn { flex: 1 1 100%; }
+    .mode-selector { flex-direction: column; align-items: stretch; max-width: 100%; }
+    .mode-btn { text-align: center; }
+    .foro-head { padding: 1.25rem; }
+    .foro-body { padding: 1.25rem; }
+    .foro-title { font-size: 19px; }
+    .foro-vista { max-width: 100%; flex-direction: column; align-items: stretch; }
+    .foro-vista-btn { text-align: center; }
+    .comment-head { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .reply-btn { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER SUPERIOR ═════════════════════════════════ -->
+<header class="top-header">
+  <a href="index.html" class="top-logo">Escuela PLAPA</a>
+  <a href="catalogo_30_itinerarios_plapa_corregido.html" class="top-link">← Catálogo</a>
+</header>
+
+<div class="root mode-grupal">
+
+  <!-- ═══ PORTADA ═════════════════════════════════════════ -->
+  <div class="portada">
+    <p class="portada-sup">Itinerario formativo 27 · Escuela PLAPA · CELAM 2026</p>
+    <h1 class="portada-title">La Pastoral de la Sobriedad</h1>
+    <p class="portada-sub">El Grupo de Autoayuda, los 12 Pasos del Programa Nueva Vida y el Agente de Sobriedad como portador de esperanza.</p>
+
+    <div class="dest-box">
+      <div class="dest-lbl">Destinatarios</div>
+      <div class="dest-txt">Coordinadores que quieren implementar o fortalecer un Grupo de Autoayuda en su parroquia o diócesis, agentes pastorales interesados en el modelo de los 12 Pasos desde una perspectiva explícitamente evangelizadora, y equipos que buscan un dispositivo replicable, de bajo costo y alto impacto comunitario. Nivel inicial–intermedio: no requiere formación clínica previa. Modelo nacido en la CNBB (Brasil).</div>
+    </div>
+
+    <div class="portada-pills">
+      <span class="portada-pill">§12.2 · §12.2.1 a §12.2.5</span>
+      <span class="portada-pill">4 módulos</span>
+      <span class="portada-pill">Coordinadores y agentes</span>
+      <span class="portada-pill">Nivel inicial–intermedio</span>
+      <span class="portada-pill">Ver · Juzgar · Actuar · Síntesis</span>
+    </div>
+  </div>
+
+  <!-- ═══ VIDEO ═══════════════════════════════════════════ -->
+  
+  <!-- NUEVO: Bloque del Video de Presentación Incrustado -->
+<div style="background: var(--surface-2); border: 0.5px solid var(--border); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
+  <p style="font-size: 11px; font-weight: 500; color: #085041; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; text-align: left;">
+    ▶️ Video de presentación
+  </p>
+  <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px;">
+    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+      src="https://www.youtube.com/embed/PLACEHOLDER_ITIN27"
+      title="Presentación del Itinerario 27" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+  <!-- ═══ SELECTOR DE MODALIDAD ═══════════════════════════ -->
+  <div class="mode-selector">
+    <button class="mode-btn on" onclick="setMode('grupal', this)">👥 Hacer en comunidad</button>
+    <button class="mode-btn" onclick="setMode('individual', this)">👤 Hacer de forma individual</button>
+  </div>
+
+  <!-- ═══ NAVEGACIÓN ══════════════════════════════════════ -->
+  <div class="nav">
+    <button class="btn on" onclick="show(1,this)">Módulo 1 · Identidad del Grupo de Autoayuda</button>
+    <button class="btn" onclick="show(2,this)">Módulo 2 · Los 12 Pasos del Programa Nueva Vida</button>
+    <button class="btn" onclick="show(3,this)">Módulo 3 · La dinámica del encuentro</button>
+    <button class="btn" onclick="show(4,this)">Módulo 4 · Los 5 frentes y el Agente de Sobriedad</button>
+    <span class="nav-sep" aria-hidden="true"></span>
+    <button class="btn btn-alt" onclick="show(5,this)">🌱 Muro del camino</button>
+    <button class="btn btn-alt" onclick="show(6,this)">✍ Evaluación</button>
+  </div>
+
+  <!-- ═══ MÓDULO 1 ════════════════════════════════════════ -->
+  <div id="m1" class="card active">
+    <div class="ch">
+      <span class="cn">Módulo 1 · El Ver</span>
+      <div class="ct">La identidad del Grupo de Autoayuda: elegir la vida desde la fe compartida</div>
+      <div class="cs">Origen, alcance y fundamento bíblico de la Pastoral de la Sobriedad · §12.2, §12.2.1</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"Ante una cultura que mercantiliza el descarte, esta pastoral responde al llamado bíblico de Deuteronomio 30,19, transformando la búsqueda de la sobriedad en una opción radical por elegir la vida."</div>
+      </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>Origen explícitamente evangelizador: CNBB Brasil, respuesta al llamado de Juan Pablo II.</strong> La Pastoral de la Sobriedad nace en Brasil (CNBB) <em>"como respuesta concreta de la Iglesia al desafío lanzado por el Papa San Juan Pablo II de combatir el flagelo de las adicciones"</em> (§12.2). <em>No es una adaptación cristiana de un modelo secular</em>: nace desde el interior de la Iglesia <em>con una misión explícitamente evangelizadora desde el inicio</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>Alcance amplio: sustancias, comportamientos, salud mental, compulsiones.</strong> El alcance del Grupo de Autoayuda es más amplio de lo que el nombre <em>"pastoral de la sobriedad"</em> podría sugerir. El §12.2.1 lo especifica: trabaja con <em>dependencias a sustancias lícitas e ilícitas, comportamientos</em> (mentira, terquedad, rechazo, manías, egoísmo, falta de perdón), <em>trastornos de salud mental</em> (ansiedad, depresión, fobias, ataques de pánico) y <em>compulsiones</em> (juego, apuestas en línea, compras, tecnologías, codependencia emocional).</span></li>
+        <li><span class="dot">V</span><span><strong>Experiencia compartida de la lucha, no sustancia específica.</strong> Esta amplitud de alcance es una decisión metodológica deliberada: <em>el grupo no se organiza alrededor de una sustancia específica sino alrededor de la experiencia compartida de la lucha por la sobriedad en sentido amplio</em>. Eso permite que personas con diferentes <em>"ataduras"</em> (en el lenguaje del programa) <em>se reconozcan mutuamente sin necesidad de compartir exactamente el mismo problema</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>"Sobriedad y paz, solo por hoy gracias a Dios": tres elementos del lema.</strong> El lema institucional —<em>"Sobriedad y paz, solo por hoy gracias a Dios"</em>— sintetiza tres elementos que el itinerario va a desarrollar: <em>la sobriedad como meta concreta, la paz como fruto espiritual, y "solo por hoy" como la temporalidad propia del programa</em> de los 12 Pasos, que <em>no exige una promesa de por vida sino el compromiso renovado cada día</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>Modelo sistémico que integra a la familia desde el origen.</strong> <em>"La fuerza del grupo constituye un recurso eficaz para restaurar el equilibrio emocional, espiritual, social y comunitario a través de la ayuda mutua y de un modelo sistémico y conductual que involucra a toda la familia"</em> (§12.2.1). El Grupo de Autoayuda <em>no es solo un espacio de contención individual</em>: está diseñado desde su origen para integrar a la familia, <em>en coherencia con el enfoque sistémico que todo el Manual sostiene</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">¿Existe ya un Grupo de Autoayuda en la diócesis o región?</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo investiga si la Pastoral de la Sobriedad u otro Grupo de Autoayuda similar ya tiene presencia en la diócesis o región. <em>Si existe, contactar para conocer la experiencia antes de iniciar un proyecto propio</em>. Si no existe, evaluar el contacto con <strong>cnbb3@sobriedade.org.br</strong> <em>para conocer el modelo en profundidad</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora si en tu zona ya existe un Grupo de Autoayuda y, si no, el contacto <strong>cnbb3@sobriedade.org.br</strong>. Aprender del que ya está hecho <em>evita reinventar la rueda</em>.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Mapear el alcance necesario en el territorio propio</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo identifica: <em>¿qué tipo de "ataduras" son más frecuentes en el territorio? ¿solo consumo de sustancias o también compulsiones, trastornos de ansiedad, codependencia?</em> El alcance amplio del §12.2.1 sugiere que un grupo de autoayuda bien diseñado <em>puede responder a un espectro de necesidades más amplio que el que el equipo inicialmente imagina</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora los <em>tres tipos de ataduras</em> más frecuentes en tu territorio. Esa lista define a quiénes convocar al grupo cuando se inicie: <em>la invitación es específica, no genérica</em>.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">La fe compartida como diferencial del Grupo frente a modelos seculares</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo reflexiona: <em>¿qué agrega la fe compartida al modelo de autoayuda que otros grupos no tienen? ¿cómo se nombra ese diferencial sin descalificar los grupos civiles valiosos</em> (AA, NA) que trabajan la misma problemática? Formular con claridad el aporte propio <em>sin competir con lo que ya funciona en el territorio</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Escribí en tu bitácora, en dos columnas: <em>lo que el Grupo de Autoayuda cristiano aporta</em> y <em>lo que comparte con los grupos civiles</em>. La claridad protege de dos errores: creer que ya hay algo que no hace falta, o creer que lo civil no sirve.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §12.2 — Dt 30,19</div>
+        <div class="cita-txt">"Pongo hoy delante de ti la vida y la muerte, la bendición y la maldición. Elige la vida."</div>
+        <div class="cita-ref">Manual de la PLAPA, §12.2 — La Pastoral de la Sobriedad (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">El alcance amplio del Grupo de Autoayuda <em>no significa que el grupo sustituya tratamientos clínicos</em> cuando esos son necesarios. Un trastorno de salud mental activo (depresión mayor, trastorno bipolar en crisis, cuadro psicótico) <em>requiere seguimiento psiquiátrico</em>, no solo el espacio grupal. La pastoral que confunde el espacio de autoayuda con tratamiento <em>daña por omisión</em>. El Grupo acompaña, articula, sostiene — pero <em>el diagnóstico y el tratamiento quedan en manos clínicas</em>, con las que se articula.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">El alcance amplio del Grupo de Autoayuda —desde sustancias hasta compulsiones y trastornos de ansiedad— <em>puede hacer que el agente sienta que necesita formación especializada en todas esas áreas</em>. El facilitador recuerda que <em>el modelo de autoayuda funciona precisamente porque no requiere un experto en cada tema</em>: requiere <em>un facilitador formado en la dinámica del grupo</em> (Módulo 3) <em>y la fe compartida que sostiene el proceso</em>.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §12.2 (Pastoral de la Sobriedad), §12.2.1 (Alcance), Dt 30,19 (Elige la vida) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 2 ════════════════════════════════════════ -->
+  <div id="m2" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 2 · El Juzgar</span>
+      <div class="ct">Los 12 Pasos del Programa Nueva Vida: de admitir a celebrar</div>
+      <div class="cs">Una metodología gradual de conversión a la luz del Evangelio · §12.2.2</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"El programa no se limita solo a bloquear el uso de sustancias, sino que propone el redescubrimiento de la dignidad y el verdadero sentido de la vida, fomentando la terapia del amor incondicional y el apoyo mutuo."</div>
+      </div>
+
+      <div class="pl">El Juzgar — Los 12 Pasos agrupados por movimiento espiritual (§12.2.2)</div>
+      <ul class="pts">
+        <li><span class="dot j">1</span><span><strong>Admisión y confianza (Pasos 1-3): Admitir · Confiar · Entregar.</strong> El primer movimiento es el reconocimiento de la propia impotencia y <em>la confianza en un poder superior</em>. Sin este primer paso de verdad sobre uno mismo, el resto del camino no se abre. <em>Nadie se cura de lo que no reconoce</em>.</span></li>
+        <li><span class="dot j">2</span><span><strong>Examen y reparación (Pasos 4-7): Arrepentirse · Confesar · Renacer · Reparar.</strong> El segundo movimiento es el <em>examen de conciencia</em> y la <em>reparación concreta</em>. <em>"Confesar" y "renacer"</em> no son metáforas: son <em>referencias directas al sacramento de la reconciliación y a la vida bautismal recuperada</em>.</span></li>
+        <li><span class="dot j">3</span><span><strong>Profesión y vigilancia (Pasos 8-9): Profesar la fe · Orar y vigilar.</strong> El tercer movimiento es la <em>profesión activa de la fe</em> y la <em>vida de oración sostenida</em>. La sobriedad <em>se mantiene en la oración</em>, no solo en la decisión aislada; <em>vigilar</em> es cuidar la fragilidad propia con otros.</span></li>
+        <li><span class="dot j">4</span><span><strong>Servicio y celebración (Pasos 10-12): Servir · Celebrar · Festejar.</strong> El cuarto movimiento es <em>la entrega generosa a los demás</em> y la <em>alegría comunitaria</em>. <em>Un programa que se queda solo en la admisión de la impotencia sin llegar al servicio y la fiesta está incompleto</em>. La alegría y la celebración <em>son parte constitutiva del proceso</em>, no un agregado opcional al final.</span></li>
+      </ul>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>Estructura reconocible con lenguaje explícitamente cristiano.</strong> Los 12 Pasos del Programa Nueva Vida siguen una estructura reconocible para quien conoce el modelo de Alcohólicos Anónimos, <em>pero con un lenguaje explícitamente cristiano que lo distingue</em>: <em>"confesar" y "profesar la fe" no son metáforas espirituales genéricas sino referencias directas a los sacramentos católicos</em>. El programa <em>integra la tradición de los 12 Pasos con la vida sacramental de la Iglesia</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>Gradualidad: nadie pasa del Paso 1 al Paso 12 rápidamente.</strong> <em>"Es un proceso gradual que requiere perseverancia en la búsqueda de la sobriedad y en la conversión de vida a la luz del Evangelio"</em> (§12.2.2). La gradualidad es un elemento metodológico central: <em>nadie pasa del Paso 1 al Paso 12 rápidamente</em>. Cada paso requiere <em>su tiempo de maduración antes de avanzar al siguiente</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>Itinerario de conversión: de la herida al servicio generoso.</strong> El orden de los 12 Pasos tiene una lógica espiritual precisa: <em>comienza con la admisión de la propia impotencia</em> (Paso 1), <em>atraviesa la confianza en un poder superior</em> (Pasos 2-3), <em>pasa por el examen de conciencia y la reparación</em> (Pasos 4-7), <em>continúa con la profesión de fe activa</em> (Pasos 8-9), y <em>culmina en el servicio a otros y la celebración comunitaria</em> (Pasos 10-12). Es, en esencia, <em>un itinerario de conversión que va del reconocimiento de la herida a la entrega generosa al servicio de los demás</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>La fiesta cristiana como culminación: no un agregado opcional.</strong> Los pasos finales —<em>servir, celebrar, festejar</em>— son tan importantes como los iniciales. Un programa que se queda <em>solo en la admisión de la impotencia y el arrepentimiento, sin llegar al servicio y la celebración, está incompleto</em>. <em>La alegría y la fiesta son parte constitutiva del proceso</em>, no un agregado opcional al final.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Recorrer los 12 Pasos en clave personal (para el equipo)</div>
+        <div class="mode-g">
+          <div class="act-body">Antes de proponer el programa a otros, el grupo recorre los 12 Pasos en clave personal: <em>¿hay algo que cada uno necesita admitir, confiar, entregar o reparar en su propia vida?</em> El ejercicio <em>no busca confesión pública sino familiarizar al equipo con la profundidad espiritual del recorrido</em> que va a proponer a otros.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">En tu bitácora, elegí <em>uno de los cuatro movimientos</em> (admisión/examen/profesión/servicio) y, en silencio, dejate interrogar por él. No es para compartir: es para <em>que puedas acompañar sin pretender haber llegado</em>.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Diseñar el ritmo del programa para el territorio</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo diseña: <em>¿cuánto tiempo se dedicaría a cada paso? ¿con qué frecuencia se reúne el grupo? ¿cómo se acompaña a quien avanza más lento que el resto?</em> La gradualidad que el §12.2.2 exige <em>no admite apuro</em>: el equipo necesita aceptar <em>que el proceso puede tomar meses o años para cada persona</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora el <em>ritmo semanal</em> propuesto para el grupo (día, hora, duración, lugar) y el <em>ritmo anual</em> de los Pasos. Si el calendario no está, el grupo no empieza.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Articulación con la vida sacramental de la parroquia</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo evalúa: <em>¿cómo se articula el Programa Nueva Vida con la vida sacramental de la parroquia (confesión, Eucaristía, celebraciones comunitarias)? ¿hay un sacerdote disponible y formado</em> para el acompañamiento sacramental de los participantes? Los Pasos 5 (Confesar) y 6 (Renacer) <em>requieren esa articulación concreta</em>; sin ella, el programa <em>queda incompleto</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora el <em>nombre del sacerdote</em> que estaría disponible para acompañar sacramentalmente al grupo. Si no hay uno identificado todavía, esa conversación con el párroco <em>es la gestión concreta de esta semana</em>.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §12.2.2</div>
+        <div class="cita-txt">"Ofrece un camino de esperanza y transformación para quienes desean liberarse de las ataduras del sufrimiento y vivir plenamente en todas sus dimensiones."</div>
+        <div class="cita-ref">Manual de la PLAPA, §12.2.2 — El Programa Nueva Vida: Los 12 Pasos (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">Los 12 Pasos <em>no son un algoritmo lineal</em>. La vida real no respeta el orden perfecto: alguien puede estar firme en el Paso 10 (Servir) y, al mismo tiempo, <em>descubrir una nueva fibra del Paso 4 (Arrepentirse)</em> que no había visto antes. La pastoral que exige <em>"terminar un paso antes de empezar el siguiente"</em> traiciona el ritmo espiritual real: <em>los pasos se profundizan en espiral, no en línea recta</em>. El rigor es con la dirección, no con la cronología.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">El recorrido personal por los 12 Pasos <em>puede tocar fibras profundas en los propios agentes del equipo</em>. El facilitador cuida que el ejercicio del Módulo 2 sea <em>opcional en su profundidad</em>: cada persona comparte lo que está dispuesta a compartir, y <em>nadie es forzado a una vulnerabilidad que no eligió</em>. La terapia del amor incondicional <em>empieza por respetar los ritmos de cada uno dentro del propio equipo</em>.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §12.2.2 (Programa Nueva Vida — Los 12 Pasos) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 3 ════════════════════════════════════════ -->
+  <div id="m3" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 3 · El Actuar</span>
+      <div class="ct">La dinámica del encuentro pastoral: cuatro reglas que sostienen la confianza del grupo</div>
+      <div class="cs">Carácter abierto, separación por vínculos, escucha respetuosa, confidencialidad · §12.2.3</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"La Pastoral de la Sobriedad se diferencia de otros grupos civiles por su carácter explícitamente evangelizador. El núcleo del encuentro es el Grupo de Autoayuda, donde se proclama con fe: 'Piedad Redentora de Cristo: danos la sobriedad'."</div>
+      </div>
+
+      <div class="pl">El Juzgar — Las cuatro reglas del encuentro (§12.2.3)</div>
+      <ul class="pts">
+        <li><span class="dot j">1</span><span><strong>Carácter abierto e inclusivo.</strong> Cualquier persona puede participar. <em>No se limita a las drogodependencias</em>, sino que amplía su alcance a <em>diversos tipos de adicciones, compulsiones, pecados y sufrimientos</em>.</span></li>
+        <li><span class="dot j">2</span><span><strong>Separación por vínculos afectivos.</strong> No se divide a los participantes por su condición o sustancia, sino que <em>se separa a miembros de una misma familia o personas con lazos cercanos</em>, para evitar <em>confrontaciones, juicios o inhibiciones recíprocas</em>.</span></li>
+        <li><span class="dot j">3</span><span><strong>Escucha respetuosa.</strong> Espacio seguro donde se puede hablar sin ser juzgado. <em>Está estrictamente prohibido dar consejos, emitir opiniones o interrumpir</em> a quien comparte su testimonio.</span></li>
+        <li><span class="dot j">4</span><span><strong>Confidencialidad.</strong> El <em>secreto y el sigilo absoluto</em> sobre lo compartido en la reunión es <em>la base de la confianza grupal</em>. Sin esa garantía, nadie comparte con honestidad.</span></li>
+      </ul>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>Separación por vínculos: decisión metodológica poco intuitiva pero sabia.</strong> La regla de la separación por vínculos afectivos (§12.2.3) es una decisión metodológica <em>poco intuitiva pero muy sabia</em>: el grupo <em>no agrupa "a todos los que consumen alcohol" en un lado y "a todos los que consumen cocaína" en otro</em>, sino que <em>separa a los miembros de una misma familia entre distintos grupos</em> para que cada uno pueda compartir con libertad sin la presencia de quien ya lo conoce íntimamente y podría inhibirlo.</span></li>
+        <li><span class="dot">V</span><span><strong>Prohibición de consejos: regla difícil pero generadora de seguridad.</strong> La prohibición estricta de <em>"dar consejos, emitir opiniones o interrumpir a quien comparte su testimonio"</em> (§12.2.3) es <em>una de las reglas más difíciles de sostener en la práctica</em>, porque la tentación de aconsejar es fuerte cuando se escucha a alguien sufrir. Pero esa misma restricción <em>es la que genera el espacio seguro</em>: nadie teme ser corregido o juzgado al hablar.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>Terapia del Amor y el Perdón: empatía genera cambio, no consejo.</strong> <em>"Terapia del Amor y el Perdón: al abrir el corazón y escuchar al otro, los participantes se vuelven sensibles al dolor ajeno, estimulando un cambio en la conducta personal"</em> (§12.2.3). <em>El mecanismo de transformación del grupo no es la instrucción ni el consejo</em>: es <em>la escucha mutua que genera empatía</em>, y esa empatía <em>es la que produce el cambio de conducta</em>. Es un modelo <em>radicalmente distinto al de la terapia directiva</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>"Piedad Redentora de Cristo: danos la sobriedad": sobriedad como don.</strong> La jaculatoria del encuentro —<em>"Piedad Redentora de Cristo: danos la sobriedad"</em>— ancla todo el dinamismo grupal <em>en la dependencia explícita de la gracia</em>. El grupo <em>no confía únicamente en la fuerza de voluntad colectiva ni en la técnica psicológica</em>: confía en que <em>la sobriedad es un don que se pide y se recibe</em>, no solo un logro que se conquista.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Practicar la escucha sin consejo</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo practica en parejas: <em>uno comparte una dificultad personal (no necesariamente de consumo), el otro escucha sin dar ningún consejo ni opinión, solo presencia y silencio activo</em>. Al terminar: <em>¿qué tan difícil fue no aconsejar? ¿qué generó en quien hablaba sentirse escuchado sin ser corregido?</em> Esta práctica <em>es la base de la facilitación del Grupo de Autoayuda</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Esta semana, en una conversación cotidiana, <em>escuchá sin dar un solo consejo</em>. Anotá después en tu bitácora qué pasó: en vos (¿cuánto costó no aconsejar?) y en el otro (¿se sintió escuchado?). <em>La escucha sin consejo se entrena como un músculo</em>.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Diseñar el protocolo de confidencialidad del grupo propio</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo redacta el compromiso de confidencialidad que regirá el futuro Grupo de Autoayuda: <em>¿qué se dice explícitamente al inicio de cada encuentro? ¿qué consecuencias tiene romper la confidencialidad?</em> La claridad sobre esta regla <em>desde el primer encuentro</em> es la condición para que la confianza <em>se construya con el tiempo</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Escribí en tu bitácora el <em>compromiso de confidencialidad</em> que leerías al inicio de cada reunión. Idealmente, no más de <em>cinco líneas</em>: lo esencial memorable es más efectivo que un reglamento largo.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">La separación por vínculos: trabajar la objeción familiar</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo anticipa <em>cómo responder a familias que piden "venir juntas" al grupo</em>: la regla de separación por vínculos <em>no es rechazo</em> sino cuidado del espacio de cada uno. Diseñar <em>una respuesta breve, cálida y clara</em> para esa objeción frecuente, y una alternativa: <em>¿qué espacio distinto se ofrece a las familias que quieren procesar juntas?</em> (encuentros abiertos, retiros familiares).</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora <em>dos frases</em> con las que explicarías la separación por vínculos a una familia que pide venir junta. La claridad previa <em>evita respuestas defensivas</em> en el momento de la pregunta.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §12.2.3</div>
+        <div class="cita-txt">"Al abrir el corazón y escuchar al otro, los participantes se vuelven sensibles al dolor ajeno, estimulando un cambio en la conducta personal."</div>
+        <div class="cita-ref">Manual de la PLAPA, §12.2.3 — Dinámica del Encuentro Pastoral (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">La <em>confidencialidad absoluta</em> tiene un límite ético insalvable: cuando lo compartido revela <em>riesgo inminente de daño grave</em> para la persona misma o para otros (ideación suicida con plan, abuso de menores en curso, violencia activa), <em>el facilitador tiene el deber de actuar</em>. El compromiso que se lee al inicio del grupo <em>debe nombrar esa excepción explícitamente</em>, no silenciarla: la confianza se protege con honestidad previa, no con promesas que luego no se podrán cumplir.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">El agente que facilita el Grupo de Autoayuda <em>escucha semana tras semana historias de sufrimiento profundo sin poder "resolver" nada con consejos</em>, lo cual puede generar frustración acumulada. El facilitador recuerda que <em>el rol del agente no es resolver</em>: es <em>sostener el espacio donde la sanación ocurre por la propia dinámica del grupo</em>. Esa distinción ayuda al agente a <em>no sentirse responsable de "arreglar" cada historia que escucha</em>.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §12.2.3 (Dinámica del Encuentro Pastoral) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 4 ════════════════════════════════════════ -->
+  <div id="m4" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 4 · Síntesis</span>
+      <div class="ct">Los cinco frentes de acción y el Agente de Sobriedad: portador de esperanza, no técnico</div>
+      <div class="cs">Del grupo individual a la incidencia política · §12.2.4, §12.2.5</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"El Agente de Sobriedad no es un técnico o terapeuta clínico: es un portador de esperanza. Su misión es expresar, con humildad, el amor gratuito del Padre, sirviendo gratuitamente a ejemplo de María, haciendo de los excluidos los preferidos."</div>
+      </div>
+
+      <div class="pl">El Juzgar — Los cinco frentes de acción (§12.2.4)</div>
+      <ul class="pts">
+        <li><span class="dot j">1</span><span><strong>Prevención.</strong> <em>Educación y sensibilización familiar y social</em> para evitar el inicio de dependencias.</span></li>
+        <li><span class="dot j">2</span><span><strong>Intervención.</strong> <em>Acogida inmediata y orientación</em> en momentos de crisis.</span></li>
+        <li><span class="dot j">3</span><span><strong>Recuperación.</strong> El <em>camino de los 12 pasos</em> e integración en la vida comunitaria.</span></li>
+        <li><span class="dot j">4</span><span><strong>Reintegración.</strong> Apoyo para el <em>regreso a la vida familiar, laboral y ciudadana</em>.</span></li>
+        <li><span class="dot j">5</span><span><strong>Acción Política.</strong> Participación e interlocución ante las secretarías de políticas sobre drogas <em>para exigir y proponer políticas públicas que respeten la dignidad humana</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>Más que grupo cerrado: proyección a la acción política.</strong> Los cinco frentes muestran que <em>la Pastoral de la Sobriedad no se limita al Grupo de Autoayuda como espacio terapéutico cerrado</em>: se proyecta hacia <em>la prevención, la crisis, la reintegración social y, de manera notable, hacia la acción política</em>. El Frente 5 <em>conecta directamente con la dimensión de caridad política</em> que el Manual desarrolla en otros capítulos: <em>la pastoral de adicciones no termina en el acompañamiento individual sino que incide en las políticas públicas</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>"Prisión invisible" (Papa Francisco): acompañar desde adentro.</strong> El Papa Francisco describe la adicción como una <em>"prisión invisible"</em> (§12.2.5), una imagen que ilumina la misión del Agente de Sobriedad: <em>no es un carcelero que vigila desde afuera, sino alguien que entra en la prisión invisible para acompañar desde dentro</em>, con las herramientas de <em>la fe, la palabra compartida y la vida en comunidad</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>Portador de esperanza, no técnico: identidad distinta al par y al interdisciplinario.</strong> La definición del Agente de Sobriedad —<em>"no es un técnico o terapeuta clínico, es un portador de esperanza"</em>— marca <em>una diferencia deliberada de identidad</em> respecto a otros modelos de acompañamiento del Manual. <em>No reemplaza al acompañante par del Itinerario 10 ni al equipo interdisciplinario del Itinerario 13</em>: tiene su propio perfil, centrado en <em>el servicio gratuito a ejemplo de María</em>, sin pretensión técnica.</span></li>
+        <li><span class="dot j">J</span><span><strong>Perfil mariano: servicio silencioso, sin protagonismo.</strong> <em>"Sirviendo gratuitamente a ejemplo de María, nuestra madre y madre de todos, haciendo de los excluidos los preferidos"</em> (§12.2.5). La referencia mariana sitúa al Agente de Sobriedad <em>en una tradición espiritual específica</em>: el <em>servicio silencioso, sin protagonismo, que acompaña sin imponerse</em>. Es <em>un perfil distinto al del líder carismático o al del experto técnico</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Diseñar el primer frente a implementar</div>
+        <div class="mode-g">
+          <div class="act-body">De los cinco frentes del §12.2.4, el grupo elige <em>uno para iniciar</em> (probablemente Recuperación, vía el Grupo de Autoayuda, o Prevención) y <em>diseña los primeros pasos concretos</em>. <em>No es necesario implementar los cinco frentes simultáneamente</em>: empezar por uno y crecer con el tiempo <em>es coherente con la gradualidad que el programa mismo propone</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora <em>cuál de los cinco frentes</em> podés iniciar en los próximos 6 meses. Al lado: <em>los tres primeros pasos</em>. La selección honesta protege del fracaso por sobredimensión.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Identificar a los posibles Agentes de Sobriedad del territorio</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo identifica: <em>¿quiénes en la comunidad tienen el perfil de "portador de esperanza"</em> que el §12.2.5 describe, <em>más allá de su formación técnica? ¿personas con experiencia de recuperación propia, con disposición al servicio gratuito, con capacidad de escucha sin juicio?</em> Esos son <em>los candidatos naturales para el rol</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora los nombres de <em>tres personas</em> con ese perfil mariano. Acércate a cada una con respeto, sin presión: <em>el llamado se discierne, no se asigna</em>.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Cierre: la prisión invisible y la llave de la fe</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo cierra reflexionando sobre la imagen de la <em>"prisión invisible"</em> de Francisco: <em>¿qué prisiones invisibles existen en el territorio, más allá del consumo de sustancias</em> (compulsiones, codependencia, ansiedad crónica)? <em>¿qué llave ofrece la fe compartida que ninguna otra herramienta puede dar?</em> Cerrar con la jaculatoria del programa: <em>"Piedad Redentora de Cristo: danos la sobriedad"</em>, como oración por todos los que el itinerario quiere alcanzar.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Escribí en tu bitácora las <em>prisiones invisibles</em> que detectás en tu territorio y cerrá con la jaculatoria del programa. Esa oración <em>es también para el agente que acompaña</em>: pedir sobriedad del protagonismo propio es parte del camino.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §12.2.5 — Papa Francisco</div>
+        <div class="cita-txt">"Busca combatir esa 'prisión invisible' de las dependencias con las herramientas de la fe, la palabra compartida y la vida en comunidad."</div>
+        <div class="cita-ref">Manual de la PLAPA, §12.2.5 — El Agente de Sobriedad (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">El perfil mariano del <em>servicio silencioso, sin protagonismo</em>, <em>no debe interpretarse como invisibilización del Agente</em>, sobre todo cuando el Agente es mujer. La historia de la Iglesia abunda en ejemplos de servicio femenino <em>silenciado hasta la invisibilidad institucional</em>. El Manual pide humildad del Agente, <em>no invisibilidad institucional</em>: el Agente de Sobriedad debe tener <em>reconocimiento, formación, estipendio, voz en los espacios de decisión</em>. La humildad es espiritual; la invisibilidad institucional es injusticia.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente — cierre del itinerario</div>
+        <div class="autocuidado-txt">El itinerario cierra con la pregunta que la identidad del Agente de Sobriedad le hace a cada participante: <em>¿puedo servir gratuitamente, sin protagonismo, a ejemplo de María, sin necesidad de ser reconocido como "el experto" que resuelve los problemas?</em> Esa renuncia al protagonismo técnico es <em>liberadora para muchos agentes pastorales</em> que sienten la presión de tener que saber todo. <em>El portador de esperanza no necesita saberlo todo</em>: necesita <em>estar presente, con fe, con humildad y con amor gratuito</em>.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §12.2.4 (Cinco frentes), §12.2.5 (Agente de Sobriedad) · Contacto: cnbb3@sobriedade.org.br — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 5 · MURO DEL CAMINO (FORO) ═══════════════ -->
+  <div id="m5" class="card">
+    <div class="ch">
+      <span class="cn">Espacio comunitario · Muro</span>
+      <div class="ct">Voces de quienes también recorren este itinerario</div>
+      <div class="cs">El Manual crece con quienes lo caminan · §13.3, §13.5</div>
+    </div>
+    <div class="cb">
+
+      <!-- Selector de vista: este itinerario / global -->
+      <div class="foro-vista">
+        <button class="foro-vista-btn on" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
+        <button class="foro-vista-btn" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
+      </div>
+
+      <!-- Pautas pastorales -->
+      <div class="foro-pautas">
+        <div class="foro-pautas-lbl">Antes de publicar</div>
+        <ul>
+          <li>Compartí solo experiencias propias o del equipo. No expongas historias ajenas ni datos que identifiquen a terceras personas.</li>
+          <li>Cuidá a quien lea después: evitá descripciones que puedan retraumatizar.</li>
+          <li>Tu aporte será revisado por el equipo PLAPA antes de publicarse.</li>
+        </ul>
+      </div>
+
+      <!-- Formulario nuevo comentario -->
+      <div class="foro-form" id="foroForm">
+        <div class="foro-form-lbl">Dejar mi palabra</div>
+        <div class="foro-form-row">
+          <label for="foroModulo">¿Sobre qué momento del itinerario?</label>
+          <select id="foroModulo">
+            <option value="">General del itinerario</option>
+            <option value="1">Módulo 1 · Identidad del Grupo de Autoayuda</option>
+            <option value="2">Módulo 2 · Los 12 Pasos del Programa Nueva Vida</option>
+            <option value="3">Módulo 3 · La dinámica del encuentro</option>
+            <option value="4">Módulo 4 · Los 5 frentes y el Agente de Sobriedad</option>
+          </select>
+        </div>
+        <textarea id="foroTexto" placeholder="Escribí tu comentario, pregunta o testimonio de camino..."></textarea>
+        <div class="foro-form-actions">
+          <div class="foro-form-info">Aparecerá en el muro luego de la revisión del equipo.</div>
+          <button class="foro-btn" id="foroEnviar" onclick="enviarComentario()">Enviar para revisión</button>
+        </div>
+      </div>
+
+      <!-- Lista de comentarios -->
+      <div class="foro-lista" id="foroLista">
+        <div class="foro-vacio">Cargando el muro...</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 6 · EVALUACIÓN ══════════════════════════ -->
+  <div id="m6" class="card">
+    <div class="ch">
+      <span class="cn">Cierre del itinerario · Evaluación</span>
+      <div class="ct">Revisión de vida en clave Ver–Juzgar–Actuar</div>
+      <div class="cs">No es un examen: es un discernimiento sobre lo que este itinerario dejó en vos</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Antes de comenzar</div>
+        <div class="resonancia-txt">"La revisión de vida es la forma histórica que la Iglesia latinoamericana encontró para institucionalizar el Ver–Juzgar–Actuar. El agente que la practica no aplica el método: lo vive." Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
+      </div>
+
+      <div class="eval-nota">
+        <span class="eval-nota-lbl">🕊 Uso pastoral</span>
+        <div class="eval-nota-txt">Esta evaluación es <strong>tuya</strong>. Podés guardarla en tu bitácora personal (queda solo con vos) y, si lo decidís, compartirla con el equipo PLAPA como aporte al <em>rolling release</em> del Manual (§13.5). Compartir es voluntario.</div>
+      </div>
+
+      <div class="pl">El Ver — Qué se hizo visible</div>
+      <div class="eval-q">
+        <label for="evalVer">¿Qué realidad del territorio se hizo más visible para vos a lo largo de estos cuatro módulos? ¿Qué llagas emergieron con más fuerza? ¿Qué zonas del mapa estaban en blanco antes y ahora tienen contenido?</label>
+        <textarea id="evalVer" data-eval="ver" placeholder="Escribí con calma, sin apurarte..."></textarea>
+      </div>
+
+      <div class="pl">El Juzgar — Qué iluminó, qué preguntas quedaron abiertas</div>
+      <div class="eval-q">
+        <label for="evalJuzgar1">¿Qué del método del diagnóstico territorial te iluminó de manera nueva? ¿Qué idea del Manual sentís que ya no podrás dejar de lado?</label>
+        <textarea id="evalJuzgar1" data-eval="juzgar1" placeholder="Nombralo con precisión..."></textarea>
+      </div>
+      <div class="eval-q">
+        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos? Las preguntas abiertas son también fruto (§13.3).</label>
+        <textarea id="evalJuzgar2" data-eval="juzgar2" placeholder="Las que siguen ardiendo..."></textarea>
+      </div>
+
+      <div class="pl">El Actuar — Compromiso concreto</div>
+      <div class="eval-q">
+        <label for="evalActuar">¿Qué gesto pastoral concreto vas a intentar en las próximas semanas a partir del diagnóstico que hiciste? Nombralo con nombre, tiempo y lugar. Un compromiso vago no es un compromiso.</label>
+        <textarea id="evalActuar" data-eval="actuar" placeholder="Ej.: En la próxima reunión de equipo (jueves 25) voy a presentar el mapa territorial que construimos y proponer una callejeada específica al sector X del barrio..."></textarea>
+      </div>
+      <div class="eval-q eval-fecha">
+        <label for="evalFecha">Fecha en la que vas a volver a revisar si pudiste sostenerlo</label>
+        <input type="date" id="evalFecha" data-eval="fecha_revision">
+      </div>
+
+      <div class="pl">Autocuidado y equipo</div>
+      <div class="eval-q eval-scale">
+        <label>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</label>
+        <div class="eval-scale-row">
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="1" data-eval="animo"><span>1</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="2" data-eval="animo"><span>2</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="3" data-eval="animo"><span>3</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="4" data-eval="animo"><span>4</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="5" data-eval="animo"><span>5</span></label>
+        </div>
+      </div>
+      <div class="eval-q">
+        <label for="evalCuidado">¿Qué necesitás cuidar de vos mismo/a en las próximas semanas? ¿A quién del equipo se lo vas a decir?</label>
+        <textarea id="evalCuidado" data-eval="cuidado" placeholder="El agente que cuida su esperanza puede sostener la del otro (§1.3)..."></textarea>
+      </div>
+
+      <div class="pl">Cierre</div>
+
+      <div class="eval-check">
+        <input type="checkbox" id="evalCompartir">
+        <label for="evalCompartir"><strong>Compartir con el equipo PLAPA</strong> como aporte al <em>rolling release</em> del Manual. Solo se envían tus respuestas si marcás esta casilla. Si no la marcás, la evaluación queda solo en tu bitácora.</label>
+      </div>
+
+      <div class="eval-actions">
+        <button class="foro-btn eval-btn-guardar" onclick="guardarEvaluacion()">Guardar en mi bitácora</button>
+        <button class="foro-btn eval-btn-imprimir" onclick="imprimirEvaluacion()">🖨 Imprimir / PDF</button>
+      </div>
+
+      <div id="evalMsg" class="eval-msg"></div>
+
+      <div class="autocuidado" style="margin-top: 2rem;">
+        <div class="autocuidado-lbl">Cierre del itinerario</div>
+        <div class="autocuidado-txt">Cerrar bien un itinerario también es autocuidado: celebrar lo caminado, agradecer al equipo, reconocer los propios límites y renovar la esperanza. Este itinerario termina con gratitud: por el territorio que nos habló, por las llagas que dejamos de negar, por el equipo que hizo posible mirar sin apartar la mirada.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §1.3 (Prólogo), §6.1.3 (Evitar la romantización), §13.2 (Sinodalidad en la práctica), §13.3 (Rolling release), §13.5 (Mecanismos de colaboración) — CELAM 2026.</div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function setMode(mode, btn) {
+    var root = document.querySelector('.root');
+    root.classList.remove('mode-grupal', 'mode-individual');
+    root.classList.add('mode-' + mode);
+    var buttons = document.querySelectorAll('.mode-btn');
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].classList.remove('on');
+    }
+    btn.classList.add('on');
+  }
+
+  function show(n, btn) {
+    for (var i = 1; i <= 6; i++) {
+      var el = document.getElementById('m' + i);
+      if (el) el.classList.remove('active');
+    }
+    document.querySelectorAll('.nav .btn').forEach(function(b) {
+      b.classList.remove('on');
+    });
+    document.getElementById('m' + n).classList.add('active');
+    btn.classList.add('on');
+    if (window.innerWidth < 640) {
+      document.getElementById('m' + n).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    // Al abrir el muro, refrescar comentarios
+    if (n === 5 && typeof cargarComentarios === 'function') {
+      cargarComentarios();
+    }
+    // Al abrir la evaluación, restaurar borrador si existe
+    if (n === 6 && typeof restaurarEvaluacion === 'function') {
+      restaurarEvaluacion();
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════
+  // MURO DEL CAMINO — FORO SUPABASE
+  // ═══════════════════════════════════════════════════════
+  // BACKEND REQUERIDO (Supabase — mismo proyecto que app-plapa):
+  //
+  // 1) Tabla `foro_comentarios`:
+  //    - id (uuid, pk)
+  //    - itinerario_id (text)     — ej. 'itinerario_27_pastoral_sobriedad'
+  //    - parent_id (uuid, null)   — null = comentario raíz; uuid = respuesta
+  //    - usuario_id (uuid, fk auth.users)
+  //    - autor_nombre (text)      — copiado del perfil al crear
+  //    - pais (text)              — copiado del perfil al crear
+  //    - modulo (int, null)       — 1..4 o null (general)
+  //    - texto (text)
+  //    - estado (text)            — 'pendiente' | 'publicado' | 'rechazado'
+  //    - created_at (timestamptz)
+  //
+  // 2) Tabla `foro_reacciones`:
+  //    - comentario_id (uuid, fk)
+  //    - usuario_id (uuid, fk)
+  //    - emoji (text) — '🙏' | '❤️' | '💡' | '🕊️'
+  //    - PK compuesta (comentario_id, usuario_id, emoji)
+  //
+  // 3) Vista/RPC `comentarios_para_itinerario(p_itinerario text, p_scope text)`:
+  //    devuelve los comentarios publicados con autor_nombre, pais, itinerario_titulo
+  //    (si scope='global'), agregado de reacciones y las del usuario actual.
+  //    scope: 'itinerario' filtra por p_itinerario; 'global' devuelve todos.
+  //
+  // 4) RPC `toggle_reaccion(p_comentario uuid, p_emoji text)`.
+  //
+  // 5) RLS:
+  //    - foro_comentarios: SELECT solo estado='publicado'; INSERT solo auth.uid()
+  //      con estado='pendiente' forzado.
+  //    - Moderadores (rol) pueden UPDATE estado.
+  //
+  // 6) Sesión: la Escuela PLAPA debe dejar el token JWT accesible
+  //    (localStorage 'escuela_plapa_sesion' con { token, nombre, pais }
+  //    o cookie según arquitectura de la Escuela).
+  // ═══════════════════════════════════════════════════════
+
+  var SUPABASE_URL = 'https://TU-PROYECTO.supabase.co';  // TODO: config
+  var SUPABASE_ANON_KEY = 'TU_ANON_KEY';                  // TODO: config
+  var ITINERARIO_ID = 'itinerario_27_pastoral_sobriedad';
+  var ITINERARIO_TITULO = 'La Pastoral de la Sobriedad';
+
+  var vistaForo = 'itinerario';
+  var sesion = null;
+  var EMOJIS = ['🙏', '❤️', '💡', '🕊️'];
+
+  function supaHeaders() {
+    var h = {
+      'apikey': SUPABASE_ANON_KEY,
+      'Content-Type': 'application/json'
+    };
+    if (sesion && sesion.token) {
+      h['Authorization'] = 'Bearer ' + sesion.token;
+    }
+    return h;
+  }
+
+  function escapeHtml(s) {
+    if (!s) return '';
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function formatFecha(iso) {
+    if (!iso) return '';
+    try {
+      var d = new Date(iso);
+      return d.toLocaleDateString('es', { day: 'numeric', month: 'short', year: 'numeric' });
+    } catch (e) { return ''; }
+  }
+
+  function cargarComentarios() {
+    var contenedor = document.getElementById('foroLista');
+    contenedor.innerHTML = '<div class="foro-vacio">Cargando el muro...</div>';
+
+    var url = SUPABASE_URL + '/rest/v1/rpc/comentarios_para_itinerario';
+    fetch(url, {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({
+        p_itinerario: ITINERARIO_ID,
+        p_scope: vistaForo
+      })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) { renderComentarios(data || []); })
+    .catch(function() {
+      contenedor.innerHTML = '<div class="foro-vacio">No se pudo cargar el muro. Intentá de nuevo más tarde.</div>';
+    });
+  }
+
+  function renderComentarios(comentarios) {
+    var contenedor = document.getElementById('foroLista');
+    if (!comentarios || comentarios.length === 0) {
+      contenedor.innerHTML = '<div class="foro-vacio">Aún no hay palabras publicadas en este muro. Podés ser vos quien empiece la conversación.</div>';
+      return;
+    }
+    var raices = comentarios.filter(function(c) { return !c.parent_id; });
+    var respuestasPor = {};
+    comentarios.filter(function(c) { return c.parent_id; }).forEach(function(c) {
+      if (!respuestasPor[c.parent_id]) respuestasPor[c.parent_id] = [];
+      respuestasPor[c.parent_id].push(c);
+    });
+    contenedor.innerHTML = raices.map(function(c) {
+      return renderComment(c, respuestasPor[c.id] || []);
+    }).join('');
+  }
+
+  function renderComment(c, respuestas) {
+    var modLbl = c.modulo ? '<span class="comment-modulo">Módulo ' + c.modulo + '</span>' : '';
+    var paisLbl = c.pais ? '<span class="comment-pais">' + escapeHtml(c.pais) + '</span>' : '';
+    var globalLbl = (vistaForo === 'global' && c.itinerario_titulo)
+      ? '<span class="comment-modulo">' + escapeHtml(c.itinerario_titulo) + '</span>'
+      : '';
+    var reacciones = c.reacciones || {};
+    var misReacc = c.mis_reacciones || [];
+    var reaccBtns = EMOJIS.map(function(e) {
+      var count = reacciones[e] || 0;
+      var mine = misReacc.indexOf(e) >= 0;
+      return '<button class="react-btn ' + (mine ? 'on' : '') + '" onclick="toggleReaccion(\'' + c.id + '\', \'' + e + '\')">' + e + (count > 0 ? '<span class="react-count">' + count + '</span>' : '') + '</button>';
+    }).join('');
+    var respuestasHtml = respuestas.length
+      ? '<div class="comment-replies">' + respuestas.map(renderReply).join('') + '</div>'
+      : '';
+    return '' +
+      '<div class="comment" id="c-' + c.id + '">' +
+        '<div class="comment-head">' +
+          '<div>' +
+            '<span class="comment-autor">' + escapeHtml(c.autor_nombre || 'Anónimo') + '</span>' +
+            paisLbl + modLbl + globalLbl +
+          '</div>' +
+          '<span class="comment-fecha">' + formatFecha(c.created_at) + '</span>' +
+        '</div>' +
+        '<div class="comment-texto">' + escapeHtml(c.texto) + '</div>' +
+        '<div class="comment-actions">' +
+          reaccBtns +
+          '<button class="reply-btn" onclick="toggleReplyForm(\'' + c.id + '\')">↩ Responder</button>' +
+        '</div>' +
+        '<div class="reply-form" id="rf-' + c.id + '">' +
+          '<textarea placeholder="Escribí tu respuesta..." id="rt-' + c.id + '"></textarea>' +
+          '<div class="reply-form-actions">' +
+            '<button class="reply-form-cancel" onclick="toggleReplyForm(\'' + c.id + '\')">Cancelar</button>' +
+            '<button class="foro-btn" onclick="enviarRespuestaDesde(\'' + c.id + '\')">Enviar</button>' +
+          '</div>' +
+        '</div>' +
+        respuestasHtml +
+      '</div>';
+  }
+
+  function renderReply(r) {
+    var paisLbl = r.pais ? '<span class="comment-pais">' + escapeHtml(r.pais) + '</span>' : '';
+    return '' +
+      '<div class="reply">' +
+        '<div class="comment-head">' +
+          '<div>' +
+            '<span class="comment-autor">' + escapeHtml(r.autor_nombre || 'Anónimo') + '</span>' +
+            paisLbl +
+          '</div>' +
+          '<span class="comment-fecha">' + formatFecha(r.created_at) + '</span>' +
+        '</div>' +
+        '<div class="comment-texto">' + escapeHtml(r.texto) + '</div>' +
+      '</div>';
+  }
+
+  function enviarComentario() {
+    if (!sesion) { window.location.href = '/login'; return; }
+    var texto = document.getElementById('foroTexto').value.trim();
+    var modulo = document.getElementById('foroModulo').value;
+    if (!texto) return;
+    var btn = document.getElementById('foroEnviar');
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+    fetch(SUPABASE_URL + '/rest/v1/foro_comentarios', {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({
+        itinerario_id: ITINERARIO_ID,
+        parent_id: null,
+        usuario_id: sesion.user ? sesion.user.id : null,
+        autor_nombre: sesion.nombre || '',
+        pais: sesion.pais || '',
+        modulo: modulo ? parseInt(modulo) : null,
+        texto: texto
+      })
+    })
+    .then(function() {
+      document.getElementById('foroTexto').value = '';
+      document.getElementById('foroModulo').value = '';
+      btn.textContent = '✓ Enviado — pendiente de revisión';
+      setTimeout(function() {
+        btn.textContent = 'Enviar para revisión';
+        btn.disabled = false;
+      }, 3000);
+    })
+    .catch(function() {
+      btn.textContent = 'Error al enviar';
+      btn.disabled = false;
+    });
+  }
+
+  function enviarRespuestaDesde(parentId) {
+    if (!sesion) { window.location.href = '/login'; return; }
+    var textarea = document.getElementById('rt-' + parentId);
+    var texto = textarea.value.trim();
+    if (!texto) return;
+    fetch(SUPABASE_URL + '/rest/v1/foro_comentarios', {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({
+        itinerario_id: ITINERARIO_ID,
+        parent_id: parentId,
+        usuario_id: sesion.user ? sesion.user.id : null,
+        autor_nombre: sesion.nombre || '',
+        pais: sesion.pais || '',
+        texto: texto
+      })
+    })
+    .then(function() {
+      textarea.value = '';
+      document.getElementById('rf-' + parentId).classList.remove('on');
+      alert('Tu respuesta será revisada por el equipo antes de publicarse.');
+    })
+    .catch(function() { alert('Error al enviar la respuesta.'); });
+  }
+
+  function toggleReaccion(comentarioId, emoji) {
+    if (!sesion) { window.location.href = '/login'; return; }
+    fetch(SUPABASE_URL + '/rest/v1/rpc/toggle_reaccion', {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({ p_comentario: comentarioId, p_emoji: emoji })
+    })
+    .then(function() { cargarComentarios(); })
+    .catch(function() {});
+  }
+
+  function toggleReplyForm(id) {
+    if (!sesion) { window.location.href = '/login'; return; }
+    document.getElementById('rf-' + id).classList.toggle('on');
+  }
+
+  function setVistaForo(v, btn) {
+    vistaForo = v;
+    var buttons = document.querySelectorAll('.foro-vista-btn');
+    for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove('on'); }
+    btn.classList.add('on');
+    cargarComentarios();
+  }
+
+  // ═══════════════════════════════════════════════════════
+  // EVALUACIÓN — REVISIÓN DE VIDA VJA
+  // ═══════════════════════════════════════════════════════
+  // BACKEND REQUERIDO:
+  //
+  // Tabla `evaluaciones_itinerario`:
+  //   - id (uuid, pk)
+  //   - usuario_id (uuid, fk auth.users)
+  //   - itinerario_id (text)
+  //   - respuestas (jsonb) — { ver, juzgar1, juzgar2, actuar, fecha_revision, animo, cuidado }
+  //   - compartir_con_equipo (bool)
+  //   - created_at, updated_at
+  //
+  // RLS: SELECT/UPDATE solo dueño. INSERT solo dueño.
+  // Solo moderadores del equipo PLAPA pueden ver evaluaciones donde
+  // compartir_con_equipo=true (via política RLS separada).
+  //
+  // Borrador: se autoguarda en localStorage para que no se pierda
+  // al cerrar el navegador antes de guardar formalmente.
+  // ═══════════════════════════════════════════════════════
+
+  var EVAL_STORAGE_KEY = 'eval_' + ITINERARIO_ID;
+
+  function recolectarEvaluacion() {
+    var datos = {};
+    document.querySelectorAll('[data-eval]').forEach(function(el) {
+      var key = el.getAttribute('data-eval');
+      if (el.type === 'radio') {
+        if (el.checked) datos[key] = el.value;
+      } else {
+        datos[key] = el.value;
+      }
+    });
+    datos.compartir_con_equipo = document.getElementById('evalCompartir').checked;
+    return datos;
+  }
+
+  function autoguardarBorrador() {
+    try {
+      localStorage.setItem(EVAL_STORAGE_KEY, JSON.stringify(recolectarEvaluacion()));
+    } catch (e) {}
+  }
+
+  function restaurarEvaluacion() {
+    try {
+      var stored = localStorage.getItem(EVAL_STORAGE_KEY);
+      if (!stored) return;
+      var datos = JSON.parse(stored);
+      document.querySelectorAll('[data-eval]').forEach(function(el) {
+        var key = el.getAttribute('data-eval');
+        if (datos[key] == null) return;
+        if (el.type === 'radio') {
+          if (el.value === datos[key]) el.checked = true;
+        } else {
+          el.value = datos[key];
+        }
+      });
+      if (datos.compartir_con_equipo) {
+        document.getElementById('evalCompartir').checked = true;
+      }
+    } catch (e) {}
+  }
+
+  function mostrarEvalMsg(texto, tipo) {
+    var el = document.getElementById('evalMsg');
+    el.className = 'eval-msg on ' + (tipo || 'exito');
+    el.textContent = texto;
+    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function guardarEvaluacion() {
+    var datos = recolectarEvaluacion();
+    var minimoTexto = (datos.ver || '').trim() + (datos.actuar || '').trim();
+    if (minimoTexto.length < 30) {
+      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos "El Ver" y "El Actuar" merecen unos renglones honestos.', 'error');
+      return;
+    }
+
+    // Guardar en Supabase (siempre queda en tu bitácora)
+    if (!sesion) { window.location.href = '/login'; return; }
+    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario', {
+      method: 'POST',
+      headers: Object.assign({}, supaHeaders(), { 'Prefer': 'resolution=merge-duplicates' }),
+      body: JSON.stringify({
+        itinerario_id: ITINERARIO_ID,
+        respuestas: datos,
+        compartir_con_equipo: datos.compartir_con_equipo === true
+      })
+    })
+    .then(function(r) {
+      if (r.ok) {
+        var msg = datos.compartir_con_equipo
+          ? '✓ Evaluación guardada en tu bitácora y compartida con el equipo PLAPA. Gracias por el aporte.'
+          : '✓ Evaluación guardada en tu bitácora. Queda solo con vos.';
+        mostrarEvalMsg(msg, 'exito');
+      } else {
+        mostrarEvalMsg('Guardado localmente. No pudimos sincronizar con la Escuela — reintentá más tarde.', 'error');
+      }
+    })
+    .catch(function() {
+      mostrarEvalMsg('Guardado localmente. Sin conexión con la Escuela — reintentá cuando tengas internet.', 'error');
+    });
+  }
+
+  function imprimirEvaluacion() {
+    autoguardarBorrador();
+    window.print();
+  }
+
+  // Init general del itinerario
+  document.addEventListener('DOMContentLoaded', function() {
+    // Leer sesión (el guard del <head> garantiza que existe)
+    try {
+      var stored = localStorage.getItem('escuela_plapa_sesion');
+      if (stored) sesion = JSON.parse(stored);
+    } catch (e) {}
+    // Cargar muro
+    cargarComentarios();
+
+    // Restaurar borrador de evaluación si existe
+    restaurarEvaluacion();
+
+    // Autoguardado del borrador de evaluación al escribir (con debounce)
+    var evalTimeout;
+    document.querySelectorAll('#m6 [data-eval], #m6 #evalCompartir').forEach(function(el) {
+      el.addEventListener('input', function() {
+        clearTimeout(evalTimeout);
+        evalTimeout = setTimeout(autoguardarBorrador, 500);
+      });
+      el.addEventListener('change', autoguardarBorrador);
+    });
+  });
+</script>
+
+</body>
+</html>

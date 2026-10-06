@@ -1,0 +1,2186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Itinerario 30 · Construir la pastoral diocesana y continental · Escuela PLAPA</title>
+<style>
+  :root {
+    /* Paleta verde PLAPA — Itinerario 30 (bloque 7: Sostenibilidad y red) */
+    --i30-oscuro:  #203A07;
+    --i30-medio:   #3B6D11;
+    --i30-accent:  #639922;
+    --i30-suave:   #8BBC50;
+    --i30-claro:   #C2DD92;
+    --i30-crema:   #ECF5D9;
+    --i30-fondo:   #FBFDF6;
+
+    --alerta:     #8B1A1A;
+    --alerta-bg:  #FDF7F7;
+
+    --texto:      #1E1B33;
+    --texto-2:    #4A4560;
+    --texto-3:    #8C89A0;
+    --borde:      #E4E2F0;
+
+    --font-serif: "Georgia", "Times New Roman", serif;
+    --font-sans:  "system-ui", -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: #D3E6B4;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    line-height: 1.6;
+  }
+
+  .root {
+    background: var(--i30-fondo);
+    max-width: 860px;
+    width: 100%;
+    padding: 2.5rem;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(38, 33, 92, 0.08);
+  }
+
+  /* ─── HEADER SUPERIOR (navegación entre páginas) ─── */
+  .top-header {
+    background: #FFFFFF;
+    border-bottom: 1px solid var(--borde);
+    padding: 0.85rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    max-width: 860px;
+    width: 100%;
+    margin: 0 auto 1rem;
+    border-radius: 10px;
+  }
+  .top-logo {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--i30-oscuro);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .top-logo:hover { color: var(--i30-medio); }
+  .top-link {
+    font-size: 0.88rem;
+    color: var(--texto-2);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.15s;
+  }
+  .top-link:hover {
+    background: var(--i30-crema);
+    color: var(--i30-oscuro);
+  }
+  @media (max-width: 640px) {
+    .top-header { padding: 0.75rem 1rem; }
+    .top-link { font-size: 0.82rem; padding: 5px 8px; }
+  }
+
+  /* ─── PORTADA ────────────────────────────────────────── */
+  .portada {
+    background: var(--i30-oscuro);
+    border-radius: 12px;
+    padding: 2rem 2rem 1.75rem;
+    margin-bottom: 2rem;
+  }
+  .portada-sup {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--i30-claro);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .portada-title {
+    font-family: var(--font-serif);
+    font-size: 30px;
+    font-weight: normal;
+    color: #FFFFFF;
+    line-height: 1.25;
+    margin-bottom: 0.6rem;
+  }
+  .portada-sub {
+    font-size: 14.5px;
+    color: var(--i30-claro);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+    max-width: 640px;
+  }
+  .dest-box {
+    background: var(--i30-medio);
+    border-radius: 8px;
+    padding: 0.9rem 1.1rem;
+    margin-bottom: 1.1rem;
+  }
+  .dest-lbl {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--i30-claro);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .dest-txt {
+    font-size: 13px;
+    color: #FFF;
+    line-height: 1.6;
+  }
+  .portada-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .portada-pill {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 11px;
+    border-radius: 99px;
+    background: var(--i30-medio);
+    color: var(--i30-crema);
+  }
+
+  /* ─── VIDEO ──────────────────────────────────────────── */
+  .video-wrap {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .video-lbl {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--i30-oscuro);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .video-iframe {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  .video-iframe iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  /* ─── SELECTOR DE MODALIDAD ──────────────────────────── */
+  .mode-selector {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 1.5rem;
+    background: #FFF;
+    padding: 6px;
+    border-radius: 10px;
+    border: 1px solid var(--borde);
+    max-width: max-content;
+    flex-wrap: wrap;
+  }
+  .mode-btn {
+    border: none;
+    background: transparent;
+    color: var(--texto-2);
+    padding: 8px 16px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .mode-btn.on {
+    background: var(--i30-accent);
+    color: #FFF;
+    font-weight: 600;
+  }
+  /* Control de visibilidad según modalidad */
+  .root.mode-individual .mode-g { display: none; }
+  .root.mode-grupal .mode-i { display: none; }
+
+  /* ─── NAVEGACIÓN ─────────────────────────────────────── */
+  .nav {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .btn {
+    border: 1px solid var(--borde);
+    background: #FFFFFF;
+    border-radius: 8px;
+    padding: 10px 16px;
+    cursor: pointer;
+    font-size: 12.5px;
+    font-weight: 500;
+    font-family: var(--font-sans);
+    color: var(--texto-2);
+    transition: all 0.18s ease;
+    text-align: left;
+  }
+  .btn:hover {
+    background: var(--i30-crema);
+    border-color: var(--i30-claro);
+    color: var(--i30-oscuro);
+  }
+  .btn.on {
+    border: 2px solid var(--i30-accent);
+    background: var(--i30-crema);
+    color: var(--i30-oscuro);
+    font-weight: 600;
+    padding: 9px 15px;
+  }
+  .btn.btn-alt {
+    background: var(--i30-crema);
+    color: var(--i30-medio);
+    border-color: var(--i30-claro);
+  }
+  .btn.btn-alt:hover {
+    background: var(--i30-claro);
+    color: var(--i30-oscuro);
+  }
+  .btn.btn-alt.on {
+    background: var(--i30-medio);
+    border-color: var(--i30-medio);
+    color: #FFFFFF;
+  }
+  .nav-sep {
+    display: inline-block;
+    width: 1px;
+    background: var(--borde);
+    margin: 0 6px;
+    align-self: stretch;
+  }
+
+  /* ─── MÓDULOS ────────────────────────────────────────── */
+  .card {
+    border-radius: 12px;
+    border: 1px solid var(--borde);
+    background: #FFFFFF;
+    overflow: hidden;
+    display: none;
+    border-left: 6px solid var(--i30-accent);
+  }
+  .card.active {
+    display: block;
+    animation: fadeIn 0.35s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .ch {
+    padding: 1.75rem 2rem 1.5rem;
+    border-bottom: 1px solid var(--borde);
+    background: var(--i30-crema);
+  }
+  .cn {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 99px;
+    margin-bottom: 0.85rem;
+    background: var(--i30-accent);
+    color: #FFFFFF;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .ct {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 1.3;
+    color: var(--i30-oscuro);
+    margin-bottom: 0.4rem;
+  }
+  .cs {
+    font-size: 13px;
+    color: var(--i30-medio);
+    line-height: 1.55;
+    font-style: italic;
+  }
+
+  .cb { padding: 2rem; }
+
+  /* ─── CAJA DE RESONANCIA ─────────────────────────────── */
+  .resonancia {
+    border-left: 4px solid var(--i30-accent);
+    background: var(--i30-crema);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .resonancia-lbl {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i30-accent);
+    margin-bottom: 8px;
+  }
+  .resonancia-txt {
+    font-family: var(--font-serif);
+    font-size: 16.5px;
+    line-height: 1.6;
+    font-style: italic;
+    color: var(--i30-oscuro);
+  }
+
+  /* ─── SECCIONES VER / JUZGAR / ACTUAR ────────────────── */
+  .pl {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i30-oscuro);
+    margin-top: 2.25rem;
+    margin-bottom: 1.1rem;
+    border-bottom: 1px solid var(--borde);
+    padding-bottom: 7px;
+  }
+  .pl:first-of-type { margin-top: 0.5rem; }
+
+  .pts {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 1.5rem;
+  }
+  .pts li {
+    display: flex;
+    gap: 14px;
+    font-size: 14.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+  .pts li strong {
+    color: var(--i30-oscuro);
+    font-weight: 600;
+  }
+  .dot {
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    background: var(--i30-accent);
+    color: #FFFFFF;
+    margin-top: 2px;
+    font-family: var(--font-serif);
+  }
+  .dot.j { background: var(--i30-medio); }
+  .dot.a { background: var(--i30-oscuro); }
+
+  /* ─── GRILLA DE ESCENARIOS / DIMENSIONES ─────────────── */
+  .ejes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 1.5rem;
+  }
+  .eje {
+    background: var(--i30-crema);
+    border-radius: 10px;
+    padding: 1.1rem 1.25rem;
+    border-top: 4px solid var(--i30-accent);
+  }
+  .eje-n {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--i30-accent);
+    margin-bottom: 8px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .eje-t {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--i30-oscuro);
+    margin-bottom: 6px;
+  }
+  .eje-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.6;
+  }
+
+  /* ─── ACTIVIDADES ────────────────────────────────────── */
+  .act {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 1.15rem 1.35rem;
+    margin-bottom: 12px;
+    border-left: 4px solid var(--i30-accent);
+  }
+  .act-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  .tag-ind {
+    background: var(--i30-oscuro);
+    color: var(--i30-crema);
+  }
+  .tag-gru {
+    background: var(--i30-accent);
+    color: #FFF;
+  }
+  .act-title {
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: var(--i30-oscuro);
+    margin-bottom: 6px;
+    line-height: 1.35;
+  }
+  .act-body {
+    font-size: 14px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+  .act-body em {
+    color: var(--i30-medio);
+    font-style: italic;
+  }
+
+  /* ─── CITA INSPIRADORA ───────────────────────────────── */
+  .cita {
+    border-radius: 10px;
+    padding: 1.2rem 1.4rem;
+    background: linear-gradient(180deg, var(--i30-crema) 0%, #FFF 100%);
+    border: 1px solid var(--i30-claro);
+    margin-top: 2rem;
+  }
+  .cita-lbl {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i30-accent);
+    margin-bottom: 8px;
+  }
+  .cita-txt {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    line-height: 1.7;
+    font-style: italic;
+    color: var(--i30-oscuro);
+  }
+  .cita-ref {
+    font-size: 12px;
+    margin-top: 10px;
+    font-weight: 500;
+    color: var(--i30-medio);
+    font-style: normal;
+  }
+
+  /* ─── ALERTA PASTORAL ────────────────────────────────── */
+  .alerta {
+    border-left: 4px solid var(--alerta);
+    background: var(--alerta-bg);
+    padding: 1.15rem 1.35rem;
+    margin-top: 1.75rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .alerta-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--alerta);
+    margin-bottom: 8px;
+  }
+  .alerta-lbl::before {
+    content: '† ';
+    font-size: 14px;
+  }
+  .alerta-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+
+  /* ─── AUTOCUIDADO ────────────────────────────────────── */
+  .autocuidado {
+    border-left: 4px solid var(--i30-medio);
+    background: #F6FBEA;
+    padding: 1.15rem 1.35rem;
+    margin-top: 1.75rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .autocuidado-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i30-medio);
+    margin-bottom: 8px;
+  }
+  .autocuidado-lbl::before {
+    content: '❋ ';
+    color: var(--i30-accent);
+  }
+  .autocuidado-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+
+  /* ─── LECTURA COMPLEMENTARIA ─────────────────────────── */
+  .lectura {
+    background: #FFF;
+    border: 1px dashed var(--i30-accent);
+    border-radius: 10px;
+    padding: 1.15rem 1.35rem;
+    margin-top: 1.75rem;
+  }
+  .lectura-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--i30-medio);
+    margin-bottom: 8px;
+  }
+  .lectura-lbl::before {
+    content: '📖 ';
+  }
+  .lectura-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+  .lectura-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--i30-accent);
+    color: #FFF;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.18s;
+  }
+  .lectura-link:hover {
+    background: var(--i30-oscuro);
+  }
+
+  /* ─── REFERENCIAS ────────────────────────────────────── */
+  .ref {
+    font-size: 11.5px;
+    color: var(--texto-3);
+    font-style: italic;
+    margin-top: 1.75rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--borde);
+  }
+
+  /* ─── FORO / MURO DEL CAMINO ─────────────────────────── */
+  .foro {
+    background: #FFFFFF;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    margin-top: 2rem;
+    overflow: hidden;
+    border-left: 6px solid var(--i30-medio);
+  }
+  .foro-head {
+    background: var(--i30-crema);
+    padding: 1.75rem 2rem 1.5rem;
+    border-bottom: 1px solid var(--borde);
+  }
+  .foro-lbl {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 99px;
+    margin-bottom: 0.85rem;
+    background: var(--i30-medio);
+    color: #FFFFFF;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .foro-title {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: normal;
+    line-height: 1.3;
+    color: var(--i30-oscuro);
+    margin-bottom: 0.4rem;
+  }
+  .foro-sub {
+    font-size: 13px;
+    color: var(--i30-medio);
+    line-height: 1.55;
+    font-style: italic;
+  }
+  .foro-body { padding: 2rem; }
+
+  .foro-vista {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 1.5rem;
+    background: var(--i30-crema);
+    padding: 6px;
+    border-radius: 10px;
+    max-width: max-content;
+    flex-wrap: wrap;
+  }
+  .foro-vista-btn {
+    border: none;
+    background: transparent;
+    color: var(--texto-2);
+    padding: 8px 16px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .foro-vista-btn.on {
+    background: var(--i30-medio);
+    color: #FFF;
+    font-weight: 600;
+  }
+
+  .foro-pautas {
+    background: var(--alerta-bg);
+    border-left: 4px solid var(--alerta);
+    padding: 1.15rem 1.35rem;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 1.75rem;
+  }
+  .foro-pautas-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--alerta);
+    margin-bottom: 8px;
+  }
+  .foro-pautas-lbl::before { content: '† '; }
+  .foro-pautas ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .foro-pautas li {
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    padding-left: 14px;
+    position: relative;
+  }
+  .foro-pautas li::before {
+    content: '·';
+    position: absolute;
+    left: 4px;
+    color: var(--alerta);
+    font-weight: 700;
+  }
+
+  .foro-form {
+    background: var(--i30-fondo);
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .foro-form-lbl {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--i30-oscuro);
+    margin-bottom: 12px;
+  }
+  .foro-form-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .foro-form-row label {
+    font-size: 12.5px;
+    color: var(--texto-2);
+    align-self: center;
+    font-weight: 500;
+  }
+  .foro-form select {
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    padding: 7px 10px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+    cursor: pointer;
+  }
+  .foro-form textarea {
+    width: 100%;
+    min-height: 90px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+    resize: vertical;
+    line-height: 1.55;
+    margin-bottom: 10px;
+  }
+  .foro-form textarea:focus,
+  .foro-form select:focus {
+    outline: none;
+    border-color: var(--i30-medio);
+  }
+  .foro-form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .foro-form-info {
+    font-size: 11.5px;
+    color: var(--texto-3);
+    font-style: italic;
+  }
+  .foro-btn {
+    background: var(--i30-medio);
+    color: #FFF;
+    border: none;
+    border-radius: 7px;
+    padding: 9px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    transition: background 0.18s;
+  }
+  .foro-btn:hover { background: var(--i30-oscuro); }
+  .foro-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .foro-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .foro-vacio {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: var(--texto-3);
+    font-size: 13.5px;
+    font-style: italic;
+    background: var(--i30-crema);
+    border-radius: 10px;
+  }
+  .comment {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-left: 3px solid var(--i30-suave);
+    border-radius: 10px;
+    padding: 1rem 1.15rem;
+  }
+  .comment-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .comment-autor {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--i30-oscuro);
+  }
+  .comment-pais {
+    font-size: 12px;
+    color: var(--i30-medio);
+    font-weight: 500;
+  }
+  .comment-pais::before { content: ' · '; color: var(--texto-3); }
+  .comment-modulo {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: var(--i30-crema);
+    color: var(--i30-medio);
+    margin-left: 6px;
+  }
+  .comment-fecha {
+    font-size: 11.5px;
+    color: var(--texto-3);
+  }
+  .comment-texto {
+    font-size: 14px;
+    color: var(--texto);
+    line-height: 1.65;
+    margin-bottom: 10px;
+    white-space: pre-wrap;
+  }
+  .comment-actions {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .react-btn {
+    background: var(--i30-crema);
+    border: 1px solid transparent;
+    border-radius: 99px;
+    padding: 4px 10px;
+    font-size: 12.5px;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    color: var(--texto-2);
+    transition: all 0.15s;
+  }
+  .react-btn:hover { background: var(--i30-claro); }
+  .react-btn.on {
+    background: var(--i30-suave);
+    color: #FFF;
+    border-color: var(--i30-medio);
+    font-weight: 600;
+  }
+  .react-count {
+    margin-left: 4px;
+    font-weight: 600;
+  }
+  .reply-btn {
+    background: transparent;
+    border: none;
+    color: var(--i30-medio);
+    font-size: 12.5px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    margin-left: auto;
+    font-family: var(--font-sans);
+  }
+  .reply-btn:hover {
+    background: var(--i30-crema);
+    color: var(--i30-oscuro);
+  }
+  .comment-replies {
+    margin-top: 12px;
+    padding-left: 1rem;
+    border-left: 2px dashed var(--borde);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .reply {
+    background: var(--i30-fondo);
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+  }
+  .reply-form {
+    background: var(--i30-crema);
+    border-radius: 8px;
+    padding: 0.8rem;
+    margin-top: 10px;
+    display: none;
+  }
+  .reply-form.on { display: block; }
+  .reply-form textarea {
+    width: 100%;
+    min-height: 60px;
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    resize: vertical;
+    background: #FFF;
+    margin-bottom: 8px;
+  }
+  .reply-form-actions {
+    display: flex;
+    gap: 6px;
+    justify-content: flex-end;
+  }
+  .reply-form-cancel {
+    background: transparent;
+    border: 1px solid var(--borde);
+    color: var(--texto-2);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 12.5px;
+    cursor: pointer;
+    font-family: var(--font-sans);
+  }
+
+  .foro-login {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--i30-crema);
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+  }
+  .foro-login-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .foro-login-link {
+    display: inline-block;
+    background: var(--i30-medio);
+    color: #FFF;
+    padding: 8px 18px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  /* ─── EVALUACIÓN (M6) ────────────────────────────────── */
+  .eval-nota {
+    background: var(--i30-crema);
+    border-left: 4px solid var(--i30-medio);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+  .eval-nota-lbl {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i30-medio);
+    margin-bottom: 6px;
+  }
+  .eval-nota-txt strong { color: var(--i30-oscuro); }
+  .eval-nota-txt em { color: var(--i30-medio); font-style: italic; }
+
+  .eval-q {
+    margin-bottom: 1.5rem;
+  }
+  .eval-q > label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--i30-oscuro);
+    margin-bottom: 8px;
+    line-height: 1.55;
+  }
+  .eval-q textarea {
+    width: 100%;
+    min-height: 100px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+    resize: vertical;
+    line-height: 1.6;
+    transition: border-color 0.15s;
+  }
+  .eval-q textarea:focus,
+  .eval-q input:focus {
+    outline: none;
+    border-color: var(--i30-medio);
+    box-shadow: 0 0 0 3px rgba(60, 52, 137, 0.1);
+  }
+  .eval-q input[type="date"] {
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 9px 12px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+  }
+  .eval-fecha { max-width: 320px; }
+
+  .eval-scale-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .eval-radio {
+    flex: 1;
+    min-width: 55px;
+    cursor: pointer;
+    position: relative;
+  }
+  .eval-radio input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .eval-radio span {
+    display: block;
+    text-align: center;
+    padding: 12px 8px;
+    background: var(--i30-crema);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    color: var(--i30-medio);
+    font-size: 15px;
+    transition: all 0.15s;
+  }
+  .eval-radio:hover span { background: var(--i30-claro); }
+  .eval-radio input:checked + span {
+    background: var(--i30-medio);
+    border-color: var(--i30-oscuro);
+    color: #FFF;
+  }
+
+  .eval-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: var(--i30-crema);
+    border: 1px solid var(--i30-claro);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+  .eval-check input {
+    margin-top: 4px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--i30-medio);
+    flex-shrink: 0;
+  }
+  .eval-check label {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    cursor: pointer;
+  }
+  .eval-check label strong { color: var(--i30-oscuro); }
+  .eval-check label em { color: var(--i30-medio); font-style: italic; }
+
+  .eval-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  .eval-btn-guardar {
+    background: var(--i30-oscuro);
+  }
+  .eval-btn-guardar:hover { background: var(--i30-medio); }
+  .eval-btn-imprimir {
+    background: transparent;
+    color: var(--i30-medio);
+    border: 1px solid var(--i30-medio);
+  }
+  .eval-btn-imprimir:hover {
+    background: var(--i30-crema);
+    color: var(--i30-oscuro);
+  }
+
+  .eval-msg {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    display: none;
+    margin-bottom: 1rem;
+  }
+  .eval-msg.on { display: block; }
+  .eval-msg.exito {
+    background: #ECF5D9;
+    color: var(--i30-oscuro);
+    border-left: 3px solid var(--i30-medio);
+  }
+  .eval-msg.error {
+    background: var(--alerta-bg);
+    color: var(--alerta);
+    border-left: 3px solid var(--alerta);
+  }
+
+  /* Estilos de impresión de la evaluación */
+  @media print {
+    body { background: #FFF; padding: 0; }
+    .root { box-shadow: none; padding: 1rem; max-width: 100%; }
+    .portada, .video-wrap, .mode-selector, .nav { display: none !important; }
+    .card { display: none !important; }
+    #m6.card { display: block !important; break-inside: avoid; border: none; }
+    .eval-actions, .eval-msg { display: none !important; }
+    .ch { background: transparent; }
+    .eval-q textarea, .eval-q input[type="date"] {
+      border: none;
+      border-bottom: 1px solid #999;
+      border-radius: 0;
+      background: transparent;
+    }
+  }
+
+  /* ─── RESPONSIVE ─────────────────────────────────────── */
+  @media (max-width: 640px) {
+    body { padding: 1rem 0.5rem; }
+    .root { padding: 1.25rem; }
+    .portada { padding: 1.5rem 1.25rem; }
+    .portada-title { font-size: 24px; }
+    .ch { padding: 1.25rem 1.25rem 1rem; }
+    .ct { font-size: 20px; }
+    .cb { padding: 1.25rem; }
+    .ejes { grid-template-columns: 1fr; }
+    .btn { flex: 1 1 100%; }
+    .mode-selector { flex-direction: column; align-items: stretch; max-width: 100%; }
+    .mode-btn { text-align: center; }
+    .foro-head { padding: 1.25rem; }
+    .foro-body { padding: 1.25rem; }
+    .foro-title { font-size: 19px; }
+    .foro-vista { max-width: 100%; flex-direction: column; align-items: stretch; }
+    .foro-vista-btn { text-align: center; }
+    .comment-head { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .reply-btn { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER SUPERIOR ═════════════════════════════════ -->
+<header class="top-header">
+  <a href="index.html" class="top-logo">Escuela PLAPA</a>
+  <a href="catalogo_30_itinerarios_plapa_corregido.html" class="top-link">← Catálogo</a>
+</header>
+
+<div class="root mode-grupal">
+
+  <!-- ═══ PORTADA ═════════════════════════════════════════ -->
+  <div class="portada">
+    <p class="portada-sup">Itinerario formativo 30 · Escuela PLAPA · CELAM 2026</p>
+    <h1 class="portada-title">Construir la pastoral diocesana y continental</h1>
+    <p class="portada-sub">De la parroquia a la red latinoamericana: la pastoral de adicciones como expresión de sinodalidad y manual abierto. Cierre del catálogo completo.</p>
+
+    <div class="dest-box">
+      <div class="dest-lbl">Destinatarios</div>
+      <div class="dest-txt">Obispos, vicarios pastorales, coordinadores diocesanos de pastoral de adicciones y referentes nacionales que quieren articular la respuesta diocesana con la red continental de PLAPA-CELAM. Itinerario de cierre del catálogo completo de 30 itinerarios formativos, especialmente recomendado para encuentros diocesanos o continentales de formación de coordinadores. Cierre del bloque 7 y del catálogo entero.</div>
+    </div>
+
+    <div class="portada-pills">
+      <span class="portada-pill">§11.4 · §11.8 · §11.9 · §13.1–13.10</span>
+      <span class="portada-pill">4 módulos</span>
+      <span class="portada-pill">Coordinadores diocesanos y nacionales</span>
+      <span class="portada-pill">Nivel avanzado</span>
+      <span class="portada-pill">Ver · Juzgar · Actuar · Síntesis</span>
+    </div>
+  </div>
+
+  <!-- ═══ VIDEO ═══════════════════════════════════════════ -->
+  
+  <!-- NUEVO: Bloque del Video de Presentación Incrustado -->
+<div style="background: var(--surface-2); border: 0.5px solid var(--border); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
+  <p style="font-size: 11px; font-weight: 500; color: #085041; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; text-align: left;">
+    ▶️ Video de presentación
+  </p>
+  <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px;">
+    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+      src="https://www.youtube.com/embed/PLACEHOLDER_ITIN30"
+      title="Presentación del Itinerario 30" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+  <!-- ═══ SELECTOR DE MODALIDAD ═══════════════════════════ -->
+  <div class="mode-selector">
+    <button class="mode-btn on" onclick="setMode('grupal', this)">👥 Hacer en comunidad</button>
+    <button class="mode-btn" onclick="setMode('individual', this)">👤 Hacer de forma individual</button>
+  </div>
+
+  <!-- ═══ NAVEGACIÓN ══════════════════════════════════════ -->
+  <div class="nav">
+    <button class="btn on" onclick="show(1,this)">Módulo 1 · La Pastoral Diocesana</button>
+    <button class="btn" onclick="show(2,this)">Módulo 2 · Documento de unidad PLAPA</button>
+    <button class="btn" onclick="show(3,this)">Módulo 3 · Epistemología ascendente</button>
+    <button class="btn" onclick="show(4,this)">Módulo 4 · Manual abierto: rolling release</button>
+    <span class="nav-sep" aria-hidden="true"></span>
+    <button class="btn btn-alt" onclick="show(5,this)">🌱 Muro del camino</button>
+    <button class="btn btn-alt" onclick="show(6,this)">✍ Evaluación</button>
+  </div>
+
+  <!-- ═══ MÓDULO 1 ════════════════════════════════════════ -->
+  <div id="m1" class="card active">
+    <div class="ch">
+      <span class="cn">Módulo 1 · El Ver</span>
+      <div class="ct">La Pastoral Diocesana: una necesidad pastoral, no una opción administrativa</div>
+      <div class="cs">Misión, visión y objetivos de la pastoral de adicciones a nivel de Iglesia particular · §11.4</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"El problema de las adicciones no reconoce fronteras parroquiales. Afecta a familias de toda la diócesis, desborda la capacidad de respuesta de una sola comunidad y exige una mirada que pueda abarcar el territorio en su conjunto."</div>
+      </div>
+
+      <div class="pl">El Juzgar — Los cuatro niveles de la pastoral de adicciones</div>
+      <ul class="pts">
+        <li><span class="dot j">1</span><span><strong>Centro Barrial / Parroquia (Itinerario 25).</strong> <em>El mediocampo territorial</em>: cercanía, gestión y acompañamiento donde la persona vive. Es el nivel más próximo al hermano concreto, <em>pero no puede sostener solo todo el peso de la respuesta pastoral</em>.</span></li>
+        <li><span class="dot j">2</span><span><strong>Pastoral Diocesana (§11.4).</strong> <em>Articula la red de toda la Iglesia particular</em>. Permite conocer el territorio en su conjunto, tejer una red de acompañamiento, impulsar respuestas unitarias desde el obispo. <em>Lugar propio de la communio eclesial</em>.</span></li>
+        <li><span class="dot j">3</span><span><strong>Pastoral Nacional (§11.8).</strong> <em>Conferencias episcopales y políticas públicas nacionales</em>. Interlocución con el Estado, incidencia en legislación, articulación entre diócesis del mismo país.</span></li>
+        <li><span class="dot j">4</span><span><strong>PLAPA Continental (§11.9, §13).</strong> <em>CELAM, red latinoamericana, manual abierto</em>. El nivel donde la pastoral se piensa como respuesta de una Iglesia continental, con epistemología ascendente y manual en rolling release.</span></li>
+      </ul>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>Tres razones por las que la dimensión diocesana no es opcional.</strong> El §11.4 enumera tres razones por las que la dimensión diocesana no es opcional: <em>permite conocer con precisión la realidad del territorio</em> (sin un mapa diocesano <em>"cada parroquia actúa de manera aislada, repitiendo esfuerzos o dejando sin atención a quienes más lo necesitan"</em>); <em>hace posible articular una red de acompañamiento</em> que ninguna parroquia podría sostener sola; y <em>es el lugar propio de la communio eclesial</em> donde el obispo puede impulsar una respuesta unitaria.</span></li>
+        <li><span class="dot">V</span><span><strong>Misión diocesana articulada en tres dimensiones (§11.4.1).</strong> La misión diocesana se articula en tres dimensiones: <em>"que la Iglesia cuide a sus hijos"</em> (cuidado integral, no solo espiritual), <em>"que la Iglesia sea la familia de los más rotos"</em> (citando a Benedicto XVI: <em>"la Iglesia es la familia de Dios en el mundo"</em>), y <em>"que la Iglesia profundice su opción por el Evangelio de la vida"</em> (defensa de toda vida humana desde su inicio hasta su fin natural).</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>Expresión concreta de sinodalidad: caminar juntos hacia los que más lo necesitan.</strong> <em>"Una pastoral diocesana de adicciones es, en ese sentido, una expresión concreta de la sinodalidad: caminar juntos hacia quienes más lo necesitan"</em> (§11.4). Esta afirmación conecta directamente con el Módulo 3 de este itinerario: <em>la sinodalidad no es solo un método de elaboración del Manual</em> (que se desarrollará en el §13.2), <em>sino el principio organizativo de la pastoral diocesana misma</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>Diez objetivos del §11.4.3: más que "coordinar lo existente".</strong> Los diez objetivos del §11.4.3 muestran que <em>la pastoral diocesana no se limita a "coordinar lo que ya existe"</em>: incluye <em>sensibilizar, identificar actores, tejer redes, desarrollar respuestas donde falten, producir reflexión propia, anunciar el Evangelio, incidir en políticas públicas, formar agentes</em> y —de manera explícita en el séptimo objetivo— <em>"cuidar la salud integral de quienes"</em> trabajan en la pastoral, <em>conectando directamente con el Itinerario 29</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Mapear el estado de la pastoral diocesana de adicciones propia</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo evalúa: <em>¿existe una pastoral diocesana de adicciones constituida formalmente? ¿hay un coordinador diocesano nombrado? ¿hay un mapa de las respuestas existentes en las distintas parroquias y centros barriales de la diócesis?</em> Si no existe, identificar <em>el primer paso institucional para constituirla</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora el <em>estado actual</em> (constituida/incipiente/inexistente) y el <em>primer paso institucional</em> que corresponde dar. Sin ese primer paso con nombre y fecha, la pastoral diocesana <em>queda en el deseo pastoral del obispo</em>.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Revisar los diez objetivos del §11.4.3 con la realidad diocesana</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo recorre los diez objetivos del §11.4.3 y evalúa <em>el grado de cumplimiento de cada uno en la diócesis propia</em>: <em>¿hay sensibilización activa? ¿se identificaron los actores que ya responden al tema? ¿hay redes tejidas entre ellos?</em> Identificar <em>los tres objetivos más urgentes de desarrollar</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora los <em>tres objetivos</em> más urgentes para tu diócesis. Al lado de cada uno, <em>el responsable concreto</em>. Sin responsable, la lista <em>es documento, no plan</em>.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Articulación entre los cuatro niveles: ¿dónde se rompe la cadena?</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo reflexiona: <em>¿cómo circula la información y la articulación entre los cuatro niveles (parroquia · diocesana · nacional · continental) en nuestro contexto? ¿dónde se rompe la cadena</em> — una parroquia que no reporta a la diocesana, una conferencia episcopal que no articula con PLAPA, una experiencia local que no llega al nivel continental? Identificar <em>el eslabón más débil</em> y proponer un gesto concreto para fortalecerlo.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora los <em>cuatro niveles</em> y marcá para cada tránsito (1→2, 2→3, 3→4) si funciona: <em>sí/parcial/no</em>. El tránsito más débil es la agenda; <em>un contacto nuevo esta semana ya mueve la aguja</em>.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §11.4.1 — Benedicto XVI</div>
+        <div class="cita-txt">"La Iglesia es la familia de Dios en el mundo. La pastoral de adicciones debe ser el rostro acogedor de una Iglesia samaritana que no teme abrazar a quienes están más heridos por la vida."</div>
+        <div class="cita-ref">Manual de la PLAPA, §11.4.1 — Misión de la Pastoral Diocesana (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">La <em>estructura diocesana</em> no debe convertirse en <em>una capa burocrática entre el centro barrial y la red continental</em>. Hay diócesis donde la constitución formal de la pastoral <em>frenó las iniciativas que ya funcionaban</em>, porque añadió reuniones, informes y aprobaciones sin aportar red real. La pastoral diocesana <em>sirve si acelera, articula y protege</em> lo que el territorio hace; <em>obstaculiza si se vuelve un intermediario que ralentiza</em>. El criterio es siempre <em>el bien del hermano concreto en el barrio</em>, no la coherencia del organigrama diocesano.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">Coordinar una pastoral diocesana <em>implica una carga de gestión y articulación institucional muy distinta a la del agente de territorio</em>. El facilitador recuerda que <em>el coordinador diocesano necesita también su propio espacio de cuidado</em> (Itinerario 29), adaptado a las exigencias específicas de un rol que combina <em>dimensión pastoral, organizativa y de incidencia política</em>.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §11.4 (Pastoral Diocesana), §11.4.1 (Misión), §11.4.3 (Diez objetivos), Itinerario 25 (Centros barriales), Itinerario 29 (Cuidar a los que cuidan) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 2 ════════════════════════════════════════ -->
+  <div id="m2" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 2 · El Juzgar</span>
+      <div class="ct">El documento de unidad de PLAPA: el "Sí" continental que dio origen al Manual</div>
+      <div class="cs">300 agentes de 13 países construyendo una mirada compartida · §11.9</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"Convocados por el Consejo Episcopal Latinoamericano, compartiendo en espíritu sinodal, nos hemos reunido virtualmente representantes de diversos proyectos pastorales, servicios y comunidades eclesiales de 13 países de nuestra América para reflexionar y analizar la oportunidad de dar vida a una Pastoral de Adicciones Latinoamericana."</div>
+      </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>Documento fundacional de febrero 2023: cinco "SÍ" de la antropología PLAPA.</strong> El §11.9 reproduce el Documento de Unidad del encuentro continental de febrero de 2023, <em>el acto fundacional de la PLAPA</em>. Sus cinco afirmaciones de <em>"SÍ"</em> condensan toda la antropología que sostiene el Manual: <em>la dignidad inalienable de la persona, el sujeto de la pastoral como "persona rota y descartada", la comprensión bio-psico-social-espiritual del ser humano, la familia y comunidad también como sujetos pastorales, y la importancia central de los acompañantes pares</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>No triunfalismo: nombra desafíos reales con honestidad.</strong> El documento también reconoce honestamente las dificultades del campo: <em>"es necesario remarcar el daño que genera el consumo"</em>, <em>"hay naturalización de algunos consumos, como el alcohol"</em>, <em>"nos preocupa la facilidad al acceso a sustancias, drogas sintéticas, psicofármacos."</em> <em>No es un documento triunfalista</em>: nombra los desafíos reales <em>con la misma honestidad con la que afirma sus convicciones</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>Narcomenudeo: víctimas que asumen el rol de vendedores (semilla de los Itin 22 y 23).</strong> <em>"Existe una alta relación entre consumo, delincuencia y cárcel; el narcomenudeo que superpone los roles de consumidor y vendedor desde las mismas víctimas que lo asumen como sustento de vida"</em> (§11.9). Este reconocimiento temprano, <em>en el documento fundacional de 2023</em>, es <em>la semilla teórica</em> que el Manual desarrolla in extenso en <em>los Itinerarios 22 y 23</em> sobre captación de menores y pastoral carcelaria.</span></li>
+        <li><span class="dot j">J</span><span><strong>Familia matizada, no idealizada: proveedora o también obstáculo.</strong> <em>"La familia es clave: puede ser proveedora o no de herramientas para procesar emociones, fundamentales para los procesos de recuperación, pero también puede favorecer el consumo, desarrollar codependencias, y hasta ser obstáculo en los procesos de recuperación"</em> (§11.9). <em>Esta visión matizada y no idealizada de la familia</em>, presente ya en el documento fundacional, es <em>coherente con todo el desarrollo posterior del Manual</em> sobre familia comunitaria (Itinerario 7) y crianza compartida.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Leer el Documento de Unidad completo en grupo</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo lee el §11.9 completo (<em>el documento de unidad de PLAPA</em>) en voz alta, <em>deteniéndose en cada afirmación</em>. <em>¿Qué resuena con la experiencia propia? ¿qué genera preguntas?</em> El documento fundacional es, en sí mismo, <em>una herramienta formativa que sintetiza en pocas páginas todo el espíritu del Manual de 540 páginas</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Imprimí el §11.9 y leelo <em>en una sola sentada, con tiempo</em>. Marcá en el margen las frases que te sacuden <em>más fuerte</em>. Esa marca personal <em>es tu propia síntesis del Manual</em>.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Redactar el "Sí" diocesano propio</div>
+        <div class="mode-g">
+          <div class="act-body">Inspirándose en la estructura del documento de unidad continental, el grupo redacta <em>una versión breve y propia</em>: <em>"Decimos que SÍ a..."</em> con <em>tres o cuatro afirmaciones</em> que sinteticen el compromiso específico de la diócesis o el equipo con la pastoral de adicciones. Ese documento <em>puede convertirse en una declaración fundacional local</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Escribí en tu bitácora <em>tus propios tres "Decimos que SÍ a..."</em> para la diócesis. Que sean <em>afirmaciones concretas, no generalidades piadosas</em>: cada SÍ <em>cierra la puerta a un NO específico</em> que el territorio enfrenta.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Reconocer la pertenencia continental: no estamos solos</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo cierra el módulo reflexionando: <em>¿qué significa, para la vida cotidiana del equipo, saber que forma parte de una red continental de 300 agentes de 13 países?</em> La pertenencia a la PLAPA <em>no es nominal</em>: ofrece interlocutores reales en otros países, bibliografía viva, red de referencias. <em>Identificar un contacto concreto</em> (persona o institución) en otro país del continente con el que valdría la pena establecer vínculo.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora <em>un país del continente</em> cuya experiencia pastoral querrías conocer, y <em>la pregunta concreta</em> que le harías a un referente de allá. La red continental <em>se activa con preguntas específicas</em>, no con intercambios genéricos.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §11.9 — Documento de Unidad PLAPA, 2023</div>
+        <div class="cita-txt">"La dignidad de la persona, inalienable dignidad de hija de Dios, en la que no importa cómo estemos o qué hayamos hecho, siempre vale la pena, siempre hay esperanza. La persona en consumo es considerada siempre sujeto de derechos."</div>
+        <div class="cita-ref">Manual de la PLAPA, §11.9 — La Pastoral Latinoamericana de Acompañamiento y Prevención de las Adicciones (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">El Documento de Unidad PLAPA 2023 <em>no debe leerse como un texto cerrado y agotado</em>. Fue el <em>"Sí" fundacional</em>, pero <em>el territorio y los desafíos siguen cambiando</em>: drogas sintéticas nuevas, apuestas en línea, violencias emergentes. La diócesis que recita el Documento <em>sin releer la realidad actual</em> traiciona el espíritu sinodal que lo generó. <em>El Documento se honra actualizándolo</em>, no citándolo como una ortodoxia inmutable.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">Conocer el origen continental del Manual —<em>300 agentes de 13 países construyendo juntos esta mirada</em>— puede ser <em>una fuente profunda de aliento para el agente que se siente solo en su territorio específico</em>. El facilitador invita a que el equipo <em>se reconozca como parte de algo mucho mayor que su propia parroquia</em>: una red continental <em>que lo sostiene y lo precede</em>.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §11.9 (Documento de Unidad PLAPA 2023), Itinerarios 22-23 (Captación y cárceles), Itinerario 7 (Familia comunitaria) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 3 ════════════════════════════════════════ -->
+  <div id="m3" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 3 · El Actuar</span>
+      <div class="ct">La epistemología ascendente como legado: sinodalidad en la práctica</div>
+      <div class="cs">El saber que nace de la escucha del territorio, no de marcos teóricos preestablecidos · §13.1, §13.2</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"Más allá de los contenidos técnicos y pastorales, este manual deja como principal legado una metodología de trabajo que hemos denominado epistemología ascendente. Este enfoque parte de la premisa de que el saber no se impone desde marcos teóricos preestablecidos, sino que nace de la escucha atenta de los territorios."</div>
+      </div>
+
+      <div class="pl">El Juzgar — Tres textos clave de la epistemología ascendente</div>
+      <ul class="pts">
+        <li><span class="dot j">1</span><span><strong>El Manual como reflejo, no como punto de llegada (§13.1).</strong> <em>"Este manual no constituye un punto de llegada, sino el reflejo de un camino eclesial compartido que nace del clamor de nuestros pueblos."</em> Todas las propuestas del Actuar <em>"no son teorías abstractas, sino líneas de acción probadas... que ya están transformando realidades en diversos territorios."</em></span></li>
+        <li><span class="dot j">2</span><span><strong>300 agentes constitutivos, no solo consultivos (§13.2).</strong> <em>"El proceso de elaboración ha sido un ejercicio concreto de sinodalidad. La participación de cerca de 300 agentes no fue solo consultiva, sino constitutiva del texto."</em> El Manual <em>no fue escrito por expertos y luego "validado" por el territorio</em>: fue <em>construido desde el territorio mismo</em>.</span></li>
+        <li><span class="dot j">3</span><span><strong>La tecnología al servicio de la comunión (§13.2).</strong> <em>"El uso de inteligencia artificial y la sistematización de desgrabaciones de reuniones virtuales permitieron procesar un volumen inmenso de aportes sin sacrificar la riqueza original de los testimonios ni la particularidad de los lenguajes locales."</em> La IA aquí <em>no reemplazó el pensamiento humano</em>: <em>salvaguardó la participación comunitaria a una escala que de otro modo hubiera sido inmanejable</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>La PLAPA se ofrece como nexo activo, no solo como marco.</strong> <em>"Desde la PLAPA, nos ofrecemos como un nexo para que cualquier comunidad o agente pastoral pueda vincularse con las experiencias descritas en este material. Creemos en la importancia de las reuniones bilaterales y el intercambio de prácticas; por ello, facilitaremos las conexiones necesarias para que nadie se sienta solo en esta misión"</em> (§13.1). <em>Esta no es solo una afirmación retórica</em>: <em>la red PLAPA se ofrece activamente como conector entre territorios</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>Coherencia metodológica: el catálogo mismo encarna la epistemología ascendente.</strong> La epistemología ascendente que el §13.2 describe <em>es la misma metodología que organiza cada uno de los 30 itinerarios de este catálogo formativo</em>: cada uno parte de un <em>"Ver" anclado en el diagnóstico territorial del Manual</em> antes de avanzar al <em>"Juzgar" teológico y al "Actuar" concreto</em>. Esta es <em>la coherencia metodológica más profunda</em> entre el proceso de elaboración del Manual y el proceso formativo que estos itinerarios proponen.</span></li>
+        <li><span class="dot j">J</span><span><strong>Saber situado: autoridad reconocida de quienes caminan con los más vulnerados.</strong> <em>"El conocimiento aquí plasmado es, por tanto, un saber situado que reconoce la autoridad de quienes caminan día a día junto a los más vulnerados"</em> (§13.2). Esta afirmación <em>dignifica explícitamente el saber territorial de cada agente que ha recorrido este catálogo</em>: su experiencia cotidiana <em>no es "menos científica" que el saber académico</em>, sino <em>una forma de autoridad reconocida por el propio Manual</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Aportar la propia experiencia a la red continental</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo identifica: <em>¿qué experiencia, práctica o aprendizaje propio del territorio podría aportarse a la red PLAPA para enriquecer futuras versiones del Manual</em> (que se desarrolla en el Módulo 4 como <em>"rolling release"</em>)? El Manual <em>no está cerrado</em>: el equipo que ha recorrido este catálogo formativo <em>tiene algo valioso para devolver a la red que originó el material</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora <em>un aprendizaje propio</em> del territorio que no esté en el Manual y que valdría la pena aportar. Ese aporte, sistematizado en una página, <em>es tu entrada activa a la red continental</em>.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Practicar la epistemología ascendente en la formación continua</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo evalúa: <em>¿cómo se construyen actualmente las decisiones pastorales del equipo o la diócesis? ¿se escucha primero al territorio o se aplican marcos teóricos preestablecidos?</em> Diseñar un mecanismo concreto (<em>consultas territoriales, encuestas a agentes de base</em>) que asegure que <em>la epistemología ascendente sea una práctica real, no solo un principio declarado</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora <em>un mecanismo</em> de escucha territorial que podrías instalar antes de la próxima gran decisión pastoral. Idealmente, <em>previo al diseño</em>, no para validarlo después.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">IA al servicio de la comunión, no de la eficiencia solitaria</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo reflexiona sobre el tercer texto clave: <em>¿cómo usa el equipo la IA y otras tecnologías en su trabajo pastoral? ¿como atajo que ahorra escuchar al otro, o como herramienta que escala la participación?</em> El criterio del §13.2 es claro: <em>la tecnología sirve a la comunión cuando preserva "la riqueza original de los testimonios"</em>; <em>la traiciona cuando los homogeniza o los sustituye</em>. Identificar <em>un uso concreto</em> de la tecnología que podría mejorar la articulación entre territorios.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Escribí en tu bitácora los <em>dos usos</em> de IA/tecnología que ya hacés en lo pastoral y marcá cuál <em>facilita la comunión</em> y cuál <em>podría estar reemplazándola</em>. El examen honesto <em>es el que corrige el rumbo</em>.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §13.2</div>
+        <div class="cita-txt">"El conocimiento aquí plasmado es un saber situado que reconoce la autoridad de quienes caminan día a día junto a los más vulnerados. La sinodalidad en la práctica demuestra que es posible tejer redes de pensamiento colectivo que sostengan la esperanza y la acción en toda la región."</div>
+        <div class="cita-ref">Manual de la PLAPA, §13.2 — La metodología como legado: Sinodalidad en la práctica (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">La <em>epistemología ascendente</em> no debe convertirse en <em>populismo pastoral</em> que confunde <em>escuchar al territorio</em> con <em>validar todo lo que el territorio dice</em>. El Manual escucha, sí, pero <em>discierne a la luz del Evangelio</em>: ciertas prácticas territoriales (<em>violencia de género naturalizada, aceptación resignada del narco, estigmatización de poblaciones específicas</em>) <em>no son material a validar</em>, son <em>realidades a confrontar con la Palabra</em>. Lo ascendente es <em>el punto de partida</em>, no el único criterio. La sinodalidad <em>incluye corrección fraterna</em>, no solo recolección de voces.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">Reconocer la propia experiencia territorial como <em>"saber con autoridad"</em> puede ser <em>liberador para agentes que sienten que su falta de formación académica los descalifica</em> frente a <em>"los expertos."</em> El facilitador refuerza este reconocimiento: <em>el Manual mismo, en su origen, validó el saber de 300 agentes de base como constitutivo, no solo consultivo</em>. Esa misma dignidad <em>aplica a cada participante de este itinerario</em>.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §13.1 (El Manual como reflejo), §13.2 (Metodología como legado), Itinerario 28 (Epistemología ascendente en la academia) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 4 ════════════════════════════════════════ -->
+  <div id="m4" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 4 · Síntesis</span>
+      <div class="ct">El Manual abierto: rolling release, inculturación territorial y el horizonte de esperanza</div>
+      <div class="cs">Un material en actualización continua, no una obra terminada · §13.3, §13.4, §13.10</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"Este documento se presenta bajo la modalidad de rolling release, lo que significa que no se considera una obra terminada ni estática, sino un material en actualización continua. Este manual es, en esencia, un compromiso con el aprendizaje permanente."</div>
+      </div>
+
+      <div class="pl">El Juzgar — Las dos claves del Manual abierto (§13.3, §13.4)</div>
+      <div class="ejes">
+        <div class="eje">
+          <div class="eje-n">Rolling Release</div>
+          <div class="eje-t">El Manual evoluciona al ritmo de los desafíos · §13.3</div>
+          <div class="eje-txt">El Manual <em>evoluciona al ritmo de los desafíos</em>. La versión digital <em>es el eje del dinamismo</em>. Un equipo curador <em>evalúa e incorpora sistemáticamente las contribuciones de la comunidad</em>, asegurando coherencia técnica y pastoral. Nunca un "punto final", siempre un camino en marcha.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Inculturación territorial</div>
+          <div class="eje-t">No pretende imponer un modelo único · §13.4</div>
+          <div class="eje-txt"><em>"No pretende imponer un modelo único ni recetas infalibles."</em> Requiere <em>"un ejercicio previo de escucha de la propia realidad."</em> No se trasladan experiencias mecánicamente: se <em>extraen principios subyacentes</em> para que cada equipo dé su propia respuesta creativa.</div>
+        </div>
+      </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>El catálogo de 30 itinerarios: aplicación concreta de la inculturación territorial.</strong> El catálogo de 30 itinerarios formativos que este proceso ha producido es, en sí mismo, <em>una aplicación concreta del principio de inculturación territorial</em>: cada itinerario parte de las citas exactas y la realidad descrita en el Manual, pero <em>las actividades propuestas requieren que cada equipo las adapte a su contexto específico</em>. El Manual <em>"cobra vida cuando se encarna en el lenguaje y las prácticas de los barrios, las parroquias y los centros de acompañamiento"</em> (§13.4).</span></li>
+        <li><span class="dot">V</span><span><strong>Advertencia que aplica al propio catálogo: no trasladar mecánicamente.</strong> <em>"La aplicación de las herramientas aquí descritas requiere un ejercicio previo de escucha de la propia realidad. No se trata de trasladar experiencias de un país a otro sin mediación"</em> (§13.4). Esta advertencia aplica directamente a <em>este mismo catálogo de itinerarios</em>: <em>las actividades propuestas son sugerencias a inculturar, no protocolos rígidos a aplicar mecánicamente</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>Discernimiento permanente: no hay texto definitivo que agote la sabiduría pastoral.</strong> El concepto de Manual <em>"rolling release"</em> tiene <em>una implicación teológica profunda</em>: la pastoral de adicciones, como toda acción de la Iglesia en el mundo, <em>está sujeta al discernimiento permanente y a la corrección fraterna desde la experiencia</em>. <em>No hay un texto definitivo y cerrado que agote la sabiduría pastoral sobre las adicciones</em>: hay <em>un proceso vivo de aprendizaje comunitario</em> que continúa más allá de la publicación del Manual.</span></li>
+        <li><span class="dot j">J</span><span><strong>Advertencia final del catálogo: mirada situada y comprometida con el territorio.</strong> <em>"Solo a través de una mirada situada y comprometida con el territorio, el acompañamiento podrá ser verdaderamente eficaz y transformador, evitando respuestas desencarnadas que no respondan al clamor real de nuestros hermanos"</em> (§13.4). Esta es <em>la advertencia final que cierra el catálogo entero</em>: <em>ningún itinerario, por completo que sea, reemplaza la escucha viva del territorio concreto</em> donde cada equipo trabaja.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Diseñar el proceso de inculturación de los 30 itinerarios</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo revisa los 30 itinerarios recorridos (o el plan para recorrerlos) y discute: <em>¿qué adaptaciones necesita el catálogo para el territorio propio? ¿hay realidades locales que los itinerarios no contemplan y que deberían añadirse? ¿hay actividades que no funcionan en el contexto cultural específico y necesitan rediseñarse?</em> <em>El catálogo es un punto de partida, no un destino final</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora los <em>tres itinerarios</em> que más necesitan inculturación para tu territorio y, al lado, <em>el ajuste principal</em> en cada uno. Esa planilla <em>es el plan de inculturación local</em> para el próximo año.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Conectar con la red PLAPA para futuras actualizaciones</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo evalúa: <em>¿conviene establecer contacto formal con la red PLAPA-CELAM para aportar la experiencia de implementación de estos itinerarios?</em> Esa retroalimentación <em>puede enriquecer tanto al Manual</em> (en su modalidad rolling release) <em>como al propio territorio</em>, que se beneficiaría de <em>conocer otras experiencias similares en el continente</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora <em>el referente PLAPA de tu país</em> (si lo conocés) o el canal de contacto con el CELAM. Si no lo tenés, esa <em>gestión concreta</em> es la primera entrada al rolling release: <em>sin canal, no hay aporte</em>.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Cierre del catálogo completo: el horizonte de esperanza (§13.10)</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo cierra el proceso formativo completo de los 30 itinerarios con <em>un momento de gratitud y compromiso renovado</em>. <em>¿Qué cambió en la mirada del equipo después de recorrer este catálogo? ¿qué compromiso concreto asume cada participante para el próximo año?</em> El §13.10 del Manual cierra con <em>"Un horizonte de esperanza: La luz en el camino"</em> — una imagen que puede inspirar el cierre litúrgico de este itinerario final, <em>con una celebración que agradezca el camino recorrido y encomiende el camino que falta</em>. Cerrar con la oración por los 30 itinerarios recorridos, por los hermanos que ya no están, por los que todavía no llegaron al centro barrial, y por la red continental que nos sostiene.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Para cerrar la bitácora del catálogo completo: escribí en una página <em>el compromiso concreto</em> que asumís para el próximo año como fruto del recorrido. Esa página <em>es tu propio "Sí" al Evangelio de la vida</em> tras los 30 itinerarios. Guardala: dentro de un año, releerla <em>será tu propia revisión de vida ministerial</em>.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §13.4</div>
+        <div class="cita-txt">"El manual se presenta como un marco de referencia que cobra vida cuando se encarna en el lenguaje y las prácticas de los barrios, las parroquias y los centros de acompañamiento de nuestra región. La inculturación no es solo una adaptación técnica, sino un acto de respeto por la historia de cada pueblo y la dignidad de cada persona."</div>
+        <div class="cita-ref">Manual de la PLAPA, §13.4 — Criterios de aplicación e inculturación territorial (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral — cierre del catálogo</div>
+        <div class="alerta-txt">El <em>rolling release</em> no debe convertirse en <em>pretexto para la postergación</em>: <em>"ya haremos esto cuando el Manual lo actualice."</em> El Manual se actualiza <em>porque los territorios actúan primero</em>, no al revés. La pastoral que espera la versión perfecta del documento antes de encarnar lo que ya está claro <em>invierte el orden del método ascendente</em>. El Manual sirve <em>mientras se practica</em>; <em>el que postergó treinta años una decisión concreta en nombre de "esperar más orientaciones" ya se descartó a sí mismo del horizonte de esperanza</em> que §13.10 propone.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente — cierre del catálogo de 30 itinerarios</div>
+        <div class="autocuidado-txt">El Itinerario 30 cierra <em>no solo una sesión formativa, sino un proceso completo de 30 itinerarios</em> construidos sobre la totalidad del Manual de la PLAPA. El facilitador invita al equipo a <em>reconocer el camino recorrido</em>: desde el Itinerario 1 (<em>la llaga como punto de partida</em>) hasta este, que cierra <em>mirando hacia la red continental y el horizonte de futuro</em>. Como el Manual mismo, este catálogo formativo <em>"no constituye un punto de llegada, sino el reflejo de un camino eclesial compartido"</em> (§13.1). El equipo que ha llegado hasta aquí <em>no termina: continúa</em>, inculturando, adaptando y aportando su propia experiencia <em>a la red más amplia que sostiene a toda la Iglesia latinoamericana en su respuesta a las adicciones</em>. Que el horizonte de esperanza del §13.10 — <em>"La luz en el camino"</em> — sea la bendición final sobre cada agente, cada equipo, cada diócesis y cada país que ha recorrido o recorrerá este camino.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §13.1 (Manual como reflejo), §13.2 (Sinodalidad en la práctica), §13.3 (Rolling release), §13.4 (Inculturación territorial), §13.10 (Horizonte de esperanza — La luz en el camino) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 5 · MURO DEL CAMINO (FORO) ═══════════════ -->
+  <div id="m5" class="card">
+    <div class="ch">
+      <span class="cn">Espacio comunitario · Muro</span>
+      <div class="ct">Voces de quienes también recorren este itinerario</div>
+      <div class="cs">El Manual crece con quienes lo caminan · §13.3, §13.5</div>
+    </div>
+    <div class="cb">
+
+      <!-- Selector de vista: este itinerario / global -->
+      <div class="foro-vista">
+        <button class="foro-vista-btn on" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
+        <button class="foro-vista-btn" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
+      </div>
+
+      <!-- Pautas pastorales -->
+      <div class="foro-pautas">
+        <div class="foro-pautas-lbl">Antes de publicar</div>
+        <ul>
+          <li>Compartí solo experiencias propias o del equipo. No expongas historias ajenas ni datos que identifiquen a terceras personas.</li>
+          <li>Cuidá a quien lea después: evitá descripciones que puedan retraumatizar.</li>
+          <li>Tu aporte será revisado por el equipo PLAPA antes de publicarse.</li>
+        </ul>
+      </div>
+
+      <!-- Formulario nuevo comentario -->
+      <div class="foro-form" id="foroForm">
+        <div class="foro-form-lbl">Dejar mi palabra</div>
+        <div class="foro-form-row">
+          <label for="foroModulo">¿Sobre qué momento del itinerario?</label>
+          <select id="foroModulo">
+            <option value="">General del itinerario</option>
+            <option value="1">Módulo 1 · La Pastoral Diocesana</option>
+            <option value="2">Módulo 2 · Documento de unidad PLAPA</option>
+            <option value="3">Módulo 3 · Epistemología ascendente</option>
+            <option value="4">Módulo 4 · Manual abierto: rolling release</option>
+          </select>
+        </div>
+        <textarea id="foroTexto" placeholder="Escribí tu comentario, pregunta o testimonio de camino..."></textarea>
+        <div class="foro-form-actions">
+          <div class="foro-form-info">Aparecerá en el muro luego de la revisión del equipo.</div>
+          <button class="foro-btn" id="foroEnviar" onclick="enviarComentario()">Enviar para revisión</button>
+        </div>
+      </div>
+
+      <!-- Lista de comentarios -->
+      <div class="foro-lista" id="foroLista">
+        <div class="foro-vacio">Cargando el muro...</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 6 · EVALUACIÓN ══════════════════════════ -->
+  <div id="m6" class="card">
+    <div class="ch">
+      <span class="cn">Cierre del itinerario · Evaluación</span>
+      <div class="ct">Revisión de vida en clave Ver–Juzgar–Actuar</div>
+      <div class="cs">No es un examen: es un discernimiento sobre lo que este itinerario dejó en vos</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Antes de comenzar</div>
+        <div class="resonancia-txt">"La revisión de vida es la forma histórica que la Iglesia latinoamericana encontró para institucionalizar el Ver–Juzgar–Actuar. El agente que la practica no aplica el método: lo vive." Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
+      </div>
+
+      <div class="eval-nota">
+        <span class="eval-nota-lbl">🕊 Uso pastoral</span>
+        <div class="eval-nota-txt">Esta evaluación es <strong>tuya</strong>. Podés guardarla en tu bitácora personal (queda solo con vos) y, si lo decidís, compartirla con el equipo PLAPA como aporte al <em>rolling release</em> del Manual (§13.5). Compartir es voluntario.</div>
+      </div>
+
+      <div class="pl">El Ver — Qué se hizo visible</div>
+      <div class="eval-q">
+        <label for="evalVer">¿Qué realidad del territorio se hizo más visible para vos a lo largo de estos cuatro módulos? ¿Qué llagas emergieron con más fuerza? ¿Qué zonas del mapa estaban en blanco antes y ahora tienen contenido?</label>
+        <textarea id="evalVer" data-eval="ver" placeholder="Escribí con calma, sin apurarte..."></textarea>
+      </div>
+
+      <div class="pl">El Juzgar — Qué iluminó, qué preguntas quedaron abiertas</div>
+      <div class="eval-q">
+        <label for="evalJuzgar1">¿Qué del método del diagnóstico territorial te iluminó de manera nueva? ¿Qué idea del Manual sentís que ya no podrás dejar de lado?</label>
+        <textarea id="evalJuzgar1" data-eval="juzgar1" placeholder="Nombralo con precisión..."></textarea>
+      </div>
+      <div class="eval-q">
+        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos? Las preguntas abiertas son también fruto (§13.3).</label>
+        <textarea id="evalJuzgar2" data-eval="juzgar2" placeholder="Las que siguen ardiendo..."></textarea>
+      </div>
+
+      <div class="pl">El Actuar — Compromiso concreto</div>
+      <div class="eval-q">
+        <label for="evalActuar">¿Qué gesto pastoral concreto vas a intentar en las próximas semanas a partir del diagnóstico que hiciste? Nombralo con nombre, tiempo y lugar. Un compromiso vago no es un compromiso.</label>
+        <textarea id="evalActuar" data-eval="actuar" placeholder="Ej.: En la próxima reunión de equipo (jueves 25) voy a presentar el mapa territorial que construimos y proponer una callejeada específica al sector X del barrio..."></textarea>
+      </div>
+      <div class="eval-q eval-fecha">
+        <label for="evalFecha">Fecha en la que vas a volver a revisar si pudiste sostenerlo</label>
+        <input type="date" id="evalFecha" data-eval="fecha_revision">
+      </div>
+
+      <div class="pl">Autocuidado y equipo</div>
+      <div class="eval-q eval-scale">
+        <label>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</label>
+        <div class="eval-scale-row">
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="1" data-eval="animo"><span>1</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="2" data-eval="animo"><span>2</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="3" data-eval="animo"><span>3</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="4" data-eval="animo"><span>4</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="5" data-eval="animo"><span>5</span></label>
+        </div>
+      </div>
+      <div class="eval-q">
+        <label for="evalCuidado">¿Qué necesitás cuidar de vos mismo/a en las próximas semanas? ¿A quién del equipo se lo vas a decir?</label>
+        <textarea id="evalCuidado" data-eval="cuidado" placeholder="El agente que cuida su esperanza puede sostener la del otro (§1.3)..."></textarea>
+      </div>
+
+      <div class="pl">Cierre</div>
+
+      <div class="eval-check">
+        <input type="checkbox" id="evalCompartir">
+        <label for="evalCompartir"><strong>Compartir con el equipo PLAPA</strong> como aporte al <em>rolling release</em> del Manual. Solo se envían tus respuestas si marcás esta casilla. Si no la marcás, la evaluación queda solo en tu bitácora.</label>
+      </div>
+
+      <div class="eval-actions">
+        <button class="foro-btn eval-btn-guardar" onclick="guardarEvaluacion()">Guardar en mi bitácora</button>
+        <button class="foro-btn eval-btn-imprimir" onclick="imprimirEvaluacion()">🖨 Imprimir / PDF</button>
+      </div>
+
+      <div id="evalMsg" class="eval-msg"></div>
+
+      <div class="autocuidado" style="margin-top: 2rem;">
+        <div class="autocuidado-lbl">Cierre del itinerario</div>
+        <div class="autocuidado-txt">Cerrar bien un itinerario también es autocuidado: celebrar lo caminado, agradecer al equipo, reconocer los propios límites y renovar la esperanza. Este itinerario termina con gratitud: por el territorio que nos habló, por las llagas que dejamos de negar, por el equipo que hizo posible mirar sin apartar la mirada.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §1.3 (Prólogo), §6.1.3 (Evitar la romantización), §13.2 (Sinodalidad en la práctica), §13.3 (Rolling release), §13.5 (Mecanismos de colaboración) — CELAM 2026.</div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function setMode(mode, btn) {
+    var root = document.querySelector('.root');
+    root.classList.remove('mode-grupal', 'mode-individual');
+    root.classList.add('mode-' + mode);
+    var buttons = document.querySelectorAll('.mode-btn');
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].classList.remove('on');
+    }
+    btn.classList.add('on');
+  }
+
+  function show(n, btn) {
+    for (var i = 1; i <= 6; i++) {
+      var el = document.getElementById('m' + i);
+      if (el) el.classList.remove('active');
+    }
+    document.querySelectorAll('.nav .btn').forEach(function(b) {
+      b.classList.remove('on');
+    });
+    document.getElementById('m' + n).classList.add('active');
+    btn.classList.add('on');
+    if (window.innerWidth < 640) {
+      document.getElementById('m' + n).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    // Al abrir el muro, refrescar comentarios
+    if (n === 5 && typeof cargarComentarios === 'function') {
+      cargarComentarios();
+    }
+    // Al abrir la evaluación, restaurar borrador si existe
+    if (n === 6 && typeof restaurarEvaluacion === 'function') {
+      restaurarEvaluacion();
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════
+  // MURO DEL CAMINO — FORO SUPABASE
+  // ═══════════════════════════════════════════════════════
+  // BACKEND REQUERIDO (Supabase — mismo proyecto que app-plapa):
+  //
+  // 1) Tabla `foro_comentarios`:
+  //    - id (uuid, pk)
+  //    - itinerario_id (text)     — ej. 'itinerario_30_pastoral_diocesana_continental'
+  //    - parent_id (uuid, null)   — null = comentario raíz; uuid = respuesta
+  //    - usuario_id (uuid, fk auth.users)
+  //    - autor_nombre (text)      — copiado del perfil al crear
+  //    - pais (text)              — copiado del perfil al crear
+  //    - modulo (int, null)       — 1..4 o null (general)
+  //    - texto (text)
+  //    - estado (text)            — 'pendiente' | 'publicado' | 'rechazado'
+  //    - created_at (timestamptz)
+  //
+  // 2) Tabla `foro_reacciones`:
+  //    - comentario_id (uuid, fk)
+  //    - usuario_id (uuid, fk)
+  //    - emoji (text) — '🙏' | '❤️' | '💡' | '🕊️'
+  //    - PK compuesta (comentario_id, usuario_id, emoji)
+  //
+  // 3) Vista/RPC `comentarios_para_itinerario(p_itinerario text, p_scope text)`:
+  //    devuelve los comentarios publicados con autor_nombre, pais, itinerario_titulo
+  //    (si scope='global'), agregado de reacciones y las del usuario actual.
+  //    scope: 'itinerario' filtra por p_itinerario; 'global' devuelve todos.
+  //
+  // 4) RPC `toggle_reaccion(p_comentario uuid, p_emoji text)`.
+  //
+  // 5) RLS:
+  //    - foro_comentarios: SELECT solo estado='publicado'; INSERT solo auth.uid()
+  //      con estado='pendiente' forzado.
+  //    - Moderadores (rol) pueden UPDATE estado.
+  //
+  // 6) Sesión: la Escuela PLAPA debe dejar el token JWT accesible
+  //    (localStorage 'escuela_plapa_sesion' con { token, nombre, pais }
+  //    o cookie según arquitectura de la Escuela).
+  // ═══════════════════════════════════════════════════════
+
+  var SUPABASE_URL = 'https://TU-PROYECTO.supabase.co';  // TODO: config
+  var SUPABASE_ANON_KEY = 'TU_ANON_KEY';                  // TODO: config
+  var ITINERARIO_ID = 'itinerario_30_pastoral_diocesana_continental';
+  var ITINERARIO_TITULO = 'Construir la pastoral diocesana y continental';
+
+  var vistaForo = 'itinerario';
+  var sesion = null;
+  var EMOJIS = ['🙏', '❤️', '💡', '🕊️'];
+
+  function supaHeaders() {
+    var h = {
+      'apikey': SUPABASE_ANON_KEY,
+      'Content-Type': 'application/json'
+    };
+    if (sesion && sesion.token) {
+      h['Authorization'] = 'Bearer ' + sesion.token;
+    }
+    return h;
+  }
+
+  function escapeHtml(s) {
+    if (!s) return '';
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function formatFecha(iso) {
+    if (!iso) return '';
+    try {
+      var d = new Date(iso);
+      return d.toLocaleDateString('es', { day: 'numeric', month: 'short', year: 'numeric' });
+    } catch (e) { return ''; }
+  }
+
+  function cargarComentarios() {
+    var contenedor = document.getElementById('foroLista');
+    contenedor.innerHTML = '<div class="foro-vacio">Cargando el muro...</div>';
+
+    var url = SUPABASE_URL + '/rest/v1/rpc/comentarios_para_itinerario';
+    fetch(url, {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({
+        p_itinerario: ITINERARIO_ID,
+        p_scope: vistaForo
+      })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) { renderComentarios(data || []); })
+    .catch(function() {
+      contenedor.innerHTML = '<div class="foro-vacio">No se pudo cargar el muro. Intentá de nuevo más tarde.</div>';
+    });
+  }
+
+  function renderComentarios(comentarios) {
+    var contenedor = document.getElementById('foroLista');
+    if (!comentarios || comentarios.length === 0) {
+      contenedor.innerHTML = '<div class="foro-vacio">Aún no hay palabras publicadas en este muro. Podés ser vos quien empiece la conversación.</div>';
+      return;
+    }
+    var raices = comentarios.filter(function(c) { return !c.parent_id; });
+    var respuestasPor = {};
+    comentarios.filter(function(c) { return c.parent_id; }).forEach(function(c) {
+      if (!respuestasPor[c.parent_id]) respuestasPor[c.parent_id] = [];
+      respuestasPor[c.parent_id].push(c);
+    });
+    contenedor.innerHTML = raices.map(function(c) {
+      return renderComment(c, respuestasPor[c.id] || []);
+    }).join('');
+  }
+
+  function renderComment(c, respuestas) {
+    var modLbl = c.modulo ? '<span class="comment-modulo">Módulo ' + c.modulo + '</span>' : '';
+    var paisLbl = c.pais ? '<span class="comment-pais">' + escapeHtml(c.pais) + '</span>' : '';
+    var globalLbl = (vistaForo === 'global' && c.itinerario_titulo)
+      ? '<span class="comment-modulo">' + escapeHtml(c.itinerario_titulo) + '</span>'
+      : '';
+    var reacciones = c.reacciones || {};
+    var misReacc = c.mis_reacciones || [];
+    var reaccBtns = EMOJIS.map(function(e) {
+      var count = reacciones[e] || 0;
+      var mine = misReacc.indexOf(e) >= 0;
+      return '<button class="react-btn ' + (mine ? 'on' : '') + '" onclick="toggleReaccion(\'' + c.id + '\', \'' + e + '\')">' + e + (count > 0 ? '<span class="react-count">' + count + '</span>' : '') + '</button>';
+    }).join('');
+    var respuestasHtml = respuestas.length
+      ? '<div class="comment-replies">' + respuestas.map(renderReply).join('') + '</div>'
+      : '';
+    return '' +
+      '<div class="comment" id="c-' + c.id + '">' +
+        '<div class="comment-head">' +
+          '<div>' +
+            '<span class="comment-autor">' + escapeHtml(c.autor_nombre || 'Anónimo') + '</span>' +
+            paisLbl + modLbl + globalLbl +
+          '</div>' +
+          '<span class="comment-fecha">' + formatFecha(c.created_at) + '</span>' +
+        '</div>' +
+        '<div class="comment-texto">' + escapeHtml(c.texto) + '</div>' +
+        '<div class="comment-actions">' +
+          reaccBtns +
+          '<button class="reply-btn" onclick="toggleReplyForm(\'' + c.id + '\')">↩ Responder</button>' +
+        '</div>' +
+        '<div class="reply-form" id="rf-' + c.id + '">' +
+          '<textarea placeholder="Escribí tu respuesta..." id="rt-' + c.id + '"></textarea>' +
+          '<div class="reply-form-actions">' +
+            '<button class="reply-form-cancel" onclick="toggleReplyForm(\'' + c.id + '\')">Cancelar</button>' +
+            '<button class="foro-btn" onclick="enviarRespuestaDesde(\'' + c.id + '\')">Enviar</button>' +
+          '</div>' +
+        '</div>' +
+        respuestasHtml +
+      '</div>';
+  }
+
+  function renderReply(r) {
+    var paisLbl = r.pais ? '<span class="comment-pais">' + escapeHtml(r.pais) + '</span>' : '';
+    return '' +
+      '<div class="reply">' +
+        '<div class="comment-head">' +
+          '<div>' +
+            '<span class="comment-autor">' + escapeHtml(r.autor_nombre || 'Anónimo') + '</span>' +
+            paisLbl +
+          '</div>' +
+          '<span class="comment-fecha">' + formatFecha(r.created_at) + '</span>' +
+        '</div>' +
+        '<div class="comment-texto">' + escapeHtml(r.texto) + '</div>' +
+      '</div>';
+  }
+
+  function enviarComentario() {
+    if (!sesion) { window.location.href = '/login'; return; }
+    var texto = document.getElementById('foroTexto').value.trim();
+    var modulo = document.getElementById('foroModulo').value;
+    if (!texto) return;
+    var btn = document.getElementById('foroEnviar');
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+    fetch(SUPABASE_URL + '/rest/v1/foro_comentarios', {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({
+        itinerario_id: ITINERARIO_ID,
+        parent_id: null,
+        usuario_id: sesion.user ? sesion.user.id : null,
+        autor_nombre: sesion.nombre || '',
+        pais: sesion.pais || '',
+        modulo: modulo ? parseInt(modulo) : null,
+        texto: texto
+      })
+    })
+    .then(function() {
+      document.getElementById('foroTexto').value = '';
+      document.getElementById('foroModulo').value = '';
+      btn.textContent = '✓ Enviado — pendiente de revisión';
+      setTimeout(function() {
+        btn.textContent = 'Enviar para revisión';
+        btn.disabled = false;
+      }, 3000);
+    })
+    .catch(function() {
+      btn.textContent = 'Error al enviar';
+      btn.disabled = false;
+    });
+  }
+
+  function enviarRespuestaDesde(parentId) {
+    if (!sesion) { window.location.href = '/login'; return; }
+    var textarea = document.getElementById('rt-' + parentId);
+    var texto = textarea.value.trim();
+    if (!texto) return;
+    fetch(SUPABASE_URL + '/rest/v1/foro_comentarios', {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({
+        itinerario_id: ITINERARIO_ID,
+        parent_id: parentId,
+        usuario_id: sesion.user ? sesion.user.id : null,
+        autor_nombre: sesion.nombre || '',
+        pais: sesion.pais || '',
+        texto: texto
+      })
+    })
+    .then(function() {
+      textarea.value = '';
+      document.getElementById('rf-' + parentId).classList.remove('on');
+      alert('Tu respuesta será revisada por el equipo antes de publicarse.');
+    })
+    .catch(function() { alert('Error al enviar la respuesta.'); });
+  }
+
+  function toggleReaccion(comentarioId, emoji) {
+    if (!sesion) { window.location.href = '/login'; return; }
+    fetch(SUPABASE_URL + '/rest/v1/rpc/toggle_reaccion', {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({ p_comentario: comentarioId, p_emoji: emoji })
+    })
+    .then(function() { cargarComentarios(); })
+    .catch(function() {});
+  }
+
+  function toggleReplyForm(id) {
+    if (!sesion) { window.location.href = '/login'; return; }
+    document.getElementById('rf-' + id).classList.toggle('on');
+  }
+
+  function setVistaForo(v, btn) {
+    vistaForo = v;
+    var buttons = document.querySelectorAll('.foro-vista-btn');
+    for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove('on'); }
+    btn.classList.add('on');
+    cargarComentarios();
+  }
+
+  // ═══════════════════════════════════════════════════════
+  // EVALUACIÓN — REVISIÓN DE VIDA VJA
+  // ═══════════════════════════════════════════════════════
+  // BACKEND REQUERIDO:
+  //
+  // Tabla `evaluaciones_itinerario`:
+  //   - id (uuid, pk)
+  //   - usuario_id (uuid, fk auth.users)
+  //   - itinerario_id (text)
+  //   - respuestas (jsonb) — { ver, juzgar1, juzgar2, actuar, fecha_revision, animo, cuidado }
+  //   - compartir_con_equipo (bool)
+  //   - created_at, updated_at
+  //
+  // RLS: SELECT/UPDATE solo dueño. INSERT solo dueño.
+  // Solo moderadores del equipo PLAPA pueden ver evaluaciones donde
+  // compartir_con_equipo=true (via política RLS separada).
+  //
+  // Borrador: se autoguarda en localStorage para que no se pierda
+  // al cerrar el navegador antes de guardar formalmente.
+  // ═══════════════════════════════════════════════════════
+
+  var EVAL_STORAGE_KEY = 'eval_' + ITINERARIO_ID;
+
+  function recolectarEvaluacion() {
+    var datos = {};
+    document.querySelectorAll('[data-eval]').forEach(function(el) {
+      var key = el.getAttribute('data-eval');
+      if (el.type === 'radio') {
+        if (el.checked) datos[key] = el.value;
+      } else {
+        datos[key] = el.value;
+      }
+    });
+    datos.compartir_con_equipo = document.getElementById('evalCompartir').checked;
+    return datos;
+  }
+
+  function autoguardarBorrador() {
+    try {
+      localStorage.setItem(EVAL_STORAGE_KEY, JSON.stringify(recolectarEvaluacion()));
+    } catch (e) {}
+  }
+
+  function restaurarEvaluacion() {
+    try {
+      var stored = localStorage.getItem(EVAL_STORAGE_KEY);
+      if (!stored) return;
+      var datos = JSON.parse(stored);
+      document.querySelectorAll('[data-eval]').forEach(function(el) {
+        var key = el.getAttribute('data-eval');
+        if (datos[key] == null) return;
+        if (el.type === 'radio') {
+          if (el.value === datos[key]) el.checked = true;
+        } else {
+          el.value = datos[key];
+        }
+      });
+      if (datos.compartir_con_equipo) {
+        document.getElementById('evalCompartir').checked = true;
+      }
+    } catch (e) {}
+  }
+
+  function mostrarEvalMsg(texto, tipo) {
+    var el = document.getElementById('evalMsg');
+    el.className = 'eval-msg on ' + (tipo || 'exito');
+    el.textContent = texto;
+    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function guardarEvaluacion() {
+    var datos = recolectarEvaluacion();
+    var minimoTexto = (datos.ver || '').trim() + (datos.actuar || '').trim();
+    if (minimoTexto.length < 30) {
+      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos "El Ver" y "El Actuar" merecen unos renglones honestos.', 'error');
+      return;
+    }
+
+    // Guardar en Supabase (siempre queda en tu bitácora)
+    if (!sesion) { window.location.href = '/login'; return; }
+    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario', {
+      method: 'POST',
+      headers: Object.assign({}, supaHeaders(), { 'Prefer': 'resolution=merge-duplicates' }),
+      body: JSON.stringify({
+        itinerario_id: ITINERARIO_ID,
+        respuestas: datos,
+        compartir_con_equipo: datos.compartir_con_equipo === true
+      })
+    })
+    .then(function(r) {
+      if (r.ok) {
+        var msg = datos.compartir_con_equipo
+          ? '✓ Evaluación guardada en tu bitácora y compartida con el equipo PLAPA. Gracias por el aporte.'
+          : '✓ Evaluación guardada en tu bitácora. Queda solo con vos.';
+        mostrarEvalMsg(msg, 'exito');
+      } else {
+        mostrarEvalMsg('Guardado localmente. No pudimos sincronizar con la Escuela — reintentá más tarde.', 'error');
+      }
+    })
+    .catch(function() {
+      mostrarEvalMsg('Guardado localmente. Sin conexión con la Escuela — reintentá cuando tengas internet.', 'error');
+    });
+  }
+
+  function imprimirEvaluacion() {
+    autoguardarBorrador();
+    window.print();
+  }
+
+  // Init general del itinerario
+  document.addEventListener('DOMContentLoaded', function() {
+    // Leer sesión (el guard del <head> garantiza que existe)
+    try {
+      var stored = localStorage.getItem('escuela_plapa_sesion');
+      if (stored) sesion = JSON.parse(stored);
+    } catch (e) {}
+    // Cargar muro
+    cargarComentarios();
+
+    // Restaurar borrador de evaluación si existe
+    restaurarEvaluacion();
+
+    // Autoguardado del borrador de evaluación al escribir (con debounce)
+    var evalTimeout;
+    document.querySelectorAll('#m6 [data-eval], #m6 #evalCompartir').forEach(function(el) {
+      el.addEventListener('input', function() {
+        clearTimeout(evalTimeout);
+        evalTimeout = setTimeout(autoguardarBorrador, 500);
+      });
+      el.addEventListener('change', autoguardarBorrador);
+    });
+  });
+</script>
+
+</body>
+</html>

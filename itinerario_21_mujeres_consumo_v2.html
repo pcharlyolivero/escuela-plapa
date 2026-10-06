@@ -1,0 +1,2200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Itinerario 21 · Pastoral con mujeres en situación de consumo · Escuela PLAPA</title>
+<style>
+  :root {
+    /* Paleta rosa PLAPA — Itinerario 21 (bloque 5: Poblaciones específicas) */
+    --i21-oscuro:  #42122A;
+    --i21-medio:   #72243E;
+    --i21-accent:  #D4537E;
+    --i21-suave:   #E88AAA;
+    --i21-claro:   #F5BFD1;
+    --i21-crema:   #FDEEF3;
+    --i21-fondo:   #FFFCFD;
+
+    --alerta:     #8B1A1A;
+    --alerta-bg:  #FDF7F7;
+
+    --texto:      #1E1B33;
+    --texto-2:    #4A4560;
+    --texto-3:    #8C89A0;
+    --borde:      #E4E2F0;
+
+    --font-serif: "Georgia", "Times New Roman", serif;
+    --font-sans:  "system-ui", -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: #F0D8E2;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    line-height: 1.6;
+  }
+
+  .root {
+    background: var(--i21-fondo);
+    max-width: 860px;
+    width: 100%;
+    padding: 2.5rem;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(38, 33, 92, 0.08);
+  }
+
+  /* ─── HEADER SUPERIOR (navegación entre páginas) ─── */
+  .top-header {
+    background: #FFFFFF;
+    border-bottom: 1px solid var(--borde);
+    padding: 0.85rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    max-width: 860px;
+    width: 100%;
+    margin: 0 auto 1rem;
+    border-radius: 10px;
+  }
+  .top-logo {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--i21-oscuro);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .top-logo:hover { color: var(--i21-medio); }
+  .top-link {
+    font-size: 0.88rem;
+    color: var(--texto-2);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.15s;
+  }
+  .top-link:hover {
+    background: var(--i21-crema);
+    color: var(--i21-oscuro);
+  }
+  @media (max-width: 640px) {
+    .top-header { padding: 0.75rem 1rem; }
+    .top-link { font-size: 0.82rem; padding: 5px 8px; }
+  }
+
+  /* ─── PORTADA ────────────────────────────────────────── */
+  .portada {
+    background: var(--i21-oscuro);
+    border-radius: 12px;
+    padding: 2rem 2rem 1.75rem;
+    margin-bottom: 2rem;
+  }
+  .portada-sup {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--i21-claro);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .portada-title {
+    font-family: var(--font-serif);
+    font-size: 30px;
+    font-weight: normal;
+    color: #FFFFFF;
+    line-height: 1.25;
+    margin-bottom: 0.6rem;
+  }
+  .portada-sub {
+    font-size: 14.5px;
+    color: var(--i21-claro);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+    max-width: 640px;
+  }
+  .dest-box {
+    background: var(--i21-medio);
+    border-radius: 8px;
+    padding: 0.9rem 1.1rem;
+    margin-bottom: 1.1rem;
+  }
+  .dest-lbl {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--i21-claro);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .dest-txt {
+    font-size: 13px;
+    color: #FFF;
+    line-height: 1.6;
+  }
+  .portada-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .portada-pill {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 11px;
+    border-radius: 99px;
+    background: var(--i21-medio);
+    color: var(--i21-crema);
+  }
+
+  /* ─── VIDEO ──────────────────────────────────────────── */
+  .video-wrap {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .video-lbl {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--i21-oscuro);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .video-iframe {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  .video-iframe iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  /* ─── SELECTOR DE MODALIDAD ──────────────────────────── */
+  .mode-selector {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 1.5rem;
+    background: #FFF;
+    padding: 6px;
+    border-radius: 10px;
+    border: 1px solid var(--borde);
+    max-width: max-content;
+    flex-wrap: wrap;
+  }
+  .mode-btn {
+    border: none;
+    background: transparent;
+    color: var(--texto-2);
+    padding: 8px 16px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .mode-btn.on {
+    background: var(--i21-accent);
+    color: #FFF;
+    font-weight: 600;
+  }
+  /* Control de visibilidad según modalidad */
+  .root.mode-individual .mode-g { display: none; }
+  .root.mode-grupal .mode-i { display: none; }
+
+  /* ─── NAVEGACIÓN ─────────────────────────────────────── */
+  .nav {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .btn {
+    border: 1px solid var(--borde);
+    background: #FFFFFF;
+    border-radius: 8px;
+    padding: 10px 16px;
+    cursor: pointer;
+    font-size: 12.5px;
+    font-weight: 500;
+    font-family: var(--font-sans);
+    color: var(--texto-2);
+    transition: all 0.18s ease;
+    text-align: left;
+  }
+  .btn:hover {
+    background: var(--i21-crema);
+    border-color: var(--i21-claro);
+    color: var(--i21-oscuro);
+  }
+  .btn.on {
+    border: 2px solid var(--i21-accent);
+    background: var(--i21-crema);
+    color: var(--i21-oscuro);
+    font-weight: 600;
+    padding: 9px 15px;
+  }
+  .btn.btn-alt {
+    background: var(--i21-crema);
+    color: var(--i21-medio);
+    border-color: var(--i21-claro);
+  }
+  .btn.btn-alt:hover {
+    background: var(--i21-claro);
+    color: var(--i21-oscuro);
+  }
+  .btn.btn-alt.on {
+    background: var(--i21-medio);
+    border-color: var(--i21-medio);
+    color: #FFFFFF;
+  }
+  .nav-sep {
+    display: inline-block;
+    width: 1px;
+    background: var(--borde);
+    margin: 0 6px;
+    align-self: stretch;
+  }
+
+  /* ─── MÓDULOS ────────────────────────────────────────── */
+  .card {
+    border-radius: 12px;
+    border: 1px solid var(--borde);
+    background: #FFFFFF;
+    overflow: hidden;
+    display: none;
+    border-left: 6px solid var(--i21-accent);
+  }
+  .card.active {
+    display: block;
+    animation: fadeIn 0.35s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .ch {
+    padding: 1.75rem 2rem 1.5rem;
+    border-bottom: 1px solid var(--borde);
+    background: var(--i21-crema);
+  }
+  .cn {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 99px;
+    margin-bottom: 0.85rem;
+    background: var(--i21-accent);
+    color: #FFFFFF;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .ct {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 1.3;
+    color: var(--i21-oscuro);
+    margin-bottom: 0.4rem;
+  }
+  .cs {
+    font-size: 13px;
+    color: var(--i21-medio);
+    line-height: 1.55;
+    font-style: italic;
+  }
+
+  .cb { padding: 2rem; }
+
+  /* ─── CAJA DE RESONANCIA ─────────────────────────────── */
+  .resonancia {
+    border-left: 4px solid var(--i21-accent);
+    background: var(--i21-crema);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .resonancia-lbl {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i21-accent);
+    margin-bottom: 8px;
+  }
+  .resonancia-txt {
+    font-family: var(--font-serif);
+    font-size: 16.5px;
+    line-height: 1.6;
+    font-style: italic;
+    color: var(--i21-oscuro);
+  }
+
+  /* ─── SECCIONES VER / JUZGAR / ACTUAR ────────────────── */
+  .pl {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i21-oscuro);
+    margin-top: 2.25rem;
+    margin-bottom: 1.1rem;
+    border-bottom: 1px solid var(--borde);
+    padding-bottom: 7px;
+  }
+  .pl:first-of-type { margin-top: 0.5rem; }
+
+  .pts {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 1.5rem;
+  }
+  .pts li {
+    display: flex;
+    gap: 14px;
+    font-size: 14.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+  .pts li strong {
+    color: var(--i21-oscuro);
+    font-weight: 600;
+  }
+  .dot {
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    background: var(--i21-accent);
+    color: #FFFFFF;
+    margin-top: 2px;
+    font-family: var(--font-serif);
+  }
+  .dot.j { background: var(--i21-medio); }
+  .dot.a { background: var(--i21-oscuro); }
+
+  /* ─── GRILLA DE ESCENARIOS / DIMENSIONES ─────────────── */
+  .ejes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 1.5rem;
+  }
+  .eje {
+    background: var(--i21-crema);
+    border-radius: 10px;
+    padding: 1.1rem 1.25rem;
+    border-top: 4px solid var(--i21-accent);
+  }
+  .eje-n {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--i21-accent);
+    margin-bottom: 8px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .eje-t {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--i21-oscuro);
+    margin-bottom: 6px;
+  }
+  .eje-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.6;
+  }
+
+  /* ─── ACTIVIDADES ────────────────────────────────────── */
+  .act {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 1.15rem 1.35rem;
+    margin-bottom: 12px;
+    border-left: 4px solid var(--i21-accent);
+  }
+  .act-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  .tag-ind {
+    background: var(--i21-oscuro);
+    color: var(--i21-crema);
+  }
+  .tag-gru {
+    background: var(--i21-accent);
+    color: #FFF;
+  }
+  .act-title {
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: var(--i21-oscuro);
+    margin-bottom: 6px;
+    line-height: 1.35;
+  }
+  .act-body {
+    font-size: 14px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+  .act-body em {
+    color: var(--i21-medio);
+    font-style: italic;
+  }
+
+  /* ─── CITA INSPIRADORA ───────────────────────────────── */
+  .cita {
+    border-radius: 10px;
+    padding: 1.2rem 1.4rem;
+    background: linear-gradient(180deg, var(--i21-crema) 0%, #FFF 100%);
+    border: 1px solid var(--i21-claro);
+    margin-top: 2rem;
+  }
+  .cita-lbl {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i21-accent);
+    margin-bottom: 8px;
+  }
+  .cita-txt {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    line-height: 1.7;
+    font-style: italic;
+    color: var(--i21-oscuro);
+  }
+  .cita-ref {
+    font-size: 12px;
+    margin-top: 10px;
+    font-weight: 500;
+    color: var(--i21-medio);
+    font-style: normal;
+  }
+
+  /* ─── ALERTA PASTORAL ────────────────────────────────── */
+  .alerta {
+    border-left: 4px solid var(--alerta);
+    background: var(--alerta-bg);
+    padding: 1.15rem 1.35rem;
+    margin-top: 1.75rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .alerta-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--alerta);
+    margin-bottom: 8px;
+  }
+  .alerta-lbl::before {
+    content: '† ';
+    font-size: 14px;
+  }
+  .alerta-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+
+  /* ─── AUTOCUIDADO ────────────────────────────────────── */
+  .autocuidado {
+    border-left: 4px solid var(--i21-medio);
+    background: #FFF7FA;
+    padding: 1.15rem 1.35rem;
+    margin-top: 1.75rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .autocuidado-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i21-medio);
+    margin-bottom: 8px;
+  }
+  .autocuidado-lbl::before {
+    content: '❋ ';
+    color: var(--i21-accent);
+  }
+  .autocuidado-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+
+  /* ─── LECTURA COMPLEMENTARIA ─────────────────────────── */
+  .lectura {
+    background: #FFF;
+    border: 1px dashed var(--i21-accent);
+    border-radius: 10px;
+    padding: 1.15rem 1.35rem;
+    margin-top: 1.75rem;
+  }
+  .lectura-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--i21-medio);
+    margin-bottom: 8px;
+  }
+  .lectura-lbl::before {
+    content: '📖 ';
+  }
+  .lectura-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+  .lectura-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--i21-accent);
+    color: #FFF;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.18s;
+  }
+  .lectura-link:hover {
+    background: var(--i21-oscuro);
+  }
+
+  /* ─── REFERENCIAS ────────────────────────────────────── */
+  .ref {
+    font-size: 11.5px;
+    color: var(--texto-3);
+    font-style: italic;
+    margin-top: 1.75rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--borde);
+  }
+
+  /* ─── FORO / MURO DEL CAMINO ─────────────────────────── */
+  .foro {
+    background: #FFFFFF;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    margin-top: 2rem;
+    overflow: hidden;
+    border-left: 6px solid var(--i21-medio);
+  }
+  .foro-head {
+    background: var(--i21-crema);
+    padding: 1.75rem 2rem 1.5rem;
+    border-bottom: 1px solid var(--borde);
+  }
+  .foro-lbl {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 99px;
+    margin-bottom: 0.85rem;
+    background: var(--i21-medio);
+    color: #FFFFFF;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .foro-title {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: normal;
+    line-height: 1.3;
+    color: var(--i21-oscuro);
+    margin-bottom: 0.4rem;
+  }
+  .foro-sub {
+    font-size: 13px;
+    color: var(--i21-medio);
+    line-height: 1.55;
+    font-style: italic;
+  }
+  .foro-body { padding: 2rem; }
+
+  .foro-vista {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 1.5rem;
+    background: var(--i21-crema);
+    padding: 6px;
+    border-radius: 10px;
+    max-width: max-content;
+    flex-wrap: wrap;
+  }
+  .foro-vista-btn {
+    border: none;
+    background: transparent;
+    color: var(--texto-2);
+    padding: 8px 16px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .foro-vista-btn.on {
+    background: var(--i21-medio);
+    color: #FFF;
+    font-weight: 600;
+  }
+
+  .foro-pautas {
+    background: var(--alerta-bg);
+    border-left: 4px solid var(--alerta);
+    padding: 1.15rem 1.35rem;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 1.75rem;
+  }
+  .foro-pautas-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--alerta);
+    margin-bottom: 8px;
+  }
+  .foro-pautas-lbl::before { content: '† '; }
+  .foro-pautas ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .foro-pautas li {
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    padding-left: 14px;
+    position: relative;
+  }
+  .foro-pautas li::before {
+    content: '·';
+    position: absolute;
+    left: 4px;
+    color: var(--alerta);
+    font-weight: 700;
+  }
+
+  .foro-form {
+    background: var(--i21-fondo);
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .foro-form-lbl {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--i21-oscuro);
+    margin-bottom: 12px;
+  }
+  .foro-form-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .foro-form-row label {
+    font-size: 12.5px;
+    color: var(--texto-2);
+    align-self: center;
+    font-weight: 500;
+  }
+  .foro-form select {
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    padding: 7px 10px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+    cursor: pointer;
+  }
+  .foro-form textarea {
+    width: 100%;
+    min-height: 90px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+    resize: vertical;
+    line-height: 1.55;
+    margin-bottom: 10px;
+  }
+  .foro-form textarea:focus,
+  .foro-form select:focus {
+    outline: none;
+    border-color: var(--i21-medio);
+  }
+  .foro-form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .foro-form-info {
+    font-size: 11.5px;
+    color: var(--texto-3);
+    font-style: italic;
+  }
+  .foro-btn {
+    background: var(--i21-medio);
+    color: #FFF;
+    border: none;
+    border-radius: 7px;
+    padding: 9px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    transition: background 0.18s;
+  }
+  .foro-btn:hover { background: var(--i21-oscuro); }
+  .foro-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .foro-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .foro-vacio {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: var(--texto-3);
+    font-size: 13.5px;
+    font-style: italic;
+    background: var(--i21-crema);
+    border-radius: 10px;
+  }
+  .comment {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-left: 3px solid var(--i21-suave);
+    border-radius: 10px;
+    padding: 1rem 1.15rem;
+  }
+  .comment-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .comment-autor {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--i21-oscuro);
+  }
+  .comment-pais {
+    font-size: 12px;
+    color: var(--i21-medio);
+    font-weight: 500;
+  }
+  .comment-pais::before { content: ' · '; color: var(--texto-3); }
+  .comment-modulo {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: var(--i21-crema);
+    color: var(--i21-medio);
+    margin-left: 6px;
+  }
+  .comment-fecha {
+    font-size: 11.5px;
+    color: var(--texto-3);
+  }
+  .comment-texto {
+    font-size: 14px;
+    color: var(--texto);
+    line-height: 1.65;
+    margin-bottom: 10px;
+    white-space: pre-wrap;
+  }
+  .comment-actions {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .react-btn {
+    background: var(--i21-crema);
+    border: 1px solid transparent;
+    border-radius: 99px;
+    padding: 4px 10px;
+    font-size: 12.5px;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    color: var(--texto-2);
+    transition: all 0.15s;
+  }
+  .react-btn:hover { background: var(--i21-claro); }
+  .react-btn.on {
+    background: var(--i21-suave);
+    color: #FFF;
+    border-color: var(--i21-medio);
+    font-weight: 600;
+  }
+  .react-count {
+    margin-left: 4px;
+    font-weight: 600;
+  }
+  .reply-btn {
+    background: transparent;
+    border: none;
+    color: var(--i21-medio);
+    font-size: 12.5px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    margin-left: auto;
+    font-family: var(--font-sans);
+  }
+  .reply-btn:hover {
+    background: var(--i21-crema);
+    color: var(--i21-oscuro);
+  }
+  .comment-replies {
+    margin-top: 12px;
+    padding-left: 1rem;
+    border-left: 2px dashed var(--borde);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .reply {
+    background: var(--i21-fondo);
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+  }
+  .reply-form {
+    background: var(--i21-crema);
+    border-radius: 8px;
+    padding: 0.8rem;
+    margin-top: 10px;
+    display: none;
+  }
+  .reply-form.on { display: block; }
+  .reply-form textarea {
+    width: 100%;
+    min-height: 60px;
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    resize: vertical;
+    background: #FFF;
+    margin-bottom: 8px;
+  }
+  .reply-form-actions {
+    display: flex;
+    gap: 6px;
+    justify-content: flex-end;
+  }
+  .reply-form-cancel {
+    background: transparent;
+    border: 1px solid var(--borde);
+    color: var(--texto-2);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 12.5px;
+    cursor: pointer;
+    font-family: var(--font-sans);
+  }
+
+  .foro-login {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--i21-crema);
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+  }
+  .foro-login-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .foro-login-link {
+    display: inline-block;
+    background: var(--i21-medio);
+    color: #FFF;
+    padding: 8px 18px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  /* ─── EVALUACIÓN (M6) ────────────────────────────────── */
+  .eval-nota {
+    background: var(--i21-crema);
+    border-left: 4px solid var(--i21-medio);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+  .eval-nota-lbl {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i21-medio);
+    margin-bottom: 6px;
+  }
+  .eval-nota-txt strong { color: var(--i21-oscuro); }
+  .eval-nota-txt em { color: var(--i21-medio); font-style: italic; }
+
+  .eval-q {
+    margin-bottom: 1.5rem;
+  }
+  .eval-q > label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--i21-oscuro);
+    margin-bottom: 8px;
+    line-height: 1.55;
+  }
+  .eval-q textarea {
+    width: 100%;
+    min-height: 100px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+    resize: vertical;
+    line-height: 1.6;
+    transition: border-color 0.15s;
+  }
+  .eval-q textarea:focus,
+  .eval-q input:focus {
+    outline: none;
+    border-color: var(--i21-medio);
+    box-shadow: 0 0 0 3px rgba(60, 52, 137, 0.1);
+  }
+  .eval-q input[type="date"] {
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 9px 12px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+  }
+  .eval-fecha { max-width: 320px; }
+
+  .eval-scale-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .eval-radio {
+    flex: 1;
+    min-width: 55px;
+    cursor: pointer;
+    position: relative;
+  }
+  .eval-radio input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .eval-radio span {
+    display: block;
+    text-align: center;
+    padding: 12px 8px;
+    background: var(--i21-crema);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    color: var(--i21-medio);
+    font-size: 15px;
+    transition: all 0.15s;
+  }
+  .eval-radio:hover span { background: var(--i21-claro); }
+  .eval-radio input:checked + span {
+    background: var(--i21-medio);
+    border-color: var(--i21-oscuro);
+    color: #FFF;
+  }
+
+  .eval-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: var(--i21-crema);
+    border: 1px solid var(--i21-claro);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+  .eval-check input {
+    margin-top: 4px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--i21-medio);
+    flex-shrink: 0;
+  }
+  .eval-check label {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    cursor: pointer;
+  }
+  .eval-check label strong { color: var(--i21-oscuro); }
+  .eval-check label em { color: var(--i21-medio); font-style: italic; }
+
+  .eval-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  .eval-btn-guardar {
+    background: var(--i21-oscuro);
+  }
+  .eval-btn-guardar:hover { background: var(--i21-medio); }
+  .eval-btn-imprimir {
+    background: transparent;
+    color: var(--i21-medio);
+    border: 1px solid var(--i21-medio);
+  }
+  .eval-btn-imprimir:hover {
+    background: var(--i21-crema);
+    color: var(--i21-oscuro);
+  }
+
+  .eval-msg {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    display: none;
+    margin-bottom: 1rem;
+  }
+  .eval-msg.on { display: block; }
+  .eval-msg.exito {
+    background: #FDEEF3;
+    color: var(--i21-oscuro);
+    border-left: 3px solid var(--i21-medio);
+  }
+  .eval-msg.error {
+    background: var(--alerta-bg);
+    color: var(--alerta);
+    border-left: 3px solid var(--alerta);
+  }
+
+  /* Estilos de impresión de la evaluación */
+  @media print {
+    body { background: #FFF; padding: 0; }
+    .root { box-shadow: none; padding: 1rem; max-width: 100%; }
+    .portada, .video-wrap, .mode-selector, .nav { display: none !important; }
+    .card { display: none !important; }
+    #m6.card { display: block !important; break-inside: avoid; border: none; }
+    .eval-actions, .eval-msg { display: none !important; }
+    .ch { background: transparent; }
+    .eval-q textarea, .eval-q input[type="date"] {
+      border: none;
+      border-bottom: 1px solid #999;
+      border-radius: 0;
+      background: transparent;
+    }
+  }
+
+  /* ─── RESPONSIVE ─────────────────────────────────────── */
+  @media (max-width: 640px) {
+    body { padding: 1rem 0.5rem; }
+    .root { padding: 1.25rem; }
+    .portada { padding: 1.5rem 1.25rem; }
+    .portada-title { font-size: 24px; }
+    .ch { padding: 1.25rem 1.25rem 1rem; }
+    .ct { font-size: 20px; }
+    .cb { padding: 1.25rem; }
+    .ejes { grid-template-columns: 1fr; }
+    .btn { flex: 1 1 100%; }
+    .mode-selector { flex-direction: column; align-items: stretch; max-width: 100%; }
+    .mode-btn { text-align: center; }
+    .foro-head { padding: 1.25rem; }
+    .foro-body { padding: 1.25rem; }
+    .foro-title { font-size: 19px; }
+    .foro-vista { max-width: 100%; flex-direction: column; align-items: stretch; }
+    .foro-vista-btn { text-align: center; }
+    .comment-head { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .reply-btn { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER SUPERIOR ═════════════════════════════════ -->
+<header class="top-header">
+  <a href="index.html" class="top-logo">Escuela PLAPA</a>
+  <a href="catalogo_30_itinerarios_plapa_corregido.html" class="top-link">← Catálogo</a>
+</header>
+
+<div class="root mode-grupal">
+
+  <!-- ═══ PORTADA ═════════════════════════════════════════ -->
+  <div class="portada">
+    <p class="portada-sup">Itinerario formativo 21 · Escuela PLAPA · CELAM 2026</p>
+    <h1 class="portada-title">Pastoral con mujeres en situación de consumo</h1>
+    <p class="portada-sub">Doble condena, feminización de la pobreza, cinco pilares del abordaje diferenciado y espiritualidad de la Magdalena. Estreno del bloque 5: poblaciones específicas.</p>
+
+    <div class="dest-box">
+      <div class="dest-lbl">Destinatarios</div>
+      <div class="dest-txt">Equipos pastorales que acompañan mujeres en situación de consumo, coordinadores de dispositivos que quieren revisar sus protocolos desde la perspectiva de género, y agentes pastorales que trabajan con madres en situación de riesgo. También útil para equipos mixtos que quieren comprender por qué el mismo dispositivo produce resultados distintos según el género y qué ajustes metodológicos requiere el acompañamiento de mujeres. Articulado con el Itinerario 20 (biología diferenciada y efecto telescopio).</div>
+    </div>
+
+    <div class="portada-pills">
+      <span class="portada-pill">§4.4 · §6.6.1–6.6.3 · §7.8 · §8.6.1</span>
+      <span class="portada-pill">4 módulos</span>
+      <span class="portada-pill">Equipos pastorales</span>
+      <span class="portada-pill">Nivel intermedio</span>
+      <span class="portada-pill">Ver · Juzgar · Actuar · Síntesis</span>
+    </div>
+  </div>
+
+  <!-- ═══ VIDEO ═══════════════════════════════════════════ -->
+  
+  <!-- NUEVO: Bloque del Video de Presentación Incrustado -->
+<div style="background: var(--surface-2); border: 0.5px solid var(--border); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
+  <p style="font-size: 11px; font-weight: 500; color: #085041; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; text-align: left;">
+    ▶️ Video de presentación
+  </p>
+  <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px;">
+    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+      src="https://www.youtube.com/embed/PLACEHOLDER_ITIN21"
+      title="Presentación del Itinerario 21" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+  <!-- ═══ SELECTOR DE MODALIDAD ═══════════════════════════ -->
+  <div class="mode-selector">
+    <button class="mode-btn on" onclick="setMode('grupal', this)">👥 Hacer en comunidad</button>
+    <button class="mode-btn" onclick="setMode('individual', this)">👤 Hacer de forma individual</button>
+  </div>
+
+  <!-- ═══ NAVEGACIÓN ══════════════════════════════════════ -->
+  <div class="nav">
+    <button class="btn on" onclick="show(1,this)">Módulo 1 · La doble condena</button>
+    <button class="btn" onclick="show(2,this)">Módulo 2 · Feminización de la pobreza</button>
+    <button class="btn" onclick="show(3,this)">Módulo 3 · Cinco pilares del abordaje</button>
+    <button class="btn" onclick="show(4,this)">Módulo 4 · Magdalena y reconstrucción</button>
+    <span class="nav-sep" aria-hidden="true"></span>
+    <button class="btn btn-alt" onclick="show(5,this)">🌱 Muro del camino</button>
+    <button class="btn btn-alt" onclick="show(6,this)">✍ Evaluación</button>
+  </div>
+
+  <!-- ═══ MÓDULO 1 ════════════════════════════════════════ -->
+  <div id="m1" class="card active">
+    <div class="ch">
+      <span class="cn">Módulo 1 · El Ver</span>
+      <div class="ct">La doble condena: juzgada dos veces por ser mujer</div>
+      <div class="cs">El diagnóstico territorial de la situación particular de las mujeres · §4.4, §8.6.1</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"La mujer es juzgada no solo por el uso de sustancias, sino por el incumplimiento del rol cultural de madre y cuidadora del hogar. Este estigma genera una internalización del rechazo que alimenta ciclos de culpa y autodesprecio que suelen paralizar la búsqueda de acompañamiento."</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Dato crítico · §8.6.1</div>
+        <div class="alerta-txt">Solo <strong>una de cada dieciocho mujeres</strong> con consumo problemático accede a tratamiento, en comparación con <strong>uno de cada siete hombres</strong>. La brecha no es casualidad: es el resultado sistemático de <em>la doble condena, el abandono vincular, el miedo a perder la custodia</em> y la ausencia de dispositivos que integren maternidad y recuperación.</div>
+      </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>Dos condenas simultáneas: consumo + incumplimiento del rol.</strong> El §4.4 describe la doble condena en sus dos dimensiones: la condena social por el consumo (igual que el varón) y la condena moral por el incumplimiento del rol de madre y cuidadora (específica de la mujer). <em>"Este estigma genera una internalización del rechazo, donde la persona llega a percibir su situación como una vergüenza personal, lo que alimenta ciclos de culpa y autodesprecio que suelen paralizar la búsqueda de acompañamiento."</em> La vergüenza no es un sentimiento: <em>es una barrera de acceso</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>Las mismas comunidades que sostienen al varón abandonan a la mujer.</strong> El contraste de redes de sostén que el §4.4 documenta es uno de los más reveladores del diagnóstico territorial: <em>"Mientras los varones suelen contar con una red de contención femenina —madres, esposas o hermanas— durante sus procesos, las mujeres enfrentan frecuentemente el abandono de sus parejas y familias al hacerse visible el consumo."</em> La misma comunidad que sostiene al varón <em>abandona a la mujer</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>El miedo a perder la custodia aleja a la madre del sistema de salud.</strong> <em>"Muchas madres ocultan su problemática ante el miedo a que los organismos de protección les arrebaten la custodia de sus hijos, percibiendo al sistema más como una instancia punitiva que restauradora"</em> (§4.4). El sistema de protección de la infancia, diseñado para cuidar a los niños, produce como efecto colateral <em>el alejamiento de las madres del sistema de salud</em>. Es una trampa institucional que el acompañamiento pastoral puede ayudar a desactivar.</span></li>
+        <li><span class="dot">V</span><span><strong>El consumo femenino como intento autoterapéutico frente al trauma.</strong> <em>"El consumo femenino funciona, en gran medida, como un intento autoterapéutico frente a traumas complejos. Historias de violencia de género, abusos en la infancia, negligencia y orfandad configuran una fractura interna que la sustancia busca anestesiar"</em> (§4.4). El acompañante que no pregunta por la historia de trauma <em>está acompañando el síntoma sin tocar la herida</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>La doble condena tiene consecuencias biológicas documentadas.</strong> La doble condena no es solo un problema sociológico: tiene consecuencias biológicas documentadas. <em>La vergüenza crónica activa el eje del estrés (hipocampo-hipófisis-glándulas suprarrenales)</em> de la misma manera que cualquier otra fuente de estrés crónico, generando cortisol sostenido que daña la memoria, el sistema inmunológico y la capacidad de regulación emocional. <em>La mujer que carga la doble condena está biológicamente más frágil para el proceso de recuperación</em> (articulación directa con §9.4.3, Itinerario 20).</span></li>
+        <li><span class="dot j">J</span><span><strong>Integrar maternidad y recuperación: lo que el sistema no ofrece y la pastoral puede.</strong> <em>"La respuesta institucional suele ignorar la necesidad de un abordaje integral que considere la maternidad y la reparación de los vínculos primarios como ejes centrales del proceso diagnóstico"</em> (§4.4). La pastoral que puede integrar maternidad y recuperación —que <em>no obliga a la mujer a elegir entre sus hijos y su proceso</em>— ofrece algo que el sistema de salud pública rara vez puede dar.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Diagnóstico de la doble condena en el territorio propio</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo evalúa: <em>¿cuántas mujeres hay en los procesos activos del dispositivo comparadas con los varones? ¿qué dice esa proporción sobre las barreras de acceso? ¿hay mujeres en el territorio que el equipo sabe que tienen problemas de consumo y no acceden? ¿qué las retiene: el miedo a perder la custodia, el abandono del entorno, la vergüenza?</em> Identificar las barreras concretas del territorio propio <em>es el primer paso para desactivarlas</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora la proporción mujeres/varones en los procesos activos de tu dispositivo. Si la brecha se parece a <em>1/18 vs 1/7</em>, el problema no es de las mujeres: <em>es del dispositivo</em>. Si la brecha es menor, anotá qué se está haciendo bien para preservarlo.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">¿Qué mensaje enviamos sobre la "mala madre"?</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo reflexiona honestamente: <em>¿hay en el equipo actitudes o frases que refuerzan la doble condena hacia las mujeres en situación de consumo? ¿se las juzga distinto que a los varones? ¿hay comentarios sobre "cómo puede hacer eso si tiene hijos"?</em> La auditoría interna de las actitudes propias <em>es la condición para que el dispositivo sea un espacio seguro</em> para que las mujeres lleguen.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Escuchá tu propio lenguaje en las próximas 48 horas al hablar de mujeres en situación de consumo. Anotá en tu bitácora <em>las frases o tonos</em> que refuerzan la doble condena. Reformulalas desde la comprensión del §4.4. El cambio del equipo empieza por <em>el cambio de cada uno en silencio</em>.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">El miedo a perder la custodia: diseñar una respuesta concreta</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo identifica: <em>¿hay articulación del dispositivo con el sistema judicial de familia del territorio? ¿hay profesionales (trabajadores sociales, abogados) disponibles para acompañar a mujeres que temen perder la custodia? ¿hay testimonios de mujeres que lograron recuperarse sin perder a sus hijos?</em> Esos testimonios <em>son el argumento más poderoso</em> para que otras se animen a pedir ayuda.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora el <em>nombre y contacto</em> de un abogado de familia o trabajador social al que podrías derivar a una mujer que teme por la custodia. Si no lo tenés, esa es tu gestión concreta esta semana. La derivación bien hecha <em>desactiva la trampa institucional</em>.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §4.4</div>
+        <div class="cita-txt">"El diagnóstico territorial señala que el consumo femenino funciona, en gran medida, como un intento autoterapéutico frente a traumas complejos. Historias de violencia de género, abusos en la infancia, negligencia y orfandad configuran una fractura interna que la sustancia busca anestesiar."</div>
+        <div class="cita-ref">Manual de la PLAPA, §4.4 — La situación particular de las mujeres (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">La <em>"doble condena"</em> no es <em>"las mujeres sufren más"</em> en clave de victimización comparativa con los varones. Es un <em>diagnóstico específico</em> de los mecanismos que operan sobre ellas: <em>condena por el consumo + condena por el rol</em>. La comparación con los varones (<em>"los varones también sufren"</em>) desvía el análisis del punto que el §4.4 busca iluminar: <em>la combinación particular que las aleja del acompañamiento</em>. El dolor del varón se trabaja en los otros itinerarios; este trabaja el mecanismo específico que afecta a las mujeres.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">La doble condena también puede operar <em>dentro del equipo</em>: las mujeres del equipo pastoral que conocen situaciones de consumo en su propia historia o entorno cercano pueden sentir la misma vergüenza que las hermanas del territorio. El facilitador cuida que el módulo sea <em>un espacio de comprensión y no de juicio</em>. La liberación de la doble condena <em>empieza por practicarla en el propio equipo</em> antes de proponerla en el territorio.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §4.4 (La situación particular de las mujeres), §8.6.1 (Perspectiva de género en el acompañamiento), §9.4.3 (Efecto telescopio biológico) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 2 ════════════════════════════════════════ -->
+  <div id="m2" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 2 · El Juzgar</span>
+      <div class="ct">La feminización de la pobreza: exclusión múltiple y estrategias de supervivencia de alto riesgo</div>
+      <div class="cs">Cuatro dimensiones de la exclusión específica de las mujeres · §6.6.1, §6.6.2</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"La feminización de la pobreza crea escenarios de vulnerabilidad extrema donde la falta de acceso a derechos básicos empuja a las mujeres a situaciones de supervivencia de alto riesgo, como la prostitución o el narcomenudeo, que las exponen a nuevos círculos de violencia y consumo."</div>
+      </div>
+
+      <div class="pl">El Juzgar — Las cuatro dimensiones de la feminización de la pobreza (§6.6.2)</div>
+      <div class="ejes">
+        <div class="eje">
+          <div class="eje-n">Dimensión 1 · Infraestructura</div>
+          <div class="eje-t">Desprotección estatal diferenciada</div>
+          <div class="eje-txt">El sistema no suele ofrecer la misma infraestructura de amparo y rehabilitación a las mujeres que a los varones. <em>Los centros de atención específicos para mujeres son escasos</em>; los centros mixtos rara vez garantizan el abordaje del trauma complejo ni las necesidades reproductivas.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Dimensión 2 · Hábitat</div>
+          <div class="eje-t">Precariedad habitacional y violencia</div>
+          <div class="eje-txt">La falta de acceso a <em>tierra, techo y trabajo digno</em> expone a muchas mujeres a riesgos de calleización y violencia, especialmente cuando deben criar solas a sus hijos. <em>La situación de calle femenina tiene dinámicas de riesgo radicalmente distintas a las masculinas.</em></div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Dimensión 3 · Visibilidad</div>
+          <div class="eje-t">Invisibilización del dolor</div>
+          <div class="eje-txt">Las trayectorias de consumo femenino suelen ser <em>silenciadas por la vergüenza social</em> y la presión del entorno familiar. <em>"La persona llega a percibir su situación como una vergüenza personal"</em> (§4.4). El dolor invisible no recibe atención.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Dimensión 4 · Supervivencia</div>
+          <div class="eje-t">Estrategias de alto riesgo</div>
+          <div class="eje-txt">En contextos de pobreza extrema, muchas mujeres recurren al <em>narcomenudeo o la prostitución</em> para sostener la economía familiar. Estas estrategias las exponen a <em>nuevos círculos de violencia y consumo</em>, profundizando la vulnerabilidad en lugar de reducirla.</div>
+        </div>
+      </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>La feminización no es victimización: es diagnóstico estructural.</strong> El §6.6.2 refuta la objeción más frecuente con precisión: <em>"aunque la pobreza sea general, las mujeres enfrentan barreras de acceso únicas y una exclusión múltiple que las deja en una situación de mayor desamparo biológico y social."</em> La feminización de la pobreza <em>no es un argumento de victimización</em>: es un diagnóstico de una realidad estructural que el acompañamiento pastoral necesita conocer para ser eficaz.</span></li>
+        <li><span class="dot">V</span><span><strong>Narcomenudeo y prostitución como trampas de supervivencia, no como elecciones.</strong> La conexión entre narcomenudeo, prostitución y consumo que el §4.4 describe <em>no es una elección: es una trampa de supervivencia</em>. <em>"La falta de acceso a tierra, techo y trabajo digno empuja a muchas mujeres a estrategias de supervivencia de alto riesgo para sostener la economía familiar, lo que las expone a nuevos círculos de violencia y consumo."</em> La mujer que vende drogas o se prostituye para alimentar a sus hijos <em>no eligió esa vida</em>: fue empujada por una tríada de exclusión que el §6.6.2 documenta.</span></li>
+        <li><span class="dot">V</span><span><strong>Intersección de género y clase: la vulnerabilidad más profunda.</strong> <em>"La exclusión quita las redes de amparo y las oportunidades de tratamiento, convirtiendo la adicción en una condena de muerte para el pobre"</em> (§6.6.1). Para las mujeres en situación de feminización de la pobreza, esa sentencia <em>se ejecuta con mayor rapidez por el efecto telescopio biológico y con mayor crueldad por la doble condena social</em>. La intersección de exclusión de género y exclusión de clase produce <em>la vulnerabilidad más profunda que el Manual documenta</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>La caridad política como respuesta estructural.</strong> <em>"Liberar estas injusticias es la condición previa para que la persona pueda recuperar su dignidad ontológica y su libertad. Para ello, el Estado debe asumir su responsabilidad en la creación de condiciones legislativas y sociales que garanticen el futuro de estas mujeres"</em> (§6.6.2). La caridad política que el Manual propone tiene aquí uno de sus casos más urgentes: la pastoral que acompaña a mujeres en situación de consumo y feminización de la pobreza <em>no puede ignorar la dimensión política de su tarea</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>No aplicar "lógica de escritorio" que ignora las llagas específicas.</strong> La pobreza estructural como <em>"escenario de mayor riesgo para el despliegue de las adicciones"</em> (§6.6.1) se expresa de manera diferenciada por género: las tres dimensiones críticas (<em>privación de recursos básicos, invisibilidad y falta de sentido, violencia estructural y desprotección</em>) afectan a las mujeres con una intensidad amplificada por la feminización de la pobreza. El acompañamiento que no ve esa diferencia aplica <em>"una lógica de escritorio que ignora las llagas específicas del cuerpo sufriente de la mujer en el pueblo"</em> (§6.6.2).</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Mapear las estrategias de supervivencia de alto riesgo del territorio</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo mapea —con honestidad y sin juicio— cuántas mujeres del territorio usan el <em>narcomenudeo o la prostitución como estrategia de supervivencia</em>. <em>¿Hay articulación del dispositivo con esas mujeres? ¿hay un espacio donde puedan llegar sin ser juzgadas por esas estrategias? ¿hay una respuesta de las 3T (tierra, techo, trabajo) que pueda ofrecerse como alternativa real?</em> Sin alternativa concreta, <em>el diagnóstico no produce cambio</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora, con prudencia, <em>cuántas mujeres del territorio</em> conocés que están en esas estrategias y cuántas <em>están efectivamente en algún vínculo</em> con el dispositivo. La diferencia entre esos dos números es la próxima <em>agenda de proximidad</em> del equipo.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">La caridad política aplicada a las mujeres del territorio</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo identifica tres acciones de caridad política concretas para las mujeres en situación de feminización de la pobreza del territorio: <em>¿hay legislación local sobre custodia y tratamiento que se pueda incidir? ¿hay organismos estatales de protección de la mujer con los que articular? ¿hay redes de mujeres en la diócesis con las que unir fuerzas?</em> La caridad política empieza por <em>conocer el mapa de lo que existe y lo que falta</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora <em>una ley, un organismo y una red</em> del territorio relacionados con mujeres en situación de vulnerabilidad. Si uno de los tres no lo tenés identificado, esa es <em>tu primera investigación</em>. La caridad política concreta se construye con esos tres contactos activos.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Articular con redes de mujeres y movimientos populares</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo revisa <em>qué redes de mujeres y movimientos populares</em> existen en el territorio que trabajan con feminización de la pobreza desde una perspectiva estructural: cooperativas, grupos de mujeres de la economía popular, organizaciones de la UTEP, movimientos de madres. <em>¿Hay articulación activa del dispositivo con alguna de esas redes?</em> El acompañamiento pastoral de mujeres en consumo <em>se potencia cuando se inserta en el tejido más amplio</em> de lucha de las mujeres del pueblo.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora <em>una red o movimiento de mujeres</em> del territorio con el que podrías abrir un diálogo esta semana. La articulación con el tejido popular existente <em>evita duplicar esfuerzos</em> y permite al dispositivo pastoral <em>sumar fuerza en lugar de operar solo</em>.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §6.6.2</div>
+        <div class="cita-txt">"Señalar la feminización de la pobreza no resta importancia al dolor del varón, sino que busca una justicia en la respuesta; un modelo de misericordia debe ser sensible a las diferencias para no aplicar una lógica de escritorio que ignore las llagas específicas del cuerpo sufriente de la mujer en el pueblo."</div>
+        <div class="cita-ref">Manual de la PLAPA, §6.6.2 — La feminización de la pobreza (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">La <em>"caridad política"</em> no es <em>activismo partidario</em>. El Manual la define como una dimensión constitutiva de la caridad cristiana que <em>interviene sobre las causas estructurales</em> del descarte, articulando con instituciones, movimientos y legislación. Confundir caridad política con alineamiento partidario <em>debilita la identidad pastoral del dispositivo</em> y a la vez debilita la capacidad real de transformación estructural. La identidad pastoral se preserva <em>articulando con lo estructural desde el Evangelio</em>, no refugiándose en lo privado.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">El módulo puede generar en el equipo una <em>sensación de impotencia</em> ante la magnitud de las injusticias estructurales que describe. El facilitador recuerda que <em>la pastoral no está sola en esa tarea</em>: la caridad política es una acción colectiva que se construye articulando con otras instituciones, redes y movimientos. <em>El agente que se ve como eslabón de una red mayor —no como héroe solitario— puede sostener la exposición a esta realidad sin que lo aplaste.</em></div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §6.6.1 (Pobreza estructural como escenario de riesgo), §6.6.2 (Feminización de la pobreza), §4.4 (Situación particular de las mujeres) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 3 ════════════════════════════════════════ -->
+  <div id="m3" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 3 · El Actuar</span>
+      <div class="ct">Los cinco pilares del abordaje diferenciado: una herramienta de justicia terapéutica</div>
+      <div class="cs">Por qué el mismo protocolo no funciona para todos · §6.6.3, §8.6.1</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"La especificidad del abordaje no es un lujo técnico, sino la garantía de que el proceso respeta la dignidad inalienable de cada hermana. La verdadera equidad no consiste en la igualdad de trato burocrático, sino en la justicia de la respuesta artesanal que se hace cargo de la totalidad de la vida de la persona."</div>
+      </div>
+
+      <div class="pl">El Juzgar — Los cinco pilares del abordaje diferenciado (§6.6.3)</div>
+      <ul class="pts">
+        <li><span class="dot j">1</span><span><strong>Vulnerabilidad biológica (efecto telescopio).</strong> Las mujeres desarrollan consecuencias médicas graves <em>más rápido que los varones</em>. El dispositivo necesita <em>intervenciones más tempranas y una desintoxicación más larga</em>. Los tiempos de recuperación estandarizados para varones son insuficientes para ellas. (Conexión con §9.4.3, Itin 20.)</span></li>
+        <li><span class="dot j">2</span><span><strong>Centralidad del trauma complejo.</strong> La gran mayoría de las trayectorias femeninas están marcadas por <em>violencias de género y abusos</em> que requieren espacios de seguridad emocional. El abordaje del trauma <em>no puede posponerse hasta que "esté estabilizada"</em>: es <em>condición de posibilidad del proceso</em>.</span></li>
+        <li><span class="dot j">3</span><span><strong>Acompañamiento ante el abandono vincular.</strong> A diferencia de los varones, las mujeres suelen enfrentar el proceso <em>en soledad afectiva absoluta</em>. El dispositivo necesita <em>ofrecer activamente la red de sostén que el entorno no da</em>: figuras de apego seguro, grupos de mujeres en recuperación, tejedoras del cuidado.</span></li>
+        <li><span class="dot j">4</span><span><strong>Protección de la maternidad.</strong> Eliminar el miedo a que el Estado arrebate la custodia de los hijos como condición para recibir ayuda. <em>El tratamiento no puede obligar a la mujer a elegir entre su recuperación y su maternidad.</em> Los dispositivos con espacio para hijos <em>multiplican el acceso</em>.</span></li>
+        <li><span class="dot j">5</span><span><strong>El rol de la acompañante par mujer.</strong> La <em>"experta por experiencia"</em> que, habiendo transitado y superado el mismo dolor, guía a otras desde la autoridad que le otorga su propio testimonio de recuperación. Su presencia <em>encarna la posibilidad concreta del cambio</em> de una manera que ningún profesional puede replicar.</span></li>
+      </ul>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>Los protocolos neutros no son equitativos: son ineficaces para las mujeres.</strong> El §8.6.1 refuta la objeción técnica más resistente: <em>"aunque los mecanismos de recompensa cerebral sean análogos, los factores metabólicos y el contexto de violencia de género hacen que el impacto sea más devastador y rápido en la mujer. Ignorar la singularidad del género conduce a tratamientos ineficaces que no alojan la realidad subjetiva femenina."</em> Los protocolos neutros no son equitativos: <em>son ineficaces para las mujeres</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>El espacio de solo mujeres crea las condiciones de seguridad del proceso.</strong> <em>"Los centros mixtos a menudo no pueden garantizar el abordaje del trauma complejo ni las necesidades reproductivas de la mujer"</em> (§6.6.3). El grupo mixto puede funcionar bien para etapas avanzadas del proceso, pero <em>en las etapas iniciales —donde el trauma está más activo y la vergüenza más presente— el espacio de solo mujeres crea las condiciones de seguridad</em> que el proceso necesita.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>La igualdad de trato burocrático no es justicia cuando las situaciones son distintas.</strong> <em>"La verdadera equidad no consiste en la igualdad de trato burocrático, sino en la justicia de la respuesta artesanal que se hace cargo de la totalidad de la vida de la persona, adaptando el cuidado a sus heridas particulares"</em> (§6.6.3). La igualdad de trato <em>no es justicia cuando las situaciones son radicalmente distintas</em>. Dar lo mismo a quienes están en situaciones diferentes <em>produce desigualdad, no equidad</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>La acompañante par mujer: decisión institucional, no detalle de gestión.</strong> El quinto pilar —la acompañante par mujer— conecta directamente con el §8.5.4 (capital de recuperación) y el Itinerario 17 (capital de recuperación). <em>La mujer que superó la adicción y la doble condena tiene una autoridad pastoral específica</em> que ningún varón, por más empático que sea, puede ejercer en relación a otra mujer en esa situación. Reconocer y sostener ese rol es <em>una decisión institucional, no un detalle de gestión</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Auditar el dispositivo con los cinco pilares</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo evalúa cada pilar para el dispositivo actual: <em>¿hay tiempos de desintoxicación diferenciados para mujeres (Pilar 1)? ¿hay abordaje específico de trauma (Pilar 2)? ¿hay red de sostén activa para mujeres que pierden su entorno al iniciar el proceso (Pilar 3)? ¿hay espacio para que vengan con sus hijos (Pilar 4)? ¿hay acompañantes pares mujeres (Pilar 5)?</em> Para cada pilar ausente: <em>identificar un primer paso concreto</em> para incorporarlo.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora los <em>cinco pilares</em> y, para cada uno, marcá <em>sí/parcial/no</em> en tu dispositivo. El mapa resultante es la agenda honesta de los próximos seis meses del equipo. Los <em>"parcial"</em> suelen ser los más fértiles para avanzar.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Diseñar o fortalecer el espacio de solo mujeres</div>
+        <div class="mode-g">
+          <div class="act-body">Si el dispositivo no tiene un espacio específico para mujeres, el grupo diseña sus elementos mínimos: <em>¿qué formato (grupo de reflexión, grupo de apoyo, espacio de oración)? ¿quién lo facilita (una mujer del equipo, una acompañante par)? ¿qué frecuencia? ¿qué criterios de confidencialidad? ¿hay espacio físico para que vengan con hijos pequeños?</em> El primer encuentro puede ser más pequeño de lo esperado: <em>lo importante es que exista</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora los <em>cinco elementos mínimos</em> (formato, facilitadora, frecuencia, confidencialidad, hijos) para el espacio de solo mujeres de tu dispositivo. Si ya existe, revisá si los cinco están cuidados. Si no existe, <em>empezá por una fecha concreta</em> y uno de los cinco: los otros vienen después.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Identificar y sostener a las acompañantes pares mujeres</div>
+        <div class="mode-g">
+          <div class="act-body"><em>¿Hay en el territorio mujeres en etapa de recuperación avanzada que podrían ejercer el rol de acompañante par? ¿están siendo identificadas, formadas y sostenidas? ¿hay un protocolo para su incorporación al equipo?</em> El §6.6.3 es explícito: <em>la acompañante par mujer es uno de los cinco pilares fundamentales</em> del abordaje diferenciado. No es un complemento: <em>es una condición de eficacia</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora el <em>nombre</em> de una mujer del territorio que, con formación adecuada, podría ejercer el rol de acompañante par. Si no se te ocurre ninguna, el problema no es que no exista: <em>es que el equipo no la está viendo</em>. Esa búsqueda es la primera gestión concreta.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §6.6.3</div>
+        <div class="cita-txt">"El abordaje diferenciado constituye una herramienta de justicia terapéutica. La especificidad del abordaje no es un lujo técnico, sino la garantía de que el proceso respete la dignidad inalienable de cada hermana."</div>
+        <div class="cita-ref">Manual de la PLAPA, §6.6.3 — Los abordajes diferenciados para mujeres (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">Los cinco pilares <em>no son un checklist burocrático</em>. Pueden operar como coartada administrativa: <em>"nosotros ya tenemos los cinco pilares"</em> por el solo hecho de que están nombrados en el proyecto escrito del dispositivo. El Manual propone principios que se <em>encarnan en las prácticas cotidianas</em>, no requisitos que se marcan en un formulario. La auditoría honesta del Actuar es <em>sobre lo que pasa de verdad en el dispositivo</em>, no sobre lo que figura en los papeles.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">El abordaje del trauma complejo (Pilar 2) puede afectar al equipo que acompaña a mujeres con historias de violencia severa. El facilitador recuerda que <em>el agente pastoral no trata clínicamente el trauma: acompaña, contiene y deriva</em>. Intentar absorber ese peso sin derivar ni recibir supervisión produce <em>trauma secundario</em>. El Pilar 2 requiere articulación con profesionales de salud mental especialistas en trauma: <em>no porque el equipo pastoral no valga, sino porque el trauma complejo necesita intervención especializada</em> que complementa lo que la pastoral ofrece.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §6.6.3 (Abordajes diferenciados para mujeres), §8.6.1 (Perspectiva de género), §8.5.4 (Acompañante par y capital de recuperación) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 4 ════════════════════════════════════════ -->
+  <div id="m4" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 4 · Síntesis</span>
+      <div class="ct">Espiritualidad de la mujer y reconstrucción del ser: el camino de la dignidad recuperada</div>
+      <div class="cs">Interioridad, Magdalena y acompañamiento espiritual situado · §7.8, §7.8.2, §3.3</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"El juicio pastoral sobre las mujeres en situación de consumo debe reconocer que sus adicciones están ligadas al trauma y a una doble condena social. El camino de recuperación pasa por la restauración de la imagen propia dañada por el estigma, el redescubrimiento de la propia belleza interior y la reconstrucción de los vínculos desde la dignidad."</div>
+      </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>La herida en la identidad sagrada que ningún fármaco toca.</strong> El §7.8 sobre la espiritualidad de la mujer en situación de consumo abre con un diagnóstico que el §4.4 ya anticipó: <em>"las adicciones de la mujer están ligadas al trauma y a una doble condena social."</em> La dimensión espiritual de ese diagnóstico es precisa: el estigma produce una <em>"fractura de la imagen propia"</em> que es al mismo tiempo psicológica y espiritual. La mujer que internalizó el mensaje de que es <em>"una mala madre"</em> tiene <em>una herida en su identidad sagrada</em> que ningún tratamiento farmacológico puede tocar.</span></li>
+        <li><span class="dot">V</span><span><strong>La dignidad ontológica intacta: condición de posibilidad, no objetivo final.</strong> <em>"La mujer en situación de consumo suele llegar al proceso con una imagen de sí misma devastada por años de violencia, estigma y autodesprecio. El trabajo espiritual comienza por el reconocimiento de su dignidad ontológica intacta: ella sigue siendo imagen de Dios, aunque la adicción, la pobreza y el sistema la hayan tratado como descarte"</em> (§7.8). La recuperación de la imagen propia <em>no es un objetivo de la fase avanzada</em>: es la <em>condición de posibilidad del proceso desde el principio</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>La culpa materna como herida espiritual, no solo como sentimiento.</strong> El §7.8.2 sobre el impacto de la doble condena en la interioridad y autoestima de la mujer madre es el artículo más delicado del capítulo: <em>"El juicio moral como 'mala madre' es necesario juzgar cómo esta doble condena afecta su interioridad más profunda."</em> La culpa materna que la mujer carga <em>no es solo un sentimiento</em>: es una <em>herida espiritual</em> que necesita la misma atención que la herida biológica.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>Los tres movimientos de la recuperación de la imagen propia.</strong> La recuperación de la imagen propia que el §7.8 propone tiene tres movimientos: <em>el reconocimiento de la dignidad ontológica intacta</em> (soy imagen de Dios a pesar de todo), <em>el redescubrimiento de la belleza interior</em> (hay algo sagrado en mí que el consumo y el sistema no pudieron destruir), y <em>la reconstrucción de los vínculos desde esa dignidad recuperada</em> (puedo amar y ser amada de otra manera). Los tres movimientos son <em>simultáneamente espirituales y psicológicos</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>María Magdalena: el amor sin agenda como gesto evangélico.</strong> La figura de María Magdalena —a quien el §3.3 dedica uno de los análisis más profundos del Manual— es la imagen evangélica que el §7.8 convoca para el acompañamiento de mujeres en situación de consumo. <em>"Para la Magdalena, Jesús fue la única persona que la amó bien y que no quiso usarla."</em> El agente pastoral que puede ofrecer ese tipo de amor —<em>sin agenda, sin juicio, sin instrumentalización</em>— reproduce <em>el gesto evangélico más poderoso</em> para la recuperación de la imagen propia de la mujer.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">La oración como restauración de la imagen propia</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo diseña un momento de oración específico para el espacio de mujeres del dispositivo que trabaje sobre la imagen de sí misma: <em>¿qué pasajes del Evangelio hablan de mujeres que Jesús miró con dignidad (la Magdalena, la mujer adúltera, la samaritana)? ¿cómo se pueden usar en una lectio divina compartida? ¿qué gestos simbólicos (el espejo, la vela encendida, la imposición de manos) pueden acompañar ese momento?</em> La oración que restaura la imagen propia <em>es una herramienta pastoral con poder que ninguna intervención clínica puede replicar</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora un <em>pasaje evangélico</em> con mujer protagonista que te resuene como herramienta de restauración de la imagen propia, y <em>un gesto simbólico</em> que lo acompañaría. Guardalos. La próxima vez que diseñes un espacio de oración con mujeres, esos dos insumos <em>son el punto de partida</em>.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Desactivar la culpa materna sin negar la responsabilidad</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo trabaja la tensión más delicada del acompañamiento de madres en situación de consumo: <em>¿cómo se nombra la culpa materna sin amplificarla (trampa de la moralización) ni minimizarla (trampa del relativismo)? ¿cómo se ayuda a la mujer a distinguir entre responsabilidad reparable y culpa destructiva?</em> El §7.8.2 propone que el acompañamiento espiritual trabaje la culpa materna <em>como invitación a la reparación, no como condena</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora <em>dos frases</em> que podrías usar con una madre en situación de consumo que carga culpa paralizante: una que <em>nombre la responsabilidad</em> sin aplastar, y otra que <em>abra el camino de la reparación</em>. Esas dos frases son <em>infraestructura pastoral concreta</em> para la próxima conversación.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Cierre: la mujer del territorio que inspira el itinerario</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo cierra nombrando (sin apellidos, con respeto) <em>a una mujer del territorio cuya historia de recuperación fue posible gracias al acompañamiento pastoral</em>. <em>¿Qué hizo posible su proceso? ¿cuál de los cinco pilares fue el decisivo? ¿qué tiene de ella que el dispositivo puede aprender?</em> Ese testimonio es el argumento más poderoso para justificar la existencia del espacio de mujeres y <em>para sostener al equipo cuando el proceso se hace largo y difícil</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Escribí en tu bitácora, con respeto, el <em>nombre interno</em> (solo para vos) de una mujer del territorio que inspira tu trabajo. Al lado: <em>¿cuál de los cinco pilares fue decisivo en su proceso?</em> Ese nombre y ese pilar son tu <em>referencia personal</em> para los días en que el acompañamiento se vuelve pesado.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §7.8 (basado en §3.3)</div>
+        <div class="cita-txt">"Para la Magdalena, Jesús fue la única persona que la amó bien y que no quiso usarla. El agente pastoral que puede ofrecer ese tipo de amor —sin agenda, sin juicio, sin instrumentalización— reproduce el gesto evangélico más poderoso para la recuperación de la imagen propia de la mujer."</div>
+        <div class="cita-ref">Manual de la PLAPA, §3.3 y §7.8 — La Magdalena y la espiritualidad de la mujer (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">La figura de María Magdalena <em>no debe moralizarse hacia atrás</em>: <em>"ella era una pecadora y se arrepintió."</em> El Manual la convoca por otro motivo: <em>fue amada bien, sin ser usada</em>. Reducir la Magdalena a una historia de conversión moral <em>repite exactamente la lectura masculinizante</em> que el §7.8 denuncia. La figura habla del amor sin agenda, no de la conversión por mérito. Preservar esa diferencia es parte de lo que distingue el acompañamiento pastoral del moralismo religioso.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente — cierre del itinerario</div>
+        <div class="autocuidado-txt">El itinerario cierra con la pregunta que la figura de María Magdalena le hace a cada agente: <em>¿hay en nuestra comunidad pastoral alguien que ame a las mujeres del territorio "bien", sin usarlas, sin instrumentalizarlas, sin convertirlas en el éxito del dispositivo?</em> El amor sin agenda que el §7.8 propone como fundamento del acompañamiento de mujeres <em>es también la medida más honesta de la calidad pastoral del equipo</em>. Y la pregunta que ese amor plantea —<em>¿cómo me aman a mí dentro de este equipo?</em>— es la que el facilitador deja resonando al cerrar la sesión.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §7.8 (Espiritualidad de la mujer en situación de consumo), §7.8.2 (Culpa materna e interioridad), §3.3 (María Magdalena), §6.6.3 (Abordajes diferenciados), §8.6.1 (Perspectiva de género) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 5 · MURO DEL CAMINO (FORO) ═══════════════ -->
+  <div id="m5" class="card">
+    <div class="ch">
+      <span class="cn">Espacio comunitario · Muro</span>
+      <div class="ct">Voces de quienes también recorren este itinerario</div>
+      <div class="cs">El Manual crece con quienes lo caminan · §13.3, §13.5</div>
+    </div>
+    <div class="cb">
+
+      <!-- Selector de vista: este itinerario / global -->
+      <div class="foro-vista">
+        <button class="foro-vista-btn on" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
+        <button class="foro-vista-btn" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
+      </div>
+
+      <!-- Pautas pastorales -->
+      <div class="foro-pautas">
+        <div class="foro-pautas-lbl">Antes de publicar</div>
+        <ul>
+          <li>Compartí solo experiencias propias o del equipo. No expongas historias ajenas ni datos que identifiquen a terceras personas.</li>
+          <li>Cuidá a quien lea después: evitá descripciones que puedan retraumatizar.</li>
+          <li>Tu aporte será revisado por el equipo PLAPA antes de publicarse.</li>
+        </ul>
+      </div>
+
+      <!-- Formulario nuevo comentario -->
+      <div class="foro-form" id="foroForm">
+        <div class="foro-form-lbl">Dejar mi palabra</div>
+        <div class="foro-form-row">
+          <label for="foroModulo">¿Sobre qué momento del itinerario?</label>
+          <select id="foroModulo">
+            <option value="">General del itinerario</option>
+            <option value="1">Módulo 1 · La doble condena</option>
+            <option value="2">Módulo 2 · Feminización de la pobreza</option>
+            <option value="3">Módulo 3 · Cinco pilares del abordaje</option>
+            <option value="4">Módulo 4 · Magdalena y reconstrucción</option>
+          </select>
+        </div>
+        <textarea id="foroTexto" placeholder="Escribí tu comentario, pregunta o testimonio de camino..."></textarea>
+        <div class="foro-form-actions">
+          <div class="foro-form-info">Aparecerá en el muro luego de la revisión del equipo.</div>
+          <button class="foro-btn" id="foroEnviar" onclick="enviarComentario()">Enviar para revisión</button>
+        </div>
+      </div>
+
+      <!-- Lista de comentarios -->
+      <div class="foro-lista" id="foroLista">
+        <div class="foro-vacio">Cargando el muro...</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 6 · EVALUACIÓN ══════════════════════════ -->
+  <div id="m6" class="card">
+    <div class="ch">
+      <span class="cn">Cierre del itinerario · Evaluación</span>
+      <div class="ct">Revisión de vida en clave Ver–Juzgar–Actuar</div>
+      <div class="cs">No es un examen: es un discernimiento sobre lo que este itinerario dejó en vos</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Antes de comenzar</div>
+        <div class="resonancia-txt">"La revisión de vida es la forma histórica que la Iglesia latinoamericana encontró para institucionalizar el Ver–Juzgar–Actuar. El agente que la practica no aplica el método: lo vive." Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
+      </div>
+
+      <div class="eval-nota">
+        <span class="eval-nota-lbl">🕊 Uso pastoral</span>
+        <div class="eval-nota-txt">Esta evaluación es <strong>tuya</strong>. Podés guardarla en tu bitácora personal (queda solo con vos) y, si lo decidís, compartirla con el equipo PLAPA como aporte al <em>rolling release</em> del Manual (§13.5). Compartir es voluntario.</div>
+      </div>
+
+      <div class="pl">El Ver — Qué se hizo visible</div>
+      <div class="eval-q">
+        <label for="evalVer">¿Qué realidad del territorio se hizo más visible para vos a lo largo de estos cuatro módulos? ¿Qué llagas emergieron con más fuerza? ¿Qué zonas del mapa estaban en blanco antes y ahora tienen contenido?</label>
+        <textarea id="evalVer" data-eval="ver" placeholder="Escribí con calma, sin apurarte..."></textarea>
+      </div>
+
+      <div class="pl">El Juzgar — Qué iluminó, qué preguntas quedaron abiertas</div>
+      <div class="eval-q">
+        <label for="evalJuzgar1">¿Qué del método del diagnóstico territorial te iluminó de manera nueva? ¿Qué idea del Manual sentís que ya no podrás dejar de lado?</label>
+        <textarea id="evalJuzgar1" data-eval="juzgar1" placeholder="Nombralo con precisión..."></textarea>
+      </div>
+      <div class="eval-q">
+        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos? Las preguntas abiertas son también fruto (§13.3).</label>
+        <textarea id="evalJuzgar2" data-eval="juzgar2" placeholder="Las que siguen ardiendo..."></textarea>
+      </div>
+
+      <div class="pl">El Actuar — Compromiso concreto</div>
+      <div class="eval-q">
+        <label for="evalActuar">¿Qué gesto pastoral concreto vas a intentar en las próximas semanas a partir del diagnóstico que hiciste? Nombralo con nombre, tiempo y lugar. Un compromiso vago no es un compromiso.</label>
+        <textarea id="evalActuar" data-eval="actuar" placeholder="Ej.: En la próxima reunión de equipo (jueves 25) voy a presentar el mapa territorial que construimos y proponer una callejeada específica al sector X del barrio..."></textarea>
+      </div>
+      <div class="eval-q eval-fecha">
+        <label for="evalFecha">Fecha en la que vas a volver a revisar si pudiste sostenerlo</label>
+        <input type="date" id="evalFecha" data-eval="fecha_revision">
+      </div>
+
+      <div class="pl">Autocuidado y equipo</div>
+      <div class="eval-q eval-scale">
+        <label>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</label>
+        <div class="eval-scale-row">
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="1" data-eval="animo"><span>1</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="2" data-eval="animo"><span>2</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="3" data-eval="animo"><span>3</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="4" data-eval="animo"><span>4</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="5" data-eval="animo"><span>5</span></label>
+        </div>
+      </div>
+      <div class="eval-q">
+        <label for="evalCuidado">¿Qué necesitás cuidar de vos mismo/a en las próximas semanas? ¿A quién del equipo se lo vas a decir?</label>
+        <textarea id="evalCuidado" data-eval="cuidado" placeholder="El agente que cuida su esperanza puede sostener la del otro (§1.3)..."></textarea>
+      </div>
+
+      <div class="pl">Cierre</div>
+
+      <div class="eval-check">
+        <input type="checkbox" id="evalCompartir">
+        <label for="evalCompartir"><strong>Compartir con el equipo PLAPA</strong> como aporte al <em>rolling release</em> del Manual. Solo se envían tus respuestas si marcás esta casilla. Si no la marcás, la evaluación queda solo en tu bitácora.</label>
+      </div>
+
+      <div class="eval-actions">
+        <button class="foro-btn eval-btn-guardar" onclick="guardarEvaluacion()">Guardar en mi bitácora</button>
+        <button class="foro-btn eval-btn-imprimir" onclick="imprimirEvaluacion()">🖨 Imprimir / PDF</button>
+      </div>
+
+      <div id="evalMsg" class="eval-msg"></div>
+
+      <div class="autocuidado" style="margin-top: 2rem;">
+        <div class="autocuidado-lbl">Cierre del itinerario</div>
+        <div class="autocuidado-txt">Cerrar bien un itinerario también es autocuidado: celebrar lo caminado, agradecer al equipo, reconocer los propios límites y renovar la esperanza. Este itinerario termina con gratitud: por el territorio que nos habló, por las llagas que dejamos de negar, por el equipo que hizo posible mirar sin apartar la mirada.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §1.3 (Prólogo), §6.1.3 (Evitar la romantización), §13.2 (Sinodalidad en la práctica), §13.3 (Rolling release), §13.5 (Mecanismos de colaboración) — CELAM 2026.</div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function setMode(mode, btn) {
+    var root = document.querySelector('.root');
+    root.classList.remove('mode-grupal', 'mode-individual');
+    root.classList.add('mode-' + mode);
+    var buttons = document.querySelectorAll('.mode-btn');
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].classList.remove('on');
+    }
+    btn.classList.add('on');
+  }
+
+  function show(n, btn) {
+    for (var i = 1; i <= 6; i++) {
+      var el = document.getElementById('m' + i);
+      if (el) el.classList.remove('active');
+    }
+    document.querySelectorAll('.nav .btn').forEach(function(b) {
+      b.classList.remove('on');
+    });
+    document.getElementById('m' + n).classList.add('active');
+    btn.classList.add('on');
+    if (window.innerWidth < 640) {
+      document.getElementById('m' + n).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    // Al abrir el muro, refrescar comentarios
+    if (n === 5 && typeof cargarComentarios === 'function') {
+      cargarComentarios();
+    }
+    // Al abrir la evaluación, restaurar borrador si existe
+    if (n === 6 && typeof restaurarEvaluacion === 'function') {
+      restaurarEvaluacion();
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════
+  // MURO DEL CAMINO — FORO SUPABASE
+  // ═══════════════════════════════════════════════════════
+  // BACKEND REQUERIDO (Supabase — mismo proyecto que app-plapa):
+  //
+  // 1) Tabla `foro_comentarios`:
+  //    - id (uuid, pk)
+  //    - itinerario_id (text)     — ej. 'itinerario_21_mujeres_consumo'
+  //    - parent_id (uuid, null)   — null = comentario raíz; uuid = respuesta
+  //    - usuario_id (uuid, fk auth.users)
+  //    - autor_nombre (text)      — copiado del perfil al crear
+  //    - pais (text)              — copiado del perfil al crear
+  //    - modulo (int, null)       — 1..4 o null (general)
+  //    - texto (text)
+  //    - estado (text)            — 'pendiente' | 'publicado' | 'rechazado'
+  //    - created_at (timestamptz)
+  //
+  // 2) Tabla `foro_reacciones`:
+  //    - comentario_id (uuid, fk)
+  //    - usuario_id (uuid, fk)
+  //    - emoji (text) — '🙏' | '❤️' | '💡' | '🕊️'
+  //    - PK compuesta (comentario_id, usuario_id, emoji)
+  //
+  // 3) Vista/RPC `comentarios_para_itinerario(p_itinerario text, p_scope text)`:
+  //    devuelve los comentarios publicados con autor_nombre, pais, itinerario_titulo
+  //    (si scope='global'), agregado de reacciones y las del usuario actual.
+  //    scope: 'itinerario' filtra por p_itinerario; 'global' devuelve todos.
+  //
+  // 4) RPC `toggle_reaccion(p_comentario uuid, p_emoji text)`.
+  //
+  // 5) RLS:
+  //    - foro_comentarios: SELECT solo estado='publicado'; INSERT solo auth.uid()
+  //      con estado='pendiente' forzado.
+  //    - Moderadores (rol) pueden UPDATE estado.
+  //
+  // 6) Sesión: la Escuela PLAPA debe dejar el token JWT accesible
+  //    (localStorage 'escuela_plapa_sesion' con { token, nombre, pais }
+  //    o cookie según arquitectura de la Escuela).
+  // ═══════════════════════════════════════════════════════
+
+  var SUPABASE_URL = 'https://TU-PROYECTO.supabase.co';  // TODO: config
+  var SUPABASE_ANON_KEY = 'TU_ANON_KEY';                  // TODO: config
+  var ITINERARIO_ID = 'itinerario_21_mujeres_consumo';
+  var ITINERARIO_TITULO = 'Pastoral con mujeres en situación de consumo';
+
+  var vistaForo = 'itinerario';
+  var sesion = null;
+  var EMOJIS = ['🙏', '❤️', '💡', '🕊️'];
+
+  function supaHeaders() {
+    var h = {
+      'apikey': SUPABASE_ANON_KEY,
+      'Content-Type': 'application/json'
+    };
+    if (sesion && sesion.token) {
+      h['Authorization'] = 'Bearer ' + sesion.token;
+    }
+    return h;
+  }
+
+  function escapeHtml(s) {
+    if (!s) return '';
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function formatFecha(iso) {
+    if (!iso) return '';
+    try {
+      var d = new Date(iso);
+      return d.toLocaleDateString('es', { day: 'numeric', month: 'short', year: 'numeric' });
+    } catch (e) { return ''; }
+  }
+
+  function cargarComentarios() {
+    var contenedor = document.getElementById('foroLista');
+    contenedor.innerHTML = '<div class="foro-vacio">Cargando el muro...</div>';
+
+    var url = SUPABASE_URL + '/rest/v1/rpc/comentarios_para_itinerario';
+    fetch(url, {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({
+        p_itinerario: ITINERARIO_ID,
+        p_scope: vistaForo
+      })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) { renderComentarios(data || []); })
+    .catch(function() {
+      contenedor.innerHTML = '<div class="foro-vacio">No se pudo cargar el muro. Intentá de nuevo más tarde.</div>';
+    });
+  }
+
+  function renderComentarios(comentarios) {
+    var contenedor = document.getElementById('foroLista');
+    if (!comentarios || comentarios.length === 0) {
+      contenedor.innerHTML = '<div class="foro-vacio">Aún no hay palabras publicadas en este muro. Podés ser vos quien empiece la conversación.</div>';
+      return;
+    }
+    var raices = comentarios.filter(function(c) { return !c.parent_id; });
+    var respuestasPor = {};
+    comentarios.filter(function(c) { return c.parent_id; }).forEach(function(c) {
+      if (!respuestasPor[c.parent_id]) respuestasPor[c.parent_id] = [];
+      respuestasPor[c.parent_id].push(c);
+    });
+    contenedor.innerHTML = raices.map(function(c) {
+      return renderComment(c, respuestasPor[c.id] || []);
+    }).join('');
+  }
+
+  function renderComment(c, respuestas) {
+    var modLbl = c.modulo ? '<span class="comment-modulo">Módulo ' + c.modulo + '</span>' : '';
+    var paisLbl = c.pais ? '<span class="comment-pais">' + escapeHtml(c.pais) + '</span>' : '';
+    var globalLbl = (vistaForo === 'global' && c.itinerario_titulo)
+      ? '<span class="comment-modulo">' + escapeHtml(c.itinerario_titulo) + '</span>'
+      : '';
+    var reacciones = c.reacciones || {};
+    var misReacc = c.mis_reacciones || [];
+    var reaccBtns = EMOJIS.map(function(e) {
+      var count = reacciones[e] || 0;
+      var mine = misReacc.indexOf(e) >= 0;
+      return '<button class="react-btn ' + (mine ? 'on' : '') + '" onclick="toggleReaccion(\'' + c.id + '\', \'' + e + '\')">' + e + (count > 0 ? '<span class="react-count">' + count + '</span>' : '') + '</button>';
+    }).join('');
+    var respuestasHtml = respuestas.length
+      ? '<div class="comment-replies">' + respuestas.map(renderReply).join('') + '</div>'
+      : '';
+    return '' +
+      '<div class="comment" id="c-' + c.id + '">' +
+        '<div class="comment-head">' +
+          '<div>' +
+            '<span class="comment-autor">' + escapeHtml(c.autor_nombre || 'Anónimo') + '</span>' +
+            paisLbl + modLbl + globalLbl +
+          '</div>' +
+          '<span class="comment-fecha">' + formatFecha(c.created_at) + '</span>' +
+        '</div>' +
+        '<div class="comment-texto">' + escapeHtml(c.texto) + '</div>' +
+        '<div class="comment-actions">' +
+          reaccBtns +
+          '<button class="reply-btn" onclick="toggleReplyForm(\'' + c.id + '\')">↩ Responder</button>' +
+        '</div>' +
+        '<div class="reply-form" id="rf-' + c.id + '">' +
+          '<textarea placeholder="Escribí tu respuesta..." id="rt-' + c.id + '"></textarea>' +
+          '<div class="reply-form-actions">' +
+            '<button class="reply-form-cancel" onclick="toggleReplyForm(\'' + c.id + '\')">Cancelar</button>' +
+            '<button class="foro-btn" onclick="enviarRespuestaDesde(\'' + c.id + '\')">Enviar</button>' +
+          '</div>' +
+        '</div>' +
+        respuestasHtml +
+      '</div>';
+  }
+
+  function renderReply(r) {
+    var paisLbl = r.pais ? '<span class="comment-pais">' + escapeHtml(r.pais) + '</span>' : '';
+    return '' +
+      '<div class="reply">' +
+        '<div class="comment-head">' +
+          '<div>' +
+            '<span class="comment-autor">' + escapeHtml(r.autor_nombre || 'Anónimo') + '</span>' +
+            paisLbl +
+          '</div>' +
+          '<span class="comment-fecha">' + formatFecha(r.created_at) + '</span>' +
+        '</div>' +
+        '<div class="comment-texto">' + escapeHtml(r.texto) + '</div>' +
+      '</div>';
+  }
+
+  function enviarComentario() {
+    if (!sesion) { window.location.href = '/login'; return; }
+    var texto = document.getElementById('foroTexto').value.trim();
+    var modulo = document.getElementById('foroModulo').value;
+    if (!texto) return;
+    var btn = document.getElementById('foroEnviar');
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+    fetch(SUPABASE_URL + '/rest/v1/foro_comentarios', {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({
+        itinerario_id: ITINERARIO_ID,
+        parent_id: null,
+        usuario_id: sesion.user ? sesion.user.id : null,
+        autor_nombre: sesion.nombre || '',
+        pais: sesion.pais || '',
+        modulo: modulo ? parseInt(modulo) : null,
+        texto: texto
+      })
+    })
+    .then(function() {
+      document.getElementById('foroTexto').value = '';
+      document.getElementById('foroModulo').value = '';
+      btn.textContent = '✓ Enviado — pendiente de revisión';
+      setTimeout(function() {
+        btn.textContent = 'Enviar para revisión';
+        btn.disabled = false;
+      }, 3000);
+    })
+    .catch(function() {
+      btn.textContent = 'Error al enviar';
+      btn.disabled = false;
+    });
+  }
+
+  function enviarRespuestaDesde(parentId) {
+    if (!sesion) { window.location.href = '/login'; return; }
+    var textarea = document.getElementById('rt-' + parentId);
+    var texto = textarea.value.trim();
+    if (!texto) return;
+    fetch(SUPABASE_URL + '/rest/v1/foro_comentarios', {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({
+        itinerario_id: ITINERARIO_ID,
+        parent_id: parentId,
+        usuario_id: sesion.user ? sesion.user.id : null,
+        autor_nombre: sesion.nombre || '',
+        pais: sesion.pais || '',
+        texto: texto
+      })
+    })
+    .then(function() {
+      textarea.value = '';
+      document.getElementById('rf-' + parentId).classList.remove('on');
+      alert('Tu respuesta será revisada por el equipo antes de publicarse.');
+    })
+    .catch(function() { alert('Error al enviar la respuesta.'); });
+  }
+
+  function toggleReaccion(comentarioId, emoji) {
+    if (!sesion) { window.location.href = '/login'; return; }
+    fetch(SUPABASE_URL + '/rest/v1/rpc/toggle_reaccion', {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({ p_comentario: comentarioId, p_emoji: emoji })
+    })
+    .then(function() { cargarComentarios(); })
+    .catch(function() {});
+  }
+
+  function toggleReplyForm(id) {
+    if (!sesion) { window.location.href = '/login'; return; }
+    document.getElementById('rf-' + id).classList.toggle('on');
+  }
+
+  function setVistaForo(v, btn) {
+    vistaForo = v;
+    var buttons = document.querySelectorAll('.foro-vista-btn');
+    for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove('on'); }
+    btn.classList.add('on');
+    cargarComentarios();
+  }
+
+  // ═══════════════════════════════════════════════════════
+  // EVALUACIÓN — REVISIÓN DE VIDA VJA
+  // ═══════════════════════════════════════════════════════
+  // BACKEND REQUERIDO:
+  //
+  // Tabla `evaluaciones_itinerario`:
+  //   - id (uuid, pk)
+  //   - usuario_id (uuid, fk auth.users)
+  //   - itinerario_id (text)
+  //   - respuestas (jsonb) — { ver, juzgar1, juzgar2, actuar, fecha_revision, animo, cuidado }
+  //   - compartir_con_equipo (bool)
+  //   - created_at, updated_at
+  //
+  // RLS: SELECT/UPDATE solo dueño. INSERT solo dueño.
+  // Solo moderadores del equipo PLAPA pueden ver evaluaciones donde
+  // compartir_con_equipo=true (via política RLS separada).
+  //
+  // Borrador: se autoguarda en localStorage para que no se pierda
+  // al cerrar el navegador antes de guardar formalmente.
+  // ═══════════════════════════════════════════════════════
+
+  var EVAL_STORAGE_KEY = 'eval_' + ITINERARIO_ID;
+
+  function recolectarEvaluacion() {
+    var datos = {};
+    document.querySelectorAll('[data-eval]').forEach(function(el) {
+      var key = el.getAttribute('data-eval');
+      if (el.type === 'radio') {
+        if (el.checked) datos[key] = el.value;
+      } else {
+        datos[key] = el.value;
+      }
+    });
+    datos.compartir_con_equipo = document.getElementById('evalCompartir').checked;
+    return datos;
+  }
+
+  function autoguardarBorrador() {
+    try {
+      localStorage.setItem(EVAL_STORAGE_KEY, JSON.stringify(recolectarEvaluacion()));
+    } catch (e) {}
+  }
+
+  function restaurarEvaluacion() {
+    try {
+      var stored = localStorage.getItem(EVAL_STORAGE_KEY);
+      if (!stored) return;
+      var datos = JSON.parse(stored);
+      document.querySelectorAll('[data-eval]').forEach(function(el) {
+        var key = el.getAttribute('data-eval');
+        if (datos[key] == null) return;
+        if (el.type === 'radio') {
+          if (el.value === datos[key]) el.checked = true;
+        } else {
+          el.value = datos[key];
+        }
+      });
+      if (datos.compartir_con_equipo) {
+        document.getElementById('evalCompartir').checked = true;
+      }
+    } catch (e) {}
+  }
+
+  function mostrarEvalMsg(texto, tipo) {
+    var el = document.getElementById('evalMsg');
+    el.className = 'eval-msg on ' + (tipo || 'exito');
+    el.textContent = texto;
+    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function guardarEvaluacion() {
+    var datos = recolectarEvaluacion();
+    var minimoTexto = (datos.ver || '').trim() + (datos.actuar || '').trim();
+    if (minimoTexto.length < 30) {
+      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos "El Ver" y "El Actuar" merecen unos renglones honestos.', 'error');
+      return;
+    }
+
+    // Guardar en Supabase (siempre queda en tu bitácora)
+    if (!sesion) { window.location.href = '/login'; return; }
+    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario', {
+      method: 'POST',
+      headers: Object.assign({}, supaHeaders(), { 'Prefer': 'resolution=merge-duplicates' }),
+      body: JSON.stringify({
+        itinerario_id: ITINERARIO_ID,
+        respuestas: datos,
+        compartir_con_equipo: datos.compartir_con_equipo === true
+      })
+    })
+    .then(function(r) {
+      if (r.ok) {
+        var msg = datos.compartir_con_equipo
+          ? '✓ Evaluación guardada en tu bitácora y compartida con el equipo PLAPA. Gracias por el aporte.'
+          : '✓ Evaluación guardada en tu bitácora. Queda solo con vos.';
+        mostrarEvalMsg(msg, 'exito');
+      } else {
+        mostrarEvalMsg('Guardado localmente. No pudimos sincronizar con la Escuela — reintentá más tarde.', 'error');
+      }
+    })
+    .catch(function() {
+      mostrarEvalMsg('Guardado localmente. Sin conexión con la Escuela — reintentá cuando tengas internet.', 'error');
+    });
+  }
+
+  function imprimirEvaluacion() {
+    autoguardarBorrador();
+    window.print();
+  }
+
+  // Init general del itinerario
+  document.addEventListener('DOMContentLoaded', function() {
+    // Leer sesión (el guard del <head> garantiza que existe)
+    try {
+      var stored = localStorage.getItem('escuela_plapa_sesion');
+      if (stored) sesion = JSON.parse(stored);
+    } catch (e) {}
+    // Cargar muro
+    cargarComentarios();
+
+    // Restaurar borrador de evaluación si existe
+    restaurarEvaluacion();
+
+    // Autoguardado del borrador de evaluación al escribir (con debounce)
+    var evalTimeout;
+    document.querySelectorAll('#m6 [data-eval], #m6 #evalCompartir').forEach(function(el) {
+      el.addEventListener('input', function() {
+        clearTimeout(evalTimeout);
+        evalTimeout = setTimeout(autoguardarBorrador, 500);
+      });
+      el.addEventListener('change', autoguardarBorrador);
+    });
+  });
+</script>
+
+</body>
+</html>

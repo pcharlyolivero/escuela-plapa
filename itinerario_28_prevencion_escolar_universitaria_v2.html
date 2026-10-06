@@ -1,0 +1,2199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Itinerario 28 · Prevención escolar y universitaria · Escuela PLAPA</title>
+<style>
+  :root {
+    /* Paleta azul PLAPA — Itinerario 28 (bloque 6: Dispositivos) */
+    --i28-oscuro:  #0C2C4E;
+    --i28-medio:   #185FA5;
+    --i28-accent:  #378ADD;
+    --i28-suave:   #6AA8E8;
+    --i28-claro:   #B4D4F2;
+    --i28-crema:   #E6F0FB;
+    --i28-fondo:   #FBFDFF;
+
+    --alerta:     #8B1A1A;
+    --alerta-bg:  #FDF7F7;
+
+    --texto:      #1E1B33;
+    --texto-2:    #4A4560;
+    --texto-3:    #8C89A0;
+    --borde:      #E4E2F0;
+
+    --font-serif: "Georgia", "Times New Roman", serif;
+    --font-sans:  "system-ui", -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: #CDDFF2;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    line-height: 1.6;
+  }
+
+  .root {
+    background: var(--i28-fondo);
+    max-width: 860px;
+    width: 100%;
+    padding: 2.5rem;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(38, 33, 92, 0.08);
+  }
+
+  /* ─── HEADER SUPERIOR (navegación entre páginas) ─── */
+  .top-header {
+    background: #FFFFFF;
+    border-bottom: 1px solid var(--borde);
+    padding: 0.85rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    max-width: 860px;
+    width: 100%;
+    margin: 0 auto 1rem;
+    border-radius: 10px;
+  }
+  .top-logo {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--i28-oscuro);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .top-logo:hover { color: var(--i28-medio); }
+  .top-link {
+    font-size: 0.88rem;
+    color: var(--texto-2);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.15s;
+  }
+  .top-link:hover {
+    background: var(--i28-crema);
+    color: var(--i28-oscuro);
+  }
+  @media (max-width: 640px) {
+    .top-header { padding: 0.75rem 1rem; }
+    .top-link { font-size: 0.82rem; padding: 5px 8px; }
+  }
+
+  /* ─── PORTADA ────────────────────────────────────────── */
+  .portada {
+    background: var(--i28-oscuro);
+    border-radius: 12px;
+    padding: 2rem 2rem 1.75rem;
+    margin-bottom: 2rem;
+  }
+  .portada-sup {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--i28-claro);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .portada-title {
+    font-family: var(--font-serif);
+    font-size: 30px;
+    font-weight: normal;
+    color: #FFFFFF;
+    line-height: 1.25;
+    margin-bottom: 0.6rem;
+  }
+  .portada-sub {
+    font-size: 14.5px;
+    color: var(--i28-claro);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+    max-width: 640px;
+  }
+  .dest-box {
+    background: var(--i28-medio);
+    border-radius: 8px;
+    padding: 0.9rem 1.1rem;
+    margin-bottom: 1.1rem;
+  }
+  .dest-lbl {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--i28-claro);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .dest-txt {
+    font-size: 13px;
+    color: #FFF;
+    line-height: 1.6;
+  }
+  .portada-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .portada-pill {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 11px;
+    border-radius: 99px;
+    background: var(--i28-medio);
+    color: var(--i28-crema);
+  }
+
+  /* ─── VIDEO ──────────────────────────────────────────── */
+  .video-wrap {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .video-lbl {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--i28-oscuro);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .video-iframe {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  .video-iframe iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  /* ─── SELECTOR DE MODALIDAD ──────────────────────────── */
+  .mode-selector {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 1.5rem;
+    background: #FFF;
+    padding: 6px;
+    border-radius: 10px;
+    border: 1px solid var(--borde);
+    max-width: max-content;
+    flex-wrap: wrap;
+  }
+  .mode-btn {
+    border: none;
+    background: transparent;
+    color: var(--texto-2);
+    padding: 8px 16px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .mode-btn.on {
+    background: var(--i28-accent);
+    color: #FFF;
+    font-weight: 600;
+  }
+  /* Control de visibilidad según modalidad */
+  .root.mode-individual .mode-g { display: none; }
+  .root.mode-grupal .mode-i { display: none; }
+
+  /* ─── NAVEGACIÓN ─────────────────────────────────────── */
+  .nav {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .btn {
+    border: 1px solid var(--borde);
+    background: #FFFFFF;
+    border-radius: 8px;
+    padding: 10px 16px;
+    cursor: pointer;
+    font-size: 12.5px;
+    font-weight: 500;
+    font-family: var(--font-sans);
+    color: var(--texto-2);
+    transition: all 0.18s ease;
+    text-align: left;
+  }
+  .btn:hover {
+    background: var(--i28-crema);
+    border-color: var(--i28-claro);
+    color: var(--i28-oscuro);
+  }
+  .btn.on {
+    border: 2px solid var(--i28-accent);
+    background: var(--i28-crema);
+    color: var(--i28-oscuro);
+    font-weight: 600;
+    padding: 9px 15px;
+  }
+  .btn.btn-alt {
+    background: var(--i28-crema);
+    color: var(--i28-medio);
+    border-color: var(--i28-claro);
+  }
+  .btn.btn-alt:hover {
+    background: var(--i28-claro);
+    color: var(--i28-oscuro);
+  }
+  .btn.btn-alt.on {
+    background: var(--i28-medio);
+    border-color: var(--i28-medio);
+    color: #FFFFFF;
+  }
+  .nav-sep {
+    display: inline-block;
+    width: 1px;
+    background: var(--borde);
+    margin: 0 6px;
+    align-self: stretch;
+  }
+
+  /* ─── MÓDULOS ────────────────────────────────────────── */
+  .card {
+    border-radius: 12px;
+    border: 1px solid var(--borde);
+    background: #FFFFFF;
+    overflow: hidden;
+    display: none;
+    border-left: 6px solid var(--i28-accent);
+  }
+  .card.active {
+    display: block;
+    animation: fadeIn 0.35s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .ch {
+    padding: 1.75rem 2rem 1.5rem;
+    border-bottom: 1px solid var(--borde);
+    background: var(--i28-crema);
+  }
+  .cn {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 99px;
+    margin-bottom: 0.85rem;
+    background: var(--i28-accent);
+    color: #FFFFFF;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .ct {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 1.3;
+    color: var(--i28-oscuro);
+    margin-bottom: 0.4rem;
+  }
+  .cs {
+    font-size: 13px;
+    color: var(--i28-medio);
+    line-height: 1.55;
+    font-style: italic;
+  }
+
+  .cb { padding: 2rem; }
+
+  /* ─── CAJA DE RESONANCIA ─────────────────────────────── */
+  .resonancia {
+    border-left: 4px solid var(--i28-accent);
+    background: var(--i28-crema);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .resonancia-lbl {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i28-accent);
+    margin-bottom: 8px;
+  }
+  .resonancia-txt {
+    font-family: var(--font-serif);
+    font-size: 16.5px;
+    line-height: 1.6;
+    font-style: italic;
+    color: var(--i28-oscuro);
+  }
+
+  /* ─── SECCIONES VER / JUZGAR / ACTUAR ────────────────── */
+  .pl {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i28-oscuro);
+    margin-top: 2.25rem;
+    margin-bottom: 1.1rem;
+    border-bottom: 1px solid var(--borde);
+    padding-bottom: 7px;
+  }
+  .pl:first-of-type { margin-top: 0.5rem; }
+
+  .pts {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 1.5rem;
+  }
+  .pts li {
+    display: flex;
+    gap: 14px;
+    font-size: 14.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+  .pts li strong {
+    color: var(--i28-oscuro);
+    font-weight: 600;
+  }
+  .dot {
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    background: var(--i28-accent);
+    color: #FFFFFF;
+    margin-top: 2px;
+    font-family: var(--font-serif);
+  }
+  .dot.j { background: var(--i28-medio); }
+  .dot.a { background: var(--i28-oscuro); }
+
+  /* ─── GRILLA DE ESCENARIOS / DIMENSIONES ─────────────── */
+  .ejes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 1.5rem;
+  }
+  .eje {
+    background: var(--i28-crema);
+    border-radius: 10px;
+    padding: 1.1rem 1.25rem;
+    border-top: 4px solid var(--i28-accent);
+  }
+  .eje-n {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--i28-accent);
+    margin-bottom: 8px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .eje-t {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--i28-oscuro);
+    margin-bottom: 6px;
+  }
+  .eje-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.6;
+  }
+
+  /* ─── ACTIVIDADES ────────────────────────────────────── */
+  .act {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 1.15rem 1.35rem;
+    margin-bottom: 12px;
+    border-left: 4px solid var(--i28-accent);
+  }
+  .act-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  .tag-ind {
+    background: var(--i28-oscuro);
+    color: var(--i28-crema);
+  }
+  .tag-gru {
+    background: var(--i28-accent);
+    color: #FFF;
+  }
+  .act-title {
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: var(--i28-oscuro);
+    margin-bottom: 6px;
+    line-height: 1.35;
+  }
+  .act-body {
+    font-size: 14px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+  .act-body em {
+    color: var(--i28-medio);
+    font-style: italic;
+  }
+
+  /* ─── CITA INSPIRADORA ───────────────────────────────── */
+  .cita {
+    border-radius: 10px;
+    padding: 1.2rem 1.4rem;
+    background: linear-gradient(180deg, var(--i28-crema) 0%, #FFF 100%);
+    border: 1px solid var(--i28-claro);
+    margin-top: 2rem;
+  }
+  .cita-lbl {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i28-accent);
+    margin-bottom: 8px;
+  }
+  .cita-txt {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    line-height: 1.7;
+    font-style: italic;
+    color: var(--i28-oscuro);
+  }
+  .cita-ref {
+    font-size: 12px;
+    margin-top: 10px;
+    font-weight: 500;
+    color: var(--i28-medio);
+    font-style: normal;
+  }
+
+  /* ─── ALERTA PASTORAL ────────────────────────────────── */
+  .alerta {
+    border-left: 4px solid var(--alerta);
+    background: var(--alerta-bg);
+    padding: 1.15rem 1.35rem;
+    margin-top: 1.75rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .alerta-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--alerta);
+    margin-bottom: 8px;
+  }
+  .alerta-lbl::before {
+    content: '† ';
+    font-size: 14px;
+  }
+  .alerta-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+
+  /* ─── AUTOCUIDADO ────────────────────────────────────── */
+  .autocuidado {
+    border-left: 4px solid var(--i28-medio);
+    background: #F5FAFE;
+    padding: 1.15rem 1.35rem;
+    margin-top: 1.75rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .autocuidado-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i28-medio);
+    margin-bottom: 8px;
+  }
+  .autocuidado-lbl::before {
+    content: '❋ ';
+    color: var(--i28-accent);
+  }
+  .autocuidado-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+
+  /* ─── LECTURA COMPLEMENTARIA ─────────────────────────── */
+  .lectura {
+    background: #FFF;
+    border: 1px dashed var(--i28-accent);
+    border-radius: 10px;
+    padding: 1.15rem 1.35rem;
+    margin-top: 1.75rem;
+  }
+  .lectura-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--i28-medio);
+    margin-bottom: 8px;
+  }
+  .lectura-lbl::before {
+    content: '📖 ';
+  }
+  .lectura-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+  .lectura-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--i28-accent);
+    color: #FFF;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.18s;
+  }
+  .lectura-link:hover {
+    background: var(--i28-oscuro);
+  }
+
+  /* ─── REFERENCIAS ────────────────────────────────────── */
+  .ref {
+    font-size: 11.5px;
+    color: var(--texto-3);
+    font-style: italic;
+    margin-top: 1.75rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--borde);
+  }
+
+  /* ─── FORO / MURO DEL CAMINO ─────────────────────────── */
+  .foro {
+    background: #FFFFFF;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    margin-top: 2rem;
+    overflow: hidden;
+    border-left: 6px solid var(--i28-medio);
+  }
+  .foro-head {
+    background: var(--i28-crema);
+    padding: 1.75rem 2rem 1.5rem;
+    border-bottom: 1px solid var(--borde);
+  }
+  .foro-lbl {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 99px;
+    margin-bottom: 0.85rem;
+    background: var(--i28-medio);
+    color: #FFFFFF;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .foro-title {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: normal;
+    line-height: 1.3;
+    color: var(--i28-oscuro);
+    margin-bottom: 0.4rem;
+  }
+  .foro-sub {
+    font-size: 13px;
+    color: var(--i28-medio);
+    line-height: 1.55;
+    font-style: italic;
+  }
+  .foro-body { padding: 2rem; }
+
+  .foro-vista {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 1.5rem;
+    background: var(--i28-crema);
+    padding: 6px;
+    border-radius: 10px;
+    max-width: max-content;
+    flex-wrap: wrap;
+  }
+  .foro-vista-btn {
+    border: none;
+    background: transparent;
+    color: var(--texto-2);
+    padding: 8px 16px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .foro-vista-btn.on {
+    background: var(--i28-medio);
+    color: #FFF;
+    font-weight: 600;
+  }
+
+  .foro-pautas {
+    background: var(--alerta-bg);
+    border-left: 4px solid var(--alerta);
+    padding: 1.15rem 1.35rem;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 1.75rem;
+  }
+  .foro-pautas-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--alerta);
+    margin-bottom: 8px;
+  }
+  .foro-pautas-lbl::before { content: '† '; }
+  .foro-pautas ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .foro-pautas li {
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    padding-left: 14px;
+    position: relative;
+  }
+  .foro-pautas li::before {
+    content: '·';
+    position: absolute;
+    left: 4px;
+    color: var(--alerta);
+    font-weight: 700;
+  }
+
+  .foro-form {
+    background: var(--i28-fondo);
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .foro-form-lbl {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--i28-oscuro);
+    margin-bottom: 12px;
+  }
+  .foro-form-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .foro-form-row label {
+    font-size: 12.5px;
+    color: var(--texto-2);
+    align-self: center;
+    font-weight: 500;
+  }
+  .foro-form select {
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    padding: 7px 10px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+    cursor: pointer;
+  }
+  .foro-form textarea {
+    width: 100%;
+    min-height: 90px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+    resize: vertical;
+    line-height: 1.55;
+    margin-bottom: 10px;
+  }
+  .foro-form textarea:focus,
+  .foro-form select:focus {
+    outline: none;
+    border-color: var(--i28-medio);
+  }
+  .foro-form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .foro-form-info {
+    font-size: 11.5px;
+    color: var(--texto-3);
+    font-style: italic;
+  }
+  .foro-btn {
+    background: var(--i28-medio);
+    color: #FFF;
+    border: none;
+    border-radius: 7px;
+    padding: 9px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    transition: background 0.18s;
+  }
+  .foro-btn:hover { background: var(--i28-oscuro); }
+  .foro-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .foro-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .foro-vacio {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: var(--texto-3);
+    font-size: 13.5px;
+    font-style: italic;
+    background: var(--i28-crema);
+    border-radius: 10px;
+  }
+  .comment {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-left: 3px solid var(--i28-suave);
+    border-radius: 10px;
+    padding: 1rem 1.15rem;
+  }
+  .comment-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .comment-autor {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--i28-oscuro);
+  }
+  .comment-pais {
+    font-size: 12px;
+    color: var(--i28-medio);
+    font-weight: 500;
+  }
+  .comment-pais::before { content: ' · '; color: var(--texto-3); }
+  .comment-modulo {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: var(--i28-crema);
+    color: var(--i28-medio);
+    margin-left: 6px;
+  }
+  .comment-fecha {
+    font-size: 11.5px;
+    color: var(--texto-3);
+  }
+  .comment-texto {
+    font-size: 14px;
+    color: var(--texto);
+    line-height: 1.65;
+    margin-bottom: 10px;
+    white-space: pre-wrap;
+  }
+  .comment-actions {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .react-btn {
+    background: var(--i28-crema);
+    border: 1px solid transparent;
+    border-radius: 99px;
+    padding: 4px 10px;
+    font-size: 12.5px;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    color: var(--texto-2);
+    transition: all 0.15s;
+  }
+  .react-btn:hover { background: var(--i28-claro); }
+  .react-btn.on {
+    background: var(--i28-suave);
+    color: #FFF;
+    border-color: var(--i28-medio);
+    font-weight: 600;
+  }
+  .react-count {
+    margin-left: 4px;
+    font-weight: 600;
+  }
+  .reply-btn {
+    background: transparent;
+    border: none;
+    color: var(--i28-medio);
+    font-size: 12.5px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    margin-left: auto;
+    font-family: var(--font-sans);
+  }
+  .reply-btn:hover {
+    background: var(--i28-crema);
+    color: var(--i28-oscuro);
+  }
+  .comment-replies {
+    margin-top: 12px;
+    padding-left: 1rem;
+    border-left: 2px dashed var(--borde);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .reply {
+    background: var(--i28-fondo);
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+  }
+  .reply-form {
+    background: var(--i28-crema);
+    border-radius: 8px;
+    padding: 0.8rem;
+    margin-top: 10px;
+    display: none;
+  }
+  .reply-form.on { display: block; }
+  .reply-form textarea {
+    width: 100%;
+    min-height: 60px;
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    resize: vertical;
+    background: #FFF;
+    margin-bottom: 8px;
+  }
+  .reply-form-actions {
+    display: flex;
+    gap: 6px;
+    justify-content: flex-end;
+  }
+  .reply-form-cancel {
+    background: transparent;
+    border: 1px solid var(--borde);
+    color: var(--texto-2);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 12.5px;
+    cursor: pointer;
+    font-family: var(--font-sans);
+  }
+
+  .foro-login {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--i28-crema);
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+  }
+  .foro-login-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .foro-login-link {
+    display: inline-block;
+    background: var(--i28-medio);
+    color: #FFF;
+    padding: 8px 18px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  /* ─── EVALUACIÓN (M6) ────────────────────────────────── */
+  .eval-nota {
+    background: var(--i28-crema);
+    border-left: 4px solid var(--i28-medio);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+  .eval-nota-lbl {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i28-medio);
+    margin-bottom: 6px;
+  }
+  .eval-nota-txt strong { color: var(--i28-oscuro); }
+  .eval-nota-txt em { color: var(--i28-medio); font-style: italic; }
+
+  .eval-q {
+    margin-bottom: 1.5rem;
+  }
+  .eval-q > label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--i28-oscuro);
+    margin-bottom: 8px;
+    line-height: 1.55;
+  }
+  .eval-q textarea {
+    width: 100%;
+    min-height: 100px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+    resize: vertical;
+    line-height: 1.6;
+    transition: border-color 0.15s;
+  }
+  .eval-q textarea:focus,
+  .eval-q input:focus {
+    outline: none;
+    border-color: var(--i28-medio);
+    box-shadow: 0 0 0 3px rgba(60, 52, 137, 0.1);
+  }
+  .eval-q input[type="date"] {
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 9px 12px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+  }
+  .eval-fecha { max-width: 320px; }
+
+  .eval-scale-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .eval-radio {
+    flex: 1;
+    min-width: 55px;
+    cursor: pointer;
+    position: relative;
+  }
+  .eval-radio input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .eval-radio span {
+    display: block;
+    text-align: center;
+    padding: 12px 8px;
+    background: var(--i28-crema);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    color: var(--i28-medio);
+    font-size: 15px;
+    transition: all 0.15s;
+  }
+  .eval-radio:hover span { background: var(--i28-claro); }
+  .eval-radio input:checked + span {
+    background: var(--i28-medio);
+    border-color: var(--i28-oscuro);
+    color: #FFF;
+  }
+
+  .eval-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: var(--i28-crema);
+    border: 1px solid var(--i28-claro);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+  .eval-check input {
+    margin-top: 4px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--i28-medio);
+    flex-shrink: 0;
+  }
+  .eval-check label {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    cursor: pointer;
+  }
+  .eval-check label strong { color: var(--i28-oscuro); }
+  .eval-check label em { color: var(--i28-medio); font-style: italic; }
+
+  .eval-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  .eval-btn-guardar {
+    background: var(--i28-oscuro);
+  }
+  .eval-btn-guardar:hover { background: var(--i28-medio); }
+  .eval-btn-imprimir {
+    background: transparent;
+    color: var(--i28-medio);
+    border: 1px solid var(--i28-medio);
+  }
+  .eval-btn-imprimir:hover {
+    background: var(--i28-crema);
+    color: var(--i28-oscuro);
+  }
+
+  .eval-msg {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    display: none;
+    margin-bottom: 1rem;
+  }
+  .eval-msg.on { display: block; }
+  .eval-msg.exito {
+    background: #E6F0FB;
+    color: var(--i28-oscuro);
+    border-left: 3px solid var(--i28-medio);
+  }
+  .eval-msg.error {
+    background: var(--alerta-bg);
+    color: var(--alerta);
+    border-left: 3px solid var(--alerta);
+  }
+
+  /* Estilos de impresión de la evaluación */
+  @media print {
+    body { background: #FFF; padding: 0; }
+    .root { box-shadow: none; padding: 1rem; max-width: 100%; }
+    .portada, .video-wrap, .mode-selector, .nav { display: none !important; }
+    .card { display: none !important; }
+    #m6.card { display: block !important; break-inside: avoid; border: none; }
+    .eval-actions, .eval-msg { display: none !important; }
+    .ch { background: transparent; }
+    .eval-q textarea, .eval-q input[type="date"] {
+      border: none;
+      border-bottom: 1px solid #999;
+      border-radius: 0;
+      background: transparent;
+    }
+  }
+
+  /* ─── RESPONSIVE ─────────────────────────────────────── */
+  @media (max-width: 640px) {
+    body { padding: 1rem 0.5rem; }
+    .root { padding: 1.25rem; }
+    .portada { padding: 1.5rem 1.25rem; }
+    .portada-title { font-size: 24px; }
+    .ch { padding: 1.25rem 1.25rem 1rem; }
+    .ct { font-size: 20px; }
+    .cb { padding: 1.25rem; }
+    .ejes { grid-template-columns: 1fr; }
+    .btn { flex: 1 1 100%; }
+    .mode-selector { flex-direction: column; align-items: stretch; max-width: 100%; }
+    .mode-btn { text-align: center; }
+    .foro-head { padding: 1.25rem; }
+    .foro-body { padding: 1.25rem; }
+    .foro-title { font-size: 19px; }
+    .foro-vista { max-width: 100%; flex-direction: column; align-items: stretch; }
+    .foro-vista-btn { text-align: center; }
+    .comment-head { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .reply-btn { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER SUPERIOR ═════════════════════════════════ -->
+<header class="top-header">
+  <a href="index.html" class="top-logo">Escuela PLAPA</a>
+  <a href="catalogo_30_itinerarios_plapa_corregido.html" class="top-link">← Catálogo</a>
+</header>
+
+<div class="root mode-grupal">
+
+  <!-- ═══ PORTADA ═════════════════════════════════════════ -->
+  <div class="portada">
+    <p class="portada-sup">Itinerario formativo 28 · Escuela PLAPA · CELAM 2026</p>
+    <h1 class="portada-title">Prevención escolar y universitaria</h1>
+    <p class="portada-sub">De la "dicción" frente a la adicción a la proyección vital: la escuela y la universidad como espacios profundamente preventivos.</p>
+
+    <div class="dest-box">
+      <div class="dest-lbl">Destinatarios</div>
+      <div class="dest-txt">Docentes, directivos y equipos de orientación de escuelas católicas, capellanes universitarios y agentes de pastoral universitaria. También útil para agentes pastorales que articulan con instituciones educativas del territorio y para equipos que diseñan programas de prevención escolar. Nivel inicial–intermedio: no requiere formación clínica previa. Cierre del bloque 6 (Dispositivos).</div>
+    </div>
+
+    <div class="portada-pills">
+      <span class="portada-pill">§11.2.1 · §11.2.2 · §7.9.3</span>
+      <span class="portada-pill">4 módulos</span>
+      <span class="portada-pill">Docentes y pastoral universitaria</span>
+      <span class="portada-pill">Nivel inicial–intermedio</span>
+      <span class="portada-pill">Ver · Juzgar · Actuar · Síntesis</span>
+    </div>
+  </div>
+
+  <!-- ═══ VIDEO ═══════════════════════════════════════════ -->
+  
+  <!-- NUEVO: Bloque del Video de Presentación Incrustado -->
+<div style="background: var(--surface-2); border: 0.5px solid var(--border); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
+  <p style="font-size: 11px; font-weight: 500; color: #085041; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; text-align: left;">
+    ▶️ Video de presentación
+  </p>
+  <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px;">
+    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+      src="https://www.youtube.com/embed/PLACEHOLDER_ITIN28"
+      title="Presentación del Itinerario 28" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+  <!-- ═══ SELECTOR DE MODALIDAD ═══════════════════════════ -->
+  <div class="mode-selector">
+    <button class="mode-btn on" onclick="setMode('grupal', this)">👥 Hacer en comunidad</button>
+    <button class="mode-btn" onclick="setMode('individual', this)">👤 Hacer de forma individual</button>
+  </div>
+
+  <!-- ═══ NAVEGACIÓN ══════════════════════════════════════ -->
+  <div class="nav">
+    <button class="btn on" onclick="show(1,this)">Módulo 1 · La escuela como hospital de campaña</button>
+    <button class="btn" onclick="show(2,this)">Módulo 2 · La proyección vital</button>
+    <button class="btn" onclick="show(3,this)">Módulo 3 · Seis acciones preventivas</button>
+    <button class="btn" onclick="show(4,this)">Módulo 4 · La universidad al servicio del territorio</button>
+    <span class="nav-sep" aria-hidden="true"></span>
+    <button class="btn btn-alt" onclick="show(5,this)">🌱 Muro del camino</button>
+    <button class="btn btn-alt" onclick="show(6,this)">✍ Evaluación</button>
+  </div>
+
+  <!-- ═══ MÓDULO 1 ════════════════════════════════════════ -->
+  <div id="m1" class="card active">
+    <div class="ch">
+      <span class="cn">Módulo 1 · El Ver</span>
+      <div class="ct">La escuela como hospital de campaña: de la "adicción" a la "dicción"</div>
+      <div class="cs">Contención y acompañamiento como primer gesto preventivo · §11.2.1</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"En contraste con la 'adicción' —entendida aquí como aquello que obtura o silencia— la escuela debe ser un espacio para la 'dicción': un lugar donde cada estudiante pueda encontrar y expresar su propia voz."</div>
+      </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>Charla informativa puntual ≠ prevención.</strong> El §11.2.1 advierte contra el error más frecuente en prevención escolar: <em>"si reducimos la prevención a la transmisión de información sobre sustancias o a intervenciones esporádicas frente a emergentes —como pueden ser los 'talleres sobre adicciones'— corremos el riesgo de quedarnos en la superficie del problema."</em> <em>La charla informativa puntual no es prevención</em>: es, en el mejor de los casos, <em>un complemento menor de la verdadera tarea preventiva</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>Cuando la escuela hace bien lo propio, se vuelve profundamente preventiva.</strong> <em>"Cuando una escuela hace bien lo propio, se vuelve profundamente preventiva"</em> (§11.2.1). Esta es la tesis central del itinerario: <em>la prevención no es un programa adicional al currículo, sino el resultado de que la escuela cumpla bien su función esencial</em> de educar, vincular y dar sentido.</span></li>
+        <li><span class="dot">V</span><span><strong>Hospital de campaña: no pasar de largo, no quedar atrincherado en lo burocrático.</strong> <em>"La escuela funciona muchas veces como un verdadero 'hospital de campaña'. Allí llegan niños, adolescentes y también adultos con heridas profundas. Pero para que esas heridas puedan ser alojadas y acompañadas, es necesario que los adultos no pasen de largo, que no queden atrincherados únicamente en cuestiones funcionales o burocráticas que terminan generando distancia e indiferencia"</em> (§11.2.1). Esta imagen conecta directamente con la eclesiología del hospital de campaña del §7.9.3.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>El anonimato escolar predispone a la evasión: no es neutro.</strong> <em>"Cuando alguien atraviesa la experiencia escolar como un anónimo, como alguien no reconocido, la escuela no solo deja de prevenir, sino que puede convertirse en un ámbito que predispone a la evasión"</em> (§11.2.1). <em>El anonimato escolar no es neutro</em>: es <em>activamente generador de vulnerabilidad</em>. La escuela que no nombra ni reconoce a sus estudiantes <em>está, sin proponérselo, abriendo una puerta al consumo como salida</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>Orfandad afectiva y debilitamiento de vínculos: no un problema de información faltante.</strong> <em>"Las adicciones hunden sus raíces en una profunda orfandad afectiva, en el debilitamiento de los vínculos y en la dificultad para encontrar sentido. No se trata solamente de 'no saber algunas cosas', sino de una disposición existencial"</em> (§11.2.1). <em>El consumo no es un problema de información faltante que un taller pueda solucionar</em>: es un problema de sentido y de vínculo <em>que solo una cultura institucional completa puede abordar</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Evaluar la cultura institucional del cuidado</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo de docentes revisa con honestidad: <em>¿cómo nos vinculamos en esta escuela? ¿qué lugar damos a la palabra de los estudiantes? ¿cómo abordamos los conflictos? ¿qué experiencias de pertenencia ofrecemos?</em> Estas cuatro preguntas del §11.2.1 <em>son el instrumento de autoevaluación más directo</em> que el Manual propone para una institución educativa.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora las <em>cuatro preguntas</em> y respondelas honestamente para tu institución. La más débil es <em>la agenda inmediata</em>: ahí es donde la prevención empieza, no en un taller sobre sustancias.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">¿Quiénes en la escuela conocen a cada estudiante por su nombre?</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo identifica: <em>¿hay estudiantes que pasan por la institución prácticamente anónimos? ¿quién podría ser el adulto de referencia que los reconozca?</em> Diseñar un mecanismo institucional (tutorías, espacios de diálogo) <em>que asegure que ningún estudiante atraviese la experiencia escolar sin ser nombrado</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora el <em>mecanismo</em> por el cual tu institución asegura que cada estudiante tenga <em>al menos un adulto que lo reconoce por su nombre</em>. Si no hay un mecanismo claro, esa es <em>la propuesta institucional</em> del año.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">De la "adicción" a la "dicción": un proyecto concreto</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo diseña un espacio concreto donde los estudiantes puedan <em>"encontrar y expresar su propia voz"</em> (radio escolar, revista, asamblea estudiantil, espacio de arte). El proyecto <em>no necesita ser ambicioso</em>: necesita ser <em>un lugar real donde la voz silenciada pueda emerger</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora <em>el espacio de dicción</em> que tu institución podría ofrecer el próximo año (uno solo, viable). La pregunta de la institución a la que entregás el documento <em>abrirá debate</em>; estar listo con una propuesta ayuda.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §11.2.1</div>
+        <div class="cita-txt">"La escuela puede convertirse en un lugar habitable, un espacio que convoque a estar presentes. Y esto ocurre, sobre todo, a través de los vínculos cotidianos."</div>
+        <div class="cita-ref">Manual de la PLAPA, §11.2.1 — La prevención escolar (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">La imagen de la escuela como <em>hospital de campaña</em> no debe convertir a los docentes en <em>sustitutos de equipos de salud mental</em>. Los docentes acompañan vincularmente; <em>no diagnostican, no tratan patologías psiquiátricas, no sustituyen a terapeutas</em>. La escuela que confunde <em>presencia cercana</em> con <em>intervención clínica</em> <em>sobrecarga a sus docentes</em> y los expone a daño propio. La prevención escolar <em>articula con el sistema de salud</em>, no lo reemplaza.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">Los docentes que sostienen este tipo de presencia cercana —<em>escuchar, sostener, habilitar la palabra</em>— pueden experimentar <em>un desgaste emocional considerable</em>, especialmente en contextos de alta vulnerabilidad. El facilitador recuerda que <em>ningún docente puede sostener esa presencia solo</em>: la articulación entre quien recibe en la portería, los tutores y los equipos de orientación —que el §11.2.1 describe como necesaria— <em>protege también al docente individual</em> de cargar toda la responsabilidad emocional sin apoyo institucional.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §11.2.1 (La prevención escolar), §7.9.3 (Hospital de campaña) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 2 ════════════════════════════════════════ -->
+  <div id="m2" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 2 · El Juzgar</span>
+      <div class="ct">La proyección vital: educar porque esperamos algo bueno del porvenir</div>
+      <div class="cs">La pedagogía de la esperanza como antídoto frente a la falta de horizontes · §11.2.1</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"Educamos porque esperamos; y esperamos algo bueno de las personas y del porvenir. La escuela está llamada a ser un antídoto frente a la falta de horizontes."</div>
+      </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>Proyección vital: más que orientación vocacional tradicional.</strong> El §11.2.1 define la proyección vital con precisión: <em>"tiene que ver con el sentido que cada uno le da a su existencia, con los horizontes hacia los cuales quiere caminar y con aquello que considera valioso. No se limita únicamente a metas concretas, sino que incluye preguntas mucho más profundas: qué tipo de persona quiero llegar a ser, qué vínculos deseo construir, qué valores quiero encarnar."</em> Esta definición <em>va mucho más allá de la orientación vocacional tradicional</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>Escuela mediocre: no neutralmente ineficaz, sino activamente dañina.</strong> <em>"Cuando la propuesta educativa aparece vacía de sentido, incolora, insalubre o incluso 'indigerible', también puede producir daño. Además de favorecer, en muchos casos, la deserción escolar, genera escepticismo respecto de la propia posibilidad de proyectar la vida"</em> (§11.2.1). <em>Una escuela mediocre o desconectada del sentido no es neutralmente ineficaz</em>: produce <em>un daño activo en la capacidad de los estudiantes de imaginar un futuro</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>Herramientas para sobrevivir ≠ sentidos para vivir en plenitud.</strong> <em>"Una de las funciones esenciales de la escuela consiste en abrir horizontes, animarse a preguntar por los fines y no únicamente por los medios. La educación no puede reducirse a brindar herramientas o habilidades para sobrevivir; debe también ofrecer sentidos que permitan aspirar a una vida plena"</em> (§11.2.1). Esta distinción entre <em>"herramientas para sobrevivir" y "sentidos para una vida plena"</em> es <em>la clave teológica de todo el módulo</em>: la prevención que solo enseña a evitar drogas <em>sin ofrecer un horizonte de sentido es incompleta</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>Proyecto que alcanza plenitud en el servicio y la apertura a los demás.</strong> <em>"Los estudiantes necesitan poder reconocerse como protagonistas de su propio proyecto vital. Un proyecto que alcanza plenitud cuando se piensa desde la perspectiva del servicio, la comunión y la apertura a los demás"</em> (§11.2.1). <em>La proyección vital no se completa en el éxito individual</em>: se completa <em>en la apertura al servicio y a los demás</em>. Es una visión de la prevención <em>profundamente arraigada en la antropología cristiana del Manual</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Evaluar la pedagogía de la esperanza en el currículo</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo de docentes revisa: <em>¿hay espacios curriculares o extracurriculares donde los estudiantes puedan reflexionar sobre el sentido de su vida más allá de las calificaciones y la orientación vocacional tradicional? ¿se habla de "qué tipo de persona quiero llegar a ser" o solo de "qué carrera voy a estudiar"?</em></div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora los <em>espacios curriculares</em> actuales donde se trabaja la proyección vital. Si no hay ninguno explícito, <em>es momento de proponer uno</em>: una hora semanal es suficiente para empezar.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Diseñar un proyecto de servicio para estudiantes</div>
+        <div class="mode-g">
+          <div class="act-body">Siguiendo la idea de que la proyección vital <em>"alcanza plenitud desde la perspectiva del servicio"</em>, el grupo diseña un proyecto concreto donde los estudiantes puedan servir a otros (<em>visitas a un centro barrial, voluntariado, acompañamiento a compañeros más jóvenes</em>). El servicio <em>como experiencia formativa de sentido, no como obligación curricular vacía</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora <em>el proyecto de servicio</em> más viable para el próximo trimestre. La clave es que sea <em>regular, acompañado y procesado en clase</em>, no un evento aislado que luego nadie retoma.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">La proyección vital propia del equipo docente</div>
+        <div class="mode-g">
+          <div class="act-body">El equipo docente responde: <em>¿cuál es nuestra propia proyección vital como educadores? ¿para qué estamos acá, más allá del salario? ¿qué tipo de institución queremos construir?</em> La pedagogía de la esperanza <em>no se transmite si el equipo no la encarna primero en sí mismo</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Escribí en tu bitácora, en una sola frase, <em>para qué sos docente</em>. Esa frase es tu propio Mt 25,35: la que te vuelve a convocar cuando la burocracia o el desánimo te pueden.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §11.2.1</div>
+        <div class="cita-txt">"La escuela es un lugar privilegiado para desarrollar una verdadera 'pedagogía de la esperanza'. Quizás este sea hoy uno de sus mayores desafíos."</div>
+        <div class="cita-ref">Manual de la PLAPA, §11.2.1 — La prevención escolar (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">La <em>pedagogía de la esperanza</em> no se confunde con <em>optimismo ingenuo que niega la realidad</em>. Un estudiante del barrio sabe que las puertas laborales están cerradas, que el narco está en la esquina, que el futuro no está asegurado. Decirle <em>"tenés que tener esperanza"</em> sin reconocer esa realidad concreta <em>es más daño que ayuda</em>. La esperanza educativa es <em>realista y encarnada</em>: reconoce lo que hay <em>y abre horizonte concreto</em> (vínculos, servicio, oportunidades reales). Esperanza sin realidad <em>es cinismo revestido de buenas palabras</em>.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">El docente que está llamado a sostener <em>"la pedagogía de la esperanza"</em> necesita él mismo <em>tener esperanza viva sobre su tarea</em>, en un contexto educativo <em>a menudo desgastado por la burocracia y el desánimo</em>. El facilitador invita a que el equipo docente recupere también para sí mismo la pregunta de la proyección vital: <em>¿qué sentido tiene para cada uno la tarea de educar en este territorio concreto?</em></div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §11.2.1 (La prevención escolar — proyección vital) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 3 ════════════════════════════════════════ -->
+  <div id="m3" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 3 · El Actuar</span>
+      <div class="ct">Seis acciones preventivas concretas: de la escucha a la articulación territorial</div>
+      <div class="cs">Orientaciones prácticas ya probadas en escuelas de la región · §11.2.1</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"Compartimos aquí algunas acciones y orientaciones concretas que ya se practican en muchas de nuestras escuelas, y que revisten un carácter preventivo."</div>
+      </div>
+
+      <div class="pl">El Juzgar — Las seis acciones preventivas (§11.2.1)</div>
+      <ul class="pts">
+        <li><span class="dot j">1</span><span><strong>Espacios de escucha.</strong> Tutorías, espacios de diálogo, disponibilidad de los docentes, lugares donde acercarse. <em>"Escuchar a tiempo puede cambiar una historia."</em></span></li>
+        <li><span class="dot j">2</span><span><strong>Apostar por la comunidad educativa.</strong> Actividades de integración entre alumnos, padres, docentes, personal no docente y directivos; espacios de participación; cuidado del clima entre todos. <em>"Cuando alguien se siente parte, se protege más la vida."</em></span></li>
+        <li><span class="dot j">3</span><span><strong>Protagonismo de los jóvenes.</strong> Grupos de pares, líderes juveniles, proyectos impulsados por estudiantes. <em>"Los jóvenes no son solo destinatarios, son protagonistas. Pueden cuidarse entre ellos y ser parte de la respuesta."</em></span></li>
+        <li><span class="dot j">4</span><span><strong>Trabajo con las familias.</strong> Encuentros con padres, espacios de diálogo, acompañamiento. <em>"La escuela y la familia se necesitan mutuamente. Juntas pueden sostener mejor a los chicos."</em></span></li>
+        <li><span class="dot j">5</span><span><strong>Formación de docentes.</strong> Capacitaciones, espacios de reflexión, acompañamiento institucional. <em>"El educador es clave. Necesita herramientas, pero también sostén para su tarea."</em></span></li>
+        <li><span class="dot j">6</span><span><strong>Articulación con el territorio.</strong> Vínculo con parroquias, centros barriales, derivaciones acompañadas. <em>"La escuela no está sola. Forma parte de una red más amplia de cuidado."</em></span></li>
+      </ul>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>Caja de herramientas, no protocolo exhaustivo.</strong> Las seis acciones no son un protocolo a implementar de forma simultánea y exhaustiva: el Manual las presenta como <em>"orientaciones concretas que ya se practican en muchas de nuestras escuelas"</em>, es decir, <em>una caja de herramientas de la que cada institución puede tomar lo que pueda sostener realmente</em>, según sus recursos y su contexto.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>Protagonismo juvenil: delegar agencia real, no simbólica.</strong> La Acción 3 (protagonismo de los jóvenes) <em>es la que más se distingue de los modelos tradicionales de prevención escolar</em>, generalmente diseñados desde el adulto hacia el estudiante. El reconocimiento de que <em>"los jóvenes pueden cuidarse entre ellos y ser parte de la respuesta"</em> implica <em>delegar agencia real, no solo simbólica</em>, a los propios estudiantes.</span></li>
+        <li><span class="dot j">J</span><span><strong>Articulación con centro barrial: multiplica capacidad preventiva.</strong> La Acción 6 (articulación con el territorio) conecta directamente con el Itinerario 25 (centros barriales): <em>"vínculo con parroquias, centros barriales, derivaciones acompañadas."</em> La escuela que articula con el centro barrial del territorio <em>multiplica su capacidad preventiva</em> sin necesidad de <em>resolver todo internamente</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Elegir dos acciones para fortalecer este año</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo evalúa las seis acciones en la escuela actual y <em>elige dos para fortalecer concretamente este año lectivo</em>, con un plan de implementación realista. <em>No se trata de implementar las seis a la vez</em>: dos bien sostenidas <em>valen más que seis superficiales</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora las <em>dos acciones</em> prioritarias para tu institución este año y, al lado, <em>el responsable concreto</em> de cada una. Sin responsable con nombre, las acciones <em>no se encarnan</em>.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Diseñar la articulación con la parroquia o centro barrial del territorio</div>
+        <div class="mode-g">
+          <div class="act-body">Si la escuela aún no tiene un vínculo activo con la parroquia o el centro barrial cercano, el grupo diseña el primer contacto: <em>¿quién puede establecer esa relación? ¿qué tipo de articulación sería más útil</em> (derivaciones, actividades conjuntas, formación compartida)?</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora los <em>contactos</em> de la parroquia y del centro barrial más cercanos (si hay). Si no los tenés, <em>esa es la gestión concreta de la semana</em>: la red se arma con conversaciones iniciadas, no con buenas intenciones.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Grupos de pares: iniciar el protagonismo juvenil</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo diseña cómo iniciar un grupo de pares real en la escuela: <em>¿qué estudiantes podrían liderarlo? ¿con qué autoridad y qué acompañamiento? ¿qué temas podrían abordar</em> (acogida de los nuevos, prevención del bullying, acompañamiento entre pares)? El grupo de pares <em>es, operativamente, la Acción 3</em>: sin él, el protagonismo juvenil <em>queda en el discurso</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora los nombres de <em>cinco estudiantes</em> que podrían formar el grupo inicial de pares, y el <em>docente referente</em> que los acompañaría. El grupo pequeño es viable; esperar <em>"a cuando podamos armar un gran programa"</em> no construye nada.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §11.2.1</div>
+        <div class="cita-txt">"Allí donde existe una verdadera comunidad educativa, existe también un ámbito profundamente preventivo."</div>
+        <div class="cita-ref">Manual de la PLAPA, §11.2.1 — La prevención escolar (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">El <em>protagonismo juvenil</em> (Acción 3) <em>no es delegación de responsabilidades que les corresponden a los adultos</em>. Un grupo de pares que acompañe situaciones graves (consumo activo, violencia, abuso) <em>sin supervisión adulta</em> daña a los pares acompañantes <em>y no protege al compañero en crisis</em>. El protagonismo real <em>es con límites claros</em>: los pares <em>escuchan, acompañan y derivan a los adultos de referencia</em>; no diagnostican, no tratan, no cargan solos lo que los supera.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">La Acción 5 (formación de docentes) incluye explícitamente <em>"espacios de reflexión"</em> y <em>"acompañamiento institucional"</em> como parte de la formación, <em>no solo capacitaciones técnicas</em>. El facilitador recuerda al equipo directivo que <em>el cuidado del docente es parte constitutiva de la prevención escolar</em>, no un beneficio adicional: <em>un docente sin sostén institucional difícilmente puede sostener la presencia cercana que la prevención requiere</em>.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §11.2.1 (Seis acciones preventivas), Itinerario 25 (Centros barriales) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 4 ════════════════════════════════════════ -->
+  <div id="m4" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 4 · Síntesis</span>
+      <div class="ct">La universidad: docencia, investigación y extensión al servicio del territorio</div>
+      <div class="cs">Tres roles que deben coordinarse para no descontextualizarse · §11.2.2</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"Cuando la Universidad se aleja de los territorios, su investigación no se pone al servicio de sus necesidades y su docencia termina repitiendo los mismos conocimientos, muchas veces descontextualizados. Por el contrario, cuando estos tres roles están bien integrados, la Universidad aporta al Desarrollo Humano Integral de un modo mucho más pleno."</div>
+      </div>
+
+      <div class="pl">El Juzgar — Los tres roles de la universidad (§11.2.2)</div>
+      <ul class="pts">
+        <li><span class="dot j">1</span><span><strong>Docencia.</strong> <em>Transmisión del conocimiento</em>. No solo para futuros especialistas (médicos, psicólogos, trabajadores sociales): <em>todas las carreras pueden formar profesionales sensibles y técnicamente preparados frente a las adicciones</em>.</span></li>
+        <li><span class="dot j">2</span><span><strong>Investigación.</strong> <em>Producción del conocimiento</em>. Línea de investigación aplicada que vincule los dispositivos territoriales con la academia, <em>generando datos científicos que incidan en las políticas de drogas vigentes</em>.</span></li>
+        <li><span class="dot j">3</span><span><strong>Extensión.</strong> <em>La relación con el territorio</em>. El puente que evita que la docencia y la investigación <em>queden descontextualizadas de la realidad concreta de los barrios</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Carreras y aportes posibles al dispositivo (§11.2.2)</div>
+      <div class="ejes">
+        <div class="eje">
+          <div class="eje-n">Educación y Profesorados</div>
+          <div class="eje-t">Formación cultural y lingüística</div>
+          <div class="eje-txt">Talleres educativos adaptados para personas en tratamiento: <em>lengua materna, lenguas extranjeras, literatura, cultura</em>. El retorno al estudio como <em>restitución de dignidad</em>.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Ingenierías y Carreras Técnicas</div>
+          <div class="eje-t">Capacitación laboral concreta</div>
+          <div class="eje-txt">Talleres prácticos (<em>mecánica, informática, electricidad</em>) orientados a <em>capacitar y calificar mano de obra para inserción laboral</em>.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Ciencias Económicas</div>
+          <div class="eje-t">Emprendimiento y cooperativismo</div>
+          <div class="eje-txt">Talleres de <em>emprendimiento y finanzas personales</em>, capacitando en <em>cooperativas y microemprendimientos</em>.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Artes, Diseño y Comunicación</div>
+          <div class="eje-t">Expresión emocional y prevención</div>
+          <div class="eje-txt">Arteterapia, música y diseño como herramientas de expresión emocional; <em>campañas comunitarias de prevención sin estigmas</em>.</div>
+        </div>
+      </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>Conocimiento universitario como defensa contra el castigo.</strong> <em>"El conocimiento universitario es la mejor defensa contra el castigo. Un profesional formado sabe que el consumo es un tema de salud y no un delito. Esto garantiza que los programas traten a las personas con dignidad"</em> (§11.2.2). La formación universitaria adecuada en adicciones tiene <em>un efecto que va más allá de la técnica</em>: <em>cambia la posición ética del futuro profesional</em> frente a las personas en consumo.</span></li>
+        <li><span class="dot">V</span><span><strong>Lenguaje común con la agenda global: ODS 1, 3, 5, 10, 16.</strong> El §11.2.2 conecta el abordaje de adicciones con los <em>Objetivos de Desarrollo Sostenible</em> de la ONU: Erradicación de la Pobreza (ODS 1), Salud y Bienestar (ODS 3), Igualdad de Género (ODS 5), Reducción de las Desigualdades (ODS 10) y Paz, Justicia e Instituciones Eficaces (ODS 16). Esta vinculación <em>da a la pastoral de adicciones un lenguaje común con la agenda global de desarrollo</em> que puede <em>facilitar alianzas institucionales</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>Desplazamiento epistemológico: menos reduccionismo neurocientífico.</strong> El <em>"Desplazamiento Epistemológico"</em> que propone el §11.2.2 es clave: <em>"es necesario reducir la actual desproporción hacia los enfoques neurocientíficos reduccionistas que aíslan el fenómeno en el cerebro individual. Ese conocimiento es importante, pero no el único necesario."</em> Esta crítica a la sobrerrepresentación de la neurociencia en la investigación académica <em>es coherente con el modelo biopsicosocial-espiritual de todo el Manual</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>"Ir desnudo a escuchar": epistemología ascendente aplicada a la academia.</strong> La metodología de <em>"ir desnudo a escuchar"</em> al territorio (Grounded Theory, §11.2.2) describe la actitud investigativa que el Manual propone: <em>"permitiendo que las categorías analíticas y terapéuticas emerjan directamente de la voz de los coordinadores y protagonistas barriales."</em> Esta es la <em>epistemología ascendente que organiza todo el Manual</em>, aplicada ahora <em>al campo de la investigación académica</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Identificar universidades aliadas en el territorio</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo identifica: <em>¿hay universidades (especialmente católicas) en la región con las que la pastoral podría articular? ¿qué carreras tienen más potencial de aporte</em> (educación, ingeniería, artes, ciencias económicas)? Diseñar <em>un primer contacto institucional</em> para proponer alguna de las líneas del §11.2.2.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora las <em>dos universidades</em> más cercanas y sus facultades con potencial de aporte. Al lado, <em>un contacto concreto</em>: decano, secretario de extensión, docente aliado. Sin ese nombre, no hay vía de entrada.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Proponer una línea de extensión universitaria concreta</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo diseña una propuesta concreta de extensión universitaria para el territorio: <em>un taller de oficios con una carrera técnica, un proyecto de arteterapia con la carrera de artes, una capacitación en finanzas personales con ciencias económicas</em>. <em>La propuesta concreta es más persuasiva que una solicitud genérica de "colaboración."</em></div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Escribí en tu bitácora <em>la propuesta concreta</em> (una página o menos) para presentar a la universidad aliada: qué, para quiénes, con qué frecuencia, qué aporta cada parte. La claridad del documento <em>abre puertas</em> que la verbalización genérica no abre.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Cierre: el banco de datos del territorio — y cierre del bloque 6</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo cierra reflexionando sobre cómo la experiencia territorial acumulada (<em>los itinerarios formativos, las prácticas exitosas, los aprendizajes de años de trabajo</em>) podría convertirse en <em>insumo de investigación</em> si se sistematiza y se comparte con una universidad aliada. <em>¿Qué de lo que el equipo ya sabe podría convertirse en conocimiento científico útil para otros territorios?</em> Cerrar <em>valorando el saber territorial acumulado como un recurso valioso en sí mismo</em>. Este itinerario cierra el <strong>bloque 6 (Dispositivos)</strong>: el próximo bloque (29-30) sostiene la red y proyecta la pastoral continental.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Escribí en tu bitácora <em>tres saberes</em> acumulados en tu dispositivo que podrían sistematizarse como aporte a la academia. Esa lista es <em>la agenda de la futura colaboración</em>: el territorio no es solo demanda, es <em>fuente de conocimiento</em>.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §11.2.2</div>
+        <div class="cita-txt">"Es necesario promover un diálogo horizontal entre la universidad y el territorio, bajo la premisa metodológica de 'ir desnudo a escuchar' al territorio, permitiendo que las categorías analíticas y terapéuticas emerjan directamente de la voz de los coordinadores y protagonistas barriales."</div>
+        <div class="cita-ref">Manual de la PLAPA, §11.2.2 — Las universidades (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">La articulación universidad-territorio <em>no puede convertirse en extractivismo académico</em>: investigadores que llegan al barrio, toman datos, publican papers y nunca más vuelven. El territorio <em>no es un yacimiento de datos</em>, es <em>un sujeto de conocimiento</em>. La buena articulación incluye <em>retorno concreto</em>: devolución de resultados a la comunidad, coautoría de los dispositivos barriales, incidencia política articulada. Sin eso, <em>la "extensión" universitaria termina siendo una forma más de descarte intelectual</em>.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente — cierre del itinerario y del bloque 6</div>
+        <div class="autocuidado-txt">El itinerario sobre prevención escolar y universitaria cierra con un reconocimiento: <em>el equipo que ha recorrido los 28 itinerarios anteriores ya posee un saber territorial valioso</em> que la academia necesita escuchar <em>"desnuda"</em>, sin pretender corregirlo desde teorías ajenas a la experiencia. Esa inversión de la relación habitual entre territorio y academia —<em>donde el territorio enseña tanto como aprende</em>— es <em>una forma de dignidad recuperada</em> para los agentes pastorales que muchas veces se sienten <em>"menos preparados"</em> frente a los títulos universitarios. <em>El saber vivido tiene tanto valor como el saber teórico</em>, y el Manual lo reconoce explícitamente. El bloque 6 cierra reafirmando esa dignidad del saber territorial.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §11.2.2 (Las universidades), §11.2.1 (Prevención escolar), §7.9.3 (Hospital de campaña) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 5 · MURO DEL CAMINO (FORO) ═══════════════ -->
+  <div id="m5" class="card">
+    <div class="ch">
+      <span class="cn">Espacio comunitario · Muro</span>
+      <div class="ct">Voces de quienes también recorren este itinerario</div>
+      <div class="cs">El Manual crece con quienes lo caminan · §13.3, §13.5</div>
+    </div>
+    <div class="cb">
+
+      <!-- Selector de vista: este itinerario / global -->
+      <div class="foro-vista">
+        <button class="foro-vista-btn on" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
+        <button class="foro-vista-btn" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
+      </div>
+
+      <!-- Pautas pastorales -->
+      <div class="foro-pautas">
+        <div class="foro-pautas-lbl">Antes de publicar</div>
+        <ul>
+          <li>Compartí solo experiencias propias o del equipo. No expongas historias ajenas ni datos que identifiquen a terceras personas.</li>
+          <li>Cuidá a quien lea después: evitá descripciones que puedan retraumatizar.</li>
+          <li>Tu aporte será revisado por el equipo PLAPA antes de publicarse.</li>
+        </ul>
+      </div>
+
+      <!-- Formulario nuevo comentario -->
+      <div class="foro-form" id="foroForm">
+        <div class="foro-form-lbl">Dejar mi palabra</div>
+        <div class="foro-form-row">
+          <label for="foroModulo">¿Sobre qué momento del itinerario?</label>
+          <select id="foroModulo">
+            <option value="">General del itinerario</option>
+            <option value="1">Módulo 1 · La escuela como hospital de campaña</option>
+            <option value="2">Módulo 2 · La proyección vital</option>
+            <option value="3">Módulo 3 · Seis acciones preventivas</option>
+            <option value="4">Módulo 4 · La universidad al servicio del territorio</option>
+          </select>
+        </div>
+        <textarea id="foroTexto" placeholder="Escribí tu comentario, pregunta o testimonio de camino..."></textarea>
+        <div class="foro-form-actions">
+          <div class="foro-form-info">Aparecerá en el muro luego de la revisión del equipo.</div>
+          <button class="foro-btn" id="foroEnviar" onclick="enviarComentario()">Enviar para revisión</button>
+        </div>
+      </div>
+
+      <!-- Lista de comentarios -->
+      <div class="foro-lista" id="foroLista">
+        <div class="foro-vacio">Cargando el muro...</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 6 · EVALUACIÓN ══════════════════════════ -->
+  <div id="m6" class="card">
+    <div class="ch">
+      <span class="cn">Cierre del itinerario · Evaluación</span>
+      <div class="ct">Revisión de vida en clave Ver–Juzgar–Actuar</div>
+      <div class="cs">No es un examen: es un discernimiento sobre lo que este itinerario dejó en vos</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Antes de comenzar</div>
+        <div class="resonancia-txt">"La revisión de vida es la forma histórica que la Iglesia latinoamericana encontró para institucionalizar el Ver–Juzgar–Actuar. El agente que la practica no aplica el método: lo vive." Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
+      </div>
+
+      <div class="eval-nota">
+        <span class="eval-nota-lbl">🕊 Uso pastoral</span>
+        <div class="eval-nota-txt">Esta evaluación es <strong>tuya</strong>. Podés guardarla en tu bitácora personal (queda solo con vos) y, si lo decidís, compartirla con el equipo PLAPA como aporte al <em>rolling release</em> del Manual (§13.5). Compartir es voluntario.</div>
+      </div>
+
+      <div class="pl">El Ver — Qué se hizo visible</div>
+      <div class="eval-q">
+        <label for="evalVer">¿Qué realidad del territorio se hizo más visible para vos a lo largo de estos cuatro módulos? ¿Qué llagas emergieron con más fuerza? ¿Qué zonas del mapa estaban en blanco antes y ahora tienen contenido?</label>
+        <textarea id="evalVer" data-eval="ver" placeholder="Escribí con calma, sin apurarte..."></textarea>
+      </div>
+
+      <div class="pl">El Juzgar — Qué iluminó, qué preguntas quedaron abiertas</div>
+      <div class="eval-q">
+        <label for="evalJuzgar1">¿Qué del método del diagnóstico territorial te iluminó de manera nueva? ¿Qué idea del Manual sentís que ya no podrás dejar de lado?</label>
+        <textarea id="evalJuzgar1" data-eval="juzgar1" placeholder="Nombralo con precisión..."></textarea>
+      </div>
+      <div class="eval-q">
+        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos? Las preguntas abiertas son también fruto (§13.3).</label>
+        <textarea id="evalJuzgar2" data-eval="juzgar2" placeholder="Las que siguen ardiendo..."></textarea>
+      </div>
+
+      <div class="pl">El Actuar — Compromiso concreto</div>
+      <div class="eval-q">
+        <label for="evalActuar">¿Qué gesto pastoral concreto vas a intentar en las próximas semanas a partir del diagnóstico que hiciste? Nombralo con nombre, tiempo y lugar. Un compromiso vago no es un compromiso.</label>
+        <textarea id="evalActuar" data-eval="actuar" placeholder="Ej.: En la próxima reunión de equipo (jueves 25) voy a presentar el mapa territorial que construimos y proponer una callejeada específica al sector X del barrio..."></textarea>
+      </div>
+      <div class="eval-q eval-fecha">
+        <label for="evalFecha">Fecha en la que vas a volver a revisar si pudiste sostenerlo</label>
+        <input type="date" id="evalFecha" data-eval="fecha_revision">
+      </div>
+
+      <div class="pl">Autocuidado y equipo</div>
+      <div class="eval-q eval-scale">
+        <label>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</label>
+        <div class="eval-scale-row">
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="1" data-eval="animo"><span>1</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="2" data-eval="animo"><span>2</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="3" data-eval="animo"><span>3</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="4" data-eval="animo"><span>4</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="5" data-eval="animo"><span>5</span></label>
+        </div>
+      </div>
+      <div class="eval-q">
+        <label for="evalCuidado">¿Qué necesitás cuidar de vos mismo/a en las próximas semanas? ¿A quién del equipo se lo vas a decir?</label>
+        <textarea id="evalCuidado" data-eval="cuidado" placeholder="El agente que cuida su esperanza puede sostener la del otro (§1.3)..."></textarea>
+      </div>
+
+      <div class="pl">Cierre</div>
+
+      <div class="eval-check">
+        <input type="checkbox" id="evalCompartir">
+        <label for="evalCompartir"><strong>Compartir con el equipo PLAPA</strong> como aporte al <em>rolling release</em> del Manual. Solo se envían tus respuestas si marcás esta casilla. Si no la marcás, la evaluación queda solo en tu bitácora.</label>
+      </div>
+
+      <div class="eval-actions">
+        <button class="foro-btn eval-btn-guardar" onclick="guardarEvaluacion()">Guardar en mi bitácora</button>
+        <button class="foro-btn eval-btn-imprimir" onclick="imprimirEvaluacion()">🖨 Imprimir / PDF</button>
+      </div>
+
+      <div id="evalMsg" class="eval-msg"></div>
+
+      <div class="autocuidado" style="margin-top: 2rem;">
+        <div class="autocuidado-lbl">Cierre del itinerario</div>
+        <div class="autocuidado-txt">Cerrar bien un itinerario también es autocuidado: celebrar lo caminado, agradecer al equipo, reconocer los propios límites y renovar la esperanza. Este itinerario termina con gratitud: por el territorio que nos habló, por las llagas que dejamos de negar, por el equipo que hizo posible mirar sin apartar la mirada.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §1.3 (Prólogo), §6.1.3 (Evitar la romantización), §13.2 (Sinodalidad en la práctica), §13.3 (Rolling release), §13.5 (Mecanismos de colaboración) — CELAM 2026.</div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function setMode(mode, btn) {
+    var root = document.querySelector('.root');
+    root.classList.remove('mode-grupal', 'mode-individual');
+    root.classList.add('mode-' + mode);
+    var buttons = document.querySelectorAll('.mode-btn');
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].classList.remove('on');
+    }
+    btn.classList.add('on');
+  }
+
+  function show(n, btn) {
+    for (var i = 1; i <= 6; i++) {
+      var el = document.getElementById('m' + i);
+      if (el) el.classList.remove('active');
+    }
+    document.querySelectorAll('.nav .btn').forEach(function(b) {
+      b.classList.remove('on');
+    });
+    document.getElementById('m' + n).classList.add('active');
+    btn.classList.add('on');
+    if (window.innerWidth < 640) {
+      document.getElementById('m' + n).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    // Al abrir el muro, refrescar comentarios
+    if (n === 5 && typeof cargarComentarios === 'function') {
+      cargarComentarios();
+    }
+    // Al abrir la evaluación, restaurar borrador si existe
+    if (n === 6 && typeof restaurarEvaluacion === 'function') {
+      restaurarEvaluacion();
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════
+  // MURO DEL CAMINO — FORO SUPABASE
+  // ═══════════════════════════════════════════════════════
+  // BACKEND REQUERIDO (Supabase — mismo proyecto que app-plapa):
+  //
+  // 1) Tabla `foro_comentarios`:
+  //    - id (uuid, pk)
+  //    - itinerario_id (text)     — ej. 'itinerario_28_prevencion_escolar_universitaria'
+  //    - parent_id (uuid, null)   — null = comentario raíz; uuid = respuesta
+  //    - usuario_id (uuid, fk auth.users)
+  //    - autor_nombre (text)      — copiado del perfil al crear
+  //    - pais (text)              — copiado del perfil al crear
+  //    - modulo (int, null)       — 1..4 o null (general)
+  //    - texto (text)
+  //    - estado (text)            — 'pendiente' | 'publicado' | 'rechazado'
+  //    - created_at (timestamptz)
+  //
+  // 2) Tabla `foro_reacciones`:
+  //    - comentario_id (uuid, fk)
+  //    - usuario_id (uuid, fk)
+  //    - emoji (text) — '🙏' | '❤️' | '💡' | '🕊️'
+  //    - PK compuesta (comentario_id, usuario_id, emoji)
+  //
+  // 3) Vista/RPC `comentarios_para_itinerario(p_itinerario text, p_scope text)`:
+  //    devuelve los comentarios publicados con autor_nombre, pais, itinerario_titulo
+  //    (si scope='global'), agregado de reacciones y las del usuario actual.
+  //    scope: 'itinerario' filtra por p_itinerario; 'global' devuelve todos.
+  //
+  // 4) RPC `toggle_reaccion(p_comentario uuid, p_emoji text)`.
+  //
+  // 5) RLS:
+  //    - foro_comentarios: SELECT solo estado='publicado'; INSERT solo auth.uid()
+  //      con estado='pendiente' forzado.
+  //    - Moderadores (rol) pueden UPDATE estado.
+  //
+  // 6) Sesión: la Escuela PLAPA debe dejar el token JWT accesible
+  //    (localStorage 'escuela_plapa_sesion' con { token, nombre, pais }
+  //    o cookie según arquitectura de la Escuela).
+  // ═══════════════════════════════════════════════════════
+
+  var SUPABASE_URL = 'https://TU-PROYECTO.supabase.co';  // TODO: config
+  var SUPABASE_ANON_KEY = 'TU_ANON_KEY';                  // TODO: config
+  var ITINERARIO_ID = 'itinerario_28_prevencion_escolar_universitaria';
+  var ITINERARIO_TITULO = 'Prevención escolar y universitaria';
+
+  var vistaForo = 'itinerario';
+  var sesion = null;
+  var EMOJIS = ['🙏', '❤️', '💡', '🕊️'];
+
+  function supaHeaders() {
+    var h = {
+      'apikey': SUPABASE_ANON_KEY,
+      'Content-Type': 'application/json'
+    };
+    if (sesion && sesion.token) {
+      h['Authorization'] = 'Bearer ' + sesion.token;
+    }
+    return h;
+  }
+
+  function escapeHtml(s) {
+    if (!s) return '';
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function formatFecha(iso) {
+    if (!iso) return '';
+    try {
+      var d = new Date(iso);
+      return d.toLocaleDateString('es', { day: 'numeric', month: 'short', year: 'numeric' });
+    } catch (e) { return ''; }
+  }
+
+  function cargarComentarios() {
+    var contenedor = document.getElementById('foroLista');
+    contenedor.innerHTML = '<div class="foro-vacio">Cargando el muro...</div>';
+
+    var url = SUPABASE_URL + '/rest/v1/rpc/comentarios_para_itinerario';
+    fetch(url, {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({
+        p_itinerario: ITINERARIO_ID,
+        p_scope: vistaForo
+      })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) { renderComentarios(data || []); })
+    .catch(function() {
+      contenedor.innerHTML = '<div class="foro-vacio">No se pudo cargar el muro. Intentá de nuevo más tarde.</div>';
+    });
+  }
+
+  function renderComentarios(comentarios) {
+    var contenedor = document.getElementById('foroLista');
+    if (!comentarios || comentarios.length === 0) {
+      contenedor.innerHTML = '<div class="foro-vacio">Aún no hay palabras publicadas en este muro. Podés ser vos quien empiece la conversación.</div>';
+      return;
+    }
+    var raices = comentarios.filter(function(c) { return !c.parent_id; });
+    var respuestasPor = {};
+    comentarios.filter(function(c) { return c.parent_id; }).forEach(function(c) {
+      if (!respuestasPor[c.parent_id]) respuestasPor[c.parent_id] = [];
+      respuestasPor[c.parent_id].push(c);
+    });
+    contenedor.innerHTML = raices.map(function(c) {
+      return renderComment(c, respuestasPor[c.id] || []);
+    }).join('');
+  }
+
+  function renderComment(c, respuestas) {
+    var modLbl = c.modulo ? '<span class="comment-modulo">Módulo ' + c.modulo + '</span>' : '';
+    var paisLbl = c.pais ? '<span class="comment-pais">' + escapeHtml(c.pais) + '</span>' : '';
+    var globalLbl = (vistaForo === 'global' && c.itinerario_titulo)
+      ? '<span class="comment-modulo">' + escapeHtml(c.itinerario_titulo) + '</span>'
+      : '';
+    var reacciones = c.reacciones || {};
+    var misReacc = c.mis_reacciones || [];
+    var reaccBtns = EMOJIS.map(function(e) {
+      var count = reacciones[e] || 0;
+      var mine = misReacc.indexOf(e) >= 0;
+      return '<button class="react-btn ' + (mine ? 'on' : '') + '" onclick="toggleReaccion(\'' + c.id + '\', \'' + e + '\')">' + e + (count > 0 ? '<span class="react-count">' + count + '</span>' : '') + '</button>';
+    }).join('');
+    var respuestasHtml = respuestas.length
+      ? '<div class="comment-replies">' + respuestas.map(renderReply).join('') + '</div>'
+      : '';
+    return '' +
+      '<div class="comment" id="c-' + c.id + '">' +
+        '<div class="comment-head">' +
+          '<div>' +
+            '<span class="comment-autor">' + escapeHtml(c.autor_nombre || 'Anónimo') + '</span>' +
+            paisLbl + modLbl + globalLbl +
+          '</div>' +
+          '<span class="comment-fecha">' + formatFecha(c.created_at) + '</span>' +
+        '</div>' +
+        '<div class="comment-texto">' + escapeHtml(c.texto) + '</div>' +
+        '<div class="comment-actions">' +
+          reaccBtns +
+          '<button class="reply-btn" onclick="toggleReplyForm(\'' + c.id + '\')">↩ Responder</button>' +
+        '</div>' +
+        '<div class="reply-form" id="rf-' + c.id + '">' +
+          '<textarea placeholder="Escribí tu respuesta..." id="rt-' + c.id + '"></textarea>' +
+          '<div class="reply-form-actions">' +
+            '<button class="reply-form-cancel" onclick="toggleReplyForm(\'' + c.id + '\')">Cancelar</button>' +
+            '<button class="foro-btn" onclick="enviarRespuestaDesde(\'' + c.id + '\')">Enviar</button>' +
+          '</div>' +
+        '</div>' +
+        respuestasHtml +
+      '</div>';
+  }
+
+  function renderReply(r) {
+    var paisLbl = r.pais ? '<span class="comment-pais">' + escapeHtml(r.pais) + '</span>' : '';
+    return '' +
+      '<div class="reply">' +
+        '<div class="comment-head">' +
+          '<div>' +
+            '<span class="comment-autor">' + escapeHtml(r.autor_nombre || 'Anónimo') + '</span>' +
+            paisLbl +
+          '</div>' +
+          '<span class="comment-fecha">' + formatFecha(r.created_at) + '</span>' +
+        '</div>' +
+        '<div class="comment-texto">' + escapeHtml(r.texto) + '</div>' +
+      '</div>';
+  }
+
+  function enviarComentario() {
+    if (!sesion) { window.location.href = '/login'; return; }
+    var texto = document.getElementById('foroTexto').value.trim();
+    var modulo = document.getElementById('foroModulo').value;
+    if (!texto) return;
+    var btn = document.getElementById('foroEnviar');
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+    fetch(SUPABASE_URL + '/rest/v1/foro_comentarios', {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({
+        itinerario_id: ITINERARIO_ID,
+        parent_id: null,
+        usuario_id: sesion.user ? sesion.user.id : null,
+        autor_nombre: sesion.nombre || '',
+        pais: sesion.pais || '',
+        modulo: modulo ? parseInt(modulo) : null,
+        texto: texto
+      })
+    })
+    .then(function() {
+      document.getElementById('foroTexto').value = '';
+      document.getElementById('foroModulo').value = '';
+      btn.textContent = '✓ Enviado — pendiente de revisión';
+      setTimeout(function() {
+        btn.textContent = 'Enviar para revisión';
+        btn.disabled = false;
+      }, 3000);
+    })
+    .catch(function() {
+      btn.textContent = 'Error al enviar';
+      btn.disabled = false;
+    });
+  }
+
+  function enviarRespuestaDesde(parentId) {
+    if (!sesion) { window.location.href = '/login'; return; }
+    var textarea = document.getElementById('rt-' + parentId);
+    var texto = textarea.value.trim();
+    if (!texto) return;
+    fetch(SUPABASE_URL + '/rest/v1/foro_comentarios', {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({
+        itinerario_id: ITINERARIO_ID,
+        parent_id: parentId,
+        usuario_id: sesion.user ? sesion.user.id : null,
+        autor_nombre: sesion.nombre || '',
+        pais: sesion.pais || '',
+        texto: texto
+      })
+    })
+    .then(function() {
+      textarea.value = '';
+      document.getElementById('rf-' + parentId).classList.remove('on');
+      alert('Tu respuesta será revisada por el equipo antes de publicarse.');
+    })
+    .catch(function() { alert('Error al enviar la respuesta.'); });
+  }
+
+  function toggleReaccion(comentarioId, emoji) {
+    if (!sesion) { window.location.href = '/login'; return; }
+    fetch(SUPABASE_URL + '/rest/v1/rpc/toggle_reaccion', {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({ p_comentario: comentarioId, p_emoji: emoji })
+    })
+    .then(function() { cargarComentarios(); })
+    .catch(function() {});
+  }
+
+  function toggleReplyForm(id) {
+    if (!sesion) { window.location.href = '/login'; return; }
+    document.getElementById('rf-' + id).classList.toggle('on');
+  }
+
+  function setVistaForo(v, btn) {
+    vistaForo = v;
+    var buttons = document.querySelectorAll('.foro-vista-btn');
+    for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove('on'); }
+    btn.classList.add('on');
+    cargarComentarios();
+  }
+
+  // ═══════════════════════════════════════════════════════
+  // EVALUACIÓN — REVISIÓN DE VIDA VJA
+  // ═══════════════════════════════════════════════════════
+  // BACKEND REQUERIDO:
+  //
+  // Tabla `evaluaciones_itinerario`:
+  //   - id (uuid, pk)
+  //   - usuario_id (uuid, fk auth.users)
+  //   - itinerario_id (text)
+  //   - respuestas (jsonb) — { ver, juzgar1, juzgar2, actuar, fecha_revision, animo, cuidado }
+  //   - compartir_con_equipo (bool)
+  //   - created_at, updated_at
+  //
+  // RLS: SELECT/UPDATE solo dueño. INSERT solo dueño.
+  // Solo moderadores del equipo PLAPA pueden ver evaluaciones donde
+  // compartir_con_equipo=true (via política RLS separada).
+  //
+  // Borrador: se autoguarda en localStorage para que no se pierda
+  // al cerrar el navegador antes de guardar formalmente.
+  // ═══════════════════════════════════════════════════════
+
+  var EVAL_STORAGE_KEY = 'eval_' + ITINERARIO_ID;
+
+  function recolectarEvaluacion() {
+    var datos = {};
+    document.querySelectorAll('[data-eval]').forEach(function(el) {
+      var key = el.getAttribute('data-eval');
+      if (el.type === 'radio') {
+        if (el.checked) datos[key] = el.value;
+      } else {
+        datos[key] = el.value;
+      }
+    });
+    datos.compartir_con_equipo = document.getElementById('evalCompartir').checked;
+    return datos;
+  }
+
+  function autoguardarBorrador() {
+    try {
+      localStorage.setItem(EVAL_STORAGE_KEY, JSON.stringify(recolectarEvaluacion()));
+    } catch (e) {}
+  }
+
+  function restaurarEvaluacion() {
+    try {
+      var stored = localStorage.getItem(EVAL_STORAGE_KEY);
+      if (!stored) return;
+      var datos = JSON.parse(stored);
+      document.querySelectorAll('[data-eval]').forEach(function(el) {
+        var key = el.getAttribute('data-eval');
+        if (datos[key] == null) return;
+        if (el.type === 'radio') {
+          if (el.value === datos[key]) el.checked = true;
+        } else {
+          el.value = datos[key];
+        }
+      });
+      if (datos.compartir_con_equipo) {
+        document.getElementById('evalCompartir').checked = true;
+      }
+    } catch (e) {}
+  }
+
+  function mostrarEvalMsg(texto, tipo) {
+    var el = document.getElementById('evalMsg');
+    el.className = 'eval-msg on ' + (tipo || 'exito');
+    el.textContent = texto;
+    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function guardarEvaluacion() {
+    var datos = recolectarEvaluacion();
+    var minimoTexto = (datos.ver || '').trim() + (datos.actuar || '').trim();
+    if (minimoTexto.length < 30) {
+      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos "El Ver" y "El Actuar" merecen unos renglones honestos.', 'error');
+      return;
+    }
+
+    // Guardar en Supabase (siempre queda en tu bitácora)
+    if (!sesion) { window.location.href = '/login'; return; }
+    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario', {
+      method: 'POST',
+      headers: Object.assign({}, supaHeaders(), { 'Prefer': 'resolution=merge-duplicates' }),
+      body: JSON.stringify({
+        itinerario_id: ITINERARIO_ID,
+        respuestas: datos,
+        compartir_con_equipo: datos.compartir_con_equipo === true
+      })
+    })
+    .then(function(r) {
+      if (r.ok) {
+        var msg = datos.compartir_con_equipo
+          ? '✓ Evaluación guardada en tu bitácora y compartida con el equipo PLAPA. Gracias por el aporte.'
+          : '✓ Evaluación guardada en tu bitácora. Queda solo con vos.';
+        mostrarEvalMsg(msg, 'exito');
+      } else {
+        mostrarEvalMsg('Guardado localmente. No pudimos sincronizar con la Escuela — reintentá más tarde.', 'error');
+      }
+    })
+    .catch(function() {
+      mostrarEvalMsg('Guardado localmente. Sin conexión con la Escuela — reintentá cuando tengas internet.', 'error');
+    });
+  }
+
+  function imprimirEvaluacion() {
+    autoguardarBorrador();
+    window.print();
+  }
+
+  // Init general del itinerario
+  document.addEventListener('DOMContentLoaded', function() {
+    // Leer sesión (el guard del <head> garantiza que existe)
+    try {
+      var stored = localStorage.getItem('escuela_plapa_sesion');
+      if (stored) sesion = JSON.parse(stored);
+    } catch (e) {}
+    // Cargar muro
+    cargarComentarios();
+
+    // Restaurar borrador de evaluación si existe
+    restaurarEvaluacion();
+
+    // Autoguardado del borrador de evaluación al escribir (con debounce)
+    var evalTimeout;
+    document.querySelectorAll('#m6 [data-eval], #m6 #evalCompartir').forEach(function(el) {
+      el.addEventListener('input', function() {
+        clearTimeout(evalTimeout);
+        evalTimeout = setTimeout(autoguardarBorrador, 500);
+      });
+      el.addEventListener('change', autoguardarBorrador);
+    });
+  });
+</script>
+
+</body>
+</html>

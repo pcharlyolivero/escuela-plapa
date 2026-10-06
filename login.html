@@ -183,17 +183,6 @@
   }
   @media (max-width: 480px) { .row2 { grid-template-columns: 1fr; } }
 
-  .check {
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    margin-bottom: 1.1rem;
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    line-height: 1.5;
-  }
-  .check input { margin-top: 3px; }
-  .check a { color: var(--primary); }
 
   .btn {
     width: 100%;
@@ -392,10 +381,6 @@
           </div>
         </div>
 
-        <label class="check">
-          <input type="checkbox" id="regTerminos">
-          <span>Acepto las <a href="terminos.html" target="_blank">condiciones de uso</a> y la <a href="privacidad.html" target="_blank">política de privacidad</a> de la Escuela PLAPA.</span>
-        </label>
 
         <button class="btn accent" id="btnRegistro" onclick="hacerRegistro()">Inscribirme en la Escuela</button>
 
@@ -541,7 +526,6 @@
     var email = document.getElementById('regEmail').value.trim();
     var pass = document.getElementById('regPass').value;
     var pass2 = document.getElementById('regPass2').value;
-    var terminos = document.getElementById('regTerminos').checked;
 
     if (!nombre || !pais || !email || !pass) {
       mostrarMsg('Completá los campos obligatorios (marcados con *).', 'error'); return;
@@ -551,9 +535,6 @@
     }
     if (pass !== pass2) {
       mostrarMsg('Las contraseñas no coinciden.', 'error'); return;
-    }
-    if (!terminos) {
-      mostrarMsg('Necesitás aceptar las condiciones para inscribirte.', 'error'); return;
     }
 
     var btn = document.getElementById('btnRegistro');

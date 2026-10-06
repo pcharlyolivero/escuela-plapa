@@ -1,0 +1,2205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Itinerario 19 · Sustancias específicas · Escuela PLAPA</title>
+<style>
+  :root {
+    /* Paleta dorada PLAPA — Itinerario 19 (bloque 4: Sustancias y biología) */
+    --i19-oscuro:  #3F2306;
+    --i19-medio:   #854F0B;
+    --i19-accent:  #BA7517;
+    --i19-suave:   #DFA060;
+    --i19-claro:   #F5D9A0;
+    --i19-crema:   #FAEEDA;
+    --i19-fondo:   #FFFDF8;
+
+    --alerta:     #8B1A1A;
+    --alerta-bg:  #FDF7F7;
+
+    --texto:      #1E1B33;
+    --texto-2:    #4A4560;
+    --texto-3:    #8C89A0;
+    --borde:      #E4E2F0;
+
+    --font-serif: "Georgia", "Times New Roman", serif;
+    --font-sans:  "system-ui", -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: #EFDFB8;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    line-height: 1.6;
+  }
+
+  .root {
+    background: var(--i19-fondo);
+    max-width: 860px;
+    width: 100%;
+    padding: 2.5rem;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(38, 33, 92, 0.08);
+  }
+
+  /* ─── HEADER SUPERIOR (navegación entre páginas) ─── */
+  .top-header {
+    background: #FFFFFF;
+    border-bottom: 1px solid var(--borde);
+    padding: 0.85rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    max-width: 860px;
+    width: 100%;
+    margin: 0 auto 1rem;
+    border-radius: 10px;
+  }
+  .top-logo {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--i19-oscuro);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .top-logo:hover { color: var(--i19-medio); }
+  .top-link {
+    font-size: 0.88rem;
+    color: var(--texto-2);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.15s;
+  }
+  .top-link:hover {
+    background: var(--i19-crema);
+    color: var(--i19-oscuro);
+  }
+  @media (max-width: 640px) {
+    .top-header { padding: 0.75rem 1rem; }
+    .top-link { font-size: 0.82rem; padding: 5px 8px; }
+  }
+
+  /* ─── PORTADA ────────────────────────────────────────── */
+  .portada {
+    background: var(--i19-oscuro);
+    border-radius: 12px;
+    padding: 2rem 2rem 1.75rem;
+    margin-bottom: 2rem;
+  }
+  .portada-sup {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--i19-claro);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .portada-title {
+    font-family: var(--font-serif);
+    font-size: 30px;
+    font-weight: normal;
+    color: #FFFFFF;
+    line-height: 1.25;
+    margin-bottom: 0.6rem;
+  }
+  .portada-sub {
+    font-size: 14.5px;
+    color: var(--i19-claro);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+    max-width: 640px;
+  }
+  .dest-box {
+    background: var(--i19-medio);
+    border-radius: 8px;
+    padding: 0.9rem 1.1rem;
+    margin-bottom: 1.1rem;
+  }
+  .dest-lbl {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--i19-claro);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .dest-txt {
+    font-size: 13px;
+    color: #FFF;
+    line-height: 1.6;
+  }
+  .portada-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .portada-pill {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 11px;
+    border-radius: 99px;
+    background: var(--i19-medio);
+    color: var(--i19-crema);
+  }
+
+  /* ─── VIDEO ──────────────────────────────────────────── */
+  .video-wrap {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .video-lbl {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--i19-oscuro);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .video-iframe {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  .video-iframe iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  /* ─── SELECTOR DE MODALIDAD ──────────────────────────── */
+  .mode-selector {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 1.5rem;
+    background: #FFF;
+    padding: 6px;
+    border-radius: 10px;
+    border: 1px solid var(--borde);
+    max-width: max-content;
+    flex-wrap: wrap;
+  }
+  .mode-btn {
+    border: none;
+    background: transparent;
+    color: var(--texto-2);
+    padding: 8px 16px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .mode-btn.on {
+    background: var(--i19-accent);
+    color: #FFF;
+    font-weight: 600;
+  }
+  /* Control de visibilidad según modalidad */
+  .root.mode-individual .mode-g { display: none; }
+  .root.mode-grupal .mode-i { display: none; }
+
+  /* ─── NAVEGACIÓN ─────────────────────────────────────── */
+  .nav {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .btn {
+    border: 1px solid var(--borde);
+    background: #FFFFFF;
+    border-radius: 8px;
+    padding: 10px 16px;
+    cursor: pointer;
+    font-size: 12.5px;
+    font-weight: 500;
+    font-family: var(--font-sans);
+    color: var(--texto-2);
+    transition: all 0.18s ease;
+    text-align: left;
+  }
+  .btn:hover {
+    background: var(--i19-crema);
+    border-color: var(--i19-claro);
+    color: var(--i19-oscuro);
+  }
+  .btn.on {
+    border: 2px solid var(--i19-accent);
+    background: var(--i19-crema);
+    color: var(--i19-oscuro);
+    font-weight: 600;
+    padding: 9px 15px;
+  }
+  .btn.btn-alt {
+    background: var(--i19-crema);
+    color: var(--i19-medio);
+    border-color: var(--i19-claro);
+  }
+  .btn.btn-alt:hover {
+    background: var(--i19-claro);
+    color: var(--i19-oscuro);
+  }
+  .btn.btn-alt.on {
+    background: var(--i19-medio);
+    border-color: var(--i19-medio);
+    color: #FFFFFF;
+  }
+  .nav-sep {
+    display: inline-block;
+    width: 1px;
+    background: var(--borde);
+    margin: 0 6px;
+    align-self: stretch;
+  }
+
+  /* ─── MÓDULOS ────────────────────────────────────────── */
+  .card {
+    border-radius: 12px;
+    border: 1px solid var(--borde);
+    background: #FFFFFF;
+    overflow: hidden;
+    display: none;
+    border-left: 6px solid var(--i19-accent);
+  }
+  .card.active {
+    display: block;
+    animation: fadeIn 0.35s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .ch {
+    padding: 1.75rem 2rem 1.5rem;
+    border-bottom: 1px solid var(--borde);
+    background: var(--i19-crema);
+  }
+  .cn {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 99px;
+    margin-bottom: 0.85rem;
+    background: var(--i19-accent);
+    color: #FFFFFF;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .ct {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 1.3;
+    color: var(--i19-oscuro);
+    margin-bottom: 0.4rem;
+  }
+  .cs {
+    font-size: 13px;
+    color: var(--i19-medio);
+    line-height: 1.55;
+    font-style: italic;
+  }
+
+  .cb { padding: 2rem; }
+
+  /* ─── CAJA DE RESONANCIA ─────────────────────────────── */
+  .resonancia {
+    border-left: 4px solid var(--i19-accent);
+    background: var(--i19-crema);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .resonancia-lbl {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i19-accent);
+    margin-bottom: 8px;
+  }
+  .resonancia-txt {
+    font-family: var(--font-serif);
+    font-size: 16.5px;
+    line-height: 1.6;
+    font-style: italic;
+    color: var(--i19-oscuro);
+  }
+
+  /* ─── SECCIONES VER / JUZGAR / ACTUAR ────────────────── */
+  .pl {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i19-oscuro);
+    margin-top: 2.25rem;
+    margin-bottom: 1.1rem;
+    border-bottom: 1px solid var(--borde);
+    padding-bottom: 7px;
+  }
+  .pl:first-of-type { margin-top: 0.5rem; }
+
+  .pts {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 1.5rem;
+  }
+  .pts li {
+    display: flex;
+    gap: 14px;
+    font-size: 14.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+  .pts li strong {
+    color: var(--i19-oscuro);
+    font-weight: 600;
+  }
+  .dot {
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    background: var(--i19-accent);
+    color: #FFFFFF;
+    margin-top: 2px;
+    font-family: var(--font-serif);
+  }
+  .dot.j { background: var(--i19-medio); }
+  .dot.a { background: var(--i19-oscuro); }
+
+  /* ─── GRILLA DE ESCENARIOS / DIMENSIONES ─────────────── */
+  .ejes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 1.5rem;
+  }
+  .eje {
+    background: var(--i19-crema);
+    border-radius: 10px;
+    padding: 1.1rem 1.25rem;
+    border-top: 4px solid var(--i19-accent);
+  }
+  .eje-n {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--i19-accent);
+    margin-bottom: 8px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .eje-t {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--i19-oscuro);
+    margin-bottom: 6px;
+  }
+  .eje-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.6;
+  }
+
+  /* ─── ACTIVIDADES ────────────────────────────────────── */
+  .act {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 1.15rem 1.35rem;
+    margin-bottom: 12px;
+    border-left: 4px solid var(--i19-accent);
+  }
+  .act-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  .tag-ind {
+    background: var(--i19-oscuro);
+    color: var(--i19-crema);
+  }
+  .tag-gru {
+    background: var(--i19-accent);
+    color: #FFF;
+  }
+  .act-title {
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: var(--i19-oscuro);
+    margin-bottom: 6px;
+    line-height: 1.35;
+  }
+  .act-body {
+    font-size: 14px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+  .act-body em {
+    color: var(--i19-medio);
+    font-style: italic;
+  }
+
+  /* ─── CITA INSPIRADORA ───────────────────────────────── */
+  .cita {
+    border-radius: 10px;
+    padding: 1.2rem 1.4rem;
+    background: linear-gradient(180deg, var(--i19-crema) 0%, #FFF 100%);
+    border: 1px solid var(--i19-claro);
+    margin-top: 2rem;
+  }
+  .cita-lbl {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i19-accent);
+    margin-bottom: 8px;
+  }
+  .cita-txt {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    line-height: 1.7;
+    font-style: italic;
+    color: var(--i19-oscuro);
+  }
+  .cita-ref {
+    font-size: 12px;
+    margin-top: 10px;
+    font-weight: 500;
+    color: var(--i19-medio);
+    font-style: normal;
+  }
+
+  /* ─── ALERTA PASTORAL ────────────────────────────────── */
+  .alerta {
+    border-left: 4px solid var(--alerta);
+    background: var(--alerta-bg);
+    padding: 1.15rem 1.35rem;
+    margin-top: 1.75rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .alerta-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--alerta);
+    margin-bottom: 8px;
+  }
+  .alerta-lbl::before {
+    content: '† ';
+    font-size: 14px;
+  }
+  .alerta-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+
+  /* ─── AUTOCUIDADO ────────────────────────────────────── */
+  .autocuidado {
+    border-left: 4px solid var(--i19-medio);
+    background: #FFFAF0;
+    padding: 1.15rem 1.35rem;
+    margin-top: 1.75rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .autocuidado-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i19-medio);
+    margin-bottom: 8px;
+  }
+  .autocuidado-lbl::before {
+    content: '❋ ';
+    color: var(--i19-accent);
+  }
+  .autocuidado-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+
+  /* ─── LECTURA COMPLEMENTARIA ─────────────────────────── */
+  .lectura {
+    background: #FFF;
+    border: 1px dashed var(--i19-accent);
+    border-radius: 10px;
+    padding: 1.15rem 1.35rem;
+    margin-top: 1.75rem;
+  }
+  .lectura-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--i19-medio);
+    margin-bottom: 8px;
+  }
+  .lectura-lbl::before {
+    content: '📖 ';
+  }
+  .lectura-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+  .lectura-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--i19-accent);
+    color: #FFF;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.18s;
+  }
+  .lectura-link:hover {
+    background: var(--i19-oscuro);
+  }
+
+  /* ─── REFERENCIAS ────────────────────────────────────── */
+  .ref {
+    font-size: 11.5px;
+    color: var(--texto-3);
+    font-style: italic;
+    margin-top: 1.75rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--borde);
+  }
+
+  /* ─── FORO / MURO DEL CAMINO ─────────────────────────── */
+  .foro {
+    background: #FFFFFF;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    margin-top: 2rem;
+    overflow: hidden;
+    border-left: 6px solid var(--i19-medio);
+  }
+  .foro-head {
+    background: var(--i19-crema);
+    padding: 1.75rem 2rem 1.5rem;
+    border-bottom: 1px solid var(--borde);
+  }
+  .foro-lbl {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 99px;
+    margin-bottom: 0.85rem;
+    background: var(--i19-medio);
+    color: #FFFFFF;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .foro-title {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: normal;
+    line-height: 1.3;
+    color: var(--i19-oscuro);
+    margin-bottom: 0.4rem;
+  }
+  .foro-sub {
+    font-size: 13px;
+    color: var(--i19-medio);
+    line-height: 1.55;
+    font-style: italic;
+  }
+  .foro-body { padding: 2rem; }
+
+  .foro-vista {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 1.5rem;
+    background: var(--i19-crema);
+    padding: 6px;
+    border-radius: 10px;
+    max-width: max-content;
+    flex-wrap: wrap;
+  }
+  .foro-vista-btn {
+    border: none;
+    background: transparent;
+    color: var(--texto-2);
+    padding: 8px 16px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .foro-vista-btn.on {
+    background: var(--i19-medio);
+    color: #FFF;
+    font-weight: 600;
+  }
+
+  .foro-pautas {
+    background: var(--alerta-bg);
+    border-left: 4px solid var(--alerta);
+    padding: 1.15rem 1.35rem;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 1.75rem;
+  }
+  .foro-pautas-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--alerta);
+    margin-bottom: 8px;
+  }
+  .foro-pautas-lbl::before { content: '† '; }
+  .foro-pautas ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .foro-pautas li {
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    padding-left: 14px;
+    position: relative;
+  }
+  .foro-pautas li::before {
+    content: '·';
+    position: absolute;
+    left: 4px;
+    color: var(--alerta);
+    font-weight: 700;
+  }
+
+  .foro-form {
+    background: var(--i19-fondo);
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .foro-form-lbl {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--i19-oscuro);
+    margin-bottom: 12px;
+  }
+  .foro-form-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .foro-form-row label {
+    font-size: 12.5px;
+    color: var(--texto-2);
+    align-self: center;
+    font-weight: 500;
+  }
+  .foro-form select {
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    padding: 7px 10px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+    cursor: pointer;
+  }
+  .foro-form textarea {
+    width: 100%;
+    min-height: 90px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+    resize: vertical;
+    line-height: 1.55;
+    margin-bottom: 10px;
+  }
+  .foro-form textarea:focus,
+  .foro-form select:focus {
+    outline: none;
+    border-color: var(--i19-medio);
+  }
+  .foro-form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .foro-form-info {
+    font-size: 11.5px;
+    color: var(--texto-3);
+    font-style: italic;
+  }
+  .foro-btn {
+    background: var(--i19-medio);
+    color: #FFF;
+    border: none;
+    border-radius: 7px;
+    padding: 9px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    transition: background 0.18s;
+  }
+  .foro-btn:hover { background: var(--i19-oscuro); }
+  .foro-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .foro-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .foro-vacio {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: var(--texto-3);
+    font-size: 13.5px;
+    font-style: italic;
+    background: var(--i19-crema);
+    border-radius: 10px;
+  }
+  .comment {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-left: 3px solid var(--i19-suave);
+    border-radius: 10px;
+    padding: 1rem 1.15rem;
+  }
+  .comment-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .comment-autor {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--i19-oscuro);
+  }
+  .comment-pais {
+    font-size: 12px;
+    color: var(--i19-medio);
+    font-weight: 500;
+  }
+  .comment-pais::before { content: ' · '; color: var(--texto-3); }
+  .comment-modulo {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: var(--i19-crema);
+    color: var(--i19-medio);
+    margin-left: 6px;
+  }
+  .comment-fecha {
+    font-size: 11.5px;
+    color: var(--texto-3);
+  }
+  .comment-texto {
+    font-size: 14px;
+    color: var(--texto);
+    line-height: 1.65;
+    margin-bottom: 10px;
+    white-space: pre-wrap;
+  }
+  .comment-actions {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .react-btn {
+    background: var(--i19-crema);
+    border: 1px solid transparent;
+    border-radius: 99px;
+    padding: 4px 10px;
+    font-size: 12.5px;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    color: var(--texto-2);
+    transition: all 0.15s;
+  }
+  .react-btn:hover { background: var(--i19-claro); }
+  .react-btn.on {
+    background: var(--i19-suave);
+    color: #FFF;
+    border-color: var(--i19-medio);
+    font-weight: 600;
+  }
+  .react-count {
+    margin-left: 4px;
+    font-weight: 600;
+  }
+  .reply-btn {
+    background: transparent;
+    border: none;
+    color: var(--i19-medio);
+    font-size: 12.5px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    margin-left: auto;
+    font-family: var(--font-sans);
+  }
+  .reply-btn:hover {
+    background: var(--i19-crema);
+    color: var(--i19-oscuro);
+  }
+  .comment-replies {
+    margin-top: 12px;
+    padding-left: 1rem;
+    border-left: 2px dashed var(--borde);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .reply {
+    background: var(--i19-fondo);
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+  }
+  .reply-form {
+    background: var(--i19-crema);
+    border-radius: 8px;
+    padding: 0.8rem;
+    margin-top: 10px;
+    display: none;
+  }
+  .reply-form.on { display: block; }
+  .reply-form textarea {
+    width: 100%;
+    min-height: 60px;
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    resize: vertical;
+    background: #FFF;
+    margin-bottom: 8px;
+  }
+  .reply-form-actions {
+    display: flex;
+    gap: 6px;
+    justify-content: flex-end;
+  }
+  .reply-form-cancel {
+    background: transparent;
+    border: 1px solid var(--borde);
+    color: var(--texto-2);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 12.5px;
+    cursor: pointer;
+    font-family: var(--font-sans);
+  }
+
+  .foro-login {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--i19-crema);
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+  }
+  .foro-login-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .foro-login-link {
+    display: inline-block;
+    background: var(--i19-medio);
+    color: #FFF;
+    padding: 8px 18px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  /* ─── EVALUACIÓN (M6) ────────────────────────────────── */
+  .eval-nota {
+    background: var(--i19-crema);
+    border-left: 4px solid var(--i19-medio);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+  .eval-nota-lbl {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i19-medio);
+    margin-bottom: 6px;
+  }
+  .eval-nota-txt strong { color: var(--i19-oscuro); }
+  .eval-nota-txt em { color: var(--i19-medio); font-style: italic; }
+
+  .eval-q {
+    margin-bottom: 1.5rem;
+  }
+  .eval-q > label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--i19-oscuro);
+    margin-bottom: 8px;
+    line-height: 1.55;
+  }
+  .eval-q textarea {
+    width: 100%;
+    min-height: 100px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+    resize: vertical;
+    line-height: 1.6;
+    transition: border-color 0.15s;
+  }
+  .eval-q textarea:focus,
+  .eval-q input:focus {
+    outline: none;
+    border-color: var(--i19-medio);
+    box-shadow: 0 0 0 3px rgba(60, 52, 137, 0.1);
+  }
+  .eval-q input[type="date"] {
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 9px 12px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+  }
+  .eval-fecha { max-width: 320px; }
+
+  .eval-scale-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .eval-radio {
+    flex: 1;
+    min-width: 55px;
+    cursor: pointer;
+    position: relative;
+  }
+  .eval-radio input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .eval-radio span {
+    display: block;
+    text-align: center;
+    padding: 12px 8px;
+    background: var(--i19-crema);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    color: var(--i19-medio);
+    font-size: 15px;
+    transition: all 0.15s;
+  }
+  .eval-radio:hover span { background: var(--i19-claro); }
+  .eval-radio input:checked + span {
+    background: var(--i19-medio);
+    border-color: var(--i19-oscuro);
+    color: #FFF;
+  }
+
+  .eval-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: var(--i19-crema);
+    border: 1px solid var(--i19-claro);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+  .eval-check input {
+    margin-top: 4px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--i19-medio);
+    flex-shrink: 0;
+  }
+  .eval-check label {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    cursor: pointer;
+  }
+  .eval-check label strong { color: var(--i19-oscuro); }
+  .eval-check label em { color: var(--i19-medio); font-style: italic; }
+
+  .eval-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  .eval-btn-guardar {
+    background: var(--i19-oscuro);
+  }
+  .eval-btn-guardar:hover { background: var(--i19-medio); }
+  .eval-btn-imprimir {
+    background: transparent;
+    color: var(--i19-medio);
+    border: 1px solid var(--i19-medio);
+  }
+  .eval-btn-imprimir:hover {
+    background: var(--i19-crema);
+    color: var(--i19-oscuro);
+  }
+
+  .eval-msg {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    display: none;
+    margin-bottom: 1rem;
+  }
+  .eval-msg.on { display: block; }
+  .eval-msg.exito {
+    background: #FAEEDA;
+    color: var(--i19-oscuro);
+    border-left: 3px solid var(--i19-medio);
+  }
+  .eval-msg.error {
+    background: var(--alerta-bg);
+    color: var(--alerta);
+    border-left: 3px solid var(--alerta);
+  }
+
+  /* Estilos de impresión de la evaluación */
+  @media print {
+    body { background: #FFF; padding: 0; }
+    .root { box-shadow: none; padding: 1rem; max-width: 100%; }
+    .portada, .video-wrap, .mode-selector, .nav { display: none !important; }
+    .card { display: none !important; }
+    #m6.card { display: block !important; break-inside: avoid; border: none; }
+    .eval-actions, .eval-msg { display: none !important; }
+    .ch { background: transparent; }
+    .eval-q textarea, .eval-q input[type="date"] {
+      border: none;
+      border-bottom: 1px solid #999;
+      border-radius: 0;
+      background: transparent;
+    }
+  }
+
+  /* ─── RESPONSIVE ─────────────────────────────────────── */
+  @media (max-width: 640px) {
+    body { padding: 1rem 0.5rem; }
+    .root { padding: 1.25rem; }
+    .portada { padding: 1.5rem 1.25rem; }
+    .portada-title { font-size: 24px; }
+    .ch { padding: 1.25rem 1.25rem 1rem; }
+    .ct { font-size: 20px; }
+    .cb { padding: 1.25rem; }
+    .ejes { grid-template-columns: 1fr; }
+    .btn { flex: 1 1 100%; }
+    .mode-selector { flex-direction: column; align-items: stretch; max-width: 100%; }
+    .mode-btn { text-align: center; }
+    .foro-head { padding: 1.25rem; }
+    .foro-body { padding: 1.25rem; }
+    .foro-title { font-size: 19px; }
+    .foro-vista { max-width: 100%; flex-direction: column; align-items: stretch; }
+    .foro-vista-btn { text-align: center; }
+    .comment-head { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .reply-btn { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER SUPERIOR ═════════════════════════════════ -->
+<header class="top-header">
+  <a href="index.html" class="top-logo">Escuela PLAPA</a>
+  <a href="catalogo_30_itinerarios_plapa_corregido.html" class="top-link">← Catálogo</a>
+</header>
+
+<div class="root mode-grupal">
+
+  <!-- ═══ PORTADA ═════════════════════════════════════════ -->
+  <div class="portada">
+    <p class="portada-sup">Itinerario formativo 19 · Escuela PLAPA · CELAM 2026</p>
+    <h1 class="portada-title">Sustancias específicas: lo que el agente necesita saber</h1>
+    <p class="portada-sub">Las siete familias, cannabis y baja percepción, NSP y fentanilo, alcohol y pastoral diferenciada. Traducción del §9.1 al lenguaje del territorio.</p>
+
+    <div class="dest-box">
+      <div class="dest-lbl">Destinatarios</div>
+      <div class="dest-txt">Agentes pastorales que acompañan personas en situación de consumo y necesitan conocimientos básicos sobre las sustancias presentes en el territorio. Educadores y catequistas que trabajan prevención en escuelas. No requiere formación médica: el itinerario traduce el §9.1 al lenguaje del territorio con las precisiones que el Manual propone como indispensables para el acompañamiento informado. Complementa el Itinerario 18 (biología de la adicción) con el mapa concreto de las sustancias que circulan.</div>
+    </div>
+
+    <div class="portada-pills">
+      <span class="portada-pill">§9.1.1 · §9.1.2 · §9.1.3 · §9.1.4 · §9.1.5</span>
+      <span class="portada-pill">4 módulos</span>
+      <span class="portada-pill">Agentes y educadores</span>
+      <span class="portada-pill">Nivel inicial–intermedio</span>
+      <span class="portada-pill">Ver · Juzgar · Actuar · Síntesis</span>
+    </div>
+  </div>
+
+  <!-- ═══ VIDEO ═══════════════════════════════════════════ -->
+  
+  <!-- NUEVO: Bloque del Video de Presentación Incrustado -->
+<div style="background: var(--surface-2); border: 0.5px solid var(--border); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
+  <p style="font-size: 11px; font-weight: 500; color: #085041; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; text-align: left;">
+    ▶️ Video de presentación
+  </p>
+  <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px;">
+    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+      src="https://www.youtube.com/embed/PLACEHOLDER_ITIN19"
+      title="Presentación del Itinerario 19" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+  <!-- ═══ SELECTOR DE MODALIDAD ═══════════════════════════ -->
+  <div class="mode-selector">
+    <button class="mode-btn on" onclick="setMode('grupal', this)">👥 Hacer en comunidad</button>
+    <button class="mode-btn" onclick="setMode('individual', this)">👤 Hacer de forma individual</button>
+  </div>
+
+  <!-- ═══ NAVEGACIÓN ══════════════════════════════════════ -->
+  <div class="nav">
+    <button class="btn on" onclick="show(1,this)">Módulo 1 · Las siete familias</button>
+    <button class="btn" onclick="show(2,this)">Módulo 2 · Cannabis y baja percepción</button>
+    <button class="btn" onclick="show(3,this)">Módulo 3 · NSP, fentanilo y vapers</button>
+    <button class="btn" onclick="show(4,this)">Módulo 4 · Alcohol y pastoral diferenciada</button>
+    <span class="nav-sep" aria-hidden="true"></span>
+    <button class="btn btn-alt" onclick="show(5,this)">🌱 Muro del camino</button>
+    <button class="btn btn-alt" onclick="show(6,this)">✍ Evaluación</button>
+  </div>
+
+  <!-- ═══ MÓDULO 1 ════════════════════════════════════════ -->
+  <div id="m1" class="card active">
+    <div class="ch">
+      <span class="cn">Módulo 1 · El Ver</span>
+      <div class="ct">Las siete familias de sustancias: un mapa de orientación, no un manual de farmacología</div>
+      <div class="cs">Clasificación funcional según el efecto en el sistema nervioso central · §9.1.1, §9.1.2</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"Una sustancia psicoactiva es cualquier compuesto químico que afecta al sistema nervioso central modificando el comportamiento, la percepción o el estado de ánimo. La psicoactividad es un criterio biológico, no jurídico. El organismo no diferencia entre licitud o ilicitud."</div>
+      </div>
+
+      <div class="pl">El Juzgar — Las siete familias funcionales (§9.1.2)</div>
+      <ul class="pts">
+        <li><span class="dot j">1</span><span><strong>Estimulantes.</strong> <em>Cocaína, anfetaminas, nicotina, cafeína.</em> Aumentan alerta, energía y euforia. Elevan la frecuencia cardíaca y la presión arterial. Riesgo cardiovascular y de crisis de ansiedad.</span></li>
+        <li><span class="dot j">2</span><span><strong>Depresores.</strong> <em>Alcohol, benzodiacepinas, barbitúricos.</em> Disminuyen la actividad del SNC. Producen relajación, somnolencia, lentitud de reflejos. El alcohol es el más extendido y uno de los más dañinos a escala global.</span></li>
+        <li><span class="dot j">3</span><span><strong>Opioides.</strong> <em>Morfina, heroína, fentanilo, codeína.</em> Bloquean el dolor actuando sobre receptores específicos (mu, kappa, delta). <em>Alto potencial adictivo y riesgo de muerte por depresión respiratoria.</em> Categoría separada por sus protocolos de emergencia diferenciados (naloxona).</span></li>
+        <li><span class="dot j">4</span><span><strong>Alucinógenos.</strong> <em>LSD, psilocibina (hongos), mescalina (peyote).</em> Producen distorsiones sensoriales profundas. Alteran el pensamiento y el estado de ánimo. Riesgo psicótico en personas vulnerables.</span></li>
+        <li><span class="dot j">5</span><span><strong>Disociativos.</strong> <em>Ketamina, PCP.</em> Producen sensación de separación mente-cuerpo, analgesia y despersonalización. Uso creciente en circuitos festivos.</span></li>
+        <li><span class="dot j">6</span><span><strong>Empatógenos.</strong> <em>MDMA (éxtasis), MDA.</em> Producen empatía emocional intensa y sociabilidad, por liberación masiva de serotonina. Riesgo de "bajones" prolongados y de neurotoxicidad con uso repetido.</span></li>
+        <li><span class="dot j">7</span><span><strong>Cannabinoides.</strong> <em>Cannabis (THC).</em> Relajación, alteración de memoria y percepción del tiempo. <em>Efectos cruzados</em>: simultáneamente depresor, estimulante suave y levemente alucinógeno según dosis y variedad. Esta complejidad explica por qué se lo subestima.</span></li>
+      </ul>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>Ninguna categoría es hermética: los efectos cruzan las fronteras.</strong> <em>"Ninguna categoría es un compartimiento hermético. Muchas sustancias producen efectos que cruzan las fronteras de una sola categoría"</em> (§9.1.2). El cannabis produce simultáneamente efectos depresores, estimulantes y levemente alucinógenos. Esa complejidad farmacológica es <em>una de las razones por las que se lo subestima</em>: su perfil polifacético alimenta la percepción errónea de que es una sustancia "suave."</span></li>
+        <li><span class="dot">V</span><span><strong>El alcohol mata más que muchas drogas ilícitas juntas.</strong> <em>"El alcohol es responsable de aproximadamente 2,6 millones de muertes anuales en el mundo (4,7% de todas las defunciones), superando el impacto sanitario de muchas drogas ilícitas"</em> (§9.1.5). El agente que conoce esta cifra puede acompañar conversaciones sobre sustancias <em>sin reproducir el sesgo social</em> que naturaliza el alcohol y demoniza el cannabis.</span></li>
+        <li><span class="dot">V</span><span><strong>La distinción legal/ilegal no determina el daño biológico.</strong> La psicoactividad es un criterio de la farmacología, no del derecho. El organismo <em>metaboliza las sustancias según su composición química, no según su estatus jurídico</em> (§9.1.5). Esta afirmación fundamenta todo lo que viene después en el itinerario.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>No memorizar categorías: comprender el perfil de riesgo que orienta la respuesta.</strong> <em>"Lo que el agente pastoral y el profesional necesitan no es memorizar categorías rígidas, sino comprender que cada grupo indica un perfil predominante de riesgo y de daño que orienta la respuesta"</em> (§9.1.2). Un hermano que consume un depresor enfrenta peligros distintos a quien consume un estimulante: <em>esa diferencia tiene consecuencias prácticas directas</em> para el acompañamiento y la articulación con salud.</span></li>
+        <li><span class="dot j">J</span><span><strong>La Tríada de Zinberg: sujeto–sustancia–contexto.</strong> El principio integrador del capítulo: <em>"la experiencia concreta de consumo depende siempre de la interacción entre el sujeto, la sustancia y el contexto"</em> (§9.1.2). El problema no es solo la sustancia, sino <em>el vínculo que el sujeto establece con ella</em> para llenar vacíos o anestesiar una vida percibida como insoportable.</span></li>
+        <li><span class="dot j">J</span><span><strong>Los opioides como categoría separada: naloxona salva vidas.</strong> Los opioides se clasifican aparte de los depresores generales porque actúan sobre receptores específicos (mu, kappa, delta) y porque <em>su riesgo clínico —la crisis respiratoria por sobredosis— demanda protocolos de emergencia diferenciados</em> como la administración de naloxona (§9.1.2). Ese dato tiene valor práctico directo para los equipos territoriales.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">¿Qué sustancias están presentes en nuestro territorio?</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo mapea las sustancias más frecuentes en el territorio concreto: <em>¿cuáles circulan? ¿a qué edades aparecen? ¿cuáles son visibles y cuáles silenciosas? ¿hay nuevas sustancias que el equipo no reconoce?</em> El <em>mapa territorial de sustancias</em> es el punto de partida de cualquier prevención informada y de cualquier conversación con servicios de salud.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora las <em>tres sustancias más presentes</em> en el territorio donde trabajás, y a qué familia pertenece cada una. Si aparece alguna que no reconocés, ese es <em>el primer punto para investigar y consultar al equipo de salud</em>. El mapa personal es la base de la conversación colectiva.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">La Tríada de Zinberg aplicada a un caso real</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo practica con un caso del territorio (anonimizado): <em>¿cuál es la sustancia? ¿quién es el sujeto (historia, vulnerabilidades, fortalezas)? ¿cuál es el contexto (barrio, familia, presiones)?</em> La misma sustancia en distinto sujeto y contexto <em>produce efectos y riesgos completamente diferentes</em>. El acompañamiento pastoral es siempre sobre la tríada, no solo sobre la molécula.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Elegí una persona que estés acompañando y escribí en tu bitácora los tres vértices de su tríada: <em>sustancia · sujeto · contexto</em>. Al mirar los tres juntos, <em>¿qué aparece que no habías visto?</em> El ejercicio revela dimensiones del acompañamiento que la mirada centrada en la molécula suele perder.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">La diferencia entre medicamento y sustancia psicoactiva</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo trabaja la distinción del §9.1.1: <em>la mayoría de los medicamentos comunes son hidrosolubles y no atraviesan la barrera hematoencefálica; las SPA son liposolubles y sí la atraviesan</em>. Practicar la explicación para un familiar que pregunta: <em>"¿por qué el médico puede darle morfina y eso está bien, pero la heroína es un problema?"</em> La respuesta precisa <em>refuerza la credibilidad del agente</em> en el diálogo con familias.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora tu propia respuesta de dos frases a la pregunta: <em>"¿por qué la morfina bajo receta está bien y la heroína es un problema?"</em> La próxima vez que un familiar te la haga, la respuesta ya está lista, precisa y sin moralismo.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §9.1.2</div>
+        <div class="cita-txt">"Quien ha experimentado el malestar de un día sin café comprende, en escala menor, el mismo mecanismo biológico que subyace a toda dependencia. Es esa experiencia cotidiana la que puede convertirse en una puerta de empatía hacia quienes acompañamos."</div>
+        <div class="cita-ref">Manual de la PLAPA, §9.1.2 — Clasificación funcional (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">La tentación del agente que estudia el mapa de sustancias es <em>convertirse en referente técnico</em> del territorio: <em>"yo sé qué es esa pastilla."</em> El Manual no propone eso: propone que el agente <em>conozca lo suficiente para reconocer, hacer preguntas útiles y derivar a tiempo</em> — no para diagnosticar ni tratar. Confundir esos roles debilita al agente pastoral y al equipo de salud. Traducimos el §9.1 al territorio; no reemplazamos al toxicólogo.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">La frase del café del §9.1.2 es <em>la puerta de empatía más accesible</em> de todo el capítulo. El agente que reconoce su propia micro-dependencia —café, nicotina, alcohol social, azúcar, pantallas— <em>sin dramatizarla pero sin negarla</em> tiene una conexión empírica con el proceso del hermano que ninguna clase magistral puede dar. Nombrar eso con el equipo no es equipararse con quien consume heroína: <em>es desarrollar la empatía biológica</em> que hace al acompañamiento más auténtico y menos juzgador.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §9.1.1 (Definición de SPA), §9.1.2 (Clasificación funcional y Tríada de Zinberg), §9.1.5 (Sustancias legales) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 2 ════════════════════════════════════════ -->
+  <div id="m2" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 2 · El Juzgar</span>
+      <div class="ct">Cannabis y baja percepción de riesgo: la más consumida y más subestimada</div>
+      <div class="cs">Por qué la percepción social contradice la evidencia científica · §9.1.4</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"El cannabis es la sustancia ilícita de mayor consumo en América Latina, especialmente entre adolescentes. Su origen vegetal y los procesos de legalización han instalado la percepción de que es inofensiva. Esta percepción constituye hoy uno de los principales obstáculos para la prevención efectiva."</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Dato clave · §9.1.4</div>
+        <div class="alerta-txt">La concentración de THC en las variedades actuales puede ser <strong>hasta diez veces superior</strong> a la de décadas anteriores, haciendo obsoletas las comparaciones con el consumo histórico. El <em>9% de los consumidores</em> desarrolla un Trastorno por Uso de Cannabis; ese porcentaje asciende al <strong>17% en quienes inician en la adolescencia</strong>. El cerebro no completa su maduración hasta los <em>25 años</em>: el cannabis interfiere directamente con ese proceso, afectando memoria, atención y regulación emocional.</div>
+      </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>Las cinco fuentes de la baja percepción de riesgo (§9.1.4).</strong> (1) <em>"Es una planta, no una droga"</em> (naturalización); (2) <em>"no genera dependencia real"</em> (confusión entre dependencia física y psicológica); (3) <em>"si se legalizó es porque no hace daño"</em> (confusión entre legalización y seguridad); (4) <em>"es menos dañina que el alcohol"</em> (comparación que no disminuye el riesgo de ninguna de las dos); (5) <em>"el uso medicinal avala su inocuidad"</em> (confusión entre CBD terapéutico y THC recreativo). Las cinco son comprensibles; las cinco están <em>refutadas por la evidencia</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>El síndrome amotivacional que se confunde con "la personalidad del pibe".</strong> El §9.1.4 lo describe: <em>"El consumo regular de cannabis está asociado a un aumento de la ansiedad, la depresión y una pérdida progresiva del interés en los vínculos, el estudio y los proyectos de vida."</em> En contextos de exclusión, donde el proyecto de vida ya es frágil, ese síndrome puede ser devastador y <em>muchas veces pasa desapercibido</em> porque se confunde con "la personalidad del pibe."</span></li>
+        <li><span class="dot">V</span><span><strong>El riesgo de psicosis en personas vulnerables.</strong> <em>"El THC puede desencadenar episodios psicóticos en personas con predisposición genética —especialmente antecedentes familiares de esquizofrenia— que pueden cronificarse"</em> (§9.1.4). El agente que no conoce ese riesgo <em>no puede hacer las preguntas de historia familiar</em> que permiten detectarlo antes de que ocurra.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>Uso medicinal vs. uso recreativo: distinción técnica, no moral.</strong> <em>"La medicina utiliza principalmente el cannabidiol (CBD), un componente sin efecto psicoactivo significativo, bajo prescripción controlada y en dosis precisas para condiciones específicas como la epilepsia refractaria o el dolor crónico. Equiparar ambos usos es tan inexacto como equiparar el uso médico de la morfina con el consumo callejero de heroína"</em> (§9.1.4). El agente que conoce esa distinción puede responder a la objeción <em>"pero es medicinal"</em> con precisión y sin moralismo.</span></li>
+        <li><span class="dot j">J</span><span><strong>La respuesta no es el pánico: es la información clara con serenidad y firmeza.</strong> <em>"La respuesta pastoral no debe ser el pánico sino la información clara: del mismo modo que un padre acompaña a su hijo si lo encuentra consumiendo alcohol, debe estar preparado para acompañarlo si lo encuentra consumiendo cannabis, con la misma serenidad y la misma firmeza"</em> (§9.1.4). <em>La serenidad y la firmeza juntas</em>: esa es la postura que el Manual propone y que la pastoral diferenciada encarna.</span></li>
+        <li><span class="dot j">J</span><span><strong>El adolescente que consume no busca la molécula: busca tapar un dolor que nadie nombró.</strong> El adolescente que consume cannabis <em>para dormir, no pensar o tolerar la ansiedad social</em> está usando la sustancia como <em>intento autoterapéutico de un dolor que nadie nombró</em>. El agente pastoral que ve eso no se enfoca en la molécula: se enfoca en el dolor que la molécula estaba tapando. La pregunta no es <em>"¿por qué consume cannabis?"</em> sino <em>"¿qué no puede soportar sin el cannabis?"</em></span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">¿Qué saben los jóvenes del territorio sobre el cannabis?</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo mapea la percepción de riesgo del cannabis entre los adolescentes del territorio: <em>¿qué mitos circulan? ¿cuál de las cinco objeciones del §9.1.4 es la más frecuente en el barrio? ¿qué argumentos usan los propios jóvenes para minimizar el riesgo?</em> Identificar los mitos locales <em>es el primer paso para diseñar una prevención que los aborde directamente</em>, sin alarmismo y con los datos precisos que el Manual ofrece.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora las tres frases más frecuentes que escuchás en el territorio sobre el cannabis. Al lado de cada una, escribí una respuesta breve <em>desde el §9.1.4</em>. Ese es tu <em>diccionario de respuestas informadas</em> para el próximo diálogo con un adolescente o su familia.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Preparar la conversación con los padres sobre cannabis</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo diseña los puntos clave de una conversación con padres que descubren que su hijo consume cannabis: <em>¿qué decirles para que no entren en pánico? ¿qué preguntas hacerles para evaluar la situación (¿cuándo empezó? ¿qué dice sentir sin el cannabis? ¿hay antecedentes familiares de psicosis?)? ¿cuándo es preocupación legítima que requiere derivación?</em> El §9.1.4 da los datos; <em>el agente los traduce al lenguaje de la familia concreta</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Escribí en tu bitácora las <em>cuatro preguntas</em> que le harías a una familia que te consulta por primera vez por consumo de cannabis de su hijo adolescente. La preparación previa marca la diferencia entre <em>una conversación pastoral útil</em> y una improvisación bienintencionada.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Uso medicinal vs. uso recreativo: practicar la distinción</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo practica en parejas la explicación de la diferencia entre <em>CBD medicinal y THC recreativo</em>, para poder responder con precisión cuando alguien en el territorio diga <em>"pero el cannabis es medicinal."</em> Sin moralismo, sin condena, con información exacta del §9.1.4. <em>La credibilidad preventiva del agente depende de esa precisión.</em></div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora tu propia explicación en <em>dos frases</em> de la diferencia CBD medicinal vs. THC recreativo. Guardala. La próxima vez que alguien te diga <em>"pero es medicinal"</em>, tenés la respuesta lista, precisa y sin condena.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §9.1.4</div>
+        <div class="cita-txt">"Esta percepción de bajo riesgo constituye hoy uno de los principales obstáculos para la prevención efectiva en los territorios. La evidencia científica no respalda la percepción social dominante que lo presenta como inofensivo."</div>
+        <div class="cita-ref">Manual de la PLAPA, §9.1.4 — El cannabis y la baja percepción de riesgo (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">El tema del cannabis <em>puede generar tensiones en el equipo</em> si hay miembros con posiciones muy distintas —desde <em>"hay que prohibir todo"</em> hasta <em>"no es para tanto."</em> El facilitador cuida que la conversación se base en <em>los datos del §9.1.4, no en opiniones previas ni en experiencias personales con la sustancia</em>. El Manual no toma posición sobre la legalización: toma posición sobre <em>la evidencia del daño, especialmente en adolescentes</em>, y sobre la responsabilidad preventiva del agente. Esa distinción ayuda a mantener el enfoque.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">La postura de <em>"serenidad y firmeza"</em> del §9.1.4 aplica también al agente: acompañar temas de cannabis con adolescentes requiere <em>sostener información dura sin dramatizarla y sin minimizarla</em>. Esa doble competencia se desgasta. El equipo que trabaja prevención en escuelas necesita <em>espacios propios de descarga</em> —supervisión, intervisión, oración compartida— para no cargar solo con las tensiones que las familias transfieren al mensajero.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §9.1.4 (Cannabis y baja percepción de riesgo) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 3 ════════════════════════════════════════ -->
+  <div id="m3" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 3 · El Actuar</span>
+      <div class="ct">NSP, fentanilo y vapers: los riesgos que el territorio todavía no nombra</div>
+      <div class="cs">Lo que el agente necesita saber de las amenazas emergentes · §9.1.3, §9.1.5</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"Las NSP aparecen a razón de 500 nuevas por año. El fentanilo tiene una potencia hasta cien veces superior a la morfina. La diferencia entre la dosis deseada y la dosis letal es mínima. Los consumidores desconocen qué están ingiriendo."</div>
+      </div>
+
+      <div class="pl">El Juzgar — Los cuatro riesgos emergentes (§9.1.3, §9.1.5)</div>
+      <div class="ejes">
+        <div class="eje">
+          <div class="eje-n">Riesgo 1 · Circulación imprevisible</div>
+          <div class="eje-t">Nuevas Sustancias Psicoactivas (NSP)</div>
+          <div class="eje-txt">~500 nuevas por año. Potencia extrema, carácter impredecible, sin fiscalización inmediata. Se venden simulando ser sustancias conocidas. Los servicios de emergencia <em>no pueden identificar el componente exacto</em>: "cócteles químicos" que impiden el tratamiento adecuado.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Riesgo 2 · Muerte en minutos</div>
+          <div class="eje-t">Fentanilo y opioides sintéticos</div>
+          <div class="eje-txt">Potencia hasta <strong>100 veces superior a la morfina</strong>. Adulterante oculto en heroína, cocaína y pastillas que imitan analgésicos. Margen mínimo entre dosis deseada y dosis letal. Muerte por depresión respiratoria en minutos. <em>Naloxona como antídoto de emergencia.</em></div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Riesgo 3 · Consumo invisible</div>
+          <div class="eje-t">Vapers y dispositivos de nicotina</div>
+          <div class="eje-txt">Misma sustancia (nicotina), mismo mecanismo adictivo, <em>marketing de bajo riesgo</em>. Sin olor del cigarrillo tradicional: invisibiliza el consumo ante padres y docentes. Alta penetración en adolescentes. <em>Nicotine pouches</em> como variante más reciente.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Riesgo 4 · No saber qué se consumió</div>
+          <div class="eje-t">Adulteración y policonsumo</div>
+          <div class="eje-txt">Pastillas vendidas como éxtasis o metanfetamina que <em>contienen fentanilo</em>. Marihuana adulterada con NSP. El riesgo del policonsumo (dos o más sustancias simultáneas) multiplica exponencialmente los daños. <em>El hermano puede no saber lo que consumió.</em></div>
+        </div>
+      </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>"Nuevas" no significa "inofensivas" — significa "de toxicidad desconocida".</strong> <em>"El término 'nuevas' no significa que sean inofensivas, sino que han empezado a circular recientemente y su potencial adictivo es poco conocido. El hecho de que no estén sujetas a fiscalización internacional inmediata es un desafío legal, pero no disminuye su toxicidad real"</em> (§9.1.3). El agente que no conoce las NSP puede estar acompañando a alguien cuya sustancia <em>no aparece en ningún mapa de riesgo conocido</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>Los vapers: el marketing del "menor daño" repite el patrón del cannabis.</strong> Los vapers y dispositivos de nicotina son <em>"la misma sustancia psicoactiva —la nicotina— con una presentación comercial que suele asociarse a menor daño y mayor aceptación social. Esta percepción de bajo riesgo, análoga a la que se analiza sobre el cannabis, constituye en sí misma un factor de vulnerabilidad"</em> (§9.1.5). El agente que no conoce los vapers <em>puede estar viendo su consumo sin reconocerlo</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>La adulteración oculta: sobredosis en el primer consumo.</strong> <em>"Los opioides sintéticos se utilizan a menudo como adulterante barato y potente que se añade a otras drogas como la heroína o la cocaína, o se convierten en píldoras que imitan analgésicos recetados. El usuario consume estas sustancias sin saber qué está ingiriendo"</em> (§9.1.3). La sobredosis puede ocurrir <em>en el primer consumo de una sustancia que el hermano creía conocer</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>No es debilidad de voluntad: las NSP secuestran el cerebro más rápido de lo que la corteza prefrontal puede frenar.</strong> <em>"No es una cuestión de voluntad pura: estas sustancias generan una hiperactividad en el circuito de recompensa mucho más violenta que las naturales, 'enseñando' al cerebro a buscarlas de manera compulsiva y anulando la capacidad de la corteza prefrontal para frenar el impulso"</em> (§9.1.3). Las NSP no son <em>"drogas más fuertes"</em>: son sustancias que <em>secuestran el cerebro con una velocidad e intensidad</em> que los mecanismos de autocontrol no pueden contrarrestar.</span></li>
+        <li><span class="dot j">J</span><span><strong>El vaper no es "menos dañino": es la misma nicotina con mejor marketing.</strong> <em>"Desde el criterio biológico que fundamenta este manual, se trata de la misma sustancia y del mismo mecanismo adictivo, independientemente del dispositivo que la entregue"</em> (§9.1.5, sobre vapers). El vaper no es <em>"menos dañino"</em> que el cigarrillo: es <em>la misma nicotina con mejor marketing y mayor invisibilidad</em>. La pastoral diferenciada lo nombra con precisión.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">¿Hay NSP, fentanilo o vapers en nuestro territorio?</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo mapea: <em>¿hay presencia confirmada o sospechada de NSP o fentanilo en el territorio? ¿los jóvenes mencionan sustancias o pastillas que el equipo no reconoce? ¿hay muertes recientes por sobredosis que podrían estar vinculadas a adulteración? ¿hay vapers visibles en las escuelas o en los espacios de la comunidad?</em> El diagnóstico puede ser incompleto: <em>lo importante es empezar a preguntar</em> con los datos del §9.1.3.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora tres preguntas que le harías al equipo de salud local sobre presencia de <em>NSP, fentanilo o vapers</em> en el territorio. La conversación con salud requiere <em>preguntas informadas</em>: sin datos, sin diálogo posible.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Protocolo de emergencia por sobredosis de opioides</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo evalúa: <em>¿sabe reconocer una sobredosis de opioides (respiración muy lenta o ausente, piel azulada o grisácea, pérdida de conciencia, labios azules)? ¿hay naloxona disponible en el territorio o en el dispositivo? ¿sabe cómo se administra (intranasalmente o por inyección) y que puede necesitarse una segunda dosis?</em> Si no existe protocolo, <em>diseñar uno mínimo</em> y capacitar a todo el equipo. Una sobredosis de fentanilo <em>puede ser fatal en minutos</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Investigá en las próximas 48 horas: <em>¿hay naloxona disponible en tu territorio? ¿dónde se consigue? ¿quién sabe usarla?</em> Anotá el resultado en tu bitácora. Si la respuesta es que no la hay o nadie sabe, <em>esa es la primera gestión</em> que llevás a la próxima reunión de equipo.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Identificar los vapers en el entorno</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo practica el reconocimiento de vapers y dispositivos de nicotina que circulan en el territorio: <em>¿cuáles conocen? ¿cómo se ven? ¿cómo se usan? ¿qué argumentos usan los adolescentes para defender su uso ("es solo vapor", "no tiene nicotina", "es mucho menos dañino que fumar")?</em> Preparar <em>las respuestas informadas del §9.1.5 para cada argumento</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora los <em>tres argumentos más frecuentes</em> que escuchás sobre vapers y, al lado, la respuesta informada del §9.1.5. El diálogo con adolescentes sobre vapers <em>solo funciona con precisión técnica</em>, no con moralismo.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §9.1.3</div>
+        <div class="cita-txt">"Las NSP y los opioides sintéticos presentan riesgos significativamente mayores debido a tres pilares fundamentales: su potencia extrema, su carácter impredecible y la dificultad de respuesta médica."</div>
+        <div class="cita-ref">Manual de la PLAPA, §9.1.3 — Riesgos de las nuevas sustancias psicoactivas (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">La información sobre fentanilo y sobredosis <em>puede generar ansiedad en el equipo</em>, especialmente si hay jóvenes del territorio en riesgo real. El facilitador cuida que la información <em>empodere</em> —ahora sabemos qué buscar y cómo actuar— y no <em>paralice</em> —esto es demasiado para nosotros. El conocimiento sobre sustancias <em>no convierte al agente en experto médico</em>: le da las herramientas para <em>detectar riesgos y articular rápidamente con los equipos de emergencia</em> que sí pueden actuar. <em>Saber cuándo llamar y qué decir ya es salvar una vida.</em></div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">Cargar con información sobre riesgos letales <em>tiene un peso emocional específico</em>. El agente que aprende sobre fentanilo, sobredosis y naloxona puede sentir un aumento de la responsabilidad percibida: <em>"ahora que sé, si pasa algo será mi culpa por no llegar a tiempo."</em> Ese peso hay que nombrarlo con el equipo. La responsabilidad del agente pastoral es <em>estar preparado y articular</em>, no <em>salvar solo cada vida en riesgo</em>. La red comunitaria y sanitaria comparten el peso: nadie carga con el resultado en soledad.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §9.1.3 (NSP y opioides sintéticos), §9.1.5 (Vapers y nicotine pouches) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 4 ════════════════════════════════════════ -->
+  <div id="m4" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 4 · Síntesis</span>
+      <div class="ct">Alcohol, nicotina y la pastoral diferenciada: no es la misma respuesta para cada sustancia</div>
+      <div class="cs">Sustancias legales, Tríada de Zinberg y prevención situada · §9.1.2, §9.1.5, §9.4</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"La legalidad no modifica la farmacología. El organismo metaboliza las sustancias basándose en su composición química, no en su estatus jurídico. El alcohol es responsable de 2,6 millones de muertes anuales: más que muchas drogas ilícitas juntas."</div>
+      </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>La incoherencia que el §4.3 pide nombrar en el propio equipo.</strong> El §4.3 denuncia una incoherencia que vale la pena nombrar: <em>la escuela que "naturaliza el alcohol en sus propios eventos para recaudar fondos" mientras tiene programa de prevención de drogas</em>. <em>¿La parroquia sirve vino en sus eventos? ¿El club barrial vende cerveza? ¿El equipo bebe alcohol socialmente?</em> La pastoral diferenciada empieza por <em>la honestidad sobre las sustancias legales que el propio entorno normaliza</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>La industria del tabaco aprendió del cannabis: nuevo dispositivo, misma sustancia.</strong> El §9.1.5 identifica un proceso de marketing idéntico al del cannabis: <em>"La emergencia de los cigarrillos electrónicos (vapers), los dispositivos de tabaco calentado (como el IQOS) y las bolsas de nicotina (nicotine pouches) representa nuevos vectores de entrega de la misma sustancia —la nicotina— con una presentación que suele asociarse a menor daño."</em> La industria del tabaco aprendió del cannabis: <em>presentación nueva, misma sustancia, misma adicción</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>El alcohol en contextos de vulnerabilidad: impacto sistémico multiplicado.</strong> El alcohol es el depresor del SNC más extendido y uno de los más dañinos: <em>"Su consumo abundante debilita el sistema inmunológico y es un factor de riesgo para enfermedades graves"</em> (§9.1.5). En contextos de vulnerabilidad extrema —donde el sistema inmunológico ya está comprometido por mala nutrición y estrés crónico— <em>el impacto sistémico del alcohol es aún más severo</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>Tríada de Zinberg: misma sustancia, distinto sujeto, distinto contexto, distinto riesgo.</strong> La Tríada de Zinberg (sujeto–sustancia–contexto) es la síntesis más útil del capítulo 9 para el agente pastoral: <em>"La distinción legal/ilegal no determina el nivel de daño; lo que importa es la relación del sujeto con la sustancia en su contexto específico"</em> (§9.1.2, tabla integradora). Un adolescente que bebe alcohol en una familia con historia de alcoholismo <em>tiene un perfil de riesgo radicalmente distinto</em> al de un adulto que bebe una copa en una cena familiar. <em>Misma sustancia, distinto sujeto, distinto contexto, distinto riesgo.</em></span></li>
+        <li><span class="dot j">J</span><span><strong>Mirar el cuerpo, no solo la conducta.</strong> <em>"Las consecuencias del consumo no son solo neurológicas, sino que afectan al organismo en su conjunto"</em> (§9.2.2). La pastoral que solo mira la conducta (<em>"dejó de consumir"</em>) sin mirar el cuerpo (<em>"¿cómo está su hígado, su sistema inmune, su sueño, su alimentación?"</em>) aborda la mitad del problema. Conocer las consecuencias sistémicas de cada sustancia <em>permite al agente hacer preguntas de salud</em> que complementan el acompañamiento espiritual y facilitan la articulación con servicios médicos.</span></li>
+        <li><span class="dot j">J</span><span><strong>El vínculo con la sustancia como intento de llenar un vacío: alcohol y heroína buscan lo mismo.</strong> <em>"Incluir las sustancias legales en la categoría de SPA permite entender que el problema no es solo la sustancia, sino el vínculo que el sujeto establece con ella para intentar llenar vacíos existenciales o anestesiar una vida insoportable"</em> (§9.1.5). La persona que bebe alcohol compulsivamente y la que consume heroína <em>están haciendo lo mismo desde la lógica del vínculo</em>: buscando algo que les falta. La sustancia es distinta; <em>la búsqueda es la misma</em>. Y esa comprensión es la base de la compasión pastoral.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Auditar la relación de la comunidad con las sustancias legales</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo responde con honestidad: <em>¿se sirve alcohol en los eventos de la comunidad pastoral? ¿hay consciencia del mensaje que eso envía a los hermanos en proceso de recuperación que participan de esos eventos? ¿se habla del alcohol y el tabaco en los mismos términos que de las drogas ilícitas, o se los trata como "normales"?</em> La coherencia preventiva empieza por la propia comunidad. La auditoría no es para condenar: <em>es para ver</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora <em>tres prácticas concretas</em> de tu comunidad con sustancias legales que reforzarían la coherencia preventiva si se ajustaran, y tres que ya son coherentes y hay que <em>cuidar y visibilizar</em>. La conversación con el equipo se prepara con hallazgos concretos, no con abstracciones.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Diseñar la prevención diferenciada por sustancia</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo toma las <em>tres sustancias más presentes en el territorio</em> y para cada una diseña un mensaje preventivo diferenciado, con los datos precisos del §9.1: <em>¿qué necesita saber el joven sobre el cannabis que no sea alarmismo ni minimización? ¿sobre el alcohol que no sea moralismo ni normalización? ¿sobre los vapers que no sea ignorancia ni demonización?</em> La prevención efectiva <em>habla de la sustancia que circula en el territorio concreto</em>, con datos reales y lenguaje accesible.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Elegí <em>una sustancia</em> presente en tu territorio y escribí en tu bitácora un <em>mensaje preventivo de tres frases</em>, con datos precisos del §9.1, apto para un joven de 15 años. Guardalo. Ese es tu insumo para la próxima intervención en escuela o encuentro juvenil.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Cierre: lo que aprendí que cambia mi acompañamiento</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo cierra en ronda: <em>"Después de este itinerario, ¿qué dato sobre sustancias aprendí que cambia algo concreto de mi acompañamiento pastoral?"</em> No hay respuesta incorrecta. El facilitador anota las respuestas en el cuaderno colectivo: <em>ese mapa de descubrimientos es la medida más honesta de lo que el itinerario produjo</em>. Cerrar con gratitud por los hermanos del territorio que inspiraron cada pregunta.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Escribí en tu bitácora la respuesta a la pregunta: <em>"¿qué dato sobre sustancias aprendí en este itinerario que cambia algo concreto de mi acompañamiento?"</em> Compartila con el equipo en la próxima reunión. La conversación colectiva sobre <em>lo que cada uno se lleva</em> es en sí misma un ejercicio de discernimiento pastoral.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §9.1.5</div>
+        <div class="cita-txt">"Esta clasificación no implica ningún juicio moral sobre el consumo de café: quien ha experimentado el malestar de un día sin él comprende, en escala menor, el mismo mecanismo biológico que subyace a toda dependencia. Es precisamente esa experiencia cotidiana la que puede convertirse en una puerta de empatía hacia quienes acompañamos."</div>
+        <div class="cita-ref">Manual de la PLAPA, §9.1.5 — Inclusión de sustancias legales (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">La <em>"pastoral diferenciada"</em> puede ser mal leída como <em>relativismo moral</em>: <em>"todo depende del contexto, entonces nada es problema."</em> El Manual no dice eso. La Tríada de Zinberg <em>no relativiza el daño</em>: lo hace más preciso. Cada sustancia tiene una farmacología concreta y cada contexto amplifica o modera riesgos específicos. La pastoral diferenciada <em>no es blanda con el consumo</em>: es <em>rigurosa con la evaluación</em> y firme con la propuesta. Confundir precisión con permisividad es un error de lectura, no del Manual.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente — cierre del itinerario</div>
+        <div class="autocuidado-txt">El itinerario cierra con la pregunta que el §9.1.5 abre sobre el café y que aplica a cada agente: <em>¿qué sustancia o comportamiento usás vos para aliviar el estrés del trabajo pastoral?</em> No como acusación: <em>como pregunta de honestidad que fundamenta la empatía</em>. El agente que puede responder esa pregunta sin defensividad —reconociendo su propia experiencia con el mecanismo biológico de la dependencia— <em>acompaña desde la fraternidad, no desde la superioridad moral</em>. Esa es la diferencia que el §9.1 intenta producir en quien lo lee con atención.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §9.1.2 (Clasificación funcional), §9.1.5 (Inclusión de sustancias legales), §9.2.2 (Consecuencias sistémicas), §4.3 (Coherencia preventiva) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 5 · MURO DEL CAMINO (FORO) ═══════════════ -->
+  <div id="m5" class="card">
+    <div class="ch">
+      <span class="cn">Espacio comunitario · Muro</span>
+      <div class="ct">Voces de quienes también recorren este itinerario</div>
+      <div class="cs">El Manual crece con quienes lo caminan · §13.3, §13.5</div>
+    </div>
+    <div class="cb">
+
+      <!-- Selector de vista: este itinerario / global -->
+      <div class="foro-vista">
+        <button class="foro-vista-btn on" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
+        <button class="foro-vista-btn" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
+      </div>
+
+      <!-- Pautas pastorales -->
+      <div class="foro-pautas">
+        <div class="foro-pautas-lbl">Antes de publicar</div>
+        <ul>
+          <li>Compartí solo experiencias propias o del equipo. No expongas historias ajenas ni datos que identifiquen a terceras personas.</li>
+          <li>Cuidá a quien lea después: evitá descripciones que puedan retraumatizar.</li>
+          <li>Tu aporte será revisado por el equipo PLAPA antes de publicarse.</li>
+        </ul>
+      </div>
+
+      <!-- Formulario nuevo comentario -->
+      <div class="foro-form" id="foroForm">
+        <div class="foro-form-lbl">Dejar mi palabra</div>
+        <div class="foro-form-row">
+          <label for="foroModulo">¿Sobre qué momento del itinerario?</label>
+          <select id="foroModulo">
+            <option value="">General del itinerario</option>
+            <option value="1">Módulo 1 · Las siete familias</option>
+            <option value="2">Módulo 2 · Cannabis y baja percepción</option>
+            <option value="3">Módulo 3 · NSP, fentanilo y vapers</option>
+            <option value="4">Módulo 4 · Alcohol y pastoral diferenciada</option>
+          </select>
+        </div>
+        <textarea id="foroTexto" placeholder="Escribí tu comentario, pregunta o testimonio de camino..."></textarea>
+        <div class="foro-form-actions">
+          <div class="foro-form-info">Aparecerá en el muro luego de la revisión del equipo.</div>
+          <button class="foro-btn" id="foroEnviar" onclick="enviarComentario()">Enviar para revisión</button>
+        </div>
+      </div>
+
+      <!-- Lista de comentarios -->
+      <div class="foro-lista" id="foroLista">
+        <div class="foro-vacio">Cargando el muro...</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 6 · EVALUACIÓN ══════════════════════════ -->
+  <div id="m6" class="card">
+    <div class="ch">
+      <span class="cn">Cierre del itinerario · Evaluación</span>
+      <div class="ct">Revisión de vida en clave Ver–Juzgar–Actuar</div>
+      <div class="cs">No es un examen: es un discernimiento sobre lo que este itinerario dejó en vos</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Antes de comenzar</div>
+        <div class="resonancia-txt">"La revisión de vida es la forma histórica que la Iglesia latinoamericana encontró para institucionalizar el Ver–Juzgar–Actuar. El agente que la practica no aplica el método: lo vive." Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
+      </div>
+
+      <div class="eval-nota">
+        <span class="eval-nota-lbl">🕊 Uso pastoral</span>
+        <div class="eval-nota-txt">Esta evaluación es <strong>tuya</strong>. Podés guardarla en tu bitácora personal (queda solo con vos) y, si lo decidís, compartirla con el equipo PLAPA como aporte al <em>rolling release</em> del Manual (§13.5). Compartir es voluntario.</div>
+      </div>
+
+      <div class="pl">El Ver — Qué se hizo visible</div>
+      <div class="eval-q">
+        <label for="evalVer">¿Qué realidad del territorio se hizo más visible para vos a lo largo de estos cuatro módulos? ¿Qué llagas emergieron con más fuerza? ¿Qué zonas del mapa estaban en blanco antes y ahora tienen contenido?</label>
+        <textarea id="evalVer" data-eval="ver" placeholder="Escribí con calma, sin apurarte..."></textarea>
+      </div>
+
+      <div class="pl">El Juzgar — Qué iluminó, qué preguntas quedaron abiertas</div>
+      <div class="eval-q">
+        <label for="evalJuzgar1">¿Qué del método del diagnóstico territorial te iluminó de manera nueva? ¿Qué idea del Manual sentís que ya no podrás dejar de lado?</label>
+        <textarea id="evalJuzgar1" data-eval="juzgar1" placeholder="Nombralo con precisión..."></textarea>
+      </div>
+      <div class="eval-q">
+        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos? Las preguntas abiertas son también fruto (§13.3).</label>
+        <textarea id="evalJuzgar2" data-eval="juzgar2" placeholder="Las que siguen ardiendo..."></textarea>
+      </div>
+
+      <div class="pl">El Actuar — Compromiso concreto</div>
+      <div class="eval-q">
+        <label for="evalActuar">¿Qué gesto pastoral concreto vas a intentar en las próximas semanas a partir del diagnóstico que hiciste? Nombralo con nombre, tiempo y lugar. Un compromiso vago no es un compromiso.</label>
+        <textarea id="evalActuar" data-eval="actuar" placeholder="Ej.: En la próxima reunión de equipo (jueves 25) voy a presentar el mapa territorial que construimos y proponer una callejeada específica al sector X del barrio..."></textarea>
+      </div>
+      <div class="eval-q eval-fecha">
+        <label for="evalFecha">Fecha en la que vas a volver a revisar si pudiste sostenerlo</label>
+        <input type="date" id="evalFecha" data-eval="fecha_revision">
+      </div>
+
+      <div class="pl">Autocuidado y equipo</div>
+      <div class="eval-q eval-scale">
+        <label>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</label>
+        <div class="eval-scale-row">
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="1" data-eval="animo"><span>1</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="2" data-eval="animo"><span>2</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="3" data-eval="animo"><span>3</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="4" data-eval="animo"><span>4</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="5" data-eval="animo"><span>5</span></label>
+        </div>
+      </div>
+      <div class="eval-q">
+        <label for="evalCuidado">¿Qué necesitás cuidar de vos mismo/a en las próximas semanas? ¿A quién del equipo se lo vas a decir?</label>
+        <textarea id="evalCuidado" data-eval="cuidado" placeholder="El agente que cuida su esperanza puede sostener la del otro (§1.3)..."></textarea>
+      </div>
+
+      <div class="pl">Cierre</div>
+
+      <div class="eval-check">
+        <input type="checkbox" id="evalCompartir">
+        <label for="evalCompartir"><strong>Compartir con el equipo PLAPA</strong> como aporte al <em>rolling release</em> del Manual. Solo se envían tus respuestas si marcás esta casilla. Si no la marcás, la evaluación queda solo en tu bitácora.</label>
+      </div>
+
+      <div class="eval-actions">
+        <button class="foro-btn eval-btn-guardar" onclick="guardarEvaluacion()">Guardar en mi bitácora</button>
+        <button class="foro-btn eval-btn-imprimir" onclick="imprimirEvaluacion()">🖨 Imprimir / PDF</button>
+      </div>
+
+      <div id="evalMsg" class="eval-msg"></div>
+
+      <div class="autocuidado" style="margin-top: 2rem;">
+        <div class="autocuidado-lbl">Cierre del itinerario</div>
+        <div class="autocuidado-txt">Cerrar bien un itinerario también es autocuidado: celebrar lo caminado, agradecer al equipo, reconocer los propios límites y renovar la esperanza. Este itinerario termina con gratitud: por el territorio que nos habló, por las llagas que dejamos de negar, por el equipo que hizo posible mirar sin apartar la mirada.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §1.3 (Prólogo), §6.1.3 (Evitar la romantización), §13.2 (Sinodalidad en la práctica), §13.3 (Rolling release), §13.5 (Mecanismos de colaboración) — CELAM 2026.</div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function setMode(mode, btn) {
+    var root = document.querySelector('.root');
+    root.classList.remove('mode-grupal', 'mode-individual');
+    root.classList.add('mode-' + mode);
+    var buttons = document.querySelectorAll('.mode-btn');
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].classList.remove('on');
+    }
+    btn.classList.add('on');
+  }
+
+  function show(n, btn) {
+    for (var i = 1; i <= 6; i++) {
+      var el = document.getElementById('m' + i);
+      if (el) el.classList.remove('active');
+    }
+    document.querySelectorAll('.nav .btn').forEach(function(b) {
+      b.classList.remove('on');
+    });
+    document.getElementById('m' + n).classList.add('active');
+    btn.classList.add('on');
+    if (window.innerWidth < 640) {
+      document.getElementById('m' + n).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    // Al abrir el muro, refrescar comentarios
+    if (n === 5 && typeof cargarComentarios === 'function') {
+      cargarComentarios();
+    }
+    // Al abrir la evaluación, restaurar borrador si existe
+    if (n === 6 && typeof restaurarEvaluacion === 'function') {
+      restaurarEvaluacion();
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════
+  // MURO DEL CAMINO — FORO SUPABASE
+  // ═══════════════════════════════════════════════════════
+  // BACKEND REQUERIDO (Supabase — mismo proyecto que app-plapa):
+  //
+  // 1) Tabla `foro_comentarios`:
+  //    - id (uuid, pk)
+  //    - itinerario_id (text)     — ej. 'itinerario_19_sustancias'
+  //    - parent_id (uuid, null)   — null = comentario raíz; uuid = respuesta
+  //    - usuario_id (uuid, fk auth.users)
+  //    - autor_nombre (text)      — copiado del perfil al crear
+  //    - pais (text)              — copiado del perfil al crear
+  //    - modulo (int, null)       — 1..4 o null (general)
+  //    - texto (text)
+  //    - estado (text)            — 'pendiente' | 'publicado' | 'rechazado'
+  //    - created_at (timestamptz)
+  //
+  // 2) Tabla `foro_reacciones`:
+  //    - comentario_id (uuid, fk)
+  //    - usuario_id (uuid, fk)
+  //    - emoji (text) — '🙏' | '❤️' | '💡' | '🕊️'
+  //    - PK compuesta (comentario_id, usuario_id, emoji)
+  //
+  // 3) Vista/RPC `comentarios_para_itinerario(p_itinerario text, p_scope text)`:
+  //    devuelve los comentarios publicados con autor_nombre, pais, itinerario_titulo
+  //    (si scope='global'), agregado de reacciones y las del usuario actual.
+  //    scope: 'itinerario' filtra por p_itinerario; 'global' devuelve todos.
+  //
+  // 4) RPC `toggle_reaccion(p_comentario uuid, p_emoji text)`.
+  //
+  // 5) RLS:
+  //    - foro_comentarios: SELECT solo estado='publicado'; INSERT solo auth.uid()
+  //      con estado='pendiente' forzado.
+  //    - Moderadores (rol) pueden UPDATE estado.
+  //
+  // 6) Sesión: la Escuela PLAPA debe dejar el token JWT accesible
+  //    (localStorage 'escuela_plapa_sesion' con { token, nombre, pais }
+  //    o cookie según arquitectura de la Escuela).
+  // ═══════════════════════════════════════════════════════
+
+  var SUPABASE_URL = 'https://TU-PROYECTO.supabase.co';  // TODO: config
+  var SUPABASE_ANON_KEY = 'TU_ANON_KEY';                  // TODO: config
+  var ITINERARIO_ID = 'itinerario_19_sustancias';
+  var ITINERARIO_TITULO = 'Sustancias específicas: lo que el agente necesita saber';
+
+  var vistaForo = 'itinerario';
+  var sesion = null;
+  var EMOJIS = ['🙏', '❤️', '💡', '🕊️'];
+
+  function supaHeaders() {
+    var h = {
+      'apikey': SUPABASE_ANON_KEY,
+      'Content-Type': 'application/json'
+    };
+    if (sesion && sesion.token) {
+      h['Authorization'] = 'Bearer ' + sesion.token;
+    }
+    return h;
+  }
+
+  function escapeHtml(s) {
+    if (!s) return '';
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function formatFecha(iso) {
+    if (!iso) return '';
+    try {
+      var d = new Date(iso);
+      return d.toLocaleDateString('es', { day: 'numeric', month: 'short', year: 'numeric' });
+    } catch (e) { return ''; }
+  }
+
+  function cargarComentarios() {
+    var contenedor = document.getElementById('foroLista');
+    contenedor.innerHTML = '<div class="foro-vacio">Cargando el muro...</div>';
+
+    var url = SUPABASE_URL + '/rest/v1/rpc/comentarios_para_itinerario';
+    fetch(url, {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({
+        p_itinerario: ITINERARIO_ID,
+        p_scope: vistaForo
+      })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) { renderComentarios(data || []); })
+    .catch(function() {
+      contenedor.innerHTML = '<div class="foro-vacio">No se pudo cargar el muro. Intentá de nuevo más tarde.</div>';
+    });
+  }
+
+  function renderComentarios(comentarios) {
+    var contenedor = document.getElementById('foroLista');
+    if (!comentarios || comentarios.length === 0) {
+      contenedor.innerHTML = '<div class="foro-vacio">Aún no hay palabras publicadas en este muro. Podés ser vos quien empiece la conversación.</div>';
+      return;
+    }
+    var raices = comentarios.filter(function(c) { return !c.parent_id; });
+    var respuestasPor = {};
+    comentarios.filter(function(c) { return c.parent_id; }).forEach(function(c) {
+      if (!respuestasPor[c.parent_id]) respuestasPor[c.parent_id] = [];
+      respuestasPor[c.parent_id].push(c);
+    });
+    contenedor.innerHTML = raices.map(function(c) {
+      return renderComment(c, respuestasPor[c.id] || []);
+    }).join('');
+  }
+
+  function renderComment(c, respuestas) {
+    var modLbl = c.modulo ? '<span class="comment-modulo">Módulo ' + c.modulo + '</span>' : '';
+    var paisLbl = c.pais ? '<span class="comment-pais">' + escapeHtml(c.pais) + '</span>' : '';
+    var globalLbl = (vistaForo === 'global' && c.itinerario_titulo)
+      ? '<span class="comment-modulo">' + escapeHtml(c.itinerario_titulo) + '</span>'
+      : '';
+    var reacciones = c.reacciones || {};
+    var misReacc = c.mis_reacciones || [];
+    var reaccBtns = EMOJIS.map(function(e) {
+      var count = reacciones[e] || 0;
+      var mine = misReacc.indexOf(e) >= 0;
+      return '<button class="react-btn ' + (mine ? 'on' : '') + '" onclick="toggleReaccion(\'' + c.id + '\', \'' + e + '\')">' + e + (count > 0 ? '<span class="react-count">' + count + '</span>' : '') + '</button>';
+    }).join('');
+    var respuestasHtml = respuestas.length
+      ? '<div class="comment-replies">' + respuestas.map(renderReply).join('') + '</div>'
+      : '';
+    return '' +
+      '<div class="comment" id="c-' + c.id + '">' +
+        '<div class="comment-head">' +
+          '<div>' +
+            '<span class="comment-autor">' + escapeHtml(c.autor_nombre || 'Anónimo') + '</span>' +
+            paisLbl + modLbl + globalLbl +
+          '</div>' +
+          '<span class="comment-fecha">' + formatFecha(c.created_at) + '</span>' +
+        '</div>' +
+        '<div class="comment-texto">' + escapeHtml(c.texto) + '</div>' +
+        '<div class="comment-actions">' +
+          reaccBtns +
+          '<button class="reply-btn" onclick="toggleReplyForm(\'' + c.id + '\')">↩ Responder</button>' +
+        '</div>' +
+        '<div class="reply-form" id="rf-' + c.id + '">' +
+          '<textarea placeholder="Escribí tu respuesta..." id="rt-' + c.id + '"></textarea>' +
+          '<div class="reply-form-actions">' +
+            '<button class="reply-form-cancel" onclick="toggleReplyForm(\'' + c.id + '\')">Cancelar</button>' +
+            '<button class="foro-btn" onclick="enviarRespuestaDesde(\'' + c.id + '\')">Enviar</button>' +
+          '</div>' +
+        '</div>' +
+        respuestasHtml +
+      '</div>';
+  }
+
+  function renderReply(r) {
+    var paisLbl = r.pais ? '<span class="comment-pais">' + escapeHtml(r.pais) + '</span>' : '';
+    return '' +
+      '<div class="reply">' +
+        '<div class="comment-head">' +
+          '<div>' +
+            '<span class="comment-autor">' + escapeHtml(r.autor_nombre || 'Anónimo') + '</span>' +
+            paisLbl +
+          '</div>' +
+          '<span class="comment-fecha">' + formatFecha(r.created_at) + '</span>' +
+        '</div>' +
+        '<div class="comment-texto">' + escapeHtml(r.texto) + '</div>' +
+      '</div>';
+  }
+
+  function enviarComentario() {
+    if (!sesion) { window.location.href = '/login'; return; }
+    var texto = document.getElementById('foroTexto').value.trim();
+    var modulo = document.getElementById('foroModulo').value;
+    if (!texto) return;
+    var btn = document.getElementById('foroEnviar');
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+    fetch(SUPABASE_URL + '/rest/v1/foro_comentarios', {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({
+        itinerario_id: ITINERARIO_ID,
+        parent_id: null,
+        usuario_id: sesion.user ? sesion.user.id : null,
+        autor_nombre: sesion.nombre || '',
+        pais: sesion.pais || '',
+        modulo: modulo ? parseInt(modulo) : null,
+        texto: texto
+      })
+    })
+    .then(function() {
+      document.getElementById('foroTexto').value = '';
+      document.getElementById('foroModulo').value = '';
+      btn.textContent = '✓ Enviado — pendiente de revisión';
+      setTimeout(function() {
+        btn.textContent = 'Enviar para revisión';
+        btn.disabled = false;
+      }, 3000);
+    })
+    .catch(function() {
+      btn.textContent = 'Error al enviar';
+      btn.disabled = false;
+    });
+  }
+
+  function enviarRespuestaDesde(parentId) {
+    if (!sesion) { window.location.href = '/login'; return; }
+    var textarea = document.getElementById('rt-' + parentId);
+    var texto = textarea.value.trim();
+    if (!texto) return;
+    fetch(SUPABASE_URL + '/rest/v1/foro_comentarios', {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({
+        itinerario_id: ITINERARIO_ID,
+        parent_id: parentId,
+        usuario_id: sesion.user ? sesion.user.id : null,
+        autor_nombre: sesion.nombre || '',
+        pais: sesion.pais || '',
+        texto: texto
+      })
+    })
+    .then(function() {
+      textarea.value = '';
+      document.getElementById('rf-' + parentId).classList.remove('on');
+      alert('Tu respuesta será revisada por el equipo antes de publicarse.');
+    })
+    .catch(function() { alert('Error al enviar la respuesta.'); });
+  }
+
+  function toggleReaccion(comentarioId, emoji) {
+    if (!sesion) { window.location.href = '/login'; return; }
+    fetch(SUPABASE_URL + '/rest/v1/rpc/toggle_reaccion', {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({ p_comentario: comentarioId, p_emoji: emoji })
+    })
+    .then(function() { cargarComentarios(); })
+    .catch(function() {});
+  }
+
+  function toggleReplyForm(id) {
+    if (!sesion) { window.location.href = '/login'; return; }
+    document.getElementById('rf-' + id).classList.toggle('on');
+  }
+
+  function setVistaForo(v, btn) {
+    vistaForo = v;
+    var buttons = document.querySelectorAll('.foro-vista-btn');
+    for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove('on'); }
+    btn.classList.add('on');
+    cargarComentarios();
+  }
+
+  // ═══════════════════════════════════════════════════════
+  // EVALUACIÓN — REVISIÓN DE VIDA VJA
+  // ═══════════════════════════════════════════════════════
+  // BACKEND REQUERIDO:
+  //
+  // Tabla `evaluaciones_itinerario`:
+  //   - id (uuid, pk)
+  //   - usuario_id (uuid, fk auth.users)
+  //   - itinerario_id (text)
+  //   - respuestas (jsonb) — { ver, juzgar1, juzgar2, actuar, fecha_revision, animo, cuidado }
+  //   - compartir_con_equipo (bool)
+  //   - created_at, updated_at
+  //
+  // RLS: SELECT/UPDATE solo dueño. INSERT solo dueño.
+  // Solo moderadores del equipo PLAPA pueden ver evaluaciones donde
+  // compartir_con_equipo=true (via política RLS separada).
+  //
+  // Borrador: se autoguarda en localStorage para que no se pierda
+  // al cerrar el navegador antes de guardar formalmente.
+  // ═══════════════════════════════════════════════════════
+
+  var EVAL_STORAGE_KEY = 'eval_' + ITINERARIO_ID;
+
+  function recolectarEvaluacion() {
+    var datos = {};
+    document.querySelectorAll('[data-eval]').forEach(function(el) {
+      var key = el.getAttribute('data-eval');
+      if (el.type === 'radio') {
+        if (el.checked) datos[key] = el.value;
+      } else {
+        datos[key] = el.value;
+      }
+    });
+    datos.compartir_con_equipo = document.getElementById('evalCompartir').checked;
+    return datos;
+  }
+
+  function autoguardarBorrador() {
+    try {
+      localStorage.setItem(EVAL_STORAGE_KEY, JSON.stringify(recolectarEvaluacion()));
+    } catch (e) {}
+  }
+
+  function restaurarEvaluacion() {
+    try {
+      var stored = localStorage.getItem(EVAL_STORAGE_KEY);
+      if (!stored) return;
+      var datos = JSON.parse(stored);
+      document.querySelectorAll('[data-eval]').forEach(function(el) {
+        var key = el.getAttribute('data-eval');
+        if (datos[key] == null) return;
+        if (el.type === 'radio') {
+          if (el.value === datos[key]) el.checked = true;
+        } else {
+          el.value = datos[key];
+        }
+      });
+      if (datos.compartir_con_equipo) {
+        document.getElementById('evalCompartir').checked = true;
+      }
+    } catch (e) {}
+  }
+
+  function mostrarEvalMsg(texto, tipo) {
+    var el = document.getElementById('evalMsg');
+    el.className = 'eval-msg on ' + (tipo || 'exito');
+    el.textContent = texto;
+    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function guardarEvaluacion() {
+    var datos = recolectarEvaluacion();
+    var minimoTexto = (datos.ver || '').trim() + (datos.actuar || '').trim();
+    if (minimoTexto.length < 30) {
+      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos "El Ver" y "El Actuar" merecen unos renglones honestos.', 'error');
+      return;
+    }
+
+    // Guardar en Supabase (siempre queda en tu bitácora)
+    if (!sesion) { window.location.href = '/login'; return; }
+    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario', {
+      method: 'POST',
+      headers: Object.assign({}, supaHeaders(), { 'Prefer': 'resolution=merge-duplicates' }),
+      body: JSON.stringify({
+        itinerario_id: ITINERARIO_ID,
+        respuestas: datos,
+        compartir_con_equipo: datos.compartir_con_equipo === true
+      })
+    })
+    .then(function(r) {
+      if (r.ok) {
+        var msg = datos.compartir_con_equipo
+          ? '✓ Evaluación guardada en tu bitácora y compartida con el equipo PLAPA. Gracias por el aporte.'
+          : '✓ Evaluación guardada en tu bitácora. Queda solo con vos.';
+        mostrarEvalMsg(msg, 'exito');
+      } else {
+        mostrarEvalMsg('Guardado localmente. No pudimos sincronizar con la Escuela — reintentá más tarde.', 'error');
+      }
+    })
+    .catch(function() {
+      mostrarEvalMsg('Guardado localmente. Sin conexión con la Escuela — reintentá cuando tengas internet.', 'error');
+    });
+  }
+
+  function imprimirEvaluacion() {
+    autoguardarBorrador();
+    window.print();
+  }
+
+  // Init general del itinerario
+  document.addEventListener('DOMContentLoaded', function() {
+    // Leer sesión (el guard del <head> garantiza que existe)
+    try {
+      var stored = localStorage.getItem('escuela_plapa_sesion');
+      if (stored) sesion = JSON.parse(stored);
+    } catch (e) {}
+    // Cargar muro
+    cargarComentarios();
+
+    // Restaurar borrador de evaluación si existe
+    restaurarEvaluacion();
+
+    // Autoguardado del borrador de evaluación al escribir (con debounce)
+    var evalTimeout;
+    document.querySelectorAll('#m6 [data-eval], #m6 #evalCompartir').forEach(function(el) {
+      el.addEventListener('input', function() {
+        clearTimeout(evalTimeout);
+        evalTimeout = setTimeout(autoguardarBorrador, 500);
+      });
+      el.addEventListener('change', autoguardarBorrador);
+    });
+  });
+</script>
+
+</body>
+</html>

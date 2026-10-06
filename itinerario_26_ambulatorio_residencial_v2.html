@@ -1,0 +1,2205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Itinerario 26 · Modelo ambulatorio vs. residencial · Escuela PLAPA</title>
+<style>
+  :root {
+    /* Paleta azul PLAPA — Itinerario 26 (bloque 6: Dispositivos) */
+    --i26-oscuro:  #0C2C4E;
+    --i26-medio:   #185FA5;
+    --i26-accent:  #378ADD;
+    --i26-suave:   #6AA8E8;
+    --i26-claro:   #B4D4F2;
+    --i26-crema:   #E6F0FB;
+    --i26-fondo:   #FBFDFF;
+
+    --alerta:     #8B1A1A;
+    --alerta-bg:  #FDF7F7;
+
+    --texto:      #1E1B33;
+    --texto-2:    #4A4560;
+    --texto-3:    #8C89A0;
+    --borde:      #E4E2F0;
+
+    --font-serif: "Georgia", "Times New Roman", serif;
+    --font-sans:  "system-ui", -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: #CDDFF2;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    line-height: 1.6;
+  }
+
+  .root {
+    background: var(--i26-fondo);
+    max-width: 860px;
+    width: 100%;
+    padding: 2.5rem;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(38, 33, 92, 0.08);
+  }
+
+  /* ─── HEADER SUPERIOR (navegación entre páginas) ─── */
+  .top-header {
+    background: #FFFFFF;
+    border-bottom: 1px solid var(--borde);
+    padding: 0.85rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    max-width: 860px;
+    width: 100%;
+    margin: 0 auto 1rem;
+    border-radius: 10px;
+  }
+  .top-logo {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--i26-oscuro);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .top-logo:hover { color: var(--i26-medio); }
+  .top-link {
+    font-size: 0.88rem;
+    color: var(--texto-2);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.15s;
+  }
+  .top-link:hover {
+    background: var(--i26-crema);
+    color: var(--i26-oscuro);
+  }
+  @media (max-width: 640px) {
+    .top-header { padding: 0.75rem 1rem; }
+    .top-link { font-size: 0.82rem; padding: 5px 8px; }
+  }
+
+  /* ─── PORTADA ────────────────────────────────────────── */
+  .portada {
+    background: var(--i26-oscuro);
+    border-radius: 12px;
+    padding: 2rem 2rem 1.75rem;
+    margin-bottom: 2rem;
+  }
+  .portada-sup {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--i26-claro);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .portada-title {
+    font-family: var(--font-serif);
+    font-size: 30px;
+    font-weight: normal;
+    color: #FFFFFF;
+    line-height: 1.25;
+    margin-bottom: 0.6rem;
+  }
+  .portada-sub {
+    font-size: 14.5px;
+    color: var(--i26-claro);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+    max-width: 640px;
+  }
+  .dest-box {
+    background: var(--i26-medio);
+    border-radius: 8px;
+    padding: 0.9rem 1.1rem;
+    margin-bottom: 1.1rem;
+  }
+  .dest-lbl {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--i26-claro);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .dest-txt {
+    font-size: 13px;
+    color: #FFF;
+    line-height: 1.6;
+  }
+  .portada-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .portada-pill {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 11px;
+    border-radius: 99px;
+    background: var(--i26-medio);
+    color: var(--i26-crema);
+  }
+
+  /* ─── VIDEO ──────────────────────────────────────────── */
+  .video-wrap {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .video-lbl {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--i26-oscuro);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .video-iframe {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  .video-iframe iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  /* ─── SELECTOR DE MODALIDAD ──────────────────────────── */
+  .mode-selector {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 1.5rem;
+    background: #FFF;
+    padding: 6px;
+    border-radius: 10px;
+    border: 1px solid var(--borde);
+    max-width: max-content;
+    flex-wrap: wrap;
+  }
+  .mode-btn {
+    border: none;
+    background: transparent;
+    color: var(--texto-2);
+    padding: 8px 16px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .mode-btn.on {
+    background: var(--i26-accent);
+    color: #FFF;
+    font-weight: 600;
+  }
+  /* Control de visibilidad según modalidad */
+  .root.mode-individual .mode-g { display: none; }
+  .root.mode-grupal .mode-i { display: none; }
+
+  /* ─── NAVEGACIÓN ─────────────────────────────────────── */
+  .nav {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .btn {
+    border: 1px solid var(--borde);
+    background: #FFFFFF;
+    border-radius: 8px;
+    padding: 10px 16px;
+    cursor: pointer;
+    font-size: 12.5px;
+    font-weight: 500;
+    font-family: var(--font-sans);
+    color: var(--texto-2);
+    transition: all 0.18s ease;
+    text-align: left;
+  }
+  .btn:hover {
+    background: var(--i26-crema);
+    border-color: var(--i26-claro);
+    color: var(--i26-oscuro);
+  }
+  .btn.on {
+    border: 2px solid var(--i26-accent);
+    background: var(--i26-crema);
+    color: var(--i26-oscuro);
+    font-weight: 600;
+    padding: 9px 15px;
+  }
+  .btn.btn-alt {
+    background: var(--i26-crema);
+    color: var(--i26-medio);
+    border-color: var(--i26-claro);
+  }
+  .btn.btn-alt:hover {
+    background: var(--i26-claro);
+    color: var(--i26-oscuro);
+  }
+  .btn.btn-alt.on {
+    background: var(--i26-medio);
+    border-color: var(--i26-medio);
+    color: #FFFFFF;
+  }
+  .nav-sep {
+    display: inline-block;
+    width: 1px;
+    background: var(--borde);
+    margin: 0 6px;
+    align-self: stretch;
+  }
+
+  /* ─── MÓDULOS ────────────────────────────────────────── */
+  .card {
+    border-radius: 12px;
+    border: 1px solid var(--borde);
+    background: #FFFFFF;
+    overflow: hidden;
+    display: none;
+    border-left: 6px solid var(--i26-accent);
+  }
+  .card.active {
+    display: block;
+    animation: fadeIn 0.35s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .ch {
+    padding: 1.75rem 2rem 1.5rem;
+    border-bottom: 1px solid var(--borde);
+    background: var(--i26-crema);
+  }
+  .cn {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 99px;
+    margin-bottom: 0.85rem;
+    background: var(--i26-accent);
+    color: #FFFFFF;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .ct {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 1.3;
+    color: var(--i26-oscuro);
+    margin-bottom: 0.4rem;
+  }
+  .cs {
+    font-size: 13px;
+    color: var(--i26-medio);
+    line-height: 1.55;
+    font-style: italic;
+  }
+
+  .cb { padding: 2rem; }
+
+  /* ─── CAJA DE RESONANCIA ─────────────────────────────── */
+  .resonancia {
+    border-left: 4px solid var(--i26-accent);
+    background: var(--i26-crema);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .resonancia-lbl {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i26-accent);
+    margin-bottom: 8px;
+  }
+  .resonancia-txt {
+    font-family: var(--font-serif);
+    font-size: 16.5px;
+    line-height: 1.6;
+    font-style: italic;
+    color: var(--i26-oscuro);
+  }
+
+  /* ─── SECCIONES VER / JUZGAR / ACTUAR ────────────────── */
+  .pl {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i26-oscuro);
+    margin-top: 2.25rem;
+    margin-bottom: 1.1rem;
+    border-bottom: 1px solid var(--borde);
+    padding-bottom: 7px;
+  }
+  .pl:first-of-type { margin-top: 0.5rem; }
+
+  .pts {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 1.5rem;
+  }
+  .pts li {
+    display: flex;
+    gap: 14px;
+    font-size: 14.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+  .pts li strong {
+    color: var(--i26-oscuro);
+    font-weight: 600;
+  }
+  .dot {
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    background: var(--i26-accent);
+    color: #FFFFFF;
+    margin-top: 2px;
+    font-family: var(--font-serif);
+  }
+  .dot.j { background: var(--i26-medio); }
+  .dot.a { background: var(--i26-oscuro); }
+
+  /* ─── GRILLA DE ESCENARIOS / DIMENSIONES ─────────────── */
+  .ejes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 1.5rem;
+  }
+  .eje {
+    background: var(--i26-crema);
+    border-radius: 10px;
+    padding: 1.1rem 1.25rem;
+    border-top: 4px solid var(--i26-accent);
+  }
+  .eje-n {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--i26-accent);
+    margin-bottom: 8px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .eje-t {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--i26-oscuro);
+    margin-bottom: 6px;
+  }
+  .eje-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.6;
+  }
+
+  /* ─── ACTIVIDADES ────────────────────────────────────── */
+  .act {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 1.15rem 1.35rem;
+    margin-bottom: 12px;
+    border-left: 4px solid var(--i26-accent);
+  }
+  .act-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  .tag-ind {
+    background: var(--i26-oscuro);
+    color: var(--i26-crema);
+  }
+  .tag-gru {
+    background: var(--i26-accent);
+    color: #FFF;
+  }
+  .act-title {
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: var(--i26-oscuro);
+    margin-bottom: 6px;
+    line-height: 1.35;
+  }
+  .act-body {
+    font-size: 14px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+  .act-body em {
+    color: var(--i26-medio);
+    font-style: italic;
+  }
+
+  /* ─── CITA INSPIRADORA ───────────────────────────────── */
+  .cita {
+    border-radius: 10px;
+    padding: 1.2rem 1.4rem;
+    background: linear-gradient(180deg, var(--i26-crema) 0%, #FFF 100%);
+    border: 1px solid var(--i26-claro);
+    margin-top: 2rem;
+  }
+  .cita-lbl {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i26-accent);
+    margin-bottom: 8px;
+  }
+  .cita-txt {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    line-height: 1.7;
+    font-style: italic;
+    color: var(--i26-oscuro);
+  }
+  .cita-ref {
+    font-size: 12px;
+    margin-top: 10px;
+    font-weight: 500;
+    color: var(--i26-medio);
+    font-style: normal;
+  }
+
+  /* ─── ALERTA PASTORAL ────────────────────────────────── */
+  .alerta {
+    border-left: 4px solid var(--alerta);
+    background: var(--alerta-bg);
+    padding: 1.15rem 1.35rem;
+    margin-top: 1.75rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .alerta-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--alerta);
+    margin-bottom: 8px;
+  }
+  .alerta-lbl::before {
+    content: '† ';
+    font-size: 14px;
+  }
+  .alerta-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+
+  /* ─── AUTOCUIDADO ────────────────────────────────────── */
+  .autocuidado {
+    border-left: 4px solid var(--i26-medio);
+    background: #F5FAFE;
+    padding: 1.15rem 1.35rem;
+    margin-top: 1.75rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .autocuidado-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i26-medio);
+    margin-bottom: 8px;
+  }
+  .autocuidado-lbl::before {
+    content: '❋ ';
+    color: var(--i26-accent);
+  }
+  .autocuidado-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+
+  /* ─── LECTURA COMPLEMENTARIA ─────────────────────────── */
+  .lectura {
+    background: #FFF;
+    border: 1px dashed var(--i26-accent);
+    border-radius: 10px;
+    padding: 1.15rem 1.35rem;
+    margin-top: 1.75rem;
+  }
+  .lectura-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--i26-medio);
+    margin-bottom: 8px;
+  }
+  .lectura-lbl::before {
+    content: '📖 ';
+  }
+  .lectura-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+  .lectura-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--i26-accent);
+    color: #FFF;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.18s;
+  }
+  .lectura-link:hover {
+    background: var(--i26-oscuro);
+  }
+
+  /* ─── REFERENCIAS ────────────────────────────────────── */
+  .ref {
+    font-size: 11.5px;
+    color: var(--texto-3);
+    font-style: italic;
+    margin-top: 1.75rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--borde);
+  }
+
+  /* ─── FORO / MURO DEL CAMINO ─────────────────────────── */
+  .foro {
+    background: #FFFFFF;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    margin-top: 2rem;
+    overflow: hidden;
+    border-left: 6px solid var(--i26-medio);
+  }
+  .foro-head {
+    background: var(--i26-crema);
+    padding: 1.75rem 2rem 1.5rem;
+    border-bottom: 1px solid var(--borde);
+  }
+  .foro-lbl {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 99px;
+    margin-bottom: 0.85rem;
+    background: var(--i26-medio);
+    color: #FFFFFF;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .foro-title {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: normal;
+    line-height: 1.3;
+    color: var(--i26-oscuro);
+    margin-bottom: 0.4rem;
+  }
+  .foro-sub {
+    font-size: 13px;
+    color: var(--i26-medio);
+    line-height: 1.55;
+    font-style: italic;
+  }
+  .foro-body { padding: 2rem; }
+
+  .foro-vista {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 1.5rem;
+    background: var(--i26-crema);
+    padding: 6px;
+    border-radius: 10px;
+    max-width: max-content;
+    flex-wrap: wrap;
+  }
+  .foro-vista-btn {
+    border: none;
+    background: transparent;
+    color: var(--texto-2);
+    padding: 8px 16px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .foro-vista-btn.on {
+    background: var(--i26-medio);
+    color: #FFF;
+    font-weight: 600;
+  }
+
+  .foro-pautas {
+    background: var(--alerta-bg);
+    border-left: 4px solid var(--alerta);
+    padding: 1.15rem 1.35rem;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 1.75rem;
+  }
+  .foro-pautas-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--alerta);
+    margin-bottom: 8px;
+  }
+  .foro-pautas-lbl::before { content: '† '; }
+  .foro-pautas ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .foro-pautas li {
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    padding-left: 14px;
+    position: relative;
+  }
+  .foro-pautas li::before {
+    content: '·';
+    position: absolute;
+    left: 4px;
+    color: var(--alerta);
+    font-weight: 700;
+  }
+
+  .foro-form {
+    background: var(--i26-fondo);
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .foro-form-lbl {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--i26-oscuro);
+    margin-bottom: 12px;
+  }
+  .foro-form-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .foro-form-row label {
+    font-size: 12.5px;
+    color: var(--texto-2);
+    align-self: center;
+    font-weight: 500;
+  }
+  .foro-form select {
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    padding: 7px 10px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+    cursor: pointer;
+  }
+  .foro-form textarea {
+    width: 100%;
+    min-height: 90px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+    resize: vertical;
+    line-height: 1.55;
+    margin-bottom: 10px;
+  }
+  .foro-form textarea:focus,
+  .foro-form select:focus {
+    outline: none;
+    border-color: var(--i26-medio);
+  }
+  .foro-form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .foro-form-info {
+    font-size: 11.5px;
+    color: var(--texto-3);
+    font-style: italic;
+  }
+  .foro-btn {
+    background: var(--i26-medio);
+    color: #FFF;
+    border: none;
+    border-radius: 7px;
+    padding: 9px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    transition: background 0.18s;
+  }
+  .foro-btn:hover { background: var(--i26-oscuro); }
+  .foro-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .foro-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .foro-vacio {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: var(--texto-3);
+    font-size: 13.5px;
+    font-style: italic;
+    background: var(--i26-crema);
+    border-radius: 10px;
+  }
+  .comment {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-left: 3px solid var(--i26-suave);
+    border-radius: 10px;
+    padding: 1rem 1.15rem;
+  }
+  .comment-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .comment-autor {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--i26-oscuro);
+  }
+  .comment-pais {
+    font-size: 12px;
+    color: var(--i26-medio);
+    font-weight: 500;
+  }
+  .comment-pais::before { content: ' · '; color: var(--texto-3); }
+  .comment-modulo {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: var(--i26-crema);
+    color: var(--i26-medio);
+    margin-left: 6px;
+  }
+  .comment-fecha {
+    font-size: 11.5px;
+    color: var(--texto-3);
+  }
+  .comment-texto {
+    font-size: 14px;
+    color: var(--texto);
+    line-height: 1.65;
+    margin-bottom: 10px;
+    white-space: pre-wrap;
+  }
+  .comment-actions {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .react-btn {
+    background: var(--i26-crema);
+    border: 1px solid transparent;
+    border-radius: 99px;
+    padding: 4px 10px;
+    font-size: 12.5px;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    color: var(--texto-2);
+    transition: all 0.15s;
+  }
+  .react-btn:hover { background: var(--i26-claro); }
+  .react-btn.on {
+    background: var(--i26-suave);
+    color: #FFF;
+    border-color: var(--i26-medio);
+    font-weight: 600;
+  }
+  .react-count {
+    margin-left: 4px;
+    font-weight: 600;
+  }
+  .reply-btn {
+    background: transparent;
+    border: none;
+    color: var(--i26-medio);
+    font-size: 12.5px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    margin-left: auto;
+    font-family: var(--font-sans);
+  }
+  .reply-btn:hover {
+    background: var(--i26-crema);
+    color: var(--i26-oscuro);
+  }
+  .comment-replies {
+    margin-top: 12px;
+    padding-left: 1rem;
+    border-left: 2px dashed var(--borde);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .reply {
+    background: var(--i26-fondo);
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+  }
+  .reply-form {
+    background: var(--i26-crema);
+    border-radius: 8px;
+    padding: 0.8rem;
+    margin-top: 10px;
+    display: none;
+  }
+  .reply-form.on { display: block; }
+  .reply-form textarea {
+    width: 100%;
+    min-height: 60px;
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    resize: vertical;
+    background: #FFF;
+    margin-bottom: 8px;
+  }
+  .reply-form-actions {
+    display: flex;
+    gap: 6px;
+    justify-content: flex-end;
+  }
+  .reply-form-cancel {
+    background: transparent;
+    border: 1px solid var(--borde);
+    color: var(--texto-2);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 12.5px;
+    cursor: pointer;
+    font-family: var(--font-sans);
+  }
+
+  .foro-login {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--i26-crema);
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+  }
+  .foro-login-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .foro-login-link {
+    display: inline-block;
+    background: var(--i26-medio);
+    color: #FFF;
+    padding: 8px 18px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  /* ─── EVALUACIÓN (M6) ────────────────────────────────── */
+  .eval-nota {
+    background: var(--i26-crema);
+    border-left: 4px solid var(--i26-medio);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+  .eval-nota-lbl {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i26-medio);
+    margin-bottom: 6px;
+  }
+  .eval-nota-txt strong { color: var(--i26-oscuro); }
+  .eval-nota-txt em { color: var(--i26-medio); font-style: italic; }
+
+  .eval-q {
+    margin-bottom: 1.5rem;
+  }
+  .eval-q > label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--i26-oscuro);
+    margin-bottom: 8px;
+    line-height: 1.55;
+  }
+  .eval-q textarea {
+    width: 100%;
+    min-height: 100px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+    resize: vertical;
+    line-height: 1.6;
+    transition: border-color 0.15s;
+  }
+  .eval-q textarea:focus,
+  .eval-q input:focus {
+    outline: none;
+    border-color: var(--i26-medio);
+    box-shadow: 0 0 0 3px rgba(60, 52, 137, 0.1);
+  }
+  .eval-q input[type="date"] {
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 9px 12px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+  }
+  .eval-fecha { max-width: 320px; }
+
+  .eval-scale-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .eval-radio {
+    flex: 1;
+    min-width: 55px;
+    cursor: pointer;
+    position: relative;
+  }
+  .eval-radio input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .eval-radio span {
+    display: block;
+    text-align: center;
+    padding: 12px 8px;
+    background: var(--i26-crema);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    color: var(--i26-medio);
+    font-size: 15px;
+    transition: all 0.15s;
+  }
+  .eval-radio:hover span { background: var(--i26-claro); }
+  .eval-radio input:checked + span {
+    background: var(--i26-medio);
+    border-color: var(--i26-oscuro);
+    color: #FFF;
+  }
+
+  .eval-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: var(--i26-crema);
+    border: 1px solid var(--i26-claro);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+  .eval-check input {
+    margin-top: 4px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--i26-medio);
+    flex-shrink: 0;
+  }
+  .eval-check label {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    cursor: pointer;
+  }
+  .eval-check label strong { color: var(--i26-oscuro); }
+  .eval-check label em { color: var(--i26-medio); font-style: italic; }
+
+  .eval-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  .eval-btn-guardar {
+    background: var(--i26-oscuro);
+  }
+  .eval-btn-guardar:hover { background: var(--i26-medio); }
+  .eval-btn-imprimir {
+    background: transparent;
+    color: var(--i26-medio);
+    border: 1px solid var(--i26-medio);
+  }
+  .eval-btn-imprimir:hover {
+    background: var(--i26-crema);
+    color: var(--i26-oscuro);
+  }
+
+  .eval-msg {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    display: none;
+    margin-bottom: 1rem;
+  }
+  .eval-msg.on { display: block; }
+  .eval-msg.exito {
+    background: #E6F0FB;
+    color: var(--i26-oscuro);
+    border-left: 3px solid var(--i26-medio);
+  }
+  .eval-msg.error {
+    background: var(--alerta-bg);
+    color: var(--alerta);
+    border-left: 3px solid var(--alerta);
+  }
+
+  /* Estilos de impresión de la evaluación */
+  @media print {
+    body { background: #FFF; padding: 0; }
+    .root { box-shadow: none; padding: 1rem; max-width: 100%; }
+    .portada, .video-wrap, .mode-selector, .nav { display: none !important; }
+    .card { display: none !important; }
+    #m6.card { display: block !important; break-inside: avoid; border: none; }
+    .eval-actions, .eval-msg { display: none !important; }
+    .ch { background: transparent; }
+    .eval-q textarea, .eval-q input[type="date"] {
+      border: none;
+      border-bottom: 1px solid #999;
+      border-radius: 0;
+      background: transparent;
+    }
+  }
+
+  /* ─── RESPONSIVE ─────────────────────────────────────── */
+  @media (max-width: 640px) {
+    body { padding: 1rem 0.5rem; }
+    .root { padding: 1.25rem; }
+    .portada { padding: 1.5rem 1.25rem; }
+    .portada-title { font-size: 24px; }
+    .ch { padding: 1.25rem 1.25rem 1rem; }
+    .ct { font-size: 20px; }
+    .cb { padding: 1.25rem; }
+    .ejes { grid-template-columns: 1fr; }
+    .btn { flex: 1 1 100%; }
+    .mode-selector { flex-direction: column; align-items: stretch; max-width: 100%; }
+    .mode-btn { text-align: center; }
+    .foro-head { padding: 1.25rem; }
+    .foro-body { padding: 1.25rem; }
+    .foro-title { font-size: 19px; }
+    .foro-vista { max-width: 100%; flex-direction: column; align-items: stretch; }
+    .foro-vista-btn { text-align: center; }
+    .comment-head { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .reply-btn { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER SUPERIOR ═════════════════════════════════ -->
+<header class="top-header">
+  <a href="index.html" class="top-logo">Escuela PLAPA</a>
+  <a href="catalogo_30_itinerarios_plapa_corregido.html" class="top-link">← Catálogo</a>
+</header>
+
+<div class="root mode-grupal">
+
+  <!-- ═══ PORTADA ═════════════════════════════════════════ -->
+  <div class="portada">
+    <p class="portada-sup">Itinerario formativo 26 · Escuela PLAPA · CELAM 2026</p>
+    <h1 class="portada-title">Modelo ambulatorio vs. residencial</h1>
+    <p class="portada-sub">Comunidades terapéuticas, tratamiento ambulatorio y la articulación entre dispositivos como continuo de cuidado.</p>
+
+    <div class="dest-box">
+      <div class="dest-lbl">Destinatarios</div>
+      <div class="dest-txt">Coordinadores de dispositivos pastorales que necesitan decidir qué modalidad de acompañamiento ofrecer o cómo articular ambas. Equipos de comunidades terapéuticas que quieren evaluar su propio modelo desde los criterios del Manual, y equipos parroquiales que están considerando iniciar un dispositivo ambulatorio en su territorio. Nivel intermedio: se asume familiaridad con los conceptos básicos de acompañamiento del Manual (bloques 2-4). Continuación del Itin 25.</div>
+    </div>
+
+    <div class="portada-pills">
+      <span class="portada-pill">§11.6 · §11.7</span>
+      <span class="portada-pill">4 módulos</span>
+      <span class="portada-pill">Coordinadores de dispositivos</span>
+      <span class="portada-pill">Nivel intermedio</span>
+      <span class="portada-pill">Ver · Juzgar · Actuar · Síntesis</span>
+    </div>
+  </div>
+
+  <!-- ═══ VIDEO ═══════════════════════════════════════════ -->
+  
+  <!-- NUEVO: Bloque del Video de Presentación Incrustado -->
+<div style="background: var(--surface-2); border: 0.5px solid var(--border); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
+  <p style="font-size: 11px; font-weight: 500; color: #085041; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; text-align: left;">
+    ▶️ Video de presentación
+  </p>
+  <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px;">
+    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+      src="https://www.youtube.com/embed/PLACEHOLDER_ITIN26"
+      title="Presentación del Itinerario 26" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+  <!-- ═══ SELECTOR DE MODALIDAD ═══════════════════════════ -->
+  <div class="mode-selector">
+    <button class="mode-btn on" onclick="setMode('grupal', this)">👥 Hacer en comunidad</button>
+    <button class="mode-btn" onclick="setMode('individual', this)">👤 Hacer de forma individual</button>
+  </div>
+
+  <!-- ═══ NAVEGACIÓN ══════════════════════════════════════ -->
+  <div class="nav">
+    <button class="btn on" onclick="show(1,this)">Módulo 1 · Las 4 dimensiones del residencial</button>
+    <button class="btn" onclick="show(2,this)">Módulo 2 · Criterios de discernimiento</button>
+    <button class="btn" onclick="show(3,this)">Módulo 3 · Por qué el ambulatorio es prioritario</button>
+    <button class="btn" onclick="show(4,this)">Módulo 4 · El continuo de cuidado</button>
+    <span class="nav-sep" aria-hidden="true"></span>
+    <button class="btn btn-alt" onclick="show(5,this)">🌱 Muro del camino</button>
+    <button class="btn btn-alt" onclick="show(6,this)">✍ Evaluación</button>
+  </div>
+
+  <!-- ═══ MÓDULO 1 ════════════════════════════════════════ -->
+  <div id="m1" class="card active">
+    <div class="ch">
+      <span class="cn">Módulo 1 · El Ver</span>
+      <div class="ct">Las cuatro dimensiones del proceso residencial: la comunidad terapéutica como espacio integral</div>
+      <div class="cs">Biológica, psicológica, social y espiritual trabajadas simultáneamente · §11.6.1</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"El abordaje residencial despliega las cuatro dimensiones que este manual ha propuesto como constitutivas de la persona. No como compartimentos estancos sino como facetas de una misma unidad que se trabajan de manera simultánea en la convivencia diaria."</div>
+      </div>
+
+      <div class="pl">El Juzgar — Las cuatro dimensiones del proceso residencial (§11.6.1)</div>
+      <ul class="pts">
+        <li><span class="dot j">B</span><span><strong>Dimensión biológica.</strong> Rutinas estructuradas, alimentación adecuada, actividad física, descanso y seguimiento médico. Las rutinas saludables <em>no son un reglamento disciplinario sino "una pedagogía biológica del reaprendizaje"</em> que aprovecha la neuroplasticidad.</span></li>
+        <li><span class="dot j">P</span><span><strong>Dimensión psicológica.</strong> Autoconocimiento, reconocimiento emocional, habilidades de afrontamiento. La patología dual <em>"es la norma y no la excepción en los territorios"</em>: el abordaje <em>sana la fractura interna que sostiene el consumo</em>, no solo el síntoma visible.</span></li>
+        <li><span class="dot j">S</span><span><strong>Dimensión social.</strong> La comunidad terapéutica como <em>"laboratorio de convivencia"</em> donde se aprenden nuevas formas de relación. El trabajo familiar <em>es parte constitutiva, no un complemento</em>. El trabajo es una <em>dimensión sagrada de la identidad</em>, no un premio final.</span></li>
+        <li><span class="dot j">E</span><span><strong>Dimensión espiritual.</strong> El despertar espiritual <em>debe ocurrir en libertad, nunca por coerción</em>. Lectio Divina, Eucaristía, confesión, retiros como caminos de reconexión. <em>La espiritualidad universal es la puerta; la vida sacramental es la casa</em> a la que esa puerta puede abrirse.</span></li>
+      </ul>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>Simultaneidad en la convivencia diaria, no cuatro programas separados.</strong> El §11.6.1 enfatiza que las cuatro dimensiones se trabajan <em>"de manera simultánea en la convivencia diaria"</em>, no como cuatro programas separados que el residente atraviesa en secuencia. <em>La fortaleza específica del modelo residencial está precisamente en esa simultaneidad</em>: la dimensión biológica (la rutina de levantarse) y la dimensión espiritual (el momento de oración matutina) <em>ocurren en el mismo día, articuladas</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>Nunca imponer prácticas religiosas como condición: límite ético fundamental.</strong> En la dimensión espiritual, el Manual es explícito sobre el límite ético fundamental: <em>"esto no significa imponer prácticas religiosas como condición de permanencia. La participación debe promoverse siempre desde la invitación y el acompañamiento humano, nunca desde la coerción o el señalamiento"</em> (§11.6.1). Una comunidad terapéutica cristiana que condiciona la permanencia a la práctica religiosa <em>traiciona el espíritu del Manual</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>Espiritualidad universal como puerta; vida sacramental como casa.</strong> <em>"Como enseña el artículo 7.1.4, la espiritualidad universal es la puerta; la vida comunitaria y sacramental es la casa a la que esa puerta puede abrirse. El hermano que no profesa una fe puede encontrar en el clima espiritual de la comunidad —el silencio, el cuidado, la belleza, el ritmo de la vida compartida— el suelo donde su propia búsqueda comience a germinar"</em> (§11.6.1). Esta imagen resuelve la tensión entre <em>identidad cristiana de la comunidad y acogida incondicional</em> de quien no comparte esa fe.</span></li>
+        <li><span class="dot j">J</span><span><strong>Bienestar funcional, no solo abstinencia: criterio ampliado.</strong> <em>"El objetivo no es únicamente lograr abstinencia, sino restaurar el bienestar físico y la capacidad funcional de la persona"</em> (§11.6.1). Esta afirmación sobre la dimensión biológica <em>desafía el criterio de éxito más extendido en el campo</em>: la abstinencia. El Manual propone <em>un criterio más amplio e integral</em>: el bienestar funcional de la persona en sus cuatro dimensiones.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Auditar la comunidad terapéutica con las cuatro dimensiones</div>
+        <div class="mode-g">
+          <div class="act-body">Si el equipo coordina o conoce una comunidad terapéutica, evaluar cada dimensión: <em>¿hay seguimiento médico y articulación con salud mental (biológica)? ¿hay terapia individual y grupal real (psicológica)? ¿hay trabajo activo con las familias y procesos de reintegración laboral (social)? ¿hay espacio espiritual ofrecido desde la invitación, no la imposición (espiritual)?</em> Identificar <em>la dimensión más débil</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora las <em>cuatro dimensiones</em> y marcá para cada una <em>sí/parcial/no</em> en tu dispositivo. La más débil es la agenda; la parcial, la de consolidar primero.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Revisar el lenguaje sobre el "éxito" del proceso residencial</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo reflexiona: <em>¿cómo mide el dispositivo el éxito de un proceso residencial? ¿solo abstinencia o también bienestar funcional, vínculos restaurados y sentido recuperado?</em> Ajustar los criterios de evaluación según las cuatro dimensiones <em>evita reducir el proceso a un solo indicador</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Escribí en tu bitácora los <em>cuatro criterios</em> de éxito para los procesos de tu dispositivo (uno por dimensión). Si solo tenés abstinencia, esa es <em>la ampliación pendiente</em> del lenguaje institucional.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Diseñar el clima espiritual que invita sin imponer</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo diseña cómo se expresa concretamente la dimensión espiritual <em>desde la invitación, no la imposición</em>: <em>¿hay momentos de silencio compartido? ¿hay espacio para la oración de quien quiera participar y la quietud respetuosa de quien no? ¿hay belleza en los espacios?</em> La espiritualidad como clima <em>no se declara: se encarna en gestos y lugares</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora <em>tres gestos del clima espiritual</em> de tu dispositivo (puede ser un cuadro, un rincón de silencio, una campanilla al mediodía). Si alguno falta, elegí <em>el más viable</em> de incorporar esta semana.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §11.6.1</div>
+        <div class="cita-txt">"La neuroplasticidad que permitió al cerebro aprender la adicción es la misma que permite trazar nuevos caminos: las rutinas saludables no son un reglamento disciplinario sino una pedagogía biológica del reaprendizaje."</div>
+        <div class="cita-ref">Manual de la PLAPA, §11.6.1 — Las dimensiones del proceso residencial (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">La <em>simultaneidad</em> de las cuatro dimensiones no significa <em>que todas estén igual de desarrolladas en el mismo residente al mismo tiempo</em>. Un residente puede estar fuerte en lo biológico y frágil en lo espiritual, y eso <em>no es señal de fracaso del proceso</em>: es señal de personalización. El Manual pide que las cuatro dimensiones <em>estén disponibles</em> en el dispositivo, no que todas progresen al mismo ritmo en cada persona. Confundir eso <em>fuerza procesos</em> que necesitan tiempo propio.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">El trabajo en comunidad terapéutica residencial implica <em>convivencia cotidiana intensa</em> con personas en procesos de alta complejidad. El facilitador recuerda que el equipo residencial necesita <em>su propio espacio de descanso fuera del ámbito de la comunidad</em>, turnos claros, y supervisión regular que aborde <em>el desgaste específico de la convivencia 24 horas</em>.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §11.6.1 (Dimensiones del proceso residencial), §7.1.4 (Espiritualidad universal como puerta) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 2 ════════════════════════════════════════ -->
+  <div id="m2" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 2 · El Juzgar</span>
+      <div class="ct">Criterios de discernimiento: cuándo una comunidad terapéutica traiciona el Evangelio que dice profesar</div>
+      <div class="cs">Cuatro alertas que toda comunidad cristiana necesita examinar en sí misma · §11.6.2, §11.6.3</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"No toda comunidad terapéutica que se declare cristiana responde automáticamente al espíritu de este manual. Cuando una propuesta residencial desarrolla una dimensión pero niega alguna otra, lo que está negando es la correcta comprensión de la persona humana."</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Cuatro alertas de discernimiento · §11.6.3</div>
+        <div class="alerta-txt"><strong>1.</strong> Trabajar lo espiritual pero <em>rechazar la atención médica o psiquiátrica</em> → espiritualismo reductor.<br><strong>2.</strong> Trabajar lo biológico y conductual pero <em>prohibir o ignorar la dimensión espiritual</em> → biologicismo.<br><strong>3.</strong> Aislar al residente <em>de todo contacto con su familia y su territorio</em> → contradice la comprensión relacional de la persona.<br><strong>4.</strong> Utilizar <em>la humillación, el castigo físico o la coerción religiosa</em> como herramientas "terapéuticas" → niega la dignidad ontológica inalienable.</div>
+      </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>Brújula de autoevaluación, no juicio externo.</strong> <em>"Estos criterios no son un juicio externo sobre las comunidades existentes, muchas de las cuales realizan una tarea admirable con recursos escasos. Son una brújula que el manual ofrece para que cada comunidad pueda evaluarse a sí misma con honestidad y crecer hacia una mayor integralidad"</em> (§11.6.3). El propósito de los cuatro criterios <em>no es condenar sino ofrecer una herramienta de autoevaluación honesta</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>Llamar por el nombre: gesto fundamental repetido cientos de veces al día.</strong> <em>"El acto de llamar por el nombre es el gesto fundamental de restauración de la dignidad ontológica. En la comunidad terapéutica, ese gesto se repite cientos de veces al día"</em> (§11.6.2). Esta frase sintetiza la metodología más profunda del modelo residencial: <em>no es un programa de actividades sino una repetición constante de gestos de dignidad</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>Misericordia estructurada: firmeza amorosa del hogar.</strong> <em>"El trato respetuoso y la existencia de normas claras pero humanizadas forman parte de lo que el manual denomina misericordia estructurada: un marco de convivencia que no es ni la rigidez del cuartel ni la anomia de la calle, sino la firmeza amorosa de un hogar que cuida porque pone límites y pone límites porque cuida"</em> (§11.6.2). Esta definición <em>conecta directamente con el Itinerario 14</em> y aplica los mismos principios al contexto residencial específicamente.</span></li>
+        <li><span class="dot j">J</span><span><strong>Las cuatro alertas no son errores accidentales: niegan la comprensión de la persona.</strong> Las cuatro alertas no son <em>errores accidentales</em>: cada una representa una <em>distorsión antropológica de fondo</em>. El espiritualismo reductor niega el cuerpo; el biologicismo niega el alma; el aislamiento niega las relaciones; la humillación niega la dignidad ontológica. <em>Cada negación es un fallo teológico, no solo metodológico</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Aplicar las cuatro alertas a la comunidad propia</div>
+        <div class="mode-g">
+          <div class="act-body">Con <em>honestidad y sin defensividad</em>, el grupo revisa la comunidad terapéutica que coordina o conoce de cerca con las cuatro alertas del §11.6.3: <em>¿hay alguna de las cuatro presente, aunque sea de forma incipiente?</em> El ejercicio <em>no busca culpar sino identificar áreas de crecimiento concretas</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora las <em>cuatro alertas</em> y marcá para cada una <em>ausente/presente de forma incipiente/presente de forma preocupante</em>. Las dos últimas opciones <em>son agenda inmediata</em>, no futura.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">El gesto del nombre: practicarlo conscientemente</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo diseña cómo intensificar el gesto de llamar por el nombre en la vida cotidiana de la comunidad: <em>¿se usa el nombre en cada interacción o se cae en apodos despersonalizantes o en referencias funcionales ("el de la cama 3")?</em> Ese gesto repetido cientos de veces al día, como dice el §11.6.2, <em>es el corazón metodológico de la restauración de dignidad</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Durante los próximos tres días, <em>anotá cada vez que escuchás en el dispositivo una referencia a alguien que no sea por su nombre</em>. Al final del tercer día, revisá la lista: <em>es un diagnóstico silencioso</em> del clima de dignidad cotidiano.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Articulación entre dimensiones: evaluar los puentes internos</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo evalúa los puentes entre dimensiones dentro de la comunidad: <em>¿el médico y el acompañante espiritual se hablan? ¿el psicólogo y el coordinador de la vida comunitaria articulan? ¿el equipo de familia y el de talleres laborales comparten información?</em> Las cuatro dimensiones solo son <em>simultáneas</em> si los agentes de cada una <em>están comunicados entre sí</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora los <em>cuatro agentes clave</em> de cada dimensión en tu dispositivo. Al lado de cada par, marcá si hay comunicación regular: <em>sí/parcial/no</em>. Los parciales y los no son <em>la primera agenda</em> de la próxima reunión del equipo.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §11.6.3</div>
+        <div class="cita-txt">"Estos criterios son una brújula que el manual ofrece para que cada comunidad pueda evaluarse a sí misma con honestidad y crecer hacia una mayor integralidad."</div>
+        <div class="cita-ref">Manual de la PLAPA, §11.6.3 — Criterios de discernimiento (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">Las cuatro alertas <em>no se aplican solo a comunidades "ajenas"</em>. El riesgo mayor es usar los criterios <em>como vara para juzgar al vecino</em> en lugar de brújula para examinar la propia casa. Un equipo que diagnostica el espiritualismo reductor <em>en el centro del pueblo de al lado</em> pero no se pregunta si tiene prácticas humillantes propias <em>está usando el Manual al revés</em>. Los criterios son <em>primero para el espejo</em>, y solo después, <em>con enorme prudencia</em>, para el diálogo con otros.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">El examen honesto de las cuatro alertas puede generar <em>incomodidad</em> si el equipo reconoce alguna práctica problemática en su propia comunidad. El facilitador recuerda que <em>el reconocimiento honesto es el primer paso del cambio</em>, no una confesión de fracaso. Ninguna comunidad es perfecta desde el inicio: <em>lo que el Manual pide es la disposición a crecer hacia la integralidad</em>.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §11.6.2 (Misericordia estructurada), §11.6.3 (Criterios de discernimiento), §7.1.3 (Dignidad ontológica), Itinerario 14 (Misericordia estructurada) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 3 ════════════════════════════════════════ -->
+  <div id="m3" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 3 · El Actuar</span>
+      <div class="ct">Por qué el modelo ambulatorio es prioritario: identidad propia, no versión reducida</div>
+      <div class="cs">Accesibilidad, preservación de vínculos y ética del cuidado · §11.7.1, §11.7.2</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"El tratamiento ambulatorio no es una versión reducida o de menor jerarquía del tratamiento residencial. Es una modalidad con identidad propia que en muchos contextos de la región representa la única modalidad de acompañamiento accesible para la mayoría de las personas con consumos problemáticos."</div>
+      </div>
+
+      <div class="pl">El Juzgar — Las cuatro razones de la prioridad ambulatoria (§11.7.1)</div>
+      <div class="ejes">
+        <div class="eje">
+          <div class="eje-n">Accesibilidad</div>
+          <div class="eje-t">Respuesta donde la persona vive</div>
+          <div class="eje-txt">Las comunidades residenciales son <em>escasas, costosas o inaccesibles</em> para los más vulnerables. El ambulatorio despliega respuesta donde la persona vive, sin exigir desarraigo <em>que muchos (mujeres con hijos, trabajadores informales, adolescentes escolarizados) no pueden sostener</em>.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Vínculos</div>
+          <div class="eje-t">Preservación del entorno</div>
+          <div class="eje-txt">No se sana al sujeto <em>en ambiente protegido para devolverlo a un territorio inalterado</em>: se acompaña <em>la transformación del sujeto y de su entorno simultáneamente</em>. Coherente con el enfoque sistémico del Manual.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Ética del cuidado</div>
+          <div class="eje-t">Basta con llegar</div>
+          <div class="eje-txt">No condiciona el acceso al acompañamiento: <em>basta con llegar</em>. Especialmente relevante en etapas tempranas (precontemplación y contemplación) donde exigir internación <em>funciona como barrera que aleja en lugar de recibir</em>.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Un error frecuente</div>
+          <div class="eje-t">No es solo para "casos leves"</div>
+          <div class="eje-txt">Pensar que el ambulatorio es solo para <em>"casos menos graves"</em>. Acompaña eficazmente un espectro amplio: <em>inicios de consumo, transición post-residencial, patología dual estabilizada, mujeres con hijos, adolescentes escolarizados, personas en situación de calle</em>.</div>
+        </div>
+      </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>No es el escalón inferior: es la modalidad prioritaria.</strong> <em>"Una concepción frecuente pero errónea limita el tratamiento ambulatorio a los casos 'menos graves' o 'menos compulsivos'"</em> (§11.7.2). Esta corrección es central: <em>el ambulatorio no es el escalón inferior de una jerarquía con el residencial arriba</em>. Es <em>la modalidad prioritaria para la mayoría de los casos</em> en el contexto latinoamericano, y <em>el residencial es la excepción reservada</em> para situaciones específicas de riesgo vital o ausencia total de red.</span></li>
+        <li><span class="dot">V</span><span><strong>Capital de recuperación, no solo gravedad del consumo.</strong> <em>"El criterio de derivación no debe basarse únicamente en la gravedad del consumo, sino en una evaluación integral que considere el capital de recuperación del sujeto, la presencia o ausencia de red vincular, la existencia de patología dual y las condiciones concretas de vida"</em> (§11.7.2). Esta es la conexión directa con el Itinerario 17 (capital de recuperación): <em>el criterio de derivación entre modalidades usa exactamente ese marco</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>No exigir condiciones que la persona no puede cumplir sin perder algo valioso.</strong> El listado de personas para quienes el ambulatorio es preferible —<em>mujeres con hijos a cargo, adolescentes escolarizados, personas en situación de calle en su primera etapa de acercamiento</em>— conecta directamente con los Itinerarios 21, 22 y 24. El Manual aplica de forma consistente el principio de <em>no exigir condiciones de acceso que la persona no puede cumplir sin perder algo valioso</em> (la custodia de los hijos, la escolaridad, la red de calle).</span></li>
+        <li><span class="dot j">J</span><span><strong>Transformación simultánea del sujeto y su entorno.</strong> La preservación de los vínculos durante el tratamiento ambulatorio <em>no es un segundo premio</em>: es coherencia con el enfoque sistémico del Manual. <em>No se puede sanar al sujeto en un ambiente protegido y devolverlo a un entorno inalterado</em>: el ambulatorio acompaña <em>la transformación simultánea de ambos</em>. Esa coherencia hace que la sanación tenga más probabilidad de sostenerse en el tiempo.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Revisar los criterios de derivación del territorio</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo evalúa: <em>¿cómo decide actualmente el equipo cuándo derivar a un dispositivo residencial y cuándo sostener el acompañamiento ambulatorio? ¿se basa principalmente en la gravedad del consumo o en la evaluación integral que el §11.7.2 propone (capital de recuperación, red vincular, patología dual, condiciones de vida)?</em> Ajustar el criterio <em>si está sesgado hacia la gravedad como único factor</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora los <em>cuatro factores</em> de la evaluación integral (capital, red, patología dual, condiciones) y usalos en la próxima derivación. La planilla cambia la práctica <em>más que las intenciones</em>.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Identificar a quienes el ambulatorio puede acompañar mejor</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo revisa los siete perfiles del §11.7.2 (<em>inicio de consumo, post-residencial, patología dual estabilizada, mujeres con hijos, adolescentes escolarizados, personas en situación de calle</em>) y verifica: <em>¿el dispositivo ambulatorio del territorio está preparado para acompañar a cada uno de esos perfiles, o hay alguno que sistemáticamente queda fuera?</em></div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora los <em>siete perfiles</em> y marcá cuáles atiende hoy tu dispositivo y cuáles no. Los que no atendés son <em>la agenda de ampliación</em>: identificá al menos <em>uno al que podrías llegar</em> en los próximos tres meses.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Desmontar el prejuicio del "ambulatorio como menos"</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo identifica honestamente: <em>¿en el lenguaje del equipo aparece el ambulatorio como "la modalidad para los menos graves" o se habla de él con identidad propia?</em> Analizar <em>cómo se nombran los procesos</em> ante las familias, los derivadores y las autoridades: <em>el lenguaje que usamos sostiene o derriba el prejuicio</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora las <em>tres frases más frecuentes</em> con las que presentás el ambulatorio en el equipo o con familias. Si alguna lo coloca como <em>"más simple" o "menos intensivo"</em>, reescribila. El lenguaje que repetís <em>es el que termina creando realidad institucional</em>.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §11.7.1</div>
+        <div class="cita-txt">"La persona no necesita internarse para ser acompañada; basta con que llegue. Esta flexibilidad es especialmente relevante para quienes se encuentran en etapas tempranas del proceso de cambio, donde la exigencia de una internación puede funcionar como barrera de acceso que termina alejando al hermano en lugar de recibirlo."</div>
+        <div class="cita-ref">Manual de la PLAPA, §11.7.1 — Por qué el modelo ambulatorio es prioritario (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">La prioridad del ambulatorio <em>no significa negar la indicación residencial cuando es necesaria</em>. Hay casos donde la red vincular está completamente destruida, el consumo pone en riesgo inmediato la vida, o la patología dual descompensada requiere contención estructurada: <em>ahí el residencial es la respuesta correcta</em>. La pastoral que, por ideología del ambulatorio, retiene a alguien <em>en una modalidad insuficiente</em> cuando necesita internación, <em>daña al hermano en nombre de un principio metodológico</em>. El criterio sigue siendo <em>el bien de la persona concreta</em>, no la coherencia doctrinal.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">El modelo ambulatorio puede generar en el equipo <em>la sensación de "no estar haciendo suficiente"</em> frente a la imagen más intensiva y visible del modelo residencial. El facilitador recuerda que el §11.7.1 es explícito: <em>el ambulatorio "no es una versión reducida."</em> Acompañar a alguien en su territorio, sin desarraigarla, <em>es un trabajo tan válido y exigente como el acompañamiento residencial</em>, aunque tenga una forma distinta.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §11.7.1 (Prioridad del ambulatorio), §11.7.2 (Perfiles del ambulatorio), Itinerario 17 (Capital de recuperación), Itinerarios 21-22-24 (Poblaciones específicas) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 4 ════════════════════════════════════════ -->
+  <div id="m4" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 4 · Síntesis</span>
+      <div class="ct">El continuo de cuidado: ambulatorio y residencial como momentos de un mismo camino</div>
+      <div class="cs">Componentes del dispositivo ambulatorio y la articulación entre modalidades · §11.6.5, §11.7.3, §11.7.4</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"La comunidad terapéutica y el tratamiento ambulatorio no son alternativas excluyentes sino momentos de un continuo de cuidado. El desafío de la pastoral es construir la articulación entre dispositivos para que la persona no quede atrapada en uno solo ni caiga en los vacíos entre ellos."</div>
+      </div>
+
+      <div class="pl">El Juzgar — Los seis componentes del dispositivo ambulatorio (§11.7.3)</div>
+      <ul class="pts">
+        <li><span class="dot j">1</span><span><strong>Acompañamiento individual.</strong> Espacios regulares de escucha y seguimiento. <em>Puede ser realizado por profesionales o por acompañantes pares formados</em>, según la complejidad del caso.</span></li>
+        <li><span class="dot j">2</span><span><strong>Trabajo grupal.</strong> Grupos terapéuticos o de autoayuda como <em>laboratorio de vínculos sanos</em> donde ensayar nuevas formas de relacionarse.</span></li>
+        <li><span class="dot j">3</span><span><strong>Trabajo con la familia.</strong> Encuentros familiares, grupos de padres e intervenciones domiciliarias. <em>No se acompaña solo a la persona sino a la red que la sostiene o la expulsa</em>.</span></li>
+        <li><span class="dot j">4</span><span><strong>Atención psiquiátrica y médica.</strong> Articulación indispensable con servicios de salud del territorio <em>para patología dual o deterioro físico significativo</em>.</span></li>
+        <li><span class="dot j">5</span><span><strong>Actividades promocionales.</strong> Talleres de oficios, deporte, arte. <em>No son complementos del tratamiento: son parte del tratamiento</em>, bajo el paradigma de <em>"llegar antes."</em></span></li>
+        <li><span class="dot j">6</span><span><strong>Acompañamiento espiritual.</strong> Oración, lectura orante, retiros breves, para quienes lo deseen, fortaleciendo <em>la dimensión del sentido y la trascendencia</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>Tránsito fluido ambulatorio ↔ residencial, no modelo binario.</strong> <em>"Una persona puede iniciar su proceso en un acompañamiento ambulatorio parroquial, requerir en un momento de crisis una internación en una comunidad terapéutica, y regresar al dispositivo ambulatorio para sostener su proceso en el territorio"</em> (§11.6.5). Este tránsito fluido entre modalidades <em>es exactamente lo que el Manual propone como ideal</em>, frente al modelo binario donde ambulatorio y residencial <em>compiten por la persona</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>Abismo de la libertad también al egreso del residencial.</strong> <em>"Otra persona puede egresar de la comunidad y encontrar en el acompañamiento ambulatorio la red de contención que necesita para no quedar en el vacío que este manual ha descrito como 'el abismo de la libertad'"</em> (§11.6.5). Esta conexión directa con el Itinerario 23 muestra que <em>el abismo de la libertad no es exclusivo del egreso carcelario</em>: es el mismo fenómeno al egreso de <em>cualquier dispositivo residencial</em> sin red de continuidad.</span></li>
+        <li><span class="dot">V</span><span><strong>El centro barrial como sede natural del ambulatorio.</strong> <em>"La parroquia, la capilla, el centro barrial o el Hogar de Cristo pueden funcionar como sedes de un dispositivo ambulatorio que no requiere una infraestructura hospitalaria para operar. Lo que requiere es un equipo formado, una organización de los tiempos, y la decisión institucional de abrir las puertas a esta modalidad"</em> (§11.7.4). Esta afirmación <em>conecta el Itinerario 26 directamente con el Itinerario 25</em>: <em>el centro barrial puede ser la sede natural del modelo ambulatorio</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>Ética del cuidado: ningún tramo sin red.</strong> <em>"El ingreso a una comunidad terapéutica no debe pensarse como la única respuesta posible ni como un destino permanente. La ética del cuidado exige que el tránsito entre modalidades sea acompañado y que ningún tramo del camino quede sin red"</em> (§11.6.5). El criterio teológico que sostiene toda la articulación es la <em>ética del cuidado</em>: <em>ningún momento de la trayectoria de la persona puede quedar sin acompañamiento</em>, sea cual sea la modalidad vigente en ese momento.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Mapear el continuo de cuidado del territorio</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo dibuja el mapa de dispositivos del territorio: <em>¿hay comunidad terapéutica residencial cercana? ¿hay dispositivo ambulatorio articulado con ella? ¿qué sucede cuando alguien egresa del residencial: hay continuidad ambulatoria o queda en el vacío?</em> Identificar <em>los "tramos sin red" del continuo de cuidado local</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Dibujá en tu bitácora el <em>continuo</em> del territorio: ambulatorio → residencial → vuelta al ambulatorio. Marcá los puntos donde se rompe la cadena. Esos son <em>los agujeros a cerrar</em>.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Auditar los seis componentes del dispositivo ambulatorio propio</div>
+        <div class="mode-g">
+          <div class="act-body">Si el territorio ya tiene un dispositivo ambulatorio (o está diseñando uno), el grupo evalúa cada uno de los seis componentes del §11.7.3: <em>¿hay acompañamiento individual? ¿trabajo grupal? ¿trabajo con familias? ¿articulación psiquiátrica? ¿actividades promocionales? ¿espacio espiritual?</em> Identificar <em>los componentes ausentes como prioridad de desarrollo</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora los <em>seis componentes</em> y marcá para cada uno <em>sí/parcial/no</em>. Elegí <em>el ausente más viable</em> de incorporar en los próximos tres meses.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Cierre: diseñar el protocolo de tránsito entre modalidades</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo diseña un protocolo mínimo de tránsito: <em>¿cómo se deriva de ambulatorio a residencial en caso de crisis? ¿cómo se recibe a alguien que egresa del residencial? ¿quién es el responsable de sostener la continuidad en cada transición?</em> Ese protocolo <em>es el que evita que la persona "caiga en los vacíos entre dispositivos"</em> que el §11.6.5 advierte.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Escribí en tu bitácora el <em>protocolo mínimo</em> de tránsito (tres pasos para cada dirección: hacia el residencial y de regreso al ambulatorio). Si no existe, <em>esa es la primera propuesta formal</em> para la próxima reunión del equipo.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §11.6.5</div>
+        <div class="cita-txt">"El desafío de la pastoral es construir la articulación entre dispositivos para que la persona no quede atrapada en uno solo ni caiga en los vacíos entre ellos. La ética del cuidado exige que el tránsito entre modalidades sea acompañado y que ningún tramo del camino quede sin red."</div>
+        <div class="cita-ref">Manual de la PLAPA, §11.6.5 — La articulación con el modelo ambulatorio (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">La <em>articulación</em> entre modalidades no se logra con convenios firmados <em>si no hay vínculo real entre los equipos</em>. Un protocolo institucional sin conocimiento mutuo cotidiano <em>no sobrevive al primer caso complejo</em>. La ética del cuidado exige <em>conocerse personalmente</em>: visitas recíprocas, reuniones conjuntas, celebraciones compartidas de los procesos exitosos. <em>La articulación es, en el fondo, un vínculo entre personas que trabajan en instituciones distintas</em> — no un documento guardado en un cajón.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente — cierre del itinerario</div>
+        <div class="autocuidado-txt">El itinerario cierra con la pregunta que el continuo de cuidado le hace al equipo: <em>¿el equipo mismo funciona como un continuo articulado, o cada agente trabaja en su propio compartimento</em> (el que hace residencial, el que hace ambulatorio) <em>sin comunicación entre sí?</em> La articulación que se propone para los dispositivos <em>empieza por la articulación entre las personas del propio equipo</em>. Cerrar con el compromiso de fortalecer esa comunicación interna <em>como condición de cualquier continuo de cuidado externo</em>.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §11.6.5 (Articulación entre modalidades), §11.7.3 (Seis componentes del ambulatorio), §11.7.4 (Sedes del dispositivo), Itinerario 23 (Abismo de la libertad), Itinerario 25 (Centros barriales) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 5 · MURO DEL CAMINO (FORO) ═══════════════ -->
+  <div id="m5" class="card">
+    <div class="ch">
+      <span class="cn">Espacio comunitario · Muro</span>
+      <div class="ct">Voces de quienes también recorren este itinerario</div>
+      <div class="cs">El Manual crece con quienes lo caminan · §13.3, §13.5</div>
+    </div>
+    <div class="cb">
+
+      <!-- Selector de vista: este itinerario / global -->
+      <div class="foro-vista">
+        <button class="foro-vista-btn on" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
+        <button class="foro-vista-btn" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
+      </div>
+
+      <!-- Pautas pastorales -->
+      <div class="foro-pautas">
+        <div class="foro-pautas-lbl">Antes de publicar</div>
+        <ul>
+          <li>Compartí solo experiencias propias o del equipo. No expongas historias ajenas ni datos que identifiquen a terceras personas.</li>
+          <li>Cuidá a quien lea después: evitá descripciones que puedan retraumatizar.</li>
+          <li>Tu aporte será revisado por el equipo PLAPA antes de publicarse.</li>
+        </ul>
+      </div>
+
+      <!-- Formulario nuevo comentario -->
+      <div class="foro-form" id="foroForm">
+        <div class="foro-form-lbl">Dejar mi palabra</div>
+        <div class="foro-form-row">
+          <label for="foroModulo">¿Sobre qué momento del itinerario?</label>
+          <select id="foroModulo">
+            <option value="">General del itinerario</option>
+            <option value="1">Módulo 1 · Las 4 dimensiones del residencial</option>
+            <option value="2">Módulo 2 · Criterios de discernimiento</option>
+            <option value="3">Módulo 3 · Por qué el ambulatorio es prioritario</option>
+            <option value="4">Módulo 4 · El continuo de cuidado</option>
+          </select>
+        </div>
+        <textarea id="foroTexto" placeholder="Escribí tu comentario, pregunta o testimonio de camino..."></textarea>
+        <div class="foro-form-actions">
+          <div class="foro-form-info">Aparecerá en el muro luego de la revisión del equipo.</div>
+          <button class="foro-btn" id="foroEnviar" onclick="enviarComentario()">Enviar para revisión</button>
+        </div>
+      </div>
+
+      <!-- Lista de comentarios -->
+      <div class="foro-lista" id="foroLista">
+        <div class="foro-vacio">Cargando el muro...</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 6 · EVALUACIÓN ══════════════════════════ -->
+  <div id="m6" class="card">
+    <div class="ch">
+      <span class="cn">Cierre del itinerario · Evaluación</span>
+      <div class="ct">Revisión de vida en clave Ver–Juzgar–Actuar</div>
+      <div class="cs">No es un examen: es un discernimiento sobre lo que este itinerario dejó en vos</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Antes de comenzar</div>
+        <div class="resonancia-txt">"La revisión de vida es la forma histórica que la Iglesia latinoamericana encontró para institucionalizar el Ver–Juzgar–Actuar. El agente que la practica no aplica el método: lo vive." Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
+      </div>
+
+      <div class="eval-nota">
+        <span class="eval-nota-lbl">🕊 Uso pastoral</span>
+        <div class="eval-nota-txt">Esta evaluación es <strong>tuya</strong>. Podés guardarla en tu bitácora personal (queda solo con vos) y, si lo decidís, compartirla con el equipo PLAPA como aporte al <em>rolling release</em> del Manual (§13.5). Compartir es voluntario.</div>
+      </div>
+
+      <div class="pl">El Ver — Qué se hizo visible</div>
+      <div class="eval-q">
+        <label for="evalVer">¿Qué realidad del territorio se hizo más visible para vos a lo largo de estos cuatro módulos? ¿Qué llagas emergieron con más fuerza? ¿Qué zonas del mapa estaban en blanco antes y ahora tienen contenido?</label>
+        <textarea id="evalVer" data-eval="ver" placeholder="Escribí con calma, sin apurarte..."></textarea>
+      </div>
+
+      <div class="pl">El Juzgar — Qué iluminó, qué preguntas quedaron abiertas</div>
+      <div class="eval-q">
+        <label for="evalJuzgar1">¿Qué del método del diagnóstico territorial te iluminó de manera nueva? ¿Qué idea del Manual sentís que ya no podrás dejar de lado?</label>
+        <textarea id="evalJuzgar1" data-eval="juzgar1" placeholder="Nombralo con precisión..."></textarea>
+      </div>
+      <div class="eval-q">
+        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos? Las preguntas abiertas son también fruto (§13.3).</label>
+        <textarea id="evalJuzgar2" data-eval="juzgar2" placeholder="Las que siguen ardiendo..."></textarea>
+      </div>
+
+      <div class="pl">El Actuar — Compromiso concreto</div>
+      <div class="eval-q">
+        <label for="evalActuar">¿Qué gesto pastoral concreto vas a intentar en las próximas semanas a partir del diagnóstico que hiciste? Nombralo con nombre, tiempo y lugar. Un compromiso vago no es un compromiso.</label>
+        <textarea id="evalActuar" data-eval="actuar" placeholder="Ej.: En la próxima reunión de equipo (jueves 25) voy a presentar el mapa territorial que construimos y proponer una callejeada específica al sector X del barrio..."></textarea>
+      </div>
+      <div class="eval-q eval-fecha">
+        <label for="evalFecha">Fecha en la que vas a volver a revisar si pudiste sostenerlo</label>
+        <input type="date" id="evalFecha" data-eval="fecha_revision">
+      </div>
+
+      <div class="pl">Autocuidado y equipo</div>
+      <div class="eval-q eval-scale">
+        <label>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</label>
+        <div class="eval-scale-row">
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="1" data-eval="animo"><span>1</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="2" data-eval="animo"><span>2</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="3" data-eval="animo"><span>3</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="4" data-eval="animo"><span>4</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="5" data-eval="animo"><span>5</span></label>
+        </div>
+      </div>
+      <div class="eval-q">
+        <label for="evalCuidado">¿Qué necesitás cuidar de vos mismo/a en las próximas semanas? ¿A quién del equipo se lo vas a decir?</label>
+        <textarea id="evalCuidado" data-eval="cuidado" placeholder="El agente que cuida su esperanza puede sostener la del otro (§1.3)..."></textarea>
+      </div>
+
+      <div class="pl">Cierre</div>
+
+      <div class="eval-check">
+        <input type="checkbox" id="evalCompartir">
+        <label for="evalCompartir"><strong>Compartir con el equipo PLAPA</strong> como aporte al <em>rolling release</em> del Manual. Solo se envían tus respuestas si marcás esta casilla. Si no la marcás, la evaluación queda solo en tu bitácora.</label>
+      </div>
+
+      <div class="eval-actions">
+        <button class="foro-btn eval-btn-guardar" onclick="guardarEvaluacion()">Guardar en mi bitácora</button>
+        <button class="foro-btn eval-btn-imprimir" onclick="imprimirEvaluacion()">🖨 Imprimir / PDF</button>
+      </div>
+
+      <div id="evalMsg" class="eval-msg"></div>
+
+      <div class="autocuidado" style="margin-top: 2rem;">
+        <div class="autocuidado-lbl">Cierre del itinerario</div>
+        <div class="autocuidado-txt">Cerrar bien un itinerario también es autocuidado: celebrar lo caminado, agradecer al equipo, reconocer los propios límites y renovar la esperanza. Este itinerario termina con gratitud: por el territorio que nos habló, por las llagas que dejamos de negar, por el equipo que hizo posible mirar sin apartar la mirada.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §1.3 (Prólogo), §6.1.3 (Evitar la romantización), §13.2 (Sinodalidad en la práctica), §13.3 (Rolling release), §13.5 (Mecanismos de colaboración) — CELAM 2026.</div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function setMode(mode, btn) {
+    var root = document.querySelector('.root');
+    root.classList.remove('mode-grupal', 'mode-individual');
+    root.classList.add('mode-' + mode);
+    var buttons = document.querySelectorAll('.mode-btn');
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].classList.remove('on');
+    }
+    btn.classList.add('on');
+  }
+
+  function show(n, btn) {
+    for (var i = 1; i <= 6; i++) {
+      var el = document.getElementById('m' + i);
+      if (el) el.classList.remove('active');
+    }
+    document.querySelectorAll('.nav .btn').forEach(function(b) {
+      b.classList.remove('on');
+    });
+    document.getElementById('m' + n).classList.add('active');
+    btn.classList.add('on');
+    if (window.innerWidth < 640) {
+      document.getElementById('m' + n).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    // Al abrir el muro, refrescar comentarios
+    if (n === 5 && typeof cargarComentarios === 'function') {
+      cargarComentarios();
+    }
+    // Al abrir la evaluación, restaurar borrador si existe
+    if (n === 6 && typeof restaurarEvaluacion === 'function') {
+      restaurarEvaluacion();
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════
+  // MURO DEL CAMINO — FORO SUPABASE
+  // ═══════════════════════════════════════════════════════
+  // BACKEND REQUERIDO (Supabase — mismo proyecto que app-plapa):
+  //
+  // 1) Tabla `foro_comentarios`:
+  //    - id (uuid, pk)
+  //    - itinerario_id (text)     — ej. 'itinerario_26_ambulatorio_residencial'
+  //    - parent_id (uuid, null)   — null = comentario raíz; uuid = respuesta
+  //    - usuario_id (uuid, fk auth.users)
+  //    - autor_nombre (text)      — copiado del perfil al crear
+  //    - pais (text)              — copiado del perfil al crear
+  //    - modulo (int, null)       — 1..4 o null (general)
+  //    - texto (text)
+  //    - estado (text)            — 'pendiente' | 'publicado' | 'rechazado'
+  //    - created_at (timestamptz)
+  //
+  // 2) Tabla `foro_reacciones`:
+  //    - comentario_id (uuid, fk)
+  //    - usuario_id (uuid, fk)
+  //    - emoji (text) — '🙏' | '❤️' | '💡' | '🕊️'
+  //    - PK compuesta (comentario_id, usuario_id, emoji)
+  //
+  // 3) Vista/RPC `comentarios_para_itinerario(p_itinerario text, p_scope text)`:
+  //    devuelve los comentarios publicados con autor_nombre, pais, itinerario_titulo
+  //    (si scope='global'), agregado de reacciones y las del usuario actual.
+  //    scope: 'itinerario' filtra por p_itinerario; 'global' devuelve todos.
+  //
+  // 4) RPC `toggle_reaccion(p_comentario uuid, p_emoji text)`.
+  //
+  // 5) RLS:
+  //    - foro_comentarios: SELECT solo estado='publicado'; INSERT solo auth.uid()
+  //      con estado='pendiente' forzado.
+  //    - Moderadores (rol) pueden UPDATE estado.
+  //
+  // 6) Sesión: la Escuela PLAPA debe dejar el token JWT accesible
+  //    (localStorage 'escuela_plapa_sesion' con { token, nombre, pais }
+  //    o cookie según arquitectura de la Escuela).
+  // ═══════════════════════════════════════════════════════
+
+  var SUPABASE_URL = 'https://TU-PROYECTO.supabase.co';  // TODO: config
+  var SUPABASE_ANON_KEY = 'TU_ANON_KEY';                  // TODO: config
+  var ITINERARIO_ID = 'itinerario_26_ambulatorio_residencial';
+  var ITINERARIO_TITULO = 'Modelo ambulatorio vs. residencial';
+
+  var vistaForo = 'itinerario';
+  var sesion = null;
+  var EMOJIS = ['🙏', '❤️', '💡', '🕊️'];
+
+  function supaHeaders() {
+    var h = {
+      'apikey': SUPABASE_ANON_KEY,
+      'Content-Type': 'application/json'
+    };
+    if (sesion && sesion.token) {
+      h['Authorization'] = 'Bearer ' + sesion.token;
+    }
+    return h;
+  }
+
+  function escapeHtml(s) {
+    if (!s) return '';
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function formatFecha(iso) {
+    if (!iso) return '';
+    try {
+      var d = new Date(iso);
+      return d.toLocaleDateString('es', { day: 'numeric', month: 'short', year: 'numeric' });
+    } catch (e) { return ''; }
+  }
+
+  function cargarComentarios() {
+    var contenedor = document.getElementById('foroLista');
+    contenedor.innerHTML = '<div class="foro-vacio">Cargando el muro...</div>';
+
+    var url = SUPABASE_URL + '/rest/v1/rpc/comentarios_para_itinerario';
+    fetch(url, {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({
+        p_itinerario: ITINERARIO_ID,
+        p_scope: vistaForo
+      })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) { renderComentarios(data || []); })
+    .catch(function() {
+      contenedor.innerHTML = '<div class="foro-vacio">No se pudo cargar el muro. Intentá de nuevo más tarde.</div>';
+    });
+  }
+
+  function renderComentarios(comentarios) {
+    var contenedor = document.getElementById('foroLista');
+    if (!comentarios || comentarios.length === 0) {
+      contenedor.innerHTML = '<div class="foro-vacio">Aún no hay palabras publicadas en este muro. Podés ser vos quien empiece la conversación.</div>';
+      return;
+    }
+    var raices = comentarios.filter(function(c) { return !c.parent_id; });
+    var respuestasPor = {};
+    comentarios.filter(function(c) { return c.parent_id; }).forEach(function(c) {
+      if (!respuestasPor[c.parent_id]) respuestasPor[c.parent_id] = [];
+      respuestasPor[c.parent_id].push(c);
+    });
+    contenedor.innerHTML = raices.map(function(c) {
+      return renderComment(c, respuestasPor[c.id] || []);
+    }).join('');
+  }
+
+  function renderComment(c, respuestas) {
+    var modLbl = c.modulo ? '<span class="comment-modulo">Módulo ' + c.modulo + '</span>' : '';
+    var paisLbl = c.pais ? '<span class="comment-pais">' + escapeHtml(c.pais) + '</span>' : '';
+    var globalLbl = (vistaForo === 'global' && c.itinerario_titulo)
+      ? '<span class="comment-modulo">' + escapeHtml(c.itinerario_titulo) + '</span>'
+      : '';
+    var reacciones = c.reacciones || {};
+    var misReacc = c.mis_reacciones || [];
+    var reaccBtns = EMOJIS.map(function(e) {
+      var count = reacciones[e] || 0;
+      var mine = misReacc.indexOf(e) >= 0;
+      return '<button class="react-btn ' + (mine ? 'on' : '') + '" onclick="toggleReaccion(\'' + c.id + '\', \'' + e + '\')">' + e + (count > 0 ? '<span class="react-count">' + count + '</span>' : '') + '</button>';
+    }).join('');
+    var respuestasHtml = respuestas.length
+      ? '<div class="comment-replies">' + respuestas.map(renderReply).join('') + '</div>'
+      : '';
+    return '' +
+      '<div class="comment" id="c-' + c.id + '">' +
+        '<div class="comment-head">' +
+          '<div>' +
+            '<span class="comment-autor">' + escapeHtml(c.autor_nombre || 'Anónimo') + '</span>' +
+            paisLbl + modLbl + globalLbl +
+          '</div>' +
+          '<span class="comment-fecha">' + formatFecha(c.created_at) + '</span>' +
+        '</div>' +
+        '<div class="comment-texto">' + escapeHtml(c.texto) + '</div>' +
+        '<div class="comment-actions">' +
+          reaccBtns +
+          '<button class="reply-btn" onclick="toggleReplyForm(\'' + c.id + '\')">↩ Responder</button>' +
+        '</div>' +
+        '<div class="reply-form" id="rf-' + c.id + '">' +
+          '<textarea placeholder="Escribí tu respuesta..." id="rt-' + c.id + '"></textarea>' +
+          '<div class="reply-form-actions">' +
+            '<button class="reply-form-cancel" onclick="toggleReplyForm(\'' + c.id + '\')">Cancelar</button>' +
+            '<button class="foro-btn" onclick="enviarRespuestaDesde(\'' + c.id + '\')">Enviar</button>' +
+          '</div>' +
+        '</div>' +
+        respuestasHtml +
+      '</div>';
+  }
+
+  function renderReply(r) {
+    var paisLbl = r.pais ? '<span class="comment-pais">' + escapeHtml(r.pais) + '</span>' : '';
+    return '' +
+      '<div class="reply">' +
+        '<div class="comment-head">' +
+          '<div>' +
+            '<span class="comment-autor">' + escapeHtml(r.autor_nombre || 'Anónimo') + '</span>' +
+            paisLbl +
+          '</div>' +
+          '<span class="comment-fecha">' + formatFecha(r.created_at) + '</span>' +
+        '</div>' +
+        '<div class="comment-texto">' + escapeHtml(r.texto) + '</div>' +
+      '</div>';
+  }
+
+  function enviarComentario() {
+    if (!sesion) { window.location.href = '/login'; return; }
+    var texto = document.getElementById('foroTexto').value.trim();
+    var modulo = document.getElementById('foroModulo').value;
+    if (!texto) return;
+    var btn = document.getElementById('foroEnviar');
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+    fetch(SUPABASE_URL + '/rest/v1/foro_comentarios', {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({
+        itinerario_id: ITINERARIO_ID,
+        parent_id: null,
+        usuario_id: sesion.user ? sesion.user.id : null,
+        autor_nombre: sesion.nombre || '',
+        pais: sesion.pais || '',
+        modulo: modulo ? parseInt(modulo) : null,
+        texto: texto
+      })
+    })
+    .then(function() {
+      document.getElementById('foroTexto').value = '';
+      document.getElementById('foroModulo').value = '';
+      btn.textContent = '✓ Enviado — pendiente de revisión';
+      setTimeout(function() {
+        btn.textContent = 'Enviar para revisión';
+        btn.disabled = false;
+      }, 3000);
+    })
+    .catch(function() {
+      btn.textContent = 'Error al enviar';
+      btn.disabled = false;
+    });
+  }
+
+  function enviarRespuestaDesde(parentId) {
+    if (!sesion) { window.location.href = '/login'; return; }
+    var textarea = document.getElementById('rt-' + parentId);
+    var texto = textarea.value.trim();
+    if (!texto) return;
+    fetch(SUPABASE_URL + '/rest/v1/foro_comentarios', {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({
+        itinerario_id: ITINERARIO_ID,
+        parent_id: parentId,
+        usuario_id: sesion.user ? sesion.user.id : null,
+        autor_nombre: sesion.nombre || '',
+        pais: sesion.pais || '',
+        texto: texto
+      })
+    })
+    .then(function() {
+      textarea.value = '';
+      document.getElementById('rf-' + parentId).classList.remove('on');
+      alert('Tu respuesta será revisada por el equipo antes de publicarse.');
+    })
+    .catch(function() { alert('Error al enviar la respuesta.'); });
+  }
+
+  function toggleReaccion(comentarioId, emoji) {
+    if (!sesion) { window.location.href = '/login'; return; }
+    fetch(SUPABASE_URL + '/rest/v1/rpc/toggle_reaccion', {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({ p_comentario: comentarioId, p_emoji: emoji })
+    })
+    .then(function() { cargarComentarios(); })
+    .catch(function() {});
+  }
+
+  function toggleReplyForm(id) {
+    if (!sesion) { window.location.href = '/login'; return; }
+    document.getElementById('rf-' + id).classList.toggle('on');
+  }
+
+  function setVistaForo(v, btn) {
+    vistaForo = v;
+    var buttons = document.querySelectorAll('.foro-vista-btn');
+    for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove('on'); }
+    btn.classList.add('on');
+    cargarComentarios();
+  }
+
+  // ═══════════════════════════════════════════════════════
+  // EVALUACIÓN — REVISIÓN DE VIDA VJA
+  // ═══════════════════════════════════════════════════════
+  // BACKEND REQUERIDO:
+  //
+  // Tabla `evaluaciones_itinerario`:
+  //   - id (uuid, pk)
+  //   - usuario_id (uuid, fk auth.users)
+  //   - itinerario_id (text)
+  //   - respuestas (jsonb) — { ver, juzgar1, juzgar2, actuar, fecha_revision, animo, cuidado }
+  //   - compartir_con_equipo (bool)
+  //   - created_at, updated_at
+  //
+  // RLS: SELECT/UPDATE solo dueño. INSERT solo dueño.
+  // Solo moderadores del equipo PLAPA pueden ver evaluaciones donde
+  // compartir_con_equipo=true (via política RLS separada).
+  //
+  // Borrador: se autoguarda en localStorage para que no se pierda
+  // al cerrar el navegador antes de guardar formalmente.
+  // ═══════════════════════════════════════════════════════
+
+  var EVAL_STORAGE_KEY = 'eval_' + ITINERARIO_ID;
+
+  function recolectarEvaluacion() {
+    var datos = {};
+    document.querySelectorAll('[data-eval]').forEach(function(el) {
+      var key = el.getAttribute('data-eval');
+      if (el.type === 'radio') {
+        if (el.checked) datos[key] = el.value;
+      } else {
+        datos[key] = el.value;
+      }
+    });
+    datos.compartir_con_equipo = document.getElementById('evalCompartir').checked;
+    return datos;
+  }
+
+  function autoguardarBorrador() {
+    try {
+      localStorage.setItem(EVAL_STORAGE_KEY, JSON.stringify(recolectarEvaluacion()));
+    } catch (e) {}
+  }
+
+  function restaurarEvaluacion() {
+    try {
+      var stored = localStorage.getItem(EVAL_STORAGE_KEY);
+      if (!stored) return;
+      var datos = JSON.parse(stored);
+      document.querySelectorAll('[data-eval]').forEach(function(el) {
+        var key = el.getAttribute('data-eval');
+        if (datos[key] == null) return;
+        if (el.type === 'radio') {
+          if (el.value === datos[key]) el.checked = true;
+        } else {
+          el.value = datos[key];
+        }
+      });
+      if (datos.compartir_con_equipo) {
+        document.getElementById('evalCompartir').checked = true;
+      }
+    } catch (e) {}
+  }
+
+  function mostrarEvalMsg(texto, tipo) {
+    var el = document.getElementById('evalMsg');
+    el.className = 'eval-msg on ' + (tipo || 'exito');
+    el.textContent = texto;
+    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function guardarEvaluacion() {
+    var datos = recolectarEvaluacion();
+    var minimoTexto = (datos.ver || '').trim() + (datos.actuar || '').trim();
+    if (minimoTexto.length < 30) {
+      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos "El Ver" y "El Actuar" merecen unos renglones honestos.', 'error');
+      return;
+    }
+
+    // Guardar en Supabase (siempre queda en tu bitácora)
+    if (!sesion) { window.location.href = '/login'; return; }
+    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario', {
+      method: 'POST',
+      headers: Object.assign({}, supaHeaders(), { 'Prefer': 'resolution=merge-duplicates' }),
+      body: JSON.stringify({
+        itinerario_id: ITINERARIO_ID,
+        respuestas: datos,
+        compartir_con_equipo: datos.compartir_con_equipo === true
+      })
+    })
+    .then(function(r) {
+      if (r.ok) {
+        var msg = datos.compartir_con_equipo
+          ? '✓ Evaluación guardada en tu bitácora y compartida con el equipo PLAPA. Gracias por el aporte.'
+          : '✓ Evaluación guardada en tu bitácora. Queda solo con vos.';
+        mostrarEvalMsg(msg, 'exito');
+      } else {
+        mostrarEvalMsg('Guardado localmente. No pudimos sincronizar con la Escuela — reintentá más tarde.', 'error');
+      }
+    })
+    .catch(function() {
+      mostrarEvalMsg('Guardado localmente. Sin conexión con la Escuela — reintentá cuando tengas internet.', 'error');
+    });
+  }
+
+  function imprimirEvaluacion() {
+    autoguardarBorrador();
+    window.print();
+  }
+
+  // Init general del itinerario
+  document.addEventListener('DOMContentLoaded', function() {
+    // Leer sesión (el guard del <head> garantiza que existe)
+    try {
+      var stored = localStorage.getItem('escuela_plapa_sesion');
+      if (stored) sesion = JSON.parse(stored);
+    } catch (e) {}
+    // Cargar muro
+    cargarComentarios();
+
+    // Restaurar borrador de evaluación si existe
+    restaurarEvaluacion();
+
+    // Autoguardado del borrador de evaluación al escribir (con debounce)
+    var evalTimeout;
+    document.querySelectorAll('#m6 [data-eval], #m6 #evalCompartir').forEach(function(el) {
+      el.addEventListener('input', function() {
+        clearTimeout(evalTimeout);
+        evalTimeout = setTimeout(autoguardarBorrador, 500);
+      });
+      el.addEventListener('change', autoguardarBorrador);
+    });
+  });
+</script>
+
+</body>
+</html>

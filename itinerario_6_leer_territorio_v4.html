@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Itinerario 6 · Leer el territorio sin romantizarlo · Escuela PLAPA</title>
 <style>
   :root {
@@ -1972,6 +1973,9 @@
       body: JSON.stringify({
         itinerario_id: ITINERARIO_ID,
         parent_id: null,
+        usuario_id: sesion.user ? sesion.user.id : null,
+        autor_nombre: sesion.nombre || '',
+        pais: sesion.pais || '',
         modulo: modulo ? parseInt(modulo) : null,
         texto: texto
       })
@@ -2002,6 +2006,9 @@
       body: JSON.stringify({
         itinerario_id: ITINERARIO_ID,
         parent_id: parentId,
+        usuario_id: sesion.user ? sesion.user.id : null,
+        autor_nombre: sesion.nombre || '',
+        pais: sesion.pais || '',
         texto: texto
       })
     })

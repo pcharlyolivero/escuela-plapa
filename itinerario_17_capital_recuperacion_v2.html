@@ -1,0 +1,2229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Itinerario 17 · Capital de recuperación · Escuela PLAPA</title>
+<style>
+  :root {
+    /* Paleta naranja PLAPA — Itinerario 17 (bloque 3: Espíritu humano y psiquis) */
+    --i17-oscuro:  #4E1E0F;
+    --i17-medio:   #993C1D;
+    --i17-accent:  #D85A30;
+    --i17-suave:   #E88856;
+    --i17-claro:   #F5C3A5;
+    --i17-crema:   #FDF1E8;
+    --i17-fondo:   #FFFCF9;
+
+    --alerta:     #8B1A1A;
+    --alerta-bg:  #FDF7F7;
+
+    --texto:      #1E1B33;
+    --texto-2:    #4A4560;
+    --texto-3:    #8C89A0;
+    --borde:      #E4E2F0;
+
+    --font-serif: "Georgia", "Times New Roman", serif;
+    --font-sans:  "system-ui", -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: #F5D9C4;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    line-height: 1.6;
+  }
+
+  .root {
+    background: var(--i17-fondo);
+    max-width: 860px;
+    width: 100%;
+    padding: 2.5rem;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(38, 33, 92, 0.08);
+  }
+
+  /* ─── HEADER SUPERIOR (navegación entre páginas) ─── */
+  .top-header {
+    background: #FFFFFF;
+    border-bottom: 1px solid var(--borde);
+    padding: 0.85rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    max-width: 860px;
+    width: 100%;
+    margin: 0 auto 1rem;
+    border-radius: 10px;
+  }
+  .top-logo {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--i17-oscuro);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .top-logo:hover { color: var(--i17-medio); }
+  .top-link {
+    font-size: 0.88rem;
+    color: var(--texto-2);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.15s;
+  }
+  .top-link:hover {
+    background: var(--i17-crema);
+    color: var(--i17-oscuro);
+  }
+  @media (max-width: 640px) {
+    .top-header { padding: 0.75rem 1rem; }
+    .top-link { font-size: 0.82rem; padding: 5px 8px; }
+  }
+
+  /* ─── PORTADA ────────────────────────────────────────── */
+  .portada {
+    background: var(--i17-oscuro);
+    border-radius: 12px;
+    padding: 2rem 2rem 1.75rem;
+    margin-bottom: 2rem;
+  }
+  .portada-sup {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--i17-claro);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .portada-title {
+    font-family: var(--font-serif);
+    font-size: 30px;
+    font-weight: normal;
+    color: #FFFFFF;
+    line-height: 1.25;
+    margin-bottom: 0.6rem;
+  }
+  .portada-sub {
+    font-size: 14.5px;
+    color: var(--i17-claro);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+    max-width: 640px;
+  }
+  .dest-box {
+    background: var(--i17-medio);
+    border-radius: 8px;
+    padding: 0.9rem 1.1rem;
+    margin-bottom: 1.1rem;
+  }
+  .dest-lbl {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--i17-claro);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .dest-txt {
+    font-size: 13px;
+    color: #FFF;
+    line-height: 1.6;
+  }
+  .portada-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .portada-pill {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 11px;
+    border-radius: 99px;
+    background: var(--i17-medio);
+    color: var(--i17-crema);
+  }
+
+  /* ─── VIDEO ──────────────────────────────────────────── */
+  .video-wrap {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .video-lbl {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--i17-oscuro);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .video-iframe {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  .video-iframe iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  /* ─── SELECTOR DE MODALIDAD ──────────────────────────── */
+  .mode-selector {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 1.5rem;
+    background: #FFF;
+    padding: 6px;
+    border-radius: 10px;
+    border: 1px solid var(--borde);
+    max-width: max-content;
+    flex-wrap: wrap;
+  }
+  .mode-btn {
+    border: none;
+    background: transparent;
+    color: var(--texto-2);
+    padding: 8px 16px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .mode-btn.on {
+    background: var(--i17-accent);
+    color: #FFF;
+    font-weight: 600;
+  }
+  /* Control de visibilidad según modalidad */
+  .root.mode-individual .mode-g { display: none; }
+  .root.mode-grupal .mode-i { display: none; }
+
+  /* ─── NAVEGACIÓN ─────────────────────────────────────── */
+  .nav {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .btn {
+    border: 1px solid var(--borde);
+    background: #FFFFFF;
+    border-radius: 8px;
+    padding: 10px 16px;
+    cursor: pointer;
+    font-size: 12.5px;
+    font-weight: 500;
+    font-family: var(--font-sans);
+    color: var(--texto-2);
+    transition: all 0.18s ease;
+    text-align: left;
+  }
+  .btn:hover {
+    background: var(--i17-crema);
+    border-color: var(--i17-claro);
+    color: var(--i17-oscuro);
+  }
+  .btn.on {
+    border: 2px solid var(--i17-accent);
+    background: var(--i17-crema);
+    color: var(--i17-oscuro);
+    font-weight: 600;
+    padding: 9px 15px;
+  }
+  .btn.btn-alt {
+    background: var(--i17-crema);
+    color: var(--i17-medio);
+    border-color: var(--i17-claro);
+  }
+  .btn.btn-alt:hover {
+    background: var(--i17-claro);
+    color: var(--i17-oscuro);
+  }
+  .btn.btn-alt.on {
+    background: var(--i17-medio);
+    border-color: var(--i17-medio);
+    color: #FFFFFF;
+  }
+  .nav-sep {
+    display: inline-block;
+    width: 1px;
+    background: var(--borde);
+    margin: 0 6px;
+    align-self: stretch;
+  }
+
+  /* ─── MÓDULOS ────────────────────────────────────────── */
+  .card {
+    border-radius: 12px;
+    border: 1px solid var(--borde);
+    background: #FFFFFF;
+    overflow: hidden;
+    display: none;
+    border-left: 6px solid var(--i17-accent);
+  }
+  .card.active {
+    display: block;
+    animation: fadeIn 0.35s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .ch {
+    padding: 1.75rem 2rem 1.5rem;
+    border-bottom: 1px solid var(--borde);
+    background: var(--i17-crema);
+  }
+  .cn {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 99px;
+    margin-bottom: 0.85rem;
+    background: var(--i17-accent);
+    color: #FFFFFF;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .ct {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 1.3;
+    color: var(--i17-oscuro);
+    margin-bottom: 0.4rem;
+  }
+  .cs {
+    font-size: 13px;
+    color: var(--i17-medio);
+    line-height: 1.55;
+    font-style: italic;
+  }
+
+  .cb { padding: 2rem; }
+
+  /* ─── CAJA DE RESONANCIA ─────────────────────────────── */
+  .resonancia {
+    border-left: 4px solid var(--i17-accent);
+    background: var(--i17-crema);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .resonancia-lbl {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i17-accent);
+    margin-bottom: 8px;
+  }
+  .resonancia-txt {
+    font-family: var(--font-serif);
+    font-size: 16.5px;
+    line-height: 1.6;
+    font-style: italic;
+    color: var(--i17-oscuro);
+  }
+
+  /* ─── SECCIONES VER / JUZGAR / ACTUAR ────────────────── */
+  .pl {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i17-oscuro);
+    margin-top: 2.25rem;
+    margin-bottom: 1.1rem;
+    border-bottom: 1px solid var(--borde);
+    padding-bottom: 7px;
+  }
+  .pl:first-of-type { margin-top: 0.5rem; }
+
+  .pts {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 1.5rem;
+  }
+  .pts li {
+    display: flex;
+    gap: 14px;
+    font-size: 14.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+  .pts li strong {
+    color: var(--i17-oscuro);
+    font-weight: 600;
+  }
+  .dot {
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    background: var(--i17-accent);
+    color: #FFFFFF;
+    margin-top: 2px;
+    font-family: var(--font-serif);
+  }
+  .dot.j { background: var(--i17-medio); }
+  .dot.a { background: var(--i17-oscuro); }
+
+  /* ─── GRILLA DE ESCENARIOS / DIMENSIONES ─────────────── */
+  .ejes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 1.5rem;
+  }
+  .eje {
+    background: var(--i17-crema);
+    border-radius: 10px;
+    padding: 1.1rem 1.25rem;
+    border-top: 4px solid var(--i17-accent);
+  }
+  .eje-n {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--i17-accent);
+    margin-bottom: 8px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .eje-t {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--i17-oscuro);
+    margin-bottom: 6px;
+  }
+  .eje-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.6;
+  }
+
+  /* ─── ACTIVIDADES ────────────────────────────────────── */
+  .act {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 1.15rem 1.35rem;
+    margin-bottom: 12px;
+    border-left: 4px solid var(--i17-accent);
+  }
+  .act-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  .tag-ind {
+    background: var(--i17-oscuro);
+    color: var(--i17-crema);
+  }
+  .tag-gru {
+    background: var(--i17-accent);
+    color: #FFF;
+  }
+  .act-title {
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: var(--i17-oscuro);
+    margin-bottom: 6px;
+    line-height: 1.35;
+  }
+  .act-body {
+    font-size: 14px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+  .act-body em {
+    color: var(--i17-medio);
+    font-style: italic;
+  }
+
+  /* ─── CITA INSPIRADORA ───────────────────────────────── */
+  .cita {
+    border-radius: 10px;
+    padding: 1.2rem 1.4rem;
+    background: linear-gradient(180deg, var(--i17-crema) 0%, #FFF 100%);
+    border: 1px solid var(--i17-claro);
+    margin-top: 2rem;
+  }
+  .cita-lbl {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i17-accent);
+    margin-bottom: 8px;
+  }
+  .cita-txt {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    line-height: 1.7;
+    font-style: italic;
+    color: var(--i17-oscuro);
+  }
+  .cita-ref {
+    font-size: 12px;
+    margin-top: 10px;
+    font-weight: 500;
+    color: var(--i17-medio);
+    font-style: normal;
+  }
+
+  /* ─── ALERTA PASTORAL ────────────────────────────────── */
+  .alerta {
+    border-left: 4px solid var(--alerta);
+    background: var(--alerta-bg);
+    padding: 1.15rem 1.35rem;
+    margin-top: 1.75rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .alerta-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--alerta);
+    margin-bottom: 8px;
+  }
+  .alerta-lbl::before {
+    content: '† ';
+    font-size: 14px;
+  }
+  .alerta-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+
+  /* ─── AUTOCUIDADO ────────────────────────────────────── */
+  .autocuidado {
+    border-left: 4px solid var(--i17-medio);
+    background: #FFF6EF;
+    padding: 1.15rem 1.35rem;
+    margin-top: 1.75rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .autocuidado-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i17-medio);
+    margin-bottom: 8px;
+  }
+  .autocuidado-lbl::before {
+    content: '❋ ';
+    color: var(--i17-accent);
+  }
+  .autocuidado-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+
+  /* ─── LECTURA COMPLEMENTARIA ─────────────────────────── */
+  .lectura {
+    background: #FFF;
+    border: 1px dashed var(--i17-accent);
+    border-radius: 10px;
+    padding: 1.15rem 1.35rem;
+    margin-top: 1.75rem;
+  }
+  .lectura-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--i17-medio);
+    margin-bottom: 8px;
+  }
+  .lectura-lbl::before {
+    content: '📖 ';
+  }
+  .lectura-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+  .lectura-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--i17-accent);
+    color: #FFF;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.18s;
+  }
+  .lectura-link:hover {
+    background: var(--i17-oscuro);
+  }
+
+  /* ─── REFERENCIAS ────────────────────────────────────── */
+  .ref {
+    font-size: 11.5px;
+    color: var(--texto-3);
+    font-style: italic;
+    margin-top: 1.75rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--borde);
+  }
+
+  /* ─── FORO / MURO DEL CAMINO ─────────────────────────── */
+  .foro {
+    background: #FFFFFF;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    margin-top: 2rem;
+    overflow: hidden;
+    border-left: 6px solid var(--i17-medio);
+  }
+  .foro-head {
+    background: var(--i17-crema);
+    padding: 1.75rem 2rem 1.5rem;
+    border-bottom: 1px solid var(--borde);
+  }
+  .foro-lbl {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 99px;
+    margin-bottom: 0.85rem;
+    background: var(--i17-medio);
+    color: #FFFFFF;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .foro-title {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: normal;
+    line-height: 1.3;
+    color: var(--i17-oscuro);
+    margin-bottom: 0.4rem;
+  }
+  .foro-sub {
+    font-size: 13px;
+    color: var(--i17-medio);
+    line-height: 1.55;
+    font-style: italic;
+  }
+  .foro-body { padding: 2rem; }
+
+  .foro-vista {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 1.5rem;
+    background: var(--i17-crema);
+    padding: 6px;
+    border-radius: 10px;
+    max-width: max-content;
+    flex-wrap: wrap;
+  }
+  .foro-vista-btn {
+    border: none;
+    background: transparent;
+    color: var(--texto-2);
+    padding: 8px 16px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .foro-vista-btn.on {
+    background: var(--i17-medio);
+    color: #FFF;
+    font-weight: 600;
+  }
+
+  .foro-pautas {
+    background: var(--alerta-bg);
+    border-left: 4px solid var(--alerta);
+    padding: 1.15rem 1.35rem;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 1.75rem;
+  }
+  .foro-pautas-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--alerta);
+    margin-bottom: 8px;
+  }
+  .foro-pautas-lbl::before { content: '† '; }
+  .foro-pautas ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .foro-pautas li {
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    padding-left: 14px;
+    position: relative;
+  }
+  .foro-pautas li::before {
+    content: '·';
+    position: absolute;
+    left: 4px;
+    color: var(--alerta);
+    font-weight: 700;
+  }
+
+  .foro-form {
+    background: var(--i17-fondo);
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .foro-form-lbl {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--i17-oscuro);
+    margin-bottom: 12px;
+  }
+  .foro-form-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .foro-form-row label {
+    font-size: 12.5px;
+    color: var(--texto-2);
+    align-self: center;
+    font-weight: 500;
+  }
+  .foro-form select {
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    padding: 7px 10px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+    cursor: pointer;
+  }
+  .foro-form textarea {
+    width: 100%;
+    min-height: 90px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+    resize: vertical;
+    line-height: 1.55;
+    margin-bottom: 10px;
+  }
+  .foro-form textarea:focus,
+  .foro-form select:focus {
+    outline: none;
+    border-color: var(--i17-medio);
+  }
+  .foro-form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .foro-form-info {
+    font-size: 11.5px;
+    color: var(--texto-3);
+    font-style: italic;
+  }
+  .foro-btn {
+    background: var(--i17-medio);
+    color: #FFF;
+    border: none;
+    border-radius: 7px;
+    padding: 9px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    transition: background 0.18s;
+  }
+  .foro-btn:hover { background: var(--i17-oscuro); }
+  .foro-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .foro-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .foro-vacio {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: var(--texto-3);
+    font-size: 13.5px;
+    font-style: italic;
+    background: var(--i17-crema);
+    border-radius: 10px;
+  }
+  .comment {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-left: 3px solid var(--i17-suave);
+    border-radius: 10px;
+    padding: 1rem 1.15rem;
+  }
+  .comment-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .comment-autor {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--i17-oscuro);
+  }
+  .comment-pais {
+    font-size: 12px;
+    color: var(--i17-medio);
+    font-weight: 500;
+  }
+  .comment-pais::before { content: ' · '; color: var(--texto-3); }
+  .comment-modulo {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: var(--i17-crema);
+    color: var(--i17-medio);
+    margin-left: 6px;
+  }
+  .comment-fecha {
+    font-size: 11.5px;
+    color: var(--texto-3);
+  }
+  .comment-texto {
+    font-size: 14px;
+    color: var(--texto);
+    line-height: 1.65;
+    margin-bottom: 10px;
+    white-space: pre-wrap;
+  }
+  .comment-actions {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .react-btn {
+    background: var(--i17-crema);
+    border: 1px solid transparent;
+    border-radius: 99px;
+    padding: 4px 10px;
+    font-size: 12.5px;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    color: var(--texto-2);
+    transition: all 0.15s;
+  }
+  .react-btn:hover { background: var(--i17-claro); }
+  .react-btn.on {
+    background: var(--i17-suave);
+    color: #FFF;
+    border-color: var(--i17-medio);
+    font-weight: 600;
+  }
+  .react-count {
+    margin-left: 4px;
+    font-weight: 600;
+  }
+  .reply-btn {
+    background: transparent;
+    border: none;
+    color: var(--i17-medio);
+    font-size: 12.5px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    margin-left: auto;
+    font-family: var(--font-sans);
+  }
+  .reply-btn:hover {
+    background: var(--i17-crema);
+    color: var(--i17-oscuro);
+  }
+  .comment-replies {
+    margin-top: 12px;
+    padding-left: 1rem;
+    border-left: 2px dashed var(--borde);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .reply {
+    background: var(--i17-fondo);
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+  }
+  .reply-form {
+    background: var(--i17-crema);
+    border-radius: 8px;
+    padding: 0.8rem;
+    margin-top: 10px;
+    display: none;
+  }
+  .reply-form.on { display: block; }
+  .reply-form textarea {
+    width: 100%;
+    min-height: 60px;
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    resize: vertical;
+    background: #FFF;
+    margin-bottom: 8px;
+  }
+  .reply-form-actions {
+    display: flex;
+    gap: 6px;
+    justify-content: flex-end;
+  }
+  .reply-form-cancel {
+    background: transparent;
+    border: 1px solid var(--borde);
+    color: var(--texto-2);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 12.5px;
+    cursor: pointer;
+    font-family: var(--font-sans);
+  }
+
+  .foro-login {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--i17-crema);
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+  }
+  .foro-login-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .foro-login-link {
+    display: inline-block;
+    background: var(--i17-medio);
+    color: #FFF;
+    padding: 8px 18px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  /* ─── EVALUACIÓN (M6) ────────────────────────────────── */
+  .eval-nota {
+    background: var(--i17-crema);
+    border-left: 4px solid var(--i17-medio);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+  .eval-nota-lbl {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i17-medio);
+    margin-bottom: 6px;
+  }
+  .eval-nota-txt strong { color: var(--i17-oscuro); }
+  .eval-nota-txt em { color: var(--i17-medio); font-style: italic; }
+
+  .eval-q {
+    margin-bottom: 1.5rem;
+  }
+  .eval-q > label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--i17-oscuro);
+    margin-bottom: 8px;
+    line-height: 1.55;
+  }
+  .eval-q textarea {
+    width: 100%;
+    min-height: 100px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+    resize: vertical;
+    line-height: 1.6;
+    transition: border-color 0.15s;
+  }
+  .eval-q textarea:focus,
+  .eval-q input:focus {
+    outline: none;
+    border-color: var(--i17-medio);
+    box-shadow: 0 0 0 3px rgba(60, 52, 137, 0.1);
+  }
+  .eval-q input[type="date"] {
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 9px 12px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+  }
+  .eval-fecha { max-width: 320px; }
+
+  .eval-scale-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .eval-radio {
+    flex: 1;
+    min-width: 55px;
+    cursor: pointer;
+    position: relative;
+  }
+  .eval-radio input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .eval-radio span {
+    display: block;
+    text-align: center;
+    padding: 12px 8px;
+    background: var(--i17-crema);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    color: var(--i17-medio);
+    font-size: 15px;
+    transition: all 0.15s;
+  }
+  .eval-radio:hover span { background: var(--i17-claro); }
+  .eval-radio input:checked + span {
+    background: var(--i17-medio);
+    border-color: var(--i17-oscuro);
+    color: #FFF;
+  }
+
+  .eval-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: var(--i17-crema);
+    border: 1px solid var(--i17-claro);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+  .eval-check input {
+    margin-top: 4px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--i17-medio);
+    flex-shrink: 0;
+  }
+  .eval-check label {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    cursor: pointer;
+  }
+  .eval-check label strong { color: var(--i17-oscuro); }
+  .eval-check label em { color: var(--i17-medio); font-style: italic; }
+
+  .eval-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  .eval-btn-guardar {
+    background: var(--i17-oscuro);
+  }
+  .eval-btn-guardar:hover { background: var(--i17-medio); }
+  .eval-btn-imprimir {
+    background: transparent;
+    color: var(--i17-medio);
+    border: 1px solid var(--i17-medio);
+  }
+  .eval-btn-imprimir:hover {
+    background: var(--i17-crema);
+    color: var(--i17-oscuro);
+  }
+
+  .eval-msg {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    display: none;
+    margin-bottom: 1rem;
+  }
+  .eval-msg.on { display: block; }
+  .eval-msg.exito {
+    background: #FDF1E8;
+    color: var(--i17-oscuro);
+    border-left: 3px solid var(--i17-medio);
+  }
+  .eval-msg.error {
+    background: var(--alerta-bg);
+    color: var(--alerta);
+    border-left: 3px solid var(--alerta);
+  }
+
+  /* Estilos de impresión de la evaluación */
+  @media print {
+    body { background: #FFF; padding: 0; }
+    .root { box-shadow: none; padding: 1rem; max-width: 100%; }
+    .portada, .video-wrap, .mode-selector, .nav { display: none !important; }
+    .card { display: none !important; }
+    #m6.card { display: block !important; break-inside: avoid; border: none; }
+    .eval-actions, .eval-msg { display: none !important; }
+    .ch { background: transparent; }
+    .eval-q textarea, .eval-q input[type="date"] {
+      border: none;
+      border-bottom: 1px solid #999;
+      border-radius: 0;
+      background: transparent;
+    }
+  }
+
+  /* ─── RESPONSIVE ─────────────────────────────────────── */
+  @media (max-width: 640px) {
+    body { padding: 1rem 0.5rem; }
+    .root { padding: 1.25rem; }
+    .portada { padding: 1.5rem 1.25rem; }
+    .portada-title { font-size: 24px; }
+    .ch { padding: 1.25rem 1.25rem 1rem; }
+    .ct { font-size: 20px; }
+    .cb { padding: 1.25rem; }
+    .ejes { grid-template-columns: 1fr; }
+    .btn { flex: 1 1 100%; }
+    .mode-selector { flex-direction: column; align-items: stretch; max-width: 100%; }
+    .mode-btn { text-align: center; }
+    .foro-head { padding: 1.25rem; }
+    .foro-body { padding: 1.25rem; }
+    .foro-title { font-size: 19px; }
+    .foro-vista { max-width: 100%; flex-direction: column; align-items: stretch; }
+    .foro-vista-btn { text-align: center; }
+    .comment-head { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .reply-btn { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER SUPERIOR ═════════════════════════════════ -->
+<header class="top-header">
+  <a href="index.html" class="top-logo">Escuela PLAPA</a>
+  <a href="catalogo_30_itinerarios_plapa_corregido.html" class="top-link">← Catálogo</a>
+</header>
+
+<div class="root mode-grupal">
+
+  <!-- ═══ PORTADA ═════════════════════════════════════════ -->
+  <div class="portada">
+    <p class="portada-sup">Itinerario formativo 17 · Escuela PLAPA · CELAM 2026</p>
+    <h1 class="portada-title">Capital de recuperación</h1>
+    <p class="portada-sub">Los ocho dominios del capital de recuperación, las familias de acogida como sostén del proceso, y la construcción de capital cuando no existe. Cierre del bloque 3.</p>
+
+    <div class="dest-box">
+      <div class="dest-lbl">Destinatarios</div>
+      <div class="dest-txt">Coordinadores de centros barriales, equipos de acompañamiento y referentes pastorales que diseñan o evalúan procesos de recuperación. Especialmente útil para quienes quieren pasar de una mirada centrada en el déficit (lo que la persona perdió) a una mirada centrada en las fortalezas (lo que puede construir). También útil para familias acompañantes y para agentes que trabajan la etapa de egreso de dispositivos residenciales. Nivel intermedio.</div>
+    </div>
+
+    <div class="portada-pills">
+      <span class="portada-pill">§8.5.1 · §8.5.2 · §8.5.3 · §8.5.4</span>
+      <span class="portada-pill">4 módulos</span>
+      <span class="portada-pill">Coordinadores y equipos</span>
+      <span class="portada-pill">Nivel intermedio</span>
+      <span class="portada-pill">Ver · Juzgar · Actuar · Síntesis</span>
+    </div>
+  </div>
+
+  <!-- ═══ VIDEO ═══════════════════════════════════════════ -->
+  
+  <!-- NUEVO: Bloque del Video de Presentación Incrustado -->
+<div style="background: var(--surface-2); border: 0.5px solid var(--border); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
+  <p style="font-size: 11px; font-weight: 500; color: #085041; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; text-align: left;">
+    ▶️ Video de presentación
+  </p>
+  <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px;">
+    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+      src="https://www.youtube.com/embed/PLACEHOLDER_ITIN17"
+      title="Presentación del Itinerario 06" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+  <!-- ═══ SELECTOR DE MODALIDAD ═══════════════════════════ -->
+  <div class="mode-selector">
+    <button class="mode-btn on" onclick="setMode('grupal', this)">👥 Hacer en comunidad</button>
+    <button class="mode-btn" onclick="setMode('individual', this)">👤 Hacer de forma individual</button>
+  </div>
+
+  <!-- ═══ NAVEGACIÓN ══════════════════════════════════════ -->
+  <div class="nav">
+    <button class="btn on" onclick="show(1,this)">Módulo 1 · Del déficit a las fortalezas</button>
+    <button class="btn" onclick="show(2,this)">Módulo 2 · Los ocho dominios</button>
+    <button class="btn" onclick="show(3,this)">Módulo 3 · Familias de acogida</button>
+    <button class="btn" onclick="show(4,this)">Módulo 4 · Construir capital</button>
+    <span class="nav-sep" aria-hidden="true"></span>
+    <button class="btn btn-alt" onclick="show(5,this)">🌱 Muro del camino</button>
+    <button class="btn btn-alt" onclick="show(6,this)">✍ Evaluación</button>
+  </div>
+
+  <!-- ═══ MÓDULO 1 ════════════════════════════════════════ -->
+  <div id="m1" class="card active">
+    <div class="ch">
+      <span class="cn">Módulo 1 · El Ver</span>
+      <div class="ct">Del déficit a las fortalezas: el giro copernicano del capital de recuperación</div>
+      <div class="cs">Tres tipos de capital y el ecosistema de apoyos · §8.5.1</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"La recuperación no debe entenderse únicamente como un acto heroico de voluntad individual, sino como un proceso que requiere de un ecosistema de apoyos. El capital de recuperación desplaza la mirada desde lo que el sujeto ha perdido hacia lo que aún conserva o puede desarrollar."</div>
+      </div>
+
+      <div class="pl">El Juzgar — Los tres tipos de capital de recuperación (§8.5.1)</div>
+      <ul class="pts">
+        <li><span class="dot j">1</span><span><strong>Capital Personal.</strong> <em>Físico</em>: salud, vivienda, alimentación, recursos financieros. <em>Humano</em>: valores, autoestima, autoeficacia, esperanza, propósito de vida. <em>Es el capital sobre el que la vida espiritual y el acompañamiento pastoral inciden de manera más directa.</em></span></li>
+        <li><span class="dot j">2</span><span><strong>Capital Familiar y Social.</strong> Relaciones íntimas y familiares dispuestas a participar. Pares en recuperación. Conexión con instituciones significativas como organizaciones religiosas o lugares de estudio. <em>Es el capital que la red territorial y las familias de acogida generan.</em></span></li>
+        <li><span class="dot j">3</span><span><strong>Capital Comunitario y Cultural.</strong> Políticas locales que reducen el estigma. Redes de recursos. Opciones de recuperación que respetan los valores y la cosmovisión de la comunidad del sujeto. <em>Es el capital que la incidencia y el trabajo en red construyen a largo plazo.</em></span></li>
+      </ul>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>El error más frecuente: mirar solo el déficit.</strong> El §8.5.1 lo identifica: centrarse exclusivamente en <em>lo que está roto, lo que se perdió, lo que falta</em> sin mapear también los recursos disponibles. <em>"El modelo de gestión de la recuperación enfatiza las resiliencias —lo que queda de la imagen de Dios en la persona— para movilizar la energía necesaria hacia la construcción de un proyecto de vida pleno."</em> La persona que llega no es solo sus fracturas: <em>es también sus fortalezas</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>La objeción más resistente y su reformulación.</strong> <em>"Sin una vivienda o una red de apoyo, el riesgo de recaída aumenta drásticamente."</em> El §8.5.1 la acoge —es verdad— pero la reformula: en lugar de usarla para justificar la inacción (<em>"no podemos hacer nada mientras no tenga techo"</em>), la convierte en un mapa de trabajo: <em>¿cuál de los tres tipos de capital es el más urgente de construir? ¿qué puede hacer la comunidad para generarlo?</em></span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>La voluntad es necesaria pero insuficiente.</strong> <em>"Aunque la autonomía es esencial, la recuperación es un proceso intrínsecamente social y comunitario. El capital de recuperación proporciona el sustento necesario para que la decisión sea sostenible; sin una vivienda o una red de apoyo, el riesgo de recaída aumenta drásticamente por la presión del entorno"</em> (§8.5.1). El capital de recuperación es <em>el andamiaje que permite que la voluntad se sostenga cuando el entorno la presiona</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>Cada actor de la red aporta al tipo de capital que más puede generar.</strong> La distinción entre los tres tipos de capital tiene implicaciones concretas: el <em>capital personal</em> (autoestima, esperanza, propósito) es el que la vida espiritual y el acompañamiento pastoral contribuyen de manera más directa. El <em>capital social y comunitario</em> es el que la red territorial y las familias de acogida generan. <em>Cada actor de la red aporta al tipo de capital que más puede generar.</em></span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Mapear el capital de recuperación de tres casos activos</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo toma tres casos activos (anonimizados) y para cada uno mapea los tres tipos de capital: <em>¿qué capital personal tiene (valores, autoestima, propósito, salud física, estabilidad económica)? ¿qué capital social (vínculos familiares, pares en recuperación, instituciones)? ¿qué capital comunitario (pertenencia, cultura, fe)?</em> El mapa revela qué tipo de capital es más escaso y <em>dónde debe concentrarse la acción</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Elegí en tu bitácora una persona que acompañás y dibujá tres columnas (Personal · Social · Comunitario). Escribí lo que <em>sí</em> tiene en cada una, no lo que le falta. La columna más vacía es la próxima prioridad. La lista de fortalezas —aunque sea corta— cambia el tono de la próxima conversación.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">De la pregunta por el déficit a la pregunta por las fortalezas</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo practica la reformulación: toma la lista de <em>"problemas"</em> de un caso y la convierte en preguntas por recursos. <em>"No tiene familia"</em> → <em>¿qué vínculos afectivos sí tiene? ¿quién lo conoce por nombre? ¿hay alguien que lo espera?</em> <em>"No tiene trabajo"</em> → <em>¿qué sabe hacer? ¿qué le gusta? ¿qué hacía antes?</em> La reformulación no niega los problemas: <em>añade la dimensión que la mirada del déficit invisibiliza</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Tomá en tu bitácora la última descripción escrita que hiciste de una persona que acompañás. Contá cuántas frases hablan de déficits y cuántas de fortalezas. Reescribí la descripción invirtiendo la proporción. <em>La forma en que describimos determina la forma en que acompañamos.</em></div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Auditar el propio capital de recuperación del equipo</div>
+        <div class="mode-g">
+          <div class="act-body">Los tres tipos de capital también aplican al equipo pastoral. El grupo mapea: <em>¿qué capital personal tiene el equipo (formación, salud, esperanza colectiva)? ¿qué capital social (vínculos internos, apoyos externos, red profesional)? ¿qué capital comunitario (pertenencia a la Iglesia local, redes con otras organizaciones, articulación con el Estado)?</em> El equipo que evalúa su propio capital <em>puede pedir ayuda antes de agotarlo</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora tu propio capital personal, social y comunitario como agente pastoral. <em>¿Cuál está más flaco?</em> Ese es el próximo trabajo de autocuidado — y también, probablemente, la próxima conversación que debés a tu director espiritual o al equipo.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §8.5.1</div>
+        <div class="cita-txt">"El capital de recuperación es la suma de los recursos personales y sociales que fortalecen la capacidad y las oportunidades de recuperación del individuo. Es una herramienta basada en las fortalezas que reconoce que la sanación es un proceso sostenido por un ecosistema de apoyos integrales."</div>
+        <div class="cita-ref">Manual de la PLAPA, §8.5.1 — El Capital de Recuperación y sus tipos (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">El giro <em>del déficit a las fortalezas</em> puede caer en la trampa opuesta: la <em>invisibilización del déficit real</em>. Nombrar solo las fortalezas para <em>"ser positivos"</em> tampoco es acompañar; es <em>optimismo pastoral</em> que ignora la urgencia. El capital de recuperación no reemplaza el diagnóstico del daño: lo <em>complementa</em>. Sin la lectura simultánea de fortalezas y déficits, la mirada se falsea en cualquiera de los dos extremos.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">El giro del déficit a las fortalezas también aplica al equipo. <em>¿El equipo tiene el hábito de evaluar lo que no funciona (déficit) pero no de celebrar lo que sí funciona (fortalezas)? ¿hay un momento regular donde se nombra lo que el equipo hizo bien?</em> Instituir ese momento no es autocomplacencia: es <em>una práctica de construcción de capital de recuperación del propio equipo</em>.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §8.5.1 (Capital de recuperación y sus tipos) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 2 ════════════════════════════════════════ -->
+  <div id="m2" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 2 · El Juzgar</span>
+      <div class="ct">Los ocho dominios: el mapa integral de la recuperación sostenible</div>
+      <div class="cs">De la gestión de crisis a la gestión de la recuperación · §8.5.2</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"La sostenibilidad del proceso de recuperación no puede depender de un solo factor, sino de la robustez de un ecosistema de recursos que rodea al individuo. Identificar estos dominios permite pasar de una gestión de crisis a una gestión de la recuperación."</div>
+      </div>
+
+      <div class="pl">El Juzgar — Los ocho dominios del capital de recuperación (§8.5.2)</div>
+      <div class="ejes">
+        <div class="eje">
+          <div class="eje-n">Dominio 1</div>
+          <div class="eje-t">Salud física y mental</div>
+          <div class="eje-txt">Estabilidad biológica y psicológica como base. Sin umbral mínimo, el proceso no puede comenzar.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Dominio 2</div>
+          <div class="eje-t">Vivienda y entorno</div>
+          <div class="eje-txt">Techo estable. La inmediatez de supervivencia dispara el deseo compulsivo como anestesia.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Dominio 3</div>
+          <div class="eje-t">Resolución de problemas legales</div>
+          <div class="eje-txt">Causas judiciales pendientes generan estrés crónico que sabotea el proceso.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Dominio 4</div>
+          <div class="eje-t">Apoyos familiares y sociales</div>
+          <div class="eje-txt">Red de vínculos que sostiene sin habilitar el consumo. La familia como sistema dinámico.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Dominio 5</div>
+          <div class="eje-t">Apoyo basado en pares</div>
+          <div class="eje-txt">Acompañantes pares que demuestran la posibilidad del cambio con su propia vida.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Dominio 6</div>
+          <div class="eje-t">Integración comunitaria</div>
+          <div class="eje-txt">Sentido de pertenencia a un pueblo. Ancla frente a la desolación y la invisibilidad social.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Dominio 7</div>
+          <div class="eje-t">Destrezas vocacionales y educativas</div>
+          <div class="eje-txt">Capacidades que permiten sostener la inserción laboral y la autonomía progresiva.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Dominio 8</div>
+          <div class="eje-t">Significado y propósito de vida</div>
+          <div class="eje-txt">El "para qué" que llena la grieta existencial donde se instalaba la adicción. Aporte específico del acompañamiento espiritual.</div>
+        </div>
+      </div>
+
+      <div class="pl">El Juzgar — Los tres grandes ejes que agrupan los ocho dominios</div>
+      <ul class="pts">
+        <li><span class="dot j">A</span><span><strong>Estabilización de las condiciones de vida (dominios 1-3).</strong> Salud, vivienda y situación legal. <em>La falta de un techo o el padecimiento de enfermedades crónicas sumerge a la persona en una inmediatez de supervivencia que dispara el deseo compulsivo.</em></span></li>
+        <li><span class="dot j">B</span><span><strong>Reconstrucción del tejido vincular (dominios 4-6).</strong> Familia, pares e integración comunitaria. <em>Los pares demuestran la posibilidad del cambio; la comunidad devuelve el sentido de pertenencia a un pueblo.</em></span></li>
+        <li><span class="dot j">C</span><span><strong>Desarrollo del potencial humano (dominios 7-8).</strong> Destrezas y sentido de vida. <em>Redescubrir un "para qué" permite llenar la grieta existencial donde se instalaba la adicción.</em></span></li>
+      </ul>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>"Sin capital positivo, la recuperación es imposible": la objeción que el §8.5.2 refuta.</strong> <em>"La intervención debe, por tanto, ocuparse de construir y potenciar estos capitales."</em> El capital negativo no es un veredicto: <em>es un mapa de trabajo</em>. La pregunta no es <em>"¿puede recuperarse sin capital?"</em> sino <em>"¿en qué dominio comenzamos a construir?"</em></span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>El Dominio 8 es el aporte más específico del acompañamiento pastoral.</strong> <em>"Redescubrir un para qué permite llenar la grieta existencial donde se instalaba la adicción, transformando el deseo de evasión en un proyecto de vida digno y productivo"</em> (§8.5.2). El acompañamiento espiritual del §7 es <em>directamente la intervención en el Dominio 8</em>. Ninguna otra institución puede hacerlo con la profundidad de la comunidad de fe.</span></li>
+        <li><span class="dot j">J</span><span><strong>El orden de los dominios importa: los 1-3 son condición de los 4-8.</strong> Una persona que no tiene techo, que está enferma sin tratamiento o con causas judiciales pendientes vive en un estado de <em>alerta biológica crónica</em> que dificulta cualquier proceso de reflexión, vínculo profundo o construcción de sentido. El orden importa <em>no como secuencia rígida, sino como mapa de prioridades</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Evaluar los ocho dominios en los procesos activos</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo toma tres casos activos y evalúa cada dominio en escala simple (<em>verde</em> = presente y funcional / <em>amarillo</em> = parcial o frágil / <em>rojo</em> = ausente o problemático). El mapa de colores revela de un vistazo <em>cuáles son los dominios más urgentes y cuáles son las fortalezas</em> sobre las que construir. El ejercicio suele sorprender: hay fortalezas que el equipo no había registrado porque miraba solo lo rojo.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Elegí en tu bitácora un caso y hacé la evaluación por colores de los ocho dominios. Contá cuántos verdes, amarillos y rojos hay. El resultado suele contradecir la impresión general que tenías del caso; ese contraste es la información nueva.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">¿Qué dominio puede construir este equipo?</div>
+        <div class="mode-g">
+          <div class="act-body">Para cada dominio con evaluación roja en los casos analizados, el grupo responde: <em>¿qué puede hacer el equipo para contribuir a ese dominio? ¿quién más en la red territorial puede contribuir?</em> El Dominio 8 (significado y propósito) es el más específico del acompañamiento pastoral. <em>¿Hay un espacio explícito en el dispositivo para trabajarlo? ¿o queda implícito y sin nombre?</em></div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora los ocho dominios y al lado de cada uno: <em>¿qué actor de la red es el mejor situado para construirlo?</em> Ese mapa es también un mapa de a quién pedir ayuda. La pastoral no debe intentar cubrir los ocho: debe articular quién cubre cada uno.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Evaluar los ocho dominios del propio equipo</div>
+        <div class="mode-g">
+          <div class="act-body">Los ocho dominios también aplican al equipo. El grupo evalúa por colores: <em>¿cómo está la salud del equipo (D1)? ¿tienen espacios físicos adecuados (D2)? ¿hay conflictos institucionales pendientes (D3)? ¿hay red interna de apoyo (D4)? ¿hay pares con quienes compartir aprendizajes (D5)? ¿hay pertenencia clara al proyecto (D6)? ¿hay formación continua (D7)? ¿hay sentido claro de la misión (D8)?</em></div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Escribí en tu bitácora los tres dominios donde el equipo está más frágil <em>como equipo</em>. Compartilos en la próxima reunión. <em>La conversación explícita sobre el propio capital es la mejor prevención del burnout colectivo.</em></div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §8.5.2</div>
+        <div class="cita-txt">"La sostenibilidad del bienestar y la prevención de recaídas se organizan en torno a ocho dominios del capital de recuperación. Identificar estos dominios permite pasar de una gestión de crisis a una gestión de la recuperación, donde la ausencia de recursos se aborda sistemáticamente para evitar que el entorno actúe como un disparador de la recurrencia."</div>
+        <div class="cita-ref">Manual de la PLAPA, §8.5.2 — Los ocho dominios del capital de recuperación (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">Los ocho dominios pueden convertirse en <em>checklist administrativo</em> que sustituye el vínculo por planillas. La evaluación por colores es útil como <em>disparador de conversación</em>, no como fin en sí mismo. El dominio evaluado sin diálogo con el hermano puede reproducir la lógica del expediente que el §8.5.1 justamente quiere superar. La herramienta cambia si <em>se completa con el hermano o se completa sobre el hermano</em>.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">Los ocho dominios también aplican al equipo pastoral. <em>¿Cuál es el dominio más frágil del propio equipo? ¿la salud de sus miembros (Dominio 1)? ¿los vínculos internos (Dominio 4)? ¿el sentido de lo que hacen (Dominio 8)?</em> El equipo que evalúa su propio capital de recuperación tiene más herramientas para identificar <em>cuándo está en riesgo de quemarse antes de que el burnout sea irreversible</em>.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §8.5.2 (Ocho dominios del capital de recuperación) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 3 ════════════════════════════════════════ -->
+  <div id="m3" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 3 · El Actuar</span>
+      <div class="ct">Familias de acogida y vínculos comunitarios: cuando la familia somos nosotros</div>
+      <div class="cs">Los cuatro aportes de la comunidad al capital de recuperación · §8.5.3</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"Cuando la red biológica no está presente o no es favorable, la familia somos nosotros. La comunidad debe constituirse como una red de apoyo que acompaña desde el reconocimiento y la cercanía, entendiendo que el amor incondicional es el motor que restaura la dignidad."</div>
+      </div>
+
+      <div class="pl">El Juzgar — Los cuatro aportes de la comunidad como familia de acogida (§8.5.3)</div>
+      <ul class="pts">
+        <li><span class="dot j">1</span><span><strong>Suplencia de la orfandad funcional.</strong> Entorno de cuidado donde se <em>cubren necesidades básicas y soporte emocional</em> que el sistema biológico o social no brindó.</span></li>
+        <li><span class="dot j">2</span><span><strong>Reparación del modelo vincular.</strong> Figuras de apego seguro que permiten <em>desaprender modelos de violencia e internalizar la confianza</em> en los demás.</span></li>
+        <li><span class="dot j">3</span><span><strong>Generación de capital de recuperación.</strong> Vínculos que <em>recolectan los fragmentos rotos de la historia</em> del individuo y le permiten reescribir su relato.</span></li>
+        <li><span class="dot j">4</span><span><strong>Inclusión social progresiva.</strong> Acceso a derechos que <em>el Estado fragmenta</em>: salud, educación, trabajo, documentación, pertenencia comunitaria.</span></li>
+      </ul>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>"Sin red biológica está destinado al fracaso": la objeción que el §8.5.3 refuta.</strong> El §8.5.3 responde con precisión: <em>"Las adicciones son a menudo enfermedades de aislamiento extremo. Ante su ausencia, la comunidad eclesial y barrial debe ocupar ese rol para evitar que el sujeto quede expuesto a la soledad de la calle y al riesgo de muerte."</em></span></li>
+        <li><span class="dot">V</span><span><strong>"Las familias de acogida son solo un recurso asistencial temporal": la segunda objeción.</strong> El §8.5.3 también la refuta: <em>"El vínculo comunitario posee una fuerza terapéutica excepcional. No busca reemplazar legalmente a la familia, sino ofrecer una familia grande donde la pertenencia y el servicio mutuo permiten al individuo pasar de ser un asistido a ser un miembro activo y digno."</em></span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>La conexión explícita con la familia comunitaria del §6.2.4 (Itin 7).</strong> El §8.5.3 la afirma: <em>"El vínculo comunitario posee una fuerza terapéutica excepcional… la pertenencia y el servicio mutuo permiten al individuo pasar de ser un asistido a ser un miembro activo y digno de la sociedad."</em> La comunidad que sabe acoger <em>no solo alivia la urgencia: genera el Dominio 6 (integración comunitaria)</em> que el capital de recuperación necesita.</span></li>
+        <li><span class="dot j">J</span><span><strong>Los cuatro aportes son terapéuticos, no solo asistenciales.</strong> La distinción es crucial: el asistencialismo entrega recursos y espera gratitud; el aporte terapéutico <em>cambia la estructura de la persona</em>. Una familia de acogida que cubre necesidades básicas sin generar vínculo hace el primero; una que suma reparación vincular, capital de recuperación e inclusión progresiva hace los cuatro.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Identificar las familias de acogida del territorio</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo identifica qué familias del territorio <em>ya funcionan como familias de acogida</em> (aunque no las llamen así): hogares donde se recibe al que no tiene a nadie, mesas donde siempre hay lugar para uno más, espacios donde el hermano puede <em>"volver"</em> después de una recaída sin sentir vergüenza. <em>¿Los conocemos? ¿los sostenemos? ¿les damos el reconocimiento que merecen? ¿los capacitamos para el rol que ya ejercen?</em></div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Escribí en tu bitácora los nombres de dos o tres familias del territorio que ya funcionan como familias de acogida <em>sin nombrarse así</em>. Al lado, un gesto concreto de reconocimiento que podés hacer esta semana. <em>La red comunitaria de acogida crece cuando se la nombra.</em></div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Diseñar el programa de familias de acogida del dispositivo</div>
+        <div class="mode-g">
+          <div class="act-body">Si no existe un programa formal, el grupo diseña los elementos mínimos: <em>¿qué perfil tienen las familias convocadas? ¿qué formación básica reciben? ¿qué acompañamiento les da el equipo? ¿qué límites tienen (duración, cantidad de personas acogidas, tipos de situaciones)? ¿cómo se reconoce y sostiene su tarea?</em> Las familias de acogida <em>no se improvisan: se reclutan, se forman, se acompañan y se cuidan</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Bosquejá en tu bitácora los cinco puntos mínimos del programa: perfil · formación · acompañamiento · límites · reconocimiento. Un boceto de cinco líneas vale más que un programa perfecto que nunca sale del cajón.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">El Dominio 4 en la práctica: mapear la red vincular de cada proceso</div>
+        <div class="mode-g">
+          <div class="act-body">Para los tres casos analizados en el Módulo 2, el grupo mapea el <em>Dominio 4</em> (apoyos familiares y sociales) con detalle: <em>¿quién está dispuesto a participar en el proceso? ¿hay vínculos que habilitan el consumo que deben trabajarse con el enfoque CRAFT? ¿hay vínculos que son fortaleza y que el dispositivo no está aprovechando?</em> El mapa vincular es <em>el plan de trabajo más concreto</em> que el equipo puede construir.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Elegí un caso y dibujá el <em>eco-mapa vincular</em> del hermano: círculo central con el nombre, círculos alrededor con las personas de su vida, líneas continuas (vínculo positivo) o punteadas (vínculo problemático). El dibujo revela con claridad lo que el relato oral suele desordenar.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §8.5.3</div>
+        <div class="cita-txt">"A través de la crianza comunitaria y figuras de apego seguro (como acompañantes pares o referentes barriales), el sujeto puede desaprender modelos de violencia e internalizar la confianza en los demás. Estos vínculos actúan como nudos de una red que recolecta los fragmentos rotos de la historia del individuo."</div>
+        <div class="cita-ref">Manual de la PLAPA, §8.5.3 — Familias de acogida y vínculos comunitarios (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">Convocar familias de acogida <em>sin formación ni acompañamiento previo</em> puede exponerlas al burnout y al trauma secundario, y exponer al hermano a experiencias que reactualicen daños en lugar de repararlos. La familia de acogida no es <em>voluntariado bienintencionado</em>: es un <em>ministerio pastoral con formación específica</em>. El equipo que convoca sin formar traiciona a las dos partes del vínculo que quería construir.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">El agente que propone familias de acogida necesita también una <em>"familia de acogida"</em> dentro del equipo: alguien que lo reciba cuando está en crisis, que sostenga el vínculo cuando flaquea, que no lo expulse cuando falla. <em>¿Tiene el equipo esa cultura de acogida interna? ¿hay alguien que funcione como "familia de acogida" para los propios agentes en momentos de desgaste?</em> Sin eso, la propuesta de acogida hacia afuera <em>pierde coherencia</em>.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §8.5.3 (Familias de acogida y vínculos comunitarios), §6.2.4 (Familia comunitaria) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 4 ════════════════════════════════════════ -->
+  <div id="m4" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 4 · Síntesis</span>
+      <div class="ct">Construir capital cuando no existe: el plan de recuperación basado en fortalezas</div>
+      <div class="cs">Del diagnóstico del capital al plan de construcción · §8.5.4</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"El capital de recuperación puede desarrollarse incluso si nunca existió. La comunidad parroquial y los centros barriales actúan como generadores de capital, proporcionando los vínculos y recursos que otras estructuras no pudieron brindar."</div>
+      </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>La afirmación más esperanzadora del capítulo.</strong> El §8.5.1 cierra con una conclusión basada en evidencia territorial: <em>"El capital de recuperación puede desarrollarse incluso si nunca existió."</em> No es una promesa voluntarista: muchas personas que llegan al dispositivo sin ninguno de los ocho dominios en positivo han logrado construir capital suficiente para sostener una recuperación sostenible. <em>La comunidad es la generadora de ese capital que el sistema no ofreció.</em></span></li>
+        <li><span class="dot">V</span><span><strong>La tensión entre saber profesional y saber territorial (§8.5.4).</strong> <em>"El profesional aporta la técnica para abordar patologías duales o traumas complejos, mientras que el acompañante par aporta el arte del acompañamiento y la capacidad de llegar a la herida del otro desde un lugar de igualdad."</em> En la construcción del capital de recuperación, <em>los dos saberes son necesarios y ninguno puede sustituir al otro</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>El acompañante par como generador del Dominio 5.</strong> <em>"La eficacia del acompañante par no se explica únicamente por su saber vivencial: radica también en que su sola presencia encarna lo que la psicología del recovery denomina identidad de recuperación —la posibilidad concreta, visible y cercana, de ser otra cosa"</em> (§8.5.4). El acompañante par <em>no aporta solo su historia: aporta la prueba empírica de que el capital de recuperación puede construirse</em>. Su presencia es, en sí misma, un generador del Dominio 5.</span></li>
+        <li><span class="dot j">J</span><span><strong>La formación compartida como capital del equipo.</strong> <em>"Todo el equipo participa en procesos de capacitación mutua donde se valide tanto la ciencia como la sabiduría popular"</em> (§8.5.4). Un equipo que se forma juntos, que valida mutuamente sus saberes, <em>que habla un mismo idioma espiritual y técnico</em> es también un ecosistema de apoyos para sus propios miembros. La formación compartida es la manera institucional de construir el capital de recuperación del propio equipo.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Construir el "plan de capital de recuperación" de un caso</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo toma el caso con mayor cantidad de dominios en rojo del Módulo 2 y construye un plan de capital de recuperación: <em>para cada dominio rojo, ¿qué acción concreta puede tomar el equipo? ¿qué actor de la red puede contribuir? ¿en qué plazo realista?</em> El plan no promete todo de golpe: <em>prioriza los dos o tres dominios más urgentes y los convierte en compromisos verificables</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Elegí un caso en tu bitácora y escribí un plan mínimo: <em>los tres dominios más urgentes · la primera acción concreta para cada uno · el actor responsable · el plazo de la primera revisión</em>. Doce líneas alcanzan. El plan verificable vence al plan perfecto.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">El acompañante par como generador de capital</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo evalúa: <em>¿hay acompañantes pares en el dispositivo? ¿están siendo usados como generadores de capital (Dominio 5) o solo como facilitadores de grupos? ¿hay personas en etapas avanzadas de recuperación que podrían ser incorporadas al equipo como acompañantes pares y así multiplicar el capital disponible?</em> El §8.5.4 y el Itinerario 10 (acompañantes pares) ofrecen el marco para ese paso.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora los nombres de dos o tres personas en etapas avanzadas que podrían empezar a acompañar a otros. Al lado de cada una, <em>el primer paso concreto</em> para incorporarlas al equipo como acompañantes pares. El capital se multiplica cuando el acompañado se vuelve acompañante.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Cierre: ¿qué capital aporta este equipo que ningún otro puede aportar?</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo cierra con la pregunta que define la identidad del dispositivo: <em>de los ocho dominios, ¿cuál genera este equipo de manera más específica e insustituible?</em> La respuesta no es genérica (<em>"todos los dominios"</em>): es precisa. El equipo que puede responder esa pregunta <em>tiene claro su lugar en la red y puede ofrecer lo que le es propio con convicción</em>, sin pretender hacer lo que otros hacen mejor.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Respondé en tu bitácora, en una sola frase: <em>"lo que este dispositivo aporta al capital de recuperación —y que ningún otro aporta igual— es…"</em>. Guardala. Es tu declaración de identidad pastoral concreta y el criterio de discernimiento para las próximas decisiones estratégicas.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §8.5.4</div>
+        <div class="cita-txt">"La eficacia del acompañante par no se explica únicamente por su saber vivencial: radica también en que su sola presencia encarna lo que la psicología del recovery denomina identidad de recuperación —la posibilidad concreta, visible y cercana, de ser otra cosa."</div>
+        <div class="cita-ref">Manual de la PLAPA, §8.5.4 — La gestión de la tensión entre saberes (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">El principio <em>"el capital puede construirse incluso si nunca existió"</em> puede ser mal leído como <em>"nunca es tarde para empezar."</em> La afirmación del §8.5.1 es esperanzadora, pero <em>no elimina la urgencia</em>: en algunos casos —adicciones severas, patologías duales agudas, riesgo vital inmediato— el tiempo para construir capital es escaso. La esperanza pastoral <em>no debe relajar la respuesta clínica urgente</em> cuando esta es necesaria. Esperanza sí; postergación disfrazada de esperanza, no.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente — cierre del itinerario</div>
+        <div class="autocuidado-txt">El itinerario cierra con la <em>inversión final</em>: el capital de recuperación que el equipo construye para los hermanos <em>es también el capital que el equipo necesita para sí mismo</em>. <em>¿Tiene el equipo los ocho dominios en un estado mínimamente funcional?</em> El facilitador propone que cada participante evalúe uno de sus propios dominios en el que está frágil y comparta con un compañero qué necesita para fortalecerlo. No como tarea: como <em>acto de confianza mutua que cierra el itinerario de la misma manera que lo empezó — mirando las fortalezas, no solo los déficits</em>.</div>
+      </div>
+
+      <div class="lectura">
+        <div class="lectura-lbl">Lectura complementaria</div>
+        <div class="lectura-txt">Para profundizar en la <strong>construcción del capital de recuperación</strong> en dispositivos comunitarios de la Familia Grande Hogar de Cristo, con casos concretos de familias de acogida, articulación con acompañantes pares y planes de recuperación basados en fortalezas, ofrecemos este texto para la reflexión del equipo.</div>
+        <a href="ElMetodoFGHC.pdf" download class="lectura-link">📥 Descargar "ElMetodoFGHC.pdf"</a>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §8.5.1 (Capital de recuperación), §8.5.2 (Ocho dominios), §8.5.3 (Familias de acogida), §8.5.4 (Complementariedad de saberes) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 5 · MURO DEL CAMINO (FORO) ═══════════════ -->
+  <div id="m5" class="card">
+    <div class="ch">
+      <span class="cn">Espacio comunitario · Muro</span>
+      <div class="ct">Voces de quienes también recorren este itinerario</div>
+      <div class="cs">El Manual crece con quienes lo caminan · §13.3, §13.5</div>
+    </div>
+    <div class="cb">
+
+      <!-- Selector de vista: este itinerario / global -->
+      <div class="foro-vista">
+        <button class="foro-vista-btn on" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
+        <button class="foro-vista-btn" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
+      </div>
+
+      <!-- Pautas pastorales -->
+      <div class="foro-pautas">
+        <div class="foro-pautas-lbl">Antes de publicar</div>
+        <ul>
+          <li>Compartí solo experiencias propias o del equipo. No expongas historias ajenas ni datos que identifiquen a terceras personas.</li>
+          <li>Cuidá a quien lea después: evitá descripciones que puedan retraumatizar.</li>
+          <li>Tu aporte será revisado por el equipo PLAPA antes de publicarse.</li>
+        </ul>
+      </div>
+
+      <!-- Formulario nuevo comentario -->
+      <div class="foro-form" id="foroForm">
+        <div class="foro-form-lbl">Dejar mi palabra</div>
+        <div class="foro-form-row">
+          <label for="foroModulo">¿Sobre qué momento del itinerario?</label>
+          <select id="foroModulo">
+            <option value="">General del itinerario</option>
+            <option value="1">Módulo 1 · Del déficit a las fortalezas</option>
+            <option value="2">Módulo 2 · Los ocho dominios</option>
+            <option value="3">Módulo 3 · Familias de acogida</option>
+            <option value="4">Módulo 4 · Construir capital</option>
+          </select>
+        </div>
+        <textarea id="foroTexto" placeholder="Escribí tu comentario, pregunta o testimonio de camino..."></textarea>
+        <div class="foro-form-actions">
+          <div class="foro-form-info">Aparecerá en el muro luego de la revisión del equipo.</div>
+          <button class="foro-btn" id="foroEnviar" onclick="enviarComentario()">Enviar para revisión</button>
+        </div>
+      </div>
+
+      <!-- Lista de comentarios -->
+      <div class="foro-lista" id="foroLista">
+        <div class="foro-vacio">Cargando el muro...</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 6 · EVALUACIÓN ══════════════════════════ -->
+  <div id="m6" class="card">
+    <div class="ch">
+      <span class="cn">Cierre del itinerario · Evaluación</span>
+      <div class="ct">Revisión de vida en clave Ver–Juzgar–Actuar</div>
+      <div class="cs">No es un examen: es un discernimiento sobre lo que este itinerario dejó en vos</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Antes de comenzar</div>
+        <div class="resonancia-txt">"La revisión de vida es la forma histórica que la Iglesia latinoamericana encontró para institucionalizar el Ver–Juzgar–Actuar. El agente que la practica no aplica el método: lo vive." Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
+      </div>
+
+      <div class="eval-nota">
+        <span class="eval-nota-lbl">🕊 Uso pastoral</span>
+        <div class="eval-nota-txt">Esta evaluación es <strong>tuya</strong>. Podés guardarla en tu bitácora personal (queda solo con vos) y, si lo decidís, compartirla con el equipo PLAPA como aporte al <em>rolling release</em> del Manual (§13.5). Compartir es voluntario.</div>
+      </div>
+
+      <div class="pl">El Ver — Qué se hizo visible</div>
+      <div class="eval-q">
+        <label for="evalVer">¿Qué realidad del territorio se hizo más visible para vos a lo largo de estos cuatro módulos? ¿Qué llagas emergieron con más fuerza? ¿Qué zonas del mapa estaban en blanco antes y ahora tienen contenido?</label>
+        <textarea id="evalVer" data-eval="ver" placeholder="Escribí con calma, sin apurarte..."></textarea>
+      </div>
+
+      <div class="pl">El Juzgar — Qué iluminó, qué preguntas quedaron abiertas</div>
+      <div class="eval-q">
+        <label for="evalJuzgar1">¿Qué del método del diagnóstico territorial te iluminó de manera nueva? ¿Qué idea del Manual sentís que ya no podrás dejar de lado?</label>
+        <textarea id="evalJuzgar1" data-eval="juzgar1" placeholder="Nombralo con precisión..."></textarea>
+      </div>
+      <div class="eval-q">
+        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos? Las preguntas abiertas son también fruto (§13.3).</label>
+        <textarea id="evalJuzgar2" data-eval="juzgar2" placeholder="Las que siguen ardiendo..."></textarea>
+      </div>
+
+      <div class="pl">El Actuar — Compromiso concreto</div>
+      <div class="eval-q">
+        <label for="evalActuar">¿Qué gesto pastoral concreto vas a intentar en las próximas semanas a partir del diagnóstico que hiciste? Nombralo con nombre, tiempo y lugar. Un compromiso vago no es un compromiso.</label>
+        <textarea id="evalActuar" data-eval="actuar" placeholder="Ej.: En la próxima reunión de equipo (jueves 25) voy a presentar el mapa territorial que construimos y proponer una callejeada específica al sector X del barrio..."></textarea>
+      </div>
+      <div class="eval-q eval-fecha">
+        <label for="evalFecha">Fecha en la que vas a volver a revisar si pudiste sostenerlo</label>
+        <input type="date" id="evalFecha" data-eval="fecha_revision">
+      </div>
+
+      <div class="pl">Autocuidado y equipo</div>
+      <div class="eval-q eval-scale">
+        <label>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</label>
+        <div class="eval-scale-row">
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="1" data-eval="animo"><span>1</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="2" data-eval="animo"><span>2</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="3" data-eval="animo"><span>3</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="4" data-eval="animo"><span>4</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="5" data-eval="animo"><span>5</span></label>
+        </div>
+      </div>
+      <div class="eval-q">
+        <label for="evalCuidado">¿Qué necesitás cuidar de vos mismo/a en las próximas semanas? ¿A quién del equipo se lo vas a decir?</label>
+        <textarea id="evalCuidado" data-eval="cuidado" placeholder="El agente que cuida su esperanza puede sostener la del otro (§1.3)..."></textarea>
+      </div>
+
+      <div class="pl">Cierre</div>
+
+      <div class="eval-check">
+        <input type="checkbox" id="evalCompartir">
+        <label for="evalCompartir"><strong>Compartir con el equipo PLAPA</strong> como aporte al <em>rolling release</em> del Manual. Solo se envían tus respuestas si marcás esta casilla. Si no la marcás, la evaluación queda solo en tu bitácora.</label>
+      </div>
+
+      <div class="eval-actions">
+        <button class="foro-btn eval-btn-guardar" onclick="guardarEvaluacion()">Guardar en mi bitácora</button>
+        <button class="foro-btn eval-btn-imprimir" onclick="imprimirEvaluacion()">🖨 Imprimir / PDF</button>
+      </div>
+
+      <div id="evalMsg" class="eval-msg"></div>
+
+      <div class="autocuidado" style="margin-top: 2rem;">
+        <div class="autocuidado-lbl">Cierre del itinerario</div>
+        <div class="autocuidado-txt">Cerrar bien un itinerario también es autocuidado: celebrar lo caminado, agradecer al equipo, reconocer los propios límites y renovar la esperanza. Este itinerario termina con gratitud: por el territorio que nos habló, por las llagas que dejamos de negar, por el equipo que hizo posible mirar sin apartar la mirada.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §1.3 (Prólogo), §6.1.3 (Evitar la romantización), §13.2 (Sinodalidad en la práctica), §13.3 (Rolling release), §13.5 (Mecanismos de colaboración) — CELAM 2026.</div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function setMode(mode, btn) {
+    var root = document.querySelector('.root');
+    root.classList.remove('mode-grupal', 'mode-individual');
+    root.classList.add('mode-' + mode);
+    var buttons = document.querySelectorAll('.mode-btn');
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].classList.remove('on');
+    }
+    btn.classList.add('on');
+  }
+
+  function show(n, btn) {
+    for (var i = 1; i <= 6; i++) {
+      var el = document.getElementById('m' + i);
+      if (el) el.classList.remove('active');
+    }
+    document.querySelectorAll('.nav .btn').forEach(function(b) {
+      b.classList.remove('on');
+    });
+    document.getElementById('m' + n).classList.add('active');
+    btn.classList.add('on');
+    if (window.innerWidth < 640) {
+      document.getElementById('m' + n).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    // Al abrir el muro, refrescar comentarios
+    if (n === 5 && typeof cargarComentarios === 'function') {
+      cargarComentarios();
+    }
+    // Al abrir la evaluación, restaurar borrador si existe
+    if (n === 6 && typeof restaurarEvaluacion === 'function') {
+      restaurarEvaluacion();
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════
+  // MURO DEL CAMINO — FORO SUPABASE
+  // ═══════════════════════════════════════════════════════
+  // BACKEND REQUERIDO (Supabase — mismo proyecto que app-plapa):
+  //
+  // 1) Tabla `foro_comentarios`:
+  //    - id (uuid, pk)
+  //    - itinerario_id (text)     — ej. 'itinerario_17_capital_recuperacion'
+  //    - parent_id (uuid, null)   — null = comentario raíz; uuid = respuesta
+  //    - usuario_id (uuid, fk auth.users)
+  //    - autor_nombre (text)      — copiado del perfil al crear
+  //    - pais (text)              — copiado del perfil al crear
+  //    - modulo (int, null)       — 1..4 o null (general)
+  //    - texto (text)
+  //    - estado (text)            — 'pendiente' | 'publicado' | 'rechazado'
+  //    - created_at (timestamptz)
+  //
+  // 2) Tabla `foro_reacciones`:
+  //    - comentario_id (uuid, fk)
+  //    - usuario_id (uuid, fk)
+  //    - emoji (text) — '🙏' | '❤️' | '💡' | '🕊️'
+  //    - PK compuesta (comentario_id, usuario_id, emoji)
+  //
+  // 3) Vista/RPC `comentarios_para_itinerario(p_itinerario text, p_scope text)`:
+  //    devuelve los comentarios publicados con autor_nombre, pais, itinerario_titulo
+  //    (si scope='global'), agregado de reacciones y las del usuario actual.
+  //    scope: 'itinerario' filtra por p_itinerario; 'global' devuelve todos.
+  //
+  // 4) RPC `toggle_reaccion(p_comentario uuid, p_emoji text)`.
+  //
+  // 5) RLS:
+  //    - foro_comentarios: SELECT solo estado='publicado'; INSERT solo auth.uid()
+  //      con estado='pendiente' forzado.
+  //    - Moderadores (rol) pueden UPDATE estado.
+  //
+  // 6) Sesión: la Escuela PLAPA debe dejar el token JWT accesible
+  //    (localStorage 'escuela_plapa_sesion' con { token, nombre, pais }
+  //    o cookie según arquitectura de la Escuela).
+  // ═══════════════════════════════════════════════════════
+
+  var SUPABASE_URL = 'https://TU-PROYECTO.supabase.co';  // TODO: config
+  var SUPABASE_ANON_KEY = 'TU_ANON_KEY';                  // TODO: config
+  var ITINERARIO_ID = 'itinerario_17_capital_recuperacion';
+  var ITINERARIO_TITULO = 'Capital de recuperación';
+
+  var vistaForo = 'itinerario';
+  var sesion = null;
+  var EMOJIS = ['🙏', '❤️', '💡', '🕊️'];
+
+  function supaHeaders() {
+    var h = {
+      'apikey': SUPABASE_ANON_KEY,
+      'Content-Type': 'application/json'
+    };
+    if (sesion && sesion.token) {
+      h['Authorization'] = 'Bearer ' + sesion.token;
+    }
+    return h;
+  }
+
+  function escapeHtml(s) {
+    if (!s) return '';
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function formatFecha(iso) {
+    if (!iso) return '';
+    try {
+      var d = new Date(iso);
+      return d.toLocaleDateString('es', { day: 'numeric', month: 'short', year: 'numeric' });
+    } catch (e) { return ''; }
+  }
+
+  function cargarComentarios() {
+    var contenedor = document.getElementById('foroLista');
+    contenedor.innerHTML = '<div class="foro-vacio">Cargando el muro...</div>';
+
+    var url = SUPABASE_URL + '/rest/v1/rpc/comentarios_para_itinerario';
+    fetch(url, {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({
+        p_itinerario: ITINERARIO_ID,
+        p_scope: vistaForo
+      })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) { renderComentarios(data || []); })
+    .catch(function() {
+      contenedor.innerHTML = '<div class="foro-vacio">No se pudo cargar el muro. Intentá de nuevo más tarde.</div>';
+    });
+  }
+
+  function renderComentarios(comentarios) {
+    var contenedor = document.getElementById('foroLista');
+    if (!comentarios || comentarios.length === 0) {
+      contenedor.innerHTML = '<div class="foro-vacio">Aún no hay palabras publicadas en este muro. Podés ser vos quien empiece la conversación.</div>';
+      return;
+    }
+    var raices = comentarios.filter(function(c) { return !c.parent_id; });
+    var respuestasPor = {};
+    comentarios.filter(function(c) { return c.parent_id; }).forEach(function(c) {
+      if (!respuestasPor[c.parent_id]) respuestasPor[c.parent_id] = [];
+      respuestasPor[c.parent_id].push(c);
+    });
+    contenedor.innerHTML = raices.map(function(c) {
+      return renderComment(c, respuestasPor[c.id] || []);
+    }).join('');
+  }
+
+  function renderComment(c, respuestas) {
+    var modLbl = c.modulo ? '<span class="comment-modulo">Módulo ' + c.modulo + '</span>' : '';
+    var paisLbl = c.pais ? '<span class="comment-pais">' + escapeHtml(c.pais) + '</span>' : '';
+    var globalLbl = (vistaForo === 'global' && c.itinerario_titulo)
+      ? '<span class="comment-modulo">' + escapeHtml(c.itinerario_titulo) + '</span>'
+      : '';
+    var reacciones = c.reacciones || {};
+    var misReacc = c.mis_reacciones || [];
+    var reaccBtns = EMOJIS.map(function(e) {
+      var count = reacciones[e] || 0;
+      var mine = misReacc.indexOf(e) >= 0;
+      return '<button class="react-btn ' + (mine ? 'on' : '') + '" onclick="toggleReaccion(\'' + c.id + '\', \'' + e + '\')">' + e + (count > 0 ? '<span class="react-count">' + count + '</span>' : '') + '</button>';
+    }).join('');
+    var respuestasHtml = respuestas.length
+      ? '<div class="comment-replies">' + respuestas.map(renderReply).join('') + '</div>'
+      : '';
+    return '' +
+      '<div class="comment" id="c-' + c.id + '">' +
+        '<div class="comment-head">' +
+          '<div>' +
+            '<span class="comment-autor">' + escapeHtml(c.autor_nombre || 'Anónimo') + '</span>' +
+            paisLbl + modLbl + globalLbl +
+          '</div>' +
+          '<span class="comment-fecha">' + formatFecha(c.created_at) + '</span>' +
+        '</div>' +
+        '<div class="comment-texto">' + escapeHtml(c.texto) + '</div>' +
+        '<div class="comment-actions">' +
+          reaccBtns +
+          '<button class="reply-btn" onclick="toggleReplyForm(\'' + c.id + '\')">↩ Responder</button>' +
+        '</div>' +
+        '<div class="reply-form" id="rf-' + c.id + '">' +
+          '<textarea placeholder="Escribí tu respuesta..." id="rt-' + c.id + '"></textarea>' +
+          '<div class="reply-form-actions">' +
+            '<button class="reply-form-cancel" onclick="toggleReplyForm(\'' + c.id + '\')">Cancelar</button>' +
+            '<button class="foro-btn" onclick="enviarRespuestaDesde(\'' + c.id + '\')">Enviar</button>' +
+          '</div>' +
+        '</div>' +
+        respuestasHtml +
+      '</div>';
+  }
+
+  function renderReply(r) {
+    var paisLbl = r.pais ? '<span class="comment-pais">' + escapeHtml(r.pais) + '</span>' : '';
+    return '' +
+      '<div class="reply">' +
+        '<div class="comment-head">' +
+          '<div>' +
+            '<span class="comment-autor">' + escapeHtml(r.autor_nombre || 'Anónimo') + '</span>' +
+            paisLbl +
+          '</div>' +
+          '<span class="comment-fecha">' + formatFecha(r.created_at) + '</span>' +
+        '</div>' +
+        '<div class="comment-texto">' + escapeHtml(r.texto) + '</div>' +
+      '</div>';
+  }
+
+  function enviarComentario() {
+    if (!sesion) { window.location.href = '/login'; return; }
+    var texto = document.getElementById('foroTexto').value.trim();
+    var modulo = document.getElementById('foroModulo').value;
+    if (!texto) return;
+    var btn = document.getElementById('foroEnviar');
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+    fetch(SUPABASE_URL + '/rest/v1/foro_comentarios', {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({
+        itinerario_id: ITINERARIO_ID,
+        parent_id: null,
+        usuario_id: sesion.user ? sesion.user.id : null,
+        autor_nombre: sesion.nombre || '',
+        pais: sesion.pais || '',
+        modulo: modulo ? parseInt(modulo) : null,
+        texto: texto
+      })
+    })
+    .then(function() {
+      document.getElementById('foroTexto').value = '';
+      document.getElementById('foroModulo').value = '';
+      btn.textContent = '✓ Enviado — pendiente de revisión';
+      setTimeout(function() {
+        btn.textContent = 'Enviar para revisión';
+        btn.disabled = false;
+      }, 3000);
+    })
+    .catch(function() {
+      btn.textContent = 'Error al enviar';
+      btn.disabled = false;
+    });
+  }
+
+  function enviarRespuestaDesde(parentId) {
+    if (!sesion) { window.location.href = '/login'; return; }
+    var textarea = document.getElementById('rt-' + parentId);
+    var texto = textarea.value.trim();
+    if (!texto) return;
+    fetch(SUPABASE_URL + '/rest/v1/foro_comentarios', {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({
+        itinerario_id: ITINERARIO_ID,
+        parent_id: parentId,
+        usuario_id: sesion.user ? sesion.user.id : null,
+        autor_nombre: sesion.nombre || '',
+        pais: sesion.pais || '',
+        texto: texto
+      })
+    })
+    .then(function() {
+      textarea.value = '';
+      document.getElementById('rf-' + parentId).classList.remove('on');
+      alert('Tu respuesta será revisada por el equipo antes de publicarse.');
+    })
+    .catch(function() { alert('Error al enviar la respuesta.'); });
+  }
+
+  function toggleReaccion(comentarioId, emoji) {
+    if (!sesion) { window.location.href = '/login'; return; }
+    fetch(SUPABASE_URL + '/rest/v1/rpc/toggle_reaccion', {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({ p_comentario: comentarioId, p_emoji: emoji })
+    })
+    .then(function() { cargarComentarios(); })
+    .catch(function() {});
+  }
+
+  function toggleReplyForm(id) {
+    if (!sesion) { window.location.href = '/login'; return; }
+    document.getElementById('rf-' + id).classList.toggle('on');
+  }
+
+  function setVistaForo(v, btn) {
+    vistaForo = v;
+    var buttons = document.querySelectorAll('.foro-vista-btn');
+    for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove('on'); }
+    btn.classList.add('on');
+    cargarComentarios();
+  }
+
+  // ═══════════════════════════════════════════════════════
+  // EVALUACIÓN — REVISIÓN DE VIDA VJA
+  // ═══════════════════════════════════════════════════════
+  // BACKEND REQUERIDO:
+  //
+  // Tabla `evaluaciones_itinerario`:
+  //   - id (uuid, pk)
+  //   - usuario_id (uuid, fk auth.users)
+  //   - itinerario_id (text)
+  //   - respuestas (jsonb) — { ver, juzgar1, juzgar2, actuar, fecha_revision, animo, cuidado }
+  //   - compartir_con_equipo (bool)
+  //   - created_at, updated_at
+  //
+  // RLS: SELECT/UPDATE solo dueño. INSERT solo dueño.
+  // Solo moderadores del equipo PLAPA pueden ver evaluaciones donde
+  // compartir_con_equipo=true (via política RLS separada).
+  //
+  // Borrador: se autoguarda en localStorage para que no se pierda
+  // al cerrar el navegador antes de guardar formalmente.
+  // ═══════════════════════════════════════════════════════
+
+  var EVAL_STORAGE_KEY = 'eval_' + ITINERARIO_ID;
+
+  function recolectarEvaluacion() {
+    var datos = {};
+    document.querySelectorAll('[data-eval]').forEach(function(el) {
+      var key = el.getAttribute('data-eval');
+      if (el.type === 'radio') {
+        if (el.checked) datos[key] = el.value;
+      } else {
+        datos[key] = el.value;
+      }
+    });
+    datos.compartir_con_equipo = document.getElementById('evalCompartir').checked;
+    return datos;
+  }
+
+  function autoguardarBorrador() {
+    try {
+      localStorage.setItem(EVAL_STORAGE_KEY, JSON.stringify(recolectarEvaluacion()));
+    } catch (e) {}
+  }
+
+  function restaurarEvaluacion() {
+    try {
+      var stored = localStorage.getItem(EVAL_STORAGE_KEY);
+      if (!stored) return;
+      var datos = JSON.parse(stored);
+      document.querySelectorAll('[data-eval]').forEach(function(el) {
+        var key = el.getAttribute('data-eval');
+        if (datos[key] == null) return;
+        if (el.type === 'radio') {
+          if (el.value === datos[key]) el.checked = true;
+        } else {
+          el.value = datos[key];
+        }
+      });
+      if (datos.compartir_con_equipo) {
+        document.getElementById('evalCompartir').checked = true;
+      }
+    } catch (e) {}
+  }
+
+  function mostrarEvalMsg(texto, tipo) {
+    var el = document.getElementById('evalMsg');
+    el.className = 'eval-msg on ' + (tipo || 'exito');
+    el.textContent = texto;
+    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function guardarEvaluacion() {
+    var datos = recolectarEvaluacion();
+    var minimoTexto = (datos.ver || '').trim() + (datos.actuar || '').trim();
+    if (minimoTexto.length < 30) {
+      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos "El Ver" y "El Actuar" merecen unos renglones honestos.', 'error');
+      return;
+    }
+
+    // Guardar en Supabase (siempre queda en tu bitácora)
+    if (!sesion) { window.location.href = '/login'; return; }
+    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario', {
+      method: 'POST',
+      headers: Object.assign({}, supaHeaders(), { 'Prefer': 'resolution=merge-duplicates' }),
+      body: JSON.stringify({
+        itinerario_id: ITINERARIO_ID,
+        respuestas: datos,
+        compartir_con_equipo: datos.compartir_con_equipo === true
+      })
+    })
+    .then(function(r) {
+      if (r.ok) {
+        var msg = datos.compartir_con_equipo
+          ? '✓ Evaluación guardada en tu bitácora y compartida con el equipo PLAPA. Gracias por el aporte.'
+          : '✓ Evaluación guardada en tu bitácora. Queda solo con vos.';
+        mostrarEvalMsg(msg, 'exito');
+      } else {
+        mostrarEvalMsg('Guardado localmente. No pudimos sincronizar con la Escuela — reintentá más tarde.', 'error');
+      }
+    })
+    .catch(function() {
+      mostrarEvalMsg('Guardado localmente. Sin conexión con la Escuela — reintentá cuando tengas internet.', 'error');
+    });
+  }
+
+  function imprimirEvaluacion() {
+    autoguardarBorrador();
+    window.print();
+  }
+
+  // Init general del itinerario
+  document.addEventListener('DOMContentLoaded', function() {
+    // Leer sesión (el guard del <head> garantiza que existe)
+    try {
+      var stored = localStorage.getItem('escuela_plapa_sesion');
+      if (stored) sesion = JSON.parse(stored);
+    } catch (e) {}
+    // Cargar muro
+    cargarComentarios();
+
+    // Restaurar borrador de evaluación si existe
+    restaurarEvaluacion();
+
+    // Autoguardado del borrador de evaluación al escribir (con debounce)
+    var evalTimeout;
+    document.querySelectorAll('#m6 [data-eval], #m6 #evalCompartir').forEach(function(el) {
+      el.addEventListener('input', function() {
+        clearTimeout(evalTimeout);
+        evalTimeout = setTimeout(autoguardarBorrador, 500);
+      });
+      el.addEventListener('change', autoguardarBorrador);
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Itinerario 3 · Mística de la proximidad · Escuela PLAPA</title>
 <style>
   :root {
@@ -1703,7 +1704,7 @@
     fetch(SUPABASE_URL + '/rest/v1/foro_comentarios', {
       method: 'POST', headers: supaHeaders(),
       body: JSON.stringify({
-        itinerario_id: ITINERARIO_ID, parent_id: null,
+        itinerario_id: ITINERARIO_ID, parent_id: null, usuario_id: sesion.user ? sesion.user.id : null, autor_nombre: sesion.nombre || '', pais: sesion.pais || '',
         modulo: modulo ? parseInt(modulo) : null, texto: texto
       })
     })
@@ -1723,7 +1724,7 @@
     if (!texto) return;
     fetch(SUPABASE_URL + '/rest/v1/foro_comentarios', {
       method: 'POST', headers: supaHeaders(),
-      body: JSON.stringify({ itinerario_id: ITINERARIO_ID, parent_id: parentId, texto: texto })
+      body: JSON.stringify({ itinerario_id: ITINERARIO_ID, parent_id: parentId, usuario_id: sesion.user ? sesion.user.id : null, autor_nombre: sesion.nombre || '', pais: sesion.pais || '', texto: texto })
     })
     .then(function() {
       textarea.value = '';

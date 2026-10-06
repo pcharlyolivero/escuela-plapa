@@ -1,0 +1,2258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Itinerario 20 · Biología, pobreza y vulnerabilidad · Escuela PLAPA</title>
+<style>
+  :root {
+    /* Paleta dorada PLAPA — Itinerario 20 (bloque 4: Sustancias y biología) */
+    --i20-oscuro:  #3F2306;
+    --i20-medio:   #854F0B;
+    --i20-accent:  #BA7517;
+    --i20-suave:   #DFA060;
+    --i20-claro:   #F5D9A0;
+    --i20-crema:   #FAEEDA;
+    --i20-fondo:   #FFFDF8;
+
+    --alerta:     #8B1A1A;
+    --alerta-bg:  #FDF7F7;
+
+    --texto:      #1E1B33;
+    --texto-2:    #4A4560;
+    --texto-3:    #8C89A0;
+    --borde:      #E4E2F0;
+
+    --font-serif: "Georgia", "Times New Roman", serif;
+    --font-sans:  "system-ui", -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: #EFDFB8;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    line-height: 1.6;
+  }
+
+  .root {
+    background: var(--i20-fondo);
+    max-width: 860px;
+    width: 100%;
+    padding: 2.5rem;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(38, 33, 92, 0.08);
+  }
+
+  /* ─── HEADER SUPERIOR (navegación entre páginas) ─── */
+  .top-header {
+    background: #FFFFFF;
+    border-bottom: 1px solid var(--borde);
+    padding: 0.85rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    max-width: 860px;
+    width: 100%;
+    margin: 0 auto 1rem;
+    border-radius: 10px;
+  }
+  .top-logo {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--i20-oscuro);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+  .top-logo:hover { color: var(--i20-medio); }
+  .top-link {
+    font-size: 0.88rem;
+    color: var(--texto-2);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.15s;
+  }
+  .top-link:hover {
+    background: var(--i20-crema);
+    color: var(--i20-oscuro);
+  }
+  @media (max-width: 640px) {
+    .top-header { padding: 0.75rem 1rem; }
+    .top-link { font-size: 0.82rem; padding: 5px 8px; }
+  }
+
+  /* ─── PORTADA ────────────────────────────────────────── */
+  .portada {
+    background: var(--i20-oscuro);
+    border-radius: 12px;
+    padding: 2rem 2rem 1.75rem;
+    margin-bottom: 2rem;
+  }
+  .portada-sup {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--i20-claro);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .portada-title {
+    font-family: var(--font-serif);
+    font-size: 30px;
+    font-weight: normal;
+    color: #FFFFFF;
+    line-height: 1.25;
+    margin-bottom: 0.6rem;
+  }
+  .portada-sub {
+    font-size: 14.5px;
+    color: var(--i20-claro);
+    line-height: 1.65;
+    margin-bottom: 1.25rem;
+    max-width: 640px;
+  }
+  .dest-box {
+    background: var(--i20-medio);
+    border-radius: 8px;
+    padding: 0.9rem 1.1rem;
+    margin-bottom: 1.1rem;
+  }
+  .dest-lbl {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--i20-claro);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .dest-txt {
+    font-size: 13px;
+    color: #FFF;
+    line-height: 1.6;
+  }
+  .portada-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .portada-pill {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 11px;
+    border-radius: 99px;
+    background: var(--i20-medio);
+    color: var(--i20-crema);
+  }
+
+  /* ─── VIDEO ──────────────────────────────────────────── */
+  .video-wrap {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .video-lbl {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--i20-oscuro);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .video-iframe {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  .video-iframe iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  /* ─── SELECTOR DE MODALIDAD ──────────────────────────── */
+  .mode-selector {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 1.5rem;
+    background: #FFF;
+    padding: 6px;
+    border-radius: 10px;
+    border: 1px solid var(--borde);
+    max-width: max-content;
+    flex-wrap: wrap;
+  }
+  .mode-btn {
+    border: none;
+    background: transparent;
+    color: var(--texto-2);
+    padding: 8px 16px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .mode-btn.on {
+    background: var(--i20-accent);
+    color: #FFF;
+    font-weight: 600;
+  }
+  /* Control de visibilidad según modalidad */
+  .root.mode-individual .mode-g { display: none; }
+  .root.mode-grupal .mode-i { display: none; }
+
+  /* ─── NAVEGACIÓN ─────────────────────────────────────── */
+  .nav {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+  .btn {
+    border: 1px solid var(--borde);
+    background: #FFFFFF;
+    border-radius: 8px;
+    padding: 10px 16px;
+    cursor: pointer;
+    font-size: 12.5px;
+    font-weight: 500;
+    font-family: var(--font-sans);
+    color: var(--texto-2);
+    transition: all 0.18s ease;
+    text-align: left;
+  }
+  .btn:hover {
+    background: var(--i20-crema);
+    border-color: var(--i20-claro);
+    color: var(--i20-oscuro);
+  }
+  .btn.on {
+    border: 2px solid var(--i20-accent);
+    background: var(--i20-crema);
+    color: var(--i20-oscuro);
+    font-weight: 600;
+    padding: 9px 15px;
+  }
+  .btn.btn-alt {
+    background: var(--i20-crema);
+    color: var(--i20-medio);
+    border-color: var(--i20-claro);
+  }
+  .btn.btn-alt:hover {
+    background: var(--i20-claro);
+    color: var(--i20-oscuro);
+  }
+  .btn.btn-alt.on {
+    background: var(--i20-medio);
+    border-color: var(--i20-medio);
+    color: #FFFFFF;
+  }
+  .nav-sep {
+    display: inline-block;
+    width: 1px;
+    background: var(--borde);
+    margin: 0 6px;
+    align-self: stretch;
+  }
+
+  /* ─── MÓDULOS ────────────────────────────────────────── */
+  .card {
+    border-radius: 12px;
+    border: 1px solid var(--borde);
+    background: #FFFFFF;
+    overflow: hidden;
+    display: none;
+    border-left: 6px solid var(--i20-accent);
+  }
+  .card.active {
+    display: block;
+    animation: fadeIn 0.35s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .ch {
+    padding: 1.75rem 2rem 1.5rem;
+    border-bottom: 1px solid var(--borde);
+    background: var(--i20-crema);
+  }
+  .cn {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 99px;
+    margin-bottom: 0.85rem;
+    background: var(--i20-accent);
+    color: #FFFFFF;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .ct {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 1.3;
+    color: var(--i20-oscuro);
+    margin-bottom: 0.4rem;
+  }
+  .cs {
+    font-size: 13px;
+    color: var(--i20-medio);
+    line-height: 1.55;
+    font-style: italic;
+  }
+
+  .cb { padding: 2rem; }
+
+  /* ─── CAJA DE RESONANCIA ─────────────────────────────── */
+  .resonancia {
+    border-left: 4px solid var(--i20-accent);
+    background: var(--i20-crema);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .resonancia-lbl {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i20-accent);
+    margin-bottom: 8px;
+  }
+  .resonancia-txt {
+    font-family: var(--font-serif);
+    font-size: 16.5px;
+    line-height: 1.6;
+    font-style: italic;
+    color: var(--i20-oscuro);
+  }
+
+  /* ─── SECCIONES VER / JUZGAR / ACTUAR ────────────────── */
+  .pl {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i20-oscuro);
+    margin-top: 2.25rem;
+    margin-bottom: 1.1rem;
+    border-bottom: 1px solid var(--borde);
+    padding-bottom: 7px;
+  }
+  .pl:first-of-type { margin-top: 0.5rem; }
+
+  .pts {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 1.5rem;
+  }
+  .pts li {
+    display: flex;
+    gap: 14px;
+    font-size: 14.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+  .pts li strong {
+    color: var(--i20-oscuro);
+    font-weight: 600;
+  }
+  .dot {
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    background: var(--i20-accent);
+    color: #FFFFFF;
+    margin-top: 2px;
+    font-family: var(--font-serif);
+  }
+  .dot.j { background: var(--i20-medio); }
+  .dot.a { background: var(--i20-oscuro); }
+
+  /* ─── GRILLA DE ESCENARIOS / DIMENSIONES ─────────────── */
+  .ejes {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 1.5rem;
+  }
+  .eje {
+    background: var(--i20-crema);
+    border-radius: 10px;
+    padding: 1.1rem 1.25rem;
+    border-top: 4px solid var(--i20-accent);
+  }
+  .eje-n {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--i20-accent);
+    margin-bottom: 8px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .eje-t {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--i20-oscuro);
+    margin-bottom: 6px;
+  }
+  .eje-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.6;
+  }
+
+  /* ─── ACTIVIDADES ────────────────────────────────────── */
+  .act {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 1.15rem 1.35rem;
+    margin-bottom: 12px;
+    border-left: 4px solid var(--i20-accent);
+  }
+  .act-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  .tag-ind {
+    background: var(--i20-oscuro);
+    color: var(--i20-crema);
+  }
+  .tag-gru {
+    background: var(--i20-accent);
+    color: #FFF;
+  }
+  .act-title {
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: var(--i20-oscuro);
+    margin-bottom: 6px;
+    line-height: 1.35;
+  }
+  .act-body {
+    font-size: 14px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+  .act-body em {
+    color: var(--i20-medio);
+    font-style: italic;
+  }
+
+  /* ─── CITA INSPIRADORA ───────────────────────────────── */
+  .cita {
+    border-radius: 10px;
+    padding: 1.2rem 1.4rem;
+    background: linear-gradient(180deg, var(--i20-crema) 0%, #FFF 100%);
+    border: 1px solid var(--i20-claro);
+    margin-top: 2rem;
+  }
+  .cita-lbl {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i20-accent);
+    margin-bottom: 8px;
+  }
+  .cita-txt {
+    font-family: var(--font-serif);
+    font-size: 15px;
+    line-height: 1.7;
+    font-style: italic;
+    color: var(--i20-oscuro);
+  }
+  .cita-ref {
+    font-size: 12px;
+    margin-top: 10px;
+    font-weight: 500;
+    color: var(--i20-medio);
+    font-style: normal;
+  }
+
+  /* ─── ALERTA PASTORAL ────────────────────────────────── */
+  .alerta {
+    border-left: 4px solid var(--alerta);
+    background: var(--alerta-bg);
+    padding: 1.15rem 1.35rem;
+    margin-top: 1.75rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .alerta-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--alerta);
+    margin-bottom: 8px;
+  }
+  .alerta-lbl::before {
+    content: '† ';
+    font-size: 14px;
+  }
+  .alerta-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+
+  /* ─── AUTOCUIDADO ────────────────────────────────────── */
+  .autocuidado {
+    border-left: 4px solid var(--i20-medio);
+    background: #FFFAF0;
+    padding: 1.15rem 1.35rem;
+    margin-top: 1.75rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .autocuidado-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i20-medio);
+    margin-bottom: 8px;
+  }
+  .autocuidado-lbl::before {
+    content: '❋ ';
+    color: var(--i20-accent);
+  }
+  .autocuidado-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+
+  /* ─── LECTURA COMPLEMENTARIA ─────────────────────────── */
+  .lectura {
+    background: #FFF;
+    border: 1px dashed var(--i20-accent);
+    border-radius: 10px;
+    padding: 1.15rem 1.35rem;
+    margin-top: 1.75rem;
+  }
+  .lectura-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--i20-medio);
+    margin-bottom: 8px;
+  }
+  .lectura-lbl::before {
+    content: '📖 ';
+  }
+  .lectura-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 12px;
+  }
+  .lectura-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--i20-accent);
+    color: #FFF;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.18s;
+  }
+  .lectura-link:hover {
+    background: var(--i20-oscuro);
+  }
+
+  /* ─── REFERENCIAS ────────────────────────────────────── */
+  .ref {
+    font-size: 11.5px;
+    color: var(--texto-3);
+    font-style: italic;
+    margin-top: 1.75rem;
+    padding-top: 1rem;
+    border-top: 1px dashed var(--borde);
+  }
+
+  /* ─── FORO / MURO DEL CAMINO ─────────────────────────── */
+  .foro {
+    background: #FFFFFF;
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    margin-top: 2rem;
+    overflow: hidden;
+    border-left: 6px solid var(--i20-medio);
+  }
+  .foro-head {
+    background: var(--i20-crema);
+    padding: 1.75rem 2rem 1.5rem;
+    border-bottom: 1px solid var(--borde);
+  }
+  .foro-lbl {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 99px;
+    margin-bottom: 0.85rem;
+    background: var(--i20-medio);
+    color: #FFFFFF;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .foro-title {
+    font-family: var(--font-serif);
+    font-size: 22px;
+    font-weight: normal;
+    line-height: 1.3;
+    color: var(--i20-oscuro);
+    margin-bottom: 0.4rem;
+  }
+  .foro-sub {
+    font-size: 13px;
+    color: var(--i20-medio);
+    line-height: 1.55;
+    font-style: italic;
+  }
+  .foro-body { padding: 2rem; }
+
+  .foro-vista {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 1.5rem;
+    background: var(--i20-crema);
+    padding: 6px;
+    border-radius: 10px;
+    max-width: max-content;
+    flex-wrap: wrap;
+  }
+  .foro-vista-btn {
+    border: none;
+    background: transparent;
+    color: var(--texto-2);
+    padding: 8px 16px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .foro-vista-btn.on {
+    background: var(--i20-medio);
+    color: #FFF;
+    font-weight: 600;
+  }
+
+  .foro-pautas {
+    background: var(--alerta-bg);
+    border-left: 4px solid var(--alerta);
+    padding: 1.15rem 1.35rem;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 1.75rem;
+  }
+  .foro-pautas-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--alerta);
+    margin-bottom: 8px;
+  }
+  .foro-pautas-lbl::before { content: '† '; }
+  .foro-pautas ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .foro-pautas li {
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    padding-left: 14px;
+    position: relative;
+  }
+  .foro-pautas li::before {
+    content: '·';
+    position: absolute;
+    left: 4px;
+    color: var(--alerta);
+    font-weight: 700;
+  }
+
+  .foro-form {
+    background: var(--i20-fondo);
+    border: 1px solid var(--borde);
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .foro-form-lbl {
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--i20-oscuro);
+    margin-bottom: 12px;
+  }
+  .foro-form-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+  }
+  .foro-form-row label {
+    font-size: 12.5px;
+    color: var(--texto-2);
+    align-self: center;
+    font-weight: 500;
+  }
+  .foro-form select {
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    padding: 7px 10px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+    cursor: pointer;
+  }
+  .foro-form textarea {
+    width: 100%;
+    min-height: 90px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+    resize: vertical;
+    line-height: 1.55;
+    margin-bottom: 10px;
+  }
+  .foro-form textarea:focus,
+  .foro-form select:focus {
+    outline: none;
+    border-color: var(--i20-medio);
+  }
+  .foro-form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .foro-form-info {
+    font-size: 11.5px;
+    color: var(--texto-3);
+    font-style: italic;
+  }
+  .foro-btn {
+    background: var(--i20-medio);
+    color: #FFF;
+    border: none;
+    border-radius: 7px;
+    padding: 9px 18px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    transition: background 0.18s;
+  }
+  .foro-btn:hover { background: var(--i20-oscuro); }
+  .foro-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .foro-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .foro-vacio {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: var(--texto-3);
+    font-size: 13.5px;
+    font-style: italic;
+    background: var(--i20-crema);
+    border-radius: 10px;
+  }
+  .comment {
+    background: #FFF;
+    border: 1px solid var(--borde);
+    border-left: 3px solid var(--i20-suave);
+    border-radius: 10px;
+    padding: 1rem 1.15rem;
+  }
+  .comment-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .comment-autor {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--i20-oscuro);
+  }
+  .comment-pais {
+    font-size: 12px;
+    color: var(--i20-medio);
+    font-weight: 500;
+  }
+  .comment-pais::before { content: ' · '; color: var(--texto-3); }
+  .comment-modulo {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: var(--i20-crema);
+    color: var(--i20-medio);
+    margin-left: 6px;
+  }
+  .comment-fecha {
+    font-size: 11.5px;
+    color: var(--texto-3);
+  }
+  .comment-texto {
+    font-size: 14px;
+    color: var(--texto);
+    line-height: 1.65;
+    margin-bottom: 10px;
+    white-space: pre-wrap;
+  }
+  .comment-actions {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .react-btn {
+    background: var(--i20-crema);
+    border: 1px solid transparent;
+    border-radius: 99px;
+    padding: 4px 10px;
+    font-size: 12.5px;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    color: var(--texto-2);
+    transition: all 0.15s;
+  }
+  .react-btn:hover { background: var(--i20-claro); }
+  .react-btn.on {
+    background: var(--i20-suave);
+    color: #FFF;
+    border-color: var(--i20-medio);
+    font-weight: 600;
+  }
+  .react-count {
+    margin-left: 4px;
+    font-weight: 600;
+  }
+  .reply-btn {
+    background: transparent;
+    border: none;
+    color: var(--i20-medio);
+    font-size: 12.5px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    margin-left: auto;
+    font-family: var(--font-sans);
+  }
+  .reply-btn:hover {
+    background: var(--i20-crema);
+    color: var(--i20-oscuro);
+  }
+  .comment-replies {
+    margin-top: 12px;
+    padding-left: 1rem;
+    border-left: 2px dashed var(--borde);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .reply {
+    background: var(--i20-fondo);
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+  }
+  .reply-form {
+    background: var(--i20-crema);
+    border-radius: 8px;
+    padding: 0.8rem;
+    margin-top: 10px;
+    display: none;
+  }
+  .reply-form.on { display: block; }
+  .reply-form textarea {
+    width: 100%;
+    min-height: 60px;
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 13px;
+    font-family: var(--font-sans);
+    resize: vertical;
+    background: #FFF;
+    margin-bottom: 8px;
+  }
+  .reply-form-actions {
+    display: flex;
+    gap: 6px;
+    justify-content: flex-end;
+  }
+  .reply-form-cancel {
+    background: transparent;
+    border: 1px solid var(--borde);
+    color: var(--texto-2);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 12.5px;
+    cursor: pointer;
+    font-family: var(--font-sans);
+  }
+
+  .foro-login {
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--i20-crema);
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+  }
+  .foro-login-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .foro-login-link {
+    display: inline-block;
+    background: var(--i20-medio);
+    color: #FFF;
+    padding: 8px 18px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+  }
+
+  /* ─── EVALUACIÓN (M6) ────────────────────────────────── */
+  .eval-nota {
+    background: var(--i20-crema);
+    border-left: 4px solid var(--i20-medio);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.25rem;
+    margin-bottom: 2rem;
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+  .eval-nota-lbl {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--i20-medio);
+    margin-bottom: 6px;
+  }
+  .eval-nota-txt strong { color: var(--i20-oscuro); }
+  .eval-nota-txt em { color: var(--i20-medio); font-style: italic; }
+
+  .eval-q {
+    margin-bottom: 1.5rem;
+  }
+  .eval-q > label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--i20-oscuro);
+    margin-bottom: 8px;
+    line-height: 1.55;
+  }
+  .eval-q textarea {
+    width: 100%;
+    min-height: 100px;
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+    resize: vertical;
+    line-height: 1.6;
+    transition: border-color 0.15s;
+  }
+  .eval-q textarea:focus,
+  .eval-q input:focus {
+    outline: none;
+    border-color: var(--i20-medio);
+    box-shadow: 0 0 0 3px rgba(60, 52, 137, 0.1);
+  }
+  .eval-q input[type="date"] {
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 9px 12px;
+    font-size: 14px;
+    font-family: var(--font-sans);
+    color: var(--texto);
+    background: #FFF;
+  }
+  .eval-fecha { max-width: 320px; }
+
+  .eval-scale-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .eval-radio {
+    flex: 1;
+    min-width: 55px;
+    cursor: pointer;
+    position: relative;
+  }
+  .eval-radio input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .eval-radio span {
+    display: block;
+    text-align: center;
+    padding: 12px 8px;
+    background: var(--i20-crema);
+    border: 2px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    color: var(--i20-medio);
+    font-size: 15px;
+    transition: all 0.15s;
+  }
+  .eval-radio:hover span { background: var(--i20-claro); }
+  .eval-radio input:checked + span {
+    background: var(--i20-medio);
+    border-color: var(--i20-oscuro);
+    color: #FFF;
+  }
+
+  .eval-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: var(--i20-crema);
+    border: 1px solid var(--i20-claro);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+  .eval-check input {
+    margin-top: 4px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--i20-medio);
+    flex-shrink: 0;
+  }
+  .eval-check label {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    cursor: pointer;
+  }
+  .eval-check label strong { color: var(--i20-oscuro); }
+  .eval-check label em { color: var(--i20-medio); font-style: italic; }
+
+  .eval-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+  .eval-btn-guardar {
+    background: var(--i20-oscuro);
+  }
+  .eval-btn-guardar:hover { background: var(--i20-medio); }
+  .eval-btn-imprimir {
+    background: transparent;
+    color: var(--i20-medio);
+    border: 1px solid var(--i20-medio);
+  }
+  .eval-btn-imprimir:hover {
+    background: var(--i20-crema);
+    color: var(--i20-oscuro);
+  }
+
+  .eval-msg {
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    display: none;
+    margin-bottom: 1rem;
+  }
+  .eval-msg.on { display: block; }
+  .eval-msg.exito {
+    background: #FAEEDA;
+    color: var(--i20-oscuro);
+    border-left: 3px solid var(--i20-medio);
+  }
+  .eval-msg.error {
+    background: var(--alerta-bg);
+    color: var(--alerta);
+    border-left: 3px solid var(--alerta);
+  }
+
+  /* Estilos de impresión de la evaluación */
+  @media print {
+    body { background: #FFF; padding: 0; }
+    .root { box-shadow: none; padding: 1rem; max-width: 100%; }
+    .portada, .video-wrap, .mode-selector, .nav { display: none !important; }
+    .card { display: none !important; }
+    #m6.card { display: block !important; break-inside: avoid; border: none; }
+    .eval-actions, .eval-msg { display: none !important; }
+    .ch { background: transparent; }
+    .eval-q textarea, .eval-q input[type="date"] {
+      border: none;
+      border-bottom: 1px solid #999;
+      border-radius: 0;
+      background: transparent;
+    }
+  }
+
+  /* ─── RESPONSIVE ─────────────────────────────────────── */
+  @media (max-width: 640px) {
+    body { padding: 1rem 0.5rem; }
+    .root { padding: 1.25rem; }
+    .portada { padding: 1.5rem 1.25rem; }
+    .portada-title { font-size: 24px; }
+    .ch { padding: 1.25rem 1.25rem 1rem; }
+    .ct { font-size: 20px; }
+    .cb { padding: 1.25rem; }
+    .ejes { grid-template-columns: 1fr; }
+    .btn { flex: 1 1 100%; }
+    .mode-selector { flex-direction: column; align-items: stretch; max-width: 100%; }
+    .mode-btn { text-align: center; }
+    .foro-head { padding: 1.25rem; }
+    .foro-body { padding: 1.25rem; }
+    .foro-title { font-size: 19px; }
+    .foro-vista { max-width: 100%; flex-direction: column; align-items: stretch; }
+    .foro-vista-btn { text-align: center; }
+    .comment-head { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .reply-btn { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER SUPERIOR ═════════════════════════════════ -->
+<header class="top-header">
+  <a href="index.html" class="top-logo">Escuela PLAPA</a>
+  <a href="catalogo_30_itinerarios_plapa_corregido.html" class="top-link">← Catálogo</a>
+</header>
+
+<div class="root mode-grupal">
+
+  <!-- ═══ PORTADA ═════════════════════════════════════════ -->
+  <div class="portada">
+    <p class="portada-sup">Itinerario formativo 20 · Escuela PLAPA · CELAM 2026</p>
+    <h1 class="portada-title">Biología, pobreza y vulnerabilidad</h1>
+    <p class="portada-sub">Cicatriz biológica de la exclusión, cerebro adolescente, efecto telescopio en mujeres, embarazo y neonatos. Cierre del bloque de sustancias y biología (§9.4).</p>
+
+    <div class="dest-box">
+      <div class="dest-lbl">Destinatarios</div>
+      <div class="dest-txt">Equipos interdisciplinarios, coordinadores de centros barriales y agentes pastorales que acompañan personas en contextos de exclusión extrema. Especialmente útil para quienes trabajan con adolescentes, mujeres embarazadas o madres en situación de consumo, y para agentes que necesitan comprender por qué en los territorios de mayor pobreza las adicciones son más severas y más rápidas. No requiere formación médica: el itinerario traduce el §9.4 al lenguaje del acompañamiento pastoral situado. Cierra el bloque de biología (Itinerarios 18–19–20) con la mirada sobre las poblaciones más vulnerables.</div>
+    </div>
+
+    <div class="portada-pills">
+      <span class="portada-pill">§9.4.1 · §9.4.2 · §9.4.3 · §9.4.4 · §9.4.5</span>
+      <span class="portada-pill">4 módulos</span>
+      <span class="portada-pill">Equipos territoriales</span>
+      <span class="portada-pill">Nivel intermedio</span>
+      <span class="portada-pill">Ver · Juzgar · Actuar · Síntesis</span>
+    </div>
+  </div>
+
+  <!-- ═══ VIDEO ═══════════════════════════════════════════ -->
+  
+  <!-- NUEVO: Bloque del Video de Presentación Incrustado -->
+<div style="background: var(--surface-2); border: 0.5px solid var(--border); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
+  <p style="font-size: 11px; font-weight: 500; color: #085041; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; text-align: left;">
+    ▶️ Video de presentación
+  </p>
+  <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px;">
+    <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+      src="https://www.youtube.com/embed/PLACEHOLDER_ITIN20"
+      title="Presentación del Itinerario 20" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+  <!-- ═══ SELECTOR DE MODALIDAD ═══════════════════════════ -->
+  <div class="mode-selector">
+    <button class="mode-btn on" onclick="setMode('grupal', this)">👥 Hacer en comunidad</button>
+    <button class="mode-btn" onclick="setMode('individual', this)">👤 Hacer de forma individual</button>
+  </div>
+
+  <!-- ═══ NAVEGACIÓN ══════════════════════════════════════ -->
+  <div class="nav">
+    <button class="btn on" onclick="show(1,this)">Módulo 1 · La cicatriz biológica</button>
+    <button class="btn" onclick="show(2,this)">Módulo 2 · Cerebro adolescente</button>
+    <button class="btn" onclick="show(3,this)">Módulo 3 · Mujer y efecto telescopio</button>
+    <button class="btn" onclick="show(4,this)">Módulo 4 · Embarazo y neonatos</button>
+    <span class="nav-sep" aria-hidden="true"></span>
+    <button class="btn btn-alt" onclick="show(5,this)">🌱 Muro del camino</button>
+    <button class="btn btn-alt" onclick="show(6,this)">✍ Evaluación</button>
+  </div>
+
+  <!-- ═══ MÓDULO 1 ════════════════════════════════════════ -->
+  <div id="m1" class="card active">
+    <div class="ch">
+      <span class="cn">Módulo 1 · El Ver</span>
+      <div class="ct">La cicatriz biológica de la exclusión: por qué los más pobres son los más vulnerables</div>
+      <div class="cs">Pobreza, estrés crónico y biología de la vulnerabilidad · §9.4 (introducción), §9.5.1</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"La vulnerabilidad biológica y social no es un fenómeno uniforme. El impacto de las sustancias varía profundamente según el ciclo vital, el sexo y el contexto del individuo. En los territorios de mayor exclusión, la pobreza estructural y los vínculos de apego inseguros debilitan la personalidad, creando la grieta existencial donde se instala la adicción."</div>
+      </div>
+
+      <div class="pl">El Juzgar — Las tres cicatrices biológicas de la exclusión (§9.4)</div>
+      <div class="ejes">
+        <div class="eje">
+          <div class="eje-n">Cicatriz 1 · Sistema nervioso alterado</div>
+          <div class="eje-t">La cicatriz del estrés crónico</div>
+          <div class="eje-txt">La pobreza extrema genera estrés crónico que altera físicamente el eje hipotalámico-hipofisario-adrenal. El organismo en alerta permanente produce cortisol de manera sostenida, dañando la memoria, el sistema inmunológico y la capacidad de regulación emocional. <em>La biología del pobre no es la misma que la del que vive en condiciones de estabilidad.</em></div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Cicatriz 2 · Adaptación al hostil</div>
+          <div class="eje-t">La apuesta neurológica por el corto plazo</div>
+          <div class="eje-txt">En contextos de escasez extrema, el cerebro desarrolla una adaptación evolutiva: <em>priorizar la recompensa inmediata sobre la planificación futura</em>. Esa misma adaptación que permite sobrevivir en entornos hostiles <em>aumenta la vulnerabilidad ante sustancias</em> que ofrecen gratificación inmediata.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Cicatriz 3 · Vínculo herido</div>
+          <div class="eje-t">La grieta del apego inseguro</div>
+          <div class="eje-txt">Los vínculos de apego inseguros en la infancia —generados por cuidadores traumatizados o ausentes— dejan una cicatriz biológica en los circuitos de regulación emocional. <em>El hermano que llega a la adicción no siempre viene de una familia que "no lo cuidó": muchas veces viene de una familia que tampoco fue cuidada.</em></div>
+        </div>
+      </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>La misma sustancia en dosis iguales no produce el mismo efecto.</strong> El §9.4 abre con una afirmación que cambia todo el encuadre del abordaje territorial: <em>"el impacto de las sustancias psicoactivas varía profundamente según el ciclo vital, el sexo y el contexto del individuo."</em> La misma sustancia en dosis iguales produce efectos radicalmente distintos <em>en un adolescente varón de 14 años que creció en un barrio de exclusión extrema, y en un adulto de 40 años con red familiar y acceso a salud</em>. El mapa biológico de la vulnerabilidad no es uniforme.</span></li>
+        <li><span class="dot">V</span><span><strong>El organismo del excluido ha sido biológicamente modificado por la exclusión.</strong> El §9.4 sitúa su análisis <em>"en el contexto territorial, evaluando el impacto del narcotráfico, la situación de calle y la exclusión estructural, factores que obligan a trascender el enfoque meramente clínico hacia un acompañamiento integral, humanizado y situado en la realidad de los más descartados."</em> La biología no se puede separar del contexto: el organismo de quien vive en un territorio de exclusión extrema <em>ha sido biológicamente modificado por esa exclusión</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>La "cicatriz biológica" no es metáfora: es dato clínico medible.</strong> El estrés crónico de la pobreza extrema produce cambios medibles en el <em>eje neuroendocrino (cortisol), en la arquitectura del hipocampo (memoria) y en los circuitos prefrontales (control de impulsos)</em>. El hermano que creció en un barrio con violencia permanente, hambre e inestabilidad vincular <em>tiene literalmente un sistema nervioso diferente</em> al de alguien que creció en condiciones de estabilidad.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>La fragilidad biológica no es debilidad moral: es exigencia de justicia estructural.</strong> La comprensión biológica de la vulnerabilidad territorializada no elimina la responsabilidad personal: <em>la transforma en una exigencia de justicia estructural</em>. <em>"La ciencia permite comprender que la fragilidad biológica no es debilidad moral: es el resultado de condiciones de vida que el sujeto no eligió y que el Estado tiene la obligación de transformar"</em> (§9.4, introducción). El agente que entiende eso puede <em>acompañar sin culpar y puede denunciar sin relativizar</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>El dato que más debería sorprender: 8 o 9 años como edad de inicio.</strong> El §9.5.1 añade el dato que más debería sorprender a los diseñadores de programas de prevención: <em>"Las estadísticas disponibles respecto de los ingresos a dispositivos de tratamiento en las periferias latinoamericanas señalan que el inicio del consumo en muchos casos se produce a los 8 o 9 años, en lugar del promedio nacional de 13 a 15."</em> La biología de la vulnerabilidad territorializada <em>empieza antes de lo que cualquier programa de prevención convencional alcanza</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Mapear la cicatriz biológica del territorio</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo reflexiona: <em>¿qué condiciones del territorio (violencia crónica, hambre, inestabilidad habitacional, ausencia de cuidadores estables) generan estrés crónico en los niños? ¿a qué edad empieza la exposición a esas condiciones? ¿hay herramientas de prevención en el territorio que llegan antes de los 10 años?</em> El diagnóstico de la cicatriz biológica no es para aumentar la angustia: <em>es para diseñar respuestas que lleguen donde y cuando la biología lo necesita</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora <em>tres condiciones específicas</em> del territorio donde trabajás que generan estrés crónico en niños y niñas menores de 10 años. Al lado de cada una, <em>¿qué respuesta comunitaria actual la aborda?</em> Los huecos que aparecen son el mapa de la próxima agenda de tu equipo.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">La biología como argumento de justicia</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo practica la reformulación del argumento: <em>¿cómo explicamos a un funcionario, a un donante o a una Conferencia Episcopal que la prevención en contextos de exclusión extrema tiene que empezar antes de los 10 años y que el formato "charla en la escuela secundaria" llega tarde?</em> Los datos del §9.4 son el argumento técnico. El equipo elige también <em>el argumento pastoral más apropiado para cada destinatario</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Escribí en tu bitácora un párrafo de <em>150 palabras máximo</em> para presentar la biología de la vulnerabilidad como argumento de justicia estructural, dirigido al destinatario que necesitás convencer esta semana. Ese es tu insumo listo para la próxima reunión con autoridades o donantes.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">La comunidad como agente de neuroplasticidad positiva</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo identifica los <em>elementos concretos del dispositivo</em> que operan como <em>agentes de neuroplasticidad positiva</em> para niños y adolescentes del territorio: vínculos adultos estables y confiables · rutinas predecibles · rituales comunitarios · experiencias de éxito y celebración · silencio y contemplación · servicio a otros. Cada uno de esos elementos <em>reescribe el cableado biológico</em> heredado de la exclusión. Nombrar eso da al equipo la certeza de que <em>está haciendo trabajo neurobiológico</em>, aunque nunca lo hayan pensado así.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora <em>tres momentos de la semana pasada</em> en que hayas ofrecido a un niño o adolescente del territorio un vínculo estable, una rutina predecible o una experiencia de celebración. Esos momentos fueron <em>estímulos neuroplásticos concretos</em>. La tarea pastoral cotidiana <em>ya es intervención biológica</em>, aunque no se llame así.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §9.4 (introducción)</div>
+        <div class="cita-txt">"El estudio se sitúa en el contexto territorial, evaluando el impacto del narcotráfico, la situación de calle y la exclusión estructural, factores que obligan a trascender el enfoque meramente clínico hacia un acompañamiento integral, humanizado y situado en la realidad de los más descartados."</div>
+        <div class="cita-ref">Manual de la PLAPA, §9.4 — Diferencias según la etapa en el ciclo vital (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">La <em>"cicatriz biológica"</em> puede leerse como <em>determinismo genético</em>: <em>"si el cerebro del pobre está dañado desde chico, entonces no hay nada que hacer."</em> El Manual no dice eso. La neuroplasticidad (§9.3.3) opera en <em>ambas direcciones</em>: la misma biología que registró la cicatriz puede <em>reconstruir circuitos con acompañamiento adecuado</em>. La cicatriz explica la vulnerabilidad y orienta la respuesta; <em>no la cancela</em>. El fatalismo biológico es la caricatura conservadora de un descubrimiento que en realidad exige más acción, no menos.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">El diagnóstico de la cicatriz biológica de la exclusión puede generar en el equipo una sensación de impotencia: <em>"si la biología misma está dañada, ¿qué podemos hacer nosotros?"</em> El facilitador recuerda que <em>la comunidad que ofrece vínculos estables, presencia cotidiana y experiencias nuevas es un agente de neuroplasticidad positiva</em>. La biología no condena: <em>orienta la respuesta</em>. El equipo que está en el territorio hace intervención biológica de primer nivel <em>cada vez que sostiene un vínculo</em>.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §9.4 (introducción), §9.5.1 (inicio precoz en periferias), §9.3.3 (neuroplasticidad) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 2 ════════════════════════════════════════ -->
+  <div id="m2" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 2 · El Juzgar</span>
+      <div class="ct">El cerebro adolescente: la brecha entre la ley y la biología</div>
+      <div class="cs">Inmadurez prefrontal, alta neuroplasticidad y velocidad del aprendizaje adictivo · §9.4.1, §9.4.2</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"El cerebro no completa su maduración hasta los 25 años. La corteza prefrontal —responsable de evaluar riesgos, tomar decisiones y controlar impulsos— es la última zona en madurar. Existe una brecha crítica entre la ley y la biología: la mayoría de edad legal se fija a los 18 años, pero el centro neurológico de evaluación de riesgos no está consolidado hasta los 25."</div>
+      </div>
+
+      <div class="pl">El Juzgar — Los tres factores del cerebro adolescente (§9.4.1, §9.4.2)</div>
+      <div class="ejes">
+        <div class="eje">
+          <div class="eje-n">Factor 1 · Falta de hardware</div>
+          <div class="eje-t">Inmadurez del freno biológico</div>
+          <div class="eje-txt">La corteza prefrontal es la última zona en madurar (~<strong>25 años</strong>). Sin ese freno consolidado, el adolescente carece de la capacidad orgánica para medir consecuencias a largo plazo. <em>No es falta de voluntad: es falta de hardware biológico.</em></div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Factor 2 · Aprender rápido lo peor</div>
+          <div class="eje-t">Alta neuroplasticidad como riesgo</div>
+          <div class="eje-txt">El cerebro joven aprende con <em>velocidad y fuerza excepcionales</em>. Las SPA usan los mismos mecanismos de la memoria: el cerebro <em>"aprende" a ser adicto mucho más rápido que el adulto</em>. Lo que se aprende antes de los 17 años tiende a permanecer con mayor fuerza.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Factor 3 · Recompensa amplificada</div>
+          <div class="eje-t">Hiperreactividad del circuito de recompensa</div>
+          <div class="eje-txt">Las ráfagas dopaminérgicas de las SPA son <em>hasta 10 veces superiores</em> a los estímulos naturales. En un cerebro sediento de novedades, esa intensidad <em>"enseña" al organismo a priorizar la sustancia</em> por encima de cualquier otro aprendizaje sano.</div>
+        </div>
+      </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>"A los 18 ya debería saber lo que hace" — la objeción refutada.</strong> El §9.4.1 refuta la objeción más frecuente de adultos y familias. La respuesta del Manual es precisa: <em>"existe una brecha crítica entre la ley y la biología. Tratar a un joven como un adulto maduro en términos biológicos es un error técnico: la neurociencia demuestra que el centro de evaluación de riesgos no está consolidado hasta los 25 años, independientemente de lo que establezca la legislación."</em></span></li>
+        <li><span class="dot">V</span><span><strong>La precocidad es determinante: 17% de TUS en quienes inician en adolescencia.</strong> <em>"La precocidad es determinante. El aprendizaje adictivo antes de los 18 años se graba en la arquitectura cerebral con una fuerza desmedida, haciendo que la dependencia sea más severa, más duradera y potencialmente generadora de daños estructurales permanentes"</em> (§9.4.1). En los territorios donde el consumo empieza a los 8 o 9 años, <em>ese daño estructural se produce en un cerebro que recién está construyendo sus circuitos básicos</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>El consumo no solo daña: roba tiempo de aprendizaje irrecuperable.</strong> El §9.4.2 añade una dimensión que el agente de prevención necesita conocer: <em>"La ráfaga masiva de dopamina cambia la conectividad de las neuronas, facilitando que el joven repita el consumo de forma automática. Esto desplaza el aprendizaje de habilidades sociales y emocionales necesarias para la vida adulta, secuestrando la capacidad de crecimiento del individuo."</em> El adolescente que consume <em>no solo daña su cerebro: roba tiempo de aprendizaje que no puede recuperarse</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>El narco que recluta a niños explota vulnerabilidad biológica documentada.</strong> <em>"El entorno es crucial, pero la vulnerabilidad biológica potencia los riesgos ambientales. Un cerebro en desarrollo expuesto a un entorno de oferta de drogas es incomparablemente más propenso a sufrir una neuroadaptación que un cerebro maduro en las mismas circunstancias"</em> (§9.4.1). El narco que reclu­ta a niños de 8 o 9 años <em>no está apelando a su "libre elección"</em>: está explotando una vulnerabilidad biológica real y documentada. Nombrar eso <em>es una forma de caridad política</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>La comunidad como entorno de aprendizaje sustitutivo.</strong> La sustitución de circuitos sanos del §9.4.2 tiene consecuencias pastorales directas: el adolescente que aprendió la adicción durante los años en que debería haber aprendido habilidades sociales y emocionales necesita <em>que el acompañamiento pastoral ofrezca precisamente eso</em>: un entorno de aprendizaje social y emocional sustitutivo. La comunidad <em>no reemplaza el tiempo perdido, pero puede ofrecer un espacio de reaprendizaje</em> que la biología todavía puede aprovechar.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Explicar la brecha ley-biología a padres y docentes</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo diseña la explicación de la brecha entre <em>mayoría de edad legal (18 años) y madurez biológica de la corteza prefrontal (~25 años)</em> para comunicarla a padres y docentes. <em>¿Qué consecuencias tiene esa brecha para la prevención? ¿para la respuesta judicial? ¿para el acompañamiento pastoral de jóvenes que "ya son adultos" según la ley pero que biológicamente todavía tienen el cerebro en construcción?</em></div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora tu explicación en <em>dos frases</em> de la brecha ley-biología, dirigida a un padre o una docente. La próxima vez que alguien te diga <em>"a los 18 ya tenía que hacerse cargo"</em>, tenés la respuesta lista y precisa.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">La prevención como oferta de circuitos alternativos</div>
+        <div class="mode-g">
+          <div class="act-body">El §9.4.2 muestra que el consumo <em>"desplaza el aprendizaje de habilidades sociales y emocionales."</em> El grupo reflexiona: <em>¿qué espacios del dispositivo ofrecen exactamente eso —habilidades sociales y emocionales— que el consumo desplazó? ¿el deporte? ¿el arte? ¿los grupos de pares con proyectos comunes? ¿la experiencia de servicio a otros?</em> Diseñar o fortalecer uno de esos espacios para el territorio concreto.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora un <em>espacio existente</em> del dispositivo que funciona como oferta de habilidades sociales y emocionales, y uno que <em>podrías crear o fortalecer</em>. Cada uno de esos espacios es literalmente <em>infraestructura de reaprendizaje biológico</em>.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">La precocidad del consumo en el territorio: diagnóstico urgente</div>
+        <div class="mode-g">
+          <div class="act-body"><em>¿A qué edad empieza el consumo en el territorio que el equipo acompaña? ¿hay casos confirmados de inicio de consumo antes de los 12 años? ¿hay niños captados por el narcotráfico como "soldaditos"? ¿qué dispositivos de prevención tienen presencia en ese rango etario?</em> El diagnóstico de la precocidad del consumo <em>es el mapa más urgente</em> para diseñar una respuesta que llegue antes de que la biología haga irreversible el daño.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora, con honestidad, la edad promedio de inicio de consumo que ves en el territorio y a qué edad tu dispositivo tiene presencia efectiva. La diferencia entre esos dos números es <em>la brecha crítica</em> que tu próximo diseño tiene que reducir.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §9.4.1</div>
+        <div class="cita-txt">"La inmadurez del 'freno' cerebral genera una incapacidad orgánica para la inhibición; el sistema físico del joven simplemente no responde al deseo de detenerse ante el estímulo masivo de la sustancia. No es solo voluntad: es biología."</div>
+        <div class="cita-ref">Manual de la PLAPA, §9.4.1 — Vulnerabilidad biológica en adolescentes (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">La <em>"brecha ley-biología"</em> puede leerse como <em>excusa para descargar responsabilidad penal</em>: <em>"como el cerebro todavía madura, no se le puede pedir nada."</em> El Manual no dice eso. La responsabilidad legal se construye socialmente y la biología aporta contexto para <em>ajustar la respuesta</em>, no para cancelarla. Un adolescente sigue respondiendo por sus actos; lo que cambia es <em>el marco de acompañamiento</em>, que reconoce la vulnerabilidad y ofrece reaprendizaje en lugar de solo castigo. Distinguir esas dos cosas evita que la neurociencia sea usada como coartada.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">El agente que comprende la vulnerabilidad biológica del cerebro adolescente puede también mirarse con más compasión en sus propios años de juventud. <em>¿Hubo decisiones tomadas antes de los 25 años de las que todavía carga consecuencias?</em> La comprensión biológica de la vulnerabilidad adolescente <em>no excusa: humaniza</em>. Y esa humanización es la base de la empatía que el acompañamiento pastoral de jóvenes necesita como fundamento.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §9.4.1 (Vulnerabilidad biológica en adolescentes), §9.4.2 (Sustitución de circuitos sanos) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 3 ════════════════════════════════════════ -->
+  <div id="m3" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 3 · El Actuar</span>
+      <div class="ct">La mujer y el efecto telescopio: la vulnerabilidad metabólica que el sistema ignora</div>
+      <div class="cs">Cuatro pilares biológicos de la mayor vulnerabilidad femenina · §9.4.3</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"El efecto telescopio es la tendencia demostrada de la mujer a progresar de forma mucho más rápida que el hombre desde el uso inicial hasta el desarrollo de un Trastorno por Uso de Sustancias y la aparición de consecuencias médicas graves. No es debilidad: es biología diferenciada que el sistema no reconoce."</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">El efecto telescopio · §9.4.3</div>
+        <div class="alerta-txt">La mujer recorre en <strong>significativamente menos tiempo</strong> el camino que va del primer consumo al daño orgánico severo. Esa aceleración <em>no se explica por mayor impulsividad ni menor voluntad</em>: tiene <em>cuatro bases biológicas objetivas</em> que la ciencia documenta y que el abordaje pastoral diferenciado (§4.4, §6.6.1–6.6.3, §8.6.1) debe conocer.</div>
+      </div>
+
+      <div class="pl">El Juzgar — Los cuatro pilares biológicos del efecto telescopio (§9.4.3)</div>
+      <div class="ejes">
+        <div class="eje">
+          <div class="eje-n">Pilar 1 · Concentración inmediata</div>
+          <div class="eje-t">Menor agua corporal → mayor toxicidad</div>
+          <div class="eje-txt">Las mujeres tienen proporcionalmente <em>menos agua en el cuerpo</em> que los hombres. Al haber menos sangre y agua para disolver la sustancia, <em>ante dosis iguales la SPA alcanza niveles de toxicidad más altos en la sangre femenina</em>. Riesgo de daños orgánicos prematuros —como cirrosis— con menor dosis acumulada.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Pilar 2 · Reservorio químico</div>
+          <div class="eje-t">Tejido adiposo sistémico</div>
+          <div class="eje-txt">El varón concentra la grasa principalmente en vientre y espalda. La mujer <em>la distribuye de forma sistémica en todo el organismo</em>. Al ser las SPA liposolubles, la anatomía femenina <em>funciona como un gran reservorio</em>: las moléculas de la droga quedan acumuladas en toda la distribución de grasa corporal.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Pilar 3 · Viaje seco</div>
+          <div class="eje-t">Impregnación prolongada</div>
+          <div class="eje-txt">La acumulación en los depósitos de grasa sistémica hace que <em>la carga química permanezca en el organismo femenino durante más tiempo</em>. El <em>"viaje seco"</em> —liberación de sustancias acumuladas en grasas semanas después del último consumo— puede desencadenar <em>estados de alteración sin consumo nuevo</em>.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Pilar 4 · Deterioro acelerado</div>
+          <div class="eje-t">Efecto telescopio → daño en menos tiempo</div>
+          <div class="eje-txt">La convergencia entre <em>mayor concentración inmediata</em> y <em>retención lipídica prolongada</em> hace que la transición hacia dependencia severa y deterioro de órganos <em>ocurra en un período notablemente menor</em>. No es percepción: <em>es un fenómeno clínico documentado</em>.</div>
+        </div>
+      </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>La doble condena que el §4.4 describe tiene ahora su base biológica.</strong> <em>"Son juzgadas no solo por el consumo sino por el incumplimiento del rol cultural de madre y cuidadora"</em>: la mujer que consume está siendo <em>afectada físicamente a una velocidad mayor que el varón</em>, y al mismo tiempo está siendo <em>juzgada con mayor dureza</em> por un sistema que no reconoce esa diferencia biológica. La pastoral diferenciada es <em>la respuesta a esa doble injusticia</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>El "viaje seco" puede destruir procesos de recuperación bien avanzados.</strong> El <em>"viaje seco"</em> es un dato que el agente territorial necesita conocer: <em>la mujer que lleva semanas sin consumir puede experimentar estados de alteración</em> que el entorno interpreta como <em>"nueva recaída"</em> cuando en realidad son el resultado de la liberación de sustancias acumuladas en el tejido adiposo. Ese malentendido <em>puede destruir procesos de recuperación</em> que estaban avanzando bien.</span></li>
+        <li><span class="dot">V</span><span><strong>Los estudios se hicieron en varones: brecha de conocimiento con consecuencias directas.</strong> Los estudios que fundamentan el §9.4.3 fueron <em>"históricamente realizados principalmente en sujetos masculinos, lo que ha generado una profunda brecha de conocimiento."</em> Esa brecha tiene consecuencias pastorales directas: <em>los protocolos de tratamiento diseñados para varones suelen ser ineficaces o contraproducentes para mujeres</em>, y los dispositivos pastorales que no reconocen la diferencia biológica <em>reproducen involuntariamente esa ineficacia</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>Biológicamente más vulnerables y socialmente más castigadas: doble injusticia.</strong> La articulación entre el §9.4.3 (biología diferenciada) y el §4.4 (doble condena social) produce el diagnóstico más completo de la situación de las mujeres en situación de consumo: <em>son biológicamente más vulnerables al daño y socialmente más castigadas por el consumo</em>. La pastoral que no conoce el efecto telescopio puede sin quererlo <em>exigir a las mujeres estándares de recuperación diseñados para varones, y culpabilizarlas cuando no los alcanzan</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>Los espacios específicos para mujeres no son un lujo: son el correlato pastoral del §9.4.3.</strong> El §6.6.1–6.6.3 sobre abordajes diferenciados para mujeres y el §8.6.1 sobre la perspectiva de género en el acompañamiento son <em>la respuesta pastoral al §9.4.3</em>. El conocimiento de la biología diferenciada <em>no es un dato académico</em>: es el fundamento de por qué los dispositivos pastorales <em>necesitan espacios específicos para mujeres</em>, con tiempos de recuperación distintos, con comprensión del efecto telescopio y con acompañamiento que no las juzgue desde el estándar del varón.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Evaluar el dispositivo desde la perspectiva del efecto telescopio</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo evalúa: <em>¿el dispositivo tiene en cuenta que las mujeres pueden necesitar tiempos de desintoxicación más largos? ¿hay personal capacitado para reconocer el "viaje seco" y no interpretarlo como recaída? ¿los grupos terapéuticos son mixtos o hay espacios específicos para mujeres? ¿las familias que acompañan los procesos de las mujeres conocen el efecto telescopio y no las culpan cuando el proceso es más lento de lo esperado?</em></div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora los <em>tres ajustes concretos</em> que tu dispositivo necesita para reconocer el efecto telescopio. Al lado de cada uno, marcá si es un ajuste que podés proponer vos o si requiere decisión colectiva. Los primeros son <em>agenda para tu próxima semana</em>; los segundos para la próxima reunión.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Explicar el efecto telescopio a las familias</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo diseña la explicación del efecto telescopio para familias (sin tecnicismos): <em>¿cómo decirle a un esposo o a una madre que su hija o esposa puede dañarse más rápido que un varón con la misma cantidad de consumo?</em> ¿cómo evitar que esa información se convierta en condena (<em>"ya ves, ella es más débil"</em>) en lugar de en comprensión (<em>"por eso necesita más apoyo y más rápido"</em>)?</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Escribí en tu bitácora tu propia explicación del efecto telescopio en <em>tres frases</em> aptas para un familiar sin formación médica. Practicala mentalmente hasta que fluya. La próxima conversación con una familia que acompaña a una mujer <em>merece esa preparación</em>.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Conectar con el §4.4 y el §8.6.1: la pastoral diferenciada en la práctica</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo revisa qué tiene actualmente el dispositivo de <em>abordaje diferenciado para mujeres</em>: <em>¿hay un espacio específico? ¿hay referentes mujeres en el equipo de acompañamiento? ¿hay articulación con servicios de salud para mujeres? ¿hay comprensión de la situación específica de mujeres embarazadas en situación de consumo?</em> Identificar un <em>paso concreto</em> para mejorar el abordaje diferenciado.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora <em>una acción específica</em> que podés proponer esta semana para mejorar el abordaje diferenciado para mujeres en tu dispositivo. Puede ser una capacitación, un espacio nuevo, una articulación pendiente, una consulta al equipo. Concreto y verificable.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §9.4.3</div>
+        <div class="cita-txt">"El efecto telescopio y la velocidad del daño estructural: la transición hacia la dependencia severa y el deterioro estructural de los órganos ocurre en un periodo de tiempo notablemente menor en la mujer, consolidando una vulnerabilidad metabólica que condiciona todo el abordaje clínico."</div>
+        <div class="cita-ref">Manual de la PLAPA, §9.4.3 — La respuesta fisiológica diferenciada y el efecto según el sexo biológico (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">El efecto telescopio <em>no dice</em> que <em>"las mujeres son más débiles"</em> ni que <em>"no pueden con el consumo"</em>. Dice que <em>la biología femenina metaboliza las SPA de manera diferenciada</em> y que el sistema clínico, diseñado con estudios en varones, <em>no ha adaptado sus protocolos a esa diferencia</em>. La conclusión no es sobre las mujeres: <em>es sobre el sistema que las atiende</em>. Confundir esa dirección es reproducir exactamente el sesgo que el §9.4.3 denuncia.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente</div>
+        <div class="autocuidado-txt">El módulo sobre biología diferenciada puede abrir <em>en las mujeres del equipo</em> una reflexión sobre su propia relación con sustancias legales (alcohol, tabaco, ansiolíticos) desde una perspectiva biológica que quizás nunca tuvieron. El facilitador cuida que ese espacio sea <em>de información y no de juicio</em>. La misma comprensión que el equipo necesita desarrollar para acompañar a las mujeres del territorio <em>es la que necesita practicar internamente</em>: los datos biológicos del §9.4.3 no son para culpar a nadie, <em>son para cuidar mejor a todos</em>.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §9.4.3 (Respuesta fisiológica según sexo biológico), §4.4 (Mujeres en situación de consumo), §6.6.1–6.6.3 (Abordajes diferenciados para mujeres), §8.6.1 (Perspectiva de género en el acompañamiento) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 4 ════════════════════════════════════════ -->
+  <div id="m4" class="card">
+    <div class="ch">
+      <span class="cn">Módulo 4 · Síntesis</span>
+      <div class="ct">Embarazo, neonatos y pastoral: cuando el consumo afecta una vida que aún no nació</div>
+      <div class="cs">Daño fetal, síndrome de abstinencia neonatal y acompañamiento pastoral situado · §9.4.4, §9.4.5</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Caja de resonancia</div>
+        <div class="resonancia-txt">"El consumo de SPA durante la gestación no representa solo un riesgo para la salud materna, sino una intrusión química en un organismo en formación que carece de mecanismos de defensa propios. La placenta no filtra las sustancias psicoactivas: su naturaleza liposoluble les permite cruzar esta barrera con la misma facilidad con la que cruzan la barrera hematoencefálica."</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Dato crítico · §9.4.4</div>
+        <div class="alerta-txt">La placenta <strong>no</strong> actúa como filtro para las SPA. Al ser liposolubles, las moléculas de la droga <em>la atraviesan con facilidad</em> y llegan directamente al cerebro y órganos en formación del feto. El bebé que nace de una madre que consumió durante el embarazo <em>puede nacer con dependencia física, síndrome de abstinencia neonatal y daños estructurales que condicionarán su desarrollo de por vida</em>.</div>
+      </div>
+
+      <div class="pl">El Juzgar — Cuatro sustancias, cuatro daños fetales (§9.4.5)</div>
+      <div class="ejes">
+        <div class="eje">
+          <div class="eje-n">Alcohol · TEAF</div>
+          <div class="eje-t">Tóxico durante los nueve meses</div>
+          <div class="eje-txt">Trastorno del espectro alcohólico fetal (<strong>TEAF</strong>): anomalías faciales y disfunciones cerebrales permanentes. <em>No existe dosis segura de alcohol durante el embarazo.</em> El TEAF es <em>la causa prevenible más frecuente de discapacidad intelectual</em> en el mundo occidental.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Tabaco y vapers · Nicotina</div>
+          <div class="eje-t">7.000 sustancias tóxicas</div>
+          <div class="eje-txt">Malformaciones como labio leporino, alteración permanente del crecimiento pulmonar. <em>Los vapers y dispositivos de nicotina producen los mismos daños</em>: la nicotina atraviesa la placenta <em>independientemente del dispositivo de entrega</em>.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Cocaína · Muerte fetal</div>
+          <div class="eje-t">Desprendimiento placentario</div>
+          <div class="eje-txt">Puede provocar <em>desprendimiento de la placenta</em>, hemorragias graves y malformaciones cardíacas en el feto. El desprendimiento placentario <em>puede matar al feto en horas</em> y poner en riesgo la vida de la madre.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Heroína/opioides · SAN</div>
+          <div class="eje-t">Síndrome neonatal de abstinencia</div>
+          <div class="eje-txt">Los bebés nacen con <em>dependencia física y síndrome de abstinencia neonatal (SAN)</em>: temblores, convulsiones, <em>riesgo de muerte en los primeros días</em> si no reciben tratamiento especializado inmediato. El fentanilo como adulterante <em>eleva exponencialmente ese riesgo</em>.</div>
+        </div>
+      </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>El miedo a perder la custodia oculta el consumo y aumenta el daño.</strong> El §9.4.4 describe la situación más invisible y más urgente del acompañamiento pastoral: <em>mujeres embarazadas en situación de consumo que no consultan por miedo a perder la custodia de sus hijos</em>. <em>"El miedo a las consecuencias legales puede llevar a las mujeres a ocultar su consumo durante el embarazo, privándolas del acompañamiento médico y pastoral que podría reducir significativamente el daño al bebé."</em> El agente pastoral que conoce ese miedo <em>puede crear el espacio de confianza que el sistema no ofrece</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>El SAN: bebés con temblores y convulsiones en los primeros días.</strong> El §9.4.5 sobre el Síndrome de Abstinencia Neonatal (SAN) describe una realidad que los equipos pastorales que trabajan en hospitales o maternidades pueden encontrar: <em>"los bebés nacen con temblores y convulsiones, cuya vida corre un riesgo inminente en los primeros días tras el parto."</em> <em>¿Tiene el equipo articulación con maternidades del territorio</em> para acompañar a las madres durante ese período crítico?</span></li>
+        <li><span class="dot">V</span><span><strong>El TEAF explica dificultades escolares que no se atribuyen al alcohol.</strong> El Trastorno del Espectro Alcohólico Fetal (TEAF) es <em>"la causa prevenible más frecuente de discapacidad intelectual"</em> (§9.4.5, nota clínica). La comunidad que acompaña familias con niños con problemas de aprendizaje o de conducta <em>debería poder preguntar por la historia de consumo de alcohol durante el embarazo</em>. Esa pregunta, hecha desde el vínculo y no desde el juicio, <em>puede abrir diagnósticos que cambian el acompañamiento</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Iluminación</div>
+      <ul class="pts">
+        <li><span class="dot j">J</span><span><strong>Cualquier reducción del consumo reduce el daño al bebé: no se abandona por "hizo daño".</strong> El §9.4.4 conecta directamente con el §4.4 (mujeres en situación de consumo) y con el §6.6.1–6.6.3 (abordaje diferenciado para mujeres): la mujer embarazada en situación de consumo <em>no necesita condena sino acompañamiento urgente e integral</em>. <em>"Cualquier reducción del consumo durante el embarazo —incluso sin abstinencia total— reduce el daño al bebé"</em> (§9.4.4). La pastoral que abandona a la madre porque <em>"ya hizo daño"</em> <em>abandona también al niño que está por nacer</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>El bebé que tiembla: la imagen que cierra el bloque de biología.</strong> El §9.4 cierra el Bloque de Sustancias y Biología (itinerarios 18–20) con la imagen más potente de toda la sección: <em>un bebé que nace con síndrome de abstinencia, temblores y convulsiones, sin que haya tomado una sola decisión</em>. La pastoral de la esperanza y la caridad política tienen aquí un argumento concreto y urgente: <em>estos niños no eligieron nacer en esa situación</em>, y el sistema que los hace invisibles <em>viola su dignidad antes de que puedan hablar</em>.</span></li>
+      </ul>
+
+      <div class="pl">El Actuar — Propuesta pastoral</div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Articulación con maternidades y servicios de neonatología</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo evalúa: <em>¿tiene el dispositivo pastoral articulación con alguna maternidad o servicio de neonatología del territorio? ¿hay agentes pastorales con acceso a esas instituciones para acompañar a madres en situación de consumo durante el embarazo y el parto? ¿hay protocolo de acompañamiento del bebé con SAN y de la familia durante el período de internación neonatal?</em> Si no existe esa articulación, <em>identificar el primer paso para construirla</em>.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora el <em>nombre y contacto</em> de la maternidad o servicio de neonatología más cercano al territorio donde trabajás. Si no lo tenés, esa es la gestión concreta de esta semana. La articulación con salud materno-infantil <em>no se construye en la emergencia</em>: se construye antes.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">El espacio de confianza para mujeres embarazadas</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo diseña cómo el dispositivo puede ofrecer a mujeres embarazadas en situación de consumo <em>un espacio de confianza que no las amenace con consecuencias legales inmediatas</em>. <em>¿Hay referentes mujeres en el equipo que puedan sostener ese acompañamiento? ¿hay articulación con servicios de salud materno-infantil que garanticen confidencialidad? ¿cómo se aborda la tensión real entre el derecho al acompañamiento de la madre y la protección del niño por nacer?</em></div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Anotá en tu bitácora <em>tres condiciones</em> que tendría que cumplir un espacio del dispositivo para que una mujer embarazada en situación de consumo se sienta segura de consultar. La lista es tu <em>chequeo honesto</em> de si ese espacio ya existe o si hay que construirlo.</div>
+        </div>
+      </div>
+
+      <div class="act">
+        <span class="act-tag tag-gru mode-g">Grupal</span>
+        <span class="act-tag tag-ind mode-i">Individual</span>
+        <div class="act-title">Cierre: la biología al servicio de la compasión pastoral</div>
+        <div class="mode-g">
+          <div class="act-body">El grupo cierra el Bloque de Sustancias y Biología (itinerarios 18–20) con una pregunta integradora: <em>"¿Qué cambió en mi forma de mirar a los hermanos que acompaño después de conocer la biología de la vulnerabilidad?"</em> En ronda, sin filtro. El facilitador anota las respuestas: <em>ese mapa de cambios en la mirada es la medida más honesta de lo que el bloque biológico produjo</em> en la formación del equipo. Cerrar con gratitud por los hermanos del territorio que inspiraron cada pregunta científica.</div>
+        </div>
+        <div class="mode-i">
+          <div class="act-body">Escribí en tu bitácora la respuesta a la pregunta: <em>"¿Qué cambió en mi forma de mirar a los hermanos que acompaño después de conocer la biología de la vulnerabilidad?"</em> Guardala junto a las respuestas de los itin 18 y 19: <em>ese trío es el mapa personal del bloque biológico</em>. Compartilo en la próxima reunión del equipo si el clima lo permite.</div>
+        </div>
+      </div>
+
+      <div class="cita">
+        <div class="cita-lbl">Cita inspiradora · §9.4.4</div>
+        <div class="cita-txt">"El consumo de sustancias psicoactivas durante la gestación constituye una intrusión química en un organismo en formación que carece de mecanismos de defensa propios. La placenta no actúa como filtro: las SPA atraviesan esta barrera con la misma facilidad con la que cruzan la barrera hematoencefálica."</div>
+        <div class="cita-ref">Manual de la PLAPA, §9.4.4 — Riesgos biológicos en el embarazo (CELAM 2026)</div>
+      </div>
+
+      <div class="alerta">
+        <div class="alerta-lbl">Alerta pastoral</div>
+        <div class="alerta-txt">Acompañar sin condena a mujeres embarazadas en situación de consumo <em>no significa minimizar el daño al bebé</em>. Las dos cosas van juntas: <em>presencia integral y verdad sobre el riesgo</em>. La pastoral que suaviza el daño para no incomodar a la madre <em>traiciona al bebé</em>; la que hostiga a la madre con el daño <em>aleja a las dos vidas del acompañamiento</em>. El punto exacto —presencia sin juicio, verdad sin condena— es difícil pero es exactamente el que el §9.4.4 exige. La red comunitaria y sanitaria sostiene ese punto juntas.</div>
+      </div>
+
+      <div class="autocuidado">
+        <div class="autocuidado-lbl">Autocuidado del agente — cierre del Bloque de Sustancias y Biología</div>
+        <div class="autocuidado-txt">El Bloque de Sustancias y Biología (itinerarios 18, 19 y 20) cierra con la imagen más vulnerable de todo el Manual: <em>un bebé que nace con síndrome de abstinencia</em>. El facilitador invita al equipo a nombrarlo sin dramatismo pero sin anestesia: <em>esa imagen es el motivo más profundo del trabajo pastoral en adicciones</em>. No la estadística, no el protocolo, no el dispositivo: <em>el bebé que tiembla</em>. El agente que puede sostener esa imagen <em>sin huir de ella y sin hundirse en ella</em> tiene la fortaleza interior que el acompañamiento en los territorios más heridos necesita.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §9.4.4 (Riesgos biológicos en el embarazo), §9.4.5 (Síndrome de abstinencia neonatal y TEAF), §4.4 (Mujeres en situación de consumo), §6.6.1–6.6.3 (Abordajes diferenciados) — CELAM 2026.</div>
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 5 · MURO DEL CAMINO (FORO) ═══════════════ -->
+  <div id="m5" class="card">
+    <div class="ch">
+      <span class="cn">Espacio comunitario · Muro</span>
+      <div class="ct">Voces de quienes también recorren este itinerario</div>
+      <div class="cs">El Manual crece con quienes lo caminan · §13.3, §13.5</div>
+    </div>
+    <div class="cb">
+
+      <!-- Selector de vista: este itinerario / global -->
+      <div class="foro-vista">
+        <button class="foro-vista-btn on" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
+        <button class="foro-vista-btn" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
+      </div>
+
+      <!-- Pautas pastorales -->
+      <div class="foro-pautas">
+        <div class="foro-pautas-lbl">Antes de publicar</div>
+        <ul>
+          <li>Compartí solo experiencias propias o del equipo. No expongas historias ajenas ni datos que identifiquen a terceras personas.</li>
+          <li>Cuidá a quien lea después: evitá descripciones que puedan retraumatizar.</li>
+          <li>Tu aporte será revisado por el equipo PLAPA antes de publicarse.</li>
+        </ul>
+      </div>
+
+      <!-- Formulario nuevo comentario -->
+      <div class="foro-form" id="foroForm">
+        <div class="foro-form-lbl">Dejar mi palabra</div>
+        <div class="foro-form-row">
+          <label for="foroModulo">¿Sobre qué momento del itinerario?</label>
+          <select id="foroModulo">
+            <option value="">General del itinerario</option>
+            <option value="1">Módulo 1 · La cicatriz biológica</option>
+            <option value="2">Módulo 2 · Cerebro adolescente</option>
+            <option value="3">Módulo 3 · Mujer y efecto telescopio</option>
+            <option value="4">Módulo 4 · Embarazo y neonatos</option>
+          </select>
+        </div>
+        <textarea id="foroTexto" placeholder="Escribí tu comentario, pregunta o testimonio de camino..."></textarea>
+        <div class="foro-form-actions">
+          <div class="foro-form-info">Aparecerá en el muro luego de la revisión del equipo.</div>
+          <button class="foro-btn" id="foroEnviar" onclick="enviarComentario()">Enviar para revisión</button>
+        </div>
+      </div>
+
+      <!-- Lista de comentarios -->
+      <div class="foro-lista" id="foroLista">
+        <div class="foro-vacio">Cargando el muro...</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ═══ MÓDULO 6 · EVALUACIÓN ══════════════════════════ -->
+  <div id="m6" class="card">
+    <div class="ch">
+      <span class="cn">Cierre del itinerario · Evaluación</span>
+      <div class="ct">Revisión de vida en clave Ver–Juzgar–Actuar</div>
+      <div class="cs">No es un examen: es un discernimiento sobre lo que este itinerario dejó en vos</div>
+    </div>
+    <div class="cb">
+
+      <div class="resonancia">
+        <div class="resonancia-lbl">Antes de comenzar</div>
+        <div class="resonancia-txt">"La revisión de vida es la forma histórica que la Iglesia latinoamericana encontró para institucionalizar el Ver–Juzgar–Actuar. El agente que la practica no aplica el método: lo vive." Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
+      </div>
+
+      <div class="eval-nota">
+        <span class="eval-nota-lbl">🕊 Uso pastoral</span>
+        <div class="eval-nota-txt">Esta evaluación es <strong>tuya</strong>. Podés guardarla en tu bitácora personal (queda solo con vos) y, si lo decidís, compartirla con el equipo PLAPA como aporte al <em>rolling release</em> del Manual (§13.5). Compartir es voluntario.</div>
+      </div>
+
+      <div class="pl">El Ver — Qué se hizo visible</div>
+      <div class="eval-q">
+        <label for="evalVer">¿Qué realidad del territorio se hizo más visible para vos a lo largo de estos cuatro módulos? ¿Qué llagas emergieron con más fuerza? ¿Qué zonas del mapa estaban en blanco antes y ahora tienen contenido?</label>
+        <textarea id="evalVer" data-eval="ver" placeholder="Escribí con calma, sin apurarte..."></textarea>
+      </div>
+
+      <div class="pl">El Juzgar — Qué iluminó, qué preguntas quedaron abiertas</div>
+      <div class="eval-q">
+        <label for="evalJuzgar1">¿Qué del método del diagnóstico territorial te iluminó de manera nueva? ¿Qué idea del Manual sentís que ya no podrás dejar de lado?</label>
+        <textarea id="evalJuzgar1" data-eval="juzgar1" placeholder="Nombralo con precisión..."></textarea>
+      </div>
+      <div class="eval-q">
+        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos? Las preguntas abiertas son también fruto (§13.3).</label>
+        <textarea id="evalJuzgar2" data-eval="juzgar2" placeholder="Las que siguen ardiendo..."></textarea>
+      </div>
+
+      <div class="pl">El Actuar — Compromiso concreto</div>
+      <div class="eval-q">
+        <label for="evalActuar">¿Qué gesto pastoral concreto vas a intentar en las próximas semanas a partir del diagnóstico que hiciste? Nombralo con nombre, tiempo y lugar. Un compromiso vago no es un compromiso.</label>
+        <textarea id="evalActuar" data-eval="actuar" placeholder="Ej.: En la próxima reunión de equipo (jueves 25) voy a presentar el mapa territorial que construimos y proponer una callejeada específica al sector X del barrio..."></textarea>
+      </div>
+      <div class="eval-q eval-fecha">
+        <label for="evalFecha">Fecha en la que vas a volver a revisar si pudiste sostenerlo</label>
+        <input type="date" id="evalFecha" data-eval="fecha_revision">
+      </div>
+
+      <div class="pl">Autocuidado y equipo</div>
+      <div class="eval-q eval-scale">
+        <label>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</label>
+        <div class="eval-scale-row">
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="1" data-eval="animo"><span>1</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="2" data-eval="animo"><span>2</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="3" data-eval="animo"><span>3</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="4" data-eval="animo"><span>4</span></label>
+          <label class="eval-radio"><input type="radio" name="evalAnimo" value="5" data-eval="animo"><span>5</span></label>
+        </div>
+      </div>
+      <div class="eval-q">
+        <label for="evalCuidado">¿Qué necesitás cuidar de vos mismo/a en las próximas semanas? ¿A quién del equipo se lo vas a decir?</label>
+        <textarea id="evalCuidado" data-eval="cuidado" placeholder="El agente que cuida su esperanza puede sostener la del otro (§1.3)..."></textarea>
+      </div>
+
+      <div class="pl">Cierre</div>
+
+      <div class="eval-check">
+        <input type="checkbox" id="evalCompartir">
+        <label for="evalCompartir"><strong>Compartir con el equipo PLAPA</strong> como aporte al <em>rolling release</em> del Manual. Solo se envían tus respuestas si marcás esta casilla. Si no la marcás, la evaluación queda solo en tu bitácora.</label>
+      </div>
+
+      <div class="eval-actions">
+        <button class="foro-btn eval-btn-guardar" onclick="guardarEvaluacion()">Guardar en mi bitácora</button>
+        <button class="foro-btn eval-btn-imprimir" onclick="imprimirEvaluacion()">🖨 Imprimir / PDF</button>
+      </div>
+
+      <div id="evalMsg" class="eval-msg"></div>
+
+      <div class="autocuidado" style="margin-top: 2rem;">
+        <div class="autocuidado-lbl">Cierre del itinerario</div>
+        <div class="autocuidado-txt">Cerrar bien un itinerario también es autocuidado: celebrar lo caminado, agradecer al equipo, reconocer los propios límites y renovar la esperanza. Este itinerario termina con gratitud: por el territorio que nos habló, por las llagas que dejamos de negar, por el equipo que hizo posible mirar sin apartar la mirada.</div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §1.3 (Prólogo), §6.1.3 (Evitar la romantización), §13.2 (Sinodalidad en la práctica), §13.3 (Rolling release), §13.5 (Mecanismos de colaboración) — CELAM 2026.</div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function setMode(mode, btn) {
+    var root = document.querySelector('.root');
+    root.classList.remove('mode-grupal', 'mode-individual');
+    root.classList.add('mode-' + mode);
+    var buttons = document.querySelectorAll('.mode-btn');
+    for (var i = 0; i < buttons.length; i++) {
+      buttons[i].classList.remove('on');
+    }
+    btn.classList.add('on');
+  }
+
+  function show(n, btn) {
+    for (var i = 1; i <= 6; i++) {
+      var el = document.getElementById('m' + i);
+      if (el) el.classList.remove('active');
+    }
+    document.querySelectorAll('.nav .btn').forEach(function(b) {
+      b.classList.remove('on');
+    });
+    document.getElementById('m' + n).classList.add('active');
+    btn.classList.add('on');
+    if (window.innerWidth < 640) {
+      document.getElementById('m' + n).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    // Al abrir el muro, refrescar comentarios
+    if (n === 5 && typeof cargarComentarios === 'function') {
+      cargarComentarios();
+    }
+    // Al abrir la evaluación, restaurar borrador si existe
+    if (n === 6 && typeof restaurarEvaluacion === 'function') {
+      restaurarEvaluacion();
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════
+  // MURO DEL CAMINO — FORO SUPABASE
+  // ═══════════════════════════════════════════════════════
+  // BACKEND REQUERIDO (Supabase — mismo proyecto que app-plapa):
+  //
+  // 1) Tabla `foro_comentarios`:
+  //    - id (uuid, pk)
+  //    - itinerario_id (text)     — ej. 'itinerario_20_biologia_pobreza'
+  //    - parent_id (uuid, null)   — null = comentario raíz; uuid = respuesta
+  //    - usuario_id (uuid, fk auth.users)
+  //    - autor_nombre (text)      — copiado del perfil al crear
+  //    - pais (text)              — copiado del perfil al crear
+  //    - modulo (int, null)       — 1..4 o null (general)
+  //    - texto (text)
+  //    - estado (text)            — 'pendiente' | 'publicado' | 'rechazado'
+  //    - created_at (timestamptz)
+  //
+  // 2) Tabla `foro_reacciones`:
+  //    - comentario_id (uuid, fk)
+  //    - usuario_id (uuid, fk)
+  //    - emoji (text) — '🙏' | '❤️' | '💡' | '🕊️'
+  //    - PK compuesta (comentario_id, usuario_id, emoji)
+  //
+  // 3) Vista/RPC `comentarios_para_itinerario(p_itinerario text, p_scope text)`:
+  //    devuelve los comentarios publicados con autor_nombre, pais, itinerario_titulo
+  //    (si scope='global'), agregado de reacciones y las del usuario actual.
+  //    scope: 'itinerario' filtra por p_itinerario; 'global' devuelve todos.
+  //
+  // 4) RPC `toggle_reaccion(p_comentario uuid, p_emoji text)`.
+  //
+  // 5) RLS:
+  //    - foro_comentarios: SELECT solo estado='publicado'; INSERT solo auth.uid()
+  //      con estado='pendiente' forzado.
+  //    - Moderadores (rol) pueden UPDATE estado.
+  //
+  // 6) Sesión: la Escuela PLAPA debe dejar el token JWT accesible
+  //    (localStorage 'escuela_plapa_sesion' con { token, nombre, pais }
+  //    o cookie según arquitectura de la Escuela).
+  // ═══════════════════════════════════════════════════════
+
+  var SUPABASE_URL = 'https://TU-PROYECTO.supabase.co';  // TODO: config
+  var SUPABASE_ANON_KEY = 'TU_ANON_KEY';                  // TODO: config
+  var ITINERARIO_ID = 'itinerario_20_biologia_pobreza';
+  var ITINERARIO_TITULO = 'Biología, pobreza y vulnerabilidad';
+
+  var vistaForo = 'itinerario';
+  var sesion = null;
+  var EMOJIS = ['🙏', '❤️', '💡', '🕊️'];
+
+  function supaHeaders() {
+    var h = {
+      'apikey': SUPABASE_ANON_KEY,
+      'Content-Type': 'application/json'
+    };
+    if (sesion && sesion.token) {
+      h['Authorization'] = 'Bearer ' + sesion.token;
+    }
+    return h;
+  }
+
+  function escapeHtml(s) {
+    if (!s) return '';
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  function formatFecha(iso) {
+    if (!iso) return '';
+    try {
+      var d = new Date(iso);
+      return d.toLocaleDateString('es', { day: 'numeric', month: 'short', year: 'numeric' });
+    } catch (e) { return ''; }
+  }
+
+  function cargarComentarios() {
+    var contenedor = document.getElementById('foroLista');
+    contenedor.innerHTML = '<div class="foro-vacio">Cargando el muro...</div>';
+
+    var url = SUPABASE_URL + '/rest/v1/rpc/comentarios_para_itinerario';
+    fetch(url, {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({
+        p_itinerario: ITINERARIO_ID,
+        p_scope: vistaForo
+      })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) { renderComentarios(data || []); })
+    .catch(function() {
+      contenedor.innerHTML = '<div class="foro-vacio">No se pudo cargar el muro. Intentá de nuevo más tarde.</div>';
+    });
+  }
+
+  function renderComentarios(comentarios) {
+    var contenedor = document.getElementById('foroLista');
+    if (!comentarios || comentarios.length === 0) {
+      contenedor.innerHTML = '<div class="foro-vacio">Aún no hay palabras publicadas en este muro. Podés ser vos quien empiece la conversación.</div>';
+      return;
+    }
+    var raices = comentarios.filter(function(c) { return !c.parent_id; });
+    var respuestasPor = {};
+    comentarios.filter(function(c) { return c.parent_id; }).forEach(function(c) {
+      if (!respuestasPor[c.parent_id]) respuestasPor[c.parent_id] = [];
+      respuestasPor[c.parent_id].push(c);
+    });
+    contenedor.innerHTML = raices.map(function(c) {
+      return renderComment(c, respuestasPor[c.id] || []);
+    }).join('');
+  }
+
+  function renderComment(c, respuestas) {
+    var modLbl = c.modulo ? '<span class="comment-modulo">Módulo ' + c.modulo + '</span>' : '';
+    var paisLbl = c.pais ? '<span class="comment-pais">' + escapeHtml(c.pais) + '</span>' : '';
+    var globalLbl = (vistaForo === 'global' && c.itinerario_titulo)
+      ? '<span class="comment-modulo">' + escapeHtml(c.itinerario_titulo) + '</span>'
+      : '';
+    var reacciones = c.reacciones || {};
+    var misReacc = c.mis_reacciones || [];
+    var reaccBtns = EMOJIS.map(function(e) {
+      var count = reacciones[e] || 0;
+      var mine = misReacc.indexOf(e) >= 0;
+      return '<button class="react-btn ' + (mine ? 'on' : '') + '" onclick="toggleReaccion(\'' + c.id + '\', \'' + e + '\')">' + e + (count > 0 ? '<span class="react-count">' + count + '</span>' : '') + '</button>';
+    }).join('');
+    var respuestasHtml = respuestas.length
+      ? '<div class="comment-replies">' + respuestas.map(renderReply).join('') + '</div>'
+      : '';
+    return '' +
+      '<div class="comment" id="c-' + c.id + '">' +
+        '<div class="comment-head">' +
+          '<div>' +
+            '<span class="comment-autor">' + escapeHtml(c.autor_nombre || 'Anónimo') + '</span>' +
+            paisLbl + modLbl + globalLbl +
+          '</div>' +
+          '<span class="comment-fecha">' + formatFecha(c.created_at) + '</span>' +
+        '</div>' +
+        '<div class="comment-texto">' + escapeHtml(c.texto) + '</div>' +
+        '<div class="comment-actions">' +
+          reaccBtns +
+          '<button class="reply-btn" onclick="toggleReplyForm(\'' + c.id + '\')">↩ Responder</button>' +
+        '</div>' +
+        '<div class="reply-form" id="rf-' + c.id + '">' +
+          '<textarea placeholder="Escribí tu respuesta..." id="rt-' + c.id + '"></textarea>' +
+          '<div class="reply-form-actions">' +
+            '<button class="reply-form-cancel" onclick="toggleReplyForm(\'' + c.id + '\')">Cancelar</button>' +
+            '<button class="foro-btn" onclick="enviarRespuestaDesde(\'' + c.id + '\')">Enviar</button>' +
+          '</div>' +
+        '</div>' +
+        respuestasHtml +
+      '</div>';
+  }
+
+  function renderReply(r) {
+    var paisLbl = r.pais ? '<span class="comment-pais">' + escapeHtml(r.pais) + '</span>' : '';
+    return '' +
+      '<div class="reply">' +
+        '<div class="comment-head">' +
+          '<div>' +
+            '<span class="comment-autor">' + escapeHtml(r.autor_nombre || 'Anónimo') + '</span>' +
+            paisLbl +
+          '</div>' +
+          '<span class="comment-fecha">' + formatFecha(r.created_at) + '</span>' +
+        '</div>' +
+        '<div class="comment-texto">' + escapeHtml(r.texto) + '</div>' +
+      '</div>';
+  }
+
+  function enviarComentario() {
+    if (!sesion) { window.location.href = '/login'; return; }
+    var texto = document.getElementById('foroTexto').value.trim();
+    var modulo = document.getElementById('foroModulo').value;
+    if (!texto) return;
+    var btn = document.getElementById('foroEnviar');
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+    fetch(SUPABASE_URL + '/rest/v1/foro_comentarios', {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({
+        itinerario_id: ITINERARIO_ID,
+        parent_id: null,
+        usuario_id: sesion.user ? sesion.user.id : null,
+        autor_nombre: sesion.nombre || '',
+        pais: sesion.pais || '',
+        modulo: modulo ? parseInt(modulo) : null,
+        texto: texto
+      })
+    })
+    .then(function() {
+      document.getElementById('foroTexto').value = '';
+      document.getElementById('foroModulo').value = '';
+      btn.textContent = '✓ Enviado — pendiente de revisión';
+      setTimeout(function() {
+        btn.textContent = 'Enviar para revisión';
+        btn.disabled = false;
+      }, 3000);
+    })
+    .catch(function() {
+      btn.textContent = 'Error al enviar';
+      btn.disabled = false;
+    });
+  }
+
+  function enviarRespuestaDesde(parentId) {
+    if (!sesion) { window.location.href = '/login'; return; }
+    var textarea = document.getElementById('rt-' + parentId);
+    var texto = textarea.value.trim();
+    if (!texto) return;
+    fetch(SUPABASE_URL + '/rest/v1/foro_comentarios', {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({
+        itinerario_id: ITINERARIO_ID,
+        parent_id: parentId,
+        usuario_id: sesion.user ? sesion.user.id : null,
+        autor_nombre: sesion.nombre || '',
+        pais: sesion.pais || '',
+        texto: texto
+      })
+    })
+    .then(function() {
+      textarea.value = '';
+      document.getElementById('rf-' + parentId).classList.remove('on');
+      alert('Tu respuesta será revisada por el equipo antes de publicarse.');
+    })
+    .catch(function() { alert('Error al enviar la respuesta.'); });
+  }
+
+  function toggleReaccion(comentarioId, emoji) {
+    if (!sesion) { window.location.href = '/login'; return; }
+    fetch(SUPABASE_URL + '/rest/v1/rpc/toggle_reaccion', {
+      method: 'POST',
+      headers: supaHeaders(),
+      body: JSON.stringify({ p_comentario: comentarioId, p_emoji: emoji })
+    })
+    .then(function() { cargarComentarios(); })
+    .catch(function() {});
+  }
+
+  function toggleReplyForm(id) {
+    if (!sesion) { window.location.href = '/login'; return; }
+    document.getElementById('rf-' + id).classList.toggle('on');
+  }
+
+  function setVistaForo(v, btn) {
+    vistaForo = v;
+    var buttons = document.querySelectorAll('.foro-vista-btn');
+    for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove('on'); }
+    btn.classList.add('on');
+    cargarComentarios();
+  }
+
+  // ═══════════════════════════════════════════════════════
+  // EVALUACIÓN — REVISIÓN DE VIDA VJA
+  // ═══════════════════════════════════════════════════════
+  // BACKEND REQUERIDO:
+  //
+  // Tabla `evaluaciones_itinerario`:
+  //   - id (uuid, pk)
+  //   - usuario_id (uuid, fk auth.users)
+  //   - itinerario_id (text)
+  //   - respuestas (jsonb) — { ver, juzgar1, juzgar2, actuar, fecha_revision, animo, cuidado }
+  //   - compartir_con_equipo (bool)
+  //   - created_at, updated_at
+  //
+  // RLS: SELECT/UPDATE solo dueño. INSERT solo dueño.
+  // Solo moderadores del equipo PLAPA pueden ver evaluaciones donde
+  // compartir_con_equipo=true (via política RLS separada).
+  //
+  // Borrador: se autoguarda en localStorage para que no se pierda
+  // al cerrar el navegador antes de guardar formalmente.
+  // ═══════════════════════════════════════════════════════
+
+  var EVAL_STORAGE_KEY = 'eval_' + ITINERARIO_ID;
+
+  function recolectarEvaluacion() {
+    var datos = {};
+    document.querySelectorAll('[data-eval]').forEach(function(el) {
+      var key = el.getAttribute('data-eval');
+      if (el.type === 'radio') {
+        if (el.checked) datos[key] = el.value;
+      } else {
+        datos[key] = el.value;
+      }
+    });
+    datos.compartir_con_equipo = document.getElementById('evalCompartir').checked;
+    return datos;
+  }
+
+  function autoguardarBorrador() {
+    try {
+      localStorage.setItem(EVAL_STORAGE_KEY, JSON.stringify(recolectarEvaluacion()));
+    } catch (e) {}
+  }
+
+  function restaurarEvaluacion() {
+    try {
+      var stored = localStorage.getItem(EVAL_STORAGE_KEY);
+      if (!stored) return;
+      var datos = JSON.parse(stored);
+      document.querySelectorAll('[data-eval]').forEach(function(el) {
+        var key = el.getAttribute('data-eval');
+        if (datos[key] == null) return;
+        if (el.type === 'radio') {
+          if (el.value === datos[key]) el.checked = true;
+        } else {
+          el.value = datos[key];
+        }
+      });
+      if (datos.compartir_con_equipo) {
+        document.getElementById('evalCompartir').checked = true;
+      }
+    } catch (e) {}
+  }
+
+  function mostrarEvalMsg(texto, tipo) {
+    var el = document.getElementById('evalMsg');
+    el.className = 'eval-msg on ' + (tipo || 'exito');
+    el.textContent = texto;
+    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function guardarEvaluacion() {
+    var datos = recolectarEvaluacion();
+    var minimoTexto = (datos.ver || '').trim() + (datos.actuar || '').trim();
+    if (minimoTexto.length < 30) {
+      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos "El Ver" y "El Actuar" merecen unos renglones honestos.', 'error');
+      return;
+    }
+
+    // Guardar en Supabase (siempre queda en tu bitácora)
+    if (!sesion) { window.location.href = '/login'; return; }
+    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario', {
+      method: 'POST',
+      headers: Object.assign({}, supaHeaders(), { 'Prefer': 'resolution=merge-duplicates' }),
+      body: JSON.stringify({
+        itinerario_id: ITINERARIO_ID,
+        respuestas: datos,
+        compartir_con_equipo: datos.compartir_con_equipo === true
+      })
+    })
+    .then(function(r) {
+      if (r.ok) {
+        var msg = datos.compartir_con_equipo
+          ? '✓ Evaluación guardada en tu bitácora y compartida con el equipo PLAPA. Gracias por el aporte.'
+          : '✓ Evaluación guardada en tu bitácora. Queda solo con vos.';
+        mostrarEvalMsg(msg, 'exito');
+      } else {
+        mostrarEvalMsg('Guardado localmente. No pudimos sincronizar con la Escuela — reintentá más tarde.', 'error');
+      }
+    })
+    .catch(function() {
+      mostrarEvalMsg('Guardado localmente. Sin conexión con la Escuela — reintentá cuando tengas internet.', 'error');
+    });
+  }
+
+  function imprimirEvaluacion() {
+    autoguardarBorrador();
+    window.print();
+  }
+
+  // Init general del itinerario
+  document.addEventListener('DOMContentLoaded', function() {
+    // Leer sesión (el guard del <head> garantiza que existe)
+    try {
+      var stored = localStorage.getItem('escuela_plapa_sesion');
+      if (stored) sesion = JSON.parse(stored);
+    } catch (e) {}
+    // Cargar muro
+    cargarComentarios();
+
+    // Restaurar borrador de evaluación si existe
+    restaurarEvaluacion();
+
+    // Autoguardado del borrador de evaluación al escribir (con debounce)
+    var evalTimeout;
+    document.querySelectorAll('#m6 [data-eval], #m6 #evalCompartir').forEach(function(el) {
+      el.addEventListener('input', function() {
+        clearTimeout(evalTimeout);
+        evalTimeout = setTimeout(autoguardarBorrador, 500);
+      });
+      el.addEventListener('change', autoguardarBorrador);
+    });
+  });
+</script>
+
+</body>
+</html>
