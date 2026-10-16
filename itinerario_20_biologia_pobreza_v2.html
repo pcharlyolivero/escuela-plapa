@@ -24,7 +24,7 @@
     --borde:      #E4E2F0;
 
     --font-serif: "Georgia", "Times New Roman", serif;
-    --font-sans:  "system-ui", -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+    --font-sans:  system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -772,7 +772,7 @@
   }
   .foro-form textarea:focus,
   .foro-form select:focus {
-    outline: none;
+    outline: 2px solid transparent;
     border-color: var(--i20-medio);
   }
   .foro-form-actions {
@@ -1009,7 +1009,18 @@
   .eval-q {
     margin-bottom: 1.5rem;
   }
-  .eval-q > label {
+  fieldset.eval-scale {
+    border: 0;
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+    min-width: 0;
+  }
+  .eval-q > legend {
+    padding: 0;
+  }
+  .eval-q > label,
+  .eval-q > legend {
     display: block;
     font-size: 14px;
     font-weight: 500;
@@ -1033,7 +1044,7 @@
   }
   .eval-q textarea:focus,
   .eval-q input:focus {
-    outline: none;
+    outline: 2px solid transparent;
     border-color: var(--i20-medio);
     box-shadow: 0 0 0 3px rgba(60, 52, 137, 0.1);
   }
@@ -1063,6 +1074,10 @@
     position: absolute;
     opacity: 0;
     pointer-events: none;
+  }
+  .eval-radio input:focus-visible + span {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
   }
   .eval-radio span {
     display: block;
@@ -1155,7 +1170,10 @@
     .root { box-shadow: none; padding: 1rem; max-width: 100%; }
     .portada, .video-wrap, .mode-selector, .nav { display: none !important; }
     .card { display: none !important; }
-    #m6.card { display: block !important; break-inside: avoid; border: none; }
+    #m6.card { display: block !important; border: none; }
+    .eval-q { break-inside: avoid; }
+    .video-wrap, .top-header, .foro-vista { display: none !important; }
+    .eval-q textarea { overflow: visible; resize: none; }
     .eval-actions, .eval-msg { display: none !important; }
     .ch { background: transparent; }
     .eval-q textarea, .eval-q input[type="date"] {
@@ -1207,11 +1225,11 @@
 
     <div class="dest-box">
       <div class="dest-lbl">Destinatarios</div>
-      <div class="dest-txt">Equipos interdisciplinarios, coordinadores de centros barriales y agentes pastorales que acompañan personas en contextos de exclusión extrema. Especialmente útil para quienes trabajan con adolescentes, mujeres embarazadas o madres en situación de consumo, y para agentes que necesitan comprender por qué en los territorios de mayor pobreza las adicciones son más severas y más rápidas. No requiere formación médica: el itinerario traduce el §9.4 al lenguaje del acompañamiento pastoral situado. Cierra el bloque de biología (Itinerarios 18–19–20) con la mirada sobre las poblaciones más vulnerables.</div>
+      <div class="dest-txt">Equipos interdisciplinarios, coordinadores de centros barriales y agentes pastorales que acompañan personas en contextos de exclusión extrema. Especialmente útil para quienes trabajan con adolescentes, mujeres embarazadas o madres en situación de consumo, y para agentes que necesitan comprender por qué en los territorios de mayor pobreza las adicciones son más severas y más rápidas. No requiere formación médica: el itinerario traduce el §9.4 al lenguaje del acompañamiento pastoral situado. Cierra el bloque de Sustancias y biología con la mirada sobre las poblaciones más vulnerables.</div>
     </div>
 
     <div class="portada-pills">
-      <span class="portada-pill">§9.4.1 · §9.4.2 · §9.4.3 · §9.4.4 · §9.4.5</span>
+      <span class="portada-pill">§9.4.1 · §9.4.2 · §9.4.3 · §9.4.4 · §9.4.5 · §9.4.6</span>
       <span class="portada-pill">4 módulos</span>
       <span class="portada-pill">Equipos territoriales</span>
       <span class="portada-pill">Nivel intermedio</span>
@@ -1221,15 +1239,14 @@
 
   <!-- ═══ VIDEO ═══════════════════════════════════════════ -->
   
-  <!-- NUEVO: Bloque del Video de Presentación Incrustado -->
-<div style="background: var(--surface-2); border: 0.5px solid var(--border); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
-  <p style="font-size: 11px; font-weight: 500; color: #085041; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; text-align: left;">
+<div class="video-wrap" style="background: #FFF; border: 1px solid var(--borde); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
+  <p style="font-size: 11px; font-weight: 500; color: var(--i20-oscuro); letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; text-align: left;">
     ▶️ Video de presentación
   </p>
   <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px;">
     <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
       src="https://www.youtube.com/embed/_9Qq25mfm9Q"
-      title="Presentación del Itinerario 20" 
+      title="Video de presentación: Biología, pobreza y vulnerabilidad — Itinerario 20" 
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
       allowfullscreen>
     </iframe>
@@ -1238,8 +1255,8 @@
 
   <!-- ═══ SELECTOR DE MODALIDAD ═══════════════════════════ -->
   <div class="mode-selector">
-    <button class="mode-btn on" onclick="setMode('grupal', this)">👥 Hacer en comunidad</button>
-    <button class="mode-btn" onclick="setMode('individual', this)">👤 Hacer de forma individual</button>
+    <button class="mode-btn on" aria-pressed="true" onclick="setMode('grupal', this)">👥 Hacer en comunidad</button>
+    <button class="mode-btn" aria-pressed="false" onclick="setMode('individual', this)">👤 Hacer de forma individual</button>
   </div>
 
   <!-- ═══ NAVEGACIÓN ══════════════════════════════════════ -->
@@ -1258,45 +1275,45 @@
     <div class="ch">
       <span class="cn">Módulo 1 · El Ver</span>
       <div class="ct">La cicatriz biológica de la exclusión: por qué los más pobres son los más vulnerables</div>
-      <div class="cs">Pobreza, estrés crónico y biología de la vulnerabilidad · §9.4 (introducción), §9.5.1</div>
+      <div class="cs">Pobreza, estrés crónico y biología de la vulnerabilidad · §9.4 (introducción), §9.4.6</div>
     </div>
     <div class="cb">
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"La vulnerabilidad biológica y social no es un fenómeno uniforme. El impacto de las sustancias varía profundamente según el ciclo vital, el sexo y el contexto del individuo. En los territorios de mayor exclusión, la pobreza estructural y los vínculos de apego inseguros debilitan la personalidad, creando la grieta existencial donde se instala la adicción."</div>
-      </div>
-
-      <div class="pl">El Juzgar — Las tres cicatrices biológicas de la exclusión (§9.4)</div>
-      <div class="ejes">
-        <div class="eje">
-          <div class="eje-n">Cicatriz 1 · Sistema nervioso alterado</div>
-          <div class="eje-t">La cicatriz del estrés crónico</div>
-          <div class="eje-txt">La pobreza extrema genera estrés crónico que altera físicamente el eje hipotalámico-hipofisario-adrenal. El organismo en alerta permanente produce cortisol de manera sostenida, dañando la memoria, el sistema inmunológico y la capacidad de regulación emocional. <em>La biología del pobre no es la misma que la del que vive en condiciones de estabilidad.</em></div>
-        </div>
-        <div class="eje">
-          <div class="eje-n">Cicatriz 2 · Adaptación al hostil</div>
-          <div class="eje-t">La apuesta neurológica por el corto plazo</div>
-          <div class="eje-txt">En contextos de escasez extrema, el cerebro desarrolla una adaptación evolutiva: <em>priorizar la recompensa inmediata sobre la planificación futura</em>. Esa misma adaptación que permite sobrevivir en entornos hostiles <em>aumenta la vulnerabilidad ante sustancias</em> que ofrecen gratificación inmediata.</div>
-        </div>
-        <div class="eje">
-          <div class="eje-n">Cicatriz 3 · Vínculo herido</div>
-          <div class="eje-t">La grieta del apego inseguro</div>
-          <div class="eje-txt">Los vínculos de apego inseguros en la infancia —generados por cuidadores traumatizados o ausentes— dejan una cicatriz biológica en los circuitos de regulación emocional. <em>El hermano que llega a la adicción no siempre viene de una familia que "no lo cuidó": muchas veces viene de una familia que tampoco fue cuidada.</em></div>
-        </div>
+        <div class="resonancia-txt">«En contextos de exclusión, la biología del sujeto no permanece indemne; por el contrario, el ambiente de carencia escribe una “biografía química” en el cerebro, alterando los mecanismos naturales del placer y la recompensa mucho antes del primer contacto con una sustancia».</div>
       </div>
 
       <div class="pl">El Ver — Realidad</div>
       <ul class="pts">
-        <li><span class="dot">V</span><span><strong>La misma sustancia en dosis iguales no produce el mismo efecto.</strong> El §9.4 abre con una afirmación que cambia todo el encuadre del abordaje territorial: <em>"el impacto de las sustancias psicoactivas varía profundamente según el ciclo vital, el sexo y el contexto del individuo."</em> La misma sustancia en dosis iguales produce efectos radicalmente distintos <em>en un adolescente varón de 14 años que creció en un barrio de exclusión extrema, y en un adulto de 40 años con red familiar y acceso a salud</em>. El mapa biológico de la vulnerabilidad no es uniforme.</span></li>
-        <li><span class="dot">V</span><span><strong>El organismo del excluido ha sido biológicamente modificado por la exclusión.</strong> El §9.4 sitúa su análisis <em>"en el contexto territorial, evaluando el impacto del narcotráfico, la situación de calle y la exclusión estructural, factores que obligan a trascender el enfoque meramente clínico hacia un acompañamiento integral, humanizado y situado en la realidad de los más descartados."</em> La biología no se puede separar del contexto: el organismo de quien vive en un territorio de exclusión extrema <em>ha sido biológicamente modificado por esa exclusión</em>.</span></li>
-        <li><span class="dot">V</span><span><strong>La "cicatriz biológica" no es metáfora: es dato clínico medible.</strong> El estrés crónico de la pobreza extrema produce cambios medibles en el <em>eje neuroendocrino (cortisol), en la arquitectura del hipocampo (memoria) y en los circuitos prefrontales (control de impulsos)</em>. El hermano que creció en un barrio con violencia permanente, hambre e inestabilidad vincular <em>tiene literalmente un sistema nervioso diferente</em> al de alguien que creció en condiciones de estabilidad.</span></li>
+        <li><span class="dot">V</span><span><strong>La misma sustancia en dosis iguales no produce el mismo efecto.</strong> El §9.4 abre con una afirmación que cambia todo el encuadre del abordaje territorial: <em>«el impacto de las sustancias psicoactivas (SPA) varía profundamente según el ciclo vital, el sexo y el contexto del individuo»</em>. La misma sustancia en dosis iguales produce efectos radicalmente distintos <em>en un adolescente varón de 14 años que creció en un barrio de exclusión extrema, y en un adulto de 40 años con red familiar y acceso a salud</em>. El mapa biológico de la vulnerabilidad no es uniforme.</span></li>
+        <li><span class="dot">V</span><span><strong>El organismo del excluido ha sido biológicamente modificado por la exclusión.</strong> El §9.4 sitúa su análisis <em>«en el contexto territorial, evaluando el impacto del narcotráfico, la situación de calle y la exclusión estructural, factores que obligan a trascender el enfoque meramente clínico hacia un acompañamiento integral, humanizado y situado en la realidad de los más descartados»</em>. La biología no se puede separar del contexto: el organismo de quien vive en un territorio de exclusión extrema <em>ha sido biológicamente modificado por esa exclusión</em>. El §9.4.6 lo llama <em>«la cicatriz biológica de la exclusión»</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>La «cicatriz biológica» no es solo una metáfora.</strong> El §9.4.6 responde a quien cree que la pobreza es solo un factor social: <em>«La pobreza se traduce en una alteración orgánica visible. El maltrato y la insatisfacción de las necesidades básicas influyen en la expresión de los genes y debilitan la solidez de la personalidad»</em>. Agrega que el estrés prolongado en la infancia afecta la maduración de la corteza prefrontal y deja <em>«deficiencias estructurales que dificultan la capacidad de decir “no” al impulso»</em>. El hermano que creció en un barrio con violencia permanente, hambre e inestabilidad vincular <em>llega al consumo con un sistema nervioso ya condicionado por ese entorno</em>.</span></li>
       </ul>
+
+      <div class="pl">El Juzgar — La cicatriz biológica de la exclusión: tres mecanismos (§9.4.6)</div>
+      <div class="ejes">
+        <div class="eje">
+          <div class="eje-n">Mecanismo 1 · Receptores D2</div>
+          <div class="eje-t">El «vacío biológico»</div>
+          <div class="eje-txt">El estrés constante de la supervivencia provoca una baja en la densidad de los receptores de dopamina D2. Se genera un <em>«vacío biológico»</em> en el que el sistema de recompensa <em>es incapaz de procesar el placer de estímulos naturales</em>. <em>La biología de quien vive en la exclusión no es la misma que la de quien vive en condiciones de estabilidad.</em></div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Mecanismo 2 · Autoterapia</div>
+          <div class="eje-t">La droga como compensación</div>
+          <div class="eje-txt">Ante ese déficit de placer, las SPA aparecen como una forma de <em>anestesiar la amargura y la ansiedad</em>. La droga no llega a un cerebro neutro: <em>llega a un cerebro que ya sufría la carencia</em>.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Mecanismo 3 · Alerta permanente</div>
+          <div class="eje-t">La hipervigilancia nerviosa</div>
+          <div class="eje-txt">El estrés crónico mantiene a la persona en un estado de hipervigilancia que <em>empuja al cerebro a buscar una vía de escape o anestesia en la droga</em>. El entorno hostil acelera así el paso hacia la dependencia severa.</div>
+        </div>
+      </div>
 
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>La fragilidad biológica no es debilidad moral: es exigencia de justicia estructural.</strong> La comprensión biológica de la vulnerabilidad territorializada no elimina la responsabilidad personal: <em>la transforma en una exigencia de justicia estructural</em>. <em>"La ciencia permite comprender que la fragilidad biológica no es debilidad moral: es el resultado de condiciones de vida que el sujeto no eligió y que el Estado tiene la obligación de transformar"</em> (§9.4, introducción). El agente que entiende eso puede <em>acompañar sin culpar y puede denunciar sin relativizar</em>.</span></li>
-        <li><span class="dot j">J</span><span><strong>El dato que más debería sorprender: 8 o 9 años como edad de inicio.</strong> El §9.5.1 añade el dato que más debería sorprender a los diseñadores de programas de prevención: <em>"Las estadísticas disponibles respecto de los ingresos a dispositivos de tratamiento en las periferias latinoamericanas señalan que el inicio del consumo en muchos casos se produce a los 8 o 9 años, en lugar del promedio nacional de 13 a 15."</em> La biología de la vulnerabilidad territorializada <em>empieza antes de lo que cualquier programa de prevención convencional alcanza</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>La fragilidad biológica no es debilidad moral: es exigencia de justicia estructural.</strong> La comprensión biológica de la vulnerabilidad territorializada no elimina la responsabilidad personal: <em>la transforma en una exigencia de justicia estructural</em>. El §9.4.6 lo formula desde la pastoral: <em>«desde la pastoral definimos la adicción como el síntoma de una fractura interna o un dolor profundo que el individuo intenta compensar»</em>. La fragilidad biológica no es debilidad moral: nace de condiciones de vida que el sujeto no eligió. El agente que entiende eso puede <em>acompañar sin culpar y puede denunciar sin relativizar</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>El dato que más debería sorprender: 8 o 9 años como edad de inicio.</strong> El §4.1 recoge el dato que más debería sorprender a los diseñadores de programas de prevención: <em>«Las crónicas territoriales coinciden en reportar casos de inicio del consumo en barrios populares desde los 8 o 9 años de edad, una realidad que contrasta con las estadísticas nacionales —que suelen situar el promedio de inicio entre los 13 y 15 años— […]»</em>. La biología de la vulnerabilidad territorializada <em>empieza antes de lo que cualquier programa de prevención convencional alcanza</em>.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1306,7 +1323,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Mapear la cicatriz biológica del territorio</div>
         <div class="mode-g">
-          <div class="act-body">El grupo reflexiona: <em>¿qué condiciones del territorio (violencia crónica, hambre, inestabilidad habitacional, ausencia de cuidadores estables) generan estrés crónico en los niños? ¿a qué edad empieza la exposición a esas condiciones? ¿hay herramientas de prevención en el territorio que llegan antes de los 10 años?</em> El diagnóstico de la cicatriz biológica no es para aumentar la angustia: <em>es para diseñar respuestas que lleguen donde y cuando la biología lo necesita</em>.</div>
+          <div class="act-body">El grupo reflexiona: <em>¿qué condiciones del territorio (violencia crónica, hambre, inestabilidad habitacional, ausencia de cuidadores estables) generan estrés crónico en los niños? ¿A qué edad empieza la exposición a esas condiciones? ¿Hay herramientas de prevención en el territorio que llegan antes de los 10 años?</em> El diagnóstico de la cicatriz biológica no es para aumentar la angustia: <em>es para diseñar respuestas que lleguen donde y cuando la biología lo necesita</em>.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Anotá en tu bitácora <em>tres condiciones específicas</em> del territorio donde trabajás que generan estrés crónico en niños y niñas menores de 10 años. Al lado de cada una, <em>¿qué respuesta comunitaria actual la aborda?</em> Los huecos que aparecen son el mapa de la próxima agenda de tu equipo.</div>
@@ -1318,7 +1335,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">La biología como argumento de justicia</div>
         <div class="mode-g">
-          <div class="act-body">El grupo practica la reformulación del argumento: <em>¿cómo explicamos a un funcionario, a un donante o a una Conferencia Episcopal que la prevención en contextos de exclusión extrema tiene que empezar antes de los 10 años y que el formato "charla en la escuela secundaria" llega tarde?</em> Los datos del §9.4 son el argumento técnico. El equipo elige también <em>el argumento pastoral más apropiado para cada destinatario</em>.</div>
+          <div class="act-body">El grupo practica la reformulación del argumento: <em>¿cómo explicamos a un funcionario, a un donante o a una Conferencia Episcopal que la prevención en contextos de exclusión extrema tiene que empezar antes de los 10 años y que el formato «charla en la escuela secundaria» llega tarde?</em> Los datos del §9.4 son el argumento técnico. El equipo elige también <em>el argumento pastoral más apropiado para cada destinatario</em>.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Escribí en tu bitácora un párrafo de <em>150 palabras máximo</em> para presentar la biología de la vulnerabilidad como argumento de justicia estructural, dirigido al destinatario que necesitás convencer esta semana. Ese es tu insumo listo para la próxima reunión con autoridades o donantes.</div>
@@ -1330,7 +1347,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">La comunidad como agente de neuroplasticidad positiva</div>
         <div class="mode-g">
-          <div class="act-body">El grupo identifica los <em>elementos concretos del dispositivo</em> que operan como <em>agentes de neuroplasticidad positiva</em> para niños y adolescentes del territorio: vínculos adultos estables y confiables · rutinas predecibles · rituales comunitarios · experiencias de éxito y celebración · silencio y contemplación · servicio a otros. Cada uno de esos elementos <em>reescribe el cableado biológico</em> heredado de la exclusión. Nombrar eso da al equipo la certeza de que <em>está haciendo trabajo neurobiológico</em>, aunque nunca lo hayan pensado así.</div>
+          <div class="act-body">El grupo identifica los <em>elementos concretos del dispositivo</em> que operan como <em>agentes de neuroplasticidad positiva</em> para niños y adolescentes del territorio: vínculos adultos estables y confiables · rutinas predecibles · rituales comunitarios · experiencias de éxito y celebración · silencio y contemplación · servicio a otros. Cada uno de esos elementos <em>puede ayudar a reconstruir circuitos</em> marcados por la exclusión. Nombrar eso da al equipo la certeza de que <em>está haciendo trabajo neurobiológico</em>, aunque nunca lo hayan pensado así.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Anotá en tu bitácora <em>tres momentos de la semana pasada</em> en que hayas ofrecido a un niño o adolescente del territorio un vínculo estable, una rutina predecible o una experiencia de celebración. Esos momentos fueron <em>estímulos neuroplásticos concretos</em>. La tarea pastoral cotidiana <em>ya es intervención biológica</em>, aunque no se llame así.</div>
@@ -1338,22 +1355,22 @@
       </div>
 
       <div class="cita">
-        <div class="cita-lbl">Cita inspiradora · §9.4 (introducción)</div>
-        <div class="cita-txt">"El estudio se sitúa en el contexto territorial, evaluando el impacto del narcotráfico, la situación de calle y la exclusión estructural, factores que obligan a trascender el enfoque meramente clínico hacia un acompañamiento integral, humanizado y situado en la realidad de los más descartados."</div>
-        <div class="cita-ref">Manual de la PLAPA, §9.4 — Diferencias según la etapa en el ciclo vital (CELAM 2026)</div>
+        <div class="cita-lbl">Cita inspiradora · §9.4.6</div>
+        <div class="cita-txt">«No existe igualdad biológica ante el riesgo. El “capital de recuperación” de una persona en pobreza es menor, y su sistema nervioso ya está condicionado por un entorno hostil que acelera el paso hacia la dependencia severa».</div>
+        <div class="cita-ref">Manual de la PLAPA, §9.4.6 — Mayor vulnerabilidad biológica en la pobreza y el estrés crónico (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Alerta pastoral</div>
-        <div class="alerta-txt">La <em>"cicatriz biológica"</em> puede leerse como <em>determinismo genético</em>: <em>"si el cerebro del pobre está dañado desde chico, entonces no hay nada que hacer."</em> El Manual no dice eso. La neuroplasticidad (§9.3.3) opera en <em>ambas direcciones</em>: la misma biología que registró la cicatriz puede <em>reconstruir circuitos con acompañamiento adecuado</em>. La cicatriz explica la vulnerabilidad y orienta la respuesta; <em>no la cancela</em>. El fatalismo biológico es la caricatura conservadora de un descubrimiento que en realidad exige más acción, no menos.</div>
+        <div class="alerta-txt">La <em>«cicatriz biológica»</em> puede leerse como <em>determinismo genético</em>: <em>«si el cerebro del pobre está dañado desde chico, entonces no hay nada que hacer»</em>. El Manual no dice eso. La neuroplasticidad (§9.3.3) opera en <em>ambas direcciones</em>: la misma biología que registró la cicatriz puede <em>reconstruir circuitos con acompañamiento adecuado</em>. La cicatriz explica la vulnerabilidad y orienta la respuesta; <em>no la cancela</em>. Leerla así es hacer una caricatura fatalista de un descubrimiento que en realidad exige más acción, no menos.</div>
       </div>
 
       <div class="autocuidado">
         <div class="autocuidado-lbl">Autocuidado del agente</div>
-        <div class="autocuidado-txt">El diagnóstico de la cicatriz biológica de la exclusión puede generar en el equipo una sensación de impotencia: <em>"si la biología misma está dañada, ¿qué podemos hacer nosotros?"</em> El facilitador recuerda que <em>la comunidad que ofrece vínculos estables, presencia cotidiana y experiencias nuevas es un agente de neuroplasticidad positiva</em>. La biología no condena: <em>orienta la respuesta</em>. El equipo que está en el territorio hace intervención biológica de primer nivel <em>cada vez que sostiene un vínculo</em>.</div>
+        <div class="autocuidado-txt">El diagnóstico de la cicatriz biológica de la exclusión puede generar en el equipo una sensación de impotencia: <em>«si la biología misma está dañada, ¿qué podemos hacer nosotros?»</em> El facilitador recuerda que <em>la comunidad que ofrece vínculos estables, presencia cotidiana y experiencias nuevas es un agente de neuroplasticidad positiva</em>. La biología no condena: <em>orienta la respuesta</em>. El equipo que está en el territorio también hace intervención biológica <em>cada vez que sostiene un vínculo</em>.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §9.4 (introducción), §9.5.1 (inicio precoz en periferias), §9.3.3 (neuroplasticidad) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §9.4 (Diferencias según la etapa en el ciclo vital, por sexo y por contexto), §9.4.6 (Mayor vulnerabilidad biológica en la pobreza y el estrés crónico), §4.1 (Nuestros barrios: inicio del consumo a los 8 o 9 años), §9.3.3 (neuroplasticidad) — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1368,38 +1385,38 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"El cerebro no completa su maduración hasta los 25 años. La corteza prefrontal —responsable de evaluar riesgos, tomar decisiones y controlar impulsos— es la última zona en madurar. Existe una brecha crítica entre la ley y la biología: la mayoría de edad legal se fija a los 18 años, pero el centro neurológico de evaluación de riesgos no está consolidado hasta los 25."</div>
-      </div>
-
-      <div class="pl">El Juzgar — Los tres factores del cerebro adolescente (§9.4.1, §9.4.2)</div>
-      <div class="ejes">
-        <div class="eje">
-          <div class="eje-n">Factor 1 · Falta de hardware</div>
-          <div class="eje-t">Inmadurez del freno biológico</div>
-          <div class="eje-txt">La corteza prefrontal es la última zona en madurar (~<strong>25 años</strong>). Sin ese freno consolidado, el adolescente carece de la capacidad orgánica para medir consecuencias a largo plazo. <em>No es falta de voluntad: es falta de hardware biológico.</em></div>
-        </div>
-        <div class="eje">
-          <div class="eje-n">Factor 2 · Aprender rápido lo peor</div>
-          <div class="eje-t">Alta neuroplasticidad como riesgo</div>
-          <div class="eje-txt">El cerebro joven aprende con <em>velocidad y fuerza excepcionales</em>. Las SPA usan los mismos mecanismos de la memoria: el cerebro <em>"aprende" a ser adicto mucho más rápido que el adulto</em>. Lo que se aprende antes de los 17 años tiende a permanecer con mayor fuerza.</div>
-        </div>
-        <div class="eje">
-          <div class="eje-n">Factor 3 · Recompensa amplificada</div>
-          <div class="eje-t">Hiperreactividad del circuito de recompensa</div>
-          <div class="eje-txt">Las ráfagas dopaminérgicas de las SPA son <em>hasta 10 veces superiores</em> a los estímulos naturales. En un cerebro sediento de novedades, esa intensidad <em>"enseña" al organismo a priorizar la sustancia</em> por encima de cualquier otro aprendizaje sano.</div>
-        </div>
+        <div class="resonancia-txt">«[…] la neurociencia establece que el cerebro continúa desarrollándose hasta los 25 años. La corteza prefrontal —responsable de evaluar situaciones, tomar decisiones razonadas y controlar los impulsos— es la última zona en madurar».</div>
       </div>
 
       <div class="pl">El Ver — Realidad</div>
       <ul class="pts">
-        <li><span class="dot">V</span><span><strong>"A los 18 ya debería saber lo que hace" — la objeción refutada.</strong> El §9.4.1 refuta la objeción más frecuente de adultos y familias. La respuesta del Manual es precisa: <em>"existe una brecha crítica entre la ley y la biología. Tratar a un joven como un adulto maduro en términos biológicos es un error técnico: la neurociencia demuestra que el centro de evaluación de riesgos no está consolidado hasta los 25 años, independientemente de lo que establezca la legislación."</em></span></li>
-        <li><span class="dot">V</span><span><strong>La precocidad es determinante: 17% de TUS en quienes inician en adolescencia.</strong> <em>"La precocidad es determinante. El aprendizaje adictivo antes de los 18 años se graba en la arquitectura cerebral con una fuerza desmedida, haciendo que la dependencia sea más severa, más duradera y potencialmente generadora de daños estructurales permanentes"</em> (§9.4.1). En los territorios donde el consumo empieza a los 8 o 9 años, <em>ese daño estructural se produce en un cerebro que recién está construyendo sus circuitos básicos</em>.</span></li>
-        <li><span class="dot">V</span><span><strong>El consumo no solo daña: roba tiempo de aprendizaje irrecuperable.</strong> El §9.4.2 añade una dimensión que el agente de prevención necesita conocer: <em>"La ráfaga masiva de dopamina cambia la conectividad de las neuronas, facilitando que el joven repita el consumo de forma automática. Esto desplaza el aprendizaje de habilidades sociales y emocionales necesarias para la vida adulta, secuestrando la capacidad de crecimiento del individuo."</em> El adolescente que consume <em>no solo daña su cerebro: roba tiempo de aprendizaje que no puede recuperarse</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>«A los 18 ya debería saber lo que hace» — la objeción refutada.</strong> El §9.4.1 refuta la objeción más frecuente de adultos y familias. La respuesta del Manual es precisa: <em>«existe una brecha crítica entre la ley y la biología. Tratar a un joven como un adulto maduro en términos biológicos es un error técnico: la neurociencia demuestra que el centro de evaluación de riesgos no está consolidado hasta los 25 años, independientemente de lo que establezca la legislación»</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>La precocidad es determinante.</strong> <em>«La precocidad es determinante. El aprendizaje adictivo antes de los 18 años se graba en la arquitectura cerebral con una fuerza desmedida, haciendo que la dependencia sea más severa, más duradera y potencialmente generadora de daños estructurales permanentes»</em> (§9.4.1). En los territorios donde el consumo empieza a los 8 o 9 años, <em>ese daño estructural se produce en un cerebro que recién está construyendo sus circuitos básicos</em>. En el caso del cannabis, el §9.1.4 señala que el trastorno por uso alcanza al 17 % de quienes inician en la adolescencia, frente al 9 % del total de consumidores.</span></li>
+        <li><span class="dot">V</span><span><strong>El consumo no solo daña: roba tiempo de aprendizaje irrecuperable.</strong> El §9.4.2 añade una dimensión que el agente de prevención necesita conocer: <em>«La ráfaga masiva de dopamina cambia la conectividad de las neuronas, facilitando que el joven repita el consumo de forma automática. Esto desplaza el aprendizaje de habilidades sociales y emocionales necesarias para la vida adulta, secuestrando la capacidad de crecimiento del individuo»</em>. El adolescente que consume <em>no solo daña su cerebro: roba tiempo de aprendizaje que no puede recuperarse</em>.</span></li>
       </ul>
+
+      <div class="pl">El Juzgar — Los tres factores del cerebro adolescente (§9.4.1, §9.4.2)</div>
+      <div class="ejes">
+        <div class="eje">
+          <div class="eje-n">Factor 1 · Falta de equipo biológico</div>
+          <div class="eje-t">Inmadurez del freno biológico</div>
+          <div class="eje-txt">La corteza prefrontal es la última zona en madurar (~<strong>25 años</strong>). Sin ese freno consolidado, el adolescente carece de la capacidad orgánica para medir consecuencias a largo plazo. <em>No es falta de voluntad: es falta del equipo biológico completo.</em></div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Factor 2 · Aprender rápido lo peor</div>
+          <div class="eje-t">Alta neuroplasticidad como riesgo</div>
+          <div class="eje-txt">El cerebro joven aprende con <em>velocidad y fuerza excepcionales</em>. Las SPA usan los mismos mecanismos de la memoria: el cerebro <em>«aprende» a ser adicto mucho más rápido que el adulto</em>. Lo que se aprende antes de los 17 años tiende a permanecer con mayor fuerza.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Factor 3 · Recompensa amplificada</div>
+          <div class="eje-t">Hiperreactividad del circuito de recompensa</div>
+          <div class="eje-txt">Las ráfagas dopaminérgicas de las SPA son <em>hasta 10 veces superiores</em> a los estímulos naturales. En un cerebro sediento de novedades, esa intensidad <em>«enseña» al organismo a priorizar la sustancia</em> por encima de cualquier otro aprendizaje sano.</div>
+        </div>
+      </div>
 
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>El narco que recluta a niños explota vulnerabilidad biológica documentada.</strong> <em>"El entorno es crucial, pero la vulnerabilidad biológica potencia los riesgos ambientales. Un cerebro en desarrollo expuesto a un entorno de oferta de drogas es incomparablemente más propenso a sufrir una neuroadaptación que un cerebro maduro en las mismas circunstancias"</em> (§9.4.1). El narco que reclu­ta a niños de 8 o 9 años <em>no está apelando a su "libre elección"</em>: está explotando una vulnerabilidad biológica real y documentada. Nombrar eso <em>es una forma de caridad política</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>El narco que recluta a niños explota vulnerabilidad biológica documentada.</strong> <em>«El entorno es crucial, pero la vulnerabilidad biológica potencia los riesgos ambientales. Un cerebro en desarrollo expuesto a un entorno de oferta de drogas es incomparablemente más propenso a sufrir una neuroadaptación que un cerebro maduro en las mismas circunstancias»</em> (§9.4.1). El narcotráfico que recluta a niños de entre 12 y 16 años (§4.5) <em>no está apelando a su «libre elección»</em>: está explotando una vulnerabilidad biológica real y documentada. Nombrar eso <em>es una forma de caridad política</em>.</span></li>
         <li><span class="dot j">J</span><span><strong>La comunidad como entorno de aprendizaje sustitutivo.</strong> La sustitución de circuitos sanos del §9.4.2 tiene consecuencias pastorales directas: el adolescente que aprendió la adicción durante los años en que debería haber aprendido habilidades sociales y emocionales necesita <em>que el acompañamiento pastoral ofrezca precisamente eso</em>: un entorno de aprendizaje social y emocional sustitutivo. La comunidad <em>no reemplaza el tiempo perdido, pero puede ofrecer un espacio de reaprendizaje</em> que la biología todavía puede aprovechar.</span></li>
       </ul>
 
@@ -1410,10 +1427,10 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Explicar la brecha ley-biología a padres y docentes</div>
         <div class="mode-g">
-          <div class="act-body">El grupo diseña la explicación de la brecha entre <em>mayoría de edad legal (18 años) y madurez biológica de la corteza prefrontal (~25 años)</em> para comunicarla a padres y docentes. <em>¿Qué consecuencias tiene esa brecha para la prevención? ¿para la respuesta judicial? ¿para el acompañamiento pastoral de jóvenes que "ya son adultos" según la ley pero que biológicamente todavía tienen el cerebro en construcción?</em></div>
+          <div class="act-body">El grupo diseña la explicación de la brecha entre <em>mayoría de edad legal (18 años) y madurez biológica de la corteza prefrontal (~25 años)</em> para comunicarla a padres y docentes. <em>¿Qué consecuencias tiene esa brecha para la prevención? ¿Para la respuesta judicial? ¿Para el acompañamiento pastoral de jóvenes que «ya son adultos» según la ley pero que biológicamente todavía tienen el cerebro en construcción?</em></div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Anotá en tu bitácora tu explicación en <em>dos frases</em> de la brecha ley-biología, dirigida a un padre o una docente. La próxima vez que alguien te diga <em>"a los 18 ya tenía que hacerse cargo"</em>, tenés la respuesta lista y precisa.</div>
+          <div class="act-body">Anotá en tu bitácora tu explicación en <em>dos frases</em> de la brecha ley-biología, dirigida a un padre o una docente. La próxima vez que alguien te diga <em>«a los 18 ya tenía que hacerse cargo»</em>, tenés la respuesta lista y precisa.</div>
         </div>
       </div>
 
@@ -1422,7 +1439,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">La prevención como oferta de circuitos alternativos</div>
         <div class="mode-g">
-          <div class="act-body">El §9.4.2 muestra que el consumo <em>"desplaza el aprendizaje de habilidades sociales y emocionales."</em> El grupo reflexiona: <em>¿qué espacios del dispositivo ofrecen exactamente eso —habilidades sociales y emocionales— que el consumo desplazó? ¿el deporte? ¿el arte? ¿los grupos de pares con proyectos comunes? ¿la experiencia de servicio a otros?</em> Diseñar o fortalecer uno de esos espacios para el territorio concreto.</div>
+          <div class="act-body">El §9.4.2 muestra que el consumo <em>«desplaza el aprendizaje de habilidades sociales y emocionales […]»</em>. El grupo reflexiona: <em>¿qué espacios del dispositivo ofrecen exactamente eso —habilidades sociales y emocionales— que el consumo desplazó? ¿El deporte? ¿El arte? ¿Los grupos de pares con proyectos comunes? ¿La experiencia de servicio a otros?</em> Diseñar o fortalecer uno de esos espacios para el territorio concreto.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Anotá en tu bitácora un <em>espacio existente</em> del dispositivo que funciona como oferta de habilidades sociales y emocionales, y uno que <em>podrías crear o fortalecer</em>. Cada uno de esos espacios es literalmente <em>infraestructura de reaprendizaje biológico</em>.</div>
@@ -1434,22 +1451,22 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">La precocidad del consumo en el territorio: diagnóstico urgente</div>
         <div class="mode-g">
-          <div class="act-body"><em>¿A qué edad empieza el consumo en el territorio que el equipo acompaña? ¿hay casos confirmados de inicio de consumo antes de los 12 años? ¿hay niños captados por el narcotráfico como "soldaditos"? ¿qué dispositivos de prevención tienen presencia en ese rango etario?</em> El diagnóstico de la precocidad del consumo <em>es el mapa más urgente</em> para diseñar una respuesta que llegue antes de que la biología haga irreversible el daño.</div>
+          <div class="act-body"><em>¿A qué edad empieza el consumo en el territorio que el equipo acompaña? ¿Hay casos confirmados de inicio de consumo antes de los 12 años? ¿Hay niños captados por el narcotráfico como «soldaditos»? ¿Qué dispositivos de prevención tienen presencia en ese rango etario?</em> El diagnóstico de la precocidad del consumo <em>es el mapa más urgente</em> para diseñar una respuesta que llegue antes de que la biología haga irreversible el daño. Si aparece un niño o adolescente concreto captado por el narcotráfico o en riesgo, <strong>no se guarda el secreto ni se lo aborda en solitario</strong>: aplicá el <em>Protocolo de infancias</em> consolidado al cierre de este módulo.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Anotá en tu bitácora, con honestidad, la edad promedio de inicio de consumo que ves en el territorio y a qué edad tu dispositivo tiene presencia efectiva. La diferencia entre esos dos números es <em>la brecha crítica</em> que tu próximo diseño tiene que reducir.</div>
+          <div class="act-body">Anotá en tu bitácora, con honestidad, la edad promedio de inicio de consumo que ves en el territorio y a qué edad tu dispositivo tiene presencia efectiva. La diferencia entre esos dos números es <em>la brecha crítica</em> que tu próximo diseño tiene que reducir. Si conocés a un niño o adolescente concreto en riesgo (por ejemplo, captado como «soldadito»), no guardes el secreto: seguí el <em>Protocolo de infancias</em> consolidado al cierre de este módulo.</div>
         </div>
       </div>
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §9.4.1</div>
-        <div class="cita-txt">"La inmadurez del 'freno' cerebral genera una incapacidad orgánica para la inhibición; el sistema físico del joven simplemente no responde al deseo de detenerse ante el estímulo masivo de la sustancia. No es solo voluntad: es biología."</div>
-        <div class="cita-ref">Manual de la PLAPA, §9.4.1 — Vulnerabilidad biológica en adolescentes (CELAM 2026)</div>
+        <div class="cita-txt">«No es solo voluntad. La inmadurez del “freno” cerebral genera una incapacidad orgánica para la inhibición; el sistema físico del joven simplemente no responde al deseo de detenerse ante el estímulo masivo de la sustancia».</div>
+        <div class="cita-ref">Manual de la PLAPA, §9.4.1 — Vulnerabilidad biológica aumentada en adolescentes y jóvenes (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Alerta pastoral</div>
-        <div class="alerta-txt">La <em>"brecha ley-biología"</em> puede leerse como <em>excusa para descargar responsabilidad penal</em>: <em>"como el cerebro todavía madura, no se le puede pedir nada."</em> El Manual no dice eso. La responsabilidad legal se construye socialmente y la biología aporta contexto para <em>ajustar la respuesta</em>, no para cancelarla. Un adolescente sigue respondiendo por sus actos; lo que cambia es <em>el marco de acompañamiento</em>, que reconoce la vulnerabilidad y ofrece reaprendizaje en lugar de solo castigo. Distinguir esas dos cosas evita que la neurociencia sea usada como coartada.</div>
+        <div class="alerta-txt">La <em>«brecha ley-biología»</em> puede leerse como <em>excusa para descargar responsabilidad penal</em>: <em>«como el cerebro todavía madura, no se le puede pedir nada»</em>. El Manual no dice eso. La responsabilidad legal se construye socialmente y la biología aporta contexto para <em>ajustar la respuesta</em>, no para cancelarla. Un adolescente sigue respondiendo por sus actos; lo que cambia es <em>el marco de acompañamiento</em>, que reconoce la vulnerabilidad y ofrece reaprendizaje en lugar de solo castigo. Distinguir esas dos cosas evita que la neurociencia sea usada como coartada.</div>
       </div>
 
       <div class="autocuidado">
@@ -1457,7 +1474,19 @@
         <div class="autocuidado-txt">El agente que comprende la vulnerabilidad biológica del cerebro adolescente puede también mirarse con más compasión en sus propios años de juventud. <em>¿Hubo decisiones tomadas antes de los 25 años de las que todavía carga consecuencias?</em> La comprensión biológica de la vulnerabilidad adolescente <em>no excusa: humaniza</em>. Y esa humanización es la base de la empatía que el acompañamiento pastoral de jóvenes necesita como fundamento.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §9.4.1 (Vulnerabilidad biológica en adolescentes), §9.4.2 (Sustitución de circuitos sanos) — CELAM 2026.</div>
+      <div class="alerta">
+        <div class="alerta-lbl">Protocolo de infancias</div>
+        <div class="alerta-txt">Siempre que se detecte riesgo grave para la vida o la integridad de una niña, niño o adolescente —por ejemplo, captación por el narcotráfico como <em>«soldadito»</em>, consumo precoz, violencia, abuso o negligencia severa— se procede así, <strong>sin abordarlo en solitario</strong>:
+          <ul>
+            <li><strong>Activar el protocolo institucional</strong> del dispositivo o parroquia.</li>
+            <li><strong>Articular con los sistemas locales de protección</strong> de niñas, niños y adolescentes.</li>
+            <li><strong>Dar aviso a la autoridad competente</strong> (judicial o administrativa, según el territorio).</li>
+            <li><strong>No se guarda el secreto</strong> si hay riesgo; se procura, cuando es posible, seguir acompañando a la familia o a la madre.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ref">Referencias: Manual de la PLAPA §9.4.1 (Vulnerabilidad biológica aumentada en adolescentes y jóvenes), §9.4.2 (Influencia de la neuroplasticidad en la rapidez del aprendizaje adictivo), §9.1.4 (El cannabis y la baja percepción de riesgo), §4.5 (Las familias y los más chicos) — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1472,13 +1501,20 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"El efecto telescopio es la tendencia demostrada de la mujer a progresar de forma mucho más rápida que el hombre desde el uso inicial hasta el desarrollo de un Trastorno por Uso de Sustancias y la aparición de consecuencias médicas graves. No es debilidad: es biología diferenciada que el sistema no reconoce."</div>
+        <div class="resonancia-txt">«[…] lo que científicamente se define como el efecto telescopio: la tendencia demostrada de la mujer a progresar de forma mucho más rápida que el hombre desde el uso inicial hasta el desarrollo de un Trastorno por Uso de Sustancias (TUS) y la aparición de consecuencias médicas graves».</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">El efecto telescopio · §9.4.3</div>
         <div class="alerta-txt">La mujer recorre en <strong>significativamente menos tiempo</strong> el camino que va del primer consumo al daño orgánico severo. Esa aceleración <em>no se explica por mayor impulsividad ni menor voluntad</em>: tiene <em>cuatro bases biológicas objetivas</em> que la ciencia documenta y que el abordaje pastoral diferenciado (§4.4, §6.6.1–6.6.3, §8.6.1) debe conocer.</div>
       </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>La doble condena que el §4.4 describe tiene ahora su base biológica.</strong> <em>«[…] la mujer es juzgada no solo por el uso de sustancias, sino por el incumplimiento del rol cultural de madre y cuidadora del hogar»</em> (§4.4): la mujer que consume está siendo <em>afectada físicamente a una velocidad mayor que el varón</em>, y al mismo tiempo está siendo <em>juzgada con mayor dureza</em> por un sistema que no reconoce esa diferencia biológica. La pastoral diferenciada es <em>la respuesta a esa doble injusticia</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>Síntomas sin consumo nuevo: no apresurar el diagnóstico.</strong> Si una mujer que lleva semanas sin consumir presenta síntomas, el entorno tiende a interpretarlos como <em>«nueva recaída»</em>. El §9.4.3 menciona el <em>«viaje seco»</em> como una explicación posible, pero el agente no debe concluir por su cuenta ni una cosa ni la otra: <em>corresponde derivar a evaluación médica</em>. Un juicio apresurado <em>puede destruir procesos de recuperación</em> que estaban avanzando bien.</span></li>
+        <li><span class="dot">V</span><span><strong>Los estudios se hicieron en varones: brecha de conocimiento con consecuencias directas.</strong> El §9.4.3 advierte que los estudios sobre la adicción <em>«se han centrado mayoritariamente en sujetos masculinos, lo que ha generado una profunda brecha de conocimiento sobre cómo el consumo afecta de manera distinta a las mujeres»</em>. Esa brecha tiene consecuencias pastorales directas: los dispositivos que no reconocen la diferencia biológica <em>pueden aplicar a las mujeres criterios pensados para varones</em>.</span></li>
+      </ul>
 
       <div class="pl">El Juzgar — Los cuatro pilares biológicos del efecto telescopio (§9.4.3)</div>
       <div class="ejes">
@@ -1495,7 +1531,7 @@
         <div class="eje">
           <div class="eje-n">Pilar 3 · Viaje seco</div>
           <div class="eje-t">Impregnación prolongada</div>
-          <div class="eje-txt">La acumulación en los depósitos de grasa sistémica hace que <em>la carga química permanezca en el organismo femenino durante más tiempo</em>. El <em>"viaje seco"</em> —liberación de sustancias acumuladas en grasas semanas después del último consumo— puede desencadenar <em>estados de alteración sin consumo nuevo</em>.</div>
+          <div class="eje-txt">La acumulación en los depósitos de grasa sistémica hace que <em>la carga química permanezca en el organismo femenino durante más tiempo</em>. El §9.4.3 describe el <em>«viaje seco»</em>: el cuerpo puede liberar de vuelta al torrente sanguíneo sustancias acumuladas en las grasas <em>incluso meses después del último consumo</em>.</div>
         </div>
         <div class="eje">
           <div class="eje-n">Pilar 4 · Deterioro acelerado</div>
@@ -1504,17 +1540,10 @@
         </div>
       </div>
 
-      <div class="pl">El Ver — Realidad</div>
-      <ul class="pts">
-        <li><span class="dot">V</span><span><strong>La doble condena que el §4.4 describe tiene ahora su base biológica.</strong> <em>"Son juzgadas no solo por el consumo sino por el incumplimiento del rol cultural de madre y cuidadora"</em>: la mujer que consume está siendo <em>afectada físicamente a una velocidad mayor que el varón</em>, y al mismo tiempo está siendo <em>juzgada con mayor dureza</em> por un sistema que no reconoce esa diferencia biológica. La pastoral diferenciada es <em>la respuesta a esa doble injusticia</em>.</span></li>
-        <li><span class="dot">V</span><span><strong>El "viaje seco" puede destruir procesos de recuperación bien avanzados.</strong> El <em>"viaje seco"</em> es un dato que el agente territorial necesita conocer: <em>la mujer que lleva semanas sin consumir puede experimentar estados de alteración</em> que el entorno interpreta como <em>"nueva recaída"</em> cuando en realidad son el resultado de la liberación de sustancias acumuladas en el tejido adiposo. Ese malentendido <em>puede destruir procesos de recuperación</em> que estaban avanzando bien.</span></li>
-        <li><span class="dot">V</span><span><strong>Los estudios se hicieron en varones: brecha de conocimiento con consecuencias directas.</strong> Los estudios que fundamentan el §9.4.3 fueron <em>"históricamente realizados principalmente en sujetos masculinos, lo que ha generado una profunda brecha de conocimiento."</em> Esa brecha tiene consecuencias pastorales directas: <em>los protocolos de tratamiento diseñados para varones suelen ser ineficaces o contraproducentes para mujeres</em>, y los dispositivos pastorales que no reconocen la diferencia biológica <em>reproducen involuntariamente esa ineficacia</em>.</span></li>
-      </ul>
-
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
         <li><span class="dot j">J</span><span><strong>Biológicamente más vulnerables y socialmente más castigadas: doble injusticia.</strong> La articulación entre el §9.4.3 (biología diferenciada) y el §4.4 (doble condena social) produce el diagnóstico más completo de la situación de las mujeres en situación de consumo: <em>son biológicamente más vulnerables al daño y socialmente más castigadas por el consumo</em>. La pastoral que no conoce el efecto telescopio puede sin quererlo <em>exigir a las mujeres estándares de recuperación diseñados para varones, y culpabilizarlas cuando no los alcanzan</em>.</span></li>
-        <li><span class="dot j">J</span><span><strong>Los espacios específicos para mujeres no son un lujo: son el correlato pastoral del §9.4.3.</strong> El §6.6.1–6.6.3 sobre abordajes diferenciados para mujeres y el §8.6.1 sobre la perspectiva de género en el acompañamiento son <em>la respuesta pastoral al §9.4.3</em>. El conocimiento de la biología diferenciada <em>no es un dato académico</em>: es el fundamento de por qué los dispositivos pastorales <em>necesitan espacios específicos para mujeres</em>, con tiempos de recuperación distintos, con comprensión del efecto telescopio y con acompañamiento que no las juzgue desde el estándar del varón.</span></li>
+        <li><span class="dot j">J</span><span><strong>Los espacios específicos para mujeres no son un lujo: son el correlato pastoral del §9.4.3.</strong> El §6.6.3, sobre los abordajes diferenciados y el acompañamiento específico para mujeres, y el §8.6.1, sobre la vulnerabilidad y las barreras de la mujer en el proceso de cambio, son <em>la respuesta pastoral al §9.4.3</em>. El conocimiento de la biología diferenciada <em>no es un dato académico</em>: es el fundamento de por qué los dispositivos pastorales <em>necesitan espacios específicos para mujeres</em>, con tiempos de recuperación distintos, con comprensión del efecto telescopio y con acompañamiento que no las juzgue desde el estándar del varón.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1524,7 +1553,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Evaluar el dispositivo desde la perspectiva del efecto telescopio</div>
         <div class="mode-g">
-          <div class="act-body">El grupo evalúa: <em>¿el dispositivo tiene en cuenta que las mujeres pueden necesitar tiempos de desintoxicación más largos? ¿hay personal capacitado para reconocer el "viaje seco" y no interpretarlo como recaída? ¿los grupos terapéuticos son mixtos o hay espacios específicos para mujeres? ¿las familias que acompañan los procesos de las mujeres conocen el efecto telescopio y no las culpan cuando el proceso es más lento de lo esperado?</em></div>
+          <div class="act-body">El grupo evalúa: <em>¿el dispositivo tiene en cuenta que las mujeres pueden necesitar tiempos de desintoxicación más largos? ¿Hay articulación con salud para derivar a evaluación médica los síntomas que aparecen sin consumo nuevo, sin darlos por recaída? ¿Los grupos terapéuticos son mixtos o hay espacios específicos para mujeres? ¿Las familias que acompañan los procesos de las mujeres conocen el efecto telescopio y no las culpan cuando el proceso es más lento de lo esperado?</em></div>
         </div>
         <div class="mode-i">
           <div class="act-body">Anotá en tu bitácora los <em>tres ajustes concretos</em> que tu dispositivo necesita para reconocer el efecto telescopio. Al lado de cada uno, marcá si es un ajuste que podés proponer vos o si requiere decisión colectiva. Los primeros son <em>agenda para tu próxima semana</em>; los segundos para la próxima reunión.</div>
@@ -1536,7 +1565,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Explicar el efecto telescopio a las familias</div>
         <div class="mode-g">
-          <div class="act-body">El grupo diseña la explicación del efecto telescopio para familias (sin tecnicismos): <em>¿cómo decirle a un esposo o a una madre que su hija o esposa puede dañarse más rápido que un varón con la misma cantidad de consumo?</em> ¿cómo evitar que esa información se convierta en condena (<em>"ya ves, ella es más débil"</em>) en lugar de en comprensión (<em>"por eso necesita más apoyo y más rápido"</em>)?</div>
+          <div class="act-body">El grupo diseña la explicación del efecto telescopio para familias (sin tecnicismos): <em>¿cómo decirle a un esposo o a una madre que su esposa o su hija puede dañarse más rápido que un varón con la misma cantidad de consumo?</em> ¿Cómo evitar que esa información se convierta en condena (<em>«ya ves, ella es más débil»</em>) en lugar de en comprensión (<em>«por eso necesita más apoyo y más rápido»</em>)?</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Escribí en tu bitácora tu propia explicación del efecto telescopio en <em>tres frases</em> aptas para un familiar sin formación médica. Practicala mentalmente hasta que fluya. La próxima conversación con una familia que acompaña a una mujer <em>merece esa preparación</em>.</div>
@@ -1546,24 +1575,24 @@
       <div class="act">
         <span class="act-tag tag-gru mode-g">Grupal</span>
         <span class="act-tag tag-ind mode-i">Individual</span>
-        <div class="act-title">Conectar con el §4.4 y el §8.6.1: la pastoral diferenciada en la práctica</div>
+        <div class="act-title">Del §9.4.3 a la práctica: la pastoral diferenciada para mujeres</div>
         <div class="mode-g">
-          <div class="act-body">El grupo revisa qué tiene actualmente el dispositivo de <em>abordaje diferenciado para mujeres</em>: <em>¿hay un espacio específico? ¿hay referentes mujeres en el equipo de acompañamiento? ¿hay articulación con servicios de salud para mujeres? ¿hay comprensión de la situación específica de mujeres embarazadas en situación de consumo?</em> Identificar un <em>paso concreto</em> para mejorar el abordaje diferenciado.</div>
+          <div class="act-body">A la luz de los cuatro pilares biológicos del §9.4.3, y en diálogo con el §4.4 y el §8.6.1, el grupo revisa qué tiene actualmente el dispositivo de <em>abordaje diferenciado para mujeres</em>: <em>¿los tiempos y criterios del acompañamiento contemplan la mayor velocidad del daño que describe el efecto telescopio? ¿Hay un espacio específico? ¿Hay referentes mujeres en el equipo de acompañamiento? ¿Hay articulación con servicios de salud para mujeres? ¿Hay comprensión de la situación específica de mujeres embarazadas en situación de consumo?</em> Identificar un <em>paso concreto</em> para mejorar el abordaje diferenciado.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Anotá en tu bitácora <em>una acción específica</em> que podés proponer esta semana para mejorar el abordaje diferenciado para mujeres en tu dispositivo. Puede ser una capacitación, un espacio nuevo, una articulación pendiente, una consulta al equipo. Concreto y verificable.</div>
+          <div class="act-body">Anotá en tu bitácora <em>una acción específica</em> que podés proponer esta semana para que el abordaje diferenciado para mujeres de tu dispositivo tenga en cuenta lo que muestra el §9.4.3. Puede ser una capacitación, un espacio nuevo, una articulación pendiente, una consulta al equipo. Concreto y verificable.</div>
         </div>
       </div>
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §9.4.3</div>
-        <div class="cita-txt">"El efecto telescopio y la velocidad del daño estructural: la transición hacia la dependencia severa y el deterioro estructural de los órganos ocurre en un periodo de tiempo notablemente menor en la mujer, consolidando una vulnerabilidad metabólica que condiciona todo el abordaje clínico."</div>
+        <div class="cita-txt">«[…] la transición hacia la dependencia severa y el deterioro estructural de los órganos ocurre en un periodo de tiempo notablemente menor en la mujer, consolidando una vulnerabilidad metabólica que condiciona todo el abordaje clínico».</div>
         <div class="cita-ref">Manual de la PLAPA, §9.4.3 — La respuesta fisiológica diferenciada y el efecto según el sexo biológico (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Alerta pastoral</div>
-        <div class="alerta-txt">El efecto telescopio <em>no dice</em> que <em>"las mujeres son más débiles"</em> ni que <em>"no pueden con el consumo"</em>. Dice que <em>la biología femenina metaboliza las SPA de manera diferenciada</em> y que el sistema clínico, diseñado con estudios en varones, <em>no ha adaptado sus protocolos a esa diferencia</em>. La conclusión no es sobre las mujeres: <em>es sobre el sistema que las atiende</em>. Confundir esa dirección es reproducir exactamente el sesgo que el §9.4.3 denuncia.</div>
+        <div class="alerta-txt">El efecto telescopio <em>no dice</em> que <em>«las mujeres son más débiles»</em> ni que <em>«no pueden con el consumo»</em>. Dice que <em>la biología femenina metaboliza las SPA de manera diferenciada</em> y que el sistema clínico, diseñado con estudios en varones, <em>no ha adaptado sus protocolos a esa diferencia</em>. La conclusión no es sobre las mujeres: <em>es sobre el sistema que las atiende</em>. Confundir esa dirección es reproducir exactamente la brecha que el §9.4.3 señala.</div>
       </div>
 
       <div class="autocuidado">
@@ -1571,7 +1600,7 @@
         <div class="autocuidado-txt">El módulo sobre biología diferenciada puede abrir <em>en las mujeres del equipo</em> una reflexión sobre su propia relación con sustancias legales (alcohol, tabaco, ansiolíticos) desde una perspectiva biológica que quizás nunca tuvieron. El facilitador cuida que ese espacio sea <em>de información y no de juicio</em>. La misma comprensión que el equipo necesita desarrollar para acompañar a las mujeres del territorio <em>es la que necesita practicar internamente</em>: los datos biológicos del §9.4.3 no son para culpar a nadie, <em>son para cuidar mejor a todos</em>.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §9.4.3 (Respuesta fisiológica según sexo biológico), §4.4 (Mujeres en situación de consumo), §6.6.1–6.6.3 (Abordajes diferenciados para mujeres), §8.6.1 (Perspectiva de género en el acompañamiento) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §9.4.3 (Respuesta fisiológica según sexo biológico), §4.4 (La situación particular de las mujeres), §6.6.1 (La exclusión social y la pobreza estructural como herida de la sociedad), §6.6.2 (La feminización de la pobreza como realidad de exclusión múltiple), §6.6.3 (Los abordajes diferenciados y el acompañamiento específico para mujeres), §8.6.1 (Sobre la vulnerabilidad y barreras de la mujer en el proceso de cambio) — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1586,49 +1615,49 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"El consumo de SPA durante la gestación no representa solo un riesgo para la salud materna, sino una intrusión química en un organismo en formación que carece de mecanismos de defensa propios. La placenta no filtra las sustancias psicoactivas: su naturaleza liposoluble les permite cruzar esta barrera con la misma facilidad con la que cruzan la barrera hematoencefálica."</div>
+        <div class="resonancia-txt">«El consumo de sustancias psicoactivas (SPA) durante la gestación no representa solo un riesgo para la salud materna, sino que constituye una intrusión química en un organismo en formación que carece de mecanismos de defensa propios».</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Dato crítico · §9.4.4</div>
-        <div class="alerta-txt">La placenta <strong>no</strong> actúa como filtro para las SPA. Al ser liposolubles, las moléculas de la droga <em>la atraviesan con facilidad</em> y llegan directamente al cerebro y órganos en formación del feto. El bebé que nace de una madre que consumió durante el embarazo <em>puede nacer con dependencia física, síndrome de abstinencia neonatal y daños estructurales que condicionarán su desarrollo de por vida</em>.</div>
-      </div>
-
-      <div class="pl">El Juzgar — Cuatro sustancias, cuatro daños fetales (§9.4.5)</div>
-      <div class="ejes">
-        <div class="eje">
-          <div class="eje-n">Alcohol · TEAF</div>
-          <div class="eje-t">Tóxico durante los nueve meses</div>
-          <div class="eje-txt">Trastorno del espectro alcohólico fetal (<strong>TEAF</strong>): anomalías faciales y disfunciones cerebrales permanentes. <em>No existe dosis segura de alcohol durante el embarazo.</em> El TEAF es <em>la causa prevenible más frecuente de discapacidad intelectual</em> en el mundo occidental.</div>
-        </div>
-        <div class="eje">
-          <div class="eje-n">Tabaco y vapers · Nicotina</div>
-          <div class="eje-t">7.000 sustancias tóxicas</div>
-          <div class="eje-txt">Malformaciones como labio leporino, alteración permanente del crecimiento pulmonar. <em>Los vapers y dispositivos de nicotina producen los mismos daños</em>: la nicotina atraviesa la placenta <em>independientemente del dispositivo de entrega</em>.</div>
-        </div>
-        <div class="eje">
-          <div class="eje-n">Cocaína · Muerte fetal</div>
-          <div class="eje-t">Desprendimiento placentario</div>
-          <div class="eje-txt">Puede provocar <em>desprendimiento de la placenta</em>, hemorragias graves y malformaciones cardíacas en el feto. El desprendimiento placentario <em>puede matar al feto en horas</em> y poner en riesgo la vida de la madre.</div>
-        </div>
-        <div class="eje">
-          <div class="eje-n">Heroína/opioides · SAN</div>
-          <div class="eje-t">Síndrome neonatal de abstinencia</div>
-          <div class="eje-txt">Los bebés nacen con <em>dependencia física y síndrome de abstinencia neonatal (SAN)</em>: temblores, convulsiones, <em>riesgo de muerte en los primeros días</em> si no reciben tratamiento especializado inmediato. El fentanilo como adulterante <em>eleva exponencialmente ese riesgo</em>.</div>
-        </div>
+        <div class="alerta-txt">La placenta <strong>no</strong> actúa como filtro para las SPA. Al ser liposolubles, las moléculas de la droga <em>la atraviesan con facilidad</em> y llegan directamente al cerebro y órganos en formación del feto. El bebé que nace de una madre que consumió durante el embarazo <em>puede nacer con daños estructurales que condicionarán su desarrollo de por vida</em> y, en el caso de la heroína y los opioides, con dependencia física y síndrome de abstinencia neonatal.</div>
       </div>
 
       <div class="pl">El Ver — Realidad</div>
       <ul class="pts">
-        <li><span class="dot">V</span><span><strong>El miedo a perder la custodia oculta el consumo y aumenta el daño.</strong> El §9.4.4 describe la situación más invisible y más urgente del acompañamiento pastoral: <em>mujeres embarazadas en situación de consumo que no consultan por miedo a perder la custodia de sus hijos</em>. <em>"El miedo a las consecuencias legales puede llevar a las mujeres a ocultar su consumo durante el embarazo, privándolas del acompañamiento médico y pastoral que podría reducir significativamente el daño al bebé."</em> El agente pastoral que conoce ese miedo <em>puede crear el espacio de confianza que el sistema no ofrece</em>.</span></li>
-        <li><span class="dot">V</span><span><strong>El SAN: bebés con temblores y convulsiones en los primeros días.</strong> El §9.4.5 sobre el Síndrome de Abstinencia Neonatal (SAN) describe una realidad que los equipos pastorales que trabajan en hospitales o maternidades pueden encontrar: <em>"los bebés nacen con temblores y convulsiones, cuya vida corre un riesgo inminente en los primeros días tras el parto."</em> <em>¿Tiene el equipo articulación con maternidades del territorio</em> para acompañar a las madres durante ese período crítico?</span></li>
-        <li><span class="dot">V</span><span><strong>El TEAF explica dificultades escolares que no se atribuyen al alcohol.</strong> El Trastorno del Espectro Alcohólico Fetal (TEAF) es <em>"la causa prevenible más frecuente de discapacidad intelectual"</em> (§9.4.5, nota clínica). La comunidad que acompaña familias con niños con problemas de aprendizaje o de conducta <em>debería poder preguntar por la historia de consumo de alcohol durante el embarazo</em>. Esa pregunta, hecha desde el vínculo y no desde el juicio, <em>puede abrir diagnósticos que cambian el acompañamiento</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>El miedo a perder la custodia oculta el consumo y aumenta el daño.</strong> El §4.4 describe una de las situaciones más invisibles y más urgentes del acompañamiento pastoral: <em>«muchas madres ocultan su problemática ante el miedo a que los organismos de protección les arrebaten la custodia de sus hijos […]»</em>. En el embarazo, ese ocultamiento <em>las aleja del acompañamiento médico y pastoral</em> justo cuando más lo necesitan. El agente pastoral que conoce ese miedo <em>puede crear el espacio de confianza que el sistema no ofrece</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>El SAN: bebés con temblores y convulsiones en los primeros días.</strong> El síndrome de abstinencia neonatal (SAN), que se produce sobre todo por la exposición a la heroína y otros opioides durante el embarazo, es una realidad que los equipos pastorales que trabajan en hospitales o maternidades pueden encontrar. El §9.4.4 lo describe: <em>«los bebés nacen con temblores y convulsiones, cuya vida corre un riesgo inminente en los primeros días tras el parto»</em>. <em>¿Tiene el equipo articulación con maternidades del territorio</em> para acompañar a las madres durante ese período crítico?</span></li>
+        <li><span class="dot">V</span><span><strong>El TEAF explica dificultades escolares que no se atribuyen al alcohol.</strong> El Trastorno del Espectro Alcohólico Fetal (TEAF) es una de las expresiones de lo que el §9.4.5 señala: el alcohol es <em>«la causa principal de discapacidades cognitivas prevenibles»</em>. La comunidad que acompaña familias con niños con problemas de aprendizaje o de conducta <em>debería poder preguntar por la historia de consumo de alcohol durante el embarazo</em>. Esa pregunta, hecha desde el vínculo y no desde el juicio, <em>puede abrir diagnósticos que cambian el acompañamiento</em>.</span></li>
       </ul>
+
+      <div class="pl">El Juzgar — Cuatro sustancias, cuatro daños fetales (§9.4.4)</div>
+      <div class="ejes">
+        <div class="eje">
+          <div class="eje-n">Alcohol · TEAF</div>
+          <div class="eje-t">Tóxico durante los nueve meses</div>
+          <div class="eje-txt">Trastorno del espectro alcohólico fetal (<strong>TEAF</strong>): anomalías faciales y disfunciones cerebrales permanentes. <em>No existe un nivel seguro de consumo de alcohol durante el embarazo.</em> El alcohol es <em>la causa principal de discapacidades cognitivas prevenibles</em> (§9.4.5).</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Tabaco · Humo y nicotina</div>
+          <div class="eje-t">Unas 7.000 sustancias tóxicas</div>
+          <div class="eje-txt">El humo del tabaco expone al feto a miles de sustancias tóxicas y <em>reduce drásticamente su oxigenación</em>. Causa malformaciones como el labio leporino y altera permanentemente el crecimiento de los pulmones.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Cocaína · Placenta y corazón fetal</div>
+          <div class="eje-t">Desprendimiento placentario</div>
+          <div class="eje-txt">Puede provocar <em>desprendimiento de la placenta</em>, hemorragias graves y malformaciones cardíacas en el feto.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Heroína/opioides · SAN</div>
+          <div class="eje-t">Síndrome de abstinencia neonatal</div>
+          <div class="eje-txt">Los bebés nacen con <em>dependencia física y síndrome de abstinencia neonatal (SAN)</em>: temblores, convulsiones, <em>riesgo de muerte en los primeros días</em> si no reciben tratamiento especializado inmediato.</div>
+        </div>
+      </div>
 
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>Cualquier reducción del consumo reduce el daño al bebé: no se abandona por "hizo daño".</strong> El §9.4.4 conecta directamente con el §4.4 (mujeres en situación de consumo) y con el §6.6.1–6.6.3 (abordaje diferenciado para mujeres): la mujer embarazada en situación de consumo <em>no necesita condena sino acompañamiento urgente e integral</em>. <em>"Cualquier reducción del consumo durante el embarazo —incluso sin abstinencia total— reduce el daño al bebé"</em> (§9.4.4). La pastoral que abandona a la madre porque <em>"ya hizo daño"</em> <em>abandona también al niño que está por nacer</em>.</span></li>
-        <li><span class="dot j">J</span><span><strong>El bebé que tiembla: la imagen que cierra el bloque de biología.</strong> El §9.4 cierra el Bloque de Sustancias y Biología (itinerarios 18–20) con la imagen más potente de toda la sección: <em>un bebé que nace con síndrome de abstinencia, temblores y convulsiones, sin que haya tomado una sola decisión</em>. La pastoral de la esperanza y la caridad política tienen aquí un argumento concreto y urgente: <em>estos niños no eligieron nacer en esa situación</em>, y el sistema que los hace invisibles <em>viola su dignidad antes de que puedan hablar</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>La madre embarazada necesita acompañamiento, no abandono.</strong> El §9.4.4 remite a los abordajes diferenciados para mujeres del capítulo 6 (§6.6.3), y el §4.4 describe la doble condena que sufren: la mujer embarazada en situación de consumo <em>no necesita condena sino acompañamiento urgente e integral</em>. La pastoral que abandona a la madre porque <em>«ya hizo daño»</em> <em>abandona también al niño que está por nacer</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>El bebé que tiembla: la imagen que cierra el bloque de biología.</strong> Los §9.4.4 y §9.4.5 dejan la imagen más potente de toda la sección: <em>un bebé que nace con síndrome de abstinencia, temblores y convulsiones, sin que haya tomado una sola decisión</em>. La pastoral de la esperanza y la caridad política tienen aquí un argumento concreto y urgente: <em>estos niños no eligieron nacer en esa situación</em>, y el sistema que los hace invisibles <em>viola su dignidad antes de que puedan hablar</em>.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1638,7 +1667,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Articulación con maternidades y servicios de neonatología</div>
         <div class="mode-g">
-          <div class="act-body">El grupo evalúa: <em>¿tiene el dispositivo pastoral articulación con alguna maternidad o servicio de neonatología del territorio? ¿hay agentes pastorales con acceso a esas instituciones para acompañar a madres en situación de consumo durante el embarazo y el parto? ¿hay protocolo de acompañamiento del bebé con SAN y de la familia durante el período de internación neonatal?</em> Si no existe esa articulación, <em>identificar el primer paso para construirla</em>.</div>
+          <div class="act-body">El grupo evalúa: <em>¿tiene el dispositivo pastoral articulación con alguna maternidad o servicio de neonatología del territorio? ¿Hay agentes pastorales con acceso a esas instituciones para acompañar a madres en situación de consumo durante el embarazo y el parto? ¿Hay protocolo de acompañamiento del bebé con SAN y de la familia durante el período de internación neonatal?</em> Si no existe esa articulación, <em>identificar el primer paso para construirla</em>.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Anotá en tu bitácora el <em>nombre y contacto</em> de la maternidad o servicio de neonatología más cercano al territorio donde trabajás. Si no lo tenés, esa es la gestión concreta de esta semana. La articulación con salud materno-infantil <em>no se construye en la emergencia</em>: se construye antes.</div>
@@ -1650,10 +1679,10 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">El espacio de confianza para mujeres embarazadas</div>
         <div class="mode-g">
-          <div class="act-body">El grupo diseña cómo el dispositivo puede ofrecer a mujeres embarazadas en situación de consumo <em>un espacio de confianza que no las amenace con consecuencias legales inmediatas</em>. <em>¿Hay referentes mujeres en el equipo que puedan sostener ese acompañamiento? ¿hay articulación con servicios de salud materno-infantil que garanticen confidencialidad? ¿cómo se aborda la tensión real entre el derecho al acompañamiento de la madre y la protección del niño por nacer?</em></div>
+          <div class="act-body">El grupo diseña cómo el dispositivo puede ofrecer a mujeres embarazadas en situación de consumo <em>un espacio de confianza que no las amenace con consecuencias legales inmediatas</em>. <em>¿Hay referentes mujeres en el equipo que puedan sostener ese acompañamiento? ¿Hay articulación con servicios de salud materno-infantil que garanticen confidencialidad? ¿Cómo se aborda la tensión real entre el derecho al acompañamiento de la madre y la protección del niño por nacer?</em> La confidencialidad tiene un límite que conviene explicar desde el principio: si hay riesgo grave para la vida o la integridad del niño —antes o después del nacimiento— o de otros hijos, se aplica el <em>Protocolo de infancias</em> (ver bloque al cierre del Módulo 2), procurando seguir acompañando a la madre.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Anotá en tu bitácora <em>tres condiciones</em> que tendría que cumplir un espacio del dispositivo para que una mujer embarazada en situación de consumo se sienta segura de consultar. La lista es tu <em>chequeo honesto</em> de si ese espacio ya existe o si hay que construirlo.</div>
+          <div class="act-body">Anotá en tu bitácora <em>tres condiciones</em> que tendría que cumplir un espacio del dispositivo para que una mujer embarazada en situación de consumo se sienta segura de consultar. La lista es tu <em>chequeo honesto</em> de si ese espacio ya existe o si hay que construirlo. Agregá una cuarta línea: qué harías si aparece un riesgo grave para el niño. La confidencialidad tiene ese límite: aplicá el <em>Protocolo de infancias</em> (ver bloque al cierre del Módulo 2).</div>
         </div>
       </div>
 
@@ -1662,30 +1691,30 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Cierre: la biología al servicio de la compasión pastoral</div>
         <div class="mode-g">
-          <div class="act-body">El grupo cierra el Bloque de Sustancias y Biología (itinerarios 18–20) con una pregunta integradora: <em>"¿Qué cambió en mi forma de mirar a los hermanos que acompaño después de conocer la biología de la vulnerabilidad?"</em> En ronda, sin filtro. El facilitador anota las respuestas: <em>ese mapa de cambios en la mirada es la medida más honesta de lo que el bloque biológico produjo</em> en la formación del equipo. Cerrar con gratitud por los hermanos del territorio que inspiraron cada pregunta científica.</div>
+          <div class="act-body">El grupo cierra el Bloque de Sustancias y Biología con una pregunta integradora: <em>«¿Qué cambió en mi forma de mirar a los hermanos que acompaño después de conocer la biología de la vulnerabilidad?»</em> En ronda, sin filtro. El facilitador anota las respuestas: <em>ese mapa de cambios en la mirada es la medida más honesta de lo que el bloque biológico produjo</em> en la formación del equipo. Cerrar con gratitud por los hermanos del territorio que inspiraron cada pregunta científica.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Escribí en tu bitácora la respuesta a la pregunta: <em>"¿Qué cambió en mi forma de mirar a los hermanos que acompaño después de conocer la biología de la vulnerabilidad?"</em> Guardala junto a las respuestas de los itin 18 y 19: <em>ese trío es el mapa personal del bloque biológico</em>. Compartilo en la próxima reunión del equipo si el clima lo permite.</div>
+          <div class="act-body">Escribí en tu bitácora la respuesta a la pregunta: <em>«¿Qué cambió en mi forma de mirar a los hermanos que acompaño después de conocer la biología de la vulnerabilidad?»</em> Si recorriste otros itinerarios del bloque de biología, guardala junto a esas respuestas: <em>juntas forman tu mapa personal del bloque biológico</em>. Compartila en la próxima reunión del equipo si el clima lo permite.</div>
         </div>
       </div>
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §9.4.4</div>
-        <div class="cita-txt">"El consumo de sustancias psicoactivas durante la gestación constituye una intrusión química en un organismo en formación que carece de mecanismos de defensa propios. La placenta no actúa como filtro: las SPA atraviesan esta barrera con la misma facilidad con la que cruzan la barrera hematoencefálica."</div>
+        <div class="cita-txt">«La placenta no filtra las SPA; su naturaleza liposoluble les permite cruzar esta barrera con la misma facilidad con la que cruzan la barrera hematoencefálica del adulto».</div>
         <div class="cita-ref">Manual de la PLAPA, §9.4.4 — Riesgos biológicos en el embarazo (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Alerta pastoral</div>
-        <div class="alerta-txt">Acompañar sin condena a mujeres embarazadas en situación de consumo <em>no significa minimizar el daño al bebé</em>. Las dos cosas van juntas: <em>presencia integral y verdad sobre el riesgo</em>. La pastoral que suaviza el daño para no incomodar a la madre <em>traiciona al bebé</em>; la que hostiga a la madre con el daño <em>aleja a las dos vidas del acompañamiento</em>. El punto exacto —presencia sin juicio, verdad sin condena— es difícil pero es exactamente el que el §9.4.4 exige. La red comunitaria y sanitaria sostiene ese punto juntas.</div>
+        <div class="alerta-txt">Acompañar sin condena a mujeres embarazadas en situación de consumo <em>no significa minimizar el daño al bebé</em>. Las dos cosas van juntas: <em>presencia integral y verdad sobre el riesgo</em>. La pastoral que suaviza el daño para no incomodar a la madre <em>traiciona al bebé</em>; la que hostiga a la madre con el daño <em>aleja a las dos vidas del acompañamiento</em>. El punto exacto —presencia sin juicio, verdad sin condena— es difícil, y el §9.4.4, al exponer sin rebajas el daño fetal y remitir a los abordajes diferenciados para mujeres, ayuda a sostenerlo. Ese equilibrio lo sostienen juntas la red comunitaria y la sanitaria.</div>
       </div>
 
       <div class="autocuidado">
         <div class="autocuidado-lbl">Autocuidado del agente — cierre del Bloque de Sustancias y Biología</div>
-        <div class="autocuidado-txt">El Bloque de Sustancias y Biología (itinerarios 18, 19 y 20) cierra con la imagen más vulnerable de todo el Manual: <em>un bebé que nace con síndrome de abstinencia</em>. El facilitador invita al equipo a nombrarlo sin dramatismo pero sin anestesia: <em>esa imagen es el motivo más profundo del trabajo pastoral en adicciones</em>. No la estadística, no el protocolo, no el dispositivo: <em>el bebé que tiembla</em>. El agente que puede sostener esa imagen <em>sin huir de ella y sin hundirse en ella</em> tiene la fortaleza interior que el acompañamiento en los territorios más heridos necesita.</div>
+        <div class="autocuidado-txt">El Bloque de Sustancias y Biología cierra con una de sus imágenes más vulnerables: <em>un bebé que nace con síndrome de abstinencia</em>. El facilitador invita al equipo a nombrarlo sin dramatismo pero sin anestesia: <em>esa imagen es el motivo más profundo del trabajo pastoral en adicciones</em>. No la estadística, no el protocolo, no el dispositivo: <em>el bebé que tiembla</em>. El agente que puede sostener esa imagen <em>sin huir de ella y sin hundirse en ella</em> tiene la fortaleza interior que el acompañamiento en los territorios más heridos necesita.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §9.4.4 (Riesgos biológicos en el embarazo), §9.4.5 (Síndrome de abstinencia neonatal y TEAF), §4.4 (Mujeres en situación de consumo), §6.6.1–6.6.3 (Abordajes diferenciados) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §9.4.4 (Riesgos biológicos en el embarazo), §9.4.5 (Consecuencias del consumo de alcohol en neonatos: SAN y TEAF), §4.4 (La situación particular de las mujeres), §6.6.3 (Los abordajes diferenciados y el acompañamiento específico para mujeres) — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1700,8 +1729,8 @@
 
       <!-- Selector de vista: este itinerario / global -->
       <div class="foro-vista">
-        <button class="foro-vista-btn on" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
-        <button class="foro-vista-btn" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
+        <button class="foro-vista-btn on" aria-pressed="true" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
+        <button class="foro-vista-btn" aria-pressed="false" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
       </div>
 
       <!-- Pautas pastorales -->
@@ -1753,7 +1782,7 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Antes de comenzar</div>
-        <div class="resonancia-txt">"La revisión de vida es la forma histórica que la Iglesia latinoamericana encontró para institucionalizar el Ver–Juzgar–Actuar. El agente que la practica no aplica el método: lo vive." Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
+        <div class="resonancia-txt">Este itinerario te invitó a mirar la cicatriz que la exclusión deja en el cuerpo: el estrés crónico de la pobreza, un cerebro adolescente que todavía no terminó de madurar, la mayor vulnerabilidad de las mujeres y el daño que el consumo puede causar antes de nacer. Ahora es el momento de nombrar qué cambió en tu mirada. Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
       </div>
 
       <div class="eval-nota">
@@ -1763,24 +1792,24 @@
 
       <div class="pl">El Ver — Qué se hizo visible</div>
       <div class="eval-q">
-        <label for="evalVer">¿Qué realidad del territorio se hizo más visible para vos a lo largo de estos cuatro módulos? ¿Qué llagas emergieron con más fuerza? ¿Qué zonas del mapa estaban en blanco antes y ahora tienen contenido?</label>
+        <label for="evalVer">¿Qué personas del territorio se hicieron más visibles para vos a lo largo de estos cuatro módulos: los chicos que crecen con estrés crónico, los adolescentes que empiezan a consumir cada vez más temprano, las mujeres a las que el consumo daña más rápido, las embarazadas que esconden su consumo? ¿Qué conductas que antes leías como debilidad o falta de voluntad ahora entendés de otro modo?</label>
         <textarea id="evalVer" data-eval="ver" placeholder="Escribí con calma, sin apurarte..."></textarea>
       </div>
 
       <div class="pl">El Juzgar — Qué iluminó, qué preguntas quedaron abiertas</div>
       <div class="eval-q">
-        <label for="evalJuzgar1">¿Qué del método del diagnóstico territorial te iluminó de manera nueva? ¿Qué idea del Manual sentís que ya no podrás dejar de lado?</label>
+        <label for="evalJuzgar1">De la cicatriz biológica de la exclusión, de la brecha entre la ley y el cerebro adolescente, del efecto telescopio en las mujeres y de los riesgos en el embarazo y en los recién nacidos: ¿qué te iluminó de manera nueva? ¿Qué idea del Manual sentís que ya no podrás dejar de lado?</label>
         <textarea id="evalJuzgar1" data-eval="juzgar1" placeholder="Nombralo con precisión..."></textarea>
       </div>
       <div class="eval-q">
-        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos? Las preguntas abiertas son también fruto (§13.3).</label>
+        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos? La tensión entre reconocer el peso de la biología y seguir creyendo en la libertad de cada persona, entre nombrar el daño al bebé y no condenar a la madre: ¿dónde te dejó incómodo/a?</label>
         <textarea id="evalJuzgar2" data-eval="juzgar2" placeholder="Las que siguen ardiendo..."></textarea>
       </div>
 
       <div class="pl">El Actuar — Compromiso concreto</div>
       <div class="eval-q">
-        <label for="evalActuar">¿Qué gesto pastoral concreto vas a intentar en las próximas semanas a partir del diagnóstico que hiciste? Nombralo con nombre, tiempo y lugar. Un compromiso vago no es un compromiso.</label>
-        <textarea id="evalActuar" data-eval="actuar" placeholder="Ej.: En la próxima reunión de equipo (jueves 25) voy a presentar el mapa territorial que construimos y proponer una callejeada específica al sector X del barrio..."></textarea>
+        <label for="evalActuar">¿Qué gesto concreto vas a intentar en las próximas semanas a partir de lo que aprendiste sobre la biología de la vulnerabilidad? Puede ser explicarles a padres o docentes por qué el cerebro adolescente es más vulnerable, ofrecerle un espacio de confianza a una mujer embarazada en consumo o acercarte al centro de salud o a la maternidad de la zona para articular. Nombralo con nombre, tiempo y lugar. Un compromiso vago no es un compromiso.</label>
+        <textarea id="evalActuar" data-eval="actuar" placeholder="Ej.: El martes 12 voy con X al centro de salud del barrio a presentarnos a la obstétrica y acordar cómo acompañar juntos a las embarazadas que llegan al centro barrial..."></textarea>
       </div>
       <div class="eval-q eval-fecha">
         <label for="evalFecha">Fecha en la que vas a volver a revisar si pudiste sostenerlo</label>
@@ -1788,8 +1817,8 @@
       </div>
 
       <div class="pl">Autocuidado y equipo</div>
-      <div class="eval-q eval-scale">
-        <label>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</label>
+      <fieldset class="eval-q eval-scale">
+        <legend>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</legend>
         <div class="eval-scale-row">
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="1" data-eval="animo"><span>1</span></label>
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="2" data-eval="animo"><span>2</span></label>
@@ -1797,10 +1826,10 @@
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="4" data-eval="animo"><span>4</span></label>
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="5" data-eval="animo"><span>5</span></label>
         </div>
-      </div>
+      </fieldset>
       <div class="eval-q">
-        <label for="evalCuidado">¿Qué necesitás cuidar de vos mismo/a en las próximas semanas? ¿A quién del equipo se lo vas a decir?</label>
-        <textarea id="evalCuidado" data-eval="cuidado" placeholder="El agente que cuida su esperanza puede sostener la del otro (§1.3)..."></textarea>
+        <label for="evalCuidado">Mirar de cerca el daño que la exclusión deja en el cuerpo de los chicos y de los bebés puede generar impotencia, enojo o culpa por lo que no llegamos a cambiar. El Manual propone aprender a trazar límites y soltar lo que no depende de uno (§11.1.14). ¿Qué necesitás cuidar de vos en las próximas semanas? ¿Quién te sostiene a vos? ¿A quién del equipo se lo vas a decir?</label>
+        <textarea id="evalCuidado" data-eval="cuidado" placeholder="Ej.: Voy a contarle a X que desde que acompaño a la familia de Y me cuesta dormir pensando en el bebé..."></textarea>
       </div>
 
       <div class="pl">Cierre</div>
@@ -1819,10 +1848,10 @@
 
       <div class="autocuidado" style="margin-top: 2rem;">
         <div class="autocuidado-lbl">Cierre del itinerario</div>
-        <div class="autocuidado-txt">Cerrar bien un itinerario también es autocuidado: celebrar lo caminado, agradecer al equipo, reconocer los propios límites y renovar la esperanza. Este itinerario termina con gratitud: por el territorio que nos habló, por las llagas que dejamos de negar, por el equipo que hizo posible mirar sin apartar la mirada.</div>
+        <div class="autocuidado-txt">Cerrar bien un itinerario también es autocuidado: celebrar lo caminado, agradecer al equipo, reconocer los propios límites y renovar la esperanza. Este itinerario termina con gratitud: por las madres que se animaron a pedir ayuda sin esconderse, por los chicos y adolescentes cuya historia todavía puede cambiar en una comunidad que los cuide, por el equipo que hizo posible poner la ciencia al servicio de la compasión.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §1.3 (Prólogo), §6.1.3 (Evitar la romantización), §13.2 (Sinodalidad en la práctica), §13.3 (Rolling release), §13.5 (Mecanismos de colaboración) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §9.4.1–9.4.6 (Diferencias según la etapa en el ciclo vital, sexo y contexto), §11.1.14 (Cuidar a los que cuidan), §13.3 (La propuesta de un manual Rolling Release), §13.5 (Los mecanismos de colaboración) — CELAM 2026.</div>
 
     </div>
   </div>
@@ -1836,9 +1865,9 @@
     root.classList.add('mode-' + mode);
     var buttons = document.querySelectorAll('.mode-btn');
     for (var i = 0; i < buttons.length; i++) {
-      buttons[i].classList.remove('on');
+      buttons[i].classList.remove('on'); buttons[i].setAttribute('aria-pressed', 'false');
     }
-    btn.classList.add('on');
+    btn.classList.add('on'); btn.setAttribute('aria-pressed', 'true');
   }
 
   function show(n, btn) {
@@ -2115,8 +2144,8 @@
   function setVistaForo(v, btn) {
     vistaForo = v;
     var buttons = document.querySelectorAll('.foro-vista-btn');
-    for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove('on'); }
-    btn.classList.add('on');
+    for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove('on'); buttons[i].setAttribute('aria-pressed', 'false'); }
+    btn.classList.add('on'); btn.setAttribute('aria-pressed', 'true');
     cargarComentarios();
   }
 
@@ -2194,16 +2223,17 @@
     var datos = recolectarEvaluacion();
     var minimoTexto = (datos.ver || '').trim() + (datos.actuar || '').trim();
     if (minimoTexto.length < 30) {
-      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos "El Ver" y "El Actuar" merecen unos renglones honestos.', 'error');
+      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos «El Ver» y «El Actuar» merecen unos renglones honestos.', 'error');
       return;
     }
 
     // Guardar en Supabase (siempre queda en tu bitácora)
     if (!sesion) { window.location.href = '/login'; return; }
-    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario', {
+    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario?on_conflict=usuario_id,itinerario_id', {
       method: 'POST',
       headers: Object.assign({}, supaHeaders(), { 'Prefer': 'resolution=merge-duplicates' }),
       body: JSON.stringify({
+        usuario_id: sesion.user ? sesion.user.id : undefined,
         itinerario_id: ITINERARIO_ID,
         respuestas: datos,
         compartir_con_equipo: datos.compartir_con_equipo === true
@@ -2226,12 +2256,18 @@
 
   function imprimirEvaluacion() {
     autoguardarBorrador();
+    // Que cada respuesta se imprima completa, sin cortarse
+    var areas = document.querySelectorAll('#m6 textarea');
+    for (var i = 0; i < areas.length; i++) {
+      areas[i].style.height = 'auto';
+      areas[i].style.height = areas[i].scrollHeight + 'px';
+    }
     window.print();
   }
 
   // Init general del itinerario
   document.addEventListener('DOMContentLoaded', function() {
-    // Leer sesión (el guard del <head> garantiza que existe)
+    // Leer sesión guardada por el login (puede no existir)
     try {
       var stored = localStorage.getItem('escuela_plapa_sesion');
       if (stored) sesion = JSON.parse(stored);

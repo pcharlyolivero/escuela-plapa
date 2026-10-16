@@ -24,7 +24,7 @@
     --borde:      #E4E2F0;
 
     --font-serif: "Georgia", "Times New Roman", serif;
-    --font-sans:  "system-ui", -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+    --font-sans:  system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -772,7 +772,7 @@
   }
   .foro-form textarea:focus,
   .foro-form select:focus {
-    outline: none;
+    outline: 2px solid transparent;
     border-color: var(--i11-medio);
   }
   .foro-form-actions {
@@ -1009,7 +1009,18 @@
   .eval-q {
     margin-bottom: 1.5rem;
   }
-  .eval-q > label {
+  fieldset.eval-scale {
+    border: 0;
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+    min-width: 0;
+  }
+  .eval-q > legend {
+    padding: 0;
+  }
+  .eval-q > label,
+  .eval-q > legend {
     display: block;
     font-size: 14px;
     font-weight: 500;
@@ -1033,7 +1044,7 @@
   }
   .eval-q textarea:focus,
   .eval-q input:focus {
-    outline: none;
+    outline: 2px solid transparent;
     border-color: var(--i11-medio);
     box-shadow: 0 0 0 3px rgba(60, 52, 137, 0.1);
   }
@@ -1063,6 +1074,10 @@
     position: absolute;
     opacity: 0;
     pointer-events: none;
+  }
+  .eval-radio input:focus-visible + span {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
   }
   .eval-radio span {
     display: block;
@@ -1155,7 +1170,10 @@
     .root { box-shadow: none; padding: 1rem; max-width: 100%; }
     .portada, .video-wrap, .mode-selector, .nav { display: none !important; }
     .card { display: none !important; }
-    #m6.card { display: block !important; break-inside: avoid; border: none; }
+    #m6.card { display: block !important; border: none; }
+    .eval-q { break-inside: avoid; }
+    .video-wrap, .top-header, .foro-vista { display: none !important; }
+    .eval-q textarea { overflow: visible; resize: none; }
     .eval-actions, .eval-msg { display: none !important; }
     .ch { background: transparent; }
     .eval-q textarea, .eval-q input[type="date"] {
@@ -1221,15 +1239,14 @@
 
   <!-- ═══ VIDEO ═══════════════════════════════════════════ -->
   
-  <!-- NUEVO: Bloque del Video de Presentación Incrustado -->
-<div style="background: var(--surface-2); border: 0.5px solid var(--border); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
-  <p style="font-size: 11px; font-weight: 500; color: #085041; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; text-align: left;">
+<div class="video-wrap" style="background: #FFF; border: 1px solid var(--borde); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
+  <p style="font-size: 11px; font-weight: 500; color: var(--i11-oscuro); letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; text-align: left;">
     ▶️ Video de presentación
   </p>
   <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px;">
     <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
       src="https://www.youtube.com/embed/Wu5ACkM3lbU"
-      title="Presentación del Itinerario 11" 
+      title="Video de presentación: Microcréditos y Finanzas Solidarias — Itinerario 11" 
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
       allowfullscreen>
     </iframe>
@@ -1238,8 +1255,8 @@
 
   <!-- ═══ SELECTOR DE MODALIDAD ═══════════════════════════ -->
   <div class="mode-selector">
-    <button class="mode-btn on" onclick="setMode('grupal', this)">👥 Hacer en comunidad</button>
-    <button class="mode-btn" onclick="setMode('individual', this)">👤 Hacer de forma individual</button>
+    <button class="mode-btn on" aria-pressed="true" onclick="setMode('grupal', this)">👥 Hacer en comunidad</button>
+    <button class="mode-btn" aria-pressed="false" onclick="setMode('individual', this)">👤 Hacer de forma individual</button>
   </div>
 
   <!-- ═══ NAVEGACIÓN ══════════════════════════════════════ -->
@@ -1264,19 +1281,19 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"El manejo del dinero, bajo un esquema de acompañamiento, permite verificar el paso del patrón compulsivo a la gratificación inmediata al patrón de planificación y proyección vital. Sin este ejercicio de realismo, la autonomía recuperada corre el riesgo de ser una ilusión que se quiebra al primer contacto con el mercado."</div>
+        <div class="resonancia-txt">«El manejo del dinero, bajo un esquema de acompañamiento, permite verificar el paso del patrón compulsivo (gratificación inmediata) al patrón de planificación (proyección vital). Sin este ejercicio de realismo, la autonomía recuperada corre el riesgo de ser una ilusión que se quiebra al primer contacto con el mercado».</div>
       </div>
 
       <div class="pl">El Ver — Realidad</div>
       <ul class="pts">
-        <li><span class="dot">V</span><span><strong>"Las personas en recuperación no deben manejar dinero": la objeción más extendida.</strong> El §6.3.5 la refuta con precisión: <em>"El riesgo no se elimina con la prohibición, sino que se gestiona con la pedagogía. El manejo acompañado del dinero en entornos seguros permite que el hermano aprenda a convivir con el estímulo sin ser gobernado por él."</em> Prohibir el dinero no forma la voluntad: la evita.</span></li>
-        <li><span class="dot">V</span><span><strong>La exclusión bancaria estructural.</strong> En los territorios de exclusión, <em>"el acceso al sistema bancario y crediticio formal está completamente vedado debido a las exigencias burocráticas y patrimoniales"</em> (§12.4). Sin cuenta bancaria, sin historial crediticio, sin documentación completa, el hermano que intenta reintegrarse económicamente choca con el mismo sistema que lo excluye. Las finanzas solidarias son la respuesta territorial a esa exclusión sistémica.</span></li>
+        <li><span class="dot">V</span><span><strong>«Las personas en recuperación no deben manejar dinero»: la objeción más extendida.</strong> El §6.3.5 la refuta con precisión: <em>«El riesgo no se elimina con la prohibición, sino que se gestiona con la pedagogía. El manejo acompañado del dinero en entornos seguros permite que el hermano aprenda a convivir con el estímulo sin ser gobernado por él […]».</em> Prohibir el dinero no forma la voluntad: la evita.</span></li>
+        <li><span class="dot">V</span><span><strong>La exclusión bancaria estructural.</strong> En los territorios de exclusión, <em>«el acceso al sistema bancario y crediticio formal está completamente vedado debido a las exigencias burocráticas y patrimoniales»</em> (§12.4). Sin cuenta bancaria, sin historial crediticio, sin documentación completa, el hermano que intenta reintegrarse económicamente choca con el mismo sistema que lo excluye. Las finanzas solidarias son la respuesta territorial a esa exclusión sistémica.</span></li>
       </ul>
 
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
         <li><span class="dot j">J</span><span><strong>Las tres funciones del dinero en la recuperación.</strong> El §6.3.5 define tres: <em>termómetro de madurez</em> (la capacidad de conservar y administrar recursos sin ceder al impulso verifica que el freno biológico y espiritual ha comenzado a funcionar), <em>reeducación financiera y planificación</em> (enseña a proyectar, ahorrar y cuidar la casa común), y <em>superación de la orfandad material</em> (manejar recursos propios devuelve la dignidad al sujeto).</span></li>
-        <li><span class="dot j">J</span><span><strong>El dinero como carne de la espiritualidad encarnada.</strong> <em>"No hay división entre la fe y la carne. Una espiritualidad sana es la que ayuda al hombre a ser libre en medio de sus circunstancias. El dinero, ordenado al bien de la familia y el servicio, deja de ser un motor de esclavitud para transformarse en un medio de justicia"</em> (§6.3.5). La economía solidaria no es un programa técnico añadido a la pastoral: es la carne de la espiritualidad encarnada que el Manual propone.</span></li>
+        <li><span class="dot j">J</span><span><strong>El dinero como carne de la espiritualidad encarnada.</strong> <em>«No hay división entre la fe y la carne. Una espiritualidad sana es la que ayuda al hombre a ser libre en medio de sus circunstancias. El dinero, ordenado al bien de la familia y el servicio, deja de ser un motor de esclavitud para transformarse en un medio de justicia»</em> (§6.3.5). La economía solidaria no es un programa técnico añadido a la pastoral: es la carne de la espiritualidad encarnada que el Manual propone.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1286,10 +1303,10 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">¿Cómo tratamos el dinero en los procesos que acompañamos?</div>
         <div class="mode-g">
-          <div class="act-body">El grupo evalúa honestamente: <em>¿hay personas en procesos activos que ya deberían estar manejando dinero propio pero el equipo lo evita por precaución? ¿cuándo es la primera vez que acompañamos a alguien en la gestión de un ingreso? ¿hay un protocolo para eso o se improvisa?</em> El diagnóstico revela si el equipo está formando autonomía o perpetuando dependencia.</div>
+          <div class="act-body">El grupo evalúa honestamente: <em>¿hay personas en procesos activos que ya deberían estar manejando dinero propio pero el equipo lo evita por precaución? ¿Cuándo es la primera vez que acompañamos a alguien en la gestión de un ingreso? ¿Hay un protocolo para eso o se improvisa?</em> El diagnóstico revela si el equipo está formando autonomía o perpetuando dependencia.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Anotá en tu bitácora los nombres (para vos) de personas que acompañás. Al lado de cada una: <em>¿ya deberían estar manejando dinero propio? ¿lo están? ¿alguien las acompaña en esa gestión?</em> Si evitás el tema por precaución, escribí por qué. La lucidez sobre esa evitación es el primer paso del acompañamiento financiero.</div>
+          <div class="act-body">Anotá en tu bitácora los nombres (para vos) de personas que acompañás. Al lado de cada una: <em>¿ya deberían estar manejando dinero propio? ¿Lo están? ¿Alguien las acompaña en esa gestión?</em> Si evitás el tema por precaución, escribí por qué. La lucidez sobre esa evitación es el primer paso del acompañamiento financiero.</div>
         </div>
       </div>
 
@@ -1298,10 +1315,10 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">El primer sueldo: una práctica de acompañamiento</div>
         <div class="mode-g">
-          <div class="act-body">El grupo diseña un protocolo mínimo para acompañar la primera experiencia de ingreso: <em>¿quién acompaña? ¿cómo se planifica el gasto juntos? ¿se destina algo al ahorro, algo a la familia, algo al proceso? ¿cómo se celebra?</em> El primer sueldo no es solo dinero: es la verificación de que la persona puede protagonizar su propia economía. Merece un ritual de reconocimiento.</div>
+          <div class="act-body">El grupo diseña un protocolo mínimo para acompañar la primera experiencia de ingreso: <em>¿quién acompaña? ¿Cómo se planifica el gasto juntos? ¿Se destina algo al ahorro, algo a la familia, algo al proceso? ¿Cómo se celebra?</em> El primer sueldo no es solo dinero: es la verificación de que la persona puede protagonizar su propia economía. Merece un ritual de reconocimiento.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Escribí en tu bitácora tu protocolo personal para el próximo "primer sueldo" que te toque acompañar: <em>¿cómo lo planificarías juntos? ¿qué proporción al ahorro, a la familia, al proceso? ¿cómo lo celebrarías?</em> El primer sueldo merece un ritual pastoral porque marca la transición de la asistencia al protagonismo.</div>
+          <div class="act-body">Escribí en tu bitácora tu protocolo personal para el próximo «primer sueldo» que te toque acompañar: <em>¿cómo lo planificarías juntos? ¿Qué proporción al ahorro, a la familia, al proceso? ¿Cómo lo celebrarías?</em> El primer sueldo merece un ritual pastoral porque marca la transición de la asistencia al protagonismo.</div>
         </div>
       </div>
 
@@ -1310,22 +1327,22 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">La transparencia financiera del equipo como testimonio</div>
         <div class="mode-g">
-          <div class="act-body">Antes de acompañar a otros en la reeducación financiera, el grupo se pregunta: <em>¿hay transparencia en la gestión de los recursos del centro barrial? ¿los acompañados saben cómo se financia el dispositivo? ¿hay rendiciones periódicas visibles?</em> La transparencia financiera del equipo es un testimonio pastoral concreto: el hermano ve en el equipo lo que la reeducación financiera puede producir.</div>
+          <div class="act-body">Antes de acompañar a otros en la reeducación financiera, el grupo se pregunta: <em>¿hay transparencia en la gestión de los recursos del centro barrial? ¿Los acompañados saben cómo se financia el dispositivo? ¿Hay rendiciones periódicas visibles?</em> La transparencia financiera del equipo es un testimonio pastoral concreto: el hermano ve en el equipo lo que la reeducación financiera puede producir.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Escribí en tu bitácora tres prácticas concretas de transparencia financiera que tu comunidad ya tiene o podría empezar a tener. Al lado de cada una: <em>¿los acompañados la ven? ¿la entienden? ¿la comentan?</em> El testimonio de transparencia se hace visible o no existe.</div>
+          <div class="act-body">Escribí en tu bitácora tres prácticas concretas de transparencia financiera que tu comunidad ya tiene o podría empezar a tener. Al lado de cada una: <em>¿los acompañados la ven? ¿La entienden? ¿La comentan?</em> El testimonio de transparencia se hace visible o no existe.</div>
         </div>
       </div>
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §6.3.5</div>
-        <div class="cita-txt">"Quien viene de la exclusión o de la calle suele vivir en un presente perpetuo donde el recurso se agota instantáneamente. Utilizar el dinero de forma pedagógica enseña al hermano a proyectar, a ahorrar para su familia y a cuidar su casa común, devolviéndole su identidad de administrador responsable."</div>
+        <div class="cita-txt">«Quien viene de la exclusión o de la calle suele vivir en un presente perpetuo donde el recurso se agota instantáneamente. Utilizar el dinero de forma pedagógica —especialmente el primer sueldo— enseña al hermano a proyectar, a ahorrar para su familia y a cuidar su casa común, devolviéndole su identidad de administrador responsable».</div>
         <div class="cita-ref">Manual de la PLAPA, §6.3.5 — El dinero como signo de realismo y madurez (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Alerta pastoral</div>
-        <div class="alerta-txt">La reeducación financiera puede convertirse en <em>disciplinamiento moralista</em> si se plantea como "enseñarles a ahorrar como hace la gente decente". No es eso. Es acompañar a alguien a recuperar la capacidad de proyectar en el tiempo lo que la exclusión y el consumo le habían fracturado. La diferencia es de tono, pero define si la propuesta acoge o expulsa.</div>
+        <div class="alerta-txt">La reeducación financiera puede convertirse en <em>disciplinamiento moralista</em> si se plantea como «enseñarles a ahorrar como hace la gente decente». No es eso. Es acompañar a alguien a recuperar la capacidad de proyectar en el tiempo lo que la exclusión y el consumo le habían fracturado. La diferencia es de tono, pero define si la propuesta acoge o expulsa.</div>
       </div>
 
       <div class="autocuidado">
@@ -1348,8 +1365,14 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"Las Finanzas Solidarias representan la operativización de una economía que sirve a la vida de las personas y dice 'NO a una economía de exclusión e inequidad donde el dinero reina en lugar de servir'."</div>
+        <div class="resonancia-txt">«Las Finanzas Solidarias representan la operativización de una economía que sirve a la vida de las personas y dice “NO a una economía de exclusión e inequidad donde el dinero reina en lugar de servir”».</div>
       </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>El vínculo como única garantía.</strong> Un Fondo Rotatorio es un instrumento de préstamo comunitario donde el dinero circula de manera transparente (§12.4). A diferencia del crédito bancario —que exige historial, garantías patrimoniales y documentación que el hermano no tiene— el fondo rotatorio exige solo una cosa: el <em>vínculo de confianza con la comunidad</em>. Esa exigencia no es menor: es la más profunda que existe.</span></li>
+        <li><span class="dot">V</span><span><strong>Práctica territorial probada, no propuesta teórica.</strong> La estrategia de los Fondos Rotatorios fue impulsada por Cáritas y el Hogar de Cristo en Argentina (§12.4). El contacto del programa es <em>ecosol@caritas.org.ar</em>. El Manual documenta una práctica en curso para que otros equipos puedan adoptarla o adaptarla, no una hipótesis pastoral sin encarnación.</span></li>
+      </ul>
 
       <div class="pl">El Juzgar — Los dos principios del Fondo Rotatorio (§12.4)</div>
       <div class="ejes">
@@ -1365,12 +1388,6 @@
         </div>
       </div>
 
-      <div class="pl">El Ver — Realidad</div>
-      <ul class="pts">
-        <li><span class="dot">V</span><span><strong>El vínculo como única garantía.</strong> Un Fondo Rotatorio es un instrumento de préstamo comunitario donde el dinero circula de manera transparente (§12.4). A diferencia del crédito bancario —que exige historial, garantías patrimoniales y documentación que el hermano no tiene— el fondo rotatorio exige solo una cosa: el <em>vínculo de confianza con la comunidad</em>. Esa exigencia no es menor: es la más profunda que existe.</span></li>
-        <li><span class="dot">V</span><span><strong>Práctica territorial probada, no propuesta teórica.</strong> La estrategia fue impulsada por Cáritas y el Hogar de Cristo en Argentina y está siendo sistematizada como modelo replicable para América Latina (§12.4). El contacto del programa es <em>ecosol@caritas.org.ar</em>. El Manual documenta una práctica en curso para que otros equipos puedan adoptarla o adaptarla, no una hipótesis pastoral sin encarnación.</span></li>
-      </ul>
-
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
         <li><span class="dot j">J</span><span><strong>El pago como acto de comunidad.</strong> La Garantía Solidaria invierte la lógica del crédito bancario: la responsabilidad ya no es individual frente a una institución impersonal, sino <em>colectiva frente a los compañeros</em>. Ese cambio de destinatario es lo que sostiene el fondo cuando aparece la primera dificultad: no se paga por miedo a la sanción, se paga por vínculo con el otro.</span></li>
@@ -1383,7 +1400,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Evaluar la viabilidad de un Fondo Rotatorio en el territorio</div>
         <div class="mode-g">
-          <div class="act-body">El grupo responde tres preguntas del §12.4: <em>¿hay en el territorio personas en proceso de recuperación con un emprendimiento incipiente que necesita financiamiento? ¿hay una base comunitaria mínima (centro barrial, grupo pastoral, cooperativa) que pueda sostener la garantía solidaria? ¿hay alguien con capacidad de acompañamiento técnico básico?</em> Si las tres respuestas son afirmativas, el territorio está listo para un primer fondo rotatorio.</div>
+          <div class="act-body">El grupo responde tres preguntas que se desprenden del §12.4: <em>¿hay en el territorio personas en proceso de recuperación con un emprendimiento incipiente que necesita financiamiento? ¿Hay una base comunitaria mínima (centro barrial, grupo pastoral, cooperativa) que pueda sostener la garantía solidaria? ¿Hay alguien con capacidad de acompañamiento técnico básico?</em> Si las tres respuestas son afirmativas, el territorio está listo para un primer fondo rotatorio.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Escribí en tu bitácora las tres respuestas para tu territorio. Si alguna es negativa: <em>¿qué habría que construir primero para que sí lo sea?</em> El fondo rotatorio no arranca en la voluntad del equipo: arranca cuando las tres condiciones están dadas.</div>
@@ -1416,7 +1433,7 @@
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §12.4</div>
-        <div class="cita-txt">"Un Fondo Rotatorio es un instrumento de préstamo comunitario donde el dinero circula de manera transparente. Cuando un emprendedor o cooperativa devuelve su crédito, ese mismo recurso se utiliza de inmediato para financiar el proyecto de otro compañero del barrio."</div>
+        <div class="cita-txt">«Un Fondo Rotatorio es un instrumento de préstamo comunitario donde el dinero circula de manera transparente: cuando un emprendedor o cooperativa devuelve su crédito, ese mismo recurso se utiliza de inmediato para financiar el proyecto de otro compañero del barrio».</div>
         <div class="cita-ref">Manual de la PLAPA, §12.4 — Microcréditos y Finanzas Solidarias (CELAM 2026)</div>
       </div>
 
@@ -1430,7 +1447,7 @@
         <div class="autocuidado-txt">El Fondo Rotatorio pone a prueba la confianza comunitaria: cuando alguien no paga, el grupo siente la tensión entre la misericordia y la responsabilidad colectiva. El facilitador prepara al equipo para esa tensión <em>antes</em> de que ocurra. La Misericordia Estructurada (§6.3.3) aplica también aquí: el fondo tiene reglas porque el amor que lo sostiene quiere que dure, no que se agote en la primera dificultad.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §12.4 (Microcréditos y Finanzas Solidarias), §6.3.3 (Misericordia Estructurada) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §12.4 (Microcréditos y Finanzas Solidarias), §6.3.3 (La Misericordia Estructurada) — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1445,21 +1462,21 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"No se le presta dinero a un número impersonal, sino que se apoya un proyecto de vida. Las finanzas solidarias no son un servicio técnico: son la operativización de una economía que sirve a la persona."</div>
+        <div class="resonancia-txt">«La integración de la economía popular en la recuperación propone un cambio de paradigma que prioriza el ser sobre el hacer […]».</div>
       </div>
 
       <div class="pl">El Ver — Las cuatro líneas de financiamiento (§12.4.1)</div>
       <ul class="pts">
         <li><span class="dot j">1</span><span><strong>Compra de insumos.</strong> Adquisición de materia prima indispensable para iniciar o garantizar la continuidad de la producción <em>sin depender de intermediarios abusivos</em>.</span></li>
-        <li><span class="dot j">2</span><span><strong>Maquinaria y herramientas.</strong> Equipamiento técnico que mejora la escala, los costos y la calidad del trabajo, <em>acelerando los procesos de autosuficiencia productiva</em>.</span></li>
-        <li><span class="dot j">3</span><span><strong>Mejoramiento del espacio.</strong> Arreglos de infraestructura, adecuación de talleres o comercialización. En contextos periurbanos, muchas veces impacta directamente en la mejora de la vivienda familiar (<em>la T de Techo</em>).</span></li>
+        <li><span class="dot j">2</span><span><strong>Maquinaria y herramientas.</strong> Equipamiento técnico que mejora la escala, los costos y la calidad del trabajo, <em>acelerando los procesos de autosuficiencia</em>.</span></li>
+        <li><span class="dot j">3</span><span><strong>Mejoramiento del espacio.</strong> Arreglos de infraestructura, adecuación de talleres o acondicionamiento de áreas de comercialización y ferias. En contextos periurbanos o rurales, muchas veces impacta directamente en la mejora de la vivienda familiar (<em>la T de Techo</em>).</span></li>
         <li><span class="dot j">4</span><span><strong>Fortalecimiento técnico.</strong> Financiamiento para capacitaciones en administración eficiente, diseño, marketing socio-comunitario y uso de redes sociales para la venta.</span></li>
       </ul>
 
       <div class="pl">El Ver — Realidad</div>
       <ul class="pts">
         <li><span class="dot">V</span><span><strong>Las cuatro líneas responden a cuatro barreras concretas.</strong> Las cuatro líneas del §12.4.1 no son categorías abstractas: responden a las cuatro barreras concretas que el emprendedor del barrio encuentra cuando intenta producir. <em>Sin insumos no puede producir. Sin herramientas no puede escalar. Sin espacio no puede vender. Sin capacitación no puede gestionar.</em> El microcrédito que no considera las cuatro líneas termina financiando solo una parte del problema.</span></li>
-        <li><span class="dot">V</span><span><strong>Los cinco ejes de la economía popular y solidaria (§6.6.5).</strong> Trabajo como lazo social, cooperativismo en sectores populares, reeducación financiera, misericordia estructurada en la organización productiva, y valoración de los talentos propios. <em>"La inclusión social reconoce las herramientas que los sujetos ya poseen para disputar la economía barrial al narcotráfico"</em> (§6.6.5). El microcrédito bien aplicado es la forma más concreta de disputarle ese terreno.</span></li>
+        <li><span class="dot">V</span><span><strong>Los cinco ejes de la economía popular y solidaria (§6.6.5).</strong> Trabajo como lazo social, cooperativismo en sectores populares, reeducación financiera, misericordia estructurada en la organización productiva, y valoración de los talentos propios. <em>«[…] la inclusión social reconoce las herramientas que los sujetos ya poseen para disputar la economía barrial al narcotráfico»</em> (§6.6.5). El microcrédito bien aplicado es la forma más concreta de disputarle ese terreno.</span></li>
       </ul>
 
       <div class="pl">El Juzgar — Iluminación</div>
@@ -1475,7 +1492,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Mapear los emprendimientos del territorio</div>
         <div class="mode-g">
-          <div class="act-body">El grupo identifica los emprendimientos productivos que ya existen en el territorio, especialmente entre personas en proceso de recuperación o sus familias: <em>¿qué producen? ¿qué necesitan para crecer? ¿cuál de las cuatro líneas de financiamiento les haría más diferencia?</em> El mapa de emprendimientos es el punto de partida del plan de microcréditos.</div>
+          <div class="act-body">El grupo identifica los emprendimientos productivos que ya existen en el territorio, especialmente entre personas en proceso de recuperación o sus familias: <em>¿qué producen? ¿Qué necesitan para crecer? ¿Cuál de las cuatro líneas de financiamiento les haría más diferencia?</em> El mapa de emprendimientos es el punto de partida del plan de microcréditos.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Anotá en tu bitácora los emprendimientos productivos que conocés en tu territorio (aunque sean muy pequeños). Al lado de cada uno, marcá cuál de las cuatro líneas del §12.4.1 le haría más diferencia hoy. Esa marca es el diagnóstico financiero mínimo del territorio.</div>
@@ -1487,7 +1504,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Los talentos que el narcotráfico aprovecha y nosotros no</div>
         <div class="mode-g">
-          <div class="act-body">El §6.6.5 propone <em>"valorar los talentos que los sujetos ya poseen para disputar la economía barrial al narcotráfico."</em> El grupo identifica: <em>¿qué habilidades, saberes o redes tienen los hermanos que acompañamos que el narco aprovecha (distribuir, organizar, convencer, moverse en el barrio) y la economía solidaria podría redirigir?</em> La economía solidaria no inventa capacidades: <em>las reorienta</em>.</div>
+          <div class="act-body">El §6.6.5 propone la valoración de los talentos propios, que reconoce <em>«las herramientas que los sujetos ya poseen para disputar la economía barrial al narcotráfico»</em>. El grupo identifica: <em>¿qué habilidades, saberes o redes tienen los hermanos que acompañamos que el narco aprovecha (distribuir, organizar, convencer, moverse en el barrio) y la economía solidaria podría redirigir?</em> La economía solidaria no inventa capacidades: <em>las reorienta</em>.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Escribí en tu bitácora una lista de talentos concretos que ves en las personas del territorio que hoy están al servicio de la economía del narco (o de trabajos precarios) y que la economía solidaria podría redirigir. Al lado de cada talento, un emprendimiento posible que lo usaría bien.</div>
@@ -1508,8 +1525,8 @@
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §6.6.5</div>
-        <div class="cita-txt">"La inclusión económica no es el premio al final del camino, sino una condición de justicia para que la recuperación sea sostenible y digna, permitiendo que el sujeto se reconozca nuevamente como ciudadano con derechos y responsabilidades."</div>
-        <div class="cita-ref">Manual de la PLAPA, §6.6.5 — Economía popular y solidaria (CELAM 2026)</div>
+        <div class="cita-txt">«La inclusión económica no es el premio al final del camino, sino una condición de justicia para que la recuperación sea sostenible y digna, permitiendo que el sujeto se reconozca nuevamente como ciudadano con derechos y responsabilidades».</div>
+        <div class="cita-ref">Manual de la PLAPA, §6.6.5 — La economía popular y solidaria como motores de identidad y dignidad (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
@@ -1519,10 +1536,10 @@
 
       <div class="autocuidado">
         <div class="autocuidado-lbl">Autocuidado del agente</div>
-        <div class="autocuidado-txt">El módulo puede generar en el equipo una sensación de <em>"esto es demasiado técnico para nosotros."</em> El facilitador recuerda que las finanzas solidarias no requieren un contador: requieren un acompañante que sabe escuchar un proyecto de vida y ayudar a ordenarlo. Las cuatro líneas de financiamiento son <em>una herramienta de diálogo, no de evaluación técnica</em>. El equipo que sabe hacer acompañamiento inespecífico ya tiene las habilidades básicas para hacer acompañamiento financiero.</div>
+        <div class="autocuidado-txt">El módulo puede generar en el equipo una sensación de <em>«esto es demasiado técnico para nosotros».</em> El facilitador recuerda que las finanzas solidarias no requieren un contador: requieren un acompañante que sabe escuchar un proyecto de vida y ayudar a ordenarlo. Las cuatro líneas de financiamiento son <em>una herramienta de diálogo, no de evaluación técnica</em>. El equipo que sabe hacer acompañamiento inespecífico ya tiene las habilidades básicas para hacer acompañamiento financiero.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §12.4.1 (Líneas de financiamiento), §6.6.5 (Economía popular y solidaria), §6.3.2 (Las 3T), §6.2.7 (Principios de intervención preventiva) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §12.4.1 (Líneas Estratégicas de Financiamiento), §6.6.5 (La economía popular y solidaria como motores de identidad y dignidad), §6.3.2 (Las 3T: Tierra, Techo y Trabajo), §6.2.7 (Sobre los principios para una intervención preventiva basada en la familia) — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1537,8 +1554,14 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"No se le presta dinero a un número impersonal, sino que se apoya un proyecto de vida. El seguimiento es tanto técnico como humano: implica celebrar los logros comerciales y ajustar las dificultades personales antes de que pongan en riesgo el proceso."</div>
+        <div class="resonancia-txt">«[…] no se le presta dinero a un número impersonal, sino que se apoya un proyecto de vida».</div>
       </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>La Identificación verifica el andamiaje de las 3T.</strong> La Identificación, primer paso de la guía del §12.4.2, requiere verificar que la persona <em>«cuente con los apoyos necesarios en materia de salud, documentación civil y estabilidad habitacional»</em>. Esta verificación no es burocrática: es la constatación de que el andamiaje mínimo de las 3T está en pie. Un microcrédito entregado a alguien sin documentación, sin techo estable o sin acceso a salud es un crédito que probablemente <em>fracase antes de empezar</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>El Seguimiento distingue lo solidario de lo bancario.</strong> El paso 3 es el que más distingue a las finanzas solidarias del crédito bancario. <em>El banco visita al deudor cuando no paga. El acompañante solidario visita para celebrar cuando le va bien y para ajustar cuando encuentra dificultades.</em> <em>«Este paso es tanto técnico como humano»</em> (§12.4.2): la distinción resume todo el espíritu del itinerario.</span></li>
+      </ul>
 
       <div class="pl">El Juzgar — Los tres pasos de la guía metodológica (§12.4.2)</div>
       <ul class="pts">
@@ -1547,16 +1570,10 @@
         <li><span class="dot j">3</span><span><strong>Seguimiento.</strong> Realizar <em>visitas periódicas y presenciales</em> al espacio de trabajo. Este paso es tanto técnico como humano: celebrar los logros comerciales, brindar herramientas administrativas en el campo de acción y ajustar las dificultades operativas o personales antes de que pongan en riesgo el proceso.</span></li>
       </ul>
 
-      <div class="pl">El Ver — Realidad</div>
-      <ul class="pts">
-        <li><span class="dot">V</span><span><strong>La Identificación verifica el andamiaje de las 3T.</strong> El paso 1 requiere verificar que la persona <em>"cuente con los apoyos necesarios en materia de salud, documentación civil y estabilidad habitacional"</em> (§12.4.2). Esta verificación no es burocrática: es la constatación de que el andamiaje mínimo de las 3T está en pie. Un microcrédito entregado a alguien sin documentación, sin techo estable o sin acceso a salud es un crédito que probablemente <em>fracase antes de empezar</em>.</span></li>
-        <li><span class="dot">V</span><span><strong>El Seguimiento distingue lo solidario de lo bancario.</strong> El paso 3 es el que más distingue a las finanzas solidarias del crédito bancario. <em>El banco visita al deudor cuando no paga. El acompañante solidario visita para celebrar cuando le va bien y para ajustar cuando encuentra dificultades.</em> <em>"Este paso es tanto técnico como humano"</em> (§12.4.2): la distinción resume todo el espíritu del itinerario.</span></li>
-      </ul>
-
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
         <li><span class="dot j">J</span><span><strong>Los tres pasos son el VJA aplicado al campo financiero.</strong> La guía metodológica del §12.4.2 aplica la epistemología ascendente al campo financiero: primero se escucha la realidad concreta del emprendedor (<em>Identificación = Ver</em>), luego se elabora el discernimiento técnico sobre su proyecto (<em>Formulación = Juzgar</em>), y finalmente se acompaña el proceso real en el territorio (<em>Seguimiento = Actuar</em>). El VJA aplicado a la economía solidaria produce exactamente la misma estructura que cuando se aplica a la pastoral.</span></li>
-        <li><span class="dot j">J</span><span><strong>"Un proyecto de vida, no un número impersonal": la versión económica del Persona Primero.</strong> La frase que da título al §12.4.2 —<em>"no se le presta dinero a un número impersonal, sino que se apoya un proyecto de vida"</em>— es la versión económica del principio Persona Primero. El microcrédito que ignora la historia, los vínculos y las fragilidades del emprendedor es un instrumento financiero. El que los integra es un <em>instrumento pastoral</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>«Un proyecto de vida, no un número impersonal»: la versión económica del Persona Primero.</strong> La premisa de la guía del §12.4.2 —<em>«no se le presta dinero a un número impersonal, sino que se apoya un proyecto de vida»</em>— es la versión económica del principio Persona Primero. El microcrédito que ignora la historia, los vínculos y las fragilidades del emprendedor es un instrumento financiero. El que los integra es un <em>instrumento pastoral</em>.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1566,10 +1583,10 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Aplicar los tres pasos a un caso del territorio</div>
         <div class="mode-g">
-          <div class="act-body">El grupo toma un emprendimiento real del territorio (anonimizado) y lo recorre con los tres pasos del §12.4.2: <em>¿qué sabemos del emprendedor (Identificación)? ¿qué plan tiene y con qué recursos (Formulación)? ¿hay alguien que lo visita regularmente y celebra sus logros (Seguimiento)?</em> El ejercicio revela en qué paso está el equipo y qué falta.</div>
+          <div class="act-body">El grupo toma un emprendimiento real del territorio (anonimizado) y lo recorre con los tres pasos del §12.4.2: <em>¿qué sabemos del emprendedor (Identificación)? ¿Qué plan tiene y con qué recursos (Formulación)? ¿Hay alguien que lo visita regularmente y celebra sus logros (Seguimiento)?</em> El ejercicio revela en qué paso está el equipo y qué falta.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Elegí un emprendimiento real del territorio y recorré los tres pasos en tu bitácora. Al final de cada paso, respondé: <em>¿qué falta? ¿quién podría hacerlo? ¿en qué plazo?</em> El diagnóstico honesto por paso genera el plan de trabajo específico.</div>
+          <div class="act-body">Elegí un emprendimiento real del territorio y recorré los tres pasos en tu bitácora. Al final de cada paso, respondé: <em>¿qué falta? ¿Quién podría hacerlo? ¿En qué plazo?</em> El diagnóstico honesto por paso genera el plan de trabajo específico.</div>
         </div>
       </div>
 
@@ -1590,22 +1607,22 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Cierre: la economía que queremos ser</div>
         <div class="mode-g">
-          <div class="act-body">El grupo cierra con una frase que retoma el itinerario 9 desde la perspectiva financiera: <em>"En este territorio, queremos construir una economía que…"</em> Tres líneas máximo, escritas en silencio y leídas en voz alta. El facilitador busca los puntos en común y los nombra como el horizonte compartido del equipo hacia donde el itinerario apuntó.</div>
+          <div class="act-body">El grupo cierra con una frase que retoma el trabajo y las 3T (§6.3) desde la perspectiva financiera: <em>«En este territorio, queremos construir una economía que…»</em> Tres líneas máximo, escritas en silencio y leídas en voz alta. El facilitador busca los puntos en común y los nombra como el horizonte compartido del equipo hacia donde el itinerario apuntó.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Cerrá el itinerario escribiendo en tu bitácora: <em>"En este territorio, quiero acompañar una economía solidaria que…"</em>. Tres líneas máximo. Esa es tu brújula personal para las próximas decisiones concretas en el campo de las finanzas solidarias.</div>
+          <div class="act-body">Cerrá el itinerario escribiendo en tu bitácora: <em>«En este territorio, quiero acompañar una economía solidaria que…»</em>. Tres líneas máximo. Esa es tu brújula personal para las próximas decisiones concretas en el campo de las finanzas solidarias.</div>
         </div>
       </div>
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §12.4.2</div>
-        <div class="cita-txt">"No se le presta dinero a un número impersonal, sino que se apoya un proyecto de vida. El seguimiento implica celebrar los logros comerciales del emprendimiento, brindar herramientas administrativas en el campo de acción y ajustar las dificultades operativas o personales antes de que pongan en riesgo el proceso."</div>
+        <div class="cita-txt">«Seguimiento: Realizar visitas periódicas y presenciales al espacio de trabajo. Este paso es tanto técnico como humano; implica celebrar los logros comerciales del emprendimiento, brindar herramientas administrativas en el campo de acción y ajustar las dificultades operativas o personales antes de que pongan en riesgo el proceso».</div>
         <div class="cita-ref">Manual de la PLAPA, §12.4.2 — Guía Metodológica para el Acompañamiento Integral (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Alerta pastoral</div>
-        <div class="alerta-txt">Saltarse el paso de Identificación —<em>"esta persona necesita un préstamo, después vemos"</em>— es la fuente principal de fracaso de los microcréditos solidarios. La Identificación no es formalismo: es el gesto pastoral de asegurarse de que el andamiaje mínimo esté en pie antes de sumar una responsabilidad crediticia. Sin ese paso, el fondo rotatorio se convierte en <em>generador de nuevas exclusiones</em> en lugar de puerta de reintegración.</div>
+        <div class="alerta-txt">Saltarse el paso de Identificación —<em>«esta persona necesita un préstamo, después vemos»</em>— es la fuente principal de fracaso de los microcréditos solidarios. La Identificación no es formalismo: es el gesto pastoral de asegurarse de que el andamiaje mínimo esté en pie antes de sumar una responsabilidad crediticia. Sin ese paso, el fondo rotatorio se convierte en <em>generador de nuevas exclusiones</em> en lugar de puerta de reintegración.</div>
       </div>
 
       <div class="autocuidado">
@@ -1615,11 +1632,10 @@
 
       <div class="lectura">
         <div class="lectura-lbl">Lectura complementaria</div>
-        <div class="lectura-txt">Para profundizar en la práctica de los <strong>Fondos Rotatorios</strong> y el acompañamiento financiero integral en la tradición de la Familia Grande Hogar de Cristo y del programa de Finanzas Solidarias de Cáritas, ofrecemos este texto para la reflexión del equipo. Contacto directo del programa: <em>ecosol@caritas.org.ar</em>.</div>
-        <a href="ElMetodoFGHC.pdf" download class="lectura-link">📥 Descargar "ElMetodoFGHC.pdf"</a>
+        <div class="lectura-txt">Para profundizar, leé completo en el Manual de la PLAPA el <strong>§12.4, «Microcréditos y Finanzas Solidarias»</strong>, con sus apartados <strong>§12.4.1, «Líneas Estratégicas de Financiamiento»</strong>, y <strong>§12.4.2, «Guía Metodológica para el Acompañamiento Integral»</strong>. Leelo junto con el <strong>§6.3.5, «El dinero como signo de realismo y madurez»</strong>, que trae las objeciones más frecuentes sobre el manejo del dinero en la recuperación y la respuesta del Manual, y con el <strong>§6.6.5, «La economía popular y solidaria como motores de identidad y dignidad»</strong>. Contacto directo del programa: ecosol@caritas.org.ar.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §12.4.2 (Guía Metodológica), §6.3.5 (El dinero como termómetro), §6.6.5 (Economía popular y solidaria) · Contacto: ecosol@caritas.org.ar — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §12.4.2 (Guía Metodológica para el Acompañamiento Integral), §6.3.5 (El dinero como signo de realismo y madurez), §6.6.5 (La economía popular y solidaria como motores de identidad y dignidad) · Contacto: ecosol@caritas.org.ar — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1634,8 +1650,8 @@
 
       <!-- Selector de vista: este itinerario / global -->
       <div class="foro-vista">
-        <button class="foro-vista-btn on" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
-        <button class="foro-vista-btn" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
+        <button class="foro-vista-btn on" aria-pressed="true" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
+        <button class="foro-vista-btn" aria-pressed="false" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
       </div>
 
       <!-- Pautas pastorales -->
@@ -1687,7 +1703,7 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Antes de comenzar</div>
-        <div class="resonancia-txt">"La revisión de vida es la forma histórica que la Iglesia latinoamericana encontró para institucionalizar el Ver–Juzgar–Actuar. El agente que la practica no aplica el método: lo vive." Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
+        <div class="resonancia-txt">Este itinerario te invitó a mirar el dinero como terreno pastoral y no como riesgo a evitar, a pensar el Fondo Rotatorio sostenido por la confianza recíproca, a conocer las cuatro líneas de financiamiento y a acompañar cada microcrédito en tres pasos: identificar, formular y seguir. Ahora es el momento de nombrar qué cambió en tu mirada. Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
       </div>
 
       <div class="eval-nota">
@@ -1697,24 +1713,24 @@
 
       <div class="pl">El Ver — Qué se hizo visible</div>
       <div class="eval-q">
-        <label for="evalVer">¿Qué realidad del territorio se hizo más visible para vos a lo largo de estos cuatro módulos? ¿Qué llagas emergieron con más fuerza? ¿Qué zonas del mapa estaban en blanco antes y ahora tienen contenido?</label>
+        <label for="evalVer">¿Qué se hizo más visible para vos a lo largo de estos cuatro módulos sobre la relación con el dinero de las personas que acompañás? ¿A quiénes estás protegiendo del dinero cuando ya podrían aprender a administrarlo? ¿Qué emprendimientos y talentos del territorio descubriste esperando una oportunidad?</label>
         <textarea id="evalVer" data-eval="ver" placeholder="Escribí con calma, sin apurarte..."></textarea>
       </div>
 
       <div class="pl">El Juzgar — Qué iluminó, qué preguntas quedaron abiertas</div>
       <div class="eval-q">
-        <label for="evalJuzgar1">¿Qué del método del diagnóstico territorial te iluminó de manera nueva? ¿Qué idea del Manual sentís que ya no podrás dejar de lado?</label>
+        <label for="evalJuzgar1">Del dinero como termómetro de madurez, de la circularidad y la garantía solidaria, de las cuatro líneas de financiamiento y de los tres pasos del acompañamiento integral: ¿qué te iluminó de manera nueva? ¿Qué idea del Manual sentís que ya no podrás dejar de lado?</label>
         <textarea id="evalJuzgar1" data-eval="juzgar1" placeholder="Nombralo con precisión..."></textarea>
       </div>
       <div class="eval-q">
-        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos? Las preguntas abiertas son también fruto (§13.3).</label>
+        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos? La tensión entre confiar y controlar, entre la misericordia y la responsabilidad colectiva cuando alguien no paga, entre reglas que cuidan el fondo y reglas que lo convierten en un banco chico: ¿dónde te dejó incómodo/a?</label>
         <textarea id="evalJuzgar2" data-eval="juzgar2" placeholder="Las que siguen ardiendo..."></textarea>
       </div>
 
       <div class="pl">El Actuar — Compromiso concreto</div>
       <div class="eval-q">
-        <label for="evalActuar">¿Qué gesto pastoral concreto vas a intentar en las próximas semanas a partir del diagnóstico que hiciste? Nombralo con nombre, tiempo y lugar. Un compromiso vago no es un compromiso.</label>
-        <textarea id="evalActuar" data-eval="actuar" placeholder="Ej.: En la próxima reunión de equipo (jueves 25) voy a presentar el mapa territorial que construimos y proponer una callejeada específica al sector X del barrio..."></textarea>
+        <label for="evalActuar">¿Qué gesto concreto de finanzas solidarias vas a intentar en las próximas semanas? Puede ser acompañar a alguien a planificar su primer sueldo, visitar un emprendimiento para celebrar un logro, escribir a ecosol@caritas.org.ar o recorrer con un emprendedor el paso de Identificación. Nombralo con nombre, tiempo y lugar. Un compromiso vago no es un compromiso.</label>
+        <textarea id="evalActuar" data-eval="actuar" placeholder="Ej.: El sábado 15 visito el taller de costura de X para celebrar su primera venta en la feria y, juntos, armamos la planilla de ingresos y egresos del mes..."></textarea>
       </div>
       <div class="eval-q eval-fecha">
         <label for="evalFecha">Fecha en la que vas a volver a revisar si pudiste sostenerlo</label>
@@ -1722,8 +1738,8 @@
       </div>
 
       <div class="pl">Autocuidado y equipo</div>
-      <div class="eval-q eval-scale">
-        <label>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</label>
+      <fieldset class="eval-q eval-scale">
+        <legend>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</legend>
         <div class="eval-scale-row">
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="1" data-eval="animo"><span>1</span></label>
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="2" data-eval="animo"><span>2</span></label>
@@ -1731,10 +1747,10 @@
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="4" data-eval="animo"><span>4</span></label>
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="5" data-eval="animo"><span>5</span></label>
         </div>
-      </div>
+      </fieldset>
       <div class="eval-q">
-        <label for="evalCuidado">¿Qué necesitás cuidar de vos mismo/a en las próximas semanas? ¿A quién del equipo se lo vas a decir?</label>
-        <textarea id="evalCuidado" data-eval="cuidado" placeholder="El agente que cuida su esperanza puede sostener la del otro (§1.3)..."></textarea>
+        <label for="evalCuidado">Acompañar dinero ajeno puede cargar al agente con el miedo a que se pierda, con la desilusión cuando una cuota no llega y con la sensación de que «esto es demasiado técnico». ¿Qué necesitás cuidar de vos en las próximas semanas? ¿Quién te sostiene a vos cuando la confianza se pone a prueba? ¿A quién del equipo se lo vas a decir?</label>
+        <textarea id="evalCuidado" data-eval="cuidado" placeholder="Ej.: Voy a decirle a X que me dolió que Y dejara de pagar y que necesito hablarlo en el equipo antes de la próxima reunión del fondo..."></textarea>
       </div>
 
       <div class="pl">Cierre</div>
@@ -1753,10 +1769,10 @@
 
       <div class="autocuidado" style="margin-top: 2rem;">
         <div class="autocuidado-lbl">Cierre del itinerario</div>
-        <div class="autocuidado-txt">Cerrar bien un itinerario también es autocuidado: celebrar lo caminado, agradecer al equipo, reconocer los propios límites y renovar la esperanza. Este itinerario termina con gratitud: por el territorio que nos habló, por las llagas que dejamos de negar, por el equipo que hizo posible mirar sin apartar la mirada.</div>
+        <div class="autocuidado-txt">Cerrar bien un itinerario también es autocuidado: celebrar lo caminado, agradecer al equipo, reconocer los propios límites y renovar la esperanza. Este itinerario termina con gratitud: por los emprendedores que nos confiaron su proyecto de vida, por los compañeros que sostuvieron con su palabra la garantía de otros, por el equipo que hizo posible que el dinero sirva y no reine.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §1.3 (Prólogo), §6.1.3 (Evitar la romantización), §13.2 (Sinodalidad en la práctica), §13.3 (Rolling release), §13.5 (Mecanismos de colaboración) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §6.3.5 (El dinero como signo de realismo y madurez), §6.6.5 (La economía popular y solidaria como motores de identidad y dignidad), §12.4 (Microcréditos y Finanzas Solidarias), §12.4.1 (Líneas Estratégicas de Financiamiento), §12.4.2 (Guía Metodológica para el Acompañamiento Integral), §13.3 (La propuesta de un manual Rolling Release), §13.5 (Los mecanismos de colaboración) — CELAM 2026.</div>
 
     </div>
   </div>
@@ -1770,9 +1786,9 @@
     root.classList.add('mode-' + mode);
     var buttons = document.querySelectorAll('.mode-btn');
     for (var i = 0; i < buttons.length; i++) {
-      buttons[i].classList.remove('on');
+      buttons[i].classList.remove('on'); buttons[i].setAttribute('aria-pressed', 'false');
     }
-    btn.classList.add('on');
+    btn.classList.add('on'); btn.setAttribute('aria-pressed', 'true');
   }
 
   function show(n, btn) {
@@ -2049,8 +2065,8 @@
   function setVistaForo(v, btn) {
     vistaForo = v;
     var buttons = document.querySelectorAll('.foro-vista-btn');
-    for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove('on'); }
-    btn.classList.add('on');
+    for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove('on'); buttons[i].setAttribute('aria-pressed', 'false'); }
+    btn.classList.add('on'); btn.setAttribute('aria-pressed', 'true');
     cargarComentarios();
   }
 
@@ -2128,16 +2144,17 @@
     var datos = recolectarEvaluacion();
     var minimoTexto = (datos.ver || '').trim() + (datos.actuar || '').trim();
     if (minimoTexto.length < 30) {
-      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos "El Ver" y "El Actuar" merecen unos renglones honestos.', 'error');
+      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos «El Ver» y «El Actuar» merecen unos renglones honestos.', 'error');
       return;
     }
 
     // Guardar en Supabase (siempre queda en tu bitácora)
     if (!sesion) { window.location.href = '/login'; return; }
-    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario', {
+    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario?on_conflict=usuario_id,itinerario_id', {
       method: 'POST',
       headers: Object.assign({}, supaHeaders(), { 'Prefer': 'resolution=merge-duplicates' }),
       body: JSON.stringify({
+        usuario_id: sesion.user ? sesion.user.id : undefined,
         itinerario_id: ITINERARIO_ID,
         respuestas: datos,
         compartir_con_equipo: datos.compartir_con_equipo === true
@@ -2160,12 +2177,18 @@
 
   function imprimirEvaluacion() {
     autoguardarBorrador();
+    // Que cada respuesta se imprima completa, sin cortarse
+    var areas = document.querySelectorAll('#m6 textarea');
+    for (var i = 0; i < areas.length; i++) {
+      areas[i].style.height = 'auto';
+      areas[i].style.height = areas[i].scrollHeight + 'px';
+    }
     window.print();
   }
 
   // Init general del itinerario
   document.addEventListener('DOMContentLoaded', function() {
-    // Leer sesión (el guard del <head> garantiza que existe)
+    // Leer sesión guardada por el login (puede no existir)
     try {
       var stored = localStorage.getItem('escuela_plapa_sesion');
       if (stored) sesion = JSON.parse(stored);

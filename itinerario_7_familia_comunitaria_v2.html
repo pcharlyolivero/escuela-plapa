@@ -24,7 +24,7 @@
     --borde:      #E4E2F0;
 
     --font-serif: "Georgia", "Times New Roman", serif;
-    --font-sans:  "system-ui", -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+    --font-sans:  system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -772,7 +772,7 @@
   }
   .foro-form textarea:focus,
   .foro-form select:focus {
-    outline: none;
+    outline: 2px solid transparent;
     border-color: var(--i7-medio);
   }
   .foro-form-actions {
@@ -1009,7 +1009,18 @@
   .eval-q {
     margin-bottom: 1.5rem;
   }
-  .eval-q > label {
+  fieldset.eval-scale {
+    border: 0;
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+    min-width: 0;
+  }
+  .eval-q > legend {
+    padding: 0;
+  }
+  .eval-q > label,
+  .eval-q > legend {
     display: block;
     font-size: 14px;
     font-weight: 500;
@@ -1033,7 +1044,7 @@
   }
   .eval-q textarea:focus,
   .eval-q input:focus {
-    outline: none;
+    outline: 2px solid transparent;
     border-color: var(--i7-medio);
     box-shadow: 0 0 0 3px rgba(60, 52, 137, 0.1);
   }
@@ -1063,6 +1074,10 @@
     position: absolute;
     opacity: 0;
     pointer-events: none;
+  }
+  .eval-radio input:focus-visible + span {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
   }
   .eval-radio span {
     display: block;
@@ -1155,7 +1170,10 @@
     .root { box-shadow: none; padding: 1rem; max-width: 100%; }
     .portada, .video-wrap, .mode-selector, .nav { display: none !important; }
     .card { display: none !important; }
-    #m6.card { display: block !important; break-inside: avoid; border: none; }
+    #m6.card { display: block !important; border: none; }
+    .eval-q { break-inside: avoid; }
+    .video-wrap, .top-header, .foro-vista { display: none !important; }
+    .eval-q textarea { overflow: visible; resize: none; }
     .eval-actions, .eval-msg { display: none !important; }
     .ch { background: transparent; }
     .eval-q textarea, .eval-q input[type="date"] {
@@ -1221,15 +1239,14 @@
 
   <!-- ═══ VIDEO ═══════════════════════════════════════════ -->
 
-  <!-- NUEVO: Bloque del Video de Presentación Incrustado -->
-<div style="background: var(--surface-2); border: 0.5px solid var(--border); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
-  <p style="font-size: 11px; font-weight: 500; color: #085041; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; text-align: left;">
+<div class="video-wrap" style="background: #FFF; border: 1px solid var(--borde); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
+  <p style="font-size: 11px; font-weight: 500; color: var(--i7-oscuro); letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; text-align: left;">
     ▶️ Video de presentación
   </p>
   <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px;">
     <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
       src="https://www.youtube.com/embed/oMA6Jpsid0E"
-      title="Presentación del Itinerario 07" 
+      title="Video de presentación: Familia comunitaria y crianza compartida — Itinerario 07" 
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
       allowfullscreen>
     </iframe>
@@ -1239,8 +1256,8 @@
 
   <!-- ═══ SELECTOR DE MODALIDAD ═══════════════════════════ -->
   <div class="mode-selector">
-    <button class="mode-btn on" onclick="setMode('grupal', this)">👥 Hacer en comunidad</button>
-    <button class="mode-btn" onclick="setMode('individual', this)">👤 Hacer de forma individual</button>
+    <button class="mode-btn on" aria-pressed="true" onclick="setMode('grupal', this)">👥 Hacer en comunidad</button>
+    <button class="mode-btn" aria-pressed="false" onclick="setMode('individual', this)">👤 Hacer de forma individual</button>
   </div>
 
   <!-- ═══ NAVEGACIÓN ══════════════════════════════════════ -->
@@ -1265,16 +1282,16 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"Como imagen de la Trinidad, la familia es una comunión de personas donde el amor fecundo se convierte en una escultura viviente capaz de manifestar la capacidad creadora y el sentido de trascendencia del ser humano."</div>
+        <div class="resonancia-txt">«La familia no es un problema, es principalmente una oportunidad. Como imagen de la Trinidad, es una comunión de personas donde el amor fecundo se convierte en una escultura viviente capaz de manifestar la capacidad creadora y el sentido de trascendencia del ser humano» (§6.2.1).</div>
       </div>
 
       <div class="pl">El Ver — Realidad</div>
       <ul class="pts">
-        <li><span class="dot">V</span><span><strong>La pastoral llega tarde a las familias.</strong> El diagnóstico pastoral suele llegar a las familias después de que la crisis ya estalló. El §6.2.1 propone invertir esa lógica: antes de ser un conjunto de problemas a resolver, la familia debe ser comprendida en su vocación más profunda como <em>"comunidad de vida y amor que constituye la base de la sociedad"</em>. La pastoral que solo llega a la familia en crisis llega tarde.</span></li>
-        <li><span class="dot">V</span><span><strong>Las cuatro presiones macro condicionan la crianza.</strong> Las influencias estructurales condicionan las capacidades de crianza de manera real y medible: la pobreza extrema limita el acceso a salud y nutrición; el estrés crónico del cuidador por inestabilidad laboral agota los recursos psíquicos disponibles para los hijos; la presencia del narcotráfico en el territorio fragmenta los hogares y los obliga a vivir bajo lógica de supervivencia (§6.2.5). La culpa individual por "no criarlos bien" ignora todo ese peso estructural.</span></li>
+        <li><span class="dot">V</span><span><strong>La pastoral llega tarde a las familias.</strong> El diagnóstico pastoral suele llegar a las familias después de que la crisis ya estalló. El §6.2.1 propone invertir esa lógica: antes de ser un conjunto de problemas a resolver, la familia debe ser comprendida en su vocación más profunda como <em>«comunidad de vida y amor que constituye la base de la sociedad»</em>. La pastoral que solo llega a la familia en crisis llega tarde.</span></li>
+        <li><span class="dot">V</span><span><strong>Las cuatro presiones macro condicionan la crianza.</strong> Las influencias estructurales condicionan las capacidades de crianza de manera real y medible: la pobreza extrema limita el acceso a salud y nutrición; el estrés crónico del cuidador por inestabilidad laboral agota los recursos psíquicos disponibles para los hijos; la discriminación y la exclusión social aumentan la respuesta fisiológica al estrés en los padres; la presencia del narcotráfico en el territorio fragmenta los hogares y los obliga a vivir bajo lógica de supervivencia (§6.2.5). La culpa individual por «no criarlos bien» ignora todo ese peso estructural.</span></li>
       </ul>
 
-      <div class="pl">El Juzgar — Los cuatro pilares de la familia como oportunidad</div>
+      <div class="pl">El Juzgar — Los tres pilares de la familia como oportunidad (§6.2.1)</div>
       <div class="ejes">
         <div class="eje">
           <div class="eje-n">Pilar 1</div>
@@ -1292,14 +1309,14 @@
           <div class="eje-txt">Ofrece un horizonte definitivo frente a la cultura de lo provisorio, permitiendo proyectar el futuro con seguridad.</div>
         </div>
         <div class="eje">
-          <div class="eje-n">Pilar 4</div>
+          <div class="eje-n">Y además · §6.2.6</div>
           <div class="eje-t">Factor protector contra el consumo</div>
           <div class="eje-txt">Un ambiente afectuoso y una comunidad inclusiva pueden proteger incluso a quienes poseen mayor vulnerabilidad biológica.</div>
         </div>
       </div>
 
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>La invisibilidad como detonante.</strong> "Muchos jóvenes caen en las redes del consumo porque se sienten invisibles y han dejado de existir para otros" (§6.2.6). La exclusión social opera como detonante de la vulnerabilidad juvenil: deteriora la salud mental por estrés crónico, debilita la red de cuidados familiar y genera una invisibilidad que el consumo intenta llenar. El diagnóstico no es moral: es estructural.</span></li>
+        <li><span class="dot j">J</span><span><strong>La invisibilidad como detonante.</strong> «Muchos jóvenes caen en las redes del consumo porque se sienten invisibles y han dejado de existir para otros […]» (§6.2.6). La exclusión social opera como detonante de la vulnerabilidad juvenil: deteriora la salud mental por estrés crónico, debilita la red de cuidados familiar y genera una invisibilidad que el consumo intenta llenar. El diagnóstico no es moral: es estructural.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1309,10 +1326,10 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">¿Desde dónde miramos a las familias del territorio?</div>
         <div class="mode-g">
-          <div class="act-body">El grupo evalúa honestamente: <em>cuando pensamos en las familias del barrio, ¿las vemos primero como problemas o como oportunidades? ¿Cuándo llegamos a ellas: antes o después de la crisis?</em> El ejercicio no es para culpar sino para ubicarse. <em>Amoris Laetitia</em> N°291 como punto de partida: "La familia no es un problema, es principalmente una oportunidad."</div>
+          <div class="act-body">El grupo evalúa honestamente: <em>cuando pensamos en las familias del barrio, ¿las vemos primero como problemas o como oportunidades? ¿Cuándo llegamos a ellas: antes o después de la crisis?</em> El ejercicio no es para culpar sino para ubicarse. El §6.2.1, en sintonía con <em>Amoris Laetitia</em>, como punto de partida: «La familia no es un problema, es principalmente una oportunidad».</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Escribí en tu bitácora los nombres de tres familias del territorio que conocés. Al lado de cada una, respondé con honestidad: <em>¿la veo primero como problema o como oportunidad? ¿la conocí antes o después de una crisis?</em> El diagnóstico de tu propia mirada precede al diagnóstico de la familia.</div>
+          <div class="act-body">Escribí en tu bitácora los nombres de tres familias del territorio que conocés. Al lado de cada una, respondé con honestidad: <em>¿la veo primero como problema o como oportunidad? ¿La conocí antes o después de una crisis?</em> El diagnóstico de tu propia mirada precede al diagnóstico de la familia.</div>
         </div>
       </div>
 
@@ -1321,7 +1338,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Las cuatro presiones macro en el territorio propio</div>
         <div class="mode-g">
-          <div class="act-body">El grupo identifica las cuatro presiones del §6.2.5 en el territorio concreto: <em>privación de recursos básicos, estrés crónico del cuidador, discriminación y exclusión social, presencia del narcotráfico</em>. Para cada una: ¿cuán presente está? ¿qué respuesta tiene la comunidad? ¿qué falta? Esto no exculpa las responsabilidades personales: las contextualiza para poder acompañarlas.</div>
+          <div class="act-body">El grupo identifica las cuatro presiones del §6.2.5 en el territorio concreto: <em>privación de recursos básicos, estrés crónico del cuidador, discriminación y exclusión social, presencia del narcotráfico</em>. Para cada una: ¿cuán presente está? ¿Qué respuesta tiene la comunidad? ¿Qué falta? Esto no exculpa las responsabilidades personales: las contextualiza para poder acompañarlas.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Dibujá en tu bitácora una tabla con las cuatro presiones del §6.2.5. Al lado de cada una marcá presencia (baja/media/alta) en tu territorio, y lo que la comunidad pastoral ya hace o podría hacer. La contextualización no exculpa: <em>ubica</em>. Y sin ubicación no hay acompañamiento posible.</div>
@@ -1333,7 +1350,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">La familia que queremos acompañar: perfil territorial</div>
         <div class="mode-g">
-          <div class="act-body">El grupo construye un perfil mínimo de las familias del territorio: <em>¿cuántas son monoparentales? ¿cuántas tienen adultos referentes presentes? ¿cuántas están atravesadas por el consumo? ¿cuántas tienen hijos en la escuela?</em> No para clasificar: para saber a quiénes se dirige la pastoral familiar del equipo.</div>
+          <div class="act-body">El grupo construye un perfil mínimo de las familias del territorio: <em>¿cuántas son monoparentales? ¿Cuántas tienen adultos referentes presentes? ¿Cuántas están atravesadas por el consumo? ¿Cuántas tienen hijos en la escuela?</em> No para clasificar: para saber a quiénes se dirige la pastoral familiar del equipo.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Enumerá en tu bitácora las familias que efectivamente acompañás. Al lado de cada una: composición, situación escolar de los niños, presencia de consumo, redes de apoyo existentes. Al final, escribí una pregunta: <em>¿estoy acompañando a las familias que más lo necesitan, o a las que más fácil me resultó llegar?</em></div>
@@ -1341,9 +1358,9 @@
       </div>
 
       <div class="cita">
-        <div class="cita-lbl">Cita inspiradora · §6.2.1 — Amoris Laetitia N°291</div>
-        <div class="cita-txt">"La familia no es un problema, es principalmente una oportunidad. Incluso en su fragilidad, posee la fuerza de amar y enseñar a amar, siendo el ámbito natural donde se custodia la vida en todas sus etapas."</div>
-        <div class="cita-ref">Citado en Manual de la PLAPA, §6.2.1 — Naturaleza y vocación de la familia (CELAM 2026)</div>
+        <div class="cita-lbl">Cita inspiradora · §6.2.1 — Manual PLAPA</div>
+        <div class="cita-txt">«La familia no es un problema, es principalmente una oportunidad. […] La familia, incluso en su fragilidad, posee la fuerza de amar y enseñar a amar, siendo el ámbito natural donde se custodia la vida en todas sus etapas».</div>
+        <div class="cita-ref">Manual de la PLAPA, §6.2.1 — Sobre la naturaleza y vocación de la familia como oportunidad (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
@@ -1353,10 +1370,10 @@
 
       <div class="autocuidado">
         <div class="autocuidado-lbl">Autocuidado del agente</div>
-        <div class="autocuidado-txt">El agente que trabaja con familias en contextos de exclusión puede cargar con la frustración de ver cómo el estrés estructural desborda las mejores intenciones de los padres. El §6.2.5 recuerda que <em>"el estrés prolongado actúa como un perturbador del desarrollo que puede silenciar la respuesta afectiva del cuidador."</em> Eso vale también para el agente: si el contexto lo sobrecarga, su disponibilidad emocional baja. Cuidar la propia red de sostén es cuidar la calidad del acompañamiento.</div>
+        <div class="autocuidado-txt">El agente que trabaja con familias en contextos de exclusión puede cargar con la frustración de ver cómo el estrés estructural desborda las mejores intenciones de los padres. El §6.2.5 recuerda que <em>«el estrés prolongado actúa como un perturbador del desarrollo que puede silenciar la respuesta afectiva del cuidador»</em>. Eso vale también para el agente: si el contexto lo sobrecarga, su disponibilidad emocional baja. Cuidar la propia red de sostén es cuidar la calidad del acompañamiento.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §6.2.1 (Naturaleza y vocación de la familia), §6.2.5 (Influencias macro sobre la familia), §6.2.6 (La juventud invisibilizada), Amoris Laetitia N°291 — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §6.2.1 (Sobre la naturaleza y vocación de la familia como oportunidad), §6.2.5 (Sobre el condicionamiento de las influencias macro en las capacidades de crianza), §6.2.6 (Sobre el impacto de la discriminación y la exclusión social en el riesgo de consumo juvenil) — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1371,19 +1388,19 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"La hospitalidad tiene un impacto real en la salud pública: genera el sentido de pertenencia indispensable para que cualquier proceso de recuperación sea sostenible. La verdadera eficiencia no nace de la frialdad burocrática, sino de un amor que sabe recibir la vida como viene."</div>
+        <div class="resonancia-txt">«[…] la hospitalidad tiene un impacto real en la salud pública, ya que genera el sentido de pertenencia indispensable para que cualquier proceso de recuperación sea sostenible. […] la verdadera eficiencia en contextos de vulnerabilidad no nace de la frialdad burocrática, sino de un amor que sabe recibir la vida como viene […]» (§6.2.3).</div>
       </div>
 
       <div class="pl">El Ver — Realidad</div>
       <ul class="pts">
-        <li><span class="dot">V</span><span><strong>La doble tentación de la familia vulnerable.</strong> La familia en contextos de vulnerabilidad enfrenta una doble tentación: el <em>repliegue sobre sí misma</em> como mecanismo de defensa (cerrar las puertas para sobrevivir), o la <em>apertura sin criterio</em> que la expone a dinámicas que no puede sostener. El §6.2.2 propone una tercera vía: la familia como "escuela de fraternidad" que, sin disolver su propio núcleo, se convierte en antídoto contra el individualismo que rodea al consumo.</span></li>
-        <li><span class="dot">V</span><span><strong>"Si abro mi casa, ¿quién me cuida a mí?"</strong> Es la objeción más frecuente y es legítima. El §6.2.3 la responde desde la experiencia: <em>"la hospitalidad transforma el espacio público en un lugar de vecindad y cuidado, neutralizando la soledad extrema que suele anteceder a la adicción"</em>. La familia que abre las puertas no pierde: construye la red que también la va a sostener a ella.</span></li>
+        <li><span class="dot">V</span><span><strong>La doble tentación de la familia vulnerable.</strong> La familia en contextos de vulnerabilidad enfrenta una doble tentación: el <em>repliegue sobre sí misma</em> como mecanismo de defensa (cerrar las puertas para sobrevivir), o la <em>apertura sin criterio</em> que la expone a dinámicas que no puede sostener. El §6.2.2 propone una tercera vía: la familia como «escuela de fraternidad» que, sin disolver su propio núcleo, se convierte en antídoto contra el individualismo que rodea al consumo.</span></li>
+        <li><span class="dot">V</span><span><strong>«Si abro mi casa, ¿quién me cuida a mí?»</strong> Es la objeción más frecuente y es legítima. El §6.2.3 la responde desde la experiencia: <em>«la hospitalidad transforma el espacio público en un lugar de vecindad y cuidado, neutralizando la soledad extrema que suele anteceder a la adicción»</em>. La familia que abre las puertas no pierde: construye la red que también la va a sostener a ella.</span></li>
       </ul>
 
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
         <li><span class="dot j">J</span><span><strong>Las tres dimensiones de la mística de la hospitalidad.</strong> El §6.2.3 las nombra: el <em>testimonio de la maternidad eclesial</em> (la familia que abre sus puertas manifiesta un amor sin condiciones), la <em>humanización del territorio</em> (la hospitalidad transforma el espacio público en vecindad y cuidado), y el <em>reconocimiento del rostro de Cristo</em> (la acogida gratuita permite ver la dignidad sagrada del hermano roto).</span></li>
-        <li><span class="dot j">J</span><span><strong>La hospitalidad como corazón, no agregado.</strong> "Cuando la familia acoge y sale hacia los demás, especialmente hacia los pobres y abandonados, se convierte en símbolo, testimonio y participación de la maternidad de la Iglesia" (§6.2.3, citando <em>Amoris Laetitia</em>). La hospitalidad no es un agregado espiritual al compromiso pastoral: es su corazón. Sin ella, la red comunitaria es solo logística.</span></li>
+        <li><span class="dot j">J</span><span><strong>La hospitalidad como corazón, no agregado.</strong> «[…] cuando la familia acoge y sale hacia los demás, especialmente hacia los pobres y abandonados, se convierte en símbolo, testimonio y participación de la maternidad de la Iglesia» (§6.2.3, citando <em>Amoris Laetitia</em>). La hospitalidad no es un agregado espiritual al compromiso pastoral: es su corazón. Sin ella, la red comunitaria es solo logística.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1393,10 +1410,10 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Mapear las familias de hospitalidad del territorio</div>
         <div class="mode-g">
-          <div class="act-body">El grupo identifica: <em>¿qué familias del territorio ya practican hospitalidad de manera espontánea? ¿quiénes tienen la puerta abierta, dan de comer, reciben a los que nadie más recibe?</em> Esas familias son los nodos naturales de la red comunitaria. El primer paso de la pastoral familiar no es crear nuevos programas: es reconocer y acompañar lo que ya existe.</div>
+          <div class="act-body">El grupo identifica: <em>¿qué familias del territorio ya practican hospitalidad de manera espontánea? ¿Quiénes tienen la puerta abierta, dan de comer, reciben a los que nadie más recibe?</em> Esas familias son los nodos naturales de la red comunitaria. El primer paso de la pastoral familiar no es crear nuevos programas: es reconocer y acompañar lo que ya existe.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Anotá en tu bitácora los nombres de las familias hospitalarias que conocés en el territorio. Al lado de cada una: <em>¿qué necesita esa familia para seguir siendo lo que es? ¿la comunidad pastoral la sostiene o la da por sentada?</em> El primer gesto de pastoral familiar suele ser <em>reconocer</em>.</div>
+          <div class="act-body">Anotá en tu bitácora los nombres de las familias hospitalarias que conocés en el territorio. Al lado de cada una: <em>¿qué necesita esa familia para seguir siendo lo que es? ¿La comunidad pastoral la sostiene o la da por sentada?</em> El primer gesto de pastoral familiar suele ser <em>reconocer</em>.</div>
         </div>
       </div>
 
@@ -1405,7 +1422,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">La mesa compartida como primer gesto</div>
         <div class="mode-g">
-          <div class="act-body">La hospitalidad empieza en la mesa. El grupo diseña un gesto concreto para el siguiente mes: una comida compartida en la parroquia o en un hogar, abierta a las familias más aisladas del territorio. Sin agenda de intervención: solo comer juntos. <em>"La mística de la mesa compartida transforma la asistencia técnica en un encuentro verdaderamente fraternal"</em> (§6.2.4). Se define fecha, lugar, quién invita y a quién.</div>
+          <div class="act-body">La hospitalidad empieza en la mesa. El grupo diseña un gesto concreto para el siguiente mes: una comida compartida en la parroquia o en un hogar, abierta a las familias más aisladas del territorio. Sin agenda de intervención: solo comer juntos. Como plantea el §6.2.4, la mística de la mesa compartida transforma la asistencia técnica en un encuentro verdaderamente fraternal. Se define fecha, lugar, quién invita y a quién.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Elegí una familia aislada del territorio a la que puedas invitar a compartir la mesa (en tu casa, en la parroquia, en un espacio comunitario). Poné fecha en tu bitácora. La hospitalidad no es programa: es decisión concreta, fechada y sin agenda de intervención.</div>
@@ -1417,17 +1434,17 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Heb 13,2 en la práctica: hospedar ángeles sin saberlo</div>
         <div class="mode-g">
-          <div class="act-body">El Manual abre el §6.2.3 con Hebreos 13,2: <em>"No olvidéis la hospitalidad; por ella algunos, sin saberlo, hospedaron a ángeles."</em> El grupo reflexiona: <em>¿quién fue para nosotros un "ángel" que llegó disfrazado de herido? ¿a quién hemos "hospedado sin saber"?</em> Compartir en pareja. La hospitalidad que se recibe funda la hospitalidad que se da.</div>
+          <div class="act-body">El Manual abre el §6.2.3 con Hebreos 13,2: <em>«No olvidéis la hospitalidad; por ella algunos, sin saberlo, hospedaron a ángeles»</em>. El grupo reflexiona: <em>¿quién fue para nosotros un «ángel» que llegó disfrazado de herido? ¿A quién hemos «hospedado sin saber»?</em> Compartir en pareja. La hospitalidad que se recibe funda la hospitalidad que se da.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Escribí en tu bitácora la historia de una persona que llegó a tu vida como "herida" y resultó ser un <em>ángel disfrazado</em>. ¿Qué te enseñó? ¿Cómo cambió tu forma de recibir a quien viene después? Guardá la historia: es el fundamento personal de tu ministerio de hospitalidad.</div>
+          <div class="act-body">Escribí en tu bitácora la historia de una persona que llegó a tu vida como «herida» y resultó ser un <em>ángel disfrazado</em>. ¿Qué te enseñó? ¿Cómo cambió tu forma de recibir a quien viene después? Guardá la historia: es el fundamento personal de tu ministerio de hospitalidad.</div>
         </div>
       </div>
 
       <div class="cita">
-        <div class="cita-lbl">Cita inspiradora · §6.2.3 — Heb 13,2</div>
-        <div class="cita-txt">"La hospitalidad deja de ser un acto aislado para convertirse en la fuerza que amalgama a los vecinos y las instituciones en una sola familia de familias. La verdadera eficiencia en contextos de vulnerabilidad no nace de la frialdad burocrática, sino de un amor que sabe recibir la vida como viene para integrarla en un tejido social sanador."</div>
-        <div class="cita-ref">Manual de la PLAPA, §6.2.3 — La mística de la hospitalidad (CELAM 2026)</div>
+        <div class="cita-lbl">Cita inspiradora · §6.2.3 — Manual PLAPA</div>
+        <div class="cita-txt">«[…] la hospitalidad deja de ser un acto aislado para convertirse en la fuerza que amalgama a los vecinos y las instituciones en una sola familia de familias. […] la verdadera eficiencia en contextos de vulnerabilidad no nace de la frialdad burocrática, sino de un amor que sabe recibir la vida como viene para integrarla en un tejido social sanador».</div>
+        <div class="cita-ref">Manual de la PLAPA, §6.2.3 — Sobre la mística de la hospitalidad como puente hacia lo comunitario (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
@@ -1437,10 +1454,10 @@
 
       <div class="autocuidado">
         <div class="autocuidado-lbl">Autocuidado del agente</div>
-        <div class="autocuidado-txt">El agente que propone hospitalidad a las familias del territorio necesita también practicarla dentro de su propio equipo. <em>¿Hay en el equipo alguien que está pasando por una situación difícil y nadie lo sabe? ¿alguien que necesita ser "hospedado" por los demás?</em> La mística de la hospitalidad no es solo una propuesta para las familias del barrio: es una cultura interna del equipo. Sin ella dentro, no hay coherencia para proponerla afuera.</div>
+        <div class="autocuidado-txt">El agente que propone hospitalidad a las familias del territorio necesita también practicarla dentro de su propio equipo. <em>¿Hay en el equipo alguien que está pasando por una situación difícil y nadie lo sabe? ¿Alguien que necesita ser «hospedado» por los demás?</em> La mística de la hospitalidad no es solo una propuesta para las familias del barrio: es una cultura interna del equipo. Sin ella dentro, no hay coherencia para proponerla afuera.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §6.2.2 (La familia como escuela de fraternidad), §6.2.3 (La mística de la hospitalidad), Heb 13,2, <em>Amoris Laetitia</em> — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §6.2.2 (Sobre la familia como escuela de fraternidad y antídoto contra el individualismo), §6.2.3 (Sobre la mística de la hospitalidad como puente hacia lo comunitario), Heb 13,2, <em>Amoris Laetitia</em> — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1449,24 +1466,24 @@
     <div class="ch">
       <span class="cn">Módulo 3 · El Actuar</span>
       <div class="ct">La familia comunitaria: ampliar la mirada más allá de los vínculos biológicos</div>
-      <div class="cs">Cinco ejes del paradigma comunitario y los protocolos de protección · §6.2.4</div>
+      <div class="cs">Cinco ejes del paradigma comunitario y los protocolos de protección · §6.2.4, §6.2.8</div>
     </div>
     <div class="cb">
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"Al llamar 'familia' a estos espacios comunitarios, se enfatiza la identidad, el conocimiento por el nombre y la mística de la mesa compartida, transformando la asistencia técnica en un encuentro verdaderamente fraternal."</div>
+        <div class="resonancia-txt">«[…] al llamarlos familia, se enfatiza la identidad, el conocimiento por el nombre y la mística de la mesa compartida, transformando la asistencia técnica en un encuentro verdaderamente fraternal» (§6.2.4).</div>
       </div>
 
       <div class="alerta">
-        <div class="alerta-lbl">Advertencia crítica · §6.2.4</div>
-        <div class="alerta-txt"><em>"La Iglesia ha aprendido dolorosamente que la cercanía y el afecto, cuando no están acompañados de protocolos claros y transparencia, pueden convertirse en el escenario del peor de los daños."</em> La crianza comunitaria que el Manual propone asume esa lección como parte constitutiva de su diseño, no como un agregado posterior. Este módulo no puede leerse sin este marco.</div>
+        <div class="alerta-lbl">Advertencia crítica · §6.2.8</div>
+        <div class="alerta-txt"><em>«La Iglesia ha aprendido dolorosamente que la cercanía y el afecto, cuando no están acompañados de protocolos claros y transparencia, pueden convertirse en el escenario del peor de los daños»</em>. La crianza comunitaria que el Manual propone asume esa lección como parte constitutiva de su diseño, no como un agregado posterior. Este módulo no puede leerse sin este marco.</div>
       </div>
 
       <div class="pl">El Ver — Realidad</div>
       <ul class="pts">
-        <li><span class="dot">V</span><span><strong>Los lazos biográficos rotos como punto de partida.</strong> El concepto de familia comunitaria nace de una constatación territorial: en muchos contextos, los <em>lazos biográficos</em> —es decir, la familia de origen— están rotos, ausentes o son ellos mismos parte del problema. <em>"La comunidad organizada debe constituirse como la red de apoyo alternativa que ofrece un lugar seguro allí donde los lazos biográficos se encuentran rotos o ausentes"</em> (§6.2.4). No para reemplazar a la familia: para sostenerla donde ya no puede sostenerse sola.</span></li>
-        <li><span class="dot">V</span><span><strong>Mc 3,33-35 como fundamento evangélico.</strong> <em>"¿Quién es mi madre y quiénes son mis hermanos? El que cumpla la voluntad de Dios, ese es mi hermano, mi hermana y mi madre."</em> Jesús mismo amplió la noción de familia más allá de los vínculos biológicos. La familia comunitaria no es una innovación pastoral: es una práctica evangélica con raíces en el Evangelio.</span></li>
+        <li><span class="dot">V</span><span><strong>Los lazos biográficos rotos como punto de partida.</strong> El concepto de familia comunitaria nace de una constatación territorial: en muchos contextos, los <em>lazos biográficos</em> —es decir, la familia de origen— están rotos, ausentes o son ellos mismos parte del problema. <em>«La comunidad organizada debe constituirse como la red de apoyo alternativa que ofrece un lugar seguro allí donde los lazos biográficos se encuentran rotos o ausentes»</em> (§6.2.4). No para reemplazar a la familia: para sostenerla donde ya no puede sostenerse sola.</span></li>
+        <li><span class="dot">V</span><span><strong>Mc 3,33-35 como fundamento evangélico.</strong> <em>«¿Quién es mi madre y quiénes son mis hermanos? […] El que cumpla la voluntad de Dios, ese es mi hermano, mi hermana y mi madre»</em>. Jesús mismo amplió la noción de familia más allá de los vínculos biológicos. La familia comunitaria no es una innovación pastoral: es una práctica con raíces en el Evangelio.</span></li>
       </ul>
 
       <div class="pl">El Juzgar — Los cinco ejes del paradigma comunitario</div>
@@ -1485,7 +1502,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">¿Tenemos protocolo de protección de niños, niñas y adolescentes?</div>
         <div class="mode-g">
-          <div class="act-body">El grupo evalúa honestamente: <em>¿la comunidad tiene criterios explícitos de selección de referentes adultos que trabajan con niños? ¿hay más de un adulto presente en cada espacio de acompañamiento de menores? ¿hay canales de escucha y denuncia accesibles para los niños?</em> Si no, diseñar juntos el primer protocolo mínimo. Esta no es una pregunta burocrática: es una condición de posibilidad de la familia comunitaria.</div>
+          <div class="act-body">El grupo evalúa honestamente: <em>¿la comunidad tiene criterios explícitos de selección de referentes adultos que trabajan con niños? ¿Hay más de un adulto presente en cada espacio de acompañamiento de menores? ¿Hay canales de escucha y denuncia accesibles para los niños?</em> Si no, diseñar juntos el primer protocolo mínimo. Esta no es una pregunta burocrática: es una condición de posibilidad de la familia comunitaria.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Anotá en tu bitácora si tu comunidad pastoral tiene un protocolo escrito de protección de NNA (niños, niñas y adolescentes). Si no lo tiene, es la conversación más urgente que puedas iniciar. La familia comunitaria sin protocolos no es familia: es riesgo.</div>
@@ -1500,7 +1517,7 @@
           <div class="act-body">El grupo identifica los espacios del territorio que <em>ya funcionan como familia comunitaria sin llamarse así</em>: la abuela de la esquina que cuida a los nietos de todos, el comedor que es también refugio emocional, el salón parroquial donde los jóvenes están seguros. Nombrarlos ayuda a sostenerlos y a aprender de ellos. <em>¿Qué tienen en común? ¿Por qué funcionan?</em></div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Escribí en tu bitácora tres espacios del territorio que ya funcionan como familia comunitaria aunque no se llamen así. Al lado de cada uno: <em>¿qué lo hace funcionar? ¿qué necesita para seguir existiendo?</em> El agente que sabe reconocer la familia comunitaria que ya existe multiplica su eficacia sin gastar recursos nuevos.</div>
+          <div class="act-body">Escribí en tu bitácora tres espacios del territorio que ya funcionan como familia comunitaria aunque no se llamen así. Al lado de cada uno: <em>¿qué lo hace funcionar? ¿Qué necesita para seguir existiendo?</em> El agente que sabe reconocer la familia comunitaria que ya existe multiplica su eficacia sin gastar recursos nuevos.</div>
         </div>
       </div>
 
@@ -1509,25 +1526,25 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Diseñar un espacio de familia comunitaria</div>
         <div class="mode-g">
-          <div class="act-body">El grupo diseña en papel: <em>¿qué espacio de familia comunitaria podría crear o fortalecer el equipo en el territorio? ¿quiénes serían los referentes adultos? ¿qué actividades convocarían? ¿qué protocolos de seguridad tendría?</em> No para implementar hoy: para tener una visión concreta hacia donde caminar.</div>
+          <div class="act-body">El grupo diseña en papel: <em>¿qué espacio de familia comunitaria podría crear o fortalecer el equipo en el territorio? ¿Quiénes serían los referentes adultos? ¿Qué actividades convocarían? ¿Qué protocolos de seguridad tendría?</em> No para implementar hoy: para tener una visión concreta hacia donde caminar.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Bosquejá en tu bitácora un espacio de familia comunitaria que puedas impulsar o fortalecer en tu territorio en los próximos seis meses. Definí: <em>lugar, referentes adultos, población convocada, protocolo de protección, articulaciones necesarias, primer paso concreto</em>. Un diseño no implementado no cambia nada; un diseño diseñado con nombre y fecha, sí puede empezar a pasar.</div>
+          <div class="act-body">Bosquejá en tu bitácora un espacio de familia comunitaria que puedas impulsar o fortalecer en tu territorio en los próximos seis meses. Definí: <em>lugar, referentes adultos, población convocada, protocolo de protección, articulaciones necesarias, primer paso concreto</em>. Un diseño no implementado no cambia nada; un diseño con nombre y fecha, sí puede empezar a pasar.</div>
         </div>
       </div>
 
       <div class="cita">
-        <div class="cita-lbl">Cita inspiradora · §6.2.4 — Mc 3,33-35</div>
-        <div class="cita-txt">"¿Quién es mi madre y quiénes son mis hermanos?... el que cumpla la voluntad de Dios, ese es mi hermano, mi hermana y mi madre." La familia comunitaria no es una innovación pastoral: es una práctica evangélica que el propio Jesús fundó al ampliar los vínculos familiares más allá de la sangre.</div>
-        <div class="cita-ref">Manual de la PLAPA, §6.2.4 — La propuesta de la familia comunitaria (CELAM 2026)</div>
+        <div class="cita-lbl">Cita inspiradora · Mc 3,33-35</div>
+        <div class="cita-txt">«¿Quién es mi madre y quiénes son mis hermanos? […] El que cumpla la voluntad de Dios, ese es mi hermano, mi hermana y mi madre».</div>
+        <div class="cita-ref">Mc 3,33-35, citado en el Manual de la PLAPA, §6.2.4 — Sobre la propuesta del término familia comunitaria (CELAM 2026)</div>
       </div>
 
       <div class="autocuidado">
         <div class="autocuidado-lbl">Autocuidado del agente</div>
-        <div class="autocuidado-txt">La advertencia del §6.2.4 sobre los protocolos de protección puede generar incomodidad en equipos que han trabajado desde la <em>confianza espontánea</em>. Esa incomodidad es necesaria y sana. El agente que puede sostenerla sin defensividad —entendiendo que los protocolos no desconfían de nadie en particular sino que cuidan a todos— demuestra la madurez institucional que la familia comunitaria necesita para ser un espacio verdaderamente seguro.</div>
+        <div class="autocuidado-txt">La advertencia del §6.2.8 sobre los protocolos de protección puede generar incomodidad en equipos que han trabajado desde la <em>confianza espontánea</em>. Esa incomodidad es necesaria y sana. El agente que puede sostenerla sin defensividad —entendiendo que los protocolos no desconfían de nadie en particular sino que cuidan a todos— demuestra la madurez institucional que la familia comunitaria necesita para ser un espacio verdaderamente seguro.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §6.2.4 (La propuesta de la familia comunitaria), Mc 3,33-35 — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §6.2.4 (Sobre la propuesta del término familia comunitaria), §6.2.8 (Sobre el paradigma de la crianza comunitaria), Mc 3,33-35 — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1542,13 +1559,13 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"La crianza deja de ser un proceso solitario para convertirse en una dinámica de pueblo que cuida a sus miembros más frágiles, garantizando el acceso a derechos fundamentales que el sistema suele ignorar."</div>
+        <div class="resonancia-txt">«[…] la crianza deja de ser un proceso solitario para convertirse en una dinámica de pueblo que cuida a sus miembros más frágiles, garantizando el acceso a derechos fundamentales que el sistema suele ignorar» (§6.2.8).</div>
       </div>
 
       <div class="pl">El Ver — Realidad</div>
       <ul class="pts">
-        <li><span class="dot">V</span><span><strong>Del confinamiento familiar a la dinámica de pueblo.</strong> <em>"La crianza ha sido tradicionalmente comprendida como una tarea confinada exclusivamente a la esfera de la intimidad familiar y biológica. Sin embargo, ante el deshilachamiento del tejido social provocado por el narcotráfico y la exclusión, surge la necesidad de un cambio de paradigma hacia la crianza comunitaria"</em> (§6.2.8). El problema no es que los padres no quieran criar bien: es que el sistema los dejó solos para hacerlo.</span></li>
-        <li><span class="dot">V</span><span><strong>La prevención real es el vínculo, no la información.</strong> La prevención familiar que solo informa sobre sustancias no funciona. <em>"La ciencia y la experiencia pastoral demuestran que la mera entrega de información no modifica las conductas; el factor preventivo real es el modelado de hábitos saludables en un ambiente de calidez afectiva"</em> (§6.2.7). El niño que tiene adultos referentes que lo conocen por nombre tiene un factor protector que ningún programa puede replicar.</span></li>
+        <li><span class="dot">V</span><span><strong>Del confinamiento familiar a la dinámica de pueblo.</strong> <em>«La crianza ha sido tradicionalmente comprendida como una tarea confinada exclusivamente a la esfera de la intimidad familiar y biológica. Sin embargo, ante el deshilachamiento del tejido social provocado por el narcotráfico y la exclusión, surge la necesidad de un cambio de paradigma hacia la crianza comunitaria»</em> (§6.2.8). El problema no es que los padres no quieran criar bien: es que el sistema los dejó solos para hacerlo.</span></li>
+        <li><span class="dot">V</span><span><strong>La prevención real es el vínculo, no la información.</strong> La prevención familiar que solo informa sobre sustancias no funciona. <em>«[…] la ciencia y la experiencia pastoral demuestran que la mera entrega de información no modifica las conductas; el factor preventivo real es el modelado de hábitos saludables en un ambiente de calidez afectiva»</em> (§6.2.7). El niño que tiene adultos referentes que lo conocen por nombre tiene un factor protector que ningún programa puede replicar.</span></li>
       </ul>
 
       <div class="pl">El Juzgar — Las cuatro dimensiones de la crianza comunitaria</div>
@@ -1576,7 +1593,7 @@
       </div>
 
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>Los seis principios de la intervención preventiva basada en la familia (§6.2.7)</strong> son el mapa metodológico: evaluación de necesidades y riesgo, adecuación a la etapa vital, metodología interactiva (no charla magistral), desarrollo de sensibilidad y estructura en los padres, vínculo con la escuela y la comunidad, y permanencia suficiente para que las nuevas conductas se automaticen. <em>El taller de una vez no previene: la red sostenida sí.</em></span></li>
+        <li><span class="dot j">J</span><span><strong>Los principios de la intervención preventiva basada en la familia (§6.2.7)</strong> son el mapa metodológico (el Manual anuncia seis y enumera cinco): evaluación de necesidades y riesgo; adecuación a la etapa del ciclo vital, con la dosificación y la permanencia necesarias para que las nuevas conductas se automaticen; metodología interactiva (no charla magistral); desarrollo de sensibilidad y estructura en los padres; y vínculo con la escuela y la comunidad. <em>El taller de una vez no previene: la red sostenida sí.</em></span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1586,10 +1603,10 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Los referentes afectivos comunitarios del territorio</div>
         <div class="mode-g">
-          <div class="act-body">El grupo identifica: <em>¿quiénes son los adultos del territorio que ya ejercen de referentes afectivos para niños y jóvenes más allá de su familia biológica? ¿están siendo acompañados y formados para ese rol? ¿saben que lo tienen?</em> Nombrarlos, reconocerlos y sostenerlos es una de las inversiones preventivas más eficaces que puede hacer una comunidad pastoral.</div>
+          <div class="act-body">El grupo identifica: <em>¿quiénes son los adultos del territorio que ya ejercen de referentes afectivos para niños y jóvenes más allá de su familia biológica? ¿Están siendo acompañados y formados para ese rol? ¿Saben que lo tienen?</em> Nombrarlos, reconocerlos y sostenerlos es una de las inversiones preventivas más eficaces que puede hacer una comunidad pastoral.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Escribí en tu bitácora los nombres de tres adultos del territorio que ejercen de referentes afectivos comunitarios (aunque no se llamen así). Al lado de cada uno: <em>¿saben que lo son? ¿los acompaña alguien? ¿qué pasaría si mañana ya no pudieran?</em> La sostenibilidad de la crianza comunitaria depende de que estos adultos sean vistos, acompañados y cuidados.</div>
+          <div class="act-body">Escribí en tu bitácora los nombres de tres adultos del territorio que ejercen de referentes afectivos comunitarios (aunque no se llamen así). Al lado de cada uno: <em>¿saben que lo son? ¿Los acompaña alguien? ¿Qué pasaría si mañana ya no pudieran?</em> La sostenibilidad de la crianza comunitaria depende de que estos adultos sean vistos, acompañados y cuidados.</div>
         </div>
       </div>
 
@@ -1598,10 +1615,10 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Diseñar un programa de crianza comunitaria</div>
         <div class="mode-g">
-          <div class="act-body">Usando los seis principios del §6.2.7, el grupo diseña un programa mínimo de acompañamiento familiar para el territorio: <em>¿a qué familias? ¿con qué metodología? ¿en qué espacio? ¿con qué frecuencia? ¿quiénes facilitan?</em> No para implementarlo todo de golpe: para tener un horizonte claro hacia donde dar el próximo paso.</div>
+          <div class="act-body">Usando los principios del §6.2.7, el grupo diseña un programa mínimo de acompañamiento familiar para el territorio: <em>¿a qué familias? ¿Con qué metodología? ¿En qué espacio? ¿Con qué frecuencia? ¿Quiénes facilitan?</em> No para implementarlo todo de golpe: para tener un horizonte claro hacia donde dar el próximo paso.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Bosquejá en tu bitácora un programa mínimo de crianza comunitaria que puedas impulsar en los próximos seis meses, aplicando los seis principios del §6.2.7. Priorizá el principio de <em>permanencia</em>: es mejor un programa pequeño y sostenido que uno grande y efímero.</div>
+          <div class="act-body">Bosquejá en tu bitácora un programa mínimo de crianza comunitaria que puedas impulsar en los próximos seis meses, aplicando los principios del §6.2.7. Priorizá el principio de <em>permanencia</em>: es mejor un programa pequeño y sostenido que uno grande y efímero.</div>
         </div>
       </div>
 
@@ -1610,36 +1627,35 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Cierre: el hijo de todos</div>
         <div class="mode-g">
-          <div class="act-body">El grupo reflexiona sobre un niño o joven del territorio que sea, en algún sentido, <em>"el hijo de todos"</em>: alguien que la comunidad ha tomado como propio más allá de los vínculos biológicos. <em>¿Qué hizo posible eso? ¿qué se puede aprender de esa historia para hacer crecer la práctica de la crianza comunitaria?</em> Compartir en plenario. Cerrar con gratitud.</div>
+          <div class="act-body">El grupo reflexiona sobre un niño o joven del territorio que sea, en algún sentido, <em>«el hijo de todos»</em>: alguien que la comunidad ha tomado como propio más allá de los vínculos biológicos. <em>¿Qué hizo posible eso? ¿Qué se puede aprender de esa historia para hacer crecer la práctica de la crianza comunitaria?</em> Compartir en plenario. Cerrar con gratitud.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Escribí en tu bitácora la historia de un niño o joven del territorio que la comunidad ha tomado como <em>"hijo de todos"</em>. ¿Qué lo hizo posible? ¿Qué aprendés de esa historia para tu propia práctica? Cerrá el itinerario con esa historia como ícono y con gratitud por quienes la hicieron posible.</div>
+          <div class="act-body">Escribí en tu bitácora la historia de un niño o joven del territorio que la comunidad ha tomado como <em>«hijo de todos»</em>. ¿Qué lo hizo posible? ¿Qué aprendés de esa historia para tu propia práctica? Cerrá el itinerario con esa historia como ícono y con gratitud por quienes la hicieron posible.</div>
         </div>
       </div>
 
       <div class="cita">
-        <div class="cita-lbl">Cita inspiradora · §6.2.8 — <em>Amoris Laetitia</em></div>
-        <div class="cita-txt">"La familia no debe aislarse, sino ser un nexo de integración entre lo público y lo privado. La comunidad organizada debe constituirse como la red de apoyo que ofrece amparo y pertenencia allí donde la red primaria es inexistente, fundamentándose en el principio de corresponsabilidad social por la vida del hermano."</div>
-        <div class="cita-ref">Manual de la PLAPA, §6.2.8 — El paradigma de la crianza comunitaria (CELAM 2026)</div>
+        <div class="cita-lbl">Cita inspiradora · §6.2.8 — Manual PLAPA</div>
+        <div class="cita-txt">«<em>Amoris Laetitia</em> propone que la familia no debe aislarse, sino ser un nexo de integración entre lo público y lo privado. La comunidad organizada debe constituirse como la red de apoyo que ofrece amparo y pertenencia allí donde la red primaria es inexistente, fundamentándose en el principio de corresponsabilidad social por la vida del hermano».</div>
+        <div class="cita-ref">Manual de la PLAPA, §6.2.8 — Sobre el paradigma de la crianza comunitaria (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Alerta pastoral</div>
-        <div class="alerta-txt">Diseñar un programa de crianza comunitaria sin los protocolos del §6.2.4 y sin la <em>permanencia</em> del §6.2.7 principio 6 es exponer a los niños y a la comunidad a un daño previsible. La crianza comunitaria mal diseñada puede replicar dinámicas de abuso o generar dependencias imposibles de sostener. La belleza del paradigma exige el rigor de su diseño. Sin las dos cosas juntas, mejor no empezar.</div>
+        <div class="alerta-txt">Diseñar un programa de crianza comunitaria sin los protocolos del §6.2.4 y sin la <em>permanencia</em> que pide el segundo principio del §6.2.7 es exponer a los niños y a la comunidad a un daño previsible. La crianza comunitaria mal diseñada puede replicar dinámicas de abuso o generar dependencias imposibles de sostener. La belleza del paradigma exige el rigor de su diseño. Sin las dos cosas juntas, mejor no empezar.</div>
       </div>
 
       <div class="autocuidado">
         <div class="autocuidado-lbl">Autocuidado del agente — cierre del itinerario</div>
-        <div class="autocuidado-txt">El itinerario cierra con la pregunta que lo funda: <em>¿quién me crió a mí más allá de mi familia biológica? ¿quién fue mi referente afectivo comunitario?</em> Nombrar esa persona o esas personas en silencio, o compartirlo en pareja si el grupo tiene la confianza para ello. El agente que puede reconocer que también fue criado comunitariamente acompaña desde la <em>gratitud</em>, no desde la <em>obligación</em>. Esa es la diferencia entre la caridad y el deber.</div>
+        <div class="autocuidado-txt">El itinerario cierra con la pregunta que lo funda: <em>¿quién me crió a mí más allá de mi familia biológica? ¿Quién fue mi referente afectivo comunitario?</em> Nombrar esa persona o esas personas en silencio, o compartirlo en pareja si el grupo tiene la confianza para ello. El agente que puede reconocer que también fue criado comunitariamente acompaña desde la <em>gratitud</em>, no desde la <em>obligación</em>. Esa es la diferencia entre la caridad y el deber.</div>
       </div>
 
       <div class="lectura">
         <div class="lectura-lbl">Lectura complementaria</div>
-        <div class="lectura-txt">Para profundizar en la práctica de la <strong>familia comunitaria</strong> desde la tradición de la Familia Grande Hogar de Cristo, y en el paradigma de la crianza compartida como cultura de pueblo, ofrecemos este texto para la reflexión del equipo.</div>
-        <a href="ElMetodoFGHC.pdf" download class="lectura-link">📥 Descargar "ElMetodoFGHC.pdf"</a>
+        <div class="lectura-txt">Para profundizar, leé completo en el Manual de la PLAPA el <strong>§6.2, «La Familia. Estructuras, Familia Comunitaria e Influencias»</strong> (§6.2.1–6.2.8). Cada artículo trae las objeciones más frecuentes y la respuesta del Manual. Volvé con especial atención al <strong>§6.2.4</strong>, por los protocolos de protección, y al <strong>§6.2.8</strong>, que fundamenta el paso de la crianza solitaria a la crianza comunitaria.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §6.2.7 (Principios de intervención preventiva basada en la familia), §6.2.8 (El paradigma de la crianza comunitaria), <em>Amoris Laetitia</em> — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §6.2.7 (Sobre los principios para una intervención preventiva basada en la familia), §6.2.8 (Sobre el paradigma de la crianza comunitaria), <em>Amoris Laetitia</em> — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1654,8 +1670,8 @@
 
       <!-- Selector de vista: este itinerario / global -->
       <div class="foro-vista">
-        <button class="foro-vista-btn on" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
-        <button class="foro-vista-btn" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
+        <button class="foro-vista-btn on" aria-pressed="true" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
+        <button class="foro-vista-btn" aria-pressed="false" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
       </div>
 
       <!-- Pautas pastorales -->
@@ -1707,7 +1723,7 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Antes de comenzar</div>
-        <div class="resonancia-txt">"La revisión de vida es la forma histórica que la Iglesia latinoamericana encontró para institucionalizar el Ver–Juzgar–Actuar. El agente que la practica no aplica el método: lo vive." Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
+        <div class="resonancia-txt">Este itinerario te invitó a mirar a las familias del territorio como oportunidad, a abrir la casa con discernimiento y a criar juntos con protocolos claros. Ahora es el momento de nombrar qué cambió en tu mirada. Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
       </div>
 
       <div class="eval-nota">
@@ -1717,24 +1733,24 @@
 
       <div class="pl">El Ver — Qué se hizo visible</div>
       <div class="eval-q">
-        <label for="evalVer">¿Qué realidad del territorio se hizo más visible para vos a lo largo de estos cuatro módulos? ¿Qué llagas emergieron con más fuerza? ¿Qué zonas del mapa estaban en blanco antes y ahora tienen contenido?</label>
+        <label for="evalVer">¿Qué familias del territorio se hicieron más visibles para vos a lo largo de estos cuatro módulos? ¿Las seguís mirando primero como problema o empezás a verlas como oportunidad? ¿Qué espacios y qué referentes adultos descubriste que ya funcionan como familia comunitaria sin llamarse así?</label>
         <textarea id="evalVer" data-eval="ver" placeholder="Escribí con calma, sin apurarte..."></textarea>
       </div>
 
       <div class="pl">El Juzgar — Qué iluminó, qué preguntas quedaron abiertas</div>
       <div class="eval-q">
-        <label for="evalJuzgar1">¿Qué del método del diagnóstico territorial te iluminó de manera nueva? ¿Qué idea del Manual sentís que ya no podrás dejar de lado?</label>
+        <label for="evalJuzgar1">De la familia como oportunidad, de la mística de la hospitalidad, de la familia comunitaria y de la crianza compartida: ¿qué te iluminó de manera nueva? ¿Qué idea del Manual sentís que ya no podrás dejar de lado?</label>
         <textarea id="evalJuzgar1" data-eval="juzgar1" placeholder="Nombralo con precisión..."></textarea>
       </div>
       <div class="eval-q">
-        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos? Las preguntas abiertas son también fruto (§13.3).</label>
+        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos? La tensión entre la confianza espontánea y los protocolos de protección, entre abrir la casa y cuidar el propio núcleo familiar: ¿dónde te dejó incómodo/a?</label>
         <textarea id="evalJuzgar2" data-eval="juzgar2" placeholder="Las que siguen ardiendo..."></textarea>
       </div>
 
       <div class="pl">El Actuar — Compromiso concreto</div>
       <div class="eval-q">
-        <label for="evalActuar">¿Qué gesto pastoral concreto vas a intentar en las próximas semanas a partir del diagnóstico que hiciste? Nombralo con nombre, tiempo y lugar. Un compromiso vago no es un compromiso.</label>
-        <textarea id="evalActuar" data-eval="actuar" placeholder="Ej.: En la próxima reunión de equipo (jueves 25) voy a presentar el mapa territorial que construimos y proponer una callejeada específica al sector X del barrio..."></textarea>
+        <label for="evalActuar">¿Qué gesto concreto de pastoral familiar vas a intentar en las próximas semanas? Puede ser una mesa compartida con una familia aislada, empezar la conversación sobre el protocolo de protección de niños, niñas y adolescentes, o reconocer y acompañar a un referente afectivo del barrio. Nombralo con nombre, tiempo y lugar. Un compromiso vago no es un compromiso.</label>
+        <textarea id="evalActuar" data-eval="actuar" placeholder="Ej.: El sábado 8 invito a comer a la familia de X al salón parroquial, junto con otra familia del equipo, sin agenda de intervención..."></textarea>
       </div>
       <div class="eval-q eval-fecha">
         <label for="evalFecha">Fecha en la que vas a volver a revisar si pudiste sostenerlo</label>
@@ -1742,8 +1758,8 @@
       </div>
 
       <div class="pl">Autocuidado y equipo</div>
-      <div class="eval-q eval-scale">
-        <label>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</label>
+      <fieldset class="eval-q eval-scale">
+        <legend>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</legend>
         <div class="eval-scale-row">
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="1" data-eval="animo"><span>1</span></label>
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="2" data-eval="animo"><span>2</span></label>
@@ -1751,10 +1767,10 @@
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="4" data-eval="animo"><span>4</span></label>
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="5" data-eval="animo"><span>5</span></label>
         </div>
-      </div>
+      </fieldset>
       <div class="eval-q">
-        <label for="evalCuidado">¿Qué necesitás cuidar de vos mismo/a en las próximas semanas? ¿A quién del equipo se lo vas a decir?</label>
-        <textarea id="evalCuidado" data-eval="cuidado" placeholder="El agente que cuida su esperanza puede sostener la del otro (§1.3)..."></textarea>
+        <label for="evalCuidado">Acompañar familias en contextos de exclusión puede remover la propia historia familiar y cargar con la frustración de ver cómo el estrés desborda a los padres (§6.2.5). ¿Qué necesitás cuidar de vos en las próximas semanas? ¿Quién te sostiene a vos? ¿A quién del equipo se lo vas a decir?</label>
+        <textarea id="evalCuidado" data-eval="cuidado" placeholder="Ej.: Voy a contarle a X que acompañar a la familia de Y me está removiendo cosas de mi propia infancia..."></textarea>
       </div>
 
       <div class="pl">Cierre</div>
@@ -1773,10 +1789,10 @@
 
       <div class="autocuidado" style="margin-top: 2rem;">
         <div class="autocuidado-lbl">Cierre del itinerario</div>
-        <div class="autocuidado-txt">Cerrar bien un itinerario también es autocuidado: celebrar lo caminado, agradecer al equipo, reconocer los propios límites y renovar la esperanza. Este itinerario termina con gratitud: por el territorio que nos habló, por las llagas que dejamos de negar, por el equipo que hizo posible mirar sin apartar la mirada.</div>
+        <div class="autocuidado-txt">Cerrar bien un itinerario también es autocuidado: celebrar lo caminado, agradecer al equipo, reconocer los propios límites y renovar la esperanza. Este itinerario termina con gratitud: por las familias que nos abrieron la puerta, por los adultos que crían a los hijos de todos sin que nadie se lo pida, por el equipo que hizo posible pensar la crianza como tarea de pueblo.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §1.3 (Prólogo), §6.1.3 (Evitar la romantización), §13.2 (Sinodalidad en la práctica), §13.3 (Rolling release), §13.5 (Mecanismos de colaboración) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §6.2.1–6.2.8 (La Familia. Estructuras, Familia Comunitaria e Influencias), §13.3 (La propuesta de un manual Rolling Release), §13.5 (Los mecanismos de colaboración) — CELAM 2026.</div>
 
     </div>
   </div>
@@ -1790,9 +1806,9 @@
     root.classList.add('mode-' + mode);
     var buttons = document.querySelectorAll('.mode-btn');
     for (var i = 0; i < buttons.length; i++) {
-      buttons[i].classList.remove('on');
+      buttons[i].classList.remove('on'); buttons[i].setAttribute('aria-pressed', 'false');
     }
-    btn.classList.add('on');
+    btn.classList.add('on'); btn.setAttribute('aria-pressed', 'true');
   }
 
   function show(n, btn) {
@@ -2069,8 +2085,8 @@
   function setVistaForo(v, btn) {
     vistaForo = v;
     var buttons = document.querySelectorAll('.foro-vista-btn');
-    for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove('on'); }
-    btn.classList.add('on');
+    for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove('on'); buttons[i].setAttribute('aria-pressed', 'false'); }
+    btn.classList.add('on'); btn.setAttribute('aria-pressed', 'true');
     cargarComentarios();
   }
 
@@ -2148,16 +2164,17 @@
     var datos = recolectarEvaluacion();
     var minimoTexto = (datos.ver || '').trim() + (datos.actuar || '').trim();
     if (minimoTexto.length < 30) {
-      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos "El Ver" y "El Actuar" merecen unos renglones honestos.', 'error');
+      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos «El Ver» y «El Actuar» merecen unos renglones honestos.', 'error');
       return;
     }
 
     // Guardar en Supabase (siempre queda en tu bitácora)
     if (!sesion) { window.location.href = '/login'; return; }
-    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario', {
+    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario?on_conflict=usuario_id,itinerario_id', {
       method: 'POST',
       headers: Object.assign({}, supaHeaders(), { 'Prefer': 'resolution=merge-duplicates' }),
       body: JSON.stringify({
+        usuario_id: sesion.user ? sesion.user.id : undefined,
         itinerario_id: ITINERARIO_ID,
         respuestas: datos,
         compartir_con_equipo: datos.compartir_con_equipo === true
@@ -2180,12 +2197,18 @@
 
   function imprimirEvaluacion() {
     autoguardarBorrador();
+    // Que cada respuesta se imprima completa, sin cortarse
+    var areas = document.querySelectorAll('#m6 textarea');
+    for (var i = 0; i < areas.length; i++) {
+      areas[i].style.height = 'auto';
+      areas[i].style.height = areas[i].scrollHeight + 'px';
+    }
     window.print();
   }
 
   // Init general del itinerario
   document.addEventListener('DOMContentLoaded', function() {
-    // Leer sesión (el guard del <head> garantiza que existe)
+    // Leer sesión guardada por el login (puede no existir)
     try {
       var stored = localStorage.getItem('escuela_plapa_sesion');
       if (stored) sesion = JSON.parse(stored);

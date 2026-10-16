@@ -24,7 +24,7 @@
     --borde:      #E4E2F0;
 
     --font-serif: "Georgia", "Times New Roman", serif;
-    --font-sans:  "system-ui", -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+    --font-sans:  system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -665,7 +665,7 @@
     margin-bottom: 10px;
   }
   .foro-form textarea:focus, .foro-form select:focus {
-    outline: none;
+    outline: 2px solid transparent;
     border-color: var(--i3-medio);
   }
   .foro-form-actions {
@@ -842,7 +842,18 @@
   .eval-nota-txt em { color: var(--i3-medio); font-style: italic; }
 
   .eval-q { margin-bottom: 1.5rem; }
-  .eval-q > label {
+  fieldset.eval-scale {
+    border: 0;
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+    min-width: 0;
+  }
+  .eval-q > legend {
+    padding: 0;
+  }
+  .eval-q > label,
+  .eval-q > legend {
     display: block;
     font-size: 14px;
     font-weight: 500;
@@ -865,7 +876,7 @@
     transition: border-color 0.15s;
   }
   .eval-q textarea:focus, .eval-q input:focus {
-    outline: none;
+    outline: 2px solid transparent;
     border-color: var(--i3-medio);
     box-shadow: 0 0 0 3px rgba(60, 52, 137, 0.1);
   }
@@ -883,6 +894,10 @@
   .eval-scale-row { display: flex; gap: 8px; flex-wrap: wrap; }
   .eval-radio { flex: 1; min-width: 55px; cursor: pointer; position: relative; }
   .eval-radio input { position: absolute; opacity: 0; pointer-events: none; }
+  .eval-radio input:focus-visible + span {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
   .eval-radio span {
     display: block;
     text-align: center;
@@ -959,7 +974,10 @@
     .root { box-shadow: none; padding: 1rem; max-width: 100%; }
     .top-header, .portada, .mode-selector, .nav { display: none !important; }
     .card { display: none !important; }
-    #m6.card { display: block !important; break-inside: avoid; border: none; }
+    #m6.card { display: block !important; border: none; }
+    .eval-q { break-inside: avoid; }
+    .video-wrap, .top-header, .foro-vista { display: none !important; }
+    .eval-q textarea { overflow: visible; resize: none; }
     .eval-actions, .eval-msg { display: none !important; }
     .ch { background: transparent; }
     .eval-q textarea, .eval-q input[type="date"] {
@@ -1028,7 +1046,7 @@
     <div class="video-iframe">
       <iframe
         src="https://www.youtube.com/embed/VVwY-18KIeI"
-        title="Presentación del Itinerario 03"
+        title="Video de presentación: Mística de la proximidad — Itinerario 03"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen>
       </iframe>
@@ -1037,8 +1055,8 @@
 
   <!-- ═══ SELECTOR DE MODALIDAD ═══════════════════════════ -->
   <div class="mode-selector">
-    <button class="mode-btn on" onclick="setMode('grupal', this)">👥 Hacer en comunidad</button>
-    <button class="mode-btn" onclick="setMode('individual', this)">👤 Hacer de forma individual</button>
+    <button class="mode-btn on" aria-pressed="true" onclick="setMode('grupal', this)">👥 Hacer en comunidad</button>
+    <button class="mode-btn" aria-pressed="false" onclick="setMode('individual', this)">👤 Hacer de forma individual</button>
   </div>
 
   <!-- ═══ NAVEGACIÓN ══════════════════════════════════════ -->
@@ -1063,20 +1081,20 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"El tiempo califica la cercanía y la convierte en una presencia significativa. No se mide por la cantidad de horas técnicas, sino por la capacidad de humanizar el recorrido del hermano."</div>
+        <div class="resonancia-txt">«[…] la presencia no se mide por la cantidad de horas técnicas, sino por la capacidad de humanizar el recorrido del hermano, permitiendo que su historia cobre sentido a través de un hilo inespecífico que sostiene su vida» (§6.1.1).</div>
       </div>
 
       <div class="pl">El Ver — Realidad</div>
       <ul class="pts">
-        <li><span class="dot">V</span><span><strong>Cercanía sin vínculo es turismo pastoral.</strong> Muchos agentes están físicamente en el barrio pero no están presentes: hacen sus actividades, cumplen su horario y se van. La pregunta incómoda del §6.1.1: <em>¿a cuántas personas del territorio conocés por nombre? ¿y ellos te conocen a vos?</em> El §6.1.1 desmonta la idea de que "presencia" equivale a "cercanía geográfica".</span></li>
+        <li><span class="dot">V</span><span><strong>Cercanía sin vínculo es turismo pastoral.</strong> Muchos agentes están físicamente en el barrio pero no están presentes: hacen sus actividades, cumplen su horario y se van. Una pregunta incómoda: <em>¿a cuántas personas del territorio conocés por nombre? ¿Y ellos te conocen a vos?</em> El §6.1.1 desmonta la idea de que la presencia sea «un simple sinónimo de cercanía geográfica».</span></li>
         <li><span class="dot">V</span><span><strong>Tres dimensiones de la presencia significativa.</strong> El §6.1.1 las precisa: <em>la cualidad del vínculo</em> (el otro se siente realmente visto y reconocido), <em>la permanencia frente al abandono</em> (seguir presente aunque no estés físicamente ahí), y <em>la lógica del tiempo</em> (abandonar la rigidez institucional para adoptar una dinámica territorial y circular, donde el encuentro no termina con un resultado técnico sino que queda siempre abierto al reencuentro).</span></li>
-        <li><span class="dot">V</span><span><strong>No existe espiritualidad sin los otros.</strong> "No existe espiritualidad sin los otros" (§7.9.1). El agente que quiere sostener presencia significativa sin tejido comunitario que lo respalde termina volcando sobre las personas que acompaña una carga que no les corresponde.</span></li>
+        <li><span class="dot">V</span><span><strong>No existe espiritualidad sin los otros.</strong> «Se establece que no existe espiritualidad sin los otros» (§7.9.1). El agente que quiere sostener presencia significativa sin tejido comunitario que lo respalde termina volcando sobre las personas que acompaña una carga que no les corresponde.</span></li>
       </ul>
 
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>La cercanía es condición necesaria, no suficiente.</strong> "Aunque la cercanía física es la condición necesaria para conocer al otro en su realidad cotidiana, la presencia significativa representa un grado superior de relación humana y pastoral" (§6.1.1). No basta con estar: hay que estar <em>de un modo</em>. La ausencia de juicio y la permanencia en el amor transforman una en otra.</span></li>
-        <li><span class="dot j">J</span><span><strong>La Iglesia en salida como primerearte.</strong> El fundamento teológico de la presencia significativa es que Dios "siempre nos primerea en el amor" (§6.7.3). La iniciativa divina se traduce en iniciativa pastoral: Dios no espera a que sus hijos lo vayan a buscar. El agente que solo abre la puerta y espera reproduce una lógica que ya el Manual desmonta como insuficiente.</span></li>
+        <li><span class="dot j">J</span><span><strong>La cercanía es condición necesaria, no suficiente.</strong> «Aunque la cercanía física es la condición necesaria para conocer al otro en su realidad cotidiana, la presencia significativa representa un grado superior de relación humana y pastoral» (§6.1.1). No basta con estar: hay que estar <em>de un modo</em>. La ausencia de juicio y la permanencia en el amor transforman una en otra.</span></li>
+        <li><span class="dot j">J</span><span><strong>La Iglesia en salida: primerear.</strong> El fundamento teológico de la presencia significativa es que «Dios siempre nos primerea en el amor» (§6.7.3). La iniciativa divina se traduce en iniciativa pastoral: Dios no espera a que sus hijos lo vayan a buscar. El agente que solo abre la puerta y espera reproduce una lógica que ya el Manual desmonta como insuficiente.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1089,7 +1107,7 @@
           <div class="act-body">El grupo dibuja el territorio en un papel grande. Marca los lugares donde la comunidad tiene presencia física. Luego marca los lugares donde <em>no llega</em>: esquinas, puentes, rincones, casas donde nunca entramos. La distancia entre los dos mapas es la distancia que falta achicar. El ejercicio revela el mapa real, no el declarado.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Dibujá el territorio que caminás en una hoja. Marcá con un color los lugares donde tenés presencia física; con otro los lugares donde <em>no llegás</em>. Escribí: <em>¿por qué no llego? ¿es prudencia, comodidad, miedo, agenda? ¿qué costaría dar un solo paso hacia esa zona?</em></div>
+          <div class="act-body">Dibujá el territorio que caminás en una hoja. Marcá con un color los lugares donde tenés presencia física; con otro los lugares donde <em>no llegás</em>. Escribí: <em>¿Por qué no llego? ¿Es prudencia, comodidad, miedo, agenda? ¿Qué costaría dar un solo paso hacia esa zona?</em></div>
         </div>
       </div>
 
@@ -1098,22 +1116,22 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">¿Cercanía o presencia?</div>
         <div class="mode-g">
-          <div class="act-body">Cada participante evalúa honestamente una relación pastoral: <em>¿es cercanía física (estoy ahí) o presencia significativa (él sabe que cuento para mí)?</em> ¿Qué tendría que cambiar para que pase de una a la otra? Se comparte en pareja, no en plenario. La conversación de a dos permite el nivel de honestidad que un plenario no facilita.</div>
+          <div class="act-body">Cada participante evalúa honestamente una relación pastoral: <em>¿Es cercanía física (estoy ahí) o presencia significativa (él sabe que cuenta para mí)?</em> ¿Qué tendría que cambiar para que pase de una a la otra? Se comparte en pareja, no en plenario. La conversación de a dos permite el nivel de honestidad que un plenario no facilita.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Elegí una relación pastoral concreta —una persona a la que acompañás. Evaluá con las tres dimensiones del §6.1.1: <em>¿la cualidad del vínculo permite que se sienta vista? ¿mi permanencia se sostiene cuando no estoy físicamente? ¿el tiempo del encuentro queda abierto al reencuentro o se cierra en resultados?</em></div>
+          <div class="act-body">Elegí una relación pastoral concreta —una persona a la que acompañás. Evaluá con las tres dimensiones del §6.1.1: <em>¿La cualidad del vínculo permite que se sienta vista? ¿Mi permanencia se sostiene cuando no estoy físicamente? ¿El tiempo del encuentro queda abierto al reencuentro o se cierra en resultados?</em></div>
         </div>
       </div>
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §6.1.1 — Manual PLAPA</div>
-        <div class="cita-txt">"La presencia significativa representa un grado superior de relación humana y pastoral: una conexión profunda que permite que la persona se sienta realmente vista y reconocida, y cuya permanencia hace que el acompañante siga presente incluso cuando no está físicamente allí."</div>
+        <div class="cita-txt">«El tiempo califica la cercanía y la convierte en una presencia significativa. Esta dimensión constituye una cercanía mucho más honda, de carácter emocional y psicológico, que trasciende la mera coincidencia accidental en un espacio físico determinado».</div>
         <div class="cita-ref">Manual de la PLAPA, §6.1.1 — Sobre la distinción entre cercanía física y presencia significativa (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Alerta pastoral</div>
-        <div class="alerta-txt">La presencia significativa no equivale a intensidad emocional constante. El agente que confunde "estar presente" con "estar disponible las 24 horas" cae en un tipo de sobrepresencia que sofoca al acompañado y agota al acompañante. La presencia significativa requiere <em>límites saludables</em> — es la calidad del vínculo, no el volumen del contacto, lo que la define.</div>
+        <div class="alerta-txt">La presencia significativa no equivale a intensidad emocional constante. El agente que confunde «estar presente» con «estar disponible las 24 horas» cae en un tipo de sobrepresencia que sofoca al acompañado y agota al acompañante. La presencia significativa requiere <em>límites saludables</em> — es la calidad del vínculo, no el volumen del contacto, lo que la define.</div>
       </div>
 
       <div class="autocuidado">
@@ -1121,7 +1139,7 @@
         <div class="autocuidado-txt">La presencia significativa es emocionalmente más costosa que la cercanía técnica. Requiere dejarse afectar, recordar nombres, cargar historias. El agente que no tiene con quién procesar eso termina construyendo distancias emocionales para protegerse. La supervisión de pares y los encuentros fraternos no son un lujo: son la condición de posibilidad de la presencia significativa sostenida (§6.7.2).</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §6.1.1 (Cercanía física vs. presencia significativa), §7.9.1 (El ancla de la comunidad), §6.7.2 (Autocuidado) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §6.1.1 (Sobre la distinción entre cercanía física y presencia significativa), §7.9.1 (La imposibilidad de una vivencia espiritual aislada del tejido comunitario), §6.7.2 (La importancia fundamental del autocuidado para el agente pastoral), §6.7.3 (El mandato de primerear y callejear en las periferias del consumo) — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1136,7 +1154,7 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"El Papa Francisco afirma que prefiere una Iglesia accidentada, herida y manchada por salir a la calle, antes que una Iglesia enferma por el encierro y la comodidad de sus propias seguridades."</div>
+        <div class="resonancia-txt">«El Papa Francisco afirma que prefiere una Iglesia accidentada, herida y manchada por salir a la calle, antes que una Iglesia enferma por el encierro y la comodidad de sus propias seguridades» (§6.7.3).</div>
       </div>
 
       <div class="pl">Las cuatro dimensiones de la salida (§6.7.3)</div>
@@ -1149,31 +1167,31 @@
         <div class="eje">
           <div class="eje-n">Dimensión 2</div>
           <div class="eje-t">Callejear</div>
-          <div class="eje-txt">Disposición activa de buscar la vida que sufre en los rincones más ocultos: esquinas, plazas, puentes. Asumir la realidad del otro hasta tener "olor a oveja".</div>
+          <div class="eje-txt">Disposición activa de buscar la vida que sufre en los rincones más ocultos: esquinas, plazas, puentes. Asumir la realidad del otro hasta tener «olor a oveja».</div>
         </div>
         <div class="eje">
           <div class="eje-n">Dimensión 3</div>
           <div class="eje-t">Habitar la periferia</div>
-          <div class="eje-txt">No un recorrido superficial: detener el paso, mirar a los ojos, escuchar al que quedó al costado del camino. La Iglesia como "hospital de campaña".</div>
+          <div class="eje-txt">No un recorrido superficial: detener el paso, mirar a los ojos, escuchar al que quedó al costado del camino. La Iglesia como «hospital de campaña».</div>
         </div>
         <div class="eje">
           <div class="eje-n">Dimensión 4</div>
           <div class="eje-t">Tocar la carne de Cristo</div>
-          <div class="eje-txt">Renunciar a los cobertizos de seguridad. "La vida se complica maravillosamente y la comunidad vive la experiencia de ser pueblo."</div>
+          <div class="eje-txt">Renunciar a los cobertizos de seguridad. «[…] la vida se complica maravillosamente y la comunidad vive la verdadera experiencia de ser pueblo».</div>
         </div>
       </div>
 
       <div class="pl">El Ver — La objeción más frecuente</div>
       <ul class="pts">
-        <li><span class="dot">V</span><span><strong>"La Iglesia debe esperar en sus templos".</strong> Es la objeción más frecuente al llamado a callejear: la Iglesia debería esperar a que las personas busquen ayuda. El §6.7.3 la refuta con un diagnóstico: la mayoría de las personas en situación de consumo <em>nunca</em> van a golpear una puerta eclesial. Si la comunidad no sale, simplemente no se encuentra.</span></li>
-        <li><span class="dot">V</span><span><strong>La mundanidad espiritual.</strong> "La santidad no se protege en el aislamiento, sino que se nutre en el servicio. La verdadera mundanidad espiritual es la que se disfraza de prácticas religiosas vacías mientras ignora el clamor de los hermanos más rotos" (§6.7.3). El aislamiento no es piedad: es la forma más sutil de mundanidad.</span></li>
-        <li><span class="dot">V</span><span><strong>Primerear no es invadir.</strong> Otra objeción: buscar activamente a personas en situación de consumo podría ser una invasión de la privacidad. El §6.7.3 responde: "Primerear no es invadir, sino ofrecer una misericordia inagotable a quienes se sienten invisibles para la sociedad. Es un gesto de projimidad que busca devolver la esperanza a quienes la cultura del abandono ha empujado a dejar de mirar el futuro".</span></li>
+        <li><span class="dot">V</span><span><strong>«La Iglesia debe esperar en sus templos».</strong> Es una de las objeciones que recoge el §6.7.3: la Iglesia debería esperar a que las personas busquen ayuda por voluntad propia. El artículo la responde desde su fundamento: «La comunidad evangelizadora debe tomar la iniciativa, introducirse en los procesos humanos y acompañar la vida por más dura que sea». Si la comunidad no sale, no encuentra a quienes no van a golpear su puerta.</span></li>
+        <li><span class="dot">V</span><span><strong>La mundanidad espiritual.</strong> «[…] la santidad de la Iglesia no se protege en el aislamiento, sino que se nutre en el servicio. La verdadera mundanidad espiritual es la que se disfraza de prácticas religiosas vacías mientras ignora el clamor de los hermanos más rotos» (§6.7.3). El aislamiento no es piedad: es la forma más sutil de mundanidad.</span></li>
+        <li><span class="dot">V</span><span><strong>Primerear no es invadir.</strong> Otra objeción: buscar activamente a personas en situación de consumo podría ser una invasión de la privacidad. El §6.7.3 responde: «[…] primerear no es invadir, sino ofrecer una misericordia inagotable a quienes se sienten invisibles para la sociedad. Es un gesto de projimidad que busca devolver la esperanza a quienes la cultura del abandono ha empujado a dejar de mirar el futuro».</span></li>
       </ul>
 
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>La callejeada como gesto teológico.</strong> "La callejeada es un gesto teológico donde no se esperan condiciones ideales para amar. Se sale al encuentro de la vida como viene, reflejando al Dios que no desprecia ningún tipo de tierra" (§7.9.4). No es actividad social ni proselitismo: es teología encarnada en el pie que se ensucia.</span></li>
-        <li><span class="dot j">J</span><span><strong>La periferia como lugar teológico.</strong> "Al achicar distancias, la comunidad toca la carne sufriente de Cristo, convirtiendo la periferia en un lugar teológico" (§7.9.4). La periferia no es el <em>escenario</em> donde se aplica el Evangelio: es el <em>lugar</em> donde el Evangelio se descubre. Cambia el sentido de la salida: no llevás algo a la periferia, encontrás algo ahí.</span></li>
+        <li><span class="dot j">J</span><span><strong>La callejeada como gesto teológico.</strong> «La callejeada es un gesto teológico donde no se esperan condiciones ideales para amar. Se sale al encuentro de la vida como viene, reflejando al Dios que no desprecia ningún tipo de tierra» (§7.9.4). No es actividad social ni proselitismo: es teología encarnada en el pie que se ensucia.</span></li>
+        <li><span class="dot j">J</span><span><strong>La periferia como lugar teológico.</strong> «Al achicar distancias, la comunidad toca la carne sufriente de Cristo, convirtiendo la periferia en un lugar teológico» (§7.9.4). La periferia no es el <em>escenario</em> donde se aplica el Evangelio: es el <em>lugar</em> donde el Evangelio se descubre. Cambia el sentido de la salida: no llevás algo a la periferia, encontrás algo ahí.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1183,10 +1201,10 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Primera callejeada organizada</div>
         <div class="mode-g">
-          <div class="act-body">El equipo realiza una salida grupal al territorio: sin agenda de intervención, solo de presencia. Regla estricta: <em>no proponer nada todavía</em>. Solo estar. Al volver: <em>¿qué vimos? ¿qué sentimos? ¿con quién queremos volver?</em> Del §11.1.6 sobre el trabajo de calle: la regularidad genera confianza; la confianza genera vínculo.</div>
+          <div class="act-body">El equipo realiza una salida grupal al territorio: sin agenda de intervención, solo de presencia. Regla estricta: <em>no proponer nada todavía</em>. Solo estar. Al volver: <em>¿Qué vimos? ¿Qué sentimos? ¿Con quién queremos volver?</em> El §11.1.6 lo resume así: «La Iglesia sale al encuentro, no espera».</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Programá una salida individual al territorio con la regla del §7.9.4: <em>no esperar condiciones ideales para amar</em>. Sin agenda, sin folletos, sin objetivos. Solo estar y observar. Al volver, escribí: <em>¿qué vi que no había visto? ¿qué me interpeló?</em> El territorio empieza a hablarte cuando dejás de proponerle cosas.</div>
+          <div class="act-body">Programá una salida individual al territorio con la regla del §7.9.4: <em>no esperar condiciones ideales para amar</em>. Sin agenda, sin folletos, sin objetivos. Solo estar y observar. Al volver, escribí: <em>¿Qué vi que no había visto? ¿Qué me interpeló?</em> El territorio empieza a hablarte cuando dejás de proponerle cosas.</div>
         </div>
       </div>
 
@@ -1195,7 +1213,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Protocolo de callejeada regular</div>
         <div class="mode-g">
-          <div class="act-body">El equipo instituye una callejeada mensual: <em>duplas, recorrido acordado, cuaderno de registro, oración antes y revisión al volver</em>. No hace falta grande: hace falta constante. Del §11.1.6: el trabajo de calle es una de las modalidades más eficaces del ámbito parroquial cuando es sostenido en el tiempo. Un mes de callejeada dice más que veinte reuniones.</div>
+          <div class="act-body">El equipo instituye una callejeada mensual: <em>duplas, recorrido acordado, cuaderno de registro, oración antes y revisión al volver</em>. No hace falta grande: hace falta constante. Entre los gestos concretos del trabajo de calle, el §11.1.6 propone rutas de calle, misión en el barrio, «estar en las esquinas» y «recibir sin preguntas ni condiciones». Un mes de callejeada dice más que veinte reuniones.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Diseñá tu propio protocolo personal de callejeada regular: <em>frecuencia mínima (semanal, quincenal), zona, duración, momento de oración inicial, cuaderno de registro</em>. Compartilo con al menos una persona a la que le rendís cuenta. Sin compromiso público, la práctica se disuelve.</div>
@@ -1207,7 +1225,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Revisar la autorreferencialidad</div>
         <div class="mode-g">
-          <div class="act-body">Ejercicio de diagnóstico honesto: <em>¿cuántas actividades esperan que las personas vengan a nosotros? ¿cuántas salimos a buscarlas? ¿qué porcentaje del tiempo pastoral gastamos dentro de nuestros espacios?</em> El ejercicio no es para culpar sino para ver. A veces basta con desplazar el 20% del tiempo de "adentro" al "afuera" para transformar el impacto de un equipo.</div>
+          <div class="act-body">Ejercicio de diagnóstico honesto: <em>¿Cuántas actividades esperan que las personas vengan a nosotros? ¿Cuántas salimos a buscarlas? ¿Qué porcentaje del tiempo pastoral gastamos dentro de nuestros espacios?</em> El ejercicio no es para culpar sino para ver. A veces basta con desplazar una parte del tiempo de «adentro» al «afuera» para transformar el impacto de un equipo.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Contá honestamente las horas de tu propia práctica pastoral en una semana típica y clasificalas: <em>adentro (esperando o preparando) vs. afuera (saliendo al encuentro)</em>. La proporción es reveladora. Sin culpa: es un diagnóstico. Después preguntate: <em>¿qué proporción quiero que tenga la semana que viene?</em></div>
@@ -1216,21 +1234,21 @@
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §6.7.3 — Manual PLAPA</div>
-        <div class="cita-txt">"Primerear y callejear son las acciones que permiten a la Iglesia ser fiel a su misión, transformando el desprecio social en un encuentro de dignidad donde cada persona es reconocida como un ser sagrado."</div>
-        <div class="cita-ref">Manual de la PLAPA, §6.7.3 — El mandato de primerear y callejear (CELAM 2026)</div>
+        <div class="cita-txt">«Primerear y callejear son las acciones que permiten a la Iglesia ser fiel a su misión, transformando el desprecio social en un encuentro de dignidad donde cada persona es reconocida como un ser sagrado».</div>
+        <div class="cita-ref">Manual de la PLAPA, §6.7.3 — El mandato de primerear y callejear en las periferias del consumo (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Alerta pastoral</div>
-        <div class="alerta-txt">La callejeada puede generar miedo en territorios con presencia del narcotráfico. El Manual no romantiza esto: <em>callejear no es imprudencia, es mística</em>. El equipo evalúa con criterio qué zonas son transitables y en qué horarios. Prudencia y audacia no se excluyen. Un equipo herido por falta de discernimiento pierde su capacidad de sostener el trabajo.</div>
+        <div class="alerta-txt">La callejeada puede generar miedo en territorios con presencia del narcotráfico. Callejear no es imprudencia: el equipo evalúa con criterio qué zonas son transitables y en qué horarios. Prudencia y audacia no se excluyen. Un equipo herido por falta de discernimiento pierde su capacidad de sostener el trabajo.</div>
       </div>
 
       <div class="autocuidado">
         <div class="autocuidado-lbl">Autocuidado del agente</div>
-        <div class="autocuidado-txt">La callejeada regular puede generar sobrecarga de exposición a la vulnerabilidad ajena. La regla del §11.1.6: siempre en duplas, siempre con revisión al volver, siempre con un momento de descarga afectiva. El agente que sale solo sin espacio de decantación acumula historias hasta que el peso lo saca del territorio.</div>
+        <div class="autocuidado-txt">La callejeada regular puede generar sobrecarga de exposición a la vulnerabilidad ajena. Una regla práctica que propone este itinerario: siempre en duplas, siempre con revisión al volver, siempre con un momento de descarga afectiva. El agente que sale solo sin espacio de decantación acumula historias hasta que el peso lo saca del territorio.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §6.7.3 (Primerear y callejear), §7.9.4 (El valor espiritual de las callejeadas), §11.1.6 (El trabajo de calle) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §6.7.3 (El mandato de primerear y callejear en las periferias del consumo), §7.9.4 (El valor espiritual de las «callejeadas» en la búsqueda de los excluidos), §11.1.6 (El trabajo de calle) — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1245,20 +1263,20 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"El acto de llamar por el nombre reconoce la totalidad del ser y su vocación trascendente, validando que el valor de cada individuo es infinito y sagrado. La persona nunca es un número ni un anónimo."</div>
+        <div class="resonancia-txt">«El acto de llamar por el nombre reconoce la totalidad del ser y su vocación trascendente, validando que el valor de cada individuo es infinito y sagrado» (§6.1.2).</div>
       </div>
 
       <div class="pl">El Ver — El sistema que fragmenta</div>
       <ul class="pts">
-        <li><span class="dot">V</span><span><strong>El expediente, el diagnóstico, el número.</strong> "El sistema tiende a la fragmentación administrativa que disecciona al individuo en expedientes o causas penales" (§6.1.2). En cada institución la persona aparece como <em>parte</em> —un caso clínico, un padrón, un registro judicial. Nadie la ve entera. El vínculo pastoral, al llamarla por su nombre, "recupera la unidad de la persona" frente a esa desmembración.</span></li>
-        <li><span class="dot">V</span><span><strong>El estigma cierra el corazón.</strong> "Quien ha vivido bajo el estigma suele tener el corazón cerrado. Al observar una comunidad que se cuida sin distinciones, el hermano experimenta la seguridad vincular necesaria para bajar sus defensas" (§7.9.2). El primer Evangelio puede ser una mirada que no juzga y un nombre pronunciado con calidez —antes de cualquier palabra explícita sobre Dios.</span></li>
+        <li><span class="dot">V</span><span><strong>El expediente, el diagnóstico, el número.</strong> «[…] el sistema tiende a la fragmentación administrativa que disecciona al individuo en expedientes o causas penales […]» (§6.1.2). En cada institución la persona aparece como <em>parte</em> —un caso clínico, un padrón, un registro judicial. Nadie la ve entera. El vínculo pastoral, al llamarla por su nombre, «recupera la unidad de la persona» frente a esa desmembración.</span></li>
+        <li><span class="dot">V</span><span><strong>El estigma cierra el corazón.</strong> «Quien ha vivido bajo el estigma suele tener el corazón cerrado. Al observar una comunidad que se cuida sin distinciones, el hermano experimenta la seguridad vincular necesaria para bajar sus defensas» (§7.9.2). El primer Evangelio puede ser una mirada que no juzga y un nombre pronunciado con calidez —antes de cualquier palabra explícita sobre Dios.</span></li>
       </ul>
 
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
         <li><span class="dot j">J</span><span><strong>Cuatro dimensiones del vínculo (§6.1.2).</strong> <em>Primero</em>, el reconocimiento de la dignidad infinita (el valor intrínseco no depende de la capacidad de recuperación ni del estado moral). <em>Segundo</em>, la superación del estigma (reemplazando etiquetas peyorativas por la identidad real del sujeto). <em>Tercero</em>, la construcción de un lugar seguro (donde la confianza generada por el nombre permite volver a existir para otros). <em>Cuarto</em>, la humanización del recorrido (una atención amante que respeta el carácter artesanal y único de cada proceso).</span></li>
-        <li><span class="dot j">J</span><span><strong>El Buen Pastor no administra un rebaño anónimo.</strong> Juan 10,3: <em>"Él llama a sus ovejas por el nombre"</em> (citado al abrir §6.1.2). El Buen Pastor conoce a cada oveja individualmente. Sin nombre no hay pastoral: hay asistencia técnica. La mística del Buen Pastor es exactamente la refutación de la lógica administrativa.</span></li>
-        <li><span class="dot j">J</span><span><strong>"Miren cómo se aman".</strong> La mística del <em>miren cómo se aman</em> (Jn 13,35) es el primer motor del despertar espiritual para la persona fragilizada (§7.9.2). La persona vulnerabilizada no necesita primero escuchar un discurso sobre Dios: necesita ver una comunidad que vive el amor recíproco. El testimonio comunitario es la puerta de entrada.</span></li>
+        <li><span class="dot j">J</span><span><strong>El Buen Pastor no administra un rebaño anónimo.</strong> Juan 10,3: <em>«él llama a sus ovejas por el nombre»</em> (citado al abrir §6.1.2). El Buen Pastor conoce a cada oveja individualmente. Sin nombre no hay pastoral: hay asistencia técnica. La mística del Buen Pastor es exactamente la refutación de la lógica administrativa.</span></li>
+        <li><span class="dot j">J</span><span><strong>«Miren cómo se aman».</strong> La mística del <em>«miren cómo se aman»</em> es el primer motor del despertar espiritual para la persona fragilizada (§7.9.2, que abre con Jn 13,35: «En esto reconocerán todos que son discípulos míos: si se aman los unos a los otros»). La persona vulnerabilizada no necesita primero escuchar un discurso sobre Dios: necesita ver una comunidad que vive el amor recíproco. El testimonio comunitario es la puerta de entrada.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1268,7 +1286,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">El cuaderno de nombres</div>
         <div class="mode-g">
-          <div class="act-body">El equipo abre un cuaderno colectivo donde registra <em>el nombre, el apodo si lo tiene, y algo personal</em> de cada persona con quien tiene vínculo en el territorio. No es un registro clínico: es un acto de reconocimiento. Se revisa periódicamente: <em>¿aparecieron nombres nuevos? ¿hay alguien que ya no aparece? ¿de quién no sabemos hace meses?</em> El cuaderno mismo es un acto de justicia.</div>
+          <div class="act-body">El equipo abre un cuaderno colectivo donde registra <em>el nombre, el apodo si lo tiene, y algo personal</em> de cada persona con quien tiene vínculo en el territorio. No es un registro clínico: es un acto de reconocimiento. Se revisa periódicamente: <em>¿Aparecieron nombres nuevos? ¿Hay alguien que ya no aparece? ¿De quién no sabemos hace meses?</em> El cuaderno mismo es un acto de justicia.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Abrí un cuaderno personal —a mano, no en el teléfono— donde vas anotando los nombres de las personas del territorio, sus apodos, algo que las distingue. No para gestionar: para <em>recordar</em>. El acto físico de escribir un nombre imprime algo distinto que teclearlo. Revisá el cuaderno al final de cada mes.</div>
@@ -1278,12 +1296,12 @@
       <div class="act">
         <span class="act-tag tag-gru mode-g">Grupal</span>
         <span class="act-tag tag-ind mode-i">Individual</span>
-        <div class="act-title">La mística del "miren cómo se aman" puertas adentro</div>
+        <div class="act-title">La mística del «miren cómo se aman» puertas adentro</div>
         <div class="mode-g">
-          <div class="act-body">Antes de salir al territorio, el equipo evalúa: <em>¿vivimos nosotros el amor recíproco que queremos proponer? ¿hay conflictos no resueltos? ¿cómo tratamos a los que llegan por primera vez?</em> (§7.9.2). El testimonio empieza dentro. Un equipo que se maltrata puertas adentro no puede proponer el "miren cómo se aman" puertas afuera sin ser hipócrita.</div>
+          <div class="act-body">Antes de salir al territorio, el equipo evalúa: <em>¿Vivimos nosotros el amor recíproco que queremos proponer? ¿Hay conflictos no resueltos? ¿Cómo tratamos a los que llegan por primera vez?</em> (§7.9.2). El testimonio empieza dentro. Un equipo que se maltrata puertas adentro no puede proponer el «miren cómo se aman» puertas afuera sin ser hipócrita.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Preguntate honestamente sobre tu equipo o tu comunidad: <em>¿hay un conflicto no resuelto que estoy postergando? ¿trato yo mismo con dignidad a mis colegas? ¿acojo bien a los que llegan?</em> Si la respuesta incomoda, ese es tu primer campo de trabajo antes de la callejeada.</div>
+          <div class="act-body">Preguntate honestamente sobre tu equipo o tu comunidad: <em>¿Hay un conflicto no resuelto que estoy postergando? ¿Trato yo mismo con dignidad a mis colegas? ¿Acojo bien a los que llegan?</em> Si la respuesta incomoda, ese es tu primer campo de trabajo antes de la callejeada.</div>
         </div>
       </div>
 
@@ -1301,8 +1319,8 @@
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §6.1.2 — Manual PLAPA</div>
-        <div class="cita-txt">"La antropología cristiana enseña que la persona nunca es un número ni un anónimo, sino un hermano con una dignidad ontológica que permanece intacta aun cuando su vida esté profundamente herida. El acto de llamar por el nombre reconoce la totalidad del ser."</div>
-        <div class="cita-ref">Manual de la PLAPA, §6.1.2 — El vínculo frente a la deshumanización del sistema (CELAM 2026)</div>
+        <div class="cita-txt">«La antropología cristiana enseña que la persona nunca es un número ni un anónimo, sino un hermano con una dignidad ontológica que permanece intacta aun cuando su vida esté profundamente herida. El acto de llamar por el nombre reconoce la totalidad del ser […]».</div>
+        <div class="cita-ref">Manual de la PLAPA, §6.1.2 — Sobre el vínculo (llamar por el nombre) frente a la deshumanización del sistema (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
@@ -1312,10 +1330,10 @@
 
       <div class="autocuidado">
         <div class="autocuidado-lbl">Autocuidado del agente</div>
-        <div class="autocuidado-txt">El agente que llama por el nombre también necesita ser llamado por el suyo. El equipo que solo se ve en clave de roles ("el coordinador", "la catequista") reproduce la misma dinámica deshumanizante que critica en el sistema. Instituir momentos donde el equipo se vea como personas, no como funciones —una comida, un cumpleaños, una tarde libre— es una práctica de autocuidado colectivo.</div>
+        <div class="autocuidado-txt">El agente que llama por el nombre también necesita ser llamado por el suyo. El equipo que solo se ve en clave de roles («el coordinador», «la catequista») reproduce la misma dinámica deshumanizante que critica en el sistema. Instituir momentos donde el equipo se vea como personas, no como funciones —una comida, un cumpleaños, una tarde libre— es una práctica de autocuidado colectivo.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §6.1.2 (El vínculo frente a la deshumanización), §7.9.2 (La mística del «miren cómo se aman») · Jn 10,3 · Jn 13,35 — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §6.1.2 (Sobre el vínculo [llamar por el nombre] frente a la deshumanización del sistema), §7.9.2 (La mística del «miren cómo se aman» como motor del despertar espiritual) · Jn 10,3 · Jn 13,35 — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1330,13 +1348,13 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"El autocuidado garantiza que el agente pastoral permanecerá como un instrumento dócil y saludable de la misericordia divina. No se puede transmitir el amor de Dios si el corazón del agente está seco por la fatiga."</div>
+        <div class="resonancia-txt">«El autocuidado garantiza que el agente pastoral permanecerá como un instrumento dócil y saludable de la misericordia divina […]» (§6.7.2).</div>
       </div>
 
       <div class="pl">El Ver — La fatiga por compasión</div>
       <ul class="pts">
-        <li><span class="dot">V</span><span><strong>El trauma secundario es real.</strong> "El acompañamiento permanente en contextos de vulnerabilidad puede derivar en fatiga por compasión. El autocuidado protege la salud mental del agente frente al impacto del trauma secundario" (§6.7.2). El agente que escucha historias de violencia, muerte y exclusión sin procesarlas termina construyendo defensas que lo alejan de la presencia significativa que se propone cultivar.</span></li>
-        <li><span class="dot">V</span><span><strong>El agente no es un superhéroe.</strong> "El agente pastoral no es un superhéroe, sino una persona vulnerable que también necesita ternura y cuidado. El pastor debe dejarse cuidar y reconocer que la periferia donde trabaja es también un espejo de sus propias carencias" (§6.7.2). El agente que no puede recibir cuidado tiene dificultad estructural para darlo.</span></li>
+        <li><span class="dot">V</span><span><strong>El trauma secundario es real.</strong> «El acompañamiento permanente en contextos de vulnerabilidad puede derivar en fatiga por compasión. El autocuidado protege la salud mental del agente frente al impacto del trauma secundario» (§6.7.2). El agente que escucha historias de violencia, muerte y exclusión sin procesarlas termina construyendo defensas que lo alejan de la presencia significativa que se propone cultivar.</span></li>
+        <li><span class="dot">V</span><span><strong>El agente no es un superhéroe.</strong> «El agente pastoral no es un superhéroe, sino una persona vulnerable que también necesita ternura y cuidado. El pastor debe dejarse cuidar y reconocer que la periferia donde trabaja es también un espejo de sus propias carencias» (§6.7.2). El agente que no puede recibir cuidado tiene dificultad estructural para darlo.</span></li>
       </ul>
 
       <div class="pl">Las cinco dimensiones del autocuidado (§6.7.2)</div>
@@ -1344,29 +1362,34 @@
         <div class="eje">
           <div class="eje-n">Dimensión 1</div>
           <div class="eje-t">Calidad del cuidado</div>
-          <div class="eje-txt">"El estado psicofísico del agente condiciona significativamente la ayuda que brinda; un cuidador agotado pierde la capacidad de escucha activa y empatía, convirtiendo la misión en una estructura rígida y defensiva".</div>
+          <div class="eje-txt">«El estado psicofísico del agente condiciona significativamente la ayuda que brinda; un cuidador agotado pierde la capacidad de escucha activa y empatía, convirtiendo la misión en una estructura rígida y defensiva».</div>
         </div>
         <div class="eje">
           <div class="eje-n">Dimensión 2</div>
-          <div class="eje-t">Prevención del burnout</div>
+          <div class="eje-t">Prevención del agotamiento</div>
           <div class="eje-txt">Frente a la fatiga por compasión y el trauma secundario. Cuando el agente se agota no solo sufre él: también se degrada la calidad del vínculo con las personas que acompaña.</div>
         </div>
         <div class="eje">
           <div class="eje-n">Dimensión 3</div>
           <div class="eje-t">Sostenibilidad de la misión</div>
-          <div class="eje-txt">"El agotamiento crónico impide la continuidad del servicio". Gestionar la propia vida es condición para que el servicio pastoral sea duradero y no una respuesta espasmódica.</div>
+          <div class="eje-txt">«El agotamiento crónico impide la continuidad del servicio». Gestionar la propia vida es condición para que el servicio pastoral sea duradero y no una respuesta espasmódica.</div>
         </div>
         <div class="eje">
           <div class="eje-n">Dimensión 4</div>
           <div class="eje-t">Reconocimiento de la vulnerabilidad</div>
-          <div class="eje-txt">"El pastor debe dejarse cuidar y reconocer que la periferia donde trabaja es también un espejo de sus propias carencias". Recibir cuidado es tan pastoral como darlo.</div>
+          <div class="eje-txt">«El pastor debe dejarse cuidar y reconocer que la periferia donde trabaja es también un espejo de sus propias carencias». Recibir cuidado es tan pastoral como darlo.</div>
+        </div>
+        <div class="eje">
+          <div class="eje-n">Dimensión 5</div>
+          <div class="eje-t">Teología del descanso</div>
+          <div class="eje-txt">«[…] el descanso es parte integrante de la misión y un derecho que glorifica a Dios». Saber sentarse en el «banco de suplentes» también es misión.</div>
         </div>
       </div>
 
       <div class="pl">El Juzgar — La teología del descanso</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>El descanso ordenado por el propio Cristo.</strong> Marcos 6,31: <em>"Vengan a un lugar apartado para descansar un poco"</em> (citado al abrir §6.7.2). El §6.7.2 lo formula tajante: "El descanso no es opcional, sino una necesidad ordenada por el propio Cristo para quienes están en el centro del servicio". El agotamiento no es signo de fidelidad: es signo de descuido de un mandato explícito.</span></li>
-        <li><span class="dot j">J</span><span><strong>El banco de suplentes.</strong> "Saber sentarse en el banco de suplentes permite que otros tomen la posta y evita la tentación de la omnipotencia" (§6.7.2). Esta es la Dimensión 5 del §6.7.2 —la teología del descanso—: sentarse a descansar es también un acto teológico, no una interrupción de la misión.</span></li>
+        <li><span class="dot j">J</span><span><strong>El descanso ordenado por el propio Cristo.</strong> Marcos 6,31: <em>«Vengan ustedes solos a un lugar apartado, para descansar un poco»</em> (citado al abrir §6.7.2). El §6.7.2 lo formula tajante: «El descanso no es opcional, sino una necesidad ordenada por el propio Cristo para quienes están en el centro del servicio». El agotamiento no es signo de fidelidad: es signo de descuido de un mandato explícito.</span></li>
+        <li><span class="dot j">J</span><span><strong>El banco de suplentes.</strong> «Saber sentarse en el “banco de suplentes” permite que otros tomen la posta y evita la tentación de la omnipotencia» (§6.7.2). Esta es la Dimensión 5 del §6.7.2 —la teología del descanso—: sentarse a descansar es también un acto teológico, no una interrupción de la misión.</span></li>
         <li><span class="dot j">J</span><span><strong>Cuidar a los que cuidan como propuesta pastoral formalizada.</strong> El Manual dedica una sección específica del ámbito parroquial (§11.1.14 <em>Cuidar a los que cuidan</em>) al autocuidado del equipo. No es una recomendación aislada: es una línea de trabajo parroquial. Un equipo sin protocolo de autocuidado no está siguiendo el Manual —lo está subestimando.</span></li>
       </ul>
 
@@ -1377,7 +1400,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Termómetro de las cinco dimensiones</div>
         <div class="mode-g">
-          <div class="act-body">El grupo trabaja sobre las cinco dimensiones del §6.7.2: <em>calidad del cuidado, prevención del burnout, sostenibilidad de la misión, reconocimiento de la vulnerabilidad, teología del descanso</em>. Para cada una: <em>¿cómo estamos? ¿qué necesitamos mejorar?</em> Se identifica la dimensión más frágil como foco de trabajo del próximo trimestre.</div>
+          <div class="act-body">El grupo trabaja sobre las cinco dimensiones del §6.7.2: <em>calidad del cuidado, prevención del agotamiento, sostenibilidad de la misión, reconocimiento de la vulnerabilidad, teología del descanso</em>. Para cada una: <em>¿Cómo estamos? ¿Qué necesitamos mejorar?</em> Se identifica la dimensión más frágil como foco de trabajo del próximo trimestre.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Puntuá honestamente del 1 al 5 cada una de las cinco dimensiones del §6.7.2 en tu propia práctica. La puntuación más baja indica dónde empezar. No se trata de mejorar en todo a la vez: se trata de identificar el eslabón más débil y fortalecerlo primero.</div>
@@ -1387,9 +1410,9 @@
       <div class="act">
         <span class="act-tag tag-gru mode-g">Grupal</span>
         <span class="act-tag tag-ind mode-i">Individual</span>
-        <div class="act-title">Instituir los "parar para seguir"</div>
+        <div class="act-title">Instituir los «Parar para seguir»</div>
         <div class="mode-g">
-          <div class="act-body">El equipo diseña su protocolo mensual de autocuidado colectivo: <em>un encuentro donde no se habla de las personas que se acompaña sino de cómo están quienes acompañan</em>. Facilitador rotativo, oración, espacio de palabra libre. No opcional: parte del funcionamiento regular del equipo (§11.1.14). Un equipo sin este espacio termina cuidando peor —o dejando de cuidar del todo.</div>
+          <div class="act-body">El equipo diseña sus encuentros fraternos mensuales de autocuidado colectivo («Parar para seguir», §11.1.14): <em>un encuentro donde no se habla de las personas que se acompaña sino de cómo están quienes acompañan</em>. Facilitador rotativo, oración, espacio de palabra libre. No opcional: parte del funcionamiento regular del equipo (§11.1.14). Un equipo sin este espacio termina cuidando peor —o dejando de cuidar del todo.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Instalá un momento fijo mensual —sagrado, no negociable— donde parás para vos: retiro corto, tiempo de silencio, encuentro con un director espiritual o un par de confianza. El agente que no tiene ese lugar termina descargando en las personas que acompaña o en su familia. La agenda no se abre para eso: se cierra <em>desde</em> eso.</div>
@@ -1410,21 +1433,21 @@
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §6.7.2 — Manual PLAPA</div>
-        <div class="cita-txt">"El descanso no es opcional, sino una necesidad ordenada por el propio Cristo para quienes están en el centro del servicio. La Iglesia, como hospital de campaña, debe cuidar a sus propios soldados heridos por la fatiga y el dolor."</div>
-        <div class="cita-ref">Manual de la PLAPA, §6.7.2 — La importancia fundamental del autocuidado (CELAM 2026)</div>
+        <div class="cita-txt">«El descanso no es opcional, sino una necesidad ordenada por el propio Cristo para quienes están en el centro del servicio. La Iglesia, como hospital de campaña, debe cuidar a sus propios soldados heridos por la fatiga y el dolor […]».</div>
+        <div class="cita-ref">Manual de la PLAPA, §6.7.2 — La importancia fundamental del autocuidado para el agente pastoral (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Alerta pastoral</div>
-        <div class="alerta-txt">El autocuidado no es individualista. El §6.7.2 lo hace explícito: la formación técnica y "el apoyo de grupos de pares son mediaciones humanas necesarias para que la gracia de Dios fructifique en una vida equilibrada". El agente que "se cuida" en soledad, sin comunidad, sin dirección espiritual, sin pares que le hablen honestamente, no está haciendo autocuidado: está haciendo autoevasión sofisticada.</div>
+        <div class="alerta-txt">El autocuidado no es individualista. El §6.7.2 lo hace explícito: «La formación técnica y el apoyo de grupos de pares son mediaciones humanas necesarias para que la gracia de Dios fructifique en una vida equilibrada». El agente que «se cuida» en soledad, sin comunidad, sin dirección espiritual, sin pares que le hablen honestamente, no está haciendo autocuidado: está haciendo autoevasión sofisticada.</div>
       </div>
 
       <div class="autocuidado">
         <div class="autocuidado-lbl">Cierre del itinerario · Autocuidado del agente</div>
-        <div class="autocuidado-txt">Este itinerario cierra con la pregunta que abrió al Itinerario 1, pero ahora desde adentro: <em>¿cómo está tu llaga? No la del barrio: la tuya</em>. El agente que puede responder esa pregunta con honestidad está en condiciones de seguir caminando el territorio con mística de la proximidad sostenible. El agente que no puede responderla necesita parar antes de seguir.</div>
+        <div class="autocuidado-txt">Este itinerario cierra con la pregunta por la llaga, pero ahora desde adentro: <em>¿cómo está tu llaga? No la del barrio: la tuya</em>. El agente que puede responder esa pregunta con honestidad está en condiciones de seguir caminando el territorio con mística de la proximidad sostenible. El agente que no puede responderla necesita parar antes de seguir.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §6.7.2 (Autocuidado del agente), §7.9.1 (El ancla de la comunidad), §11.1.14 (Cuidar a los que cuidan) · Mc 6,31 — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §6.7.2 (La importancia fundamental del autocuidado para el agente pastoral), §7.9.1 (La imposibilidad de una vivencia espiritual aislada del tejido comunitario), §11.1.14 (Cuidar a los que cuidan) · Mc 6,31 — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1438,8 +1461,8 @@
     <div class="cb">
 
       <div class="foro-vista">
-        <button class="foro-vista-btn on" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
-        <button class="foro-vista-btn" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
+        <button class="foro-vista-btn on" aria-pressed="true" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
+        <button class="foro-vista-btn" aria-pressed="false" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
       </div>
 
       <div class="foro-pautas">
@@ -1488,7 +1511,7 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Antes de comenzar</div>
-        <div class="resonancia-txt">"La mística de la proximidad no se enseña: se ejerce. Vos ya la practicás cuando llamás a alguien por su nombre, cuando callejás sin apuro, cuando dejás que un rostro te interpele. Este es el momento de nombrar lo que ese ejercicio te está pidiendo." Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
+        <div class="resonancia-txt">La mística de la proximidad no se enseña: se ejerce. Vos ya la practicás cuando llamás a alguien por su nombre, cuando callejeás sin apuro, cuando dejás que un rostro te interpele. Este es el momento de nombrar lo que ese ejercicio te está pidiendo. Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
       </div>
 
       <div class="eval-nota">
@@ -1508,7 +1531,7 @@
         <textarea id="evalJuzgar1" data-eval="juzgar1" placeholder="Nombralo con precisión..."></textarea>
       </div>
       <div class="eval-q">
-        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos? Las preguntas abiertas son también fruto (§13.3).</label>
+        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos?</label>
         <textarea id="evalJuzgar2" data-eval="juzgar2" placeholder="Las que siguen ardiendo..."></textarea>
       </div>
 
@@ -1523,8 +1546,8 @@
       </div>
 
       <div class="pl">Autocuidado y equipo</div>
-      <div class="eval-q eval-scale">
-        <label>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</label>
+      <fieldset class="eval-q eval-scale">
+        <legend>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</legend>
         <div class="eval-scale-row">
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="1" data-eval="animo"><span>1</span></label>
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="2" data-eval="animo"><span>2</span></label>
@@ -1532,10 +1555,10 @@
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="4" data-eval="animo"><span>4</span></label>
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="5" data-eval="animo"><span>5</span></label>
         </div>
-      </div>
+      </fieldset>
       <div class="eval-q">
-        <label for="evalCuidado">De las cinco dimensiones del autocuidado del §6.7.2 (calidad del cuidado, prevención del burnout, sostenibilidad de la misión, reconocimiento de la vulnerabilidad, teología del descanso): ¿cuál es la más frágil en tu práctica hoy? ¿A quién del equipo se lo vas a decir?</label>
-        <textarea id="evalCuidado" data-eval="cuidado" placeholder="El agente que cuida su esperanza puede sostener la del otro..."></textarea>
+        <label for="evalCuidado">De las cinco dimensiones del autocuidado del §6.7.2 (calidad del cuidado, prevención del agotamiento, sostenibilidad de la misión, reconocimiento de la vulnerabilidad, teología del descanso): ¿cuál es la más frágil en tu práctica hoy? ¿A quién del equipo se lo vas a decir?</label>
+        <textarea id="evalCuidado" data-eval="cuidado" placeholder="Ej.: Voy a recuperar un día de descanso por semana y se lo voy a decir a X para que me lo recuerde cuando lo esté salteando..."></textarea>
       </div>
 
       <div class="pl">Cierre</div>
@@ -1557,7 +1580,7 @@
         <div class="autocuidado-txt">Cerrar bien un itinerario también es autocuidado: celebrar lo caminado, agradecer al equipo, reconocer los propios límites y renovar la esperanza. Este itinerario termina con gratitud: por los rostros que nos hablaron, por los nombres que aprendimos, por el equipo que hizo posible seguir sin quemarnos.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §6.1.1–6.1.2 (Presencia significativa), §6.7.2 (Autocuidado), §6.7.3 (Primerear y callejear), §7.9.1–7.9.4 (La mística del «miren cómo se aman»), §11.1.14 (Cuidar a los que cuidan), §13.2 (Sinodalidad), §13.3 (Rolling release), §13.5 (Mecanismos de colaboración) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §6.1.1–6.1.2 (Presencia significativa), §6.7.2 (Autocuidado), §6.7.3 (Primerear y callejear), §7.9.1–7.9.4 (El ancla de la comunidad), §11.1.14 (Cuidar a los que cuidan), §13.2 (Sinodalidad), §13.3 (Rolling release), §13.5 (Mecanismos de colaboración) — CELAM 2026.</div>
 
     </div>
   </div>
@@ -1571,9 +1594,9 @@
     root.classList.add('mode-' + mode);
     var buttons = document.querySelectorAll('.mode-btn');
     for (var i = 0; i < buttons.length; i++) {
-      buttons[i].classList.remove('on');
+      buttons[i].classList.remove('on'); buttons[i].setAttribute('aria-pressed', 'false');
     }
-    btn.classList.add('on');
+    btn.classList.add('on'); btn.setAttribute('aria-pressed', 'true');
   }
 
   function show(n, btn) {
@@ -1750,8 +1773,8 @@
 
   function setVistaForo(v, btn) {
     vistaForo = v;
-    document.querySelectorAll('.foro-vista-btn').forEach(function(b) { b.classList.remove('on'); });
-    btn.classList.add('on');
+    document.querySelectorAll('.foro-vista-btn').forEach(function(b) { b.classList.remove('on'); b.setAttribute('aria-pressed', 'false'); });
+    btn.classList.add('on'); btn.setAttribute('aria-pressed', 'true');
     cargarComentarios();
   }
 
@@ -1799,14 +1822,15 @@
     var datos = recolectarEvaluacion();
     var minimoTexto = (datos.ver || '').trim() + (datos.actuar || '').trim();
     if (minimoTexto.length < 30) {
-      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos "El Ver" y "El Actuar" merecen unos renglones honestos.', 'error');
+      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos «El Ver» y «El Actuar» merecen unos renglones honestos.', 'error');
       return;
     }
     if (!sesion) { window.location.href = '/login'; return; }
-    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario', {
+    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario?on_conflict=usuario_id,itinerario_id', {
       method: 'POST',
       headers: Object.assign({}, supaHeaders(), { 'Prefer': 'resolution=merge-duplicates' }),
       body: JSON.stringify({
+        usuario_id: sesion.user ? sesion.user.id : undefined,
         itinerario_id: ITINERARIO_ID,
         respuestas: datos,
         compartir_con_equipo: datos.compartir_con_equipo === true
@@ -1829,6 +1853,12 @@
 
   function imprimirEvaluacion() {
     autoguardarBorrador();
+    // Que cada respuesta se imprima completa, sin cortarse
+    var areas = document.querySelectorAll('#m6 textarea');
+    for (var i = 0; i < areas.length; i++) {
+      areas[i].style.height = 'auto';
+      areas[i].style.height = areas[i].scrollHeight + 'px';
+    }
     window.print();
   }
 

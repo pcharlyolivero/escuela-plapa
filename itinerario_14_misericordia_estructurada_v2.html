@@ -24,7 +24,7 @@
     --borde:      #E4E2F0;
 
     --font-serif: "Georgia", "Times New Roman", serif;
-    --font-sans:  "system-ui", -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+    --font-sans:  system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -772,7 +772,7 @@
   }
   .foro-form textarea:focus,
   .foro-form select:focus {
-    outline: none;
+    outline: 2px solid transparent;
     border-color: var(--i14-medio);
   }
   .foro-form-actions {
@@ -1009,7 +1009,18 @@
   .eval-q {
     margin-bottom: 1.5rem;
   }
-  .eval-q > label {
+  fieldset.eval-scale {
+    border: 0;
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+    min-width: 0;
+  }
+  .eval-q > legend {
+    padding: 0;
+  }
+  .eval-q > label,
+  .eval-q > legend {
     display: block;
     font-size: 14px;
     font-weight: 500;
@@ -1033,7 +1044,7 @@
   }
   .eval-q textarea:focus,
   .eval-q input:focus {
-    outline: none;
+    outline: 2px solid transparent;
     border-color: var(--i14-medio);
     box-shadow: 0 0 0 3px rgba(60, 52, 137, 0.1);
   }
@@ -1063,6 +1074,10 @@
     position: absolute;
     opacity: 0;
     pointer-events: none;
+  }
+  .eval-radio input:focus-visible + span {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
   }
   .eval-radio span {
     display: block;
@@ -1155,7 +1170,10 @@
     .root { box-shadow: none; padding: 1rem; max-width: 100%; }
     .portada, .video-wrap, .mode-selector, .nav { display: none !important; }
     .card { display: none !important; }
-    #m6.card { display: block !important; break-inside: avoid; border: none; }
+    #m6.card { display: block !important; border: none; }
+    .eval-q { break-inside: avoid; }
+    .video-wrap, .top-header, .foro-vista { display: none !important; }
+    .eval-q textarea { overflow: visible; resize: none; }
     .eval-actions, .eval-msg { display: none !important; }
     .ch { background: transparent; }
     .eval-q textarea, .eval-q input[type="date"] {
@@ -1221,15 +1239,14 @@
 
   <!-- ═══ VIDEO ═══════════════════════════════════════════ -->
   
-  <!-- NUEVO: Bloque del Video de Presentación Incrustado -->
-<div style="background: var(--surface-2); border: 0.5px solid var(--border); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
-  <p style="font-size: 11px; font-weight: 500; color: #085041; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; text-align: left;">
+<div class="video-wrap" style="background: #FFF; border: 1px solid var(--borde); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
+  <p style="font-size: 11px; font-weight: 500; color: var(--i14-oscuro); letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; text-align: left;">
     ▶️ Video de presentación
   </p>
   <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px;">
     <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
       src="https://www.youtube.com/embed/7ng2aaY2Om0"
-      title="Presentación del Itinerario 14" 
+      title="Video de presentación: Misericordia Estructurada en la práctica — Itinerario 14" 
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
       allowfullscreen>
     </iframe>
@@ -1238,8 +1255,8 @@
 
   <!-- ═══ SELECTOR DE MODALIDAD ═══════════════════════════ -->
   <div class="mode-selector">
-    <button class="mode-btn on" onclick="setMode('grupal', this)">👥 Hacer en comunidad</button>
-    <button class="mode-btn" onclick="setMode('individual', this)">👤 Hacer de forma individual</button>
+    <button class="mode-btn on" aria-pressed="true" onclick="setMode('grupal', this)">👥 Hacer en comunidad</button>
+    <button class="mode-btn" aria-pressed="false" onclick="setMode('individual', this)">👤 Hacer de forma individual</button>
   </div>
 
   <!-- ═══ NAVEGACIÓN ══════════════════════════════════════ -->
@@ -1258,13 +1275,13 @@
     <div class="ch">
       <span class="cn">Módulo 1 · El Ver</span>
       <div class="ct">La tensión entre acogida incondicional y norma pedagógica</div>
-      <div class="cs">Las dos trampas que el §6.3.3 nombra · §6.3.3</div>
+      <div class="cs">Las dos trampas de la Misericordia Estructurada · §6.3.3</div>
     </div>
     <div class="cb">
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"Una misericordia sin estructura es desidia; una estructura sin misericordia es crueldad. El equilibrio reside en una pedagogía que utiliza la firmeza de la regla para proteger la libertad que aún está débil."</div>
+        <div class="resonancia-txt">«Una misericordia sin estructura es desidia; una estructura sin misericordia es crueldad. El equilibrio reside en una pedagogía que utiliza la firmeza de la regla para proteger la libertad que aún está débil […]».</div>
       </div>
 
       <div class="pl">El Ver — Las dos trampas del §6.3.3</div>
@@ -1272,7 +1289,7 @@
         <div class="eje">
           <div class="eje-n">Trampa 1</div>
           <div class="eje-t">La desidia</div>
-          <div class="eje-txt">La misericordia que, por evitar la exigencia, abandona al hermano en su propio caos. La "flexibilidad total" que se convierte en indiferencia. El amor que no cree en la capacidad del otro.</div>
+          <div class="eje-txt">La misericordia que, por evitar la exigencia, abandona al hermano en su propio caos. La «flexibilidad total» que se convierte en indiferencia. El amor que no cree en la capacidad del otro.</div>
         </div>
         <div class="eje">
           <div class="eje-n">Trampa 2</div>
@@ -1283,14 +1300,14 @@
 
       <div class="pl">El Ver — Realidad</div>
       <ul class="pts">
-        <li><span class="dot">V</span><span><strong>Todo dispositivo vive esta tensión.</strong> El §6.3.3 la nombra desde la primera línea: <em>"Existe el riesgo de caer en un asistencialismo que, por evitar la exigencia, termina abandonando al hermano en su propio caos."</em> Los equipos que caen en la <em>trampa 1</em> tienen alta permanencia pero bajo protagonismo; los que caen en la <em>trampa 2</em> tienen mucha exigencia pero alta deserción. La Misericordia Estructurada es el nombre del equilibrio entre las dos.</span></li>
-        <li><span class="dot">V</span><span><strong>Las tres objeciones más frecuentes del territorio.</strong> El §6.3.3 las recoge: (1) <em>"la misericordia debe ser siempre incondicional y sin límites"</em>, (2) <em>"las estructuras rígidas replican los sistemas de control que ya expulsaron al hermano"</em>, (3) <em>"cualquier estructura es una carga insoportable para quien ya está suficientemente quebrado."</em> Las tres son comprensibles. Las tres son, sin embargo, formas de <em>no creer en la capacidad del hermano</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>Todo dispositivo vive esta tensión.</strong> El §6.3.3 la nombra desde la primera línea: <em>«Existe el riesgo de caer en un asistencialismo que, por evitar la exigencia, termina abandonando al hermano en su propio caos».</em> Los equipos que caen en la <em>trampa 1</em> tienen alta permanencia pero bajo protagonismo; los que caen en la <em>trampa 2</em> tienen mucha exigencia pero alta deserción. La Misericordia Estructurada es el nombre del equilibrio entre las dos.</span></li>
+        <li><span class="dot">V</span><span><strong>Las tres objeciones más frecuentes del territorio.</strong> El §6.3.3 las recoge: (1) <em>«la misericordia debe ser siempre incondicional y sin límites»</em>, (2) <em>«las estructuras rígidas y la exigencia de tareas replican los sistemas de control y castigo que ya han expulsado al hermano de otros ámbitos sociales […]»</em>, (3) <em>«cualquier tipo de estructura es una carga insoportable para quien ya está suficientemente quebrado»</em>. Las tres son comprensibles. Las tres son, sin embargo, formas de <em>no creer en la capacidad del hermano</em>.</span></li>
       </ul>
 
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>Incondicional no es ilimitado.</strong> <em>"La gratuidad de Dios no es desorden. La misericordia estructurada transparenta un amor que quiere que el hermano crezca y se perfeccione. El límite es la expresión de un Dios que nos cuida impidiendo que nos autodestruyamos"</em> (§6.3.3). La objeción teológica (<em>"la misericordia debe ser incondicional"</em>) confunde <em>incondicional con ilimitada</em>. El amor incondicional puede —debe— poner límites cuando los límites cuidan la vida del amado.</span></li>
-        <li><span class="dot j">J</span><span><strong>La estructura como signo de esperanza.</strong> <em>"Proponer una estructura es un signo de esperanza: es decirle al hermano que creemos en su capacidad de responder, de ser responsable y de protagonizar su propio proceso de vida nueva"</em> (§6.3.3). El límite que nace del amor no desconfía del hermano: <em>confía en él más de lo que él confía en sí mismo en ese momento</em>. Esa confianza anticipada es la estructura más misericordiosa que un dispositivo puede ofrecer.</span></li>
+        <li><span class="dot j">J</span><span><strong>Incondicional no es ilimitado.</strong> <em>«La gratuidad de Dios no es desorden. La misericordia estructurada transparenta un amor que quiere que el hermano crezca y se perfeccione. El límite es la expresión de un Dios que nos cuida impidiendo que nos autodestruyamos»</em> (§6.3.3). La objeción teológica (<em>«la misericordia debe ser incondicional»</em>) confunde <em>incondicional con ilimitada</em>. El amor incondicional puede —debe— poner límites cuando los límites cuidan la vida del amado.</span></li>
+        <li><span class="dot j">J</span><span><strong>La estructura como signo de esperanza.</strong> <em>«Proponer una estructura es un signo de esperanza: es decirle al hermano que creemos en su capacidad de responder, de ser responsable y de protagonizar su propio proceso de vida nueva»</em> (§6.3.3). El límite que nace del amor no desconfía del hermano: <em>confía en él más de lo que él confía en sí mismo en ese momento</em>. Esa confianza anticipada es la estructura más misericordiosa que un dispositivo puede ofrecer.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1300,7 +1317,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Diagnóstico: ¿en cuál de las dos trampas está el dispositivo?</div>
         <div class="mode-g">
-          <div class="act-body">El grupo evalúa honestamente el dispositivo actual con dos preguntas: <em>¿hay hermanos que permanecen indefinidamente sin asumir responsabilidades crecientes (trampa 1)? ¿hay hermanos que abandonan porque la exigencia supera el sostenimiento afectivo disponible (trampa 2)?</em> La respuesta revela dónde está el desequilibrio. No para culpar al equipo: para saber en qué dirección ajustar.</div>
+          <div class="act-body">El grupo evalúa honestamente el dispositivo actual con dos preguntas: <em>¿hay hermanos que permanecen indefinidamente sin asumir responsabilidades crecientes (trampa 1)? ¿Hay hermanos que abandonan porque la exigencia supera el sostenimiento afectivo disponible (trampa 2)?</em> La respuesta revela dónde está el desequilibrio. No para culpar al equipo: para saber en qué dirección ajustar.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Escribí en tu bitácora los indicadores concretos que en tu experiencia señalan cada trampa (tiempo promedio de permanencia sin avanzar, tasa de deserción tras cambios de exigencia). Al lado, tu hipótesis sobre <em>hacia qué trampa se inclina tu dispositivo hoy</em>. La lucidez sobre el propio desbalance es la mitad de la corrección.</div>
@@ -1312,7 +1329,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Responder a las tres objeciones desde la práctica</div>
         <div class="mode-g">
-          <div class="act-body">El grupo toma cada una de las tres objeciones del §6.3.3 y la recorre desde casos reales del territorio: <em>¿hay algún caso donde la "misericordia sin límite" terminó perjudicando al hermano? ¿hay algún caso donde la estructura rígida lo expulsó antes de tiempo? ¿hay algún caso donde la estructura amorosa funcionó como ancla?</em> Los casos concretos son la mejor refutación de las objeciones abstractas.</div>
+          <div class="act-body">El grupo toma cada una de las tres objeciones del §6.3.3 y la recorre desde casos reales del territorio: <em>¿hay algún caso donde la «misericordia sin límite» terminó perjudicando al hermano? ¿Hay algún caso donde la estructura rígida lo expulsó antes de tiempo? ¿Hay algún caso donde la estructura amorosa funcionó como ancla?</em> Los casos concretos son la mejor refutación de las objeciones abstractas.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Escribí en tu bitácora un caso concreto (anonimizado) para cada una de las tres objeciones: uno donde la misericordia sin límite dañó, uno donde la estructura rígida expulsó, uno donde la Misericordia Estructurada funcionó. Esos tres casos son tu argumentario propio para las próximas conversaciones de equipo.</div>
@@ -1333,13 +1350,13 @@
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §6.3.3</div>
-        <div class="cita-txt">"La verdadera misericordia no es un sentimiento difuso ni una permisividad que deja al otro a la deriva. Es una caridad operante que se hace cargo de la fragilidad ajena proveyendo un entorno seguro y predecible."</div>
+        <div class="cita-txt">«La verdadera misericordia no es un sentimiento difuso ni una permisividad que deja al otro a la deriva. Es una caridad operante que se hace cargo de la fragilidad ajena proveyendo un entorno seguro y predecible».</div>
         <div class="cita-ref">Manual de la PLAPA, §6.3.3 — La Misericordia Estructurada (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Alerta pastoral</div>
-        <div class="alerta-txt">La distinción entre las dos trampas puede convertirse en <em>etiquetado del equipo</em> ("vos sos de la trampa 1, yo soy de la trampa 2"). No es el objetivo. Ambas trampas son tendencias humanas comprensibles que aparecen en momentos distintos, con distintos hermanos, en distintas etapas. El diagnóstico es del dispositivo en conjunto, no de las personas individuales. Sin ese cuidado, el itinerario mismo puede reproducir la lógica que critica.</div>
+        <div class="alerta-txt">La distinción entre las dos trampas puede convertirse en <em>etiquetado del equipo</em> («vos sos de la trampa 1, yo soy de la trampa 2»). No es el objetivo. Ambas trampas son tendencias humanas comprensibles que aparecen en momentos distintos, con distintos hermanos, en distintas etapas. El diagnóstico es del dispositivo en conjunto, no de las personas individuales. Sin ese cuidado, el itinerario mismo puede reproducir la lógica que critica.</div>
       </div>
 
       <div class="autocuidado">
@@ -1362,26 +1379,26 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"A diferencia de los sistemas punitivos, la estructura pastoral nace del vínculo y la projimidad. No se impone desde una autoridad lejana, sino que se vive en comunidad, donde quien acompaña se somete a la misma regla y ritmo de vida."</div>
+        <div class="resonancia-txt">«A diferencia de los sistemas punitivos, la estructura pastoral nace del vínculo y la projimidad. No se impone desde una autoridad lejana, sino que se vive en comunidad, donde quien acompaña se somete a la misma regla y ritmo de vida […]».</div>
       </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>La seguridad vincular es también terapéutica.</strong> El primer fundamento conecta directamente con el §8.2.3 (TIT): <em>«Todo el equipo debe estar capacitado para identificar disparadores o señales de alerta emocional […]»</em>. La estructura del dispositivo no es solo organizativa: es terapéutica. La rutina predecible, los horarios regulares y las normas claras <em>reducen la ansiedad</em> (§6.3.3) de quien viene de una vida en situación de consumo, en alerta permanente.</span></li>
+        <li><span class="dot">V</span><span><strong>La voluntad se entrena, no se predica.</strong> El segundo fundamento es el más contraintuitivo: la voluntad dañada por el consumo no se repara con grandes decisiones. Se repara con pequeñas metas cumplidas que generan autoeficacia (§8.4.2). <em>Lavar la taza después del desayuno, hacer la cama, llegar a tiempo</em> no son detalles de orden doméstico: son <em>ejercicios de voluntad que el dispositivo ofrece como gimnasio de la libertad recuperada</em>.</span></li>
+      </ul>
 
       <div class="pl">El Juzgar — Los tres fundamentos de la Misericordia Estructurada (§6.3.3)</div>
       <ul class="pts">
         <li><span class="dot j">1</span><span><strong>Seguridad vincular y contención.</strong> Para quien viene del caos de la calle o de la compulsión, el <em>límite sano funciona como un abrazo protector</em>. La estructura del trabajo y las normas comunitarias reducen la ansiedad al ofrecer un escenario donde el hermano sabe qué se espera de él y qué puede esperar del entorno. <em>La previsibilidad es una forma de amor</em>.</span></li>
         <li><span class="dot j">2</span><span><strong>Reparación de la voluntad.</strong> La adicción desestructura la capacidad de decidir. La Misericordia Estructurada propone <em>pequeñas metas diarias</em> que permiten entrenar nuevamente el músculo de la voluntad, transformando la inercia en una intencionalidad orientada al bien. La voluntad no se repara con discursos: <em>se entrena con prácticas cotidianas</em>.</span></li>
-        <li><span class="dot j">3</span><span><strong>Valor pedagógico del límite.</strong> El límite no es un castigo, sino una <em>frontera que define el espacio de respeto mutuo</em>. Enseña que las propias acciones tienen consecuencias y que el error es una oportunidad de aprendizaje y perdón, no un motivo de expulsión definitiva. El límite bien puesto dice: <em>"Creo que podés mejor que esto."</em></span></li>
-      </ul>
-
-      <div class="pl">El Ver — Realidad</div>
-      <ul class="pts">
-        <li><span class="dot">V</span><span><strong>La seguridad vincular es también terapéutica.</strong> El primer fundamento conecta directamente con el §8.2.3 (TIT): <em>"Todo el equipo debe estar capacitado para identificar disparadores o señales de alerta emocional."</em> La estructura del dispositivo no es solo organizativa: es terapéutica. La rutina predecible, los horarios regulares y las normas claras <em>reducen la activación del sistema nervioso simpático</em> que la vida en situación de consumo mantuvo en alerta permanente.</span></li>
-        <li><span class="dot">V</span><span><strong>La voluntad se entrena, no se predica.</strong> El segundo fundamento es el más contraintuitivo: la voluntad dañada por el consumo no se repara con grandes decisiones. Se repara con pequeñas metas cumplidas que generan autoeficacia (§8.4.2). <em>"Lavar su taza después del desayuno, hacer la cama, llegar a tiempo"</em> no son detalles de orden doméstico: son <em>ejercicios de voluntad que el dispositivo ofrece como gimnasio de la libertad recuperada</em>.</span></li>
+        <li><span class="dot j">3</span><span><strong>Valor pedagógico del límite.</strong> El límite no es un castigo, sino una <em>frontera que define el espacio de respeto mutuo</em>. Enseña que las propias acciones tienen consecuencias y que el error es una oportunidad de aprendizaje y perdón, no un motivo de expulsión definitiva. El límite bien puesto dice: <em>«Creo que podés más que esto».</em></span></li>
       </ul>
 
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>El límite pastoral nace del vínculo, no de la autoridad.</strong> La clave diferencial del tercer fundamento: <em>"No se impone desde una autoridad lejana, sino que se vive en comunidad, donde quien acompaña se somete a la misma regla y ritmo de vida que quien es acompañado"</em> (§6.3.3). El director del centro que no cumple los mismos horarios que pide a los hermanos <em>invalida la estructura con su ejemplo</em>. El límite que se pide pero no se vive es autoritarismo, no Misericordia Estructurada.</span></li>
-        <li><span class="dot j">J</span><span><strong>Primero el amor, luego la estructura.</strong> El §7.9.3 ilumina desde otro ángulo: <em>"La misericordia organiza a la comunidad para amar antes que para estructurar."</em> El orden de las prioridades es fundamental: primero el amor, luego la estructura. <em>La estructura que llega antes que el amor es burocracia; la que llega después es pedagogía.</em> El hospital de campaña venda la herida antes de preguntar si el paciente tiene documentos.</span></li>
+        <li><span class="dot j">J</span><span><strong>El límite pastoral nace del vínculo, no de la autoridad.</strong> La respuesta del Manual a la segunda objeción lo explica: <em>«No se impone desde una autoridad lejana, sino que se vive en comunidad, donde quien acompaña se somete a la misma regla y ritmo de vida que quien es acompañado»</em> (§6.3.3). El director del centro que no cumple los mismos horarios que pide a los hermanos <em>invalida la estructura con su ejemplo</em>. El límite que se pide pero no se vive es autoritarismo, no Misericordia Estructurada.</span></li>
+        <li><span class="dot j">J</span><span><strong>Primero el amor, luego la estructura.</strong> El §7.9.3 ilumina desde otro ángulo: <em>«La misericordia organiza a la comunidad para amar antes que para estructurar».</em> El orden de las prioridades es fundamental: primero el amor, luego la estructura. <em>La estructura que llega antes que el amor es burocracia; la que llega después es pedagogía.</em> El hospital de campaña venda la herida antes de preguntar si el paciente tiene documentos.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1391,7 +1408,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Revisar el reglamento con los tres fundamentos</div>
         <div class="mode-g">
-          <div class="act-body">El grupo toma el reglamento de convivencia del dispositivo (si no existe, lo construye) y para cada norma pregunta: <em>¿nace del vínculo o de la autoridad? ¿genera seguridad vincular o ansiedad? ¿entrena la voluntad o la reemplaza? ¿fue construida con participación de los hermanos o impuesta desde arriba?</em> Las normas que no superan ese test necesitan ser revisadas o eliminadas.</div>
+          <div class="act-body">El grupo toma el reglamento de convivencia del dispositivo (si no existe, lo construye) y para cada norma pregunta: <em>¿nace del vínculo o de la autoridad? ¿Genera seguridad vincular o ansiedad? ¿Entrena la voluntad o la reemplaza? ¿Fue construida con participación de los hermanos o impuesta desde arriba?</em> Las normas que no superan ese test necesitan ser revisadas o eliminadas.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Anotá en tu bitácora las tres reglas más importantes del dispositivo donde trabajás. Aplicá el test de los tres fundamentos a cada una. Las que no pasan el test son la próxima agenda de revisión del equipo.</div>
@@ -1415,7 +1432,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">¿Cumplimos los coordinadores las mismas reglas?</div>
         <div class="mode-g">
-          <div class="act-body">La norma más exigente del §6.3.3: <em>"quien acompaña se somete a la misma regla y ritmo de vida que quien es acompañado."</em> El grupo revisa honestamente: <em>¿qué normas del dispositivo cumplen los hermanos y no cumplen los coordinadores (horarios, celulares, comida, uso de espacios comunes)? ¿qué privilegios diferencian a un grupo del otro?</em> Nombrar la brecha sin culpa es el primer paso para reducirla.</div>
+          <div class="act-body">La norma más exigente del §6.3.3: <em>«quien acompaña se somete a la misma regla y ritmo de vida que quien es acompañado».</em> El grupo revisa honestamente: <em>¿qué normas del dispositivo cumplen los hermanos y no cumplen los coordinadores (horarios, celulares, comida, uso de espacios comunes)? ¿Qué privilegios diferencian a un grupo del otro?</em> Nombrar la brecha sin culpa es el primer paso para reducirla.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Escribí en tu bitácora tres normas que <em>pedís</em> y no <em>vivís</em> igual. Al lado de cada una, un ajuste concreto que podrías hacer para reducir la brecha. La coherencia entre lo que se pide y lo que se vive es la autoridad moral del dispositivo.</div>
@@ -1424,21 +1441,21 @@
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §6.3.3</div>
-        <div class="cita-txt">"La estructura pastoral nace del vínculo y la projimidad. No se impone desde una autoridad lejana, sino que se vive en comunidad, donde quien acompaña se somete a la misma regla y ritmo de vida que quien es acompañado. El límite se pone pensando en el bien del otro, y por amor."</div>
+        <div class="cita-txt">«La estructura pastoral nace del vínculo y la projimidad. No se impone desde una autoridad lejana, sino que se vive en comunidad, donde quien acompaña se somete a la misma regla y ritmo de vida que quien es acompañado. El límite se pone pensando en el bien del otro, y por amor».</div>
         <div class="cita-ref">Manual de la PLAPA, §6.3.3 — La Misericordia Estructurada (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Alerta pastoral</div>
-        <div class="alerta-txt">Las <em>"pequeñas metas diarias"</em> pueden convertirse en <em>micromanagement disfrazado</em> si se transforman en un sistema de vigilancia constante que el hermano vive como control. La diferencia está en el <em>tono</em>: metas propuestas y celebradas con acompañamiento, no evaluadas y penalizadas con distancia. Sin ese cuidado, el gimnasio de la voluntad se convierte en el sistema disciplinario que el §6.3.3 justamente quiere superar.</div>
+        <div class="alerta-txt">Las <em>«pequeñas metas diarias»</em> pueden convertirse en <em>microgestión disfrazada</em> si se transforman en un sistema de vigilancia constante que el hermano vive como control. La diferencia está en el <em>tono</em>: metas propuestas y celebradas con acompañamiento, no evaluadas y penalizadas con distancia. Sin ese cuidado, el gimnasio de la voluntad se convierte en el sistema disciplinario que el §6.3.3 justamente quiere superar.</div>
       </div>
 
       <div class="autocuidado">
         <div class="autocuidado-lbl">Autocuidado del agente</div>
-        <div class="autocuidado-txt">La norma de que <em>"quien acompaña se somete a la misma regla"</em> es la más exigente del §6.3.3 para el equipo. <em>¿Hay normas del dispositivo que los coordinadores no cumplen? ¿hay privilegios que los diferencian de los hermanos que acompañan?</em> Nombrar esa brecha sin castigarse es el primer paso para reducirla. El equipo que puede mirarse en ese espejo con honestidad tiene la coherencia necesaria para proponer la Misericordia Estructurada con autoridad moral.</div>
+        <div class="autocuidado-txt">La norma de que <em>«quien acompaña se somete a la misma regla»</em> es la más exigente del §6.3.3 para el equipo. <em>¿Hay normas del dispositivo que los coordinadores no cumplen? ¿Hay privilegios que los diferencian de los hermanos que acompañan?</em> Nombrar esa brecha sin castigarse es el primer paso para reducirla. El equipo que puede mirarse en ese espejo con honestidad tiene la coherencia necesaria para proponer la Misericordia Estructurada con autoridad moral.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §6.3.3 (Tres fundamentos), §7.9.3 (Hospital de campaña), §8.2.3 (TIT), §8.4.2 (Autoeficacia) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §6.3.3 (La Misericordia Estructurada), §7.9.3 (La Iglesia como «hospital de campaña» y la primacía del cuidado de las heridas), §8.2.3 (Sobre la implementación del Tratamiento Informado en el Trauma), §8.4.2 (Sobre las herramientas de la TCC en el tratamiento de las adicciones) — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1453,10 +1470,10 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"Es inútil preguntar a un herido por su colesterol si tiene llagas sangrantes; primero se curan las heridas. Se recibe la vida como viene, reconociendo el caos como lugar sagrado."</div>
+        <div class="resonancia-txt">«Es inútil preguntar a un herido por su colesterol si tiene llagas sangrantes; primero se curan las heridas. Se recibe la vida como viene, reconociendo el caos como lugar sagrado».</div>
       </div>
 
-      <div class="pl">El Ver — Los cuatro principios del hospital de campaña (§7.9.3)</div>
+      <div class="pl">El Ver — Cuatro principios del hospital de campaña (§7.9.3 y §7.5.1)</div>
       <div class="ejes">
         <div class="eje">
           <div class="eje-n">Principio 1</div>
@@ -1466,30 +1483,30 @@
         <div class="eje">
           <div class="eje-n">Principio 2</div>
           <div class="eje-t">El límite eficaz: la ternura</div>
-          <div class="eje-txt">"La disciplina es necesaria, pero el límite más eficaz es la ternura. Forzar normas en la desolación genera rechazo; un entorno de amor incondicional permite que el cambio surja de la propia voluntad."</div>
+          <div class="eje-txt">«La disciplina es necesaria, pero el límite más eficaz es la ternura. Forzar normas en la desolación genera rechazo; un entorno de amor incondicional permite que el cambio surja de la propia voluntad […]».</div>
         </div>
         <div class="eje">
           <div class="eje-n">Principio 3</div>
           <div class="eje-t">Fe y técnica: complementarias</div>
-          <div class="eje-txt">El anuncio de la fe no invalida la técnica. "La ciencia proporciona los medios para tratar la maquinaria biológica dañada. Ignorar la biología sería una falta de responsabilidad pastoral."</div>
+          <div class="eje-txt">El anuncio de la fe no invalida la técnica (§7.5.1). «La ciencia proporciona los medios para tratar la maquinaria biológica dañada. Ignorar la biología sería una falta de responsabilidad pastoral […]».</div>
         </div>
         <div class="eje">
           <div class="eje-n">Principio 4</div>
           <div class="eje-t">Acompañamiento inespecífico primero</div>
-          <div class="eje-txt">No se condiciona el amor al éxito de un tratamiento. Se "primerea" en la proximidad, ofreciendo el abrazo y la escucha activa antes de proponer cambios conductuales.</div>
+          <div class="eje-txt">No se condiciona el amor al éxito de un tratamiento. Se «primerea» en la proximidad, ofreciendo el abrazo y la escucha activa antes de proponer cambios conductuales.</div>
         </div>
       </div>
 
       <div class="pl">El Ver — Realidad</div>
       <ul class="pts">
-        <li><span class="dot">V</span><span><strong>El primer filtro burocrático que excluye a quien más necesita.</strong> El §7.9.3 describe la tensión: <em>"la tendencia a exigir que el hermano se adecue primero a ciertas estructuras para ser recibido."</em> La pregunta burocrática de la primera entrevista (<em>"¿estás en condiciones de comprometerte con las normas del dispositivo?"</em>) puede ser el primer filtro que excluye a quien más necesita ser incluido. <em>El hospital de campaña vendajea primero, pregunta después.</em></span></li>
-        <li><span class="dot">V</span><span><strong>Fe y técnica: la falsa dicotomía.</strong> El §7.5.1 articula la relación: <em>"Si el amor es el medicamento supremo, el anuncio de la fe debería ser suficiente por sí solo."</em> El Manual refuta esa idea con claridad: <em>"La ciencia proporciona los medios para tratar la maquinaria biológica dañada. Ignorar la biología sería una falta de responsabilidad pastoral."</em> La Misericordia Estructurada <em>no elige entre fe y técnica: las articula</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>El primer filtro burocrático que excluye a quien más necesita.</strong> El §7.9.3 describe la tensión: <em>«la tendencia a exigir que el hermano se adecue primero a ciertas estructuras para ser recibido».</em> La pregunta burocrática de la primera entrevista (<em>«¿estás en condiciones de comprometerte con las normas del dispositivo?»</em>) puede ser el primer filtro que excluye a quien más necesita ser incluido. <em>El hospital de campaña venda primero y pregunta después.</em></span></li>
+        <li><span class="dot">V</span><span><strong>Fe y técnica: la falsa dicotomía.</strong> El §7.5.1 recoge una objeción frecuente: <em>«Si el amor es el medicamento supremo, el anuncio de la fe debería ser suficiente por sí solo […]»</em>. El Manual la refuta con claridad: <em>«La ciencia proporciona los medios para tratar la maquinaria biológica dañada. Ignorar la biología sería una falta de responsabilidad pastoral […]»</em>. La Misericordia Estructurada <em>no elige entre fe y técnica: las articula</em>.</span></li>
       </ul>
 
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>Primero la dignidad, luego el bien abrazado libremente.</strong> <em>"La misericordia no niega la verdad, la encarna en el tiempo del otro. Al no reducir a la persona a sus errores, se protege su dignidad ontológica, que es el suelo necesario para que el sujeto desee abrazar libremente el bien"</em> (§7.9.3). El orden de los verbos es teológicamente preciso: primero proteger la dignidad, luego el bien se abraza libremente. <em>El bien impuesto no es bien: es obediencia. El bien abrazado desde la dignidad restaurada es conversión.</em></span></li>
-        <li><span class="dot j">J</span><span><strong>"Primerear" la proximidad.</strong> <em>"Al no condicionar el amor al éxito de un tratamiento, se primerea en la proximidad"</em> (§7.9.3). Primerear la proximidad significa que el agente <em>sale al encuentro del hermano antes de que el hermano llegue a las condiciones</em>. El hospital de campaña no tiene sala de espera: <em>tiene equipo de emergencias que va al lugar donde el herido cayó</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>Primero la dignidad, luego el bien abrazado libremente.</strong> <em>«La misericordia no niega la verdad, la encarna en el tiempo del otro. Al no reducir a la persona a sus errores, se protege su dignidad ontológica, que es el suelo necesario para que el sujeto desee abrazar libremente el bien»</em> (§7.9.3). El orden de los verbos es teológicamente preciso: primero proteger la dignidad, luego el bien se abraza libremente. <em>El bien impuesto no es bien: es obediencia. El bien abrazado desde la dignidad restaurada es conversión.</em></span></li>
+        <li><span class="dot j">J</span><span><strong>«Primerear» la proximidad.</strong> <em>«No se condiciona el amor al éxito de un tratamiento. Se “primerea” en la proximidad […]»</em> (§7.9.3). Primerear la proximidad significa que el agente <em>sale al encuentro del hermano antes de que el hermano llegue a las condiciones</em>. El hospital de campaña no tiene sala de espera: <em>tiene equipo de emergencias que va al lugar donde el herido cayó</em>.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1499,7 +1516,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">El protocolo de primera acogida: ¿vendaje primero o normas primero?</div>
         <div class="mode-g">
-          <div class="act-body">El grupo revisa el protocolo de primera acogida del dispositivo: <em>¿cuándo aparece el reglamento? ¿cuándo aparece la entrevista de admisión con sus exigencias? ¿hay un espacio previo de acogida incondicional antes de cualquier proceso de evaluación?</em> Si el reglamento aparece en la primera hora, el dispositivo está poniendo el orden antes del amor. Diseñar un protocolo donde <em>el abrazo precede al formulario</em>.</div>
+          <div class="act-body">El grupo revisa el protocolo de primera acogida del dispositivo: <em>¿cuándo aparece el reglamento? ¿Cuándo aparece la entrevista de admisión con sus exigencias? ¿Hay un espacio previo de acogida incondicional antes de cualquier proceso de evaluación?</em> Si el reglamento aparece en la primera hora, el dispositivo está poniendo el orden antes del amor. Diseñar un protocolo donde <em>el abrazo precede al formulario</em>.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Reconstruí en tu bitácora la secuencia real de la primera acogida en tu dispositivo. Marcá el momento en que aparecen las normas y el momento en que aparece el abrazo. Si el orden es <em>norma → abrazo</em>, ese es el próximo cambio de diseño concreto.</div>
@@ -1511,10 +1528,10 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">La ternura como primer límite</div>
         <div class="mode-g">
-          <div class="act-body">El grupo practica en tríos: uno en el rol de <em>hermano que llega en situación de crisis</em> (sin documentación, bajo efectos de sustancias, agresivo o completamente retraído). Los otros dos en el rol de equipo de acogida. Regla: <em>los primeros cinco minutos son solo acogida, sin información, sin normas, sin evaluación</em>. Al terminar: ¿qué fue difícil? ¿qué funcionó? ¿qué reveló sobre el propio dispositivo?</div>
+          <div class="act-body">El grupo practica en tríos: uno en el rol de <em>hermano que llega en situación de crisis</em> (sin documentación, bajo efectos de sustancias, agresivo o completamente retraído). Los otros dos en el rol de equipo de acogida. Regla: <em>los primeros cinco minutos son solo acogida, sin información, sin normas, sin evaluación</em>. Una aclaración antes de empezar: esa regla vale para la acogida, no para la seguridad. Si en la vida real el hermano llega con signos de intoxicación grave, sobredosis o agresividad que pone en riesgo su vida o la de otros, lo primero es pedir atención médica o llamar al número local de emergencias, no dejarlo solo y, si está inconsciente pero respira, ponerlo en posición lateral de seguridad. Al terminar: ¿qué fue difícil? ¿Qué funcionó? ¿Qué reveló sobre el propio dispositivo?</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Recordá la última vez que recibiste a alguien en una crisis aguda. Anotá en tu bitácora: <em>¿los primeros cinco minutos fueron acogida o información? ¿qué te salió naturalmente hacer primero: contener o preguntar?</em> La respuesta muestra cuál es tu instinto y qué necesitás entrenar.</div>
+          <div class="act-body">Recordá la última vez que recibiste a alguien en una crisis aguda. Anotá en tu bitácora: <em>¿los primeros cinco minutos fueron acogida o información? ¿Qué te salió naturalmente hacer primero: contener o preguntar?</em> La respuesta muestra cuál es tu instinto y qué necesitás entrenar.</div>
         </div>
       </div>
 
@@ -1523,7 +1540,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Articular fe y técnica en el dispositivo concreto</div>
         <div class="mode-g">
-          <div class="act-body">El grupo mapea cómo conviven actualmente la dimensión espiritual y la técnica en el dispositivo: <em>¿hay momentos de oración? ¿hay atención psicológica? ¿hay articulación entre ambas o son compartimentos separados? ¿el psicólogo sabe qué ocurre en el espacio de oración? ¿el acompañante espiritual conoce el diagnóstico psicológico?</em> La Misericordia Estructurada requiere que las dos dimensiones se hablen.</div>
+          <div class="act-body">El grupo mapea cómo conviven actualmente la dimensión espiritual y la técnica en el dispositivo: <em>¿hay momentos de oración? ¿Hay atención psicológica? ¿Hay articulación entre ambas o son compartimentos separados? ¿El psicólogo sabe qué ocurre en el espacio de oración? ¿El acompañante espiritual conoce el diagnóstico psicológico?</em> La Misericordia Estructurada requiere que las dos dimensiones se hablen.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Anotá en tu bitácora si en tu dispositivo la dimensión espiritual y la técnica se hablan entre sí. Si no lo hacen, escribí <em>un gesto concreto</em> que podría abrir la conversación (una reunión, un formato de derivación, un espacio compartido de revisión de casos).</div>
@@ -1532,21 +1549,21 @@
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §7.9.3</div>
-        <div class="cita-txt">"La Iglesia necesita con urgencia curar heridas y dar calor a los corazones. La misericordia organiza a la comunidad para amar antes que para estructurar. Es inútil preguntar a un herido por su colesterol si tiene llagas sangrantes; primero se curan las heridas."</div>
-        <div class="cita-ref">Manual de la PLAPA, §7.9.3 — La Iglesia como hospital de campaña (CELAM 2026)</div>
+        <div class="cita-txt">«La Iglesia necesita con urgencia curar heridas y dar calor a los corazones. La misericordia organiza a la comunidad para amar antes que para estructurar. Es inútil preguntar a un herido por su colesterol si tiene llagas sangrantes; primero se curan las heridas».</div>
+        <div class="cita-ref">Manual de la PLAPA, §7.9.3 — La Iglesia como «hospital de campaña» y la primacía del cuidado de las heridas (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Alerta pastoral</div>
-        <div class="alerta-txt">El principio <em>"amor antes de estructura"</em> puede ser mal leído como <em>"amor en lugar de estructura"</em>. No es así. El hospital de campaña también tiene protocolos —de triage, de derivación, de seguimiento— sin los cuales la buena intención colapsa en caos. La secuencia correcta no elimina la estructura: la <em>subordina al vínculo</em>. Sin esa distinción, el itinerario se cae hacia la trampa 1 (desidia) del Módulo 1.</div>
+        <div class="alerta-txt">El principio <em>«amor antes de estructura»</em> puede ser mal leído como <em>«amor en lugar de estructura»</em>. No es así. El hospital de campaña también tiene protocolos —de clasificación inicial, de derivación, de seguimiento— sin los cuales la buena intención colapsa en caos. La secuencia correcta no elimina la estructura: la <em>subordina al vínculo</em>. Sin esa distinción, el itinerario se cae hacia la trampa 1 (desidia) del Módulo 1.</div>
       </div>
 
       <div class="autocuidado">
         <div class="autocuidado-lbl">Autocuidado del agente</div>
-        <div class="autocuidado-txt">El protocolo de primera acogida que el dispositivo ofrece al hermano es <em>el espejo del que el equipo se da a sí mismo</em>. <em>¿Hay en el equipo un espacio donde quien llega con una crisis personal es recibido con acogida incondicional antes de que se le pidan rendiciones de cuenta? ¿o el equipo funciona solo como evaluador de resultados de los hermanos, sin que nadie cuide al cuidador?</em> El hospital de campaña necesita también una sala de recuperación para su propio personal.</div>
+        <div class="autocuidado-txt">El protocolo de primera acogida que el dispositivo ofrece al hermano es <em>el espejo del que el equipo se da a sí mismo</em>. <em>¿Hay en el equipo un espacio donde quien llega con una crisis personal es recibido con acogida incondicional antes de que se le pidan rendiciones de cuenta? ¿O el equipo funciona solo como evaluador de resultados de los hermanos, sin que nadie cuide al cuidador?</em> El hospital de campaña necesita también una sala de recuperación para su propio personal.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §7.9.3 (Hospital de campaña), §7.5.1 (Fe y técnica), §7.9.4 (Encarnación) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §7.9.3 (La Iglesia como «hospital de campaña» y la primacía del cuidado de las heridas), §7.5.1 (El anuncio de la fe en relación con el abordaje técnico-profesional) — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1561,19 +1578,19 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"El límite que nace del amor no desconfía del hermano: confía en él más de lo que él confía en sí mismo en ese momento. Esa confianza anticipada es la estructura más misericordiosa que un dispositivo puede ofrecer."</div>
+        <div class="resonancia-txt">«La laborterapia no busca la exigencia del mercado, sino la contención emocional en un entorno protegido. Es una estructura que cuida la libertad del hermano mientras esta se fortalece».</div>
       </div>
 
       <div class="pl">El Ver — Realidad</div>
       <ul class="pts">
-        <li><span class="dot">V</span><span><strong>Las decisiones concretas revelan la Misericordia Estructurada real.</strong> La Misericordia Estructurada no es un concepto abstracto: se encarna en decisiones concretas de diseño. <em>¿Cuándo aparece el reglamento? ¿cómo se manejan los incumplimientos? ¿qué sucede después de una recaída? ¿hay una secuencia de responsabilidades crecientes? ¿quién tiene el poder de establecer las normas?</em> Cada una de esas decisiones revela si el dispositivo practica la Misericordia Estructurada o alguna de las dos trampas.</span></li>
+        <li><span class="dot">V</span><span><strong>Las decisiones concretas revelan la Misericordia Estructurada real.</strong> La Misericordia Estructurada no es un concepto abstracto: se encarna en decisiones concretas de diseño. <em>¿Cuándo aparece el reglamento? ¿Cómo se manejan los incumplimientos? ¿Qué sucede después de una recaída? ¿Hay una secuencia de responsabilidades crecientes? ¿Quién tiene el poder de establecer las normas?</em> Cada una de esas decisiones revela si el dispositivo practica la Misericordia Estructurada o alguna de las dos trampas.</span></li>
         <li><span class="dot">V</span><span><strong>La gradualidad del §6.3.4 como esquema operativo.</strong> El §6.3.4 sobre la gradualidad del trabajo ofrece el mapa más operativo del itinerario: <em>laborterapia → aprendizaje de oficios → empleo remunerado</em>. Esta secuencia no es solo un plan de inserción laboral: es <em>el esquema de la Misericordia Estructurada aplicada a la dimensión del trabajo</em>. Empieza por lo que el hermano puede hacer hoy, aunque sea mínimo, y avanza artesanalmente según la madurez que va mostrando.</span></li>
       </ul>
 
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>"La gratuidad de Dios no es desorden": la síntesis en una frase.</strong> El amor de Dios —gratuito, incondicional, sin méritos previos— <em>no produce caos sino orden</em>. Pero es un orden que nace del amor, no del control. El dispositivo que encarna eso tiene normas que los propios hermanos entienden y abrazan porque <em>las perciben como expresión de que alguien cree en ellos</em>.</span></li>
-        <li><span class="dot j">J</span><span><strong>Ni misericordia ni estructura: las dos, integradas.</strong> El §7.5.1 cierra el argumento: <em>"La salud es el despliegue del máximo potencial de la persona, lo que exige una colaboración armoniosa entre la sabiduría de la fe y el saber de la ciencia."</em> La Misericordia Estructurada no elige entre misericordia y estructura, entre fe y técnica, entre amor y norma. <em>Las integra en un dispositivo concreto que las necesita a todas.</em></span></li>
+        <li><span class="dot j">J</span><span><strong>«La gratuidad de Dios no es desorden»: la síntesis en una frase.</strong> El amor de Dios —gratuito, incondicional, sin méritos previos— <em>no produce caos sino orden</em>. Pero es un orden que nace del amor, no del control. El dispositivo que encarna eso tiene normas que los propios hermanos entienden y abrazan porque <em>las perciben como expresión de que alguien cree en ellos</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>Ni misericordia ni estructura: las dos, integradas.</strong> El §7.5.1 cierra el argumento: <em>«La salud es el despliegue del máximo potencial de la persona, lo que exige una colaboración armoniosa entre la sabiduría de la fe y el saber de la ciencia».</em> La Misericordia Estructurada no elige entre misericordia y estructura, entre fe y técnica, entre amor y norma. <em>Las integra en un dispositivo concreto que las necesita a todas.</em></span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1581,12 +1598,12 @@
       <div class="act">
         <span class="act-tag tag-gru mode-g">Grupal</span>
         <span class="act-tag tag-ind mode-i">Individual</span>
-        <div class="act-title">Diseñar el "Manual de la Misericordia Estructurada" del dispositivo</div>
+        <div class="act-title">Diseñar el «Manual de la Misericordia Estructurada» del dispositivo</div>
         <div class="mode-g">
-          <div class="act-body">El grupo diseña (o revisa) el documento que rige el dispositivo con los criterios del §6.3.3: <em>¿cuál es la secuencia de acogida? ¿cuáles son las normas y por qué existen (¿protegen al hermano o al dispositivo?)? ¿qué sucede ante un incumplimiento? ¿qué sucede ante una recaída? ¿cómo se celebran los logros? ¿quién participó en la construcción de estas normas?</em> El documento resultante es el mapa de la Misericordia Estructurada en ese territorio concreto.</div>
+          <div class="act-body">El grupo diseña (o revisa) el documento que rige el dispositivo con los criterios del §6.3.3: <em>¿cuál es la secuencia de acogida? ¿Cuáles son las normas y por qué existen (¿protegen al hermano o al dispositivo?)? ¿Qué sucede ante un incumplimiento? ¿Qué sucede ante una recaída? ¿Cómo se celebran los logros? ¿Quién participó en la construcción de estas normas?</em> El documento resultante es el mapa de la Misericordia Estructurada en ese territorio concreto.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Anotá en tu bitácora el índice mínimo del <em>"Manual de la Misericordia Estructurada"</em> para tu dispositivo: seis apartados con una línea cada uno. Ese índice es la agenda de las próximas reuniones de equipo hasta que el documento exista.</div>
+          <div class="act-body">Anotá en tu bitácora el índice mínimo del <em>«Manual de la Misericordia Estructurada»</em> para tu dispositivo: seis apartados con una línea cada uno. Ese índice es la agenda de las próximas reuniones de equipo hasta que el documento exista.</div>
         </div>
       </div>
 
@@ -1595,7 +1612,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">La recaída como oportunidad pedagógica</div>
         <div class="mode-g">
-          <div class="act-body">El §8.3.1 sobre el Modelo Transteórico propone que la recaída <em>"no vuelve al punto de inicio": todo lo aprendido permanece</em>. El grupo diseña el protocolo de respuesta a la recaída en el dispositivo: <em>¿qué pasa en las primeras horas? ¿quién interviene? ¿se expulsa o se sostiene? ¿cómo se procesa con el hermano lo que pasó?</em> La respuesta a la recaída es <em>la prueba de fuego</em> de si el dispositivo practica la Misericordia Estructurada o el sistema punitivo.</div>
+          <div class="act-body">El §8.3.4, sobre la naturaleza de la recaída, afirma que <em>«quien recae no vuelve al punto de inicio de su ignorancia original»</em>: el proceso previo deja conciencia y herramientas. El grupo diseña el protocolo de respuesta a la recaída en el dispositivo: <em>¿qué pasa en las primeras horas? ¿Quién interviene? ¿Se expulsa o se sostiene? ¿Cómo se procesa con el hermano lo que pasó?</em> La respuesta a la recaída es <em>la prueba de fuego</em> de si el dispositivo practica la Misericordia Estructurada o el sistema punitivo.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Escribí en tu bitácora el protocolo actual (aunque no esté escrito) de tu dispositivo ante una recaída. Al lado: <em>¿ese protocolo practica la Misericordia Estructurada o alguna de las dos trampas?</em> Si es del segundo tipo, ese es el próximo rediseño urgente.</div>
@@ -1607,17 +1624,17 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Cierre: carta del dispositivo al hermano que llega</div>
         <div class="mode-g">
-          <div class="act-body">El grupo redacta colectivamente una carta de bienvenida para quien llega al dispositivo por primera vez: <em>no un listado de normas, sino una declaración de intenciones</em>. <em>"Cuando llegás aquí, queremos que sepas que…"</em> Tres párrafos máximo. La carta revela con más claridad que cualquier reglamento si el dispositivo encarna la Misericordia Estructurada. Se lee en voz alta y se guarda como horizonte de referencia del equipo.</div>
+          <div class="act-body">El grupo redacta colectivamente una carta de bienvenida para quien llega al dispositivo por primera vez: <em>no un listado de normas, sino una declaración de intenciones</em>. <em>«Cuando llegás aquí, queremos que sepas que…»</em> Tres párrafos máximo. La carta revela con más claridad que cualquier reglamento si el dispositivo encarna la Misericordia Estructurada. Se lee en voz alta y se guarda como horizonte de referencia del equipo.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Escribí en tu bitácora tu propia carta de bienvenida al hermano que llega por primera vez al espacio donde acompañás. Tres párrafos. Empieza con <em>"Cuando llegás aquí, quiero que sepas que…"</em>. Esa carta es tu declaración pastoral concreta más honesta.</div>
+          <div class="act-body">Escribí en tu bitácora tu propia carta de bienvenida al hermano que llega por primera vez al espacio donde acompañás. Tres párrafos. Empezá con <em>«Cuando llegás aquí, quiero que sepas que…»</em>. Esa carta es tu declaración pastoral concreta más honesta.</div>
         </div>
       </div>
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §7.5.1</div>
-        <div class="cita-txt">"La salud es el despliegue del máximo potencial de la persona, lo que exige una colaboración armoniosa entre la sabiduría de la fe y el saber de la ciencia. No existe superioridad en términos de exclusión, sino una complementariedad necesaria."</div>
-        <div class="cita-ref">Manual de la PLAPA, §7.5.1 — El anuncio de la fe y el abordaje técnico (CELAM 2026)</div>
+        <div class="cita-txt">«La salud es el despliegue del máximo potencial de la persona, lo que exige una colaboración armoniosa entre la sabiduría de la fe y el saber de la ciencia. […] no existe superioridad en términos de exclusión, sino una complementariedad necesaria».</div>
+        <div class="cita-ref">Manual de la PLAPA, §7.5.1 — El anuncio de la fe en relación con el abordaje técnico-profesional (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
@@ -1627,16 +1644,15 @@
 
       <div class="autocuidado">
         <div class="autocuidado-lbl">Autocuidado del agente — cierre del itinerario</div>
-        <div class="autocuidado-txt">El itinerario cierra con la pregunta que la <em>"carta de bienvenida"</em> le hace al equipo: <em>¿nos trataríamos a nosotros mismos con la misma Misericordia Estructurada que queremos ofrecer a los hermanos? ¿hay en el equipo normas claras y amorosas? ¿hay acogida incondicional cuando alguien falla? ¿hay celebración cuando alguien progresa?</em> El dispositivo que el equipo se da a sí mismo es <em>el modelo que puede ofrecer con autenticidad</em> a quienes acompaña.</div>
+        <div class="autocuidado-txt">El itinerario cierra con la pregunta que la <em>«carta de bienvenida»</em> le hace al equipo: <em>¿nos trataríamos a nosotros mismos con la misma Misericordia Estructurada que queremos ofrecer a los hermanos? ¿Hay en el equipo normas claras y amorosas? ¿Hay acogida incondicional cuando alguien falla? ¿Hay celebración cuando alguien progresa?</em> El dispositivo que el equipo se da a sí mismo es <em>el modelo que puede ofrecer con autenticidad</em> a quienes acompaña.</div>
       </div>
 
       <div class="lectura">
         <div class="lectura-lbl">Lectura complementaria</div>
-        <div class="lectura-txt">Para profundizar en la <strong>práctica cotidiana de la Misericordia Estructurada</strong> en dispositivos concretos de la Familia Grande Hogar de Cristo, con ejemplos de reglamentos, protocolos de acogida y respuestas a la recaída construidos comunitariamente, ofrecemos este texto para la reflexión del equipo.</div>
-        <a href="ElMetodoFGHC.pdf" download class="lectura-link">📥 Descargar "ElMetodoFGHC.pdf"</a>
+        <div class="lectura-txt">Para profundizar, leé completo en el Manual de la PLAPA el <strong>§6.3.3, «La Misericordia Estructurada»</strong>, con las objeciones más frecuentes y la respuesta del Manual a cada una. Seguí con el <strong>§6.3.4, «El sentido gradual del trabajo en la recuperación»</strong>, que muestra la gradualidad aplicada a la vida concreta del dispositivo, y con el <strong>§7.9.3, «La Iglesia como “hospital de campaña” y la primacía del cuidado de las heridas»</strong>, que ordena las prioridades: primero el amor, luego la estructura.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §6.3.3 (La Misericordia Estructurada), §6.3.4 (Gradualidad del trabajo), §7.9.3 (Hospital de campaña), §7.5.1 (Fe y técnica), §8.3.1 (Modelo Transteórico) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §6.3.3 (La Misericordia Estructurada), §6.3.4 (El sentido gradual del trabajo en la recuperación), §7.9.3 (La Iglesia como «hospital de campaña» y la primacía del cuidado de las heridas), §7.5.1 (El anuncio de la fe en relación con el abordaje técnico-profesional), §8.3.4 (Sobre la naturaleza de la recaída y su valor pedagógico) — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1651,8 +1667,8 @@
 
       <!-- Selector de vista: este itinerario / global -->
       <div class="foro-vista">
-        <button class="foro-vista-btn on" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
-        <button class="foro-vista-btn" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
+        <button class="foro-vista-btn on" aria-pressed="true" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
+        <button class="foro-vista-btn" aria-pressed="false" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
       </div>
 
       <!-- Pautas pastorales -->
@@ -1704,7 +1720,7 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Antes de comenzar</div>
-        <div class="resonancia-txt">"La revisión de vida es la forma histórica que la Iglesia latinoamericana encontró para institucionalizar el Ver–Juzgar–Actuar. El agente que la practica no aplica el método: lo vive." Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
+        <div class="resonancia-txt">Este itinerario te invitó a reconocer las dos trampas de la desidia y la crueldad, a fundar el límite en la seguridad vincular y en la reparación de la voluntad, a amar antes de estructurar y a revisar tu dispositivo concreto desde la Misericordia Estructurada. Ahora es el momento de nombrar qué cambió en tu mirada. Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
       </div>
 
       <div class="eval-nota">
@@ -1714,24 +1730,24 @@
 
       <div class="pl">El Ver — Qué se hizo visible</div>
       <div class="eval-q">
-        <label for="evalVer">¿Qué realidad del territorio se hizo más visible para vos a lo largo de estos cuatro módulos? ¿Qué llagas emergieron con más fuerza? ¿Qué zonas del mapa estaban en blanco antes y ahora tienen contenido?</label>
+        <label for="evalVer">¿Qué tensiones entre acogida y norma se hicieron más visibles para vos en el dispositivo donde acompañás a lo largo de estos cuatro módulos? ¿Hacia cuál de las dos trampas —la desidia o la crueldad— descubriste que se inclina? ¿Qué normas, formas de primera acogida o respuestas ante la recaída empezaste a ver de otra manera?</label>
         <textarea id="evalVer" data-eval="ver" placeholder="Escribí con calma, sin apurarte..."></textarea>
       </div>
 
       <div class="pl">El Juzgar — Qué iluminó, qué preguntas quedaron abiertas</div>
       <div class="eval-q">
-        <label for="evalJuzgar1">¿Qué del método del diagnóstico territorial te iluminó de manera nueva? ¿Qué idea del Manual sentís que ya no podrás dejar de lado?</label>
+        <label for="evalJuzgar1">De la Misericordia Estructurada y sus tres fundamentos, del hospital de campaña que ama antes de estructurar y de la gradualidad aplicada al dispositivo: ¿qué te iluminó de manera nueva? ¿Qué idea del Manual sentís que ya no podrás dejar de lado?</label>
         <textarea id="evalJuzgar1" data-eval="juzgar1" placeholder="Nombralo con precisión..."></textarea>
       </div>
       <div class="eval-q">
-        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos? Las preguntas abiertas son también fruto (§13.3).</label>
+        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos? La tensión entre la acogida incondicional y el límite pedagógico, entre el miedo a herir y el miedo al caos, entre las normas que pedís y las que vivís: ¿dónde te dejó incómodo/a?</label>
         <textarea id="evalJuzgar2" data-eval="juzgar2" placeholder="Las que siguen ardiendo..."></textarea>
       </div>
 
       <div class="pl">El Actuar — Compromiso concreto</div>
       <div class="eval-q">
-        <label for="evalActuar">¿Qué gesto pastoral concreto vas a intentar en las próximas semanas a partir del diagnóstico que hiciste? Nombralo con nombre, tiempo y lugar. Un compromiso vago no es un compromiso.</label>
-        <textarea id="evalActuar" data-eval="actuar" placeholder="Ej.: En la próxima reunión de equipo (jueves 25) voy a presentar el mapa territorial que construimos y proponer una callejeada específica al sector X del barrio..."></textarea>
+        <label for="evalActuar">¿Qué gesto concreto de Misericordia Estructurada vas a intentar en las próximas semanas? Puede ser revisar una norma del reglamento con los tres fundamentos, cambiar la primera acogida para que el abrazo llegue antes que el formulario, poner por escrito qué hace el equipo ante una recaída o achicar la distancia entre lo que pedís y lo que vivís. Nombralo con nombre, tiempo y lugar. Un compromiso vago no es un compromiso.</label>
+        <textarea id="evalActuar" data-eval="actuar" placeholder="Ej.: Desde el lunes 5 voy a cumplir en la casa el mismo horario de celular que les pedimos a los hermanos, y lo voy a contar en la asamblea del viernes..."></textarea>
       </div>
       <div class="eval-q eval-fecha">
         <label for="evalFecha">Fecha en la que vas a volver a revisar si pudiste sostenerlo</label>
@@ -1739,8 +1755,8 @@
       </div>
 
       <div class="pl">Autocuidado y equipo</div>
-      <div class="eval-q eval-scale">
-        <label>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</label>
+      <fieldset class="eval-q eval-scale">
+        <legend>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</legend>
         <div class="eval-scale-row">
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="1" data-eval="animo"><span>1</span></label>
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="2" data-eval="animo"><span>2</span></label>
@@ -1748,10 +1764,10 @@
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="4" data-eval="animo"><span>4</span></label>
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="5" data-eval="animo"><span>5</span></label>
         </div>
-      </div>
+      </fieldset>
       <div class="eval-q">
-        <label for="evalCuidado">¿Qué necesitás cuidar de vos mismo/a en las próximas semanas? ¿A quién del equipo se lo vas a decir?</label>
-        <textarea id="evalCuidado" data-eval="cuidado" placeholder="El agente que cuida su esperanza puede sostener la del otro (§1.3)..."></textarea>
+        <label for="evalCuidado">Sostener límites con ternura desgasta: cuesta ser quien pone la regla, duelen los incumplimientos y las recaídas, y la frustración puede ser frecuente (§8.7.4). ¿Qué necesitás cuidar de vos en las próximas semanas? ¿Hacia cuál de las dos trampas te empuja el cansancio? ¿A quién del equipo se lo vas a decir?</label>
+        <textarea id="evalCuidado" data-eval="cuidado" placeholder="Ej.: Voy a decirle a X que estoy cansado/a de ser siempre quien pone los límites en la casa y que necesito que lo repartamos en el equipo..."></textarea>
       </div>
 
       <div class="pl">Cierre</div>
@@ -1770,10 +1786,10 @@
 
       <div class="autocuidado" style="margin-top: 2rem;">
         <div class="autocuidado-lbl">Cierre del itinerario</div>
-        <div class="autocuidado-txt">Cerrar bien un itinerario también es autocuidado: celebrar lo caminado, agradecer al equipo, reconocer los propios límites y renovar la esperanza. Este itinerario termina con gratitud: por el territorio que nos habló, por las llagas que dejamos de negar, por el equipo que hizo posible mirar sin apartar la mirada.</div>
+        <div class="autocuidado-txt">Cerrar bien un itinerario también es autocuidado: celebrar lo caminado, agradecer al equipo, reconocer los propios límites y renovar la esperanza. Este itinerario termina con gratitud: por los hermanos que nos enseñaron que un límite también puede ser un abrazo, por las normas que aprendimos a revisar juntos, por el equipo que hizo posible sostener la ternura y la regla al mismo tiempo.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §1.3 (Prólogo), §6.1.3 (Evitar la romantización), §13.2 (Sinodalidad en la práctica), §13.3 (Rolling release), §13.5 (Mecanismos de colaboración) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §6.3.3 (La Misericordia Estructurada), §6.3.4 (El sentido gradual del trabajo en la recuperación), §7.9.3 (La Iglesia como «hospital de campaña» y la primacía del cuidado de las heridas), §7.5.1 (El anuncio de la fe en relación con el abordaje técnico-profesional), §8.7.4 (Sobre la necesidad vital del autocuidado para los agentes pastorales), §13.3 (La propuesta de un manual Rolling Release), §13.5 (Los mecanismos de colaboración) — CELAM 2026.</div>
 
     </div>
   </div>
@@ -1787,9 +1803,9 @@
     root.classList.add('mode-' + mode);
     var buttons = document.querySelectorAll('.mode-btn');
     for (var i = 0; i < buttons.length; i++) {
-      buttons[i].classList.remove('on');
+      buttons[i].classList.remove('on'); buttons[i].setAttribute('aria-pressed', 'false');
     }
-    btn.classList.add('on');
+    btn.classList.add('on'); btn.setAttribute('aria-pressed', 'true');
   }
 
   function show(n, btn) {
@@ -2066,8 +2082,8 @@
   function setVistaForo(v, btn) {
     vistaForo = v;
     var buttons = document.querySelectorAll('.foro-vista-btn');
-    for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove('on'); }
-    btn.classList.add('on');
+    for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove('on'); buttons[i].setAttribute('aria-pressed', 'false'); }
+    btn.classList.add('on'); btn.setAttribute('aria-pressed', 'true');
     cargarComentarios();
   }
 
@@ -2145,16 +2161,17 @@
     var datos = recolectarEvaluacion();
     var minimoTexto = (datos.ver || '').trim() + (datos.actuar || '').trim();
     if (minimoTexto.length < 30) {
-      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos "El Ver" y "El Actuar" merecen unos renglones honestos.', 'error');
+      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos «El Ver» y «El Actuar» merecen unos renglones honestos.', 'error');
       return;
     }
 
     // Guardar en Supabase (siempre queda en tu bitácora)
     if (!sesion) { window.location.href = '/login'; return; }
-    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario', {
+    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario?on_conflict=usuario_id,itinerario_id', {
       method: 'POST',
       headers: Object.assign({}, supaHeaders(), { 'Prefer': 'resolution=merge-duplicates' }),
       body: JSON.stringify({
+        usuario_id: sesion.user ? sesion.user.id : undefined,
         itinerario_id: ITINERARIO_ID,
         respuestas: datos,
         compartir_con_equipo: datos.compartir_con_equipo === true
@@ -2177,12 +2194,18 @@
 
   function imprimirEvaluacion() {
     autoguardarBorrador();
+    // Que cada respuesta se imprima completa, sin cortarse
+    var areas = document.querySelectorAll('#m6 textarea');
+    for (var i = 0; i < areas.length; i++) {
+      areas[i].style.height = 'auto';
+      areas[i].style.height = areas[i].scrollHeight + 'px';
+    }
     window.print();
   }
 
   // Init general del itinerario
   document.addEventListener('DOMContentLoaded', function() {
-    // Leer sesión (el guard del <head> garantiza que existe)
+    // Leer sesión guardada por el login (puede no existir)
     try {
       var stored = localStorage.getItem('escuela_plapa_sesion');
       if (stored) sesion = JSON.parse(stored);

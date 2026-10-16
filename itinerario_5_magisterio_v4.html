@@ -24,7 +24,7 @@
     --borde:      #EADFE3;
 
     --font-serif: "Georgia", "Times New Roman", serif;
-    --font-sans:  "system-ui", -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+    --font-sans:  system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -698,7 +698,7 @@
     margin-bottom: 10px;
   }
   .foro-form textarea:focus, .foro-form select:focus {
-    outline: none;
+    outline: 2px solid transparent;
     border-color: var(--i5-medio);
   }
   .foro-form-actions {
@@ -875,7 +875,18 @@
   .eval-nota-txt em { color: var(--i5-medio); font-style: italic; }
 
   .eval-q { margin-bottom: 1.5rem; }
-  .eval-q > label {
+  fieldset.eval-scale {
+    border: 0;
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+    min-width: 0;
+  }
+  .eval-q > legend {
+    padding: 0;
+  }
+  .eval-q > label,
+  .eval-q > legend {
     display: block;
     font-size: 14px;
     font-weight: 500;
@@ -898,7 +909,7 @@
     transition: border-color 0.15s;
   }
   .eval-q textarea:focus, .eval-q input:focus {
-    outline: none;
+    outline: 2px solid transparent;
     border-color: var(--i5-medio);
     box-shadow: 0 0 0 3px rgba(114, 36, 62, 0.1);
   }
@@ -916,6 +927,10 @@
   .eval-scale-row { display: flex; gap: 8px; flex-wrap: wrap; }
   .eval-radio { flex: 1; min-width: 55px; cursor: pointer; position: relative; }
   .eval-radio input { position: absolute; opacity: 0; pointer-events: none; }
+  .eval-radio input:focus-visible + span {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
   .eval-radio span {
     display: block;
     text-align: center;
@@ -992,7 +1007,10 @@
     .root { box-shadow: none; padding: 1rem; max-width: 100%; }
     .top-header, .portada, .nav { display: none !important; }
     .card { display: none !important; }
-    #m6.card { display: block !important; break-inside: avoid; border: none; }
+    #m6.card { display: block !important; border: none; }
+    .eval-q { break-inside: avoid; }
+    .video-wrap, .top-header, .foro-vista { display: none !important; }
+    .eval-q textarea { overflow: visible; resize: none; }
     .eval-actions, .eval-msg { display: none !important; }
     .ch { background: transparent; }
     .eval-q textarea, .eval-q input[type="date"] {
@@ -1037,11 +1055,11 @@
   <div class="portada">
     <p class="portada-sup">Itinerario formativo 5 · Escuela PLAPA · CELAM 2026</p>
     <h1 class="portada-title">Magisterio y Adicciones</h1>
-    <p class="portada-sub">La Doctrina Social de la Iglesia como marco de intervención: de la antropología del vacío a la voz profética continental. De Juan Pablo II a León XIV.</p>
+    <p class="portada-sub">La Doctrina Social de la Iglesia como marco de intervención: de la antropología del vacío a la pastoral de las adicciones como lucha liberadora. De Pablo VI a León XIV.</p>
 
     <div class="dest-box">
       <div class="dest-lbl">Destinatarios</div>
-      <div class="dest-txt">Catequistas, formadores de agentes pastorales, líderes de pastoral diocesana y coordinadores de equipos que necesitan fundamentar teológicamente su práctica. Especialmente útil para quienes son consultados sobre la posición de la Iglesia frente a la legalización, la reducción de daños o el rol del Estado. Requiere disposición al trabajo con textos del Magisterio, aunque no se asume formación académica previa.</div>
+      <div class="dest-txt">Catequistas, formadores de agentes pastorales, líderes de pastoral diocesana y coordinadores de equipos que necesitan fundamentar teológicamente su práctica. Especialmente útil para quienes son consultados sobre la posición de la Iglesia frente a la legalización o el rol del Estado. Requiere disposición al trabajo con textos del Magisterio, aunque no se asume formación académica previa.</div>
     </div>
 
     <div class="portada-pills">
@@ -1052,15 +1070,14 @@
     </div>
   </div>
   
-    <!-- NUEVO: Bloque del Video de Presentación Incrustado -->
-<div style="background: var(--surface-2); border: 0.5px solid var(--border); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
-  <p style="font-size: 11px; font-weight: 500; color: #085041; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; text-align: left;">
+<div class="video-wrap" style="background: #FFF; border: 1px solid var(--borde); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
+  <p style="font-size: 11px; font-weight: 500; color: var(--i5-oscuro); letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; text-align: left;">
     ▶️ Video de presentación
   </p>
   <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px;">
     <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
       src="https://www.youtube.com/embed/4QyGKLYbIkk"
-      title="Presentación del Itinerario 04" 
+      title="Video de presentación: Magisterio y Adicciones — Itinerario 05" 
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
       allowfullscreen>
     </iframe>
@@ -1090,7 +1107,7 @@
       <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; background: #000;">
         <iframe
           src="https://www.youtube.com/embed/_O1UCbxZ1vA" 
-          title="Video introductorio del Itinerario 5"
+          title="Video introductorio del Itinerario 05"
           style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen>
@@ -1103,7 +1120,7 @@
   </div>
 
   <!-- ═══ MÓDULO 1 ════════════════════════════════════════ -->
-  <div id="m1" class="card active">
+  <div id="m1" class="card">
     <div class="ch">
       <span class="cn">Módulo 1 · El Ver</span>
       <div class="ct">La Raíz Antropológica y la Patología del Espíritu</div>
@@ -1113,14 +1130,14 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"El toxicómano es, en esencia, un enfermo de falta de amor. El recurso a los paraísos artificiales es una huida de una realidad que el individuo percibe como insoportable, ruidosa y alienada."</div>
+        <div class="resonancia-txt">«El recurso a “paraísos artificiales” es, en realidad, una huida de una realidad que el individuo percibe como insoportable, ruidosa y alienada» (§5.2).</div>
       </div>
 
       <div class="pl">Cinco décadas de conciencia eclesial</div>
       <div class="hitos">
         <div class="hito">
           <div class="hito-dec">70s</div>
-          <div class="hito-txt"><strong>Apertura misionera.</strong> Bajo el impulso de <em>Evangelii Nuntiandi</em> (Pablo VI, 1975), la Iglesia reafirma su vocación de evangelizar todos los ambientes humanos e identifica la urgencia de salir al encuentro de las poblaciones marcadas por el consumo problemático de sustancias.</div>
+          <div class="hito-txt"><strong>Apertura misionera.</strong> Bajo el impulso de <em>Evangelii Nuntiandi</em> (Pablo VI, 1975), la Iglesia reafirma su vocación de evangelizar todos los ambientes humanos. La evangelización debe llegar a las «periferias humanas», y se identifica por primera vez la urgencia de salir al encuentro de las poblaciones marcadas por el consumo problemático de sustancias.</div>
         </div>
         <div class="hito">
           <div class="hito-dec">80s</div>
@@ -1128,38 +1145,38 @@
         </div>
         <div class="hito">
           <div class="hito-dec">90s</div>
-          <div class="hito-txt"><strong>El enfoque moral-social.</strong> El Catecismo (1992) define el uso no terapéutico de sustancias como "falta grave" y califica a productores y distribuidores como "traficantes de muerte". Teología moral aplicada al fenómeno.</div>
+          <div class="hito-txt"><strong>El enfoque moral-social.</strong> El Catecismo (1992) define el uso no terapéutico de sustancias como «falta grave» y califica a productores y distribuidores como «traficantes de muerte». Teología moral aplicada al fenómeno.</div>
         </div>
         <div class="hito">
           <div class="hito-dec">2000s</div>
-          <div class="hito-txt"><strong>La integralidad de la persona.</strong> El manual <em>Iglesia, droga y toxicomanía</em> (Pontificio Consejo para la Familia, 2001) y Aparecida (2007) adoptan un enfoque más estructurado. Aparecida introduce la categoría de los "rostros sufrientes" de Cristo en las personas con adicciones.</div>
+          <div class="hito-txt"><strong>La integralidad de la persona.</strong> El manual <em>Iglesia, droga y toxicomanía</em> (Pontificio Consejo para la Pastoral de la Salud, 2001) y Aparecida (2007) adoptan un enfoque más estructurado. Aparecida introduce la categoría de los «rostros sufrientes» de Cristo en las personas con adicciones.</div>
         </div>
         <div class="hito">
           <div class="hito-dec">2010→</div>
-          <div class="hito-txt"><strong>La revolución de la misericordia.</strong> Francisco propone la cultura del encuentro y el modelo del <em>hospital de campaña</em> (Amoris Laetitia N°291). Iglesia "en salida" que ofrece "atención amante" a los heridos del camino. León XIV agrega: <em>la dignidad que brilla cuando está casi totalmente perdida.</em></div>
+          <div class="hito-txt"><strong>La revolución de la misericordia.</strong> Francisco propone la cultura del encuentro y el modelo del <em>hospital de campaña</em> (Amoris Laetitia N°291). Iglesia «en salida» que ofrece una «atención amante» a los heridos del camino. León XIV agrega: la dignidad no desaparece nunca, pero «a veces solo brilla cuando está casi totalmente perdida» (§5.10).</div>
         </div>
       </div>
 
-      <div class="nota-hito">El lenguaje de las "periferias" que hoy asociamos a esta apertura misionera cristaliza en realidad más tarde — sobre todo desde Aparecida (2007) y con Francisco. Nombrarlo así permite al agente ubicar cada expresión en su tiempo teológico propio.</div>
+      <div class="nota-hito">Según el §5.1, ya en los 70 la evangelización debía llegar a las «periferias humanas». Ubicar cada hito en su tiempo ayuda a leer el camino de la Iglesia como «una toma de conciencia progresiva en diálogo con los signos de los tiempos».</div>
 
       <div class="pl">El Ver — Diagnóstico existencial (§5.2)</div>
       <ul class="pts">
-        <li><span class="dot">V</span><span><strong>La droga como patología del espíritu.</strong> Juan Pablo II define la adicción como una "patología del espíritu" que surge de un "vacío existencial" provocado por la falta de valores, la ausencia de puntos de referencia claros y la convicción de que la vida no tiene sentido. No es una condena moral: es un diagnóstico antropológico.</span></li>
-        <li><span class="dot">V</span><span><strong>La cultura de la muerte.</strong> El fenómeno se sitúa en un marco más amplio: una "cultura de la muerte" donde la violencia y el tráfico amenazan los cimientos de la sociedad. El narcotráfico es un "comercio infame" gestionado por "mercaderes de muerte" que esclavizan de forma más temible que los antiguos tratantes de esclavos.</span></li>
-        <li><span class="dot">V</span><span><strong>Neurociencia y sed de sentido.</strong> El Manual PLAPA es explícito: "Una pastoral que ignore la neurociencia se vuelve ingenua; una neurociencia que ignore la sed de sentido se vuelve ciega". El diagnóstico teológico opera en el registro del <em>por qué último</em>, sin sustituir la respuesta de las ciencias al <em>cómo</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>La droga como patología del espíritu.</strong> Juan Pablo II define la adicción como una «patología del espíritu» que surge de un «vacío existencial» provocado por la falta de valores, la ausencia de puntos de referencia claros y la convicción de que la vida no tiene sentido. No es una condena moral: es un diagnóstico antropológico.</span></li>
+        <li><span class="dot">V</span><span><strong>La cultura de la muerte.</strong> El fenómeno se sitúa en un marco más amplio: una «cultura de la muerte» donde la violencia y el tráfico amenazan los cimientos de la sociedad. El narcotráfico es un «comercio infame» gestionado por «mercaderes de muerte» que esclavizan de forma más temible que los antiguos tratantes de esclavos.</span></li>
+        <li><span class="dot">V</span><span><strong>Neurociencia y sed de sentido.</strong> El Manual PLAPA es explícito: «Una pastoral que ignore la neurociencia se vuelve ingenua; una neurociencia que ignore la sed de sentido se vuelve ciega» (§5.2). El diagnóstico teológico opera en el registro del <em>por qué último</em>, sin sustituir la respuesta de las ciencias al <em>cómo</em>.</span></li>
       </ul>
 
       <div class="pl">El Ver — Dos diagnósticos transversales (§5.1)</div>
       <ul class="pts">
-        <li><span class="dot">V</span><span><strong>La sociedad ansiosa.</strong> Un diagnóstico esencial para la pastoral moderna es reconocer que vivimos en una sociedad extremadamente ansiosa. Esa ansiedad actúa como factor de riesgo <em>transversal</em>: el objeto de la adicción varía según la clase social, pero la vulnerabilidad nos alcanza a todos. Esto desmitifica la adicción como problema exclusivo de "otros".</span></li>
+        <li><span class="dot">V</span><span><strong>La sociedad ansiosa.</strong> Un diagnóstico esencial para la pastoral moderna es reconocer que vivimos en una sociedad extremadamente ansiosa. Esa ansiedad actúa como factor de riesgo <em>transversal</em>: el objeto de la adicción varía según la clase social, pero la vulnerabilidad nos alcanza a todos. Esto desmitifica la adicción como problema exclusivo de «otros».</span></li>
         <li><span class="dot">V</span><span><strong>El estigma eclesial y social.</strong> Las personas con adicciones cargan prejuicios sociales, laborales y también dentro de las propias comunidades eclesiales, que a menudo las miran con recelo o indiferencia. Uno de los obstáculos más persistentes para la reintegración es este estigma que sobrevive incluso al discurso oficial de acogida.</span></li>
       </ul>
 
       <div class="pl">El Juzgar — El juicio moral y la libertad (§5.3)</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>Renuncia a la libertad.</strong> El uso de drogas es siempre ilícito porque implica una "renuncia injustificada e irracional a pensar, a querer y a actuar como personas libres". No existe un "derecho a la droga": el ser humano no tiene derecho a dañarse a sí mismo ni a abdicar de la dignidad que Dios le otorgó.</span></li>
-        <li><span class="dot j">J</span><span><strong>El engaño de las "drogas blandas".</strong> La distinción entre drogas blandas y duras es un "callejón sin salida" que minimiza los riesgos reales — la disminución de la conciencia y la alienación de la voluntad. Incluso el cannabis puede provocar dependencia psicológica, fracaso escolar y trastornos psíquicos graves en personas frágiles.</span></li>
-        <li><span class="dot j">J</span><span><strong>El fracaso de la liberalización.</strong> La legalización, incluso parcial, no produce los efectos esperados. Genera una "confusión moral" al inducir a creer que lo legal es automáticamente normal y moral, lo que aumenta el consumo y la criminalidad. Las drogas sustitutivas se admiten solo como paso estrictamente médico y temporal hacia la abstinencia.</span></li>
+        <li><span class="dot j">J</span><span><strong>Renuncia a la libertad.</strong> El uso de drogas es siempre ilícito porque implica una «renuncia injustificada e irracional a pensar, a querer y a actuar como personas libres». No existe un «derecho a la droga»: el ser humano no tiene derecho a dañarse a sí mismo ni a abdicar de la dignidad que Dios le otorgó.</span></li>
+        <li><span class="dot j">J</span><span><strong>El engaño de las «drogas blandas».</strong> La distinción entre drogas blandas y duras es un «callejón sin salida» que minimiza los riesgos reales — la disminución de la conciencia y la alienación de la voluntad. Incluso el cannabis puede provocar dependencia psicológica, fracaso escolar y trastornos psíquicos graves en personas frágiles.</span></li>
+        <li><span class="dot j">J</span><span><strong>El fracaso de la liberalización.</strong> La legalización, incluso parcial, no produce los efectos esperados. Genera una «confusión moral» al inducir a creer que lo legal es automáticamente normal y moral, lo que aumenta el consumo y la criminalidad. Las drogas sustitutivas se admiten solo como paso estrictamente médico y temporal hacia la abstinencia.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1167,38 +1184,38 @@
       <div class="act">
         <span class="act-tag tag-ind">Individual</span>
         <div class="act-title">Mi propia lectura del vacío</div>
-        <div class="act-body">En silencio, cada participante escribe en su cuaderno: <em>¿En qué momentos de mi propia vida he experimentado el "vacío existencial" del que habla Juan Pablo II? ¿Qué "paraísos artificiales" (no necesariamente sustancias: pantallas, trabajo, aprobación) han sido míos?</em> No se comparte en voz alta. El ejercicio permite acompañar desde la fraternidad, no desde la superioridad.</div>
+        <div class="act-body">En silencio, cada participante escribe en su cuaderno: <em>¿En qué momentos de mi propia vida he experimentado el «vacío existencial» del que habla Juan Pablo II? ¿Qué «paraísos artificiales» (no necesariamente sustancias: pantallas, trabajo, aprobación) han sido míos?</em> No se comparte en voz alta. El ejercicio permite acompañar desde la fraternidad, no desde la superioridad.</div>
       </div>
 
       <div class="act">
         <span class="act-tag tag-gru">Grupal</span>
         <div class="act-title">Los tres pasos del Modelo de Emaús (§5.4)</div>
-        <div class="act-body">La respuesta pastoral concreta de Juan Pablo II se inspira en Lucas 24: <strong>caminar</strong> con la persona sin juzgarla de entrada, <strong>interpretar</strong> su historia a la luz de la Cruz y la Resurrección, <strong>restaurar</strong> su dignidad como hijo de Dios. El grupo toma un caso real (anonimizado) del territorio y lo recorre con esos tres pasos: ¿cómo caminamos sin juzgar? ¿cómo interpretamos desde el Evangelio, no desde la moral abstracta? ¿qué gesto concreto restaura la dignidad hoy?</div>
+        <div class="act-body">La respuesta pastoral concreta de Juan Pablo II se inspira en Lucas 24: <strong>caminar</strong> con la persona sin juzgarla de entrada, <strong>interpretar</strong> su historia a la luz de la Cruz y la Resurrección, <strong>restaurar</strong> su dignidad como hijo de Dios. El grupo toma un caso real (anonimizado) del territorio y lo recorre con esos tres pasos: ¿Cómo caminamos sin juzgar? ¿Cómo interpretamos desde el Evangelio, no desde la moral abstracta? ¿Qué gesto concreto restaura la dignidad hoy?</div>
       </div>
 
       <div class="act">
         <span class="act-tag tag-gru">Grupal</span>
-        <div class="act-title">¿En qué "década eclesial" opera realmente nuestro equipo?</div>
-        <div class="act-body">El grupo se ubica honestamente en la línea de tiempo: cuando alguien con consumo problemático llega a nuestra comunidad, ¿qué recibe? ¿Condena moral (70s–90s)? ¿Asistencia técnica sin acompañamiento espiritual (2000s)? ¿Acogida y hospital de campaña (2010→)? No es para culpar: es para saber desde dónde caminamos y hacia dónde queremos ir.</div>
+        <div class="act-title">¿Desde qué mirada opera realmente nuestro equipo?</div>
+        <div class="act-body">El §5.1 describe un camino que va «desde una mirada meramente condenatoria o asistencialista hacia un enfoque de atención amante y acompañamiento integral». El grupo se ubica honestamente en ese camino: cuando alguien con consumo problemático llega a nuestra comunidad, ¿qué recibe? ¿Condena? ¿Asistencia sin acompañamiento? ¿Atención amante y acompañamiento integral? No es para culpar: es para saber desde dónde caminamos y hacia dónde queremos ir.</div>
       </div>
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §5.2 — Manual PLAPA</div>
-        <div class="cita-txt">"El toxicómano es, en esencia, un enfermo de falta de amor. La búsqueda de placer a través de sustancias químicas es un intento fallido de llenar una carencia afectiva y espiritual, transformando una expectativa de bienestar en un círculo de sufrimiento y aflicción."</div>
-        <div class="cita-ref">Manual de la PLAPA, §5.2 — El Diagnóstico Existencial (CELAM 2026), citando la lectura magisterial de Juan Pablo II en <em>Evangelium Vitae</em> N°12.</div>
+        <div class="cita-txt">«[…] el toxicómano es, en esencia, un “enfermo de falta de amor”. La búsqueda de placer a través de sustancias químicas es un intento fallido de llenar una carencia afectiva y espiritual, transformando una expectativa de bienestar en un círculo de sufrimiento y aflicción».</div>
+        <div class="cita-ref">Manual de la PLAPA, §5.2 — El Diagnóstico Existencial: La Droga como Patología del Espíritu (CELAM 2026).</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Alerta pastoral</div>
-        <div class="alerta-txt">El agente no debe confundir el rechazo tajante al consumo con el rechazo a la persona que consume. La condena magisterial recae sobre el "comercio infame" y la claudicación de la libertad, pero la respuesta al hermano herido debe ser siempre acogida incondicional. Confundir estos dos niveles es la principal causa del estigma eclesial que aleja a las familias del acompañamiento (§5.1).</div>
+        <div class="alerta-txt">El agente no debe confundir el rechazo tajante al consumo con el rechazo a la persona que consume. La condena magisterial recae sobre el «comercio infame» y la claudicación de la libertad, pero la respuesta al hermano herido debe ser siempre acogida incondicional. Confundir estos dos niveles alimenta el estigma eclesial que aleja a las familias del acompañamiento: el §5.1 señala el estigma como «uno de los obstáculos más persistentes para la reintegración».</div>
       </div>
 
       <div class="autocuidado">
         <div class="autocuidado-lbl">Autocuidado del agente</div>
-        <div class="autocuidado-txt">La lectura de Juan Pablo II puede despertar en algunos agentes una postura rígida ("el problema es solo moral") y en otros una resistencia inmediata ("esto es moralismo"). El facilitador cuida que ninguna de las dos posiciones cierre la conversación. El Magisterio es punto de partida del discernimiento, no su sustituto. No hay que apurar acuerdos: es más importante que cada uno entienda desde dónde actúa.</div>
+        <div class="autocuidado-txt">La lectura de Juan Pablo II puede despertar en algunos agentes una postura rígida («el problema es solo moral») y en otros una resistencia inmediata («esto es moralismo»). El facilitador cuida que ninguna de las dos posiciones cierre la conversación. El Magisterio es punto de partida del discernimiento, no su sustituto. No hay que apurar acuerdos: es más importante que cada uno entienda desde dónde actúa.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §5.1, §5.2, §5.3, §5.4 (CELAM 2026) · Evangelium Vitae N°12 · Familiaris Consortio · Catecismo de la Iglesia Católica (1992) · Iglesia, droga y toxicomanía (Pontificio Consejo para la Familia, 2001).</div>
+      <div class="ref">Referencias: Manual de la PLAPA §5.1 (Itinerario de la conciencia eclesial y nuevos paradigmas pastorales), §5.2 (El Diagnóstico Existencial: La Droga como Patología del Espíritu), §5.3 (El Juicio Moral y la Crítica a la Liberalización), §5.4 (La Respuesta Pastoral. La Educación y la Terapia de la Esperanza) (CELAM 2026) · Evangelii Nuntiandi · Evangelium Vitae N° 12, 28 (citado en §5.2) · Familiaris Consortio · Catecismo de la Iglesia Católica (1992) · Iglesia, droga y toxicomanía (Pontificio Consejo para la Pastoral de la Salud, 2001).</div>
     </div>
   </div>
 
@@ -1213,7 +1230,7 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"Para muchos jóvenes, el consumo es una esperanza vana de aturdimiento ante el cansancio de existir y la falta de sentido. Francisco llega a calificar la dependencia como un suicidio incipiente."</div>
+        <div class="resonancia-txt">«Para muchos jóvenes, el consumo es una “esperanza vana” de aturdimiento ante el cansancio de existir y la falta de sentido, algo que Francisco llega a calificar como un “suicidio incipiente”» (§5.6).</div>
       </div>
 
       <div class="pl">Dos lentes complementarios, no rivales (§5.8)</div>
@@ -1242,23 +1259,23 @@
 
       <div class="pl">El Ver — El narcotráfico como guerra (§5.5)</div>
       <ul class="pts">
-        <li><span class="dot">V</span><span><strong>Guerra asumida y silenciosa.</strong> Francisco describe el narcotráfico como una "guerra asumida y pobremente combatida" que cobra silenciosamente la vida de millones. Los responsables son "mercaderes de muerte" que lucran con la desesperación humana según la lógica fría del poder y el dinero.</span></li>
-        <li><span class="dot">V</span><span><strong>Corrupción institucional.</strong> El narcotráfico no podría prosperar sin la complicidad de un sector del poder político, policial, judicial, económico y financiero. Esta corrupción ha generado una "estructura paralela" que pone en riesgo la credibilidad de las instituciones del Estado y de la propia sociedad.</span></li>
-        <li><span class="dot">V</span><span><strong>Sistema económico como sistema terrorista.</strong> El tráfico es inseparable de la trata de personas, el lavado de activos, el tráfico de armas, la explotación infantil y el comercio de órganos. El sistema que pone al "dios dinero" en el centro termina siendo un sistema terrorista que desecha "la maravilla de la creación: el hombre y la mujer" (§5.5).</span></li>
+        <li><span class="dot">V</span><span><strong>Guerra asumida y silenciosa.</strong> Francisco describe el narcotráfico como una «guerra asumida y pobremente combatida» que cobra silenciosamente la vida de millones. Los responsables son «mercaderes de muerte» que lucran con la desesperación humana según la lógica fría del poder y el dinero.</span></li>
+        <li><span class="dot">V</span><span><strong>Corrupción institucional.</strong> El narcotráfico no podría prosperar sin la complicidad de un sector del poder político, policial, judicial, económico y financiero. Esta corrupción ha generado una «estructura paralela» que pone en riesgo la credibilidad de las instituciones del Estado y de la propia sociedad.</span></li>
+        <li><span class="dot">V</span><span><strong>Sistema económico como sistema terrorista.</strong> El tráfico es inseparable de la trata de personas, el lavado de activos, el tráfico de armas, la explotación infantil y el comercio de órganos. El sistema que pone al «dios dinero» en el centro termina siendo un sistema terrorista que desecha «la maravilla de la creación: el hombre y la mujer» (§5.5).</span></li>
       </ul>
 
       <div class="pl">El Ver — La crisis antropológica (§5.6)</div>
       <ul class="pts">
-        <li><span class="dot">V</span><span><strong>Esclavitud química y suicidio incipiente.</strong> Francisco define la dependencia como una "esclavitud química" que despoja al ser humano de su mayor bien: la libertad. Para muchos jóvenes, el consumo es una "esperanza vana" de aturdimiento ante el cansancio de existir y la falta de sentido — algo que Francisco llega a calificar como un "suicidio incipiente".</span></li>
-        <li><span class="dot">V</span><span><strong>Los Ni-Ni como blanco del narco.</strong> Los jóvenes que "ni estudian ni trabajan" son el blanco principal de los estafadores de la muerte. La falta de horizontes, de trabajo digno y de educación adecuada crea el caldo de cultivo perfecto para que los jóvenes sean usados como "carne de cañón" por las bandas armadas y el narco.</span></li>
-        <li><span class="dot">V</span><span><strong>Orfandad espiritual y mundo virtual.</strong> En la raíz de muchas adicciones está la experiencia de "orfandad espiritual" fruto de hogares resquebrajados y una sociedad "desmadrada". A esto se suma el peligro de la <em>dark web</em> y los espacios digitales que, bajo falsa promesa de conexión, virtualizan al joven y lo hunden en una soledad profunda (§5.6).</span></li>
+        <li><span class="dot">V</span><span><strong>Esclavitud química y suicidio incipiente.</strong> Francisco define la dependencia como una «esclavitud química» que despoja al ser humano de su mayor bien: la libertad. Para muchos jóvenes, el consumo es una «esperanza vana» de aturdimiento ante el cansancio de existir y la falta de sentido — algo que Francisco llega a calificar como un «suicidio incipiente».</span></li>
+        <li><span class="dot">V</span><span><strong>Los Ni-Ni como blanco del narco.</strong> Los jóvenes que «ni estudian ni trabajan» son el blanco principal de los estafadores de la muerte. La falta de horizontes, de trabajo digno y de educación adecuada crea el «caldo de cultivo» perfecto para que los jóvenes sean usados como «carne de cañón» por las bandas armadas y el narco.</span></li>
+        <li><span class="dot">V</span><span><strong>Orfandad espiritual y mundo virtual.</strong> En la raíz de muchas adicciones está la experiencia de «orfandad espiritual» fruto de hogares resquebrajados y una sociedad que se ha «desmadrado». A esto se suma el peligro de la <em>dark web</em> y los espacios digitales que, bajo falsa promesa de conexión, virtualizan al joven y lo hunden en una soledad profunda (§5.6).</span></li>
       </ul>
 
-      <div class="pl">El Juzgar — Principio moral vs. estrategia pastoral (§5.9)</div>
+      <div class="pl">El Juzgar — Principio moral y estrategia pastoral (§5.9.2)</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>Coincidencia en el rechazo a la liberalización.</strong> Ambos pontífices coinciden en que "la droga no se vence con la droga", calificando la legalización como un callejón sin salida que genera confusión moral. La fórmula de Juan Pablo II es particularmente nítida al cuestionar incluso la distinción entre drogas blandas y duras (§5.9).</span></li>
+        <li><span class="dot j">J</span><span><strong>Coincidencia en el rechazo a la liberalización.</strong> Ambos pontífices coinciden en que «la droga no se vence con la droga», calificando la legalización como un callejón sin salida que genera confusión moral. La fórmula de Juan Pablo II es particularmente nítida al cuestionar incluso la distinción entre drogas blandas y duras (§5.9.2).</span></li>
         <li><span class="dot j">J</span><span><strong>Dos planos que no deben confundirse.</strong> El Manual distingue con precisión: <em>el principio moral</em> (uso de drogas como amenaza a la libertad y la dignidad, narcotráfico como estructura de pecado) — donde la continuidad entre ambos pontífices es clara e inequívoca; y <em>el plano de las estrategias pastorales y sanitarias concretas</em> — donde la complejidad territorial exige un discernimiento situado que no se resuelve con una fórmula única.</span></li>
-        <li><span class="dot j">J</span><span><strong>El hospital de campaña como espacio de discernimiento.</strong> Francisco, con la Iglesia como "hospital de campaña" que cura las heridas sin pedir méritos previos, ha abierto un espacio donde la fidelidad al principio moral se articula con la flexibilidad operativa que demanda la realidad. El propio Juan Pablo II admitió el uso de drogas sustitutivas como paso estrictamente médico y temporal orientado a la abstinencia (§5.9).</span></li>
+        <li><span class="dot j">J</span><span><strong>El hospital de campaña como espacio de discernimiento.</strong> Francisco, con la Iglesia como «hospital de campaña» que cura las heridas sin pedir méritos previos, ha abierto un espacio donde la fidelidad al principio moral se articula con la flexibilidad operativa que demanda la realidad. El propio Juan Pablo II admitió el uso de drogas sustitutivas como paso estrictamente médico y temporal orientado a la abstinencia (§5.9.2). El Manual remite el desarrollo de este discernimiento al capítulo 10, donde trata la relación entre el abstencionismo y la reducción de daños (§10.8.1).</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1266,30 +1283,30 @@
       <div class="act">
         <span class="act-tag tag-ind">Individual</span>
         <div class="act-title">Mi propia lectura del descarte</div>
-        <div class="act-body">Cada participante escribe: <em>¿A quién descarta —silenciosamente— la comunidad de la que soy parte? ¿A quién descarto yo, aunque no lo formule así? ¿Qué persona concreta viene a mi mente cuando pienso en "los últimos eslabones de la cadena"?</em> El ejercicio no busca culpa, sino conciencia. Se guarda en el cuaderno.</div>
+        <div class="act-body">Cada participante escribe: <em>¿A quién descarta —silenciosamente— la comunidad de la que soy parte? ¿A quién descarto yo, aunque no lo formule así? ¿Qué persona concreta viene a mi mente cuando pienso en los jóvenes usados como «carne de cañón» por las bandas armadas y el narco (§5.6)?</em> El ejercicio no busca culpa, sino conciencia. Se guarda en el cuaderno.</div>
       </div>
 
       <div class="act">
         <span class="act-tag tag-gru">Grupal</span>
         <div class="act-title">Los dos lentes juntos sobre un caso real</div>
-        <div class="act-body">El grupo elige un caso del territorio y lo lee primero con el lente de Juan Pablo II <em>(¿cuál es el vacío existencial? ¿qué amor faltó? ¿qué sed de sentido está allí?)</em> y luego con el lente de Francisco <em>(¿qué estructura generó esta situación? ¿qué corrupción institucional la sostiene? ¿qué descarte está detrás?)</em>. Las dos lecturas no se contradicen: se completan. El Actuar necesita las dos.</div>
+        <div class="act-body">El grupo elige un caso del territorio y lo lee primero con el lente de Juan Pablo II <em>(¿Cuál es el vacío existencial? ¿Qué amor faltó? ¿Qué sed de sentido está allí?)</em> y luego con el lente de Francisco <em>(¿Qué estructura generó esta situación? ¿Qué corrupción institucional la sostiene? ¿Qué descarte está detrás?)</em>. Las dos lecturas no se contradicen: se completan. El Actuar necesita las dos.</div>
       </div>
 
       <div class="act">
         <span class="act-tag tag-gru">Grupal</span>
         <div class="act-title">Distinguir los dos planos en nuestra práctica</div>
-        <div class="act-body">El grupo discute la distinción del §5.9 entre principio moral y estrategia pastoral. ¿Confundimos los dos planos en nuestra práctica? Ejemplos concretos: cuando decidimos si admitimos en un espacio a alguien que sigue consumiendo, cuando opinamos sobre la reducción de daños, cuando la comunidad juzga a una familia que "no fue firme". ¿Con qué consecuencias hemos confundido principio y estrategia? ¿Qué caso concreto podríamos discernir de otra manera con esta distinción?</div>
+        <div class="act-body">El grupo discute la distinción del §5.9.2 entre principio moral y estrategia pastoral. ¿Confundimos los dos planos en nuestra práctica? Ejemplos concretos: cuando decidimos si admitimos en un espacio a alguien que sigue consumiendo, cuando opinamos sobre la reducción de daños, cuando la comunidad juzga a una familia que «no fue firme». ¿Con qué consecuencias hemos confundido principio y estrategia? ¿Qué caso concreto podríamos discernir de otra manera con esta distinción?</div>
       </div>
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §5.5 — Manual PLAPA</div>
-        <div class="cita-txt">"El sistema económico que pone al «dios dinero» en el centro termina siendo un sistema terrorista que desecha la maravilla de la creación: el hombre y la mujer."</div>
-        <div class="cita-ref">Manual de la PLAPA, §5.5 — El Narcotráfico como Guerra y Estructura de Pecado (CELAM 2026)</div>
+        <div class="cita-txt">«[…] el sistema económico que pone al “dios dinero” en el centro termina siendo un sistema terrorista que desecha la maravilla de la creación: el hombre y la mujer».</div>
+        <div class="cita-ref">Manual de la PLAPA, §5.5 — El Diagnóstico Global: El Narcotráfico como Guerra y Estructura de pecado (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Alerta pastoral</div>
-        <div class="alerta-txt">La lectura estructural de Francisco puede ser usada como "excusa" para no confrontar la responsabilidad personal ("es todo culpa del sistema"). No lo es: Francisco sostiene el juicio moral de Juan Pablo II y le agrega el juicio político. Presentar una sin la otra es traicionar al Magisterio. El acompañamiento pastoral integral sostiene simultáneamente la responsabilidad personal y la denuncia estructural.</div>
+        <div class="alerta-txt">La lectura estructural de Francisco puede ser usada como «excusa» para no confrontar la responsabilidad personal («es todo culpa del sistema»). No lo es: Francisco sostiene el juicio moral de Juan Pablo II y le agrega el juicio político. Presentar una sin la otra es traicionar al Magisterio. El acompañamiento pastoral integral sostiene simultáneamente la responsabilidad personal y la denuncia estructural.</div>
       </div>
 
       <div class="autocuidado">
@@ -1297,7 +1314,7 @@
         <div class="autocuidado-txt">El módulo puede generar rabia frente a las estructuras, y la rabia es una emoción legítima pero difícil de sostener sin quemarse. El facilitador ayuda a nombrarla, no a apagarla. La caridad política no es activismo ideologizado: es indignación evangélica sostenida en la oración y en la comunidad. Un agente que se activa políticamente sin espiritualidad termina agotado o resentido.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §5.5, §5.6, §5.8, §5.9 (CELAM 2026) · Discursos de Francisco a comunidades terapéuticas y a la Federación Mundial de Comunidades Terapéuticas (2014, 2016, 2018) · Evangelii Gaudium.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §5.5 (El Diagnóstico Global: El Narcotráfico como Guerra y Estructura de pecado), §5.6 (La Crisis Antropológica: La «Cultura del Descarte» y el Vacío Existencial), §5.8 (Las diferencias), §5.9 (Coincidencias), §10.8.1 (¿Abstencionismo o Reducción de daños?) — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1312,7 +1329,7 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"El cuidado, asumido desde la fe samaritana, determina un profundo modo de ser, hacer y estar en el mundo, transformando la mirada institucional de nuestras respuestas pastorales."</div>
+        <div class="resonancia-txt">«El cuidado, asumido desde la fe samaritana, determina un profundo modo de ser, hacer y estar en el mundo, transformando la mirada institucional de nuestras respuestas pastorales» (§5.7).</div>
       </div>
 
       <div class="pl">Las cuatro dimensiones del cuidado (§5.7)</div>
@@ -1320,17 +1337,17 @@
         <div class="eje">
           <div class="eje-n">Dimensión 1 · personal</div>
           <div class="eje-t">Autocuidado del operador</div>
-          <div class="eje-txt">Discernimiento, contención recíproca, límites saludables, cuidado de la salud integral del equipo pastoral. "No es sostenible en el tiempo cuidar al hermano roto si el cuidador descuida crónicamente su propia realidad psicofísica y espiritual" (§5.7).</div>
+          <div class="eje-txt">Discernimiento, contención recíproca, límites saludables, cuidado de la salud integral del equipo pastoral. «No es sostenible en el tiempo cuidar al hermano roto si el cuidador descuida crónicamente su propia realidad psicofísica y espiritual […]» (§5.7).</div>
         </div>
         <div class="eje">
           <div class="eje-n">Dimensión 2 · relacional</div>
           <div class="eje-t">Cuidado del otro · projimidad samaritana</div>
-          <div class="eje-txt">Encuentro cara a cara con la persona vulnerable, reconociendo su dignidad inalienable "más allá de la compulsión de su conducta adictiva". Acogida incondicional, escucha activa, itinerarios personalizados. Prioridad al abordaje ambulatorio en casos menos compulsivos.</div>
+          <div class="eje-txt">Encuentro cara a cara con la persona vulnerable, reconociendo su dignidad inalienable «más allá de la compulsión de su conducta adictiva». Acogida incondicional, escucha activa, itinerarios personalizados. Prioridad al abordaje ambulatorio en casos menos compulsivos.</div>
         </div>
         <div class="eje">
           <div class="eje-n">Dimensión 3 · comunitaria</div>
           <div class="eje-t">Cuidado del tejido barrial</div>
-          <div class="eje-txt">"El ser humano se sana en racimo y en comunidad". Fortalecer redes vecinales, reconstruir lazos solidarios, estructurar el centro barrial bajo la mística de una "familia extendida". La fe opera aquí como Factor Protector Central en la cultura latinoamericana.</div>
+          <div class="eje-txt">«El ser humano se sana en racimo y en comunidad». Fortalecer redes vecinales, reconstruir lazos solidarios, estructurar el centro barrial bajo la mística de una «familia extendida». La fe opera aquí como Factor Protector Central en la cultura latinoamericana.</div>
         </div>
         <div class="eje">
           <div class="eje-n">Dimensión 4 · ecoglocal</div>
@@ -1341,14 +1358,14 @@
 
       <div class="pl">El Ver — Ontología, no técnica</div>
       <ul class="pts">
-        <li><span class="dot">V</span><span><strong>El cuidado no es asistencialismo.</strong> El §5.7 lo dice con claridad: "Se trata de una realidad ontológica, axiológica y epistemológica que propone un principio de equilibrio y sostenibilidad personal, comunitario y planetario". La ética del cuidado no es una técnica de intervención: es un modo de ser, hacer y estar en el mundo.</span></li>
-        <li><span class="dot">V</span><span><strong>El operador no es un instrumento neutral.</strong> La Dimensión 1 —autocuidado— aparece como <em>primera</em>, no última, ni por azar. La calidad del acompañamiento está limitada por la salud psicoespiritual del acompañante. Un equipo que no se cuida a sí mismo no puede sostener el cuidado del otro más de dos o tres años sin desgaste o despersonalización.</span></li>
+        <li><span class="dot">V</span><span><strong>El cuidado no es asistencialismo.</strong> El §5.7 lo dice con claridad: «Se trata de una realidad ontológica, axiológica y epistemológica que propone un principio de equilibrio y sostenibilidad personal, comunitario y planetario». La ética del cuidado no es una técnica de intervención: es un modo de ser, hacer y estar en el mundo.</span></li>
+        <li><span class="dot">V</span><span><strong>El operador no es un instrumento neutral.</strong> La Dimensión 1 —autocuidado— abre la enumeración del §5.7. La calidad del acompañamiento está limitada por la salud psicoespiritual del acompañante. Un equipo que no se cuida a sí mismo no puede sostener en el tiempo el cuidado del otro sin caer «en el desgaste o la despersonalización» (§5.7).</span></li>
       </ul>
 
       <div class="pl">El Juzgar — De la reinserción a la reintegración (§5.1)</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>Cambio de paradigma.</strong> El Manual propone un cambio terminológico profundo: preferir <em>reintegración social</em> sobre <em>reinserción</em>. Premisa fundamental: la persona con consumo problemático "nunca se desconecta totalmente del entramado social", incluso cuando está al margen de la vida institucional.</span></li>
-        <li><span class="dot j">J</span><span><strong>No meter al hermano en el sistema que lo enfermó.</strong> "La tarea pastoral no consiste en «meter de nuevo» a alguien en un sistema que lo expulsó, sino en reintegrar su dignidad y sus derechos en una comunidad que debe reconocerlo como propio" (§5.1). La reintegración implica sanar los vínculos con familia, trabajo y barrio, reconociendo que pobreza, violencia y desigualdad requieren respuestas complejas y no solo voluntad individual.</span></li>
+        <li><span class="dot j">J</span><span><strong>Cambio de paradigma.</strong> El Manual propone un cambio terminológico profundo: preferir <em>reintegración social</em> sobre <em>reinserción</em>. Premisa fundamental: la persona con consumo problemático «nunca se desconecta totalmente del entramado social», incluso cuando está al margen de la vida institucional.</span></li>
+        <li><span class="dot j">J</span><span><strong>No meter al hermano en el sistema que lo enfermó.</strong> «[…] la tarea pastoral no consiste en “meter de nuevo” a alguien en un sistema que lo expulsó, sino en reintegrar su dignidad y sus derechos en una comunidad que debe reconocerlo como propio» (§5.1). La reintegración implica sanar los vínculos con familia, trabajo y barrio, reconociendo que pobreza, violencia y desigualdad requieren respuestas complejas y no solo voluntad individual.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1362,32 +1379,32 @@
       <div class="act">
         <span class="act-tag tag-gru">Grupal</span>
         <div class="act-title">Las cuatro dimensiones en nuestra comunidad</div>
-        <div class="act-body">El grupo evalúa colectivamente las cuatro dimensiones del §5.7: <em>¿cuidamos a los cuidadores o los quemamos? ¿hacemos projimidad samaritana o solo asistencia? ¿tenemos tejido barrial real o solo programas paralelos? ¿hay conciencia del entorno físico como parte del proceso?</em> Para cada dimensión: una fortaleza concreta y un desafío concreto. Se anotan en un papelógrafo visible.</div>
+        <div class="act-body">El grupo evalúa colectivamente las cuatro dimensiones del §5.7: <em>¿Cuidamos a los cuidadores o los quemamos? ¿Hacemos projimidad samaritana o solo asistencia? ¿Tenemos tejido barrial real o solo programas paralelos? ¿Hay conciencia del entorno físico como parte del proceso?</em> Para cada dimensión: una fortaleza concreta y un desafío concreto. Se anotan en un papelógrafo visible.</div>
       </div>
 
       <div class="act">
         <span class="act-tag tag-gru">Grupal</span>
-        <div class="act-title">Del "reinsertar" al "reintegrar" en nuestra práctica</div>
-        <div class="act-body">El grupo identifica prácticas concretas donde todavía operamos con lógica de "reinserción" (asumir que el sujeto tiene que volver a encajar en la misma maquinaria que lo enfermó) y prácticas donde operamos con lógica de "reintegración" (reconstruir con el hermano un lugar habitable). No es una acusación: es diagnóstico. Se propone <strong>un</strong> paso concreto para el próximo mes que mueva el equilibrio del reinsertar al reintegrar.</div>
+        <div class="act-title">Del «reinsertar» al «reintegrar» en nuestra práctica</div>
+        <div class="act-body">El grupo identifica prácticas concretas donde todavía operamos con lógica de «reinserción» (asumir que el sujeto tiene que volver a encajar en la misma maquinaria que lo enfermó) y prácticas donde operamos con lógica de «reintegración» (reconstruir con el hermano un lugar habitable). No es una acusación: es diagnóstico. Se propone <strong>un</strong> paso concreto para el próximo mes que mueva el equilibrio del reinsertar al reintegrar.</div>
       </div>
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §5.7 — Manual PLAPA</div>
-        <div class="cita-txt">"Al asumir la Ética del Cuidado como el hilo conductor del Magisterio eclesial actual, la Iglesia no solo denuncia las estructuras de pecado del narcotráfico y el descarte, sino que anuncia una propuesta metodológica que abarca lo personal, lo comunitario y lo planetario."</div>
-        <div class="cita-ref">Manual de la PLAPA, §5.7 — La Ética del Cuidado (CELAM 2026)</div>
+        <div class="cita-txt">«Al asumir la Ética del Cuidado como el hilo conductor del Magisterio eclesial actual, la Iglesia no solo denuncia las estructuras de pecado del narcotráfico y el descarte, sino que anuncia una propuesta metodológica tridimensional (personal, comunitaria y planetaria)».</div>
+        <div class="cita-ref">Manual de la PLAPA, §5.7 — La Ética del Cuidado: Paradigma integral frente a la cultura del descarte (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Alerta pastoral</div>
-        <div class="alerta-txt">La "ética del cuidado" puede confundirse con una espiritualidad blanda que evita la confrontación necesaria. No lo es: cuidar incluye poner límites, decir "no", sostener frustraciones. El agente que solo "cuida" sin capacidad de confrontación termina infantilizando a la persona acompañada. La ternura evangélica es firme.</div>
+        <div class="alerta-txt">La «ética del cuidado» puede confundirse con una espiritualidad blanda que evita la confrontación necesaria. No lo es: cuidar incluye poner límites, decir «no», sostener frustraciones. El agente que solo «cuida» sin capacidad de confrontación termina infantilizando a la persona acompañada. La ternura evangélica es firme.</div>
       </div>
 
       <div class="autocuidado">
         <div class="autocuidado-lbl">Autocuidado del agente</div>
-        <div class="autocuidado-txt">La Dimensión 1 —autocuidado del operador— no es la primera por casualidad. El Manual mismo reconoce que "no es sostenible en el tiempo cuidar al hermano roto si el cuidador descuida crónicamente su propia realidad psicofísica y espiritual, cayendo en el desgaste o la despersonalización" (§5.7). Este es el fundamento magisterial del autocuidado: no es egoísmo pastoral, es obediencia teológica.</div>
+        <div class="autocuidado-txt">El Manual reconoce que «no es sostenible en el tiempo cuidar al hermano roto si el cuidador descuida crónicamente su propia realidad psicofísica y espiritual, cayendo en el desgaste o la despersonalización» (§5.7). Este es el fundamento magisterial del autocuidado: no es egoísmo pastoral, es obediencia teológica.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §5.1 (De la reinserción a la reintegración) y §5.7 (Ética del Cuidado), CELAM 2026 · Laudato Si' · Amoris Laetitia.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §5.1 (Itinerario de la conciencia eclesial y nuevos paradigmas pastorales) y §5.7 (La Ética del Cuidado: Paradigma integral frente a la cultura del descarte), CELAM 2026 · Laudato Si' · Amoris Laetitia.</div>
     </div>
   </div>
 
@@ -1402,22 +1419,22 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"La dignidad del ser humano no desaparece nunca, pero a veces solo brilla cuando está casi totalmente perdida."</div>
+        <div class="resonancia-txt">La dignidad del ser humano no desaparece nunca, pero «a veces solo brilla cuando está casi totalmente perdida» (León XIV, citado en §5.10).</div>
       </div>
 
       <div class="pl">El Ver — Vaticano, 26 de junio de 2025</div>
       <ul class="pts">
-        <li><span class="dot">V</span><span><strong>El primer gran gesto magisterial.</strong> En el Día Internacional de Lucha contra el Uso Indebido y el Tráfico Ilícito de Drogas, León XIV recibió en el Patio de San Dámaso a centenares de personas que habían vivido en carne propia el drama de la dependencia. Su convicción antropológica fundante: la dignidad "no desaparece nunca, pero a veces solo brilla cuando está casi totalmente perdida" (§5.10).</span></li>
-        <li><span class="dot">V</span><span><strong>Nomina las políticas sanitizantes.</strong> "Es más fácil combatir a sus víctimas. Con demasiada frecuencia, en nombre de la seguridad, se ha hecho y se hace la guerra a los pobres, llenando las cárceles de quienes no son más que el último eslabón de una cadena de muerte. Quienes sostienen la cadena en sus manos, en cambio, consiguen influencia e impunidad" (§5.10).</span></li>
-        <li><span class="dot">V</span><span><strong>Consecuencia pastoral directa.</strong> "Nuestras ciudades no deben ser liberadas de los marginados, sino de la marginación; no deben ser limpiadas de los desesperados, sino de la desesperación". La pastoral de las adicciones no limpia las calles: las convierte en lugares de encuentro y de vida.</span></li>
+        <li><span class="dot">V</span><span><strong>El primer gran gesto magisterial.</strong> En el Día Internacional de Lucha contra el Uso Indebido y el Tráfico Ilícito de Drogas, León XIV recibió en el Patio de San Dámaso a centenares de personas que habían vivido en carne propia el drama de la dependencia. Su convicción antropológica fundante: la dignidad no desaparece nunca, pero «a veces solo brilla cuando está casi totalmente perdida» (§5.10).</span></li>
+        <li><span class="dot">V</span><span><strong>Nombra las políticas sanitizantes.</strong> «Es más fácil combatir a sus víctimas. Con demasiada frecuencia, en nombre de la seguridad, se ha hecho y se hace la guerra a los pobres, llenando las cárceles de quienes no son más que el último eslabón de una cadena de muerte. Quienes sostienen la cadena en sus manos, en cambio, consiguen influencia e impunidad» (§5.10).</span></li>
+        <li><span class="dot">V</span><span><strong>Consecuencia pastoral directa.</strong> «Nuestras ciudades no deben ser liberadas de los marginados, sino de la marginación; no deben ser limpiadas de los desesperados, sino de la desesperación» (§5.10). La pastoral de las adicciones no limpia las calles: las convierte en lugares de encuentro y de vida.</span></li>
       </ul>
 
       <div class="pl">El Juzgar — La gramática agustiniana del deseo</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>La adicción como búsqueda fallida.</strong> Coherente con su identidad agustiniana, León XIV conecta la sed de sustancias con la estructura profunda del deseo humano. Cita el Salmo 63 —"el abismo que nos habita"— y recuerda la confesión de Agustín: "Buscamos la paz y la alegría, estamos sedientos de ellas. Y muchos engaños pueden decepcionarnos e incluso aprisionarnos en esta búsqueda" (§5.10).</span></li>
-        <li><span class="dot j">J</span><span><strong>La adicción es también una búsqueda de lo que solo Dios puede dar.</strong> Esta lectura espiritual no sustituye al diagnóstico social ni al psicológico: los supone y los integra en un horizonte más amplio, donde el acto de "buscar" es ya, en sí mismo, apertura a la trascendencia. La persona que consume no busca la destrucción: busca lo que todo ser humano busca.</span></li>
-        <li><span class="dot j">J</span><span><strong>Los pobres son maestros del Evangelio.</strong> En <em>Dilexi te</em> (4 de octubre de 2025), León XIV afirma: "Los más pobres no son meros objetos de compasión, sino maestros del Evangelio. No se trata de llevarles a Dios, sino de encontrarlo entre ellos". El agente pastoral no lleva la salvación al territorio: la descubre ahí. "Quien olvida esto convierte la pastoral en asistencia técnica y pierde su alma" (§5.10).</span></li>
-        <li><span class="dot j">J</span><span><strong>El territorio digital como territorio pastoral.</strong> La encíclica <em>Magnifica Humanitas</em> (25 de mayo de 2026), inscrita en la tradición de <em>Rerum Novarum</em>, advierte que las lógicas algorítmicas de redes sociales y entornos digitales operan con "una gramática de la compulsividad que comparte estructura con las adicciones clásicas: la búsqueda del reconocimiento inmediato, la incapacidad de soportar el vacío, la captura de la atención al servicio de intereses comerciales ajenos al bien de la persona" (§5.10).</span></li>
+        <li><span class="dot j">J</span><span><strong>La adicción como búsqueda fallida.</strong> Coherente con su identidad agustiniana, León XIV conecta la sed de sustancias con la estructura profunda del deseo humano. Cita el Salmo 63 —«el abismo que nos habita» (Sal 63,7)— y recuerda la confesión de Agustín: «Buscamos la paz y la alegría, estamos sedientos de ellas. Y muchos engaños pueden decepcionarnos e incluso aprisionarnos en esta búsqueda» (§5.10).</span></li>
+        <li><span class="dot j">J</span><span><strong>La adicción es también una búsqueda de lo que solo Dios puede dar.</strong> Esta lectura espiritual no sustituye al diagnóstico social ni al psicológico: los supone y los integra en un horizonte más amplio, donde el acto de «buscar» es ya, en sí mismo, apertura a la trascendencia. La persona que consume no busca la destrucción: busca lo que todo ser humano busca.</span></li>
+        <li><span class="dot j">J</span><span><strong>Los pobres son maestros del Evangelio.</strong> En <em>Dilexi te</em> (4 de octubre de 2025), León XIV afirma que «los más pobres no son meros objetos de compasión, sino maestros del Evangelio. No se trata de llevarles a Dios, sino de encontrarlo entre ellos». El agente pastoral no lleva la salvación al territorio: la descubre ahí. «Quien olvida esto convierte la pastoral en asistencia técnica y pierde su alma» (§5.10).</span></li>
+        <li><span class="dot j">J</span><span><strong>El territorio digital como territorio pastoral.</strong> La encíclica <em>Magnifica Humanitas</em> (25 de mayo de 2026), inscrita en la tradición de <em>Rerum Novarum</em>, advierte que las lógicas algorítmicas de redes sociales y entornos digitales operan con «una gramática de la compulsividad que comparte estructura con las adicciones clásicas: la búsqueda del reconocimiento inmediato, la incapacidad de soportar el vacío, la captura de la atención al servicio de intereses comerciales ajenos al bien de la persona» (§5.10).</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1431,32 +1448,32 @@
       <div class="act">
         <span class="act-tag tag-gru">Grupal</span>
         <div class="act-title">El territorio digital en nuestra comunidad</div>
-        <div class="act-body">¿Qué presencia tienen las adicciones digitales —apuestas online, pornografía, redes sociales compulsivas, videojuegos con lógica de casino— en el territorio? ¿El equipo tiene herramientas para acompañar esas situaciones? El §5.10 abre la pregunta pero deja el desarrollo pastoral concreto a los agentes. El grupo identifica un primer paso: capacitación interna, alianza con especialistas, contenido preventivo en redes, escucha específica en la parroquia.</div>
+        <div class="act-body">¿Qué presencia tienen las adicciones digitales —apuestas online, pornografía, redes sociales compulsivas, videojuegos con lógica de casino— en el territorio? ¿El equipo tiene herramientas para acompañar esas situaciones? El §5.10 abre la pregunta; el Manual la retoma en el §8.6.3 (Sobre el abordaje de las adicciones digitales) y en el §9.5.4 (Adicciones comportamentales). El grupo identifica un primer paso: capacitación interna, alianza con especialistas, contenido preventivo en redes, escucha específica en la parroquia.</div>
       </div>
 
       <div class="act">
         <span class="act-tag tag-gru">Grupal</span>
         <div class="act-title">Síntesis del itinerario: la postura magisterial del equipo</div>
-        <div class="act-body">Ejercicio de cierre. El grupo redacta colectivamente una única frase: <em>"Cuando en nuestra comunidad alguien llega con un problema de consumo, nuestra postura es…"</em>. No más de cinco líneas. Se guarda con fecha. Se relee dentro de seis meses para revisar si la práctica efectiva coincide con la postura declarada. La coherencia entre las dos es la mejor medida de la formación recibida.</div>
+        <div class="act-body">Ejercicio de cierre. El grupo redacta colectivamente una única frase: <em>«Cuando en nuestra comunidad alguien llega con un problema de consumo, nuestra postura es…»</em>. No más de cinco líneas. Se guarda con fecha. Se relee dentro de seis meses para revisar si la práctica efectiva coincide con la postura declarada. La coherencia entre las dos es la mejor medida de la formación recibida.</div>
       </div>
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §5.10 — León XIV, Discurso del 26-VI-2025</div>
-        <div class="cita-txt">"Jesús resucitado sigue viniendo y trayendo su aliento. Lo hace a menudo a través de personas que traspasan nuestras puertas cerradas y que, a pesar de todo lo que pueda haber sucedido, ven la dignidad que hemos olvidado o que nos ha sido negada."</div>
+        <div class="cita-txt">«Jesús resucitado sigue viniendo y trayendo su aliento. Lo hace a menudo a través de personas que traspasan nuestras puertas cerradas y que, a pesar de todo lo que pueda haber sucedido, ven la dignidad que hemos olvidado o que nos ha sido negada».</div>
         <div class="cita-ref">Manual de la PLAPA, §5.10 — León XIV: La pastoral de las adicciones como lucha liberadora (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Alerta pastoral</div>
-        <div class="alerta-txt">Subestimar el impacto del territorio digital es abandonar a las nuevas generaciones. La ludopatía digital y la captación algorítmica están destruyendo estructuras psíquicas de jóvenes que jamás pisarán la calle ni tocarán una sustancia. Toda la infraestructura pastoral construida para las adicciones "clásicas" corre el riesgo de volverse irrelevante si no incorpora esta lectura. La pastoral debe alfabetizarse urgentemente.</div>
+        <div class="alerta-txt">Subestimar el impacto del territorio digital es abandonar a las nuevas generaciones. La ludopatía digital y la captación algorítmica pueden dañar a jóvenes que quizá nunca pisen la calle ni toquen una sustancia. Toda la infraestructura pastoral construida para las adicciones «clásicas» corre el riesgo de volverse irrelevante si no incorpora esta lectura. La pastoral debe alfabetizarse urgentemente.</div>
       </div>
 
       <div class="autocuidado">
         <div class="autocuidado-lbl">Cierre del itinerario · Autocuidado del agente</div>
-        <div class="autocuidado-txt">El itinerario cierra con la pregunta agustiniana que León XIV convoca: <em>¿qué es lo que busco cuando acompaño?</em> El agente que puede mirarse en ese espejo —reconociendo sus propias búsquedas fallidas, sus propias sedes— acompaña desde la fraternidad, no desde la superioridad. "Los más pobres son maestros del Evangelio" (Dilexi te N°79). El itinerario no termina con evaluación, sino con gratitud: por los hermanos que nos revelan a Cristo, por el Magisterio que sostiene el camino, por la comunidad que hace posible seguir.</div>
+        <div class="autocuidado-txt">El itinerario cierra con la pregunta agustiniana que León XIV convoca: <em>¿qué es lo que busco cuando acompaño?</em> El agente que puede mirarse en ese espejo —reconociendo sus propias búsquedas fallidas, sus propias sedes— acompaña desde la fraternidad, no desde la superioridad. «Los más pobres no son meros objetos de compasión, sino maestros del Evangelio» (Dilexi te N°79, citado en §5.10). Antes de la evaluación final, el itinerario se cierra con gratitud: por los hermanos que nos revelan a Cristo, por el Magisterio que sostiene el camino, por la comunidad que hace posible seguir.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §5.10 (CELAM 2026) · León XIV, Discurso del 26 de junio de 2025 (Patio de San Dámaso, Vaticano) · Dilexi te N°79 (4 de octubre de 2025) · Magnifica Humanitas (25 de mayo de 2026) · San Agustín, Confesiones.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §5.10 (CELAM 2026) · León XIV, Discurso del 26 de junio de 2025 (Patio de San Dámaso, Vaticano) · Dilexi te N°79 (4 de octubre de 2025) · Magnifica Humanitas (25 de mayo de 2026) · San Agustín (citado en el discurso del 26-VI-2025) · §8.6.3 · §9.5.4.</div>
     </div>
   </div>
 
@@ -1470,8 +1487,8 @@
     <div class="cb">
 
       <div class="foro-vista">
-        <button class="foro-vista-btn on" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
-        <button class="foro-vista-btn" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
+        <button class="foro-vista-btn on" aria-pressed="true" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
+        <button class="foro-vista-btn" aria-pressed="false" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
       </div>
 
       <div class="foro-pautas">
@@ -1520,7 +1537,7 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Antes de comenzar</div>
-        <div class="resonancia-txt">"El Magisterio de la Iglesia sobre las adicciones no es un archivo doctrinal: es una palabra viva que pide ser encarnada en tu territorio. De Juan Pablo II a León XIV, del <em>Evangelium Vitae</em> al <em>Dilexi te</em>, la línea es la misma: la persona antes que la sustancia, la reintegración antes que la reinserción, la voz profética antes que la neutralidad técnica. Este es el momento de nombrar dónde el itinerario tocó tu práctica —y dónde te desafía a fundamentar mejor lo que ya hacés." Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
+        <div class="resonancia-txt">El Magisterio de la Iglesia sobre las adicciones no es un archivo doctrinal: es una palabra viva que pide ser encarnada en tu territorio. De Pablo VI a León XIV, del <em>Evangelium Vitae</em> al <em>Dilexi te</em>, la línea es la misma: la persona antes que la sustancia, la reintegración antes que la reinserción, la voz profética antes que la neutralidad técnica. Este es el momento de nombrar dónde el itinerario tocó tu práctica —y dónde te desafía a fundamentar mejor lo que ya hacés. Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
       </div>
 
       <div class="eval-nota">
@@ -1536,11 +1553,11 @@
 
       <div class="pl">El Juzgar — Qué iluminó, qué preguntas quedaron abiertas</div>
       <div class="eval-q">
-        <label for="evalJuzgar1">De la línea de continuidad del Magisterio (Juan Pablo II, Francisco, León XIV), del paso de la reinserción a la reintegración (§5.7), de la voz profética continental: ¿qué te iluminó de manera nueva? ¿Qué idea sentís que ya no podrás dejar de lado?</label>
+        <label for="evalJuzgar1">De la línea de continuidad del Magisterio (Juan Pablo II, Francisco, León XIV), del paso de la reinserción a la reintegración (§5.1), de la pastoral de las adicciones como lucha liberadora (§5.10): ¿qué te iluminó de manera nueva? ¿Qué idea sentís que ya no podrás dejar de lado?</label>
         <textarea id="evalJuzgar1" data-eval="juzgar1" placeholder="Nombralo con precisión..."></textarea>
       </div>
       <div class="eval-q">
-        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos? La tensión entre la posición de la Iglesia y las políticas públicas de reducción de daños, entre la doctrina y las prácticas de campo, entre lo que decís cuando te consultan y lo que hacés cuando acompañás — ¿dónde te dejaron incómodo/a? Las preguntas abiertas son también fruto (§13.3).</label>
+        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos? La tensión entre la posición de la Iglesia y las políticas públicas de reducción de daños, entre la doctrina y las prácticas de campo, entre lo que decís cuando te consultan y lo que hacés cuando acompañás — ¿dónde te dejaron incómodo/a?</label>
         <textarea id="evalJuzgar2" data-eval="juzgar2" placeholder="Las que siguen ardiendo..."></textarea>
       </div>
 
@@ -1555,8 +1572,8 @@
       </div>
 
       <div class="pl">Autocuidado y equipo</div>
-      <div class="eval-q eval-scale">
-        <label>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</label>
+      <fieldset class="eval-q eval-scale">
+        <legend>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</legend>
         <div class="eval-scale-row">
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="1" data-eval="animo"><span>1</span></label>
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="2" data-eval="animo"><span>2</span></label>
@@ -1564,10 +1581,10 @@
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="4" data-eval="animo"><span>4</span></label>
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="5" data-eval="animo"><span>5</span></label>
         </div>
-      </div>
+      </fieldset>
       <div class="eval-q">
         <label for="evalCuidado">Trabajar el Magisterio en clave pastoral tiene una fatiga específica: la de sostener una palabra doctrinal exigente en medio de prácticas de campo que no siempre la reflejan, y la de responder por la Iglesia cuando te toca representarla. ¿Cómo vas a cuidarte de eso? ¿A quién del equipo se lo vas a decir?</label>
-        <textarea id="evalCuidado" data-eval="cuidado" placeholder="El agente que cuida su esperanza puede sostener la del otro..."></textarea>
+        <textarea id="evalCuidado" data-eval="cuidado" placeholder="Ej.: Voy a hablar con X sobre lo que me cuesta responder por la Iglesia cuando me consultan sobre reducción de daños..."></textarea>
       </div>
 
       <div class="pl">Cierre</div>
@@ -1589,7 +1606,7 @@
         <div class="autocuidado-txt">Cerrar bien un itinerario también es autocuidado: celebrar lo caminado, agradecer al equipo, reconocer los propios límites y renovar la esperanza. Este itinerario termina con gratitud: por la línea del Magisterio que nos precede, por las palabras que ya no vamos a poder ignorar, por el equipo que hizo posible fundamentar lo que la práctica ya sabía.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §5.1–5.10 (Capítulo 5 completo: Magisterio y Adicciones), §13.2 (Sinodalidad), §13.3 (Rolling release), §13.5 (Mecanismos de colaboración), §13.8 (Dimensión profética) · Evangelium Vitae · Familiaris Consortio · Catecismo de la Iglesia Católica · Iglesia, droga y toxicomanía (2001) · Discursos de Francisco · León XIV (26 de junio de 2025) · Dilexi te (4 de octubre de 2025) · Magnifica Humanitas (25 de mayo de 2026) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §5.1–5.10 (Capítulo 5 completo: El Magisterio Eclesial), §13.3 (Rolling release), §13.5 (Mecanismos de colaboración) · Evangelium Vitae · Familiaris Consortio · Catecismo de la Iglesia Católica · Iglesia, droga y toxicomanía (2001) · Discursos de Francisco · León XIV (26 de junio de 2025) · Dilexi te (4 de octubre de 2025) · Magnifica Humanitas (25 de mayo de 2026) — CELAM 2026.</div>
 
     </div>
   </div>
@@ -1769,8 +1786,8 @@
 
   function setVistaForo(v, btn) {
     vistaForo = v;
-    document.querySelectorAll('.foro-vista-btn').forEach(function(b) { b.classList.remove('on'); });
-    btn.classList.add('on');
+    document.querySelectorAll('.foro-vista-btn').forEach(function(b) { b.classList.remove('on'); b.setAttribute('aria-pressed', 'false'); });
+    btn.classList.add('on'); btn.setAttribute('aria-pressed', 'true');
     cargarComentarios();
   }
 
@@ -1818,14 +1835,15 @@
     var datos = recolectarEvaluacion();
     var minimoTexto = (datos.ver || '').trim() + (datos.actuar || '').trim();
     if (minimoTexto.length < 30) {
-      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos "El Ver" y "El Actuar" merecen unos renglones honestos.', 'error');
+      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos «El Ver» y «El Actuar» merecen unos renglones honestos.', 'error');
       return;
     }
     if (!sesion) { window.location.href = '/login'; return; }
-    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario', {
+    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario?on_conflict=usuario_id,itinerario_id', {
       method: 'POST',
       headers: Object.assign({}, supaHeaders(), { 'Prefer': 'resolution=merge-duplicates' }),
       body: JSON.stringify({
+        usuario_id: sesion.user ? sesion.user.id : undefined,
         itinerario_id: ITINERARIO_ID,
         respuestas: datos,
         compartir_con_equipo: datos.compartir_con_equipo === true
@@ -1848,6 +1866,12 @@
 
   function imprimirEvaluacion() {
     autoguardarBorrador();
+    // Que cada respuesta se imprima completa, sin cortarse
+    var areas = document.querySelectorAll('#m6 textarea');
+    for (var i = 0; i < areas.length; i++) {
+      areas[i].style.height = 'auto';
+      areas[i].style.height = areas[i].scrollHeight + 'px';
+    }
     window.print();
   }
 

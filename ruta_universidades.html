@@ -11,7 +11,7 @@
       --text-muted: #5a5a5a;
       --primary: #854F0B; 
       --primary-dark: #412402;
-      --accent: #1D9E75; 
+      --accent: #0E7356; 
       --surface: #ffffff;
       --border: #e2dfd8;
       --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -45,6 +45,51 @@
     .card-sub { font-size: 0.9rem; color: var(--text-muted); line-height: 1.45; }
     
     footer { background: var(--primary-dark); color: #e2dfd8; text-align: center; padding: 3rem 5%; font-size: 0.9rem; margin-top: 4rem; }
+    /* Celular */
+    @media (max-width: 640px) {
+      header { padding: 0.75rem 16px; flex-wrap: wrap; gap: 0.4rem 1rem; }
+      .nav-links a { margin-left: 0; margin-right: 1rem; }
+      .ruta-hero { padding: 2.5rem 16px 2rem; }
+      .ruta-hero h1 { font-size: 1.8rem; }
+      .timeline-container { margin: 2.5rem auto; padding: 0 16px; }
+      .etapa { margin-bottom: 2.5rem; }
+      .etapa-title { font-size: 1.5rem; }
+      .grid { grid-template-columns: 1fr; }
+      footer { padding: 2rem 16px; margin-top: 2.5rem; }
+    }
+  
+    /* Accesibilidad: foco visible */
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+    .ruta-hero a:focus-visible { outline-color: #ffffff; }
+
+    /* Impresión */
+    @media print {
+      header, footer, nav, video, iframe { display: none !important; }
+      body { background: #ffffff !important; color: #000000 !important; }
+      .ruta-hero { background: none !important; color: #000 !important; padding: 0 0 1rem !important; text-align: left !important; }
+      .ruta-icon { display: none !important; }
+      .ruta-hero h1 { color: #000 !important; font-size: 1.6rem !important; margin-bottom: 0.5rem !important; }
+      .ruta-hero p { color: #333 !important; max-width: 100% !important; }
+      .timeline-container { max-width: 100% !important; margin: 1rem 0 !important; padding: 0 !important; }
+      .etapa { page-break-inside: avoid; break-inside: avoid; margin-bottom: 1.5rem !important; }
+      .etapa-header { border-bottom-color: #999 !important; }
+      .etapa-title, .etapa-num, .etapa-desc { color: #000 !important; }
+      .grid { gap: 10px !important; }
+      .card {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        border: 1px solid #999 !important;
+        border-left: 3px solid #333 !important;
+        box-shadow: none !important;
+        transform: none !important;
+        background: #fff !important;
+      }
+      .card-title, .card-n, .card-sub { color: #000 !important; }
+    }
   </style>
 </head>
 <body>
@@ -52,73 +97,88 @@
   <header>
     <a href="index.html" class="logo">Escuela PLAPA</a>
     <nav class="nav-links">
-      <a href="index.html#ambitos">← Volver a Ámbitos</a>
-      <a href="catalogo_30_itinerarios_plapa_corregido.html">Catálogo Completo</a>
+      <a href="index.html#ambitos">← Volver a ámbitos</a>
+      <a href="catalogo_30_itinerarios_plapa_corregido.html">Catálogo completo</a>
     </nav>
   </header>
 
   <section class="ruta-hero">
     <div class="ruta-icon">🎓</div>
-    <h1>Comunidad Universitaria</h1>
+    <h1>Comunidad universitaria</h1>
     <p>Pensar y sanar: la universidad como espacio de incidencia, investigación y prevención frente al vacío existencial.</p>
   </section>
 
   <main class="timeline-container">
     
-    <div class="etapa">
+    <section class="etapa" aria-label="Etapa 1: Docencia: transmitir el conocimiento">
       <div class="etapa-header">
         <span class="etapa-num">Etapa 1</span>
-        <h2 class="etapa-title">El Desafío Existencial y Digital</h2>
-        <p class="etapa-desc">Abordar las causas profundas del consumo en la etapa de transición a la vida adulta y el impacto de los entornos virtuales.</p>
+        <h2 class="etapa-title">Docencia: transmitir el conocimiento</h2>
+        <p class="etapa-desc">Formar a referentes territoriales y a futuros profesionales de todas las carreras que sepan que el consumo es un tema de salud y no un delito.</p>
       </div>
       <div class="grid">
-        <a class="card" href="itinerario_12_vacio_existencial_reconexion_v2.html" style="border-left-color: #D85A30;">
-          <div class="card-n" style="color: #993C1D;">Itinerario 12</div>
-          <div class="card-title">Vacío existencial y reconexión</div>
-          <div class="card-sub">Abordar la adicción como patología del espíritu en un ámbito de alta presión por el éxito académico y profesional[cite: 1].</div>
+        <a class="card" href="itinerario_15_patologia_dual_v2.html" aria-label="Ir al itinerario 15: Patología dual: cuando el dolor tiene doble nombre" style="border-left-color: #D85A30;">
+          <div class="card-n" style="color: #993C1D;">Itinerario 15</div>
+          <div class="card-title">Patología dual: cuando el dolor tiene doble nombre</div>
+          <div class="card-sub">Modelos explicativos, criterios de derivación y articulación con salud mental ante la coexistencia de trastornos mentales y consumo.</div>
         </a>
-        <a class="card" href="itinerario_8_territorio_digital_v2.html" style="border-left-color: #534AB7;">
+        <a class="card" href="itinerario_12_vacio_existencial_reconexion_v2.html" aria-label="Ir al itinerario 12: Vacío existencial y reconexión espiritual" style="border-left-color: #D85A30;">
+          <div class="card-n" style="color: #993C1D;">Itinerario 12</div>
+          <div class="card-title">Vacío existencial y reconexión espiritual</div>
+          <div class="card-sub">La adicción como patología del espíritu: una mirada que el futuro profesional necesita junto a la clínica.</div>
+        </a>
+        <a class="card" href="itinerario_8_territorio_digital_v2.html" aria-label="Ir al itinerario 8: El territorio digital como nuevo desafío" style="border-left-color: #534AB7;">
           <div class="card-n" style="color: #3C3489;">Itinerario 8</div>
-          <div class="card-title">El territorio digital</div>
-          <div class="card-sub">Comprender las adicciones comportamentales y el rol de las redes sociales en la salud mental estudiantil[cite: 1].</div>
+          <div class="card-title">El territorio digital como nuevo desafío</div>
+          <div class="card-sub">Adicciones conductuales, redes sociales y FOMO: leer sin alarmismo el entorno donde los jóvenes pasan gran parte de su vida.</div>
         </a>
       </div>
-    </div>
+    </section>
 
-    <div class="etapa">
+    <section class="etapa" aria-label="Etapa 2: Investigación: producir el conocimiento">
       <div class="etapa-header">
         <span class="etapa-num">Etapa 2</span>
-        <h2 class="etapa-title">Incidencia y Diagnóstico Técnico</h2>
-        <p class="etapa-desc">Formar profesionales con una mirada PLAPA, capaces de detectar y actuar desde sus futuras disciplinas.</p>
+        <h2 class="etapa-title">Investigación: producir el conocimiento</h2>
+        <p class="etapa-desc">Una investigación aplicada que escuche al territorio, documente los consumos reales y genere datos capaces de incidir en las políticas públicas.</p>
       </div>
       <div class="grid">
-        <a class="card" href="itinerario_15_patologia_dual_v2.html" style="border-left-color: #D85A30;">
-          <div class="card-n" style="color: #993C1D;">Itinerario 15</div>
-          <div class="card-title">Patología dual</div>
-          <div class="card-sub">Herramientas para gabinetes psicopedagógicos universitarios ante la coexistencia de trastornos mentales y consumo[cite: 1].</div>
+        <a class="card" href="itinerario_6_leer_territorio_v4.html" aria-label="Ir al itinerario 6: Leer el territorio sin romantizarlo" style="border-left-color: #534AB7;">
+          <div class="card-n" style="color: #3C3489;">Itinerario 6</div>
+          <div class="card-title">Leer el territorio sin romantizarlo</div>
+          <div class="card-sub">Diagnóstico territorial participativo: mapear y documentar las dinámicas reales del barrio sin prejuicios.</div>
         </a>
-        <a class="card" href="itinerario_4_caridad_v4.html" style="border-left-color: #1D9E75;">
+        <a class="card" href="itinerario_17_capital_recuperacion_v2.html" aria-label="Ir al itinerario 17: Capital de recuperación" style="border-left-color: #D85A30;">
+          <div class="card-n" style="color: #993C1D;">Itinerario 17</div>
+          <div class="card-title">Capital de recuperación</div>
+          <div class="card-sub">Los ocho dominios del capital de recuperación: una herramienta para mirar y acompañar la recuperación en toda su amplitud.</div>
+        </a>
+        <a class="card" href="itinerario_4_caridad_v4.html" aria-label="Ir al itinerario 4: La caridad política como misión" style="border-left-color: #1D9E75;">
           <div class="card-n" style="color: #085041;">Itinerario 4</div>
-          <div class="card-title">Caridad política como misión</div>
-          <div class="card-sub">Transformar el conocimiento académico en incidencia social para atacar las estructuras de pecado[cite: 1].</div>
+          <div class="card-title">La caridad política como misión</div>
+          <div class="card-sub">Del acompañamiento individual a la incidencia en políticas públicas y en las estructuras de pecado.</div>
         </a>
       </div>
-    </div>
+    </section>
 
-    <div class="etapa">
+    <section class="etapa" aria-label="Etapa 3: Extensión: la relación con el territorio">
       <div class="etapa-header">
         <span class="etapa-num">Etapa 3</span>
-        <h2 class="etapa-title">Construir Comunidad</h2>
-        <p class="etapa-desc">Propuestas institucionales para prevenir el consumo y humanizar el ámbito universitario.</p>
+        <h2 class="etapa-title">Extensión: la relación con el territorio</h2>
+        <p class="etapa-desc">Transferir saberes y herramientas a escuelas, centros comunitarios y referentes barriales, sin asistencialismo.</p>
       </div>
       <div class="grid">
-        <a class="card" href="itinerario_28_prevencion_escolar_universitaria_v2.html" style="border-left-color: #185FA5;">
+        <a class="card" href="itinerario_28_prevencion_escolar_universitaria_v2.html" aria-label="Ir al itinerario 28: Prevención escolar y universitaria" style="border-left-color: #378ADD;">
           <div class="card-n" style="color: #185FA5;">Itinerario 28</div>
-          <div class="card-title">Prevención universitaria</div>
-          <div class="card-sub">Estrategias para que la institución educativa sea un lugar donde la palabra tenga lugar antes que el vacío[cite: 1].</div>
+          <div class="card-title">Prevención escolar y universitaria</div>
+          <div class="card-sub">La escuela y la universidad como espacios preventivos: que la palabra tenga lugar antes que el vacío.</div>
+        </a>
+        <a class="card" href="itinerario_25_centros_barriales_v2.html" aria-label="Ir al itinerario 25: Cómo abrir y sostener un centro barrial" style="border-left-color: #378ADD;">
+          <div class="card-n" style="color: #185FA5;">Itinerario 25</div>
+          <div class="card-title">Cómo abrir y sostener un centro barrial</div>
+          <div class="card-sub">Cercanía, gestión y acompañamiento: conocer el dispositivo territorial con el que la universidad se vincula.</div>
         </a>
       </div>
-    </div>
+    </section>
 
   </main>
 

@@ -24,7 +24,7 @@
     --borde:      #E4E2F0;
 
     --font-serif: "Georgia", "Times New Roman", serif;
-    --font-sans:  "system-ui", -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+    --font-sans:  system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -772,7 +772,7 @@
   }
   .foro-form textarea:focus,
   .foro-form select:focus {
-    outline: none;
+    outline: 2px solid transparent;
     border-color: var(--i23-medio);
   }
   .foro-form-actions {
@@ -1009,7 +1009,18 @@
   .eval-q {
     margin-bottom: 1.5rem;
   }
-  .eval-q > label {
+  fieldset.eval-scale {
+    border: 0;
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+    min-width: 0;
+  }
+  .eval-q > legend {
+    padding: 0;
+  }
+  .eval-q > label,
+  .eval-q > legend {
     display: block;
     font-size: 14px;
     font-weight: 500;
@@ -1033,7 +1044,7 @@
   }
   .eval-q textarea:focus,
   .eval-q input:focus {
-    outline: none;
+    outline: 2px solid transparent;
     border-color: var(--i23-medio);
     box-shadow: 0 0 0 3px rgba(60, 52, 137, 0.1);
   }
@@ -1063,6 +1074,10 @@
     position: absolute;
     opacity: 0;
     pointer-events: none;
+  }
+  .eval-radio input:focus-visible + span {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
   }
   .eval-radio span {
     display: block;
@@ -1155,7 +1170,10 @@
     .root { box-shadow: none; padding: 1rem; max-width: 100%; }
     .portada, .video-wrap, .mode-selector, .nav { display: none !important; }
     .card { display: none !important; }
-    #m6.card { display: block !important; break-inside: avoid; border: none; }
+    #m6.card { display: block !important; border: none; }
+    .eval-q { break-inside: avoid; }
+    .video-wrap, .top-header, .foro-vista { display: none !important; }
+    .eval-q textarea { overflow: visible; resize: none; }
     .eval-actions, .eval-msg { display: none !important; }
     .ch { background: transparent; }
     .eval-q textarea, .eval-q input[type="date"] {
@@ -1207,11 +1225,11 @@
 
     <div class="dest-box">
       <div class="dest-lbl">Destinatarios</div>
-      <div class="dest-txt">Agentes de pastoral carcelaria, coordinadores de casas de medio camino o dispositivos pospenitenciarios, y equipos que articulan con el sistema judicial y penitenciario. También útil para parroquias que quieren iniciar un acercamiento a la realidad carcelaria del territorio y para agentes que acompañan familias de personas privadas de libertad. Nivel intermedio: requiere disposición a trabajar en contextos institucionales complejos. Articulado con el Itinerario 22 (captación del narco en menores).</div>
+      <div class="dest-txt">Agentes de pastoral carcelaria, coordinadores de casas de medio camino o dispositivos pospenitenciarios, y equipos que articulan con el sistema judicial y penitenciario. También útil para parroquias que quieren iniciar un acercamiento a la realidad carcelaria del territorio y para agentes que acompañan familias de personas privadas de libertad. Nivel intermedio: requiere disposición a trabajar en contextos institucionales complejos. Articulado con el §4.5 (Las familias y los más chicos), que describe la captación de menores por el narcotráfico.</div>
     </div>
 
     <div class="portada-pills">
-      <span class="portada-pill">§4.12 · §11.5 · §12.5 · §12.6</span>
+      <span class="portada-pill">§4.12 · §11.5 · §12.3.6</span>
       <span class="portada-pill">4 módulos</span>
       <span class="portada-pill">Pastoral carcelaria</span>
       <span class="portada-pill">Nivel intermedio</span>
@@ -1221,15 +1239,14 @@
 
   <!-- ═══ VIDEO ═══════════════════════════════════════════ -->
   
-  <!-- NUEVO: Bloque del Video de Presentación Incrustado -->
-<div style="background: var(--surface-2); border: 0.5px solid var(--border); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
-  <p style="font-size: 11px; font-weight: 500; color: #085041; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; text-align: left;">
+<div class="video-wrap" style="background: #FFF; border: 1px solid var(--borde); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
+  <p style="font-size: 11px; font-weight: 500; color: var(--i23-oscuro); letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; text-align: left;">
     ▶️ Video de presentación
   </p>
   <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px;">
     <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
       src="https://www.youtube.com/embed/oW3aunm_vK8"
-      title="Presentación del Itinerario 23" 
+      title="Video de presentación: Pastoral en cárceles y pospenados — Itinerario 23" 
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
       allowfullscreen>
     </iframe>
@@ -1238,8 +1255,8 @@
 
   <!-- ═══ SELECTOR DE MODALIDAD ═══════════════════════════ -->
   <div class="mode-selector">
-    <button class="mode-btn on" onclick="setMode('grupal', this)">👥 Hacer en comunidad</button>
-    <button class="mode-btn" onclick="setMode('individual', this)">👤 Hacer de forma individual</button>
+    <button class="mode-btn on" aria-pressed="true" onclick="setMode('grupal', this)">👥 Hacer en comunidad</button>
+    <button class="mode-btn" aria-pressed="false" onclick="setMode('individual', this)">👤 Hacer de forma individual</button>
   </div>
 
   <!-- ═══ NAVEGACIÓN ══════════════════════════════════════ -->
@@ -1264,25 +1281,25 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"Las cárceles están pobladas mayoritariamente por personas en situación de pobreza, lo que revela un sistema donde el consumo problemático y el delito cometido para sostenerlo atrapan a los sectores más excluidos en un ciclo de reincidencia. El encierro, lejos de funcionar como espacio de resocialización, suele profundizar la problemática de las adicciones."</div>
+        <div class="resonancia-txt">«Las cárceles están pobladas mayoritariamente por personas en situación de pobreza, lo que revela un sistema donde el consumo problemático y el delito cometido para sostenerlo atrapan a los sectores más excluidos en un ciclo de reincidencia. Se detecta que el encierro, lejos de funcionar como un espacio de resocialización, suele profundizar la problemática de las adicciones».</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Dato crítico · §4.12</div>
-        <div class="alerta-txt">En las cárceles de menores, <em>"la gran mayoría de los adolescentes privados de su libertad lo están por causas vinculadas directamente al uso de sustancias."</em> El cerebro humano no completa su maduración hasta los <strong>25 años</strong>: el consumo dentro del penal <em>genera daños neurológicos irreversibles</em> en un órgano todavía en desarrollo (articulación con §9.4.1, Itin 20).</div>
+        <div class="alerta-txt">En las cárceles de menores, <em>«la gran mayoría de los adolescentes privados de su libertad lo están por causas vinculadas directamente al uso de sustancias»</em>. El cerebro humano no completa su maduración hasta los <strong>25 años</strong>: el consumo dentro del penal <em>genera daños neurológicos irreversibles</em> en un órgano todavía en desarrollo (articulación con §9.4.1).</div>
       </div>
 
       <div class="pl">El Ver — Realidad</div>
       <ul class="pts">
-        <li><span class="dot">V</span><span><strong>El penal como territorio más peligroso que la propia calle.</strong> El §4.12 describe el penal como un territorio con dinámicas propias y más peligrosas que la calle: <em>"existe un mercado de sustancias donde la droga funciona como moneda de cambio y herramienta de poder. Existen estructuras internas que esclavizan a los internos a través de la deuda; se reportan casos donde, ante la negativa de un interno a consumir o vender, se ejerce violencia física contra él para obligar a su familia a enviar dinero desde el exterior."</em> El penal <em>puede ser un escenario de mayor riesgo y desprotección que la propia calle</em>.</span></li>
-        <li><span class="dot">V</span><span><strong>Rechazo del tratamiento por miedo al sistema que debería tratarlo.</strong> La barrera en el acceso a salud mental documentada por el §4.12 es uno de los datos más perturbadores: <em>"muchos internos que padecen patologías psiquiátricas rechazan la medicación necesaria por temor a que el sistema judicial utilice ese diagnóstico para alargar sus penas o denegarles salidas transitorias bajo la etiqueta de enfermos mentales."</em> El sistema que debería tratar <em>termina castigando el pedido de ayuda</em>.</span></li>
-        <li><span class="dot">V</span><span><strong>El personal penitenciario también está herido.</strong> <em>"El diagnóstico incluye también la situación del personal penitenciario, quienes a menudo trabajan en condiciones de precariedad similares a las de los internos. Muchos agentes están atravesados por la misma problemática del consumo, una realidad que permanece silenciada por el estigma institucional"</em> (§4.12). <em>El cuidador también está herido.</em> Esta dimensión del diagnóstico es central para cualquier abordaje pastoral que no quiera reproducir el mismo silencio que daña al sistema.</span></li>
+        <li><span class="dot">V</span><span><strong>El penal como territorio más peligroso que la propia calle.</strong> El §4.12 describe el penal como un territorio con dinámicas propias y más peligrosas que la calle: <em>«existe un mercado de sustancias donde la droga funciona como moneda de cambio y herramienta de poder. […] Existen estructuras internas que esclavizan a los internos a través de la deuda; se reportan casos donde, ante la negativa de un interno a consumir o vender, se ejerce violencia física contra él para obligar a su familia a enviar dinero desde el exterior»</em>. El penal <em>puede ser un escenario de mayor riesgo y desprotección que la propia calle</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>Rechazo del tratamiento por miedo al sistema que debería tratarlo.</strong> La barrera en el acceso a salud mental documentada por el §4.12 es uno de los datos más perturbadores: <em>«muchos internos que padecen patologías psiquiátricas rechazan la medicación necesaria por temor a que el sistema judicial utilice ese diagnóstico para alargar sus penas o denegarles salidas transitorias bajo la etiqueta de enfermos mentales»</em>. El sistema que debería tratar <em>termina castigando el pedido de ayuda</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>El personal penitenciario también está herido.</strong> <em>«El diagnóstico incluye también la situación del personal penitenciario, quienes a menudo trabajan en condiciones de precariedad similares a las de los internos. Se observa que muchos agentes están atravesados por la misma problemática del consumo, una realidad que permanece silenciada por el estigma institucional»</em> (§4.12). <em>El cuidador también está herido.</em> Esta dimensión del diagnóstico es central para cualquier abordaje pastoral que no quiera reproducir el mismo silencio que daña al sistema.</span></li>
       </ul>
 
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>La cárcel es continuidad del territorio, no mundo aparte.</strong> El §4.12 conecta el sistema penitenciario con el diagnóstico territorial de los primeros capítulos del Manual: <em>"se identifica una extensión directa de la vulnerabilidad que ya habita en los barrios populares."</em> La cárcel <em>no es un mundo separado</em> de la pastoral de adicciones: es la continuación de la misma exclusión que el Manual diagnostica en el territorio, <em>con consecuencias amplificadas por el encierro</em>.</span></li>
-        <li><span class="dot j">J</span><span><strong>Delito y víctima conviven en la misma persona: superposición de roles.</strong> <em>"Alta relación entre consumo, delincuencia y cárcel; el narcomenudeo que superpone los roles de consumidor y vendedor desde las periferias"</em> (§12.6, introducción). Esta superposición de roles es clave para el discernimiento pastoral: <em>la persona encarcelada por narcomenudeo es frecuentemente también consumidora</em>, y muchas veces fue captada por el mismo sistema que el Itinerario 22 describe para los menores. <em>El delito y la víctima conviven en la misma persona.</em></span></li>
+        <li><span class="dot j">J</span><span><strong>La cárcel es continuidad del territorio, no mundo aparte.</strong> El §4.12 conecta el sistema penitenciario con el diagnóstico territorial de los primeros capítulos del Manual: <em>«se identifica una extensión directa de la vulnerabilidad que ya habita en los barrios populares»</em>. La cárcel <em>no es un mundo separado</em> de la pastoral de adicciones: es la continuación de la misma exclusión que el Manual diagnostica en el territorio, <em>con consecuencias amplificadas por el encierro</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>Delito y víctima conviven en la misma persona: superposición de roles.</strong> <em>«Existe una alta relación entre consumo, delincuencia y cárcel; el narcomenudeo que superpone los roles de consumidor y vendedor desde las mismas víctimas que lo asumen como sustento de vida»</em> (§11.9, Documento de Unidad). Esta superposición de roles es clave para el discernimiento pastoral: <em>la persona encarcelada por narcomenudeo es frecuentemente también consumidora</em>, y muchas veces fue captada por el mismo sistema que el §4.5 describe para los menores. <em>El delito y la víctima conviven en la misma persona.</em></span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1292,7 +1309,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Mapear la realidad carcelaria del territorio</div>
         <div class="mode-g">
-          <div class="act-body">El grupo identifica: <em>¿qué penales existen en la zona de incidencia del territorio? ¿cuántas personas del territorio están actualmente privadas de libertad? ¿hay presencia pastoral en esos penales? ¿hay articulación con las familias de las personas detenidas?</em> El mapa de la realidad carcelaria del territorio <em>es el punto de partida para cualquier acción concreta</em>.</div>
+          <div class="act-body">El grupo identifica: <em>¿qué penales existen en la zona de incidencia del territorio? ¿Cuántas personas del territorio están actualmente privadas de libertad? ¿Hay presencia pastoral en esos penales? ¿Hay articulación con las familias de las personas detenidas?</em> El mapa de la realidad carcelaria del territorio <em>es el punto de partida para cualquier acción concreta</em>.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Anotá en tu bitácora los <em>penales más cercanos al territorio</em> y, si lo sabés, cuántas personas del barrio están ahí actualmente. Si no lo sabés, esa es tu <em>primera investigación con las familias</em>: ellas saben.</div>
@@ -1304,10 +1321,10 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">El estigma del personal penitenciario: una mirada de misericordia ampliada</div>
         <div class="mode-g">
-          <div class="act-body">El grupo reflexiona: <em>¿cómo cambia la perspectiva pastoral si se reconoce que el personal penitenciario también puede estar atravesado por el consumo y la precariedad? ¿hay espacio en el dispositivo de pastoral carcelaria para acompañar también a los agentes del sistema, no solo a los internos?</em> La misericordia estructurada que el Manual propone para los hermanos en consumo, <em>¿se extiende también a quienes los custodian?</em></div>
+          <div class="act-body">El grupo reflexiona: <em>¿cómo cambia la perspectiva pastoral si se reconoce que el personal penitenciario también puede estar atravesado por el consumo y la precariedad? ¿Hay espacio en el dispositivo de pastoral carcelaria para acompañar también a los agentes del sistema, no solo a los internos?</em> La misericordia estructurada que el Manual propone para los hermanos en consumo, <em>¿se extiende también a quienes los custodian?</em></div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Anotá en tu bitácora si conocés al menos un agente penitenciario cuyo rostro y nombre podrías reconocer. Si la respuesta es <em>no</em>, ese es un primer indicio: <em>el sistema del que querés tocar necesita que primero conozcas a sus trabajadores</em>, no solo a sus internos.</div>
+          <div class="act-body">Anotá en tu bitácora si conocés al menos un agente penitenciario cuyo rostro y nombre podrías reconocer. Si la respuesta es <em>no</em>, ese es un primer indicio: <em>el sistema que querés tocar necesita que primero conozcas a sus trabajadores</em>, no solo a sus internos.</div>
         </div>
       </div>
 
@@ -1316,7 +1333,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">La familia que espera al que está adentro</div>
         <div class="mode-g">
-          <div class="act-body">El grupo identifica a las <em>familias del territorio con un miembro privado de libertad</em>. <em>¿Qué acompañamiento reciben hoy del dispositivo? ¿hay un espacio específico para ellas? ¿se las acompaña a las visitas, a los trámites judiciales, al desgaste económico que implica sostener a alguien detenido?</em> Las familias de las personas detenidas <em>cargan una doble condena silenciada</em> que la pastoral puede empezar a aliviar.</div>
+          <div class="act-body">El grupo identifica a las <em>familias del territorio con un miembro privado de libertad</em>. <em>¿Qué acompañamiento reciben hoy del dispositivo? ¿Hay un espacio específico para ellas? ¿Se las acompaña a las visitas, a los trámites judiciales, al desgaste económico que implica sostener a alguien detenido?</em> Las familias de las personas detenidas <em>cargan una doble condena silenciada</em> que la pastoral puede empezar a aliviar.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Anotá en tu bitácora los nombres de <em>dos familias</em> del territorio con un miembro privado de libertad. Esta semana, hacé un gesto concreto: <em>una visita, una llamada, un acompañamiento al penal</em>. El contacto directo con esas familias es la puerta de entrada al mundo de la carcelación.</div>
@@ -1325,7 +1342,7 @@
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §4.12</div>
-        <div class="cita-txt">"Las cárceles están pobladas mayoritariamente por personas en situación de pobreza, lo que revela un sistema donde el consumo problemático y el delito cometido para sostenerlo atrapan a los sectores más excluidos en un ciclo de reincidencia."</div>
+        <div class="cita-txt">«Las cárceles están pobladas mayoritariamente por personas en situación de pobreza, lo que revela un sistema donde el consumo problemático y el delito cometido para sostenerlo atrapan a los sectores más excluidos en un ciclo de reincidencia».</div>
         <div class="cita-ref">Manual de la PLAPA, §4.12 — Las cárceles (CELAM 2026)</div>
       </div>
 
@@ -1336,10 +1353,10 @@
 
       <div class="autocuidado">
         <div class="autocuidado-lbl">Autocuidado del agente</div>
-        <div class="autocuidado-txt">El trabajo en contextos de encierro expone al agente pastoral a <em>niveles de violencia, desesperanza y burocracia</em> que pueden ser particularmente desgastantes. El facilitador recuerda que el agente que ingresa a un penal <em>necesita supervisión específica y un espacio de procesamiento emocional regular</em>: lo que se ve y se escucha dentro de un penal <em>no se procesa solo</em>. El equipo de pastoral carcelaria necesita <em>su propio "banco de suplentes"</em> más que cualquier otro.</div>
+        <div class="autocuidado-txt">El trabajo en contextos de encierro expone al agente pastoral a <em>niveles de violencia, desesperanza y burocracia</em> que pueden ser particularmente desgastantes. El facilitador recuerda que el agente que ingresa a un penal <em>necesita supervisión específica y un espacio de procesamiento emocional regular</em>: lo que se ve y se escucha dentro de un penal <em>no se procesa solo</em>. El equipo de pastoral carcelaria necesita <em>su propio «banco de suplentes»</em> más que cualquier otro.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §4.12 (Las cárceles), §12.6 (Casas Libertad introducción), §9.4.1 (Vulnerabilidad biológica adolescente) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §4.12 (Las cárceles), §11.9 (La Pastoral Latinoamericana de Acompañamiento y Prevención de las Adicciones PLAPA), §4.5 (Las familias y los más chicos), §9.4.1 (Vulnerabilidad biológica aumentada en adolescentes y jóvenes) — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1354,8 +1371,14 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"La pastoral carcelaria misiona en el denominado mundo de la carcelación, el cual abarca no solo a la persona privada de su libertad, sino a todo su entorno: familia, poder judicial, personal penitenciario y de seguridad, así como las áreas técnicas de educación, salud, sociales, trabajo y jurídica."</div>
+        <div class="resonancia-txt">«La pastoral carcelaria misiona en el denominado mundo de la carcelación, el cual abarca no solo a la persona privada de su libertad, sino a todo su entorno: familia, poder judicial, personal penitenciario y de seguridad, así como las áreas técnicas de educación, salud, sociales, trabajo y jurídica».</div>
       </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>Formación específica, no solo buena voluntad.</strong> El equipo de pastoral carcelaria, según el §11.5, <em>«está integrado por agentes pastorales y catequistas con formación específica en el contexto de encierro, junto con la presencia de profesionales como acompañantes terapéuticos»</em>. Esa composición <em>no es opcional</em>: la complejidad del mundo de la carcelación requiere formación específica <em>que la buena voluntad sola no puede suplir</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>Evitar la sobremedicación: función concreta del equipo.</strong> Una de las funciones más concretas del equipo es <em>«evitar la sobremedicación de las personas detenidas»</em> (§11.5). Esto conecta con la barrera de acceso a salud mental que el §4.12 documenta: el equipo de pastoral carcelaria puede ser <em>un puente entre el interno que necesita tratamiento psiquiátrico y el sistema que le genera temor</em>, y al mismo tiempo <em>un vigilante de que la medicación no se use como herramienta de control</em> en lugar de cuidado.</span></li>
+      </ul>
 
       <div class="pl">El Juzgar — Las cinco líneas del mundo de la carcelación (§11.5)</div>
       <ul class="pts">
@@ -1366,16 +1389,10 @@
         <li><span class="dot j">5</span><span><strong>Cadena solidaria con redes externas.</strong> Articulación con <em>espacios asistenciales</em> que aseguran la continuidad del tratamiento y el acompañamiento cuando la persona egresa o debe continuar su condena en un entorno comunitario.</span></li>
       </ul>
 
-      <div class="pl">El Ver — Realidad</div>
-      <ul class="pts">
-        <li><span class="dot">V</span><span><strong>Formación específica, no solo buena voluntad.</strong> El equipo de pastoral carcelaria, según el §11.5, <em>"está integrado por agentes pastorales y catequistas con formación específica en el contexto de encierro, junto con la presencia de profesionales como acompañantes terapéuticos."</em> Esa composición <em>no es opcional</em>: la complejidad del mundo de la carcelación requiere formación específica <em>que la buena voluntad sola no puede suplir</em>.</span></li>
-        <li><span class="dot">V</span><span><strong>Evitar la sobremedicación: función concreta del equipo.</strong> Una de las funciones más concretas del equipo es <em>"evitar la sobremedicación de las personas detenidas"</em> (§11.5). Esto conecta con la barrera de acceso a salud mental que el §4.12 documenta: el equipo de pastoral carcelaria puede ser <em>un puente entre el interno que necesita tratamiento psiquiátrico y el sistema que le genera temor</em>, y al mismo tiempo <em>un vigilante de que la medicación no se use como herramienta de control</em> en lugar de cuidado.</span></li>
-      </ul>
-
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
         <li><span class="dot j">J</span><span><strong>El grupo pequeño y artesanal como contracultura pastoral.</strong> El trabajo artesanal con grupos reducidos de 10 a 12 personas en los talleres con salida laboral (§11.5) replica el principio de la <em>Misericordia Estructurada</em> del §6.3.3: la estructura que <em>nace del vínculo, no de la autoridad lejana</em>. Dentro de un sistema penitenciario marcado por la masificación y la deshumanización, <em>el grupo pequeño y artesanal es un gesto de contracultura pastoral</em>.</span></li>
-        <li><span class="dot j">J</span><span><strong>Sin trabajo con la familia, el círculo queda incompleto.</strong> El trabajo con las familias (§11.5) es <em>uno de los puentes más decisivos</em>: el interno que mantiene vínculos familiares activos <em>tiene mayor probabilidad de sostener un proceso de recuperación y de evitar la reincidencia tras el egreso</em>. La pastoral que trabaja <em>"puertas adentro" sin trabajar también con la familia</em> del lado de afuera está dejando incompleto el círculo de sostén que el §6.5.4 (memoria comunitaria) y el §8.5.3 (familias de acogida) describen como esenciales.</span></li>
+        <li><span class="dot j">J</span><span><strong>Sin trabajo con la familia, el círculo queda incompleto.</strong> El trabajo con las familias (§11.5) es <em>uno de los puentes más decisivos</em>: el interno que mantiene vínculos familiares activos <em>tiene mayor probabilidad de sostener un proceso de recuperación y de evitar la reincidencia tras el egreso</em>. La pastoral que trabaja <em>«puertas adentro» sin trabajar también con la familia</em> del lado de afuera está dejando incompleto el círculo de sostén que el §6.5.4 (memoria comunitaria) y el §8.5.3 (familias de acogida y vínculos comunitarios) describen como esenciales.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1385,7 +1402,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Diseñar el primer paso hacia un taller de laborterapia carcelaria</div>
         <div class="mode-g">
-          <div class="act-body">Si el dispositivo no tiene presencia en talleres carcelarios, el grupo diseña el primer paso: <em>¿qué oficio se podría enseñar? ¿quién podría facilitarlo? ¿qué autorización institucional se necesita? ¿cómo se sostendría el grupo reducido de 10 a 12 personas?</em> El modelo del §11.5 es replicable a pequeña escala: <em>no requiere grandes recursos, requiere consistencia y vínculo</em>.</div>
+          <div class="act-body">Si el dispositivo no tiene presencia en talleres carcelarios, el grupo diseña el primer paso: <em>¿qué oficio se podría enseñar? ¿Quién podría facilitarlo? ¿Qué autorización institucional se necesita? ¿Cómo se sostendría el grupo reducido de 10 a 12 personas?</em> El modelo del §11.5 es replicable a pequeña escala: <em>no requiere grandes recursos, requiere consistencia y vínculo</em>.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Anotá en tu bitácora <em>un oficio concreto</em> que podrías enseñar o articular en un penal del territorio (puede ser desde panadería hasta oficio digital). El inicio del vínculo laboral <em>no empieza por una gran propuesta institucional</em>: empieza por una habilidad concreta y un grupo pequeño.</div>
@@ -1397,10 +1414,10 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Construir o fortalecer el grupo de apoyo de familiares</div>
         <div class="mode-g">
-          <div class="act-body">El grupo evalúa: <em>¿existe un espacio de apoyo para familiares de personas privadas de libertad en el territorio? ¿qué necesitarían esas familias (escucha, información sobre el proceso judicial, acompañamiento espiritual, ayuda concreta para las visitas)?</em> Diseñar el primer encuentro de ese grupo, aunque sea pequeño, <em>es un paso decisivo para el sostenimiento del proceso del interno</em>.</div>
+          <div class="act-body">El grupo evalúa: <em>¿existe un espacio de apoyo para familiares de personas privadas de libertad en el territorio? ¿Qué necesitarían esas familias (escucha, información sobre el proceso judicial, acompañamiento espiritual, ayuda concreta para las visitas)?</em> Diseñar el primer encuentro de ese grupo, aunque sea pequeño, <em>es un paso decisivo para el sostenimiento del proceso del interno</em>.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Anotá en tu bitácora los nombres de <em>tres familias</em> del territorio que podrían formar el núcleo inicial de un grupo de apoyo. Un primer encuentro con tres familias <em>ya es grupo</em>: no esperes la masa crítica, el núcleo convoca.</div>
+          <div class="act-body">Anotá en tu bitácora los nombres de <em>tres familias</em> del territorio que podrían formar el núcleo inicial de un grupo de apoyo. Un primer encuentro con tres familias <em>ya es grupo</em>: no esperés la masa crítica, el núcleo convoca.</div>
         </div>
       </div>
 
@@ -1409,7 +1426,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">La cadena solidaria: mapear las redes externas del territorio</div>
         <div class="mode-g">
-          <div class="act-body">El grupo mapea: <em>¿qué dispositivos del territorio (centros barriales, comunidades terapéuticas, programas de empleo) podrían recibir a una persona que egresa del penal? ¿hay contacto previo establecido? ¿hay protocolo de derivación acompañada?</em> La cadena solidaria del §11.5 <em>no se improvisa el día del egreso</em>: se construye con anticipación.</div>
+          <div class="act-body">El grupo mapea: <em>¿qué dispositivos del territorio (centros barriales, comunidades terapéuticas, programas de empleo) podrían recibir a una persona que egresa del penal? ¿Hay contacto previo establecido? ¿Hay protocolo de derivación acompañada?</em> La cadena solidaria del §11.5 <em>no se improvisa el día del egreso</em>: se construye con anticipación.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Anotá en tu bitácora <em>tres dispositivos</em> del territorio que podrían recibir a alguien al egresar. Si no los tenés contactados, elegí uno y <em>abrí el diálogo esta semana</em>. La cadena se construye un eslabón a la vez.</div>
@@ -1418,7 +1435,7 @@
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §11.5</div>
-        <div class="cita-txt">"La tarea pastoral busca mostrar a cada persona el amor de Dios en cada acción emprendida. Se trata de una respuesta integral que pone en primer lugar a la persona, acogiendo la vida tal como viene."</div>
+        <div class="cita-txt">«La tarea pastoral busca mostrar a cada persona el amor de Dios en cada acción emprendida. […] Se trata de una respuesta integral que pone en primer lugar a la persona, acogiendo la vida tal como viene».</div>
         <div class="cita-ref">Manual de la PLAPA, §11.5 — El ámbito de la carcelación (CELAM 2026)</div>
       </div>
 
@@ -1432,7 +1449,7 @@
         <div class="autocuidado-txt">El trabajo con familias de personas privadas de libertad puede exponer al agente a <em>historias de violencia, abandono y dolor acumulado durante años</em>. El facilitador cuida que el agente no se convierta en el único sostén emocional de esas familias: la pastoral acompaña, pero <em>también necesita derivar hacia grupos de apoyo entre pares</em> donde las propias familias se sostengan mutuamente, aliviando la carga exclusiva sobre el agente.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §11.5 (El ámbito de la carcelación), §6.3.3 (Misericordia Estructurada), §6.5.4 (Memoria comunitaria), §8.5.3 (Familias de acogida) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §11.5 (El ámbito de la carcelación), §6.3.3 (La Misericordia Estructurada), §6.5.4 (La memoria comunitaria como herramienta de sanación y empoderamiento), §8.5.3 (Sobre el rol de las familias de acogida y los vínculos comunitarios) — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1447,8 +1464,14 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"La etapa más compleja del proceso no se registra durante el encierro, sino al momento del egreso. Existe un vacío absoluto en el acompañamiento postpenitenciario, donde el Estado suele dar por terminada su intervención al firmar el acta de libertad."</div>
+        <div class="resonancia-txt">«La etapa más compleja del proceso no se registra durante el encierro, sino al momento del egreso. Existe un vacío absoluto en el acompañamiento postpenitenciario, donde el Estado suele dar por terminada su intervención al firmar el acta de libertad».</div>
       </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>Desamparo estructural que empuja a la reincidencia.</strong> El §4.12 describe con precisión devastadora el <em>«abismo de la libertad»</em>: <em>«el liberado sale al portón del penal sin recursos económicos, sin empleo y, frecuentemente, sin una red familiar que lo reciba. Este desamparo estructural empuja al individuo a regresar al mismo entorno de consumo y supervivencia delictiva que lo llevó inicialmente a la cárcel»</em>. El sistema penitenciario produce reincidencia <em>no por fracaso de la voluntad del liberado</em>, sino por ausencia de red al momento crítico del egreso.</span></li>
+        <li><span class="dot">V</span><span><strong>El abismo no es inevitable: es un vacío institucional que la pastoral puede ayudar a llenar.</strong> <em>«Evidenciando la falta de casas de medio camino o redes de contención que sostengan la transición hacia la vida en comunidad»</em> (§4.12). El abismo de la libertad <em>no es inevitable</em>: es la consecuencia directa de un vacío institucional que la pastoral puede ayudar a llenar, <em>aunque no pueda resolverlo sola</em>.</span></li>
+      </ul>
 
       <div class="pl">El Juzgar — El abismo de la libertad (§4.12)</div>
       <div class="ejes">
@@ -1464,16 +1487,10 @@
         </div>
       </div>
 
-      <div class="pl">El Ver — Realidad</div>
-      <ul class="pts">
-        <li><span class="dot">V</span><span><strong>Desamparo estructural que empuja a la reincidencia.</strong> El §4.12 describe con precisión devastadora el <em>"abismo de la libertad"</em>: <em>"el liberado sale al portón del penal sin recursos económicos, sin empleo y, frecuentemente, sin una red familiar que lo reciba. Este desamparo estructural empuja al individuo a regresar al mismo entorno de consumo y supervivencia delictiva que lo llevó inicialmente a la cárcel."</em> El sistema penitenciario produce reincidencia <em>no por fracaso de la voluntad del liberado</em>, sino por ausencia de red al momento crítico del egreso.</span></li>
-        <li><span class="dot">V</span><span><strong>El abismo no es inevitable: es un vacío institucional que la pastoral puede ayudar a llenar.</strong> <em>"Evidenciando la falta de casas de medio camino o redes de contención que sostengan la transición hacia la vida en comunidad"</em> (§4.12). El abismo de la libertad <em>no es inevitable</em>: es la consecuencia directa de un vacío institucional que la pastoral puede ayudar a llenar, <em>aunque no pueda resolverlo sola</em>.</span></li>
-      </ul>
-
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>Fragmentación institucional con consecuencias de vida o muerte.</strong> El abismo de la libertad es la versión carcelaria del mismo fenómeno que el Itinerario 10 (fragmentación institucional) describe para el sistema de salud y asistencia social: <em>instituciones que actúan en compartimentos estancos, sin coordinación, dejando a la persona "rebotando"</em> entre el final de una intervención y el inicio de la siguiente. La diferencia es que <em>en el caso carcelario el abismo puede tener consecuencias de vida o muerte en cuestión de días</em>.</span></li>
-        <li><span class="dot j">J</span><span><strong>El egreso no es cierre: es inicio del trabajo más delicado.</strong> <em>"La salida de la cárcel no es entendida como el final del problema, sino como el comienzo de una etapa frágil y decisiva"</em> (§12.6, Casas Libertad). Esta reformulación pastoral del momento del egreso es central: <em>el sistema lo trata como cierre administrativo; la pastoral lo trata como el inicio del trabajo más delicado</em> y más urgente.</span></li>
+        <li><span class="dot j">J</span><span><strong>Fragmentación institucional con consecuencias de vida o muerte.</strong> El abismo de la libertad es la versión carcelaria del mismo fenómeno que el §6.4 (Superación de la Fragmentación e Integralidad del Acompañamiento) describe para el sistema de salud y asistencia social: <em>instituciones que actúan en compartimentos estancos, sin coordinación, dejando a la persona «rebotando»</em> entre el final de una intervención y el inicio de la siguiente. La diferencia es que <em>en el caso carcelario el abismo puede tener consecuencias de vida o muerte en cuestión de días</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>El egreso no es cierre: es inicio del trabajo más delicado.</strong> <em>«La salida de la cárcel no es entendida como el final del problema, sino como el comienzo de una etapa frágil y decisiva»</em> (§12.3.6, Las Casas Libertad). Esta reformulación pastoral del momento del egreso es central: <em>el sistema lo trata como cierre administrativo; la pastoral lo trata como el inicio del trabajo más delicado</em> y más urgente.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1483,7 +1500,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Diseñar el protocolo de acompañamiento al egreso</div>
         <div class="mode-g">
-          <div class="act-body">El grupo diseña un protocolo mínimo de acompañamiento para el momento del egreso de una persona del territorio: <em>¿quién la recibe en el portón? ¿hay un lugar donde pueda alojarse las primeras noches si no tiene red familiar? ¿hay contacto previo con un dispositivo de empleo o laborterapia? ¿hay continuidad del tratamiento de salud mental si lo tenía dentro del penal?</em> El protocolo <em>no necesita ser perfecto: necesita existir</em>.</div>
+          <div class="act-body">El grupo diseña un protocolo mínimo de acompañamiento para el momento del egreso de una persona del territorio: <em>¿quién la recibe en el portón? ¿Hay un lugar donde pueda alojarse las primeras noches si no tiene red familiar? ¿Hay contacto previo con un dispositivo de empleo o laborterapia? ¿Hay continuidad del tratamiento de salud mental si lo tenía dentro del penal?</em> El protocolo <em>no necesita ser perfecto: necesita existir</em>.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Escribí en tu bitácora los <em>cuatro elementos</em> del protocolo de egreso para tu territorio (recibimiento, alojamiento, empleo, salud). Si alguno falta, esa es la agenda del equipo. El protocolo <em>escrito y conocido</em> es la diferencia entre acompañamiento real e improvisación cada vez.</div>
@@ -1495,7 +1512,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Mapear las casas de medio camino disponibles</div>
         <div class="mode-g">
-          <div class="act-body">El grupo investiga: <em>¿hay casas de medio camino en la diócesis o región para personas que egresan del sistema penitenciario? ¿hay programas similares (Casas Libertad, comunidades terapéuticas con admisión pospenitenciaria)?</em> Si no existen, <em>evaluar la viabilidad de iniciar una propuesta mínima</em>, aunque sea con capacidad para pocas personas. El primer paso <em>no necesita ser grande: necesita ser real</em>.</div>
+          <div class="act-body">El grupo investiga: <em>¿hay casas de medio camino en la diócesis o región para personas que egresan del sistema penitenciario? ¿Hay programas similares (Casas Libertad, comunidades terapéuticas con admisión pospenitenciaria)?</em> Si no existen, <em>evaluar la viabilidad de iniciar una propuesta mínima</em>, aunque sea con capacidad para pocas personas. El primer paso <em>no necesita ser grande: necesita ser real</em>.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Anotá en tu bitácora las <em>casas de medio camino existentes</em> en tu diócesis o región, con sus contactos. Si no existe ninguna, anotá <em>qué espacio comunitario del territorio</em> podría servir de base para iniciar una. El inicio es la pregunta por el espacio, no por el presupuesto.</div>
@@ -1505,18 +1522,18 @@
       <div class="act">
         <span class="act-tag tag-gru mode-g">Grupal</span>
         <span class="act-tag tag-ind mode-i">Individual</span>
-        <div class="act-title">La pregunta de los 90 días críticos</div>
+        <div class="act-title">La pregunta de los primeros tiempos tras el egreso</div>
         <div class="mode-g">
-          <div class="act-body">La evidencia internacional sobre reincidencia muestra que <em>los primeros 90 días tras el egreso son los más críticos</em>. El grupo diseña: <em>¿qué acompañamiento intensivo se podría ofrecer durante ese período específico? ¿visitas semanales? ¿acompañamiento en la búsqueda de empleo? ¿grupo de pares con otras personas en la misma situación?</em> Concentrar recursos en esa ventana crítica <em>puede ser más eficaz que un acompañamiento diluido en el tiempo</em>.</div>
+          <div class="act-body">El §4.12 sitúa en el egreso <em>«la etapa más compleja del proceso»</em>. El grupo diseña: <em>¿qué acompañamiento intensivo se podría ofrecer durante las primeras semanas y meses en libertad? ¿Visitas semanales? ¿Acompañamiento en la búsqueda de empleo? ¿Grupo de pares con otras personas en la misma situación?</em> Concentrar recursos en esa ventana crítica <em>puede ser más eficaz que un acompañamiento diluido en el tiempo</em>.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Anotá en tu bitácora <em>tres acciones concretas</em> que podés ofrecer en los primeros 90 días a alguien que egresa (una semanal, una quincenal, una mensual). La intensidad concentrada <em>sostiene el proceso</em> cuando el abismo es más cerca.</div>
+          <div class="act-body">Anotá en tu bitácora <em>tres acciones concretas</em> que podés ofrecer en las primeras semanas a alguien que egresa (una semanal, una quincenal, una mensual). La intensidad concentrada <em>sostiene el proceso</em> cuando el abismo está más cerca.</div>
         </div>
       </div>
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §4.12</div>
-        <div class="cita-txt">"Existe un vacío absoluto en el acompañamiento postpenitenciario, donde el Estado suele dar por terminada su intervención al firmar el acta de libertad. Este desamparo estructural empuja al individuo a regresar al mismo entorno de consumo y supervivencia delictiva que lo llevó inicialmente a la cárcel."</div>
+        <div class="cita-txt">«Existe un vacío absoluto en el acompañamiento postpenitenciario, donde el Estado suele dar por terminada su intervención al firmar el acta de libertad. […] Este desamparo estructural empuja al individuo a regresar al mismo entorno de consumo y supervivencia delictiva que lo llevó inicialmente a la cárcel».</div>
         <div class="cita-ref">Manual de la PLAPA, §4.12 — Las cárceles (CELAM 2026)</div>
       </div>
 
@@ -1527,10 +1544,10 @@
 
       <div class="autocuidado">
         <div class="autocuidado-lbl">Autocuidado del agente</div>
-        <div class="autocuidado-txt">El acompañamiento del momento del egreso puede generar en el agente una sensación de urgencia y responsabilidad desbordante: <em>"si esta persona vuelve a consumir o reincide, ¿es porque fallé?"</em> El facilitador recuerda que <em>el agente no es el único responsable del abismo de la libertad</em>: es un eslabón de una red más amplia que incluye al Estado, a la familia, a las instituciones de empleo y a la propia voluntad del liberado. <em>Esa distribución de la responsabilidad no es para evadir el compromiso: es para sostenerlo sin colapsar.</em></div>
+        <div class="autocuidado-txt">El acompañamiento del momento del egreso puede generar en el agente una sensación de urgencia y responsabilidad desbordante: <em>«si esta persona vuelve a consumir o reincide, ¿es porque fallé?»</em> El facilitador recuerda que <em>el agente no es el único responsable del abismo de la libertad</em>: es un eslabón de una red más amplia que incluye al Estado, a la familia, a las instituciones de empleo y a la propia voluntad del liberado. <em>Esa distribución de la responsabilidad no es para evadir el compromiso: es para sostenerlo sin colapsar.</em></div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §4.12 (Las cárceles), §12.6 (Casas Libertad) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §4.12 (Las cárceles), §12.3.6 (Las Casas Libertad), §6.4 (Superación de la Fragmentación e Integralidad del Acompañamiento) — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1539,32 +1556,32 @@
     <div class="ch">
       <span class="cn">Módulo 4 · Síntesis</span>
       <div class="ct">Casas Libertad: acompañar antes, durante y después del encierro</div>
-      <div class="cs">Un modelo replicable de pastoral carcelaria integral · §12.6</div>
+      <div class="cs">Un modelo replicable de pastoral carcelaria integral · §12.3.6</div>
     </div>
     <div class="cb">
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"La libertad no se construye solamente con leyes o decisiones individuales, sino con comunidad, tiempo y cuidado. Más que un dispositivo, es una comunidad organizada que acompaña la vida antes, durante y después del encierro, apostando a una sociedad que no descarte personas y que se anime a cuidar."</div>
+        <div class="resonancia-txt">«La libertad no se construye solamente con leyes o decisiones individuales, sino con comunidad, tiempo y cuidado. […] Más que un dispositivo, es una comunidad organizada que acompaña la vida antes, durante y después del encierro, apostando a una sociedad que no descarte personas y que se anime a cuidar».</div>
       </div>
 
-      <div class="pl">El Juzgar — Los tres campos de las Casas Libertad (§12.6)</div>
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>Continuidad articulada en los tres momentos: lo que el sistema no ofrece.</strong> Las Casas Libertad (§12.3.6) son la materialización más completa de la respuesta pastoral al abismo de la libertad: <em>no esperan al egreso para empezar a actuar</em>, sino que están presentes en los tres momentos del proceso (encierro, postpenitenciario, jurídico-penal) de manera articulada. Esa continuidad <em>es exactamente lo que el sistema estatal no ofrece</em> y lo que la pastoral puede aportar como valor diferencial.</span></li>
+        <li><span class="dot">V</span><span><strong>Articulación con el Estado, no confrontación.</strong> <em>«Las Casas Libertad no trabajan aisladas ni “contra” el Estado, sino articulando con organismos penitenciarios, judiciales y sociales, aportando una presencia humana y territorial allí donde muchas veces predominan la fragmentación, la burocracia o el abandono»</em> (§12.3.6). El modelo <em>no es de confrontación con el sistema sino de complementariedad</em>: la pastoral hace lo que el sistema solo no puede hacer.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Los tres campos de las Casas Libertad (§12.3.6)</div>
       <ul class="pts">
         <li><span class="dot j">1</span><span><strong>Encierro.</strong> Visitas, escucha, asistencia concreta y <em>sostén vincular dentro del penal</em>. Trabajo desde la cercanía, frecuentemente con <em>acompañantes pares que también atravesaron consumo, cárcel o exclusión</em>, mostrando que el cambio es posible.</span></li>
         <li><span class="dot j">2</span><span><strong>Postpenitenciario.</strong> Espacios convivenciales y comunitarios donde <em>reconstruir hábitos, vínculos y proyectos de vida</em>. <em>Pedagogía de la libertad</em>: aprender a vivir sin consumo, sin violencia y sin delito <em>desde el cuidado mutuo, no desde el castigo</em>.</span></li>
         <li><span class="dot j">3</span><span><strong>Jurídico-penal.</strong> Acompañamiento del acceso a la justicia de personas <em>perdidas en el sistema judicial</em>. Traducir, orientar, sostener y <em>construir puentes entre la persona, su comunidad y las instituciones</em>. El derecho vinculado a la vida concreta.</span></li>
       </ul>
 
-      <div class="pl">El Ver — Realidad</div>
-      <ul class="pts">
-        <li><span class="dot">V</span><span><strong>Continuidad articulada en los tres momentos: lo que el sistema no ofrece.</strong> Las Casas Libertad (§12.6) son la materialización más completa de la respuesta pastoral al abismo de la libertad: <em>no esperan al egreso para empezar a actuar</em>, sino que están presentes en los tres momentos del proceso (encierro, postpenitenciario, jurídico-penal) de manera articulada. Esa continuidad <em>es exactamente lo que el sistema estatal no ofrece</em> y lo que la pastoral puede aportar como valor diferencial.</span></li>
-        <li><span class="dot">V</span><span><strong>Articulación con el Estado, no confrontación.</strong> <em>"Las Casas Libertad no trabajan aisladas ni 'contra' el Estado, sino articulando con organismos penitenciarios, judiciales y sociales, aportando una presencia humana y territorial allí donde muchas veces predominan la fragmentación, la burocracia o el abandono"</em> (§12.6). El modelo <em>no es de confrontación con el sistema sino de complementariedad</em>: la pastoral hace lo que el sistema solo no puede hacer.</span></li>
-      </ul>
-
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>El derecho vinculado a la vida concreta, no procedimiento abstracto.</strong> El campo del acompañamiento jurídico-penal (§12.6) tiene una afirmación que resume la filosofía de todo el itinerario: <em>"el derecho no aparece separado de la vida concreta, sino vinculado al territorio, al vínculo y a las posibilidades reales de transformación."</em> La justicia que no se conecta con la vida real de la persona —sus vínculos, su territorio, sus posibilidades concretas— <em>termina siendo otro mecanismo de exclusión disfrazado de procedimiento legal</em>.</span></li>
-        <li><span class="dot j">J</span><span><strong>Esperanza fundada, no ingenuidad.</strong> <em>"Nadie cambia solo y que incluso en las historias más dañadas sigue existiendo una posibilidad de reconstrucción"</em> (§12.6). Esta afirmación de esperanza <em>no es ingenuidad</em>: está fundamentada en toda la evidencia que el Manual presenta sobre <em>trayectorias de recuperación (§9.3.4) y capital de recuperación (§8.5)</em>. La persona que sale de prisión con historial de consumo y delito <em>tiene el mismo derecho a la esperanza pastoral que cualquier otro hermano</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>El derecho vinculado a la vida concreta, no procedimiento abstracto.</strong> El campo del acompañamiento jurídico-penal (§12.3.6) tiene una afirmación que resume la filosofía de todo el itinerario: <em>«el derecho no aparece separado de la vida concreta, sino vinculado al territorio, al vínculo y a las posibilidades reales de transformación»</em>. La justicia que no se conecta con la vida real de la persona —sus vínculos, su territorio, sus posibilidades concretas— <em>termina siendo otro mecanismo de exclusión disfrazado de procedimiento legal</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>Esperanza fundada, no ingenuidad.</strong> Las Casas Libertad trabajan <em>«entendiendo que nadie cambia solo y que incluso en las historias más dañadas sigue existiendo una posibilidad de reconstrucción»</em> (§12.3.6). Esta afirmación de esperanza <em>no es ingenuidad</em>: está fundamentada en toda la evidencia que el Manual presenta sobre <em>trayectorias de recuperación (§9.3.4) y capital de recuperación (§8.5)</em>. La persona que sale de prisión con historial de consumo y delito <em>tiene el mismo derecho a la esperanza pastoral que cualquier otro hermano</em>.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1574,7 +1591,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Evaluar el dispositivo propio con el modelo de los tres campos</div>
         <div class="mode-g">
-          <div class="act-body">El grupo evalúa el dispositivo actual de pastoral carcelaria (si existe) con los tres campos del §12.6: <em>¿hay presencia en el encierro? ¿hay acompañamiento postpenitenciario estructurado? ¿hay acompañamiento jurídico-penal?</em> Si solo hay presencia en uno de los tres campos, <em>identificar cuál de los otros dos es el más urgente de desarrollar</em> para el territorio concreto.</div>
+          <div class="act-body">El grupo evalúa el dispositivo actual de pastoral carcelaria (si existe) con los tres campos del §12.3.6: <em>¿hay presencia en el encierro? ¿Hay acompañamiento postpenitenciario estructurado? ¿Hay acompañamiento jurídico-penal?</em> Si solo hay presencia en uno de los tres campos, <em>identificar cuál de los otros dos es el más urgente de desarrollar</em> para el territorio concreto.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Anotá en tu bitácora cuál de los <em>tres campos</em> ya tenés desarrollado, cuál está parcial y cuál ausente. El ausente es la agenda; el parcial es la primera prioridad de consolidación.</div>
@@ -1598,7 +1615,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Cierre: la pedagogía de la libertad</div>
         <div class="mode-g">
-          <div class="act-body">El grupo cierra reflexionando sobre la <em>"pedagogía de la libertad"</em> del §12.6: aprender a vivir sin consumo, sin violencia y sin delito <em>desde el cuidado mutuo, no desde el castigo</em>. <em>¿Qué tiene de distinto esa pedagogía respecto a la lógica punitiva del sistema penitenciario? ¿qué elementos de esa pedagogía puede el equipo incorporar en su propio acompañamiento, dentro y fuera del contexto carcelario?</em> Cerrar con una oración por todas las personas privadas de libertad <em>y por quienes esperan su regreso</em>.</div>
+          <div class="act-body">El grupo cierra reflexionando sobre la <em>«pedagogía de la libertad»</em> del §12.3.6: aprender a vivir sin consumo, sin violencia y sin delito <em>desde el cuidado mutuo, no desde el castigo</em>. <em>¿Qué tiene de distinto esa pedagogía respecto a la lógica punitiva del sistema penitenciario? ¿Qué elementos de esa pedagogía puede el equipo incorporar en su propio acompañamiento, dentro y fuera del contexto carcelario?</em> Cerrar con una oración por todas las personas privadas de libertad <em>y por quienes esperan su regreso</em>.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Escribí en tu bitácora <em>una práctica concreta</em> del equipo que todavía usa lógica de castigo cuando podría usar lógica de cuidado mutuo. Esa es la primera práctica a transformar <em>para encarnar la pedagogía de la libertad</em> en el propio equipo antes de proponerla al liberado.</div>
@@ -1606,14 +1623,14 @@
       </div>
 
       <div class="cita">
-        <div class="cita-lbl">Cita inspiradora · §12.6</div>
-        <div class="cita-txt">"Más que un dispositivo, es una comunidad organizada que acompaña la vida antes, durante y después del encierro, apostando a una sociedad que no descarte personas y que se anime a cuidar."</div>
-        <div class="cita-ref">Manual de la PLAPA, §12.6 — Casas Libertad (CELAM 2026)</div>
+        <div class="cita-lbl">Cita inspiradora · §12.3.6</div>
+        <div class="cita-txt">«Más que un dispositivo, es una comunidad organizada que acompaña la vida antes, durante y después del encierro, apostando a una sociedad que no descarte personas y que se anime a cuidar».</div>
+        <div class="cita-ref">Manual de la PLAPA, §12.3.6 — Las Casas Libertad (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Alerta pastoral</div>
-        <div class="alerta-txt">La <em>pedagogía de la libertad</em> no significa ausencia de límites. <em>Cuidado mutuo</em> no es permisividad: incluye el ejercicio del límite —a veces firme— cuando se vulnera a otros, cuando el consumo activo pone en riesgo al grupo, cuando una conducta destruye la convivencia. La diferencia con la lógica punitiva está <em>en el modo</em>: el límite se pone <em>desde el vínculo y en diálogo</em>, no desde la autoridad distante y la sanción impersonal. Confundir pedagogía de la libertad con <em>"todo se puede"</em> daña al grupo entero y al propio hermano.</div>
+        <div class="alerta-txt">La <em>pedagogía de la libertad</em> no significa ausencia de límites. <em>Cuidado mutuo</em> no es permisividad: incluye el ejercicio del límite —a veces firme— cuando se vulnera a otros, cuando el consumo activo pone en riesgo al grupo, cuando una conducta destruye la convivencia. La diferencia con la lógica punitiva está <em>en el modo</em>: el límite se pone <em>desde el vínculo y en diálogo</em>, no desde la autoridad distante y la sanción impersonal. Confundir pedagogía de la libertad con <em>«todo se puede»</em> daña al grupo entero y al propio hermano.</div>
       </div>
 
       <div class="autocuidado">
@@ -1621,7 +1638,7 @@
         <div class="autocuidado-txt">El itinerario sobre pastoral carcelaria cierra con la pregunta que la pedagogía de la libertad le hace al equipo: <em>¿practicamos también nosotros el cuidado mutuo en lugar del castigo cuando alguien del equipo se equivoca?</em> La libertad que el Manual propone construir con los liberados —desde la comunidad, el tiempo y el cuidado— <em>es también el modelo de relación que el equipo necesita vivir entre sí</em>. El agente que trabaja en contextos de encierro necesita, más que ningún otro, <em>sentirse en libertad dentro de su propio equipo</em>.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §12.6 (Casas Libertad), §4.12 (Las cárceles), §11.5 (El ámbito de la carcelación), §9.3.4 (Trayectorias de recuperación), §8.5 (Capital de recuperación) · Contacto: cooperativaaupa@hogardecristo.org.ar — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §12.3.6 (Las Casas Libertad), §4.12 (Las cárceles), §11.5 (El ámbito de la carcelación), §9.3.4 (Trayectorias de recuperación: la recaída como parte del proceso), §8.5 (Capital de Recuperación, Familia y Comunidad) · Contacto: cooperativaaupa@hogardecristo.org.ar — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1636,8 +1653,8 @@
 
       <!-- Selector de vista: este itinerario / global -->
       <div class="foro-vista">
-        <button class="foro-vista-btn on" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
-        <button class="foro-vista-btn" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
+        <button class="foro-vista-btn on" aria-pressed="true" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
+        <button class="foro-vista-btn" aria-pressed="false" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
       </div>
 
       <!-- Pautas pastorales -->
@@ -1689,7 +1706,7 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Antes de comenzar</div>
-        <div class="resonancia-txt">"La revisión de vida es la forma histórica que la Iglesia latinoamericana encontró para institucionalizar el Ver–Juzgar–Actuar. El agente que la practica no aplica el método: lo vive." Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
+        <div class="resonancia-txt">Este itinerario te invitó a mirar la cárcel como continuidad del barrio, a acompañar todo el mundo de la carcelación, a no dejar solo a nadie ante el abismo de la libertad y a conocer el modelo de las Casas Libertad. Ahora es el momento de nombrar qué cambió en tu mirada. Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
       </div>
 
       <div class="eval-nota">
@@ -1699,24 +1716,24 @@
 
       <div class="pl">El Ver — Qué se hizo visible</div>
       <div class="eval-q">
-        <label for="evalVer">¿Qué realidad del territorio se hizo más visible para vos a lo largo de estos cuatro módulos? ¿Qué llagas emergieron con más fuerza? ¿Qué zonas del mapa estaban en blanco antes y ahora tienen contenido?</label>
+        <label for="evalVer">¿Qué personas se hicieron más visibles para vos a lo largo de estos cuatro módulos: los vecinos del barrio que hoy están presos, las familias que esperan afuera, el personal penitenciario, el que sale por el portón sin nada? ¿Qué no sabías de lo que pasa adentro del penal y después del egreso?</label>
         <textarea id="evalVer" data-eval="ver" placeholder="Escribí con calma, sin apurarte..."></textarea>
       </div>
 
       <div class="pl">El Juzgar — Qué iluminó, qué preguntas quedaron abiertas</div>
       <div class="eval-q">
-        <label for="evalJuzgar1">¿Qué del método del diagnóstico territorial te iluminó de manera nueva? ¿Qué idea del Manual sentís que ya no podrás dejar de lado?</label>
+        <label for="evalJuzgar1">De la cárcel como extensión de la vulnerabilidad del barrio, del mundo de la carcelación, del abismo de la libertad y del acompañamiento antes, durante y después del encierro: ¿qué te iluminó de manera nueva? ¿Qué idea del Manual sentís que ya no podrás dejar de lado?</label>
         <textarea id="evalJuzgar1" data-eval="juzgar1" placeholder="Nombralo con precisión..."></textarea>
       </div>
       <div class="eval-q">
-        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos? Las preguntas abiertas son también fruto (§13.3).</label>
+        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos? La tensión entre reconocer el daño que alguien causó y ver en esa misma persona a una víctima de la exclusión, entre articular con el Estado y no resignarse a lo que el sistema deja sin hacer: ¿dónde te dejó incómodo/a?</label>
         <textarea id="evalJuzgar2" data-eval="juzgar2" placeholder="Las que siguen ardiendo..."></textarea>
       </div>
 
       <div class="pl">El Actuar — Compromiso concreto</div>
       <div class="eval-q">
-        <label for="evalActuar">¿Qué gesto pastoral concreto vas a intentar en las próximas semanas a partir del diagnóstico que hiciste? Nombralo con nombre, tiempo y lugar. Un compromiso vago no es un compromiso.</label>
-        <textarea id="evalActuar" data-eval="actuar" placeholder="Ej.: En la próxima reunión de equipo (jueves 25) voy a presentar el mapa territorial que construimos y proponer una callejeada específica al sector X del barrio..."></textarea>
+        <label for="evalActuar">¿Qué gesto concreto vas a intentar en las próximas semanas hacia las personas privadas de libertad o recién liberadas? Puede ser acompañar a una familia que tiene a alguien preso, sumarte a la pastoral carcelaria de tu diócesis o preparar con el equipo cómo recibir a alguien el día que sale. Nombralo con nombre, tiempo y lugar. Un compromiso vago no es un compromiso.</label>
+        <textarea id="evalActuar" data-eval="actuar" placeholder="Ej.: El miércoles 14 acompaño a la mamá de X a la visita en la unidad penal y la invito a sumarse al grupo de familiares del centro barrial..."></textarea>
       </div>
       <div class="eval-q eval-fecha">
         <label for="evalFecha">Fecha en la que vas a volver a revisar si pudiste sostenerlo</label>
@@ -1724,8 +1741,8 @@
       </div>
 
       <div class="pl">Autocuidado y equipo</div>
-      <div class="eval-q eval-scale">
-        <label>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</label>
+      <fieldset class="eval-q eval-scale">
+        <legend>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</legend>
         <div class="eval-scale-row">
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="1" data-eval="animo"><span>1</span></label>
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="2" data-eval="animo"><span>2</span></label>
@@ -1733,10 +1750,10 @@
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="4" data-eval="animo"><span>4</span></label>
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="5" data-eval="animo"><span>5</span></label>
         </div>
-      </div>
+      </fieldset>
       <div class="eval-q">
-        <label for="evalCuidado">¿Qué necesitás cuidar de vos mismo/a en las próximas semanas? ¿A quién del equipo se lo vas a decir?</label>
-        <textarea id="evalCuidado" data-eval="cuidado" placeholder="El agente que cuida su esperanza puede sostener la del otro (§1.3)..."></textarea>
+        <label for="evalCuidado">Entrar al penal, escuchar historias de violencia y ver a alguien volver al mismo lugar del que salió puede dejar cansancio, miedo y desesperanza. El Manual recuerda que el descanso no interrumpe la misión: es la condición para sostenerla en el tiempo (§11.1.14). ¿Qué necesitás cuidar de vos en las próximas semanas? ¿Quién te sostiene a vos? ¿A quién del equipo se lo vas a decir?</label>
+        <textarea id="evalCuidado" data-eval="cuidado" placeholder="Ej.: Voy a contarle a X que me pegó mucho que Y volviera a caer preso a los dos meses de salir y que necesito tiempo para procesarlo..."></textarea>
       </div>
 
       <div class="pl">Cierre</div>
@@ -1755,10 +1772,10 @@
 
       <div class="autocuidado" style="margin-top: 2rem;">
         <div class="autocuidado-lbl">Cierre del itinerario</div>
-        <div class="autocuidado-txt">Cerrar bien un itinerario también es autocuidado: celebrar lo caminado, agradecer al equipo, reconocer los propios límites y renovar la esperanza. Este itinerario termina con gratitud: por el territorio que nos habló, por las llagas que dejamos de negar, por el equipo que hizo posible mirar sin apartar la mirada.</div>
+        <div class="autocuidado-txt">Cerrar bien un itinerario también es autocuidado: celebrar lo caminado, agradecer al equipo, reconocer los propios límites y renovar la esperanza. Este itinerario termina con gratitud: por los hermanos privados de libertad que nos recibieron, por las familias que esperan y no sueltan, por el equipo que hizo posible estar en la puerta del penal el día de la salida.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §1.3 (Prólogo), §6.1.3 (Evitar la romantización), §13.2 (Sinodalidad en la práctica), §13.3 (Rolling release), §13.5 (Mecanismos de colaboración) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §4.12 (Las cárceles), §11.5 (El ámbito de la carcelación), §12.3.6 (Las Casas Libertad), §11.1.14 (Cuidar a los que cuidan), §13.3 (La propuesta de un manual Rolling Release), §13.5 (Los mecanismos de colaboración) — CELAM 2026.</div>
 
     </div>
   </div>
@@ -1772,9 +1789,9 @@
     root.classList.add('mode-' + mode);
     var buttons = document.querySelectorAll('.mode-btn');
     for (var i = 0; i < buttons.length; i++) {
-      buttons[i].classList.remove('on');
+      buttons[i].classList.remove('on'); buttons[i].setAttribute('aria-pressed', 'false');
     }
-    btn.classList.add('on');
+    btn.classList.add('on'); btn.setAttribute('aria-pressed', 'true');
   }
 
   function show(n, btn) {
@@ -2051,8 +2068,8 @@
   function setVistaForo(v, btn) {
     vistaForo = v;
     var buttons = document.querySelectorAll('.foro-vista-btn');
-    for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove('on'); }
-    btn.classList.add('on');
+    for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove('on'); buttons[i].setAttribute('aria-pressed', 'false'); }
+    btn.classList.add('on'); btn.setAttribute('aria-pressed', 'true');
     cargarComentarios();
   }
 
@@ -2130,16 +2147,17 @@
     var datos = recolectarEvaluacion();
     var minimoTexto = (datos.ver || '').trim() + (datos.actuar || '').trim();
     if (minimoTexto.length < 30) {
-      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos "El Ver" y "El Actuar" merecen unos renglones honestos.', 'error');
+      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos «El Ver» y «El Actuar» merecen unos renglones honestos.', 'error');
       return;
     }
 
     // Guardar en Supabase (siempre queda en tu bitácora)
     if (!sesion) { window.location.href = '/login'; return; }
-    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario', {
+    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario?on_conflict=usuario_id,itinerario_id', {
       method: 'POST',
       headers: Object.assign({}, supaHeaders(), { 'Prefer': 'resolution=merge-duplicates' }),
       body: JSON.stringify({
+        usuario_id: sesion.user ? sesion.user.id : undefined,
         itinerario_id: ITINERARIO_ID,
         respuestas: datos,
         compartir_con_equipo: datos.compartir_con_equipo === true
@@ -2162,12 +2180,18 @@
 
   function imprimirEvaluacion() {
     autoguardarBorrador();
+    // Que cada respuesta se imprima completa, sin cortarse
+    var areas = document.querySelectorAll('#m6 textarea');
+    for (var i = 0; i < areas.length; i++) {
+      areas[i].style.height = 'auto';
+      areas[i].style.height = areas[i].scrollHeight + 'px';
+    }
     window.print();
   }
 
   // Init general del itinerario
   document.addEventListener('DOMContentLoaded', function() {
-    // Leer sesión (el guard del <head> garantiza que existe)
+    // Leer sesión guardada por el login (puede no existir)
     try {
       var stored = localStorage.getItem('escuela_plapa_sesion');
       if (stored) sesion = JSON.parse(stored);

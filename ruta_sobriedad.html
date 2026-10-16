@@ -11,7 +11,7 @@
       --text-muted: #5a5a5a;
       --primary: #854F0B; 
       --primary-dark: #412402;
-      --accent: #1D9E75; 
+      --accent: #0E7356; 
       --surface: #ffffff;
       --border: #e2dfd8;
       --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -46,6 +46,51 @@
     .card-sub { font-size: 0.9rem; color: var(--text-muted); line-height: 1.45; }
     
     footer { background: var(--primary-dark); color: #e2dfd8; text-align: center; padding: 3rem 5%; font-size: 0.9rem; margin-top: 4rem; }
+    /* Celular */
+    @media (max-width: 640px) {
+      header { padding: 0.75rem 16px; flex-wrap: wrap; gap: 0.4rem 1rem; }
+      .nav-links a { margin-left: 0; margin-right: 1rem; }
+      .ruta-hero { padding: 2.5rem 16px 2rem; }
+      .ruta-hero h1 { font-size: 1.8rem; }
+      .timeline-container { margin: 2.5rem auto; padding: 0 16px; }
+      .etapa { margin-bottom: 2.5rem; }
+      .etapa-title { font-size: 1.5rem; }
+      .grid { grid-template-columns: 1fr; }
+      footer { padding: 2rem 16px; margin-top: 2.5rem; }
+    }
+  
+    /* Accesibilidad: foco visible */
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+    .ruta-hero a:focus-visible { outline-color: #ffffff; }
+
+    /* Impresión */
+    @media print {
+      header, footer, nav, video, iframe { display: none !important; }
+      body { background: #ffffff !important; color: #000000 !important; }
+      .ruta-hero { background: none !important; color: #000 !important; padding: 0 0 1rem !important; text-align: left !important; }
+      .ruta-icon { display: none !important; }
+      .ruta-hero h1 { color: #000 !important; font-size: 1.6rem !important; margin-bottom: 0.5rem !important; }
+      .ruta-hero p { color: #333 !important; max-width: 100% !important; }
+      .timeline-container { max-width: 100% !important; margin: 1rem 0 !important; padding: 0 !important; }
+      .etapa { page-break-inside: avoid; break-inside: avoid; margin-bottom: 1.5rem !important; }
+      .etapa-header { border-bottom-color: #999 !important; }
+      .etapa-title, .etapa-num, .etapa-desc { color: #000 !important; }
+      .grid { gap: 10px !important; }
+      .card {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        border: 1px solid #999 !important;
+        border-left: 3px solid #333 !important;
+        box-shadow: none !important;
+        transform: none !important;
+        background: #fff !important;
+      }
+      .card-title, .card-n, .card-sub { color: #000 !important; }
+    }
   </style>
 </head>
 <body>
@@ -53,8 +98,8 @@
   <header>
     <a href="index.html" class="logo">Escuela PLAPA</a>
     <nav class="nav-links">
-      <a href="index.html#ambitos">← Volver a Ámbitos</a>
-      <a href="catalogo_30_itinerarios_plapa_corregido.html">Catálogo Completo</a>
+      <a href="index.html#ambitos">← Volver a ámbitos</a>
+      <a href="catalogo_30_itinerarios_plapa_corregido.html">Catálogo completo</a>
     </nav>
   </header>
 
@@ -66,55 +111,55 @@
 
   <main class="timeline-container">
     
-    <div class="etapa">
+    <section class="etapa" aria-label="Etapa 1: La institución y sus bases">
       <div class="etapa-header">
         <span class="etapa-num">Etapa 1</span>
-        <h2 class="etapa-title">La Institución y sus Bases</h2>
+        <h2 class="etapa-title">La institución y sus bases</h2>
         <p class="etapa-desc">Conocer la estructura de la Pastoral de la Sobriedad y su metodología específica.</p>
       </div>
       <div class="grid">
-        <a class="card" href="itinerario_27_pastoral_sobriedad_v2.html" style="border-left-color: #378ADD;">
+        <a class="card" href="itinerario_27_pastoral_sobriedad_v2.html" aria-label="Ir al itinerario 27: La Pastoral de la Sobriedad" style="border-left-color: #378ADD;">
           <div class="card-n" style="color: #185FA5;">Itinerario 27</div>
-          <div class="card-title">Pastoral de la Sobriedad</div>
-          <div class="card-sub">Grupos de Autoayuda (GAA), el programa "Nueva Vida" y el rol específico del agente de sobriedad.</div>
+          <div class="card-title">La Pastoral de la Sobriedad</div>
+          <div class="card-sub">Grupos de Autoayuda (GAA), el programa «Nueva Vida» y el rol específico del agente de sobriedad.</div>
         </a>
       </div>
-    </div>
+    </section>
 
-    <div class="etapa">
+    <section class="etapa" aria-label="Etapa 2: El corazón del acompañamiento">
       <div class="etapa-header">
         <span class="etapa-num">Etapa 2</span>
-        <h2 class="etapa-title">El Corazón del Acompañamiento</h2>
+        <h2 class="etapa-title">El corazón del acompañamiento</h2>
         <p class="etapa-desc">La sobriedad no es ausencia de sustancia; es presencia de propósito y sentido.</p>
       </div>
       <div class="grid">
-        <a class="card" href="itinerario_12_vacio_existencial_reconexion_v2.html" style="border-left-color: #D85A30;">
+        <a class="card" href="itinerario_12_vacio_existencial_reconexion_v2.html" aria-label="Ir al itinerario 12: Vacío existencial y reconexión espiritual" style="border-left-color: #D85A30;">
           <div class="card-n" style="color: #993C1D;">Itinerario 12</div>
-          <div class="card-title">Vacío existencial y reconexión</div>
+          <div class="card-title">Vacío existencial y reconexión espiritual</div>
           <div class="card-sub">La adicción como patología del espíritu y la búsqueda de sentido como motor de la sobriedad.</div>
         </a>
-        <a class="card" href="itinerario_16_escucha_activa_herramientas_v2.html" style="border-left-color: #D85A30;">
+        <a class="card" href="itinerario_16_escucha_activa_herramientas_v2.html" aria-label="Ir al itinerario 16: Escucha activa y herramientas psicológicas básicas" style="border-left-color: #D85A30;">
           <div class="card-n" style="color: #993C1D;">Itinerario 16</div>
-          <div class="card-title">Escucha activa</div>
+          <div class="card-title">Escucha activa y herramientas psicológicas básicas</div>
           <div class="card-sub">Herramientas fundamentales para quienes coordinan grupos de autoayuda sin ser especialistas clínicos.</div>
         </a>
       </div>
-    </div>
+    </section>
 
-    <div class="etapa">
+    <section class="etapa" aria-label="Etapa 3: Sostenibilidad y vida comunitaria">
       <div class="etapa-header">
         <span class="etapa-num">Etapa 3</span>
-        <h2 class="etapa-title">Sostenibilidad y Vida Comunitaria</h2>
+        <h2 class="etapa-title">Sostenibilidad y vida comunitaria</h2>
         <p class="etapa-desc">Cómo integrar la sobriedad en la vida cotidiana de la comunidad y el cuidado de quienes coordinan estos espacios.</p>
       </div>
       <div class="grid">
-        <a class="card" href="itinerario_29_cuidar_que_cuidan_v2.html" style="border-left-color: #639922;">
+        <a class="card" href="itinerario_29_cuidar_que_cuidan_v2.html" aria-label="Ir al itinerario 29: Cuidar a los que cuidan" style="border-left-color: #639922;">
           <div class="card-n" style="color: #3B6D11;">Itinerario 29</div>
           <div class="card-title">Cuidar a los que cuidan</div>
           <div class="card-sub">El rol del coordinador de grupo de sobriedad y la necesidad vital de su propio acompañamiento.</div>
         </a>
       </div>
-    </div>
+    </section>
 
   </main>
 

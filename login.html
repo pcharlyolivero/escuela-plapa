@@ -10,10 +10,11 @@
     --bg-color:    #fcfbf9;
     --text-main:   #2d2d2d;
     --text-muted:  #5a5a5a;
-    --text-soft:   #8a8578;
+    --text-soft:   #6e6a5f;  /* ≥ 4,8:1 sobre #fff y #f5f2ec (AA) */
     --primary:     #854F0B;
     --primary-dark:#412402;
     --accent:      #1D9E75;
+    --accent-text: #0F7A59;  /* verde para texto: ≥ 4,7:1 sobre fondos claros (AA) */
     --accent-dark: #085041;
     --surface:     #ffffff;
     --surface-2:   #f5f2ec;
@@ -91,7 +92,7 @@
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--accent);
+    color: var(--accent-text);
     margin-bottom: 0.5rem;
   }
   .card-title {
@@ -283,7 +284,7 @@
     <div class="card-body">
 
       <div id="nextNotice" class="next-notice" style="display:none;">
-      <!--  Te llevaremos a <strong id="nextTitulo">tu itinerario</strong> después de ingresar.-->
+        Te llevaremos a <strong id="nextTitulo">tu itinerario</strong> después de ingresar.
       </div>
 
       <div id="msg" class="msg"></div>
@@ -292,7 +293,7 @@
       <div class="view login on" id="viewLogin">
         <div class="field">
           <label for="loginEmail">Correo electrónico <span class="req">*</span></label>
-          <input type="email" id="loginEmail" autocomplete="email" required>
+          <input type="email" id="loginEmail" autocomplete="email" autofocus required>
         </div>
         <div class="field">
           <label for="loginPass">Contraseña <span class="req">*</span></label>
@@ -316,7 +317,7 @@
           <div class="field">
             <label for="regPais">País <span class="req">*</span></label>
             <select id="regPais" required>
-              <option value="">Seleccioná...</option>
+              <option value="">Seleccioná…</option>
               <option>Argentina</option>
               <option>Bolivia</option>
               <option>Brasil</option>
@@ -342,6 +343,7 @@
               <option>Venezuela</option>
               <option>Otro</option>
             </select>
+            <input type="text" id="regPaisOtro" placeholder="Especificá tu país" style="display:none; margin-top:0.5rem;">
           </div>
           <div class="field">
             <label for="regComunidad">Comunidad o parroquia</label>
@@ -352,7 +354,7 @@
         <div class="field">
           <label for="regRol">¿Desde dónde acompañás?</label>
           <select id="regRol">
-            <option value="">Seleccioná...</option>
+            <option value="">Seleccioná…</option>
             <option>Voluntario/a de base</option>
             <option>Catequista</option>
             <option>Animador/a juvenil</option>
@@ -444,7 +446,9 @@
   // ─── Utilidades ─────────────────────────────────────────
   function qs(name) {
     var m = new RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
-    return m ? decodeURIComponent(m[1]) : '';
+    if (!m) return '';
+    try { return decodeURIComponent(m[1]); }
+    catch (e) { return ''; }  // codificación inválida: se ignora el parámetro
   }
 
   function mostrarMsg(texto, tipo) {
@@ -485,7 +489,7 @@
       mostrarMsg('Completá correo y contraseña.', 'error'); return;
     }
     var btn = document.getElementById('btnLogin');
-    btn.disabled = true; btn.textContent = 'Ingresando...';
+    btn.disabled = true; btn.textContent = 'Ingresando…';
     limpiarMsg();
 
     fetch(SUPABASE_URL + '/auth/v1/token?grant_type=password', {
@@ -503,7 +507,7 @@
       // Traer perfil para tener nombre y país
       cargarPerfilYGuardarSesion(res.data)
         .then(function() {
-          mostrarMsg('¡Bienvenido/a! Redirigiendo...', 'exito');
+          mostrarMsg('¡Bienvenido/a! Redirigiendo…', 'exito');
           setTimeout(irANext, 800);
         })
         .catch(function() {
@@ -521,6 +525,12 @@
   function hacerRegistro() {
     var nombre = document.getElementById('regNombre').value.trim();
     var pais = document.getElementById('regPais').value;
+    // Si eligió «Otro» y completó el campo libre, usar ese valor como país.
+    if (pais === 'Otro') {
+      var otroEl = document.getElementById('regPaisOtro');
+      var otroVal = otroEl ? otroEl.value.trim() : '';
+      if (otroVal) pais = otroVal;
+    }
     var comunidad = document.getElementById('regComunidad').value.trim();
     var rol = document.getElementById('regRol').value;
     var email = document.getElementById('regEmail').value.trim();
@@ -538,7 +548,7 @@
     }
 
     var btn = document.getElementById('btnRegistro');
-    btn.disabled = true; btn.textContent = 'Creando tu cuenta...';
+    btn.disabled = true; btn.textContent = 'Creando tu cuenta…';
     limpiarMsg();
 
     fetch(SUPABASE_URL + '/auth/v1/signup', {
@@ -576,7 +586,7 @@
         nombre: nombre,
         pais: pais
       });
-      mostrarMsg('¡Bienvenido/a a la Escuela PLAPA! Redirigiendo...', 'exito');
+      mostrarMsg('¡Bienvenido/a a la Escuela PLAPA! Redirigiendo…', 'exito');
       setTimeout(irANext, 900);
     })
     .catch(function() {
@@ -589,7 +599,7 @@
     var email = document.getElementById('recEmail').value.trim();
     if (!email) { mostrarMsg('Ingresá tu correo.', 'error'); return; }
     var btn = document.getElementById('btnRecuperar');
-    btn.disabled = true; btn.textContent = 'Enviando...';
+    btn.disabled = true; btn.textContent = 'Enviando…';
     limpiarMsg();
 
     fetch(SUPABASE_URL + '/auth/v1/recover', {
@@ -637,19 +647,33 @@
     } catch (e) {}
   }
 
+  var DESTINO_POR_DEFECTO = 'catalogo_30_itinerarios_plapa_corregido.html';
+
   function irANext() {
-    var next = qs('next');
-    if (next && esUrlSegura(next)) {
-      window.location.href = next;
-    } else {
-      window.location.href = 'catalogo_30_itinerarios_plapa_corregido.html';
-    }
+    window.location.href = destinoSeguro(qs('next')) || DESTINO_POR_DEFECTO;
   }
 
-  function esUrlSegura(url) {
-    // Solo permite rutas relativas dentro del sitio (evita open redirect)
-    if (url.indexOf('//') === 0 || url.indexOf('http') === 0) return false;
-    return true;
+  // Devuelve una URL absoluta del mismo sitio si `url` es una ruta relativa
+  // segura, o null si no lo es. Evita la redirección abierta y el XSS:
+  // rechaza esquemas (javascript:, data:, http:…), rutas «//otro.com»,
+  // barras invertidas (que los navegadores tratan como «/»: «/\otro.com»)
+  // y caracteres de control (que el navegador elimina: «/\t/otro.com»).
+  function destinoSeguro(url, base) {
+    if (typeof url !== 'string') return null;
+    var u = url.trim();
+    if (!u || u.length > 500) return null;
+    if (/[\u0000-\u001F\u007F]/.test(u)) return null;
+    u = u.replace(/\\/g, '/');                      // sanear barras invertidas
+    if (/^[a-zA-Z][a-zA-Z0-9+.\-]*:/.test(u)) return null;  // cualquier esquema
+    if (u.indexOf('//') === 0) return null;          // protocolo relativo: otro dominio
+    try {
+      var b = new URL(base || window.location.href);
+      var abs = new URL(u, b);
+      if (abs.protocol !== b.protocol || abs.host !== b.host) return null;
+      return abs.href;
+    } catch (e) {
+      return null;
+    }
   }
 
   function traducirError(msg) {
@@ -672,14 +696,16 @@
       }
     } catch (e) {}
 
-    // Mostrar aviso de "next"
+    // Mostrar aviso del destino (?next=…)
     var next = qs('next');
-    if (next && esUrlSegura(next)) {
+    if (destinoSeguro(next)) {
       var titulo = 'tu itinerario';
-      var m = next.match(/itinerario_\d+_([^\.]+)/);
-      if (m) titulo = 'el itinerario "' + m[1].replace(/_/g, ' ') + '"';
-      document.getElementById('nextTitulo').textContent = titulo;
-      document.getElementById('nextNotice').style.display = 'block';
+      var m = next.match(/itinerario_(\d+)_([^.\/?#]+?)(?:_v\d+)?\.html/);
+      if (m) titulo = 'el itinerario ' + m[1] + ' («' + m[2].replace(/_/g, ' ') + '»)';
+      var elTitulo = document.getElementById('nextTitulo');
+      var elAviso = document.getElementById('nextNotice');
+      if (elTitulo) elTitulo.textContent = titulo;
+      if (elAviso) elAviso.style.display = 'block';
     }
 
     // Enter para submit en cada vista
@@ -692,6 +718,21 @@
     document.getElementById('recEmail').addEventListener('keydown', function(e) {
       if (e.key === 'Enter') hacerRecuperar();
     });
+
+    // Mostrar/ocultar input libre cuando el país seleccionado es «Otro»
+    var regPaisSel = document.getElementById('regPais');
+    var regPaisOtro = document.getElementById('regPaisOtro');
+    if (regPaisSel && regPaisOtro) {
+      regPaisSel.addEventListener('change', function() {
+        if (regPaisSel.value === 'Otro') {
+          regPaisOtro.style.display = '';
+          regPaisOtro.focus();
+        } else {
+          regPaisOtro.style.display = 'none';
+          regPaisOtro.value = '';
+        }
+      });
+    }
   });
 </script>
 

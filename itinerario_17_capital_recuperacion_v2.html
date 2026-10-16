@@ -24,7 +24,7 @@
     --borde:      #E4E2F0;
 
     --font-serif: "Georgia", "Times New Roman", serif;
-    --font-sans:  "system-ui", -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+    --font-sans:  system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -772,7 +772,7 @@
   }
   .foro-form textarea:focus,
   .foro-form select:focus {
-    outline: none;
+    outline: 2px solid transparent;
     border-color: var(--i17-medio);
   }
   .foro-form-actions {
@@ -1009,7 +1009,18 @@
   .eval-q {
     margin-bottom: 1.5rem;
   }
-  .eval-q > label {
+  fieldset.eval-scale {
+    border: 0;
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+    min-width: 0;
+  }
+  .eval-q > legend {
+    padding: 0;
+  }
+  .eval-q > label,
+  .eval-q > legend {
     display: block;
     font-size: 14px;
     font-weight: 500;
@@ -1033,7 +1044,7 @@
   }
   .eval-q textarea:focus,
   .eval-q input:focus {
-    outline: none;
+    outline: 2px solid transparent;
     border-color: var(--i17-medio);
     box-shadow: 0 0 0 3px rgba(60, 52, 137, 0.1);
   }
@@ -1063,6 +1074,10 @@
     position: absolute;
     opacity: 0;
     pointer-events: none;
+  }
+  .eval-radio input:focus-visible + span {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
   }
   .eval-radio span {
     display: block;
@@ -1155,7 +1170,10 @@
     .root { box-shadow: none; padding: 1rem; max-width: 100%; }
     .portada, .video-wrap, .mode-selector, .nav { display: none !important; }
     .card { display: none !important; }
-    #m6.card { display: block !important; break-inside: avoid; border: none; }
+    #m6.card { display: block !important; border: none; }
+    .eval-q { break-inside: avoid; }
+    .video-wrap, .top-header, .foro-vista { display: none !important; }
+    .eval-q textarea { overflow: visible; resize: none; }
     .eval-actions, .eval-msg { display: none !important; }
     .ch { background: transparent; }
     .eval-q textarea, .eval-q input[type="date"] {
@@ -1203,7 +1221,7 @@
   <div class="portada">
     <p class="portada-sup">Itinerario formativo 17 · Escuela PLAPA · CELAM 2026</p>
     <h1 class="portada-title">Capital de recuperación</h1>
-    <p class="portada-sub">Los ocho dominios del capital de recuperación, las familias de acogida como sostén del proceso, y la construcción de capital cuando no existe. Cierre del bloque 3.</p>
+    <p class="portada-sub">Los ocho dominios del capital de recuperación, las familias de acogida como sostén del proceso, la construcción de capital cuando no existe y la integración del saber profesional con el saber territorial. Cierre del bloque 3.</p>
 
     <div class="dest-box">
       <div class="dest-lbl">Destinatarios</div>
@@ -1221,15 +1239,14 @@
 
   <!-- ═══ VIDEO ═══════════════════════════════════════════ -->
   
-  <!-- NUEVO: Bloque del Video de Presentación Incrustado -->
-<div style="background: var(--surface-2); border: 0.5px solid var(--border); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
-  <p style="font-size: 11px; font-weight: 500; color: #085041; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; text-align: left;">
+<div class="video-wrap" style="background: #FFF; border: 1px solid var(--borde); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
+  <p style="font-size: 11px; font-weight: 500; color: var(--i17-oscuro); letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; text-align: left;">
     ▶️ Video de presentación
   </p>
   <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px;">
     <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
       src="https://www.youtube.com/embed/IJgHJ6bXncQ"
-      title="Presentación del Itinerario 17" 
+      title="Video de presentación: Capital de recuperación — Itinerario 17" 
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
       allowfullscreen>
     </iframe>
@@ -1238,8 +1255,8 @@
 
   <!-- ═══ SELECTOR DE MODALIDAD ═══════════════════════════ -->
   <div class="mode-selector">
-    <button class="mode-btn on" onclick="setMode('grupal', this)">👥 Hacer en comunidad</button>
-    <button class="mode-btn" onclick="setMode('individual', this)">👤 Hacer de forma individual</button>
+    <button class="mode-btn on" aria-pressed="true" onclick="setMode('grupal', this)">👥 Hacer en comunidad</button>
+    <button class="mode-btn" aria-pressed="false" onclick="setMode('individual', this)">👤 Hacer de forma individual</button>
   </div>
 
   <!-- ═══ NAVEGACIÓN ══════════════════════════════════════ -->
@@ -1264,26 +1281,26 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"La recuperación no debe entenderse únicamente como un acto heroico de voluntad individual, sino como un proceso que requiere de un ecosistema de apoyos. El capital de recuperación desplaza la mirada desde lo que el sujeto ha perdido hacia lo que aún conserva o puede desarrollar."</div>
+        <div class="resonancia-txt">«La recuperación de un trastorno por uso de sustancias no debe entenderse únicamente como un acto heroico de voluntad individual, sino como un proceso que requiere de un ecosistema de apoyos. El concepto de capital de recuperación permite identificar el conjunto de recursos que una persona tiene a su disposición para iniciar y sostener el cambio, desplazando la mirada desde lo que el sujeto ha perdido (el déficit) hacia lo que aún conserva o puede desarrollar (las fortalezas)».</div>
       </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>Mirar solo el déficit: la segunda objeción del §8.5.1.</strong> Esa objeción sostiene que el tratamiento debe enfocarse únicamente en el déficit o la enfermedad, en <em>lo que está roto, lo que se perdió, lo que falta</em>, sin mapear también los recursos disponibles. El Manual responde que centrarse solo en la enfermedad es una visión reduccionista que ignora la dignidad del sujeto: <em>«El modelo de gestión de la recuperación enfatiza las resiliencias —lo que queda de la imagen de Dios en la persona— para movilizar la energía necesaria hacia la construcción de un proyecto de vida pleno»</em>. La persona que llega no es solo sus fracturas: <em>es también sus fortalezas</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>La objeción más resistente y la respuesta del Manual.</strong> La primera objeción del §8.5.1 sostiene que <em>«el éxito de la recuperación depende exclusivamente de la voluntad individual y de la decisión de dejar de consumir»</em>. El Manual responde que la recuperación es un proceso social: sin vivienda ni red de apoyo, el riesgo de recaída aumenta. Pero esa respuesta no debe usarse para justificar la inacción (<em>«no podemos hacer nada mientras no tenga techo»</em>). Al contrario, se convierte en un mapa de trabajo: <em>¿cuál de los tres tipos de capital es el más urgente de construir? ¿Qué puede hacer la comunidad para generarlo?</em></span></li>
+      </ul>
 
       <div class="pl">El Juzgar — Los tres tipos de capital de recuperación (§8.5.1)</div>
       <ul class="pts">
         <li><span class="dot j">1</span><span><strong>Capital Personal.</strong> <em>Físico</em>: salud, vivienda, alimentación, recursos financieros. <em>Humano</em>: valores, autoestima, autoeficacia, esperanza, propósito de vida. <em>Es el capital sobre el que la vida espiritual y el acompañamiento pastoral inciden de manera más directa.</em></span></li>
         <li><span class="dot j">2</span><span><strong>Capital Familiar y Social.</strong> Relaciones íntimas y familiares dispuestas a participar. Pares en recuperación. Conexión con instituciones significativas como organizaciones religiosas o lugares de estudio. <em>Es el capital que la red territorial y las familias de acogida generan.</em></span></li>
-        <li><span class="dot j">3</span><span><strong>Capital Comunitario y Cultural.</strong> Políticas locales que reducen el estigma. Redes de recursos. Opciones de recuperación que respetan los valores y la cosmovisión de la comunidad del sujeto. <em>Es el capital que la incidencia y el trabajo en red construyen a largo plazo.</em></span></li>
-      </ul>
-
-      <div class="pl">El Ver — Realidad</div>
-      <ul class="pts">
-        <li><span class="dot">V</span><span><strong>El error más frecuente: mirar solo el déficit.</strong> El §8.5.1 lo identifica: centrarse exclusivamente en <em>lo que está roto, lo que se perdió, lo que falta</em> sin mapear también los recursos disponibles. <em>"El modelo de gestión de la recuperación enfatiza las resiliencias —lo que queda de la imagen de Dios en la persona— para movilizar la energía necesaria hacia la construcción de un proyecto de vida pleno."</em> La persona que llega no es solo sus fracturas: <em>es también sus fortalezas</em>.</span></li>
-        <li><span class="dot">V</span><span><strong>La objeción más resistente y su reformulación.</strong> <em>"Sin una vivienda o una red de apoyo, el riesgo de recaída aumenta drásticamente."</em> El §8.5.1 la acoge —es verdad— pero la reformula: en lugar de usarla para justificar la inacción (<em>"no podemos hacer nada mientras no tenga techo"</em>), la convierte en un mapa de trabajo: <em>¿cuál de los tres tipos de capital es el más urgente de construir? ¿qué puede hacer la comunidad para generarlo?</em></span></li>
+        <li><span class="dot j">3</span><span><strong>Capital Comunitario y Cultural.</strong> Políticas locales que reducen el estigma. Redes de recursos, como los grupos de 12 pasos. Opciones de recuperación que respetan los valores y la cosmovisión de la comunidad del sujeto. <em>Es el capital que la incidencia y el trabajo en red construyen a largo plazo.</em></span></li>
       </ul>
 
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>La voluntad es necesaria pero insuficiente.</strong> <em>"Aunque la autonomía es esencial, la recuperación es un proceso intrínsecamente social y comunitario. El capital de recuperación proporciona el sustento necesario para que la decisión sea sostenible; sin una vivienda o una red de apoyo, el riesgo de recaída aumenta drásticamente por la presión del entorno"</em> (§8.5.1). El capital de recuperación es <em>el andamiaje que permite que la voluntad se sostenga cuando el entorno la presiona</em>.</span></li>
-        <li><span class="dot j">J</span><span><strong>Cada actor de la red aporta al tipo de capital que más puede generar.</strong> La distinción entre los tres tipos de capital tiene implicaciones concretas: el <em>capital personal</em> (autoestima, esperanza, propósito) es el que la vida espiritual y el acompañamiento pastoral contribuyen de manera más directa. El <em>capital social y comunitario</em> es el que la red territorial y las familias de acogida generan. <em>Cada actor de la red aporta al tipo de capital que más puede generar.</em></span></li>
+        <li><span class="dot j">J</span><span><strong>La voluntad es necesaria pero insuficiente.</strong> <em>«Aunque la autonomía es esencial, la recuperación es un proceso intrínsecamente social y comunitario. El capital de recuperación proporciona el sustento necesario para que la decisión sea sostenible; sin una vivienda o una red de apoyo, el riesgo de recaída aumenta drásticamente por la presión del entorno»</em> (§8.5.1). El capital de recuperación es <em>el andamiaje que permite que la voluntad se sostenga cuando el entorno la presiona</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>Cada actor de la red aporta al tipo de capital que más puede generar.</strong> La distinción entre los tres tipos de capital tiene una implicación concreta: ningún actor genera solo todo el capital que una persona necesita. El acompañamiento pastoral incide sobre todo en el personal; la red territorial y las familias de acogida, en el familiar y social; la incidencia y el trabajo en red, en el comunitario y cultural. Por eso la pregunta no es solo <em>¿qué le falta?</em>, sino también <em>¿quién de la red puede aportarlo?</em></span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1293,7 +1310,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Mapear el capital de recuperación de tres casos activos</div>
         <div class="mode-g">
-          <div class="act-body">El grupo toma tres casos activos (anonimizados) y para cada uno mapea los tres tipos de capital: <em>¿qué capital personal tiene (valores, autoestima, propósito, salud física, estabilidad económica)? ¿qué capital social (vínculos familiares, pares en recuperación, instituciones)? ¿qué capital comunitario (pertenencia, cultura, fe)?</em> El mapa revela qué tipo de capital es más escaso y <em>dónde debe concentrarse la acción</em>.</div>
+          <div class="act-body">El grupo toma tres casos activos (anonimizados) y para cada uno mapea los tres tipos de capital: <em>¿qué capital personal tiene (valores, autoestima, propósito, salud física, estabilidad económica)? ¿Qué capital familiar y social (vínculos familiares, pares en recuperación, instituciones como la parroquia o un lugar de estudio)? ¿Qué capital comunitario y cultural (políticas locales que reducen el estigma, redes como los grupos de 12 pasos, opciones de recuperación que respetan sus valores y su cosmovisión)?</em> El mapa revela qué tipo de capital es más escaso y <em>dónde debe concentrarse la acción</em>.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Elegí en tu bitácora una persona que acompañás y dibujá tres columnas (Personal · Social · Comunitario). Escribí lo que <em>sí</em> tiene en cada una, no lo que le falta. La columna más vacía es la próxima prioridad. La lista de fortalezas —aunque sea corta— cambia el tono de la próxima conversación.</div>
@@ -1305,7 +1322,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">De la pregunta por el déficit a la pregunta por las fortalezas</div>
         <div class="mode-g">
-          <div class="act-body">El grupo practica la reformulación: toma la lista de <em>"problemas"</em> de un caso y la convierte en preguntas por recursos. <em>"No tiene familia"</em> → <em>¿qué vínculos afectivos sí tiene? ¿quién lo conoce por nombre? ¿hay alguien que lo espera?</em> <em>"No tiene trabajo"</em> → <em>¿qué sabe hacer? ¿qué le gusta? ¿qué hacía antes?</em> La reformulación no niega los problemas: <em>añade la dimensión que la mirada del déficit invisibiliza</em>.</div>
+          <div class="act-body">El grupo practica la reformulación: toma la lista de <em>«problemas»</em> de un caso y la convierte en preguntas por recursos. <em>«No tiene familia»</em> → <em>¿qué vínculos afectivos sí tiene? ¿Quién lo conoce por nombre? ¿Hay alguien que lo espera?</em> <em>«No tiene trabajo»</em> → <em>¿qué sabe hacer? ¿Qué le gusta? ¿Qué hacía antes?</em> La reformulación no niega los problemas: <em>añade la dimensión que la mirada del déficit invisibiliza</em>.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Tomá en tu bitácora la última descripción escrita que hiciste de una persona que acompañás. Contá cuántas frases hablan de déficits y cuántas de fortalezas. Reescribí la descripción invirtiendo la proporción. <em>La forma en que describimos determina la forma en que acompañamos.</em></div>
@@ -1317,27 +1334,27 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Auditar el propio capital de recuperación del equipo</div>
         <div class="mode-g">
-          <div class="act-body">Los tres tipos de capital también aplican al equipo pastoral. El grupo mapea: <em>¿qué capital personal tiene el equipo (formación, salud, esperanza colectiva)? ¿qué capital social (vínculos internos, apoyos externos, red profesional)? ¿qué capital comunitario (pertenencia a la Iglesia local, redes con otras organizaciones, articulación con el Estado)?</em> El equipo que evalúa su propio capital <em>puede pedir ayuda antes de agotarlo</em>.</div>
+          <div class="act-body">Los tres tipos de capital también aplican al equipo pastoral. El grupo mapea: <em>¿qué capital personal tiene el equipo (formación, salud, esperanza colectiva)? ¿Qué capital social (vínculos internos, apoyos externos, red profesional)? ¿Qué capital comunitario (pertenencia a la Iglesia local, redes con otras organizaciones, articulación con el Estado)?</em> El equipo que evalúa su propio capital <em>puede pedir ayuda antes de agotarlo</em>.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Anotá en tu bitácora tu propio capital personal, social y comunitario como agente pastoral. <em>¿Cuál está más flaco?</em> Ese es el próximo trabajo de autocuidado — y también, probablemente, la próxima conversación que debés a tu director espiritual o al equipo.</div>
+          <div class="act-body">Anotá en tu bitácora tu propio capital personal, social y comunitario como agente pastoral. <em>¿Cuál está más flaco?</em> Ese es el próximo trabajo de autocuidado y, probablemente, también la próxima conversación que le debés a tu director espiritual o al equipo.</div>
         </div>
       </div>
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §8.5.1</div>
-        <div class="cita-txt">"El capital de recuperación es la suma de los recursos personales y sociales que fortalecen la capacidad y las oportunidades de recuperación del individuo. Es una herramienta basada en las fortalezas que reconoce que la sanación es un proceso sostenido por un ecosistema de apoyos integrales."</div>
-        <div class="cita-ref">Manual de la PLAPA, §8.5.1 — El Capital de Recuperación y sus tipos (CELAM 2026)</div>
+        <div class="cita-txt">«El capital de recuperación es la suma de los recursos personales y sociales que fortalecen la capacidad y las oportunidades de recuperación del individuo. Es una herramienta basada en las fortalezas que reconoce que la sanación es un proceso sostenido por un ecosistema de apoyos integrales».</div>
+        <div class="cita-ref">Manual de la PLAPA, §8.5.1 — Sobre el Capital de Recuperación y sus tipos (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Alerta pastoral</div>
-        <div class="alerta-txt">El giro <em>del déficit a las fortalezas</em> puede caer en la trampa opuesta: la <em>invisibilización del déficit real</em>. Nombrar solo las fortalezas para <em>"ser positivos"</em> tampoco es acompañar; es <em>optimismo pastoral</em> que ignora la urgencia. El capital de recuperación no reemplaza el diagnóstico del daño: lo <em>complementa</em>. Sin la lectura simultánea de fortalezas y déficits, la mirada se falsea en cualquiera de los dos extremos.</div>
+        <div class="alerta-txt">El giro <em>del déficit a las fortalezas</em> puede caer en la trampa opuesta: la <em>invisibilización del déficit real</em>. Nombrar solo las fortalezas para <em>«ser positivos»</em> tampoco es acompañar; es <em>optimismo pastoral</em> que ignora la urgencia. El capital de recuperación no reemplaza el diagnóstico del daño: lo <em>complementa</em>. Sin la lectura simultánea de fortalezas y déficits, la mirada se falsea en cualquiera de los dos extremos.</div>
       </div>
 
       <div class="autocuidado">
         <div class="autocuidado-lbl">Autocuidado del agente</div>
-        <div class="autocuidado-txt">El giro del déficit a las fortalezas también aplica al equipo. <em>¿El equipo tiene el hábito de evaluar lo que no funciona (déficit) pero no de celebrar lo que sí funciona (fortalezas)? ¿hay un momento regular donde se nombra lo que el equipo hizo bien?</em> Instituir ese momento no es autocomplacencia: es <em>una práctica de construcción de capital de recuperación del propio equipo</em>.</div>
+        <div class="autocuidado-txt">El giro del déficit a las fortalezas también aplica al equipo. <em>¿El equipo tiene el hábito de evaluar lo que no funciona (déficit) pero no de celebrar lo que sí funciona (fortalezas)? ¿Hay un momento regular donde se nombra lo que el equipo hizo bien?</em> Instituir ese momento no es autocomplacencia: es <em>una práctica de construcción de capital de recuperación del propio equipo</em>.</div>
       </div>
 
       <div class="ref">Referencias: Manual de la PLAPA §8.5.1 (Capital de recuperación y sus tipos) — CELAM 2026.</div>
@@ -1355,15 +1372,20 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"La sostenibilidad del proceso de recuperación no puede depender de un solo factor, sino de la robustez de un ecosistema de recursos que rodea al individuo. Identificar estos dominios permite pasar de una gestión de crisis a una gestión de la recuperación."</div>
+        <div class="resonancia-txt">«La sostenibilidad del proceso de recuperación no puede depender de un solo factor, sino de la robustez de un ecosistema de recursos que rodea al individuo. […] Identificar estos dominios permite pasar de una gestión de crisis a una gestión de la recuperación […]».</div>
       </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>Con capital negativo, ¿la recuperación es imposible? La tercera objeción que el §8.5.2 refuta.</strong> El fundamento del artículo ya marca el camino: <em>«La intervención debe, por tanto, ocuparse de construir y potenciar estos capitales»</em>. El capital negativo no es un veredicto: <em>es un mapa de trabajo</em>. La pregunta no es <em>«¿puede recuperarse sin capital?»</em> sino <em>«¿en qué dominio comenzamos a construir?»</em>.</span></li>
+      </ul>
 
       <div class="pl">El Juzgar — Los ocho dominios del capital de recuperación (§8.5.2)</div>
       <div class="ejes">
         <div class="eje">
           <div class="eje-n">Dominio 1</div>
           <div class="eje-t">Salud física y mental</div>
-          <div class="eje-txt">Estabilidad biológica y psicológica como base. Sin umbral mínimo, el proceso no puede comenzar.</div>
+          <div class="eje-txt">Estabilidad biológica y psicológica como base del eje de estabilización de las condiciones de vida.</div>
         </div>
         <div class="eje">
           <div class="eje-n">Dominio 2</div>
@@ -1398,26 +1420,21 @@
         <div class="eje">
           <div class="eje-n">Dominio 8</div>
           <div class="eje-t">Significado y propósito de vida</div>
-          <div class="eje-txt">El "para qué" que llena la grieta existencial donde se instalaba la adicción. Aporte específico del acompañamiento espiritual.</div>
+          <div class="eje-txt">El «para qué» que llena la grieta existencial donde se instalaba la adicción. Aporte específico del acompañamiento espiritual.</div>
         </div>
       </div>
 
       <div class="pl">El Juzgar — Los tres grandes ejes que agrupan los ocho dominios</div>
       <ul class="pts">
-        <li><span class="dot j">A</span><span><strong>Estabilización de las condiciones de vida (dominios 1-3).</strong> Salud, vivienda y situación legal. <em>La falta de un techo o el padecimiento de enfermedades crónicas sumerge a la persona en una inmediatez de supervivencia que dispara el deseo compulsivo.</em></span></li>
-        <li><span class="dot j">B</span><span><strong>Reconstrucción del tejido vincular (dominios 4-6).</strong> Familia, pares e integración comunitaria. <em>Los pares demuestran la posibilidad del cambio; la comunidad devuelve el sentido de pertenencia a un pueblo.</em></span></li>
-        <li><span class="dot j">C</span><span><strong>Desarrollo del potencial humano (dominios 7-8).</strong> Destrezas y sentido de vida. <em>Redescubrir un "para qué" permite llenar la grieta existencial donde se instalaba la adicción.</em></span></li>
-      </ul>
-
-      <div class="pl">El Ver — Realidad</div>
-      <ul class="pts">
-        <li><span class="dot">V</span><span><strong>"Sin capital positivo, la recuperación es imposible": la objeción que el §8.5.2 refuta.</strong> <em>"La intervención debe, por tanto, ocuparse de construir y potenciar estos capitales."</em> El capital negativo no es un veredicto: <em>es un mapa de trabajo</em>. La pregunta no es <em>"¿puede recuperarse sin capital?"</em> sino <em>"¿en qué dominio comenzamos a construir?"</em></span></li>
+        <li><span class="dot j">A</span><span><strong>Estabilización de las condiciones de vida (dominios 1 a 3).</strong> Salud, vivienda y situación legal. <em>La falta de un techo o el padecimiento de enfermedades crónicas sumergen a la persona en una inmediatez de supervivencia que dispara el deseo compulsivo.</em></span></li>
+        <li><span class="dot j">B</span><span><strong>Reconstrucción del tejido vincular (dominios 4 a 6).</strong> Familia, pares e integración comunitaria. <em>Los pares demuestran la posibilidad del cambio; la comunidad devuelve el sentido de pertenencia a un pueblo.</em></span></li>
+        <li><span class="dot j">C</span><span><strong>Desarrollo del potencial humano (dominios 7 y 8).</strong> Destrezas y sentido de vida. <em>Redescubrir un «para qué» permite llenar la grieta existencial donde se instalaba la adicción.</em></span></li>
       </ul>
 
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>El Dominio 8 es el aporte más específico del acompañamiento pastoral.</strong> <em>"Redescubrir un para qué permite llenar la grieta existencial donde se instalaba la adicción, transformando el deseo de evasión en un proyecto de vida digno y productivo"</em> (§8.5.2). El acompañamiento espiritual del §7 es <em>directamente la intervención en el Dominio 8</em>. Ninguna otra institución puede hacerlo con la profundidad de la comunidad de fe.</span></li>
-        <li><span class="dot j">J</span><span><strong>El orden de los dominios importa: los 1-3 son condición de los 4-8.</strong> Una persona que no tiene techo, que está enferma sin tratamiento o con causas judiciales pendientes vive en un estado de <em>alerta biológica crónica</em> que dificulta cualquier proceso de reflexión, vínculo profundo o construcción de sentido. El orden importa <em>no como secuencia rígida, sino como mapa de prioridades</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>El Dominio 8 es el aporte más específico del acompañamiento pastoral.</strong> <em>«Redescubrir un para qué permite llenar la grieta existencial donde se instalaba la adicción, transformando el deseo de evasión en un proyecto de vida digno y productivo»</em> (§8.5.2). El acompañamiento espiritual, que el §7.1.2 presenta como búsqueda del sentido y propósito vital, <em>interviene directamente en el Dominio 8</em>. Es un aporte propio de la comunidad de fe, que se suma al de los demás actores de la red.</span></li>
+        <li><span class="dot j">J</span><span><strong>Las condiciones de vida pesan sobre todo lo demás.</strong> Según el §8.5.2, la falta de un techo estable o una enfermedad crónica sumergen a la persona en una inmediatez de supervivencia que dispara el deseo de consumo como anestesia. Por eso conviene mirar con atención los dominios 1 a 3, <em>no como condición previa ni como secuencia rígida, sino como mapa de prioridades</em>: el vínculo, los pares y el sentido pueden empezar a construirse aunque la vivienda o la salud sigan frágiles.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1439,7 +1456,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">¿Qué dominio puede construir este equipo?</div>
         <div class="mode-g">
-          <div class="act-body">Para cada dominio con evaluación roja en los casos analizados, el grupo responde: <em>¿qué puede hacer el equipo para contribuir a ese dominio? ¿quién más en la red territorial puede contribuir?</em> El Dominio 8 (significado y propósito) es el más específico del acompañamiento pastoral. <em>¿Hay un espacio explícito en el dispositivo para trabajarlo? ¿o queda implícito y sin nombre?</em></div>
+          <div class="act-body">Para cada dominio con evaluación roja en los casos analizados, el grupo responde: <em>¿qué puede hacer el equipo para contribuir a ese dominio? ¿Quién más en la red territorial puede contribuir?</em> El Dominio 8 (significado y propósito) es el más específico del acompañamiento pastoral. <em>¿Hay un espacio explícito en el dispositivo para trabajarlo? ¿O queda implícito y sin nombre?</em></div>
         </div>
         <div class="mode-i">
           <div class="act-body">Anotá en tu bitácora los ocho dominios y al lado de cada uno: <em>¿qué actor de la red es el mejor situado para construirlo?</em> Ese mapa es también un mapa de a quién pedir ayuda. La pastoral no debe intentar cubrir los ocho: debe articular quién cubre cada uno.</div>
@@ -1451,7 +1468,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Evaluar los ocho dominios del propio equipo</div>
         <div class="mode-g">
-          <div class="act-body">Los ocho dominios también aplican al equipo. El grupo evalúa por colores: <em>¿cómo está la salud del equipo (D1)? ¿tienen espacios físicos adecuados (D2)? ¿hay conflictos institucionales pendientes (D3)? ¿hay red interna de apoyo (D4)? ¿hay pares con quienes compartir aprendizajes (D5)? ¿hay pertenencia clara al proyecto (D6)? ¿hay formación continua (D7)? ¿hay sentido claro de la misión (D8)?</em></div>
+          <div class="act-body">Los ocho dominios también aplican al equipo. El grupo evalúa por colores: <em>¿cómo está la salud del equipo (D1)? ¿Tienen espacios físicos adecuados (D2)? ¿Hay conflictos institucionales pendientes (D3)? ¿Hay red interna de apoyo (D4)? ¿Hay pares con quienes compartir aprendizajes (D5)? ¿Hay pertenencia clara al proyecto (D6)? ¿Hay formación continua (D7)? ¿Hay sentido claro de la misión (D8)?</em></div>
         </div>
         <div class="mode-i">
           <div class="act-body">Escribí en tu bitácora los tres dominios donde el equipo está más frágil <em>como equipo</em>. Compartilos en la próxima reunión. <em>La conversación explícita sobre el propio capital es la mejor prevención del burnout colectivo.</em></div>
@@ -1460,18 +1477,18 @@
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §8.5.2</div>
-        <div class="cita-txt">"La sostenibilidad del bienestar y la prevención de recaídas se organizan en torno a ocho dominios del capital de recuperación. Identificar estos dominios permite pasar de una gestión de crisis a una gestión de la recuperación, donde la ausencia de recursos se aborda sistemáticamente para evitar que el entorno actúe como un disparador de la recurrencia."</div>
-        <div class="cita-ref">Manual de la PLAPA, §8.5.2 — Los ocho dominios del capital de recuperación (CELAM 2026)</div>
+        <div class="cita-txt">«Identificar estos dominios permite pasar de una gestión de crisis a una gestión de la recuperación, donde la ausencia de recursos (capital negativo) se aborda sistemáticamente para evitar que el entorno actúe como un disparador de la recurrencia. […] La sostenibilidad del bienestar y la prevención de recaídas se organizan en torno a ocho dominios del capital de recuperación, agrupados en tres ejes fundamentales […]».</div>
+        <div class="cita-ref">Manual de la PLAPA, §8.5.2 — Sobre los ocho dominios del capital de recuperación (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Alerta pastoral</div>
-        <div class="alerta-txt">Los ocho dominios pueden convertirse en <em>checklist administrativo</em> que sustituye el vínculo por planillas. La evaluación por colores es útil como <em>disparador de conversación</em>, no como fin en sí mismo. El dominio evaluado sin diálogo con el hermano puede reproducir la lógica del expediente que el §8.5.1 justamente quiere superar. La herramienta cambia si <em>se completa con el hermano o se completa sobre el hermano</em>.</div>
+        <div class="alerta-txt">Los ocho dominios pueden convertirse en <em>lista de control administrativa</em> que sustituye el vínculo por planillas. La evaluación por colores es útil como <em>disparador de conversación</em>, no como fin en sí mismo. El dominio evaluado sin diálogo con el hermano puede reproducir la mirada centrada en el déficit que el §8.5.1 justamente quiere superar. La herramienta cambia si <em>se completa con el hermano o se completa sobre el hermano</em>.</div>
       </div>
 
       <div class="autocuidado">
         <div class="autocuidado-lbl">Autocuidado del agente</div>
-        <div class="autocuidado-txt">Los ocho dominios también aplican al equipo pastoral. <em>¿Cuál es el dominio más frágil del propio equipo? ¿la salud de sus miembros (Dominio 1)? ¿los vínculos internos (Dominio 4)? ¿el sentido de lo que hacen (Dominio 8)?</em> El equipo que evalúa su propio capital de recuperación tiene más herramientas para identificar <em>cuándo está en riesgo de quemarse antes de que el burnout sea irreversible</em>.</div>
+        <div class="autocuidado-txt">Ver un caso con muchos dominios en rojo puede dar la sensación de que todo depende de vos. No es así: el mapa de los ocho dominios es también un mapa de <em>con quién compartir la carga</em>. <em>¿En cuántos dominios estás intentando responder solo? ¿A quién de la red podés pedirle que se sume esta semana?</em> El agente que intenta cubrir los ocho dominios por su cuenta <em>se quema antes y acompaña peor</em>.</div>
       </div>
 
       <div class="ref">Referencias: Manual de la PLAPA §8.5.2 (Ocho dominios del capital de recuperación) — CELAM 2026.</div>
@@ -1489,27 +1506,28 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"Cuando la red biológica no está presente o no es favorable, la familia somos nosotros. La comunidad debe constituirse como una red de apoyo que acompaña desde el reconocimiento y la cercanía, entendiendo que el amor incondicional es el motor que restaura la dignidad."</div>
+        <div class="resonancia-txt">«Cuando la red biológica no está presente o no es favorable, la familia somos nosotros. La comunidad debe constituirse como una red de apoyo que acompaña desde el reconocimiento y la cercanía, entendiendo que el amor incondicional es el motor que restaura la dignidad».</div>
       </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>«Sin una red biológica el individuo está destinado al fracaso»: la objeción que el §8.5.3 refuta.</strong> El §8.5.3 responde con precisión: <em>«[…] las adicciones son a menudo enfermedades de aislamiento extremo. Ante su ausencia, la comunidad eclesial y barrial debe ocupar ese rol para evitar que el sujeto quede expuesto a la soledad de la calle y al riesgo de muerte»</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>«Las familias de acogida son solo un recurso asistencial temporal»: la segunda objeción.</strong> El §8.5.3 también la refuta: <em>«El vínculo comunitario posee una fuerza terapéutica excepcional. No busca reemplazar legalmente a la familia, sino ofrecer una familia grande donde la pertenencia y el servicio mutuo permiten al individuo pasar de ser un asistido a ser un miembro activo y digno de la sociedad»</em>.</span></li>
+      </ul>
 
       <div class="pl">El Juzgar — Los cuatro aportes de la comunidad como familia de acogida (§8.5.3)</div>
       <ul class="pts">
         <li><span class="dot j">1</span><span><strong>Suplencia de la orfandad funcional.</strong> Entorno de cuidado donde se <em>cubren necesidades básicas y soporte emocional</em> que el sistema biológico o social no brindó.</span></li>
         <li><span class="dot j">2</span><span><strong>Reparación del modelo vincular.</strong> Figuras de apego seguro que permiten <em>desaprender modelos de violencia e internalizar la confianza</em> en los demás.</span></li>
-        <li><span class="dot j">3</span><span><strong>Generación de capital de recuperación.</strong> Vínculos que <em>recolectan los fragmentos rotos de la historia</em> del individuo y le permiten reescribir su relato.</span></li>
-        <li><span class="dot j">4</span><span><strong>Inclusión social progresiva.</strong> Acceso a derechos que <em>el Estado fragmenta</em>: salud, educación, trabajo, documentación, pertenencia comunitaria.</span></li>
-      </ul>
-
-      <div class="pl">El Ver — Realidad</div>
-      <ul class="pts">
-        <li><span class="dot">V</span><span><strong>"Sin red biológica está destinado al fracaso": la objeción que el §8.5.3 refuta.</strong> El §8.5.3 responde con precisión: <em>"Las adicciones son a menudo enfermedades de aislamiento extremo. Ante su ausencia, la comunidad eclesial y barrial debe ocupar ese rol para evitar que el sujeto quede expuesto a la soledad de la calle y al riesgo de muerte."</em></span></li>
-        <li><span class="dot">V</span><span><strong>"Las familias de acogida son solo un recurso asistencial temporal": la segunda objeción.</strong> El §8.5.3 también la refuta: <em>"El vínculo comunitario posee una fuerza terapéutica excepcional. No busca reemplazar legalmente a la familia, sino ofrecer una familia grande donde la pertenencia y el servicio mutuo permiten al individuo pasar de ser un asistido a ser un miembro activo y digno."</em></span></li>
+        <li><span class="dot j">3</span><span><strong>Generación de capital de recuperación.</strong> Vínculos que <em>recolectan los fragmentos rotos de la historia</em> del individuo y le dan el sustento material y emocional para que no se sienta desechado por el sistema.</span></li>
+        <li><span class="dot j">4</span><span><strong>Inclusión social progresiva.</strong> Acceso a derechos fundamentales que <em>el Estado suele fragmentar</em>: salud, identidad, empleo.</span></li>
       </ul>
 
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>La conexión explícita con la familia comunitaria del §6.2.4 (Itin 7).</strong> El §8.5.3 la afirma: <em>"El vínculo comunitario posee una fuerza terapéutica excepcional… la pertenencia y el servicio mutuo permiten al individuo pasar de ser un asistido a ser un miembro activo y digno de la sociedad."</em> La comunidad que sabe acoger <em>no solo alivia la urgencia: genera el Dominio 6 (integración comunitaria)</em> que el capital de recuperación necesita.</span></li>
-        <li><span class="dot j">J</span><span><strong>Los cuatro aportes son terapéuticos, no solo asistenciales.</strong> La distinción es crucial: el asistencialismo entrega recursos y espera gratitud; el aporte terapéutico <em>cambia la estructura de la persona</em>. Una familia de acogida que cubre necesidades básicas sin generar vínculo hace el primero; una que suma reparación vincular, capital de recuperación e inclusión progresiva hace los cuatro.</span></li>
+        <li><span class="dot j">J</span><span><strong>La conexión con la familia comunitaria del §6.2.4.</strong> El §6.2.4, que remite expresamente a las familias de acogida del §8.5.3, lo formula así: <em>«La comunidad organizada debe constituirse como la red de apoyo alternativa que ofrece un lugar seguro allí donde los lazos biográficos se encuentran rotos o ausentes»</em>. La comunidad que sabe acoger <em>no solo alivia la urgencia: genera el Dominio 6 (integración comunitaria)</em> que el capital de recuperación necesita.</span></li>
+        <li><span class="dot j">J</span><span><strong>Los cuatro aportes son terapéuticos, no solo asistenciales.</strong> La distinción es crucial: el asistencialismo entrega recursos y espera gratitud; el aporte terapéutico <em>cambia la estructura de la persona</em>. Una familia de acogida que cubre necesidades básicas sin generar vínculo se queda en lo asistencial; una que suma reparación vincular, capital de recuperación e inclusión progresiva hace los cuatro.</span></li>
+        <li><span class="dot j">J</span><span><strong>Encuadre del modelo CRAFT (§8.4.7).</strong> <em>CRAFT</em> es la sigla en inglés de <em>Refuerzo Comunitario y Entrenamiento Familiar</em>: el Manual lo ubica en §8.4.7 como enfoque que entrena a la familia para modificar la dinámica vincular —sin confrontación agresiva ni habilitación pasiva del consumo— y así aumentar la probabilidad de que el hermano acepte ayuda.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1519,7 +1537,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Identificar las familias de acogida del territorio</div>
         <div class="mode-g">
-          <div class="act-body">El grupo identifica qué familias del territorio <em>ya funcionan como familias de acogida</em> (aunque no las llamen así): hogares donde se recibe al que no tiene a nadie, mesas donde siempre hay lugar para uno más, espacios donde el hermano puede <em>"volver"</em> después de una recaída sin sentir vergüenza. <em>¿Los conocemos? ¿los sostenemos? ¿les damos el reconocimiento que merecen? ¿los capacitamos para el rol que ya ejercen?</em></div>
+          <div class="act-body">El grupo identifica qué familias del territorio <em>ya funcionan como familias de acogida</em> (aunque no las llamen así): hogares donde se recibe al que no tiene a nadie, mesas donde siempre hay lugar para uno más, espacios donde el hermano puede <em>«volver»</em> después de una recaída sin sentir vergüenza. <em>¿Los conocemos? ¿Los sostenemos? ¿Les damos el reconocimiento que merecen? ¿Los capacitamos para el rol que ya ejercen?</em></div>
         </div>
         <div class="mode-i">
           <div class="act-body">Escribí en tu bitácora los nombres de dos o tres familias del territorio que ya funcionan como familias de acogida <em>sin nombrarse así</em>. Al lado, un gesto concreto de reconocimiento que podés hacer esta semana. <em>La red comunitaria de acogida crece cuando se la nombra.</em></div>
@@ -1531,7 +1549,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Diseñar el programa de familias de acogida del dispositivo</div>
         <div class="mode-g">
-          <div class="act-body">Si no existe un programa formal, el grupo diseña los elementos mínimos: <em>¿qué perfil tienen las familias convocadas? ¿qué formación básica reciben? ¿qué acompañamiento les da el equipo? ¿qué límites tienen (duración, cantidad de personas acogidas, tipos de situaciones)? ¿cómo se reconoce y sostiene su tarea?</em> Las familias de acogida <em>no se improvisan: se reclutan, se forman, se acompañan y se cuidan</em>.</div>
+          <div class="act-body">Si no existe un programa formal, el grupo diseña los elementos mínimos: <em>¿qué perfil tienen las familias convocadas? ¿Qué formación básica reciben? ¿Qué acompañamiento les da el equipo? ¿Qué límites tienen (duración, cantidad de personas acogidas, tipos de situaciones)? ¿Cómo se reconoce y sostiene su tarea?</em> Las familias de acogida <em>no se improvisan: se reclutan, se forman, se acompañan y se cuidan</em>.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Bosquejá en tu bitácora los cinco puntos mínimos del programa: perfil · formación · acompañamiento · límites · reconocimiento. Un boceto de cinco líneas vale más que un programa perfecto que nunca sale del cajón.</div>
@@ -1543,17 +1561,17 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">El Dominio 4 en la práctica: mapear la red vincular de cada proceso</div>
         <div class="mode-g">
-          <div class="act-body">Para los tres casos analizados en el Módulo 2, el grupo mapea el <em>Dominio 4</em> (apoyos familiares y sociales) con detalle: <em>¿quién está dispuesto a participar en el proceso? ¿hay vínculos que habilitan el consumo que deben trabajarse con el enfoque CRAFT? ¿hay vínculos que son fortaleza y que el dispositivo no está aprovechando?</em> El mapa vincular es <em>el plan de trabajo más concreto</em> que el equipo puede construir.</div>
+          <div class="act-body">Para los tres casos analizados en el Módulo 2, el grupo mapea el <em>Dominio 4</em> (apoyos familiares y sociales) con detalle: <em>¿quién está dispuesto a participar en el proceso? ¿Hay vínculos que habilitan el consumo que deben trabajarse con el modelo CRAFT (Refuerzo Comunitario y Entrenamiento Familiar, §8.4.7), que entrena a la familia para modificar la dinámica vincular sin confrontación agresiva ni habilitación pasiva del consumo? ¿Hay vínculos que son fortaleza y que el dispositivo no está aprovechando?</em> El mapa vincular es <em>el plan de trabajo más concreto</em> que el equipo puede construir.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Elegí un caso y dibujá el <em>eco-mapa vincular</em> del hermano: círculo central con el nombre, círculos alrededor con las personas de su vida, líneas continuas (vínculo positivo) o punteadas (vínculo problemático). El dibujo revela con claridad lo que el relato oral suele desordenar.</div>
+          <div class="act-body">Elegí un caso y dibujá el <em>ecomapa vincular</em> del hermano: círculo central con el nombre, círculos alrededor con las personas de su vida, líneas continuas (vínculo positivo) o punteadas (vínculo problemático). El dibujo revela con claridad lo que el relato oral suele desordenar.</div>
         </div>
       </div>
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §8.5.3</div>
-        <div class="cita-txt">"A través de la crianza comunitaria y figuras de apego seguro (como acompañantes pares o referentes barriales), el sujeto puede desaprender modelos de violencia e internalizar la confianza en los demás. Estos vínculos actúan como nudos de una red que recolecta los fragmentos rotos de la historia del individuo."</div>
-        <div class="cita-ref">Manual de la PLAPA, §8.5.3 — Familias de acogida y vínculos comunitarios (CELAM 2026)</div>
+        <div class="cita-txt">«A través de la crianza comunitaria y figuras de apego seguro (como acompañantes pares o referentes barriales), el sujeto puede desaprender modelos de violencia e internalizar la confianza en los demás. […] Estos vínculos actúan como nudos de una red que recolecta los fragmentos rotos de la historia del individuo […]».</div>
+        <div class="cita-ref">Manual de la PLAPA, §8.5.3 — Sobre el rol de las familias de acogida y los vínculos comunitarios (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
@@ -1563,10 +1581,10 @@
 
       <div class="autocuidado">
         <div class="autocuidado-lbl">Autocuidado del agente</div>
-        <div class="autocuidado-txt">El agente que propone familias de acogida necesita también una <em>"familia de acogida"</em> dentro del equipo: alguien que lo reciba cuando está en crisis, que sostenga el vínculo cuando flaquea, que no lo expulse cuando falla. <em>¿Tiene el equipo esa cultura de acogida interna? ¿hay alguien que funcione como "familia de acogida" para los propios agentes en momentos de desgaste?</em> Sin eso, la propuesta de acogida hacia afuera <em>pierde coherencia</em>.</div>
+        <div class="autocuidado-txt">El agente que propone familias de acogida necesita también una <em>«familia de acogida»</em> dentro del equipo: alguien que lo reciba cuando está en crisis, que sostenga el vínculo cuando flaquea, que no lo expulse cuando falla. <em>¿Tiene el equipo esa cultura de acogida interna? ¿Hay alguien que funcione como «familia de acogida» para los propios agentes en momentos de desgaste?</em> Sin eso, la propuesta de acogida hacia afuera <em>pierde coherencia</em>.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §8.5.3 (Familias de acogida y vínculos comunitarios), §6.2.4 (Familia comunitaria) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §8.5.3 (Familias de acogida y vínculos comunitarios), §6.2.4 (Sobre la propuesta del término familia comunitaria), §8.4.7 (Terapias de tercera generación y modelo CRAFT) — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1575,25 +1593,26 @@
     <div class="ch">
       <span class="cn">Módulo 4 · Síntesis</span>
       <div class="ct">Construir capital cuando no existe: el plan de recuperación basado en fortalezas</div>
-      <div class="cs">Del diagnóstico del capital al plan de construcción · §8.5.4</div>
+      <div class="cs">Del diagnóstico del capital al plan de construcción · §8.5.2 · Saber profesional y saber territorial · §8.5.4</div>
     </div>
     <div class="cb">
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"El capital de recuperación puede desarrollarse incluso si nunca existió. La comunidad parroquial y los centros barriales actúan como generadores de capital, proporcionando los vínculos y recursos que otras estructuras no pudieron brindar."</div>
+        <div class="resonancia-txt">«El capital de recuperación puede desarrollarse incluso si nunca existió. La comunidad parroquial y los centros barriales actúan como generadores de capital, proporcionando los vínculos y recursos que otras estructuras no pudieron brindar».</div>
       </div>
 
       <div class="pl">El Ver — Realidad</div>
       <ul class="pts">
-        <li><span class="dot">V</span><span><strong>La afirmación más esperanzadora del capítulo.</strong> El §8.5.1 cierra con una conclusión basada en evidencia territorial: <em>"El capital de recuperación puede desarrollarse incluso si nunca existió."</em> No es una promesa voluntarista: muchas personas que llegan al dispositivo sin ninguno de los ocho dominios en positivo han logrado construir capital suficiente para sostener una recuperación sostenible. <em>La comunidad es la generadora de ese capital que el sistema no ofreció.</em></span></li>
-        <li><span class="dot">V</span><span><strong>La tensión entre saber profesional y saber territorial (§8.5.4).</strong> <em>"El profesional aporta la técnica para abordar patologías duales o traumas complejos, mientras que el acompañante par aporta el arte del acompañamiento y la capacidad de llegar a la herida del otro desde un lugar de igualdad."</em> En la construcción del capital de recuperación, <em>los dos saberes son necesarios y ninguno puede sustituir al otro</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>La afirmación más esperanzadora del capítulo.</strong> La caja de resonancia de este módulo es la respuesta del §8.5.2 a la tercera objeción. No es una promesa voluntarista: tiene sujetos concretos, la comunidad parroquial y los centros barriales, que ofrecen <em>los vínculos y recursos que otras estructuras no pudieron brindar</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>La tensión entre saber profesional y saber territorial (§8.5.4).</strong> <em>«El profesional aporta la técnica necesaria para abordar patologías duales o traumas complejos, mientras que el acompañante par aporta el arte del acompañamiento y la capacidad de llegar a la herida del otro desde un lugar de igualdad»</em>. En la construcción del capital de recuperación, <em>los dos saberes son necesarios y ninguno puede sustituir al otro</em>.</span></li>
       </ul>
 
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>El acompañante par como generador del Dominio 5.</strong> <em>"La eficacia del acompañante par no se explica únicamente por su saber vivencial: radica también en que su sola presencia encarna lo que la psicología del recovery denomina identidad de recuperación —la posibilidad concreta, visible y cercana, de ser otra cosa"</em> (§8.5.4). El acompañante par <em>no aporta solo su historia: aporta la prueba empírica de que el capital de recuperación puede construirse</em>. Su presencia es, en sí misma, un generador del Dominio 5.</span></li>
-        <li><span class="dot j">J</span><span><strong>La formación compartida como capital del equipo.</strong> <em>"Todo el equipo participa en procesos de capacitación mutua donde se valide tanto la ciencia como la sabiduría popular"</em> (§8.5.4). Un equipo que se forma juntos, que valida mutuamente sus saberes, <em>que habla un mismo idioma espiritual y técnico</em> es también un ecosistema de apoyos para sus propios miembros. La formación compartida es la manera institucional de construir el capital de recuperación del propio equipo.</span></li>
+        <li><span class="dot j">J</span><span><strong>El acompañante par como generador del Dominio 5.</strong> <em>«La eficacia del acompañante par no se explica únicamente por su saber vivencial: radica también en que su sola presencia encarna lo que la psicología del recovery denomina identidad de recuperación —la posibilidad concreta, visible y cercana, de ser otra cosa»</em> (§8.5.4). El acompañante par <em>no aporta solo su historia: aporta la prueba empírica de que el capital de recuperación puede construirse</em>. Su presencia es, en sí misma, un generador del Dominio 5.</span></li>
+        <li><span class="dot j">J</span><span><strong>La formación compartida como capital del equipo.</strong> <em>«Es fundamental que todo el equipo participe en procesos de capacitación mutua donde se valide tanto la ciencia como la sabiduría popular, permitiendo hablar un mismo idioma espiritual y técnico»</em> (§8.5.4). Un equipo que se forma en conjunto y valida mutuamente sus saberes es también un ecosistema de apoyos para sus propios miembros. La formación compartida es la manera institucional de construir el capital de recuperación del propio equipo.</span></li>
+        <li><span class="dot j">J</span><span><strong>Acompañamiento inespecífico y específico: cuándo el saber territorial necesita al profesional.</strong> El §8.5.4 distingue <em>«entre un acompañamiento inespecífico (territorial), que es transversal y humaniza el recorrido, y un acompañamiento específico (profesional), que atiende aspectos clínicos, diagnósticos o legales puntuales»</em>. Y reconoce el límite del primero: <em>«El saber territorial puede verse desbordado por situaciones de alta complejidad, como el riesgo suicida o descompensaciones psicóticas»</em>. Construir capital no reemplaza la derivación: ante esas situaciones, <em>el equipo articula con el profesional sin demora</em>.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1601,9 +1620,9 @@
       <div class="act">
         <span class="act-tag tag-gru mode-g">Grupal</span>
         <span class="act-tag tag-ind mode-i">Individual</span>
-        <div class="act-title">Construir el "plan de capital de recuperación" de un caso</div>
+        <div class="act-title">Construir el «plan de capital de recuperación» de un caso</div>
         <div class="mode-g">
-          <div class="act-body">El grupo toma el caso con mayor cantidad de dominios en rojo del Módulo 2 y construye un plan de capital de recuperación: <em>para cada dominio rojo, ¿qué acción concreta puede tomar el equipo? ¿qué actor de la red puede contribuir? ¿en qué plazo realista?</em> El plan no promete todo de golpe: <em>prioriza los dos o tres dominios más urgentes y los convierte en compromisos verificables</em>.</div>
+          <div class="act-body">El grupo toma el caso con mayor cantidad de dominios en rojo del Módulo 2 y construye un plan de capital de recuperación: <em>para cada dominio rojo, ¿qué acción concreta puede tomar el equipo? ¿Qué actor de la red puede contribuir? ¿En qué plazo realista?</em> El plan no promete todo de golpe: <em>prioriza los dos o tres dominios más urgentes y los convierte en compromisos verificables</em>.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Elegí un caso en tu bitácora y escribí un plan mínimo: <em>los tres dominios más urgentes · la primera acción concreta para cada uno · el actor responsable · el plazo de la primera revisión</em>. Doce líneas alcanzan. El plan verificable vence al plan perfecto.</div>
@@ -1615,7 +1634,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">El acompañante par como generador de capital</div>
         <div class="mode-g">
-          <div class="act-body">El grupo evalúa: <em>¿hay acompañantes pares en el dispositivo? ¿están siendo usados como generadores de capital (Dominio 5) o solo como facilitadores de grupos? ¿hay personas en etapas avanzadas de recuperación que podrían ser incorporadas al equipo como acompañantes pares y así multiplicar el capital disponible?</em> El §8.5.4 y el Itinerario 10 (acompañantes pares) ofrecen el marco para ese paso.</div>
+          <div class="act-body">El grupo evalúa: <em>¿hay acompañantes pares en el dispositivo? ¿Están siendo usados como generadores de capital (Dominio 5) o solo como facilitadores de grupos? ¿Hay personas en etapas avanzadas de recuperación que podrían ser incorporadas al equipo como acompañantes pares y así multiplicar el capital disponible?</em> El §8.5.4 y el §6.5.5, que presenta al acompañante par como <em>«experto por experiencia»</em>, ofrecen el marco para ese paso.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Anotá en tu bitácora los nombres de dos o tres personas en etapas avanzadas que podrían empezar a acompañar a otros. Al lado de cada una, <em>el primer paso concreto</em> para incorporarlas al equipo como acompañantes pares. El capital se multiplica cuando el acompañado se vuelve acompañante.</div>
@@ -1627,33 +1646,32 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Cierre: ¿qué capital aporta este equipo que ningún otro puede aportar?</div>
         <div class="mode-g">
-          <div class="act-body">El grupo cierra con la pregunta que define la identidad del dispositivo: <em>de los ocho dominios, ¿cuál genera este equipo de manera más específica e insustituible?</em> La respuesta no es genérica (<em>"todos los dominios"</em>): es precisa. El equipo que puede responder esa pregunta <em>tiene claro su lugar en la red y puede ofrecer lo que le es propio con convicción</em>, sin pretender hacer lo que otros hacen mejor.</div>
+          <div class="act-body">El grupo cierra con la pregunta que define la identidad del dispositivo: <em>de los ocho dominios, ¿cuál genera este equipo de manera más específica e insustituible?</em> La respuesta no es genérica (<em>«todos los dominios»</em>): es precisa. El equipo que puede responder esa pregunta <em>tiene claro su lugar en la red y puede ofrecer lo que le es propio con convicción</em>, sin pretender hacer lo que otros hacen mejor.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Respondé en tu bitácora, en una sola frase: <em>"lo que este dispositivo aporta al capital de recuperación —y que ningún otro aporta igual— es…"</em>. Guardala. Es tu declaración de identidad pastoral concreta y el criterio de discernimiento para las próximas decisiones estratégicas.</div>
+          <div class="act-body">Respondé en tu bitácora, en una sola frase: <em>«lo que este dispositivo aporta al capital de recuperación —y que ningún otro aporta igual— es…»</em>. Guardala. Es tu declaración de identidad pastoral concreta y el criterio de discernimiento para las próximas decisiones estratégicas.</div>
         </div>
       </div>
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §8.5.4</div>
-        <div class="cita-txt">"La eficacia del acompañante par no se explica únicamente por su saber vivencial: radica también en que su sola presencia encarna lo que la psicología del recovery denomina identidad de recuperación —la posibilidad concreta, visible y cercana, de ser otra cosa."</div>
-        <div class="cita-ref">Manual de la PLAPA, §8.5.4 — La gestión de la tensión entre saberes (CELAM 2026)</div>
+        <div class="cita-txt">«La eficacia del acompañante par no se explica únicamente por su saber vivencial: radica también en que su sola presencia encarna lo que la psicología del recovery denomina identidad de recuperación —la posibilidad concreta, visible y cercana, de ser otra cosa».</div>
+        <div class="cita-ref">Manual de la PLAPA, §8.5.4 — Sobre la gestión de la tensión entre el saber profesional y el saber territorial (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Alerta pastoral</div>
-        <div class="alerta-txt">El principio <em>"el capital puede construirse incluso si nunca existió"</em> puede ser mal leído como <em>"nunca es tarde para empezar."</em> La afirmación del §8.5.1 es esperanzadora, pero <em>no elimina la urgencia</em>: en algunos casos —adicciones severas, patologías duales agudas, riesgo vital inmediato— el tiempo para construir capital es escaso. La esperanza pastoral <em>no debe relajar la respuesta clínica urgente</em> cuando esta es necesaria. Esperanza sí; postergación disfrazada de esperanza, no.</div>
+        <div class="alerta-txt">El principio <em>«el capital de recuperación puede desarrollarse incluso si nunca existió»</em> puede ser mal leído como <em>«nunca es tarde para empezar»</em>. La afirmación del §8.5.2 es esperanzadora, pero <em>no elimina la urgencia</em>: en algunos casos —adicciones severas, patologías duales agudas, riesgo vital inmediato— el tiempo para construir capital es escaso. La esperanza pastoral <em>no debe relajar la respuesta clínica urgente</em> cuando esta es necesaria. Esperanza sí; postergación disfrazada de esperanza, no.</div>
       </div>
 
       <div class="autocuidado">
         <div class="autocuidado-lbl">Autocuidado del agente — cierre del itinerario</div>
-        <div class="autocuidado-txt">El itinerario cierra con la <em>inversión final</em>: el capital de recuperación que el equipo construye para los hermanos <em>es también el capital que el equipo necesita para sí mismo</em>. <em>¿Tiene el equipo los ocho dominios en un estado mínimamente funcional?</em> El facilitador propone que cada participante evalúe uno de sus propios dominios en el que está frágil y comparta con un compañero qué necesita para fortalecerlo. No como tarea: como <em>acto de confianza mutua que cierra el itinerario de la misma manera que lo empezó — mirando las fortalezas, no solo los déficits</em>.</div>
+        <div class="autocuidado-txt">El itinerario cierra con la <em>inversión final</em>: el capital de recuperación que el equipo construye para los hermanos <em>es también el capital que el equipo necesita para sí mismo</em>. El facilitador propone que cada participante le diga a un compañero <em>una fortaleza concreta que vio en él durante el itinerario</em> y qué capital aporta esa fortaleza al equipo. No como tarea: como <em>acto de confianza mutua que cierra el itinerario de la misma manera que lo empezó, mirando las fortalezas y no solo los déficits</em>.</div>
       </div>
 
       <div class="lectura">
         <div class="lectura-lbl">Lectura complementaria</div>
-        <div class="lectura-txt">Para profundizar en la <strong>construcción del capital de recuperación</strong> en dispositivos comunitarios de la Familia Grande Hogar de Cristo, con casos concretos de familias de acogida, articulación con acompañantes pares y planes de recuperación basados en fortalezas, ofrecemos este texto para la reflexión del equipo.</div>
-        <a href="ElMetodoFGHC.pdf" download class="lectura-link">📥 Descargar "ElMetodoFGHC.pdf"</a>
+        <div class="lectura-txt">Para profundizar, leé completo en el Manual de la PLAPA el <strong>§8.5, «Capital de Recuperación, Familia y Comunidad»</strong> (§8.5.1–8.5.4). Cada artículo trae las objeciones más frecuentes y la respuesta del Manual. Volvé con especial atención al <strong>§8.5.2</strong>, cuya respuesta a la tercera objeción sostiene que el capital de recuperación puede desarrollarse incluso si nunca existió, y al <strong>§8.5.4</strong>, que distingue el acompañamiento territorial del profesional y señala cuándo el saber territorial necesita apoyo especializado.</div>
       </div>
 
       <div class="ref">Referencias: Manual de la PLAPA §8.5.1 (Capital de recuperación), §8.5.2 (Ocho dominios), §8.5.3 (Familias de acogida), §8.5.4 (Complementariedad de saberes) — CELAM 2026.</div>
@@ -1671,8 +1689,8 @@
 
       <!-- Selector de vista: este itinerario / global -->
       <div class="foro-vista">
-        <button class="foro-vista-btn on" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
-        <button class="foro-vista-btn" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
+        <button class="foro-vista-btn on" aria-pressed="true" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
+        <button class="foro-vista-btn" aria-pressed="false" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
       </div>
 
       <!-- Pautas pastorales -->
@@ -1724,7 +1742,7 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Antes de comenzar</div>
-        <div class="resonancia-txt">"La revisión de vida es la forma histórica que la Iglesia latinoamericana encontró para institucionalizar el Ver–Juzgar–Actuar. El agente que la practica no aplica el método: lo vive." Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
+        <div class="resonancia-txt">Este itinerario te invitó a pasar de la mirada del déficit a la de las fortalezas, a recorrer los ocho dominios del capital de recuperación, a reconocer a la comunidad como familia de acogida y a armar planes que construyan capital donde no lo había. Ahora es el momento de nombrar qué cambió en tu mirada. Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
       </div>
 
       <div class="eval-nota">
@@ -1734,24 +1752,24 @@
 
       <div class="pl">El Ver — Qué se hizo visible</div>
       <div class="eval-q">
-        <label for="evalVer">¿Qué realidad del territorio se hizo más visible para vos a lo largo de estos cuatro módulos? ¿Qué llagas emergieron con más fuerza? ¿Qué zonas del mapa estaban en blanco antes y ahora tienen contenido?</label>
+        <label for="evalVer">¿Qué fortalezas de las personas que acompañás se hicieron más visibles para vos a lo largo de estos cuatro módulos? ¿Qué dominios del capital de recuperación estaban fuera de tu mirada y ahora los registrás? ¿Qué familias o vecinos descubriste que ya funcionan como familia de acogida sin llamarse así?</label>
         <textarea id="evalVer" data-eval="ver" placeholder="Escribí con calma, sin apurarte..."></textarea>
       </div>
 
       <div class="pl">El Juzgar — Qué iluminó, qué preguntas quedaron abiertas</div>
       <div class="eval-q">
-        <label for="evalJuzgar1">¿Qué del método del diagnóstico territorial te iluminó de manera nueva? ¿Qué idea del Manual sentís que ya no podrás dejar de lado?</label>
+        <label for="evalJuzgar1">Del capital de recuperación y sus tres tipos, de los ocho dominios, de la comunidad como familia de acogida y de la complementariedad entre el saber profesional y el saber territorial: ¿qué te iluminó de manera nueva? ¿Qué idea del Manual sentís que ya no podrás dejar de lado?</label>
         <textarea id="evalJuzgar1" data-eval="juzgar1" placeholder="Nombralo con precisión..."></textarea>
       </div>
       <div class="eval-q">
-        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos? Las preguntas abiertas son también fruto (§13.3).</label>
+        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos? La tensión entre mirar las fortalezas sin invisibilizar el daño real, entre la esperanza de construir capital donde nunca existió y la urgencia de los casos que no dan tiempo: ¿dónde te dejó incómodo/a?</label>
         <textarea id="evalJuzgar2" data-eval="juzgar2" placeholder="Las que siguen ardiendo..."></textarea>
       </div>
 
       <div class="pl">El Actuar — Compromiso concreto</div>
       <div class="eval-q">
-        <label for="evalActuar">¿Qué gesto pastoral concreto vas a intentar en las próximas semanas a partir del diagnóstico que hiciste? Nombralo con nombre, tiempo y lugar. Un compromiso vago no es un compromiso.</label>
-        <textarea id="evalActuar" data-eval="actuar" placeholder="Ej.: En la próxima reunión de equipo (jueves 25) voy a presentar el mapa territorial que construimos y proponer una callejeada específica al sector X del barrio..."></textarea>
+        <label for="evalActuar">¿Qué gesto concreto para construir capital de recuperación vas a intentar en las próximas semanas? Puede ser repasar los ocho dominios con un hermano, y no sobre él, reconocer a una familia que ya acoge sin llamarse así, o dar el primer paso para que alguien en etapa avanzada de recuperación empiece a acompañar a otros. Nombralo con nombre, tiempo y lugar. Un compromiso vago no es un compromiso.</label>
+        <textarea id="evalActuar" data-eval="actuar" placeholder="Ej.: El viernes, en el centro barrial, me siento con X a repasar juntos los ocho dominios y elegimos uno en rojo para empezar a trabajar este mes..."></textarea>
       </div>
       <div class="eval-q eval-fecha">
         <label for="evalFecha">Fecha en la que vas a volver a revisar si pudiste sostenerlo</label>
@@ -1759,8 +1777,8 @@
       </div>
 
       <div class="pl">Autocuidado y equipo</div>
-      <div class="eval-q eval-scale">
-        <label>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</label>
+      <fieldset class="eval-q eval-scale">
+        <legend>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</legend>
         <div class="eval-scale-row">
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="1" data-eval="animo"><span>1</span></label>
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="2" data-eval="animo"><span>2</span></label>
@@ -1768,10 +1786,10 @@
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="4" data-eval="animo"><span>4</span></label>
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="5" data-eval="animo"><span>5</span></label>
         </div>
-      </div>
+      </fieldset>
       <div class="eval-q">
-        <label for="evalCuidado">¿Qué necesitás cuidar de vos mismo/a en las próximas semanas? ¿A quién del equipo se lo vas a decir?</label>
-        <textarea id="evalCuidado" data-eval="cuidado" placeholder="El agente que cuida su esperanza puede sostener la del otro (§1.3)..."></textarea>
+        <label for="evalCuidado">Querer cubrir todos los dominios de todos los casos agota, y el saber territorial puede verse desbordado por situaciones de alta complejidad, como el riesgo suicida o las descompensaciones psicóticas (§8.5.4). ¿Cuál de tus propios dominios está hoy más frágil? ¿Qué necesitás cuidar de vos en las próximas semanas? ¿A quién del equipo se lo vas a decir?</label>
+        <textarea id="evalCuidado" data-eval="cuidado" placeholder="Ej.: Voy a decirle a X que el caso de Y me está desbordando y que necesito que lo pensemos junto con el equipo de salud..."></textarea>
       </div>
 
       <div class="pl">Cierre</div>
@@ -1790,10 +1808,10 @@
 
       <div class="autocuidado" style="margin-top: 2rem;">
         <div class="autocuidado-lbl">Cierre del itinerario</div>
-        <div class="autocuidado-txt">Cerrar bien un itinerario también es autocuidado: celebrar lo caminado, agradecer al equipo, reconocer los propios límites y renovar la esperanza. Este itinerario termina con gratitud: por el territorio que nos habló, por las llagas que dejamos de negar, por el equipo que hizo posible mirar sin apartar la mirada.</div>
+        <div class="autocuidado-txt">Cerrar bien un itinerario también es autocuidado: celebrar lo caminado, agradecer al equipo, reconocer los propios límites y renovar la esperanza. Este itinerario termina con gratitud: por las fortalezas que aprendimos a ver donde antes solo veíamos carencias, por las familias que acogen sin que nadie se lo pida, por el equipo que hizo posible ser familia para quien no la tiene.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §1.3 (Prólogo), §6.1.3 (Evitar la romantización), §13.2 (Sinodalidad en la práctica), §13.3 (Rolling release), §13.5 (Mecanismos de colaboración) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §8.5.1–8.5.4 (Capital de Recuperación, Familia y Comunidad), §13.3 (La propuesta de un manual Rolling Release), §13.5 (Los mecanismos de colaboración) — CELAM 2026.</div>
 
     </div>
   </div>
@@ -1807,9 +1825,9 @@
     root.classList.add('mode-' + mode);
     var buttons = document.querySelectorAll('.mode-btn');
     for (var i = 0; i < buttons.length; i++) {
-      buttons[i].classList.remove('on');
+      buttons[i].classList.remove('on'); buttons[i].setAttribute('aria-pressed', 'false');
     }
-    btn.classList.add('on');
+    btn.classList.add('on'); btn.setAttribute('aria-pressed', 'true');
   }
 
   function show(n, btn) {
@@ -2086,8 +2104,8 @@
   function setVistaForo(v, btn) {
     vistaForo = v;
     var buttons = document.querySelectorAll('.foro-vista-btn');
-    for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove('on'); }
-    btn.classList.add('on');
+    for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove('on'); buttons[i].setAttribute('aria-pressed', 'false'); }
+    btn.classList.add('on'); btn.setAttribute('aria-pressed', 'true');
     cargarComentarios();
   }
 
@@ -2165,16 +2183,17 @@
     var datos = recolectarEvaluacion();
     var minimoTexto = (datos.ver || '').trim() + (datos.actuar || '').trim();
     if (minimoTexto.length < 30) {
-      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos "El Ver" y "El Actuar" merecen unos renglones honestos.', 'error');
+      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos «El Ver» y «El Actuar» merecen unos renglones honestos.', 'error');
       return;
     }
 
     // Guardar en Supabase (siempre queda en tu bitácora)
     if (!sesion) { window.location.href = '/login'; return; }
-    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario', {
+    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario?on_conflict=usuario_id,itinerario_id', {
       method: 'POST',
       headers: Object.assign({}, supaHeaders(), { 'Prefer': 'resolution=merge-duplicates' }),
       body: JSON.stringify({
+        usuario_id: sesion.user ? sesion.user.id : undefined,
         itinerario_id: ITINERARIO_ID,
         respuestas: datos,
         compartir_con_equipo: datos.compartir_con_equipo === true
@@ -2197,12 +2216,18 @@
 
   function imprimirEvaluacion() {
     autoguardarBorrador();
+    // Que cada respuesta se imprima completa, sin cortarse
+    var areas = document.querySelectorAll('#m6 textarea');
+    for (var i = 0; i < areas.length; i++) {
+      areas[i].style.height = 'auto';
+      areas[i].style.height = areas[i].scrollHeight + 'px';
+    }
     window.print();
   }
 
   // Init general del itinerario
   document.addEventListener('DOMContentLoaded', function() {
-    // Leer sesión (el guard del <head> garantiza que existe)
+    // Leer sesión guardada por el login (puede no existir)
     try {
       var stored = localStorage.getItem('escuela_plapa_sesion');
       if (stored) sesion = JSON.parse(stored);

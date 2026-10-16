@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Itinerario 15 · Patología dual · Escuela PLAPA</title>
+<title>Itinerario 15 · Patología dual: cuando el dolor tiene doble nombre · Escuela PLAPA</title>
 <style>
   :root {
     /* Paleta naranja PLAPA — Itinerario 15 (bloque 3: Espíritu humano y psiquis) */
@@ -24,7 +24,7 @@
     --borde:      #E4E2F0;
 
     --font-serif: "Georgia", "Times New Roman", serif;
-    --font-sans:  "system-ui", -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+    --font-sans:  system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -772,7 +772,7 @@
   }
   .foro-form textarea:focus,
   .foro-form select:focus {
-    outline: none;
+    outline: 2px solid transparent;
     border-color: var(--i15-medio);
   }
   .foro-form-actions {
@@ -1009,7 +1009,18 @@
   .eval-q {
     margin-bottom: 1.5rem;
   }
-  .eval-q > label {
+  fieldset.eval-scale {
+    border: 0;
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+    min-width: 0;
+  }
+  .eval-q > legend {
+    padding: 0;
+  }
+  .eval-q > label,
+  .eval-q > legend {
     display: block;
     font-size: 14px;
     font-weight: 500;
@@ -1033,7 +1044,7 @@
   }
   .eval-q textarea:focus,
   .eval-q input:focus {
-    outline: none;
+    outline: 2px solid transparent;
     border-color: var(--i15-medio);
     box-shadow: 0 0 0 3px rgba(60, 52, 137, 0.1);
   }
@@ -1063,6 +1074,10 @@
     position: absolute;
     opacity: 0;
     pointer-events: none;
+  }
+  .eval-radio input:focus-visible + span {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
   }
   .eval-radio span {
     display: block;
@@ -1155,7 +1170,10 @@
     .root { box-shadow: none; padding: 1rem; max-width: 100%; }
     .portada, .video-wrap, .mode-selector, .nav { display: none !important; }
     .card { display: none !important; }
-    #m6.card { display: block !important; break-inside: avoid; border: none; }
+    #m6.card { display: block !important; border: none; }
+    .eval-q { break-inside: avoid; }
+    .video-wrap, .top-header, .foro-vista { display: none !important; }
+    .eval-q textarea { overflow: visible; resize: none; }
     .eval-actions, .eval-msg { display: none !important; }
     .ch { background: transparent; }
     .eval-q textarea, .eval-q input[type="date"] {
@@ -1207,7 +1225,7 @@
 
     <div class="dest-box">
       <div class="dest-lbl">Destinatarios</div>
-      <div class="dest-txt">Equipos interdisciplinarios, coordinadores de centros barriales y comunidades terapéuticas que acompañan personas con cuadros complejos. También útil para agentes pastorales que detectan en el territorio situaciones donde el consumo coexiste con síntomas psiquiátricos visibles (desorganización, episodios disociativos, humor extremadamente inestable) y necesitan saber qué hacer y cómo articular. Se asume familiaridad con los conceptos del Itinerario 13; nivel intermedio–avanzado.</div>
+      <div class="dest-txt">Equipos interdisciplinarios, coordinadores de centros barriales y comunidades terapéuticas que acompañan personas con cuadros complejos. También útil para agentes pastorales que detectan en el territorio situaciones donde el consumo coexiste con síntomas psiquiátricos visibles (desorganización, episodios disociativos, humor extremadamente inestable) y necesitan saber qué hacer y cómo articular. Se asume familiaridad con los conceptos del §8.2 del Manual (trauma y estructuras de personalidad); nivel intermedio–avanzado.</div>
     </div>
 
     <div class="portada-pills">
@@ -1221,15 +1239,14 @@
 
   <!-- ═══ VIDEO ═══════════════════════════════════════════ -->
   
-  <!-- NUEVO: Bloque del Video de Presentación Incrustado -->
-<div style="background: var(--surface-2); border: 0.5px solid var(--border); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
-  <p style="font-size: 11px; font-weight: 500; color: #085041; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; text-align: left;">
+<div class="video-wrap" style="background: #FFF; border: 1px solid var(--borde); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
+  <p style="font-size: 11px; font-weight: 500; color: var(--i15-oscuro); letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; text-align: left;">
     ▶️ Video de presentación
   </p>
   <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px;">
     <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
       src="https://www.youtube.com/embed/ty_iDsDLBk0"
-      title="Presentación del Itinerario 15" 
+      title="Video de presentación: Patología dual: cuando el dolor tiene doble nombre — Itinerario 15" 
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
       allowfullscreen>
     </iframe>
@@ -1238,8 +1255,8 @@
 
   <!-- ═══ SELECTOR DE MODALIDAD ═══════════════════════════ -->
   <div class="mode-selector">
-    <button class="mode-btn on" onclick="setMode('grupal', this)">👥 Hacer en comunidad</button>
-    <button class="mode-btn" onclick="setMode('individual', this)">👤 Hacer de forma individual</button>
+    <button class="mode-btn on" aria-pressed="true" onclick="setMode('grupal', this)">👥 Hacer en comunidad</button>
+    <button class="mode-btn" aria-pressed="false" onclick="setMode('individual', this)">👤 Hacer de forma individual</button>
   </div>
 
   <!-- ═══ NAVEGACIÓN ══════════════════════════════════════ -->
@@ -1257,34 +1274,34 @@
   <div id="m1" class="card active">
     <div class="ch">
       <span class="cn">Módulo 1 · El Ver</span>
-      <div class="ct">El 50% de las personas con TUS también tienen un trastorno mental</div>
+      <div class="ct">Aproximadamente el 50 % de las personas con TUS también tienen un trastorno mental</div>
       <div class="cs">Definición, prevalencia y raíz común de la patología dual · §9.5.1</div>
     </div>
     <div class="cb">
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"El consumo problemático rara vez es el problema en sí mismo; es un intento de sobrellevar un cuadro de base descompensado. Ignorar la patología mental subyacente hace que el tratamiento sea ineficiente e inapropiado."</div>
+        <div class="resonancia-txt">«El consumo problemático rara vez es el problema en sí mismo; es un intento de sobrellevar un cuadro de base descompensado. Ignorar la patología mental subyacente hace que el tratamiento sea ineficiente e inapropiado».</div>
       </div>
 
       <div class="pl">El Ver — Realidad</div>
       <ul class="pts">
-        <li><span class="dot">V</span><span><strong>La cifra que cambia el abordaje: 50%.</strong> <em>"Las investigaciones confirman que aproximadamente el 50% de las personas con TUS padecen al menos un trastorno mental coocurrente"</em> (§9.5.1). No es una curiosidad estadística: es una <em>exigencia metodológica</em>. Si la mitad de las personas que el dispositivo acompaña tienen también un trastorno mental no diagnosticado ni tratado, los abordajes que solo miran la sustancia están fallando a la mitad de sus propios hermanos.</span></li>
-        <li><span class="dot">V</span><span><strong>Las tres objeciones más frecuentes del §9.5.1.</strong> (1) <em>"los síntomas mentales son efectos pasajeros de la intoxicación que desaparecerán al dejar la droga"</em>, (2) <em>"deben tratarse por separado, en instituciones distintas que no se comuniquen"</em>, (3) <em>"la coincidencia es solo mala suerte genética."</em> Las tres son refutadas por la evidencia clínica y territorial. Y las tres, si se sostienen, <em>producen abordajes que fracasan sistemáticamente</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>La cifra que cambia el abordaje: 50%.</strong> <em>«Las investigaciones confirman que aproximadamente el 50 % de las personas con TUS padecen al menos un trastorno mental […]»</em> (§9.5.1). No es una curiosidad estadística: es una <em>exigencia metodológica</em>. Si la mitad de las personas que el dispositivo acompaña tienen también un trastorno mental no diagnosticado ni tratado, los abordajes que solo miran la sustancia están fallando a la mitad de sus propios hermanos.</span></li>
+        <li><span class="dot">V</span><span><strong>Las tres objeciones más frecuentes del §9.5.1.</strong> (1) <em>«los síntomas mentales son efectos pasajeros de la intoxicación que desaparecerán al dejar la droga»</em>, (2) <em>«deben tratarse por separado, en instituciones distintas y con especialistas que no se comuniquen entre sí»</em>, (3) <em>«la coincidencia es solo “mala suerte” genética […]»</em>. Las tres son refutadas por la evidencia clínica y territorial. Y las tres, si se sostienen, <em>producen abordajes que fracasan sistemáticamente</em>.</span></li>
       </ul>
 
-      <div class="pl">El Juzgar — La raíz común: cinco factores del §9.5.1</div>
+      <div class="pl">El Juzgar — La raíz común: cinco factores que reúne el §9.5.1</div>
       <ul class="pts">
         <li><span class="dot j">1</span><span><strong>Intento autoterapéutico.</strong> La sustancia <em>anestesia una vida intolerable</em> debido a traumas previos. El consumo es una vía inmediata para reducir la angustia y la desregulación emocional que el trastorno mental genera.</span></li>
         <li><span class="dot j">2</span><span><strong>Vulnerabilidades compartidas.</strong> El consumo y los problemas de salud mental <em>afectan las mismas áreas del cerebro</em>. Una predisposición psiquiátrica aumenta la propensión biológica a la dependencia.</span></li>
-        <li><span class="dot j">3</span><span><strong>Redes de memoria desadaptativas.</strong> Vivencias traumáticas mal procesadas activan respuestas de lucha o fuga; <em>la droga aparece como herramienta de "fuga"</em> ante un mundo percibido como hostil.</span></li>
+        <li><span class="dot j">3</span><span><strong>Redes de memoria desadaptativas.</strong> Vivencias traumáticas mal procesadas activan respuestas de lucha o fuga; <em>la droga aparece como herramienta de «fuga»</em> ante un mundo percibido como hostil.</span></li>
         <li><span class="dot j">4</span><span><strong>Círculo vicioso de la desconexión.</strong> El TUS causa desconexión espiritual y personal que genera vacío interior, agravando el cuadro psiquiátrico inicial. <em>Cada uno potencia al otro</em>.</span></li>
-        <li><span class="dot j">5</span><span><strong>Factores socioeconómicos.</strong> La pobreza estructural y los vínculos de apego inseguros debilitan la personalidad, <em>creando la "grieta existencial"</em> donde se instala la patología dual (§9.5.1).</span></li>
+        <li><span class="dot j">5</span><span><strong>Factores socioeconómicos.</strong> La pobreza estructural y los vínculos de apego inseguros debilitan la personalidad, <em>creando la «grieta existencial»</em> donde se instala la patología dual (§9.5.1, respuesta a la tercera objeción).</span></li>
       </ul>
 
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>Los cinco factores exigen un abordaje integral.</strong> Los cinco no operan por separado: se articulan en el <em>modelo biopsicosocial-espiritual</em> que el §8.1.1 desarrolla. Cada uno pide una respuesta distinta: los factores 1 y 3 piden acompañamiento del trauma; el 2 pide articulación con salud mental; el 4 pide comunidad; el 5 pide incidencia estructural. Un solo dispositivo no puede con los cinco: <em>necesita red</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>Los cinco factores exigen un abordaje integral.</strong> Los cinco no operan por separado: se articulan en el <em>modelo biopsicosocial-espiritual</em> que presentan el §8.1.1 y el §8.1.4. Cada uno pide una respuesta distinta: los factores 1 y 3 piden acompañamiento del trauma; el 2 pide articulación con salud mental; el 4 pide comunidad; el 5 pide incidencia estructural. Un solo dispositivo no puede con los cinco: <em>necesita red</em>.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1294,10 +1311,10 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Diagnóstico de patología dual en el dispositivo actual</div>
         <div class="mode-g">
-          <div class="act-body">El grupo estima: <em>de las personas actualmente acompañadas en el dispositivo, ¿cuántas podrían tener un trastorno mental coocurrente no diagnosticado? ¿hay síntomas visibles que el equipo nota pero no sabe cómo leer? ¿hay derivaciones a salud mental en proceso?</em> El ejercicio no es para diagnosticar: es para <em>dimensionar la realidad que el dispositivo enfrenta</em> y para la que quizás no está preparado.</div>
+          <div class="act-body">El grupo estima: <em>de las personas actualmente acompañadas en el dispositivo, ¿cuántas podrían tener un trastorno mental coocurrente no diagnosticado? ¿Hay síntomas visibles que el equipo nota pero no sabe cómo leer? ¿Hay derivaciones a salud mental en proceso?</em> El ejercicio no es para diagnosticar: es para <em>dimensionar la realidad que el dispositivo enfrenta</em> y para la que quizás no está preparado.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Anotá en tu bitácora las personas que acompañás en las que sospechás un trastorno mental coocurrente no diagnosticado. Al lado de cada una: <em>¿qué señales viste? ¿hay derivación en curso?</em> Ese mapa personal es la agenda de las próximas conversaciones con el equipo.</div>
+          <div class="act-body">Anotá en tu bitácora las personas que acompañás en las que sospechás un trastorno mental coocurrente no diagnosticado. Al lado de cada una: <em>¿qué señales viste? ¿Hay derivación en curso?</em> Ese mapa personal es la agenda de las próximas conversaciones con el equipo.</div>
         </div>
       </div>
 
@@ -1306,7 +1323,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Refutar las tres objeciones con casos propios</div>
         <div class="mode-g">
-          <div class="act-body">El grupo toma cada una de las tres objeciones del §9.5.1 y la evalúa desde la propia experiencia: <em>¿hay casos donde "dejar la droga" no resolvió los síntomas mentales? ¿hay casos donde la fragmentación asistencial perjudicó a alguien? ¿hay casos donde la "mala suerte genética" ignoró una historia de trauma evidente?</em> Los casos propios son la refutación más poderosa de las objeciones abstractas.</div>
+          <div class="act-body">El grupo toma cada una de las tres objeciones del §9.5.1 y la evalúa desde la propia experiencia: <em>¿hay casos donde «dejar la droga» no resolvió los síntomas mentales? ¿Hay casos donde la fragmentación asistencial perjudicó a alguien? ¿Hay casos donde la «mala suerte genética» ignoró una historia de trauma evidente?</em> Los casos propios son la refutación más poderosa de las objeciones abstractas.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Escribí en tu bitácora un caso concreto (anonimizado) para cada una de las tres objeciones. Esos tres casos son <em>tu argumentario propio</em> para las próximas conversaciones donde alguien sostenga esas objeciones.</div>
@@ -1318,7 +1335,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Mapear cuál de los cinco factores predomina en el territorio</div>
         <div class="mode-g">
-          <div class="act-body">El grupo evalúa: en los procesos que acompaña, <em>¿cuál de los cinco factores parece más frecuente?</em> ¿autoterapéutico? ¿vulnerabilidad biológica? ¿redes de memoria desadaptativas por trauma? ¿círculo de desconexión? ¿factores socioeconómicos? El factor dominante orienta el énfasis del dispositivo: no todos los territorios tienen el mismo perfil, y por eso no todos los dispositivos deberían tener la misma respuesta.</div>
+          <div class="act-body">El grupo evalúa: en los procesos que acompaña, <em>¿cuál de los cinco factores parece más frecuente?</em> ¿Autoterapéutico? ¿Vulnerabilidad biológica? ¿Redes de memoria desadaptativas por trauma? ¿Círculo de desconexión? ¿Factores socioeconómicos? El factor dominante orienta el énfasis del dispositivo: no todos los territorios tienen el mismo perfil, y por eso no todos los dispositivos deberían tener la misma respuesta.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Anotá en tu bitácora cuál de los cinco factores creés que es dominante en el territorio donde acompañás. Compartilo con el equipo. <em>La conversación sobre el factor dominante orienta el diseño del dispositivo mejor que muchos manuales.</em></div>
@@ -1327,21 +1344,21 @@
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §9.5.1</div>
-        <div class="cita-txt">"Desde la pastoral definimos la adicción no solo como una enfermedad, sino también como el síntoma de una 'fractura interna' o un dolor profundo que el individuo intenta compensar. Las investigaciones confirman que aproximadamente el 50% de las personas con TUS padecen al menos un trastorno mental, lo que obliga a un abordaje integral biopsicosocial y espiritual."</div>
+        <div class="cita-txt">«Desde la pastoral definimos la adicción no solo como una enfermedad, sino también como el síntoma de una “fractura interna” o un dolor profundo que el individuo intenta compensar. Las investigaciones confirman que aproximadamente el 50 % de las personas con TUS padecen al menos un trastorno mental, lo que obliga a un abordaje integral biopsicosocial y espiritual».</div>
         <div class="cita-ref">Manual de la PLAPA, §9.5.1 — La patología dual (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Alerta pastoral</div>
-        <div class="alerta-txt">La cifra <em>"el 50% tiene también un trastorno mental"</em> puede llevar al equipo a <em>psiquiatrizar toda la mirada</em> del dispositivo: interpretar como patología dual lo que en algunos casos es solo consumo. El otro 50% también existe. La detección requiere señales concretas (Módulo 3), no la aplicación indiscriminada de la sospecha diagnóstica. Sin ese cuidado, el equipo puede derivar a salud mental a quien no lo necesita —y esa derivación innecesaria también daña.</div>
+        <div class="alerta-txt">La cifra <em>«el 50% tiene también un trastorno mental»</em> puede llevar al equipo a <em>psiquiatrizar toda la mirada</em> del dispositivo: interpretar como patología dual lo que en algunos casos es solo consumo. El otro 50% también existe. La detección requiere señales concretas (Módulo 3), no la aplicación indiscriminada de la sospecha diagnóstica. Sin ese cuidado, el equipo puede derivar a salud mental a quien no lo necesita —y esa derivación innecesaria también daña.</div>
       </div>
 
       <div class="autocuidado">
         <div class="autocuidado-lbl">Autocuidado del agente</div>
-        <div class="autocuidado-txt">El diagnóstico de que <em>"la mitad de las personas que acompañamos tienen también un trastorno mental"</em> puede generar en el equipo una sensación de estar desbordado. El facilitador recuerda que <em>el agente pastoral no trata clínicamente la patología dual: detecta, acompaña y articula con quien sí puede tratarla</em>. Saber eso no aumenta la carga: la define correctamente. La carga mal definida aplasta; la bien definida se puede sostener.</div>
+        <div class="autocuidado-txt">El diagnóstico de que <em>«la mitad de las personas que acompañamos tienen también un trastorno mental»</em> puede generar en el equipo una sensación de estar desbordado. El facilitador recuerda que <em>el agente pastoral no trata clínicamente la patología dual: detecta, acompaña y articula con quien sí puede tratarla</em>. Saber eso no aumenta la carga: la define correctamente. La carga mal definida aplasta; la bien definida se puede sostener.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §9.5.1 (Patología dual), §8.1.1 (Modelo biopsicosocial-espiritual), §8.2 (introducción) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §9.5.1 (La patología dual), §8.1.1 (Sobre el estatuto psicológico del TUS y el fundamento de la persona), §8.1.4 (Sobre el modelo biopsicosocial-espiritual y los reduccionismos), §8.2 (Trauma, Estructuras de Personalidad y Patología Dual) — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1356,8 +1373,14 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"Ambos trastornos se potencian mutuamente, agravando el estado del paciente y complejizando cualquier intervención. La fragmentación asistencial es un error técnico: los pacientes duales requieren una estrategia donde el sistema de salud y la comunidad trabajen en red."</div>
+        <div class="resonancia-txt">«[…] ambos trastornos se potencian mutuamente, agravando el estado del paciente y complejizando cualquier intervención. […] La fragmentación asistencial es un error técnico. […]».</div>
       </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>En el territorio, origen y consecuencia se entrelazan.</strong> En contextos de alta vulnerabilidad suele ser difícil separar qué vino primero; por eso el <em>Modelo 4 (bidireccional)</em>, que integra los anteriores, ayuda a no simplificar. El §9.5.1 advierte: <em>«Aunque existen factores genéticos (40-60 %), la interacción con el entorno es determinante. La pobreza estructural y los vínculos de apego inseguros debilitan la personalidad, creando la “grieta existencial” donde se instala la patología dual»</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>El modelo orienta la secuencia de intervención.</strong> Si una persona parece encajar en el <em>Modelo 2</em> (trastorno mental primero), vale lo que el §9.5.1 responde a la primera objeción: <em>«Ignorar la patología mental subyacente hace que el tratamiento sea ineficiente e inapropiado»</em>. En cualquiera de los cuatro modelos, la secuencia concreta se define con el profesional de salud mental, no por intuición del equipo. El modelo no es etiqueta: es <em>brújula de la secuencia</em>.</span></li>
+      </ul>
 
       <div class="pl">El Juzgar — Los cuatro modelos explicativos (§9.5.1)</div>
       <div class="ejes">
@@ -1379,20 +1402,14 @@
         <div class="eje">
           <div class="eje-n">Modelo 4</div>
           <div class="eje-t">Bidireccional</div>
-          <div class="eje-txt">Integra los tres anteriores. Ambos trastornos se potencian mutuamente, agravando el estado del paciente y complejizando cualquier intervención. El más frecuente en territorios de alta vulnerabilidad y el que exige el abordaje más integral.</div>
+          <div class="eje-txt">Integra los tres anteriores. Ambos trastornos se potencian mutuamente, agravando el estado del paciente y complejizando cualquier intervención. Es el que exige el abordaje más integral.</div>
         </div>
       </div>
 
-      <div class="pl">El Ver — Realidad</div>
-      <ul class="pts">
-        <li><span class="dot">V</span><span><strong>El Modelo 4 es el más frecuente en los territorios de la PLAPA.</strong> Los cuatro modelos no son equivalentes en el territorio: el <em>Modelo 4 (bidireccional)</em> es el más frecuente entre las personas que acompaña la PLAPA, porque en contextos de alta vulnerabilidad los dos trastornos raramente se pueden separar en origen y consecuencia. El §9.5.1 advierte: <em>"aunque existen factores genéticos (40-60%), la interacción con el entorno es determinante. La pobreza estructural y los vínculos de apego inseguros debilitan la personalidad, creando la grieta donde se instala la patología dual."</em></span></li>
-        <li><span class="dot">V</span><span><strong>El modelo determina la secuencia de intervención.</strong> Si una persona encaja en el <em>Modelo 2</em> (trastorno mental primero), sin abordar ese cuadro el tratamiento de la adicción <em>fracasará sistemáticamente</em>. Si encaja en el <em>Modelo 3</em>, sostener la abstinencia puede ir reduciendo los síntomas mentales secundarios. El modelo no es etiqueta: es <em>brújula de la secuencia</em>.</span></li>
-      </ul>
-
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>La cultura terapéutica del §8.2.2 responde a los cuatro modelos.</strong> <em>"En las estructuras más frágiles, el consumo es una herramienta de supervivencia frente al dolor insoportable. Por ello, la respuesta debe ser una cultura terapéutica que ofrezca un apego seguro para que la personalidad pueda alcanzar un mayor grado de integración."</em> El apego seguro es la respuesta común a los cuatro modelos, pero la <em>articulación clínica</em> cambia según el modelo dominante.</span></li>
-        <li><span class="dot j">J</span><span><strong>La red del Itinerario 10 es la condición de posibilidad.</strong> La consecuencia pastoral más importante del análisis: <em>"Los pacientes duales requieren una estrategia donde el sistema de salud y la comunidad trabajen en red, humanizando el recorrido de sanación a través del acompañamiento afectuoso"</em> (§9.5.1). El trabajo en red del Itinerario 10 (fragmentación institucional) es la condición de posibilidad del abordaje de la patología dual. <em>Sin red, no hay abordaje dual posible.</em></span></li>
+        <li><span class="dot j">J</span><span><strong>La cultura terapéutica del §8.2.2 responde a los cuatro modelos.</strong> <em>«En las estructuras más frágiles, el consumo es una herramienta de supervivencia frente al dolor insoportable. Por ello, la respuesta debe ser una cultura terapéutica que ofrezca un apego seguro para que la personalidad pueda alcanzar un mayor grado de integración».</em> El apego seguro es la respuesta común a los cuatro modelos, pero la <em>articulación clínica</em> cambia según el modelo dominante.</span></li>
+        <li><span class="dot j">J</span><span><strong>La red es la condición de posibilidad.</strong> La consecuencia pastoral más importante del análisis está en la respuesta del §9.5.1 a la segunda objeción: los pacientes duales necesitan que el sistema de salud y la comunidad trabajen en red, con un acompañamiento afectuoso que humanice el recorrido. El trabajo en red frente a la fragmentación institucional (§6.4) es la condición de posibilidad del abordaje de la patología dual. <em>Sin red, no hay abordaje dual posible.</em></span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1402,7 +1419,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Aplicar los cuatro modelos a casos del territorio</div>
         <div class="mode-g">
-          <div class="act-body">El grupo toma tres casos activos (anonimizados) y para cada uno intenta identificar qué modelo explicativo aplica: <em>¿el trastorno mental precedió a la adicción (modelo 2)? ¿la adicción parece haber generado el trastorno (modelo 3)? ¿es imposible separar cuál vino primero (modelo 4)? ¿o hay factores comunes sin relación causal clara (modelo 1)?</em> El ejercicio no es diagnóstico: es <em>orientador de la estrategia de acompañamiento</em>.</div>
+          <div class="act-body">El grupo toma tres casos activos (anonimizados) y para cada uno intenta identificar qué modelo explicativo aplica: <em>¿el trastorno mental precedió a la adicción (modelo 2)? ¿La adicción parece haber generado el trastorno (modelo 3)? ¿Es imposible separar cuál vino primero (modelo 4)? ¿O hay factores comunes sin relación causal clara (modelo 1)?</em> El ejercicio no es diagnóstico: es <em>orientador de la estrategia de acompañamiento</em>.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Anotá en tu bitácora dos casos que acompañás. Para cada uno: cuál de los cuatro modelos parece aplicar y <em>qué implica esa hipótesis para el acompañamiento</em>. La hipótesis puede estar equivocada; la disciplina de formularla ya cambia la mirada.</div>
@@ -1414,7 +1431,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">¿Qué implica cada modelo para el acompañamiento pastoral?</div>
         <div class="mode-g">
-          <div class="act-body">El grupo reflexiona: si una persona encaja en el <em>Modelo 2</em> (el trastorno mental primero), <em>¿qué tiene que cambiar en el dispositivo? ¿hay tratamiento psiquiátrico en marcha? ¿sin medicación estabilizadora, puede el acompañamiento pastoral avanzar? ¿qué rol tiene el agente pastoral mientras el hermano está descompensado?</em> Los modelos orientan la secuencia de las intervenciones.</div>
+          <div class="act-body">El grupo reflexiona: si una persona encaja en el <em>Modelo 2</em> (el trastorno mental primero), <em>¿qué tiene que cambiar en el dispositivo? ¿Hay tratamiento psiquiátrico en marcha? ¿Sin medicación estabilizadora, puede el acompañamiento pastoral avanzar? ¿Qué rol tiene el agente pastoral mientras el hermano está descompensado?</em> Los modelos orientan la secuencia de las intervenciones.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Escribí en tu bitácora, para uno de los casos que identificaste antes, <em>tres decisiones concretas de acompañamiento</em> que cambian según el modelo hipotético. La utilidad del modelo se mide en las decisiones que ordena.</div>
@@ -1426,7 +1443,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Auditar la red disponible para patología dual</div>
         <div class="mode-g">
-          <div class="act-body">Sin red no hay abordaje dual posible. El grupo mapea la red actual: <em>¿qué servicios de salud mental están disponibles? ¿hay contacto activo con alguno? ¿aceptan personas sin cobertura? ¿hay tiempo de espera razonable? ¿el dispositivo tiene puentes construidos con al menos un profesional de referencia?</em> Si la red está vacía, ese es el hallazgo más importante del itinerario y define la agenda del semestre.</div>
+          <div class="act-body">Sin red no hay abordaje dual posible. El grupo mapea la red actual: <em>¿qué servicios de salud mental están disponibles? ¿Hay contacto activo con alguno? ¿Aceptan personas sin cobertura? ¿Hay tiempo de espera razonable? ¿El dispositivo tiene puentes construidos con al menos un profesional de referencia?</em> Si la red está vacía, ese es el hallazgo más importante del itinerario y define la agenda del semestre.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Escribí en tu bitácora los tres servicios de salud mental más importantes de tu territorio y tu nivel de contacto real con ellos (nulo, ocasional, activo). El primer puente concreto que podrías construir esta semana <em>vale más que un plan de red completo sin dar el primer paso</em>.</div>
@@ -1435,7 +1452,7 @@
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §9.5.1</div>
-        <div class="cita-txt">"La fragmentación asistencial es un error técnico. Los pacientes duales requieren una estrategia donde el sistema de salud y la comunidad trabajen en red, humanizando el recorrido de sanación a través del acompañamiento afectuoso."</div>
+        <div class="cita-txt">«La fragmentación asistencial es un error técnico. Los pacientes duales requieren una estrategia donde el sistema de salud y la comunidad trabajen en red, humanizando el recorrido de sanación a través del acompañamiento afectuoso».</div>
         <div class="cita-ref">Manual de la PLAPA, §9.5.1 — La patología dual (CELAM 2026)</div>
       </div>
 
@@ -1446,10 +1463,10 @@
 
       <div class="autocuidado">
         <div class="autocuidado-lbl">Autocuidado del agente</div>
-        <div class="autocuidado-txt">Los cuatro modelos pueden generar en el equipo una sensación de <em>"esto es demasiado complejo para nosotros."</em> El facilitador recuerda que el agente pastoral no necesita dominar los modelos para diagnosticar: los necesita para <em>entender por qué ciertos procesos no avanzan a pesar del esfuerzo pastoral genuino</em>. Esa comprensión protege al equipo de la culpa por resultados que dependen de factores que están fuera de su alcance.</div>
+        <div class="autocuidado-txt">Los cuatro modelos pueden generar en el equipo una sensación de <em>«esto es demasiado complejo para nosotros».</em> El facilitador recuerda que el agente pastoral no necesita dominar los modelos para diagnosticar: los necesita para <em>entender por qué ciertos procesos no avanzan a pesar del esfuerzo pastoral genuino</em>. Esa comprensión protege al equipo de la culpa por resultados que dependen de factores que están fuera de su alcance.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §9.5.1 (Cuatro modelos), §8.2.2 (Estructuras y patología dual) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §9.5.1 (La patología dual), §8.2.2 (Sobre la distinción clínica de las estructuras de personalidad y la patología dual), §6.4 (Superación de la Fragmentación e Integralidad del Acompañamiento) — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1464,25 +1481,25 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"El saber territorial puede verse desbordado por situaciones de alta complejidad, como el riesgo suicida o descompensaciones psicóticas. El agente pastoral detecta, acompaña y articula; no diagnostica ni trata."</div>
+        <div class="resonancia-txt">«El saber territorial puede verse desbordado por situaciones de alta complejidad, como el riesgo suicida o descompensaciones psicóticas. La profesionalización dota de herramientas críticas al equipo y protege al cuidador del desgaste emocional y la fatiga por compasión».</div>
       </div>
 
       <div class="alerta">
-        <div class="alerta-lbl">Principio fundamental · §8.5.4 — Las tres funciones del agente pastoral en patología dual</div>
-        <div class="alerta-txt">El agente pastoral en patología dual tiene <em>tres funciones precisas y no intercambiables</em>: <strong>detectar señales</strong> que sugieren coocurrencia de trastorno mental, <strong>sostener el vínculo</strong> durante el proceso de derivación y tratamiento, y <strong>articular</strong> con los servicios de salud mental del territorio. Intentar ir más allá de esas tres funciones <em>perjudica al hermano y desgasta al agente</em>. Este es el principio no negociable del itinerario.</div>
+        <div class="alerta-lbl">Principio fundamental del itinerario — Tres funciones del agente pastoral en patología dual</div>
+        <div class="alerta-txt">A partir de la complementariedad de saberes que plantea el §8.5.4, este itinerario resume el rol del agente pastoral en patología dual en <em>tres funciones precisas y no intercambiables</em>: <strong>detectar señales</strong> que sugieren coocurrencia de trastorno mental, <strong>sostener el vínculo</strong> durante el proceso de derivación y tratamiento, y <strong>articular</strong> con los servicios de salud mental del territorio. Intentar ir más allá de esas tres funciones <em>perjudica al hermano y desgasta al agente</em>. Este es el principio no negociable del itinerario.</div>
       </div>
 
-      <div class="pl">El Ver — Las seis señales de alerta (§9.5.1, §8.2.2)</div>
+      <div class="pl">El Ver — Seis señales de alerta (guía orientativa del itinerario, no diagnóstica)</div>
       <div class="ejes">
         <div class="eje">
           <div class="eje-n">Señal 1</div>
           <div class="eje-t">Desorganización persistente</div>
-          <div class="eje-txt">Pensamiento desorganizado, habla incoherente o disgregada que no se explica solo por la intoxicación ni por el estado de privación.</div>
+          <div class="eje-txt">Pensamiento desorganizado, habla incoherente o disgregada que no se explica solo por la intoxicación ni por la abstinencia. Atención: si aparece de golpe, con confusión o agitación aguda, o con signos de intoxicación grave, sobredosis o abstinencia severa, no es momento de observar sino de pedir atención médica o llamar al número local de emergencias, sin dejar sola a la persona; si está inconsciente pero respira, ponerla en posición lateral de seguridad.</div>
         </div>
         <div class="eje">
           <div class="eje-n">Señal 2</div>
           <div class="eje-t">Episodios disociativos</div>
-          <div class="eje-txt">Períodos donde la persona parece "no estar presente" o relata experiencias de despersonalización o desrealización no asociadas al consumo inmediato.</div>
+          <div class="eje-txt">Períodos donde la persona parece «no estar presente» o relata experiencias de despersonalización o desrealización no asociadas al consumo inmediato.</div>
         </div>
         <div class="eje">
           <div class="eje-n">Señal 3</div>
@@ -1497,7 +1514,7 @@
         <div class="eje">
           <div class="eje-n">Señal 5 · URGENTE</div>
           <div class="eje-t">Ideación suicida o autolesión</div>
-          <div class="eje-txt">Cualquier expresión de querer hacerse daño o de no querer seguir viviendo. Derivación urgente e inmediata. No intentar manejar esto solo.</div>
+          <div class="eje-txt">Cualquier expresión de querer hacerse daño o de no querer seguir viviendo. Se escucha con calma y sin juzgar, y se deriva de manera urgente e inmediata a salud mental o a un servicio de emergencias, acompañando a la persona: no se la deja sola en ningún momento. No intentar manejar esto solo (§8.5.4, §11.7.6).</div>
         </div>
         <div class="eje">
           <div class="eje-n">Señal 6</div>
@@ -1508,13 +1525,13 @@
 
       <div class="pl">El Ver — Realidad</div>
       <ul class="pts">
-        <li><span class="dot">V</span><span><strong>El umbral de estabilización clínica como condición pastoral.</strong> El §8.2.2 es explícito: <em>"Una persona con una estructura psicótica descompensada o con un episodio depresivo severo no puede participar de un grupo terapéutico, elaborar su historia en un espacio de escucha ni sostener una experiencia espiritual si su sistema nervioso no ha alcanzado un umbral mínimo de estabilización."</em> La pastoral que intenta avanzar sobre este umbral sin estabilización previa <em>no acompaña: frustra al hermano y al equipo</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>El umbral de estabilización clínica como condición pastoral.</strong> El §8.2.2 es explícito: <em>«Una persona con una estructura psicótica descompensada o con un episodio depresivo severo no puede participar de un grupo terapéutico, elaborar su historia en un espacio de escucha ni sostener una experiencia espiritual si su sistema nervioso no ha alcanzado un umbral mínimo de estabilización».</em> La pastoral que intenta avanzar sobre este umbral sin estabilización previa <em>no acompaña: frustra al hermano y al equipo</em>.</span></li>
       </ul>
 
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>La medicación psiquiátrica como aliada del acompañamiento espiritual.</strong> <em>"La medicación no sana por sí sola —el Manual ha sido claro en que el vínculo, la comunidad y el sentido son indispensables—, pero en muchos casos crea las condiciones biológicas mínimas para que la persona pueda estar disponible para el encuentro sanador que la comunidad le ofrece"</em> (§8.2.2). El agente pastoral que entiende esto deja de ver la medicación como <em>competidora</em> del acompañamiento espiritual y la comprende como su <em>aliada</em>.</span></li>
-        <li><span class="dot j">J</span><span><strong>Articular mejor, no saber más.</strong> El modelo de §8.5.4 sobre la complementariedad de saberes aplica directamente: <em>"El profesional aporta la técnica necesaria para abordar patologías duales o traumas complejos, mientras que el acompañante par aporta el arte del acompañamiento y la capacidad de llegar a la herida del otro desde un lugar de igualdad."</em> La patología dual no exige que el agente pastoral <em>sepa más</em>: exige que <em>sepa articular mejor</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>La medicación psiquiátrica como aliada del acompañamiento espiritual.</strong> <em>«La medicación no sana por sí sola —el manual ha sido claro en que el vínculo, la comunidad y el sentido son indispensables—, pero en muchos casos crea las condiciones biológicas mínimas para que la persona pueda estar disponible para el encuentro sanador que la comunidad le ofrece»</em> (§8.2.2). El agente pastoral que entiende esto deja de ver la medicación como <em>competidora</em> del acompañamiento espiritual y la comprende como su <em>aliada</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>Articular mejor, no saber más.</strong> El modelo de §8.5.4 sobre la complementariedad de saberes aplica directamente: <em>«El profesional aporta la técnica necesaria para abordar patologías duales o traumas complejos, mientras que el acompañante par aporta el arte del acompañamiento y la capacidad de llegar a la herida del otro desde un lugar de igualdad».</em> La patología dual no exige que el agente pastoral <em>sepa más</em>: exige que <em>sepa articular mejor</em>.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1524,10 +1541,10 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Diseñar el protocolo de detección y derivación</div>
         <div class="mode-g">
-          <div class="act-body">El grupo diseña un protocolo mínimo: <em>¿quién en el equipo tiene formación para detectar las señales? ¿qué se hace cuando se detectan? ¿a qué servicio de salud mental se deriva? ¿hay contacto previo con ese servicio? ¿cómo se sostiene el vínculo pastoral durante el proceso de derivación? ¿cómo se articula el dispositivo pastoral con el tratamiento psiquiátrico en curso?</em> Un protocolo mínimo escrito vale más que un protocolo perfecto imaginado.</div>
+          <div class="act-body">El grupo diseña un protocolo mínimo: <em>¿quién en el equipo tiene formación para detectar las señales? ¿Qué se hace cuando se detectan? ¿A qué servicio de salud mental se deriva? ¿Hay contacto previo con ese servicio? ¿Cómo se sostiene el vínculo pastoral durante el proceso de derivación? ¿Cómo se articula el dispositivo pastoral con el tratamiento psiquiátrico en curso?</em> Un protocolo mínimo escrito vale más que un protocolo perfecto imaginado.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Escribí en tu bitácora los seis pasos concretos del protocolo de derivación tal como vos lo ejecutarías esta semana si detectaras una señal 5. Ese ensayo mental es la mejor preparación para el momento en que ocurra.</div>
+          <div class="act-body">Escribí en tu bitácora, paso a paso, el protocolo de derivación tal como vos lo ejecutarías esta semana si detectaras una señal 5: <em>¿qué harías primero? ¿A qué servicio de salud mental o de emergencias derivarías? ¿Tenés ese contacto a mano? ¿Cómo sostendrías el vínculo pastoral durante la derivación?</em> Ese ensayo mental es la mejor preparación para el momento en que ocurra.</div>
         </div>
       </div>
 
@@ -1536,7 +1553,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Mapear los servicios de salud mental del territorio</div>
         <div class="mode-g">
-          <div class="act-body">El grupo mapea: <em>¿qué servicios de salud mental existen en el territorio o en la zona accesible? ¿aceptan personas sin documentación? ¿hay lista de espera? ¿cómo es la relación actual del dispositivo con esos servicios? ¿hay un psiquiatra o psicólogo de referencia con quien el equipo pueda consultar?</em> Si el mapa está vacío, identificar el primer paso para construirlo.</div>
+          <div class="act-body">El grupo mapea: <em>¿qué servicios de salud mental existen en el territorio o en la zona accesible? ¿Aceptan personas sin documentación? ¿Hay lista de espera? ¿Cómo es la relación actual del dispositivo con esos servicios? ¿Hay un psiquiatra o psicólogo de referencia con quien el equipo pueda consultar?</em> Si el mapa está vacío, identificar el primer paso para construirlo.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Anotá en tu bitácora tres servicios de salud mental de tu zona. Al lado de cada uno: <em>nombre de un contacto humano concreto</em> (no institucional). Los puentes de patología dual se construyen entre personas, no entre logos.</div>
@@ -1546,19 +1563,19 @@
       <div class="act">
         <span class="act-tag tag-gru mode-g">Grupal</span>
         <span class="act-tag tag-ind mode-i">Individual</span>
-        <div class="act-title">Práctica: identificar la señal 5 sin caer en pánico ni minimizar</div>
+        <div class="act-title">Práctica: responder a la señal 5 sin minimizar ni reaccionar con pánico</div>
         <div class="mode-g">
-          <div class="act-body">La <em>señal 5</em> (ideación suicida o autolesión) merece práctica específica. En tríos: uno hace de hermano que expresa —sin dramatismo— algo como <em>"a veces pienso que sería mejor no estar"</em>; los otros dos deben responder <em>sin minimizar</em> (<em>"eso les pasa a todos"</em>) ni <em>entrar en pánico</em> (<em>"¡tenés que ir al hospital ya!"</em>). Al terminar: ¿qué salió naturalmente? ¿qué cuesta más? La escucha calmada que abre la conversación es una habilidad concreta que se entrena.</div>
+          <div class="act-body">La <em>señal 5</em> (ideación suicida o autolesión) merece práctica específica. En tríos: uno hace de hermano que expresa —sin dramatismo— algo como <em>«a veces pienso que sería mejor no estar»</em>; los otros dos deben responder <em>sin minimizar</em> (<em>«eso les pasa a todos»</em>) ni <em>reaccionar con pánico</em> (gritar <em>«¡tenés que ir al hospital ya!»</em> y cortar la conversación). Lo que se evita es el pánico, no la urgencia: la respuesta correcta escucha con calma, toma en serio lo dicho y <em>no posterga la derivación urgente</em>, acompañando a la persona sin dejarla sola hasta que quede en manos del servicio de salud mental o de emergencias. El §11.7.6 pide protocolos claros para la ideación suicida, con articulación con los servicios de emergencia. Al terminar: ¿qué salió naturalmente? ¿Qué cuesta más? La escucha calmada y la derivación urgente acompañada son habilidades concretas que se entrenan.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Repasá mentalmente cómo respondiste la última vez que alguien mencionó ideación suicida (aunque fuera de manera velada). Anotá en tu bitácora: <em>¿minimicé? ¿entré en pánico? ¿escuché? ¿articulé?</em> La honestidad con la propia respuesta es el primer paso para prepararla mejor la próxima vez.</div>
+          <div class="act-body">Repasá mentalmente cómo respondiste la última vez que alguien mencionó ideación suicida (aunque fuera de manera velada). Anotá en tu bitácora: <em>¿minimicé? ¿Entré en pánico? ¿Escuché? ¿Derivé con urgencia sin dejar sola a la persona?</em> La honestidad con la propia respuesta es el primer paso para prepararla mejor la próxima vez.</div>
         </div>
       </div>
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §8.2.2 — Discernimiento pastoral</div>
-        <div class="cita-txt">"La medicación psiquiátrica prescrita y supervisada por un profesional no es una contradicción con el modelo integral que este Manual propone; es parte de él. En muchos casos crea las condiciones biológicas mínimas para que la persona pueda estar disponible para el encuentro sanador que la comunidad le ofrece."</div>
-        <div class="cita-ref">Manual de la PLAPA, §8.2.2 — Discernimiento pastoral en patología dual (CELAM 2026)</div>
+        <div class="cita-txt">«La medicación psiquiátrica prescrita y supervisada por un profesional no es una contradicción con el modelo integral que este manual propone; es parte de él. […] en muchos casos crea las condiciones biológicas mínimas para que la persona pueda estar disponible para el encuentro sanador que la comunidad le ofrece».</div>
+        <div class="cita-ref">Manual de la PLAPA, §8.2.2 — Sobre la distinción clínica de las estructuras de personalidad y la patología dual (CELAM 2026)</div>
       </div>
 
       <div class="autocuidado">
@@ -1566,7 +1583,7 @@
         <div class="autocuidado-txt">Acompañar patología dual <em>sin red de salud mental</em> es una de las fuentes más frecuentes de burnout en los equipos pastorales: el agente siente que hace todo bien pero el proceso no avanza, sin saber que hay un cuadro de base que el acompañamiento solo no puede tocar. El protocolo de derivación no es abandono del hermano: <em>es la forma más responsable de cuidarlo</em>. Y también cuida al agente, que deja de cargar una responsabilidad que no le corresponde.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §8.2.2 (Estabilización), §8.5.4 (Complementariedad de saberes), §9.5.1 (Señales) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §8.2.2 (Sobre la distinción clínica de las estructuras de personalidad y la patología dual), §8.5.4 (Sobre la gestión de la tensión entre el saber profesional y el saber territorial), §9.5.1 (La patología dual), §11.7.6 (Los desafíos del modelo ambulatorio) — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1581,19 +1598,19 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"Cuando la red biológica no está presente o no es favorable, la familia somos nosotros. La comunidad debe constituirse como una red de apoyo que acompaña desde el reconocimiento y la cercanía, entendiendo que el amor incondicional es el motor que restaura la dignidad."</div>
+        <div class="resonancia-txt">«Cuando la red biológica no está presente o no es favorable, la familia somos nosotros. La comunidad debe constituirse como una red de apoyo que acompaña desde el reconocimiento y la cercanía, entendiendo que el amor incondicional es el motor que restaura la dignidad».</div>
       </div>
 
       <div class="pl">El Ver — Realidad</div>
       <ul class="pts">
-        <li><span class="dot">V</span><span><strong>El aporte específico e insustituible de la pastoral.</strong> El §8.2.2 concluye con la propuesta más importante del capítulo para la pastoral: <em>"La respuesta debe ser una cultura terapéutica que ofrezca un apego seguro para que la personalidad pueda alcanzar un mayor grado de integración."</em> El apego seguro <em>no lo produce el psiquiatra ni la medicación: lo produce la comunidad</em>. Ese es el aporte específico e insustituible de la pastoral en el abordaje de la patología dual.</span></li>
-        <li><span class="dot">V</span><span><strong>"Cuando la red biológica no está presente, la familia somos nosotros."</strong> El §8.5.3 sobre familias de acogida y vínculos comunitarios ofrece el marco más operativo. Las personas con patología dual suelen tener redes biológicas dañadas o ausentes. La comunidad pastoral <em>no reemplaza a la familia</em>: es la <em>familia grande</em> que la persona nunca tuvo o perdió, y que en contextos de patología dual resulta <em>terapéuticamente necesaria</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>El aporte específico e insustituible de la pastoral.</strong> El §8.2.2 concluye con la propuesta más importante del capítulo para la pastoral: <em>«[…] la respuesta debe ser una cultura terapéutica que ofrezca un apego seguro para que la personalidad pueda alcanzar un mayor grado de integración».</em> El apego seguro <em>no lo produce el psiquiatra ni la medicación: lo produce la comunidad</em>. Ese es el aporte específico e insustituible de la pastoral en el abordaje de la patología dual.</span></li>
+        <li><span class="dot">V</span><span><strong>Cuando falta la red biológica, la comunidad ocupa ese lugar.</strong> El §8.5.3 sobre familias de acogida y vínculos comunitarios ofrece el marco más operativo. Las personas con patología dual suelen tener redes biológicas dañadas o ausentes. La comunidad pastoral <em>no reemplaza a la familia</em>: es la <em>familia grande</em> que la persona nunca tuvo o perdió, y que en contextos de patología dual resulta <em>terapéuticamente necesaria</em>.</span></li>
       </ul>
 
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
         <li><span class="dot j">J</span><span><strong>Los cuatro aportes terapéuticos de la comunidad (§8.5.3).</strong> Suplencia de la orfandad funcional (<em>entorno de cuidado que cubre necesidades básicas y soporte emocional</em>), reparación del modelo vincular (<em>figuras de apego seguro que permiten desaprender modelos de violencia</em>), generación de capital de recuperación (<em>vínculos que recolectan los fragmentos rotos de la historia</em>), e inclusión social progresiva (<em>acceso a derechos que el Estado fragmenta</em>). Los cuatro son <em>terapéuticos, no solo asistenciales</em>.</span></li>
-        <li><span class="dot j">J</span><span><strong>El apego seguro como condición de eficacia de la medicación.</strong> <em>"La técnica profesional corre el riesgo de ser ineficaz si se aplica de forma aislada. Solo cobra sentido cuando el paciente se siente en un ambiente de apego seguro que el saber territorial ayuda a construir y sostener"</em> (§8.5.4). En la patología dual esta afirmación tiene consecuencias clínicas concretas: <em>la medicación psiquiátrica tiene mayor adherencia cuando el hermano tiene una comunidad que lo sostiene</em>. El apego seguro es condición de eficacia del tratamiento farmacológico.</span></li>
+        <li><span class="dot j">J</span><span><strong>El apego seguro sostiene el tratamiento.</strong> <em>«La técnica profesional corre el riesgo de ser ineficaz si se aplica de forma aislada. Solo cobra sentido cuando el paciente se siente en un ambiente de apego seguro que el saber territorial ayuda a construir y sostener»</em> (§8.5.4). En la patología dual esta afirmación tiene consecuencias concretas: al hablar del abandono en el modelo ambulatorio, el §11.7.6 recuerda que <em>«la clave para sostener la adherencia es la calidad del vínculo»</em>. Ese criterio vale también para sostener el tratamiento de salud mental: el apego seguro no reemplaza el tratamiento farmacológico, pero <em>ayuda a sostenerlo</em>.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1603,7 +1620,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Evaluar el apego seguro que ofrece el dispositivo</div>
         <div class="mode-g">
-          <div class="act-body">El grupo evalúa con honestidad: <em>¿el dispositivo ofrece apego seguro para personas con patología dual? ¿hay previsibilidad (normas claras, horarios regulares, respuestas predecibles)? ¿hay figuras de referencia estables que la persona pueda nombrar? ¿hay continuidad del vínculo cuando la persona entra en crisis y "desaparece"? ¿se mantiene el contacto durante las internaciones psiquiátricas?</em> El apego seguro se mide en esos detalles.</div>
+          <div class="act-body">El grupo evalúa con honestidad: <em>¿el dispositivo ofrece apego seguro para personas con patología dual? ¿Hay previsibilidad (normas claras, horarios regulares, respuestas predecibles)? ¿Hay figuras de referencia estables que la persona pueda nombrar? ¿Hay continuidad del vínculo cuando la persona entra en crisis y «desaparece»? ¿Se mantiene el contacto durante las internaciones psiquiátricas?</em> El apego seguro se mide en esos detalles.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Anotá en tu bitácora, para el dispositivo donde acompañás: <em>una fortaleza y una debilidad</em> en cada una de las cuatro dimensiones del apego seguro (previsibilidad · figuras estables · continuidad en crisis · presencia en internaciones). Ese diagnóstico es la agenda de mejora del semestre.</div>
@@ -1615,7 +1632,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Diseñar el protocolo de acompañamiento durante internación</div>
         <div class="mode-g">
-          <div class="act-body">Una de las situaciones más frecuentes en patología dual es la internación psiquiátrica. El grupo diseña un protocolo de acompañamiento pastoral durante ese período: <em>¿quién visita? ¿con qué frecuencia? ¿cómo se mantiene el vínculo? ¿cómo se prepara el egreso? ¿cómo se articula con el equipo de salud mental del hospital?</em> El hermano que sale de una internación sin comunidad que lo espere tiene <em>alto riesgo de recaída inmediata</em>.</div>
+          <div class="act-body">Una de las situaciones más frecuentes en patología dual es la internación psiquiátrica. El grupo diseña un protocolo de acompañamiento pastoral durante ese período: <em>¿quién visita? ¿Con qué frecuencia? ¿Cómo se mantiene el vínculo? ¿Cómo se prepara el egreso? ¿Cómo se articula con el equipo de salud mental del hospital?</em> El hermano que sale de una internación sin comunidad que lo espere tiene <em>alto riesgo de recaída inmediata</em>.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Escribí en tu bitácora, si tenés experiencia acompañando internaciones, tres aprendizajes concretos que hiciste. Si no la tenés, tres preguntas que le harías a alguien que sí. Ese aprendizaje colectivo es lo que <em>convierte experiencias aisladas en saber pastoral compartido</em>.</div>
@@ -1627,7 +1644,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Cierre: el doble nombre como puerta de compasión</div>
         <div class="mode-g">
-          <div class="act-body">El itinerario se llama <em>"cuando el dolor tiene doble nombre."</em> El grupo cierra reflexionando: <em>¿qué cambia en el modo de acompañar cuando sabemos que el hermano carga dos pesos simultáneos? ¿hay más compasión? ¿menos impaciencia? ¿más humildad frente al fracaso del proceso?</em> El doble nombre del dolor no es una condena: <em>es una invitación a un acompañamiento más profundo, más articulado y más honesto sobre los propios límites</em>.</div>
+          <div class="act-body">El itinerario se llama <em>«cuando el dolor tiene doble nombre».</em> El grupo cierra reflexionando: <em>¿qué cambia en el modo de acompañar cuando sabemos que el hermano carga dos pesos simultáneos? ¿Hay más compasión? ¿Menos impaciencia? ¿Más humildad frente al fracaso del proceso?</em> El doble nombre del dolor no es una condena: <em>es una invitación a un acompañamiento más profundo, más articulado y más honesto sobre los propios límites</em>.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Cerrá el itinerario en tu bitácora respondiendo esa misma pregunta: <em>¿qué cambia en tu modo de acompañar cuando sabés que el hermano carga dos pesos?</em> Guardá la respuesta. La próxima vez que un proceso no avance como esperás, releela: es un antídoto contra la culpa impaciente.</div>
@@ -1636,27 +1653,26 @@
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §8.5.3</div>
-        <div class="cita-txt">"Cuando la red biológica no está presente o no es favorable, la familia somos nosotros. La comunidad debe constituirse como una red de apoyo que acompaña desde el reconocimiento y la cercanía, entendiendo que el amor incondicional es el motor que restaura la dignidad."</div>
-        <div class="cita-ref">Manual de la PLAPA, §8.5.3 — Familias de acogida y vínculos comunitarios (CELAM 2026)</div>
+        <div class="cita-txt">«El vínculo comunitario posee una fuerza terapéutica excepcional. No busca reemplazar legalmente a la familia, sino ofrecer una familia grande donde la pertenencia y el servicio mutuo permiten al individuo pasar de ser un asistido a ser un miembro activo y digno de la sociedad».</div>
+        <div class="cita-ref">Manual de la PLAPA, §8.5.3 — Sobre el rol de las familias de acogida y los vínculos comunitarios (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Alerta pastoral</div>
-        <div class="alerta-txt">La afirmación <em>"la familia somos nosotros"</em> puede derivar en <em>fusión pastoral</em>: el equipo se vuelve dependiente del hermano y viceversa, sin la distancia que permite el acompañamiento sano. El apego seguro que la pastoral ofrece <em>no es fusión: es presencia estable</em>. La diferencia se juega en la capacidad del equipo de sostener el vínculo <em>sin absorberlo</em>. Sin esa distinción, la comunidad pastoral reproduce las dependencias que quiere sanar.</div>
+        <div class="alerta-txt">La afirmación <em>«la familia somos nosotros»</em> puede derivar en <em>fusión pastoral</em>: el equipo se vuelve dependiente del hermano y viceversa, sin la distancia que permite el acompañamiento sano. El apego seguro que la pastoral ofrece <em>no es fusión: es presencia estable</em>. La diferencia se juega en la capacidad del equipo de sostener el vínculo <em>sin absorberlo</em>. Sin esa distinción, la comunidad pastoral reproduce las dependencias que quiere sanar.</div>
       </div>
 
       <div class="autocuidado">
         <div class="autocuidado-lbl">Autocuidado del agente — cierre del itinerario</div>
-        <div class="autocuidado-txt">El itinerario cierra con la pregunta que la patología dual le hace al equipo: <em>¿estamos dispuestos a ser "la familia" de personas cuyo sistema nervioso ha sido dañado por el trauma y la sustancia, y que por eso a veces nos van a fallar de maneras que nos van a doler?</em> La respuesta honesta define qué tipo de dispositivo quiere ser el equipo. No hay respuesta incorrecta: <em>hay respuestas más o menos honestas</em>. Y la honestidad protege tanto al hermano como al agente.</div>
+        <div class="autocuidado-txt">El itinerario cierra con la pregunta que la patología dual le hace al equipo: <em>¿estamos dispuestos a ser «la familia» de personas cuyo sistema nervioso ha sido dañado por el trauma y la sustancia, y que por eso a veces nos van a fallar de maneras que nos van a doler?</em> La respuesta honesta define qué tipo de dispositivo quiere ser el equipo. No hay respuesta incorrecta: <em>hay respuestas más o menos honestas</em>. Y la honestidad protege tanto al hermano como al agente.</div>
       </div>
 
       <div class="lectura">
         <div class="lectura-lbl">Lectura complementaria</div>
-        <div class="lectura-txt">Para profundizar en el <strong>abordaje pastoral de la patología dual</strong> en dispositivos comunitarios de la Familia Grande Hogar de Cristo, con casos concretos de articulación con servicios de salud mental, protocolos de derivación y acompañamiento durante internaciones, ofrecemos este texto para la reflexión del equipo.</div>
-        <a href="ElMetodoFGHC.pdf" download class="lectura-link">📥 Descargar "ElMetodoFGHC.pdf"</a>
+        <div class="lectura-txt">Para profundizar, leé completo en el Manual de la PLAPA el <strong>§9.5.1, «La patología dual»</strong>, con las objeciones más frecuentes y la respuesta del Manual. Seguí con el <strong>§8.2.2, «Sobre la distinción clínica de las estructuras de personalidad y la patología dual»</strong>, por su discernimiento sobre la estabilización y la medicación, y con el <strong>§8.5.4, «Sobre la gestión de la tensión entre el saber profesional y el saber territorial»</strong>, que fundamenta la articulación entre la comunidad y los servicios de salud mental.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §8.2.2 (Cultura terapéutica), §8.5.3 (Familias de acogida), §8.5.4 (Complementariedad), §9.5.1 (Patología dual) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §8.2.2 (Sobre la distinción clínica de las estructuras de personalidad y la patología dual), §8.5.3 (Sobre el rol de las familias de acogida y los vínculos comunitarios), §8.5.4 (Sobre la gestión de la tensión entre el saber profesional y el saber territorial), §9.5.1 (La patología dual), §11.7.6 (Los desafíos del modelo ambulatorio) — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1671,8 +1687,8 @@
 
       <!-- Selector de vista: este itinerario / global -->
       <div class="foro-vista">
-        <button class="foro-vista-btn on" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
-        <button class="foro-vista-btn" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
+        <button class="foro-vista-btn on" aria-pressed="true" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
+        <button class="foro-vista-btn" aria-pressed="false" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
       </div>
 
       <!-- Pautas pastorales -->
@@ -1724,7 +1740,7 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Antes de comenzar</div>
-        <div class="resonancia-txt">"La revisión de vida es la forma histórica que la Iglesia latinoamericana encontró para institucionalizar el Ver–Juzgar–Actuar. El agente que la practica no aplica el método: lo vive." Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
+        <div class="resonancia-txt">Este itinerario te invitó a reconocer cuándo el consumo convive con un trastorno mental, a entender cómo se articulan los dos cuadros, a detectar señales y derivar sin soltar el vínculo, y a ofrecer el apego seguro que solo la comunidad puede dar. Ahora es el momento de nombrar qué cambió en tu mirada. Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
       </div>
 
       <div class="eval-nota">
@@ -1734,24 +1750,24 @@
 
       <div class="pl">El Ver — Qué se hizo visible</div>
       <div class="eval-q">
-        <label for="evalVer">¿Qué realidad del territorio se hizo más visible para vos a lo largo de estos cuatro módulos? ¿Qué llagas emergieron con más fuerza? ¿Qué zonas del mapa estaban en blanco antes y ahora tienen contenido?</label>
+        <label for="evalVer">¿Qué situaciones de patología dual se hicieron más visibles para vos entre las personas que acompañás a lo largo de estos cuatro módulos? ¿Qué señales notabas antes sin saber cómo leerlas? ¿Qué descubriste sobre los servicios de salud mental de tu zona y sobre tu contacto real con ellos?</label>
         <textarea id="evalVer" data-eval="ver" placeholder="Escribí con calma, sin apurarte..."></textarea>
       </div>
 
       <div class="pl">El Juzgar — Qué iluminó, qué preguntas quedaron abiertas</div>
       <div class="eval-q">
-        <label for="evalJuzgar1">¿Qué del método del diagnóstico territorial te iluminó de manera nueva? ¿Qué idea del Manual sentís que ya no podrás dejar de lado?</label>
+        <label for="evalJuzgar1">De la raíz común de los dos trastornos, de los cuatro modelos explicativos, del rol de detectar, sostener el vínculo y articular, y de la cultura terapéutica del apego seguro: ¿qué te iluminó de manera nueva? ¿Qué idea del Manual sentís que ya no podrás dejar de lado?</label>
         <textarea id="evalJuzgar1" data-eval="juzgar1" placeholder="Nombralo con precisión..."></textarea>
       </div>
       <div class="eval-q">
-        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos? Las preguntas abiertas son también fruto (§13.3).</label>
+        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos? La tensión entre sostener el vínculo y derivar a tiempo, entre la medicación y el acompañamiento espiritual, entre ser «la familia» del hermano y no fusionarte con él: ¿dónde te dejó incómodo/a?</label>
         <textarea id="evalJuzgar2" data-eval="juzgar2" placeholder="Las que siguen ardiendo..."></textarea>
       </div>
 
       <div class="pl">El Actuar — Compromiso concreto</div>
       <div class="eval-q">
-        <label for="evalActuar">¿Qué gesto pastoral concreto vas a intentar en las próximas semanas a partir del diagnóstico que hiciste? Nombralo con nombre, tiempo y lugar. Un compromiso vago no es un compromiso.</label>
-        <textarea id="evalActuar" data-eval="actuar" placeholder="Ej.: En la próxima reunión de equipo (jueves 25) voy a presentar el mapa territorial que construimos y proponer una callejeada específica al sector X del barrio..."></textarea>
+        <label for="evalActuar">¿Qué gesto concreto vas a intentar en las próximas semanas para acompañar mejor a quienes cargan con una patología dual? Puede ser conseguir un profesional de salud mental de referencia, escribir con el equipo un protocolo mínimo de derivación, visitar a alguien que está internado o preparar con el equipo su egreso. Nombralo con nombre, tiempo y lugar. Un compromiso vago no es un compromiso.</label>
+        <textarea id="evalActuar" data-eval="actuar" placeholder="Ej.: El martes 10 voy con X al centro de salud mental de la zona para presentarnos a la psicóloga de admisión y dejarle el teléfono del equipo..."></textarea>
       </div>
       <div class="eval-q eval-fecha">
         <label for="evalFecha">Fecha en la que vas a volver a revisar si pudiste sostenerlo</label>
@@ -1759,8 +1775,8 @@
       </div>
 
       <div class="pl">Autocuidado y equipo</div>
-      <div class="eval-q eval-scale">
-        <label>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</label>
+      <fieldset class="eval-q eval-scale">
+        <legend>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</legend>
         <div class="eval-scale-row">
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="1" data-eval="animo"><span>1</span></label>
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="2" data-eval="animo"><span>2</span></label>
@@ -1768,10 +1784,10 @@
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="4" data-eval="animo"><span>4</span></label>
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="5" data-eval="animo"><span>5</span></label>
         </div>
-      </div>
+      </fieldset>
       <div class="eval-q">
-        <label for="evalCuidado">¿Qué necesitás cuidar de vos mismo/a en las próximas semanas? ¿A quién del equipo se lo vas a decir?</label>
-        <textarea id="evalCuidado" data-eval="cuidado" placeholder="El agente que cuida su esperanza puede sostener la del otro (§1.3)..."></textarea>
+        <label for="evalCuidado">Acompañar patología dual expone a situaciones que desbordan el saber territorial, como el riesgo suicida o las descompensaciones psicóticas, y sin red llegan rápido el desgaste emocional y la fatiga por compasión (§8.5.4). ¿Qué necesitás cuidar de vos en las próximas semanas? ¿Qué responsabilidad estás cargando que no te corresponde? ¿A quién del equipo se lo vas a decir?</label>
+        <textarea id="evalCuidado" data-eval="cuidado" placeholder="Ej.: Voy a decirle a X que desde la crisis de Y no duermo bien y que necesito no ser el único que atiende el teléfono a la noche..."></textarea>
       </div>
 
       <div class="pl">Cierre</div>
@@ -1790,10 +1806,10 @@
 
       <div class="autocuidado" style="margin-top: 2rem;">
         <div class="autocuidado-lbl">Cierre del itinerario</div>
-        <div class="autocuidado-txt">Cerrar bien un itinerario también es autocuidado: celebrar lo caminado, agradecer al equipo, reconocer los propios límites y renovar la esperanza. Este itinerario termina con gratitud: por el territorio que nos habló, por las llagas que dejamos de negar, por el equipo que hizo posible mirar sin apartar la mirada.</div>
+        <div class="autocuidado-txt">Cerrar bien un itinerario también es autocuidado: celebrar lo caminado, agradecer al equipo, reconocer los propios límites y renovar la esperanza. Este itinerario termina con gratitud: por los hermanos que cargan un dolor de doble nombre y siguen eligiendo volver, por los profesionales que aceptaron trabajar en red con nosotros, por el equipo que hizo posible acompañar sin cargar solos lo que no nos corresponde.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §1.3 (Prólogo), §6.1.3 (Evitar la romantización), §13.2 (Sinodalidad en la práctica), §13.3 (Rolling release), §13.5 (Mecanismos de colaboración) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §9.5.1 (La patología dual), §8.2.2 (Sobre la distinción clínica de las estructuras de personalidad y la patología dual), §8.5.3 (Sobre el rol de las familias de acogida y los vínculos comunitarios), §8.5.4 (Sobre la gestión de la tensión entre el saber profesional y el saber territorial), §13.3 (La propuesta de un manual Rolling Release), §13.5 (Los mecanismos de colaboración) — CELAM 2026.</div>
 
     </div>
   </div>
@@ -1807,9 +1823,9 @@
     root.classList.add('mode-' + mode);
     var buttons = document.querySelectorAll('.mode-btn');
     for (var i = 0; i < buttons.length; i++) {
-      buttons[i].classList.remove('on');
+      buttons[i].classList.remove('on'); buttons[i].setAttribute('aria-pressed', 'false');
     }
-    btn.classList.add('on');
+    btn.classList.add('on'); btn.setAttribute('aria-pressed', 'true');
   }
 
   function show(n, btn) {
@@ -2086,8 +2102,8 @@
   function setVistaForo(v, btn) {
     vistaForo = v;
     var buttons = document.querySelectorAll('.foro-vista-btn');
-    for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove('on'); }
-    btn.classList.add('on');
+    for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove('on'); buttons[i].setAttribute('aria-pressed', 'false'); }
+    btn.classList.add('on'); btn.setAttribute('aria-pressed', 'true');
     cargarComentarios();
   }
 
@@ -2165,16 +2181,17 @@
     var datos = recolectarEvaluacion();
     var minimoTexto = (datos.ver || '').trim() + (datos.actuar || '').trim();
     if (minimoTexto.length < 30) {
-      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos "El Ver" y "El Actuar" merecen unos renglones honestos.', 'error');
+      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos «El Ver» y «El Actuar» merecen unos renglones honestos.', 'error');
       return;
     }
 
     // Guardar en Supabase (siempre queda en tu bitácora)
     if (!sesion) { window.location.href = '/login'; return; }
-    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario', {
+    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario?on_conflict=usuario_id,itinerario_id', {
       method: 'POST',
       headers: Object.assign({}, supaHeaders(), { 'Prefer': 'resolution=merge-duplicates' }),
       body: JSON.stringify({
+        usuario_id: sesion.user ? sesion.user.id : undefined,
         itinerario_id: ITINERARIO_ID,
         respuestas: datos,
         compartir_con_equipo: datos.compartir_con_equipo === true
@@ -2197,12 +2214,18 @@
 
   function imprimirEvaluacion() {
     autoguardarBorrador();
+    // Que cada respuesta se imprima completa, sin cortarse
+    var areas = document.querySelectorAll('#m6 textarea');
+    for (var i = 0; i < areas.length; i++) {
+      areas[i].style.height = 'auto';
+      areas[i].style.height = areas[i].scrollHeight + 'px';
+    }
     window.print();
   }
 
   // Init general del itinerario
   document.addEventListener('DOMContentLoaded', function() {
-    // Leer sesión (el guard del <head> garantiza que existe)
+    // Leer sesión guardada por el login (puede no existir)
     try {
       var stored = localStorage.getItem('escuela_plapa_sesion');
       if (stored) sesion = JSON.parse(stored);

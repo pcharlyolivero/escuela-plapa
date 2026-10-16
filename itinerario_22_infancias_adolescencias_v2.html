@@ -24,7 +24,7 @@
     --borde:      #E4E2F0;
 
     --font-serif: "Georgia", "Times New Roman", serif;
-    --font-sans:  "system-ui", -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+    --font-sans:  system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -772,7 +772,7 @@
   }
   .foro-form textarea:focus,
   .foro-form select:focus {
-    outline: none;
+    outline: 2px solid transparent;
     border-color: var(--i22-medio);
   }
   .foro-form-actions {
@@ -1009,7 +1009,18 @@
   .eval-q {
     margin-bottom: 1.5rem;
   }
-  .eval-q > label {
+  fieldset.eval-scale {
+    border: 0;
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+    min-width: 0;
+  }
+  .eval-q > legend {
+    padding: 0;
+  }
+  .eval-q > label,
+  .eval-q > legend {
     display: block;
     font-size: 14px;
     font-weight: 500;
@@ -1033,7 +1044,7 @@
   }
   .eval-q textarea:focus,
   .eval-q input:focus {
-    outline: none;
+    outline: 2px solid transparent;
     border-color: var(--i22-medio);
     box-shadow: 0 0 0 3px rgba(60, 52, 137, 0.1);
   }
@@ -1063,6 +1074,10 @@
     position: absolute;
     opacity: 0;
     pointer-events: none;
+  }
+  .eval-radio input:focus-visible + span {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
   }
   .eval-radio span {
     display: block;
@@ -1155,7 +1170,10 @@
     .root { box-shadow: none; padding: 1rem; max-width: 100%; }
     .portada, .video-wrap, .mode-selector, .nav { display: none !important; }
     .card { display: none !important; }
-    #m6.card { display: block !important; break-inside: avoid; border: none; }
+    #m6.card { display: block !important; border: none; }
+    .eval-q { break-inside: avoid; }
+    .video-wrap, .top-header, .foro-vista { display: none !important; }
+    .eval-q textarea { overflow: visible; resize: none; }
     .eval-actions, .eval-msg { display: none !important; }
     .ch { background: transparent; }
     .eval-q textarea, .eval-q input[type="date"] {
@@ -1207,11 +1225,11 @@
 
     <div class="dest-box">
       <div class="dest-lbl">Destinatarios</div>
-      <div class="dest-txt">Agentes pastorales que trabajan con niños y adolescentes en contextos de exclusión: catequistas, animadores de centros juveniles, responsables de comedores, docentes de escuelas católicas en barrios vulnerables, y coordinadores de actividades barriales. También útil para padres y familias de apoyo que quieren entender y fortalecer su rol protector. Es el itinerario más accesible del bloque 5. Articulado con los Itinerarios 20 (vulnerabilidad biológica adolescente) y 21 (mujeres en situación de consumo).</div>
+      <div class="dest-txt">Agentes pastorales que trabajan con niños y adolescentes en contextos de exclusión: catequistas, animadores de centros juveniles, responsables de comedores, docentes de escuelas católicas en barrios vulnerables, y coordinadores de actividades barriales. También útil para padres y familias de apoyo que quieren entender y fortalecer su rol protector. Es el itinerario más accesible del bloque 5. Articulado con el §9.4.1 (Vulnerabilidad biológica aumentada en adolescentes y jóvenes).</div>
     </div>
 
     <div class="portada-pills">
-      <span class="portada-pill">§4.5 · §11.1.9 · §11.1.10</span>
+      <span class="portada-pill">§4.5 · §9.4.1 · §11.1.9 · §11.1.10</span>
       <span class="portada-pill">4 módulos</span>
       <span class="portada-pill">Pastoral juvenil y niñez</span>
       <span class="portada-pill">Nivel inicial–intermedio</span>
@@ -1221,15 +1239,14 @@
 
   <!-- ═══ VIDEO ═══════════════════════════════════════════ -->
   
-  <!-- NUEVO: Bloque del Video de Presentación Incrustado -->
-<div style="background: var(--surface-2); border: 0.5px solid var(--border); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
-  <p style="font-size: 11px; font-weight: 500; color: #085041; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; text-align: left;">
+<div class="video-wrap" style="background: #FFF; border: 1px solid var(--borde); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
+  <p style="font-size: 11px; font-weight: 500; color: var(--i22-oscuro); letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; text-align: left;">
     ▶️ Video de presentación
   </p>
   <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px;">
     <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
       src="https://www.youtube.com/embed/k-DMfRoI90o"
-      title="Presentación del Itinerario 22" 
+      title="Video de presentación: Infancias y adolescencias en riesgo — Itinerario 22" 
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
       allowfullscreen>
     </iframe>
@@ -1238,8 +1255,8 @@
 
   <!-- ═══ SELECTOR DE MODALIDAD ═══════════════════════════ -->
   <div class="mode-selector">
-    <button class="mode-btn on" onclick="setMode('grupal', this)">👥 Hacer en comunidad</button>
-    <button class="mode-btn" onclick="setMode('individual', this)">👤 Hacer de forma individual</button>
+    <button class="mode-btn on" aria-pressed="true" onclick="setMode('grupal', this)">👥 Hacer en comunidad</button>
+    <button class="mode-btn" aria-pressed="false" onclick="setMode('individual', this)">👤 Hacer de forma individual</button>
   </div>
 
   <!-- ═══ NAVEGACIÓN ══════════════════════════════════════ -->
@@ -1264,26 +1281,26 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"Al observar la realidad de los más pequeños en los territorios, se identifica una de las heridas más profundas de la región: el descenso drástico de la edad de inicio del consumo, donde los agentes pastorales reportan casos desde los 8 o 9 años."</div>
+        <div class="resonancia-txt">«Al observar la realidad de los más pequeños en los territorios, se identifica una de las heridas más profundas de la región: el descenso drástico de la edad de inicio del consumo, donde los agentes pastorales reportan casos en sectores populares desde los 8 o 9 años».</div>
       </div>
 
       <div class="alerta">
-        <div class="alerta-lbl">Dato crítico · §4.5 y §11.1.9</div>
-        <div class="alerta-txt">En algunos territorios latinoamericanos, la edad promedio de inicio del consumo baja a los <strong>8 o 9 años</strong>, frente al promedio nacional de 13 a 15. El narcotráfico recluta a niños de entre <strong>12 y 16 años</strong> como soldaditos o microtraficantes. La corteza prefrontal —el freno biológico— no madura hasta los 25 años: <em>estos niños carecen del hardware neurológico</em> para evaluar el riesgo o resistir la presión del grupo (§9.4.1, Itin 20).</div>
+        <div class="alerta-lbl">Dato crítico · §4.1, §4.5 y §11.1.9</div>
+        <div class="alerta-txt">Las crónicas territoriales reportan casos de inicio del consumo en barrios populares desde los <strong>8 o 9 años</strong>, cuando las estadísticas nacionales suelen situar el promedio de inicio entre los 13 y 15 años (§4.1); en algunas realidades, la edad de inicio <em>promedia los 9 años</em> (§11.1.9). El narcotráfico recluta a niños de entre <strong>12 y 16 años</strong> como soldaditos o microtraficantes (§4.5). La corteza prefrontal —el freno biológico— no madura hasta los 25 años: <em>estos niños carecen de la madurez neurológica</em> para evaluar el riesgo o resistir la presión del grupo (§9.4.1).</div>
       </div>
 
       <div class="pl">El Ver — Realidad</div>
       <ul class="pts">
-        <li><span class="dot">V</span><span><strong>Orfandad funcional: padres vivos pero ausentes como figuras de apego.</strong> <em>"El descenso de la edad de inicio del consumo es el resultado de una orfandad funcional, donde niños y adolescentes crecen en entornos en los que los adultos referentes han dejado de ser figuras protectoras para volverse ausentes o invisibles"</em> (§4.5). La orfandad funcional no requiere que los padres estén muertos: requiere que hayan dejado de estar presentes como figuras de apego. <em>Un niño cuyos padres viven pero no cuidan es un niño sin amparo.</em></span></li>
-        <li><span class="dot">V</span><span><strong>El trauma complejo empieza en la infancia, no en el adulto.</strong> <em>"El maltrato intrafamiliar, la negligencia y el abuso sexual configuran un escenario que condiciona el desarrollo desde la temprana infancia"</em> (§4.5). El trauma complejo que el §8.2.3 describe en adultos <em>empieza aquí, en la infancia</em>, cuando el entorno más cercano es la fuente del peligro en lugar de la fuente de protección. El niño que sale a la calle en busca de la sustancia muchas veces <em>está huyendo de un hogar más peligroso que la esquina</em>.</span></li>
-        <li><span class="dot">V</span><span><strong>Repetición generacional: los adultos en consumo fueron niños heridos.</strong> El diagnóstico del §4.5 cierra con la imagen más dolorosa del Manual: <em>"muchos de los adultos que hoy atraviesan el consumo son los niños heridos del pasado que nunca contaron con una red de contención efectiva."</em> La repetición generacional <em>no es fatalismo</em>: es el diagnóstico de un sistema de exclusión que reproduce a sus propias víctimas. La pastoral que acompaña al adulto en recuperación y no llega a los niños del mismo territorio <em>está gestionando consecuencias sin tocar causas</em>.</span></li>
-        <li><span class="dot">V</span><span><strong>Más de 8 horas diarias de pantalla: territorio digital como esquina invisible.</strong> El §4.5 también documenta el impacto del entorno digital: <em>"estudios internacionales y la observación territorial coinciden en que los niños pueden pasar más de ocho horas diarias frente a pantallas, exponiéndose a la ludopatía por apuestas en línea desde videojuegos aparentemente gratuitos."</em> El territorio digital es hoy tan peligroso para los menores como la esquina física del barrio, <em>y mucho más invisible para los adultos referentes</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>Orfandad funcional: padres vivos pero ausentes como figuras de apego.</strong> <em>«Este fenómeno [el descenso de la edad de inicio] se manifiesta como el resultado de una orfandad funcional, donde niños y adolescentes crecen en entornos en los que los adultos referentes han dejado de ser figuras protectoras para volverse ausentes o invisibles»</em> (§4.5). La orfandad funcional no requiere que los padres estén muertos: requiere que hayan dejado de estar presentes como figuras de apego. <em>Un niño cuyos padres viven pero no cuidan es un niño sin amparo.</em></span></li>
+        <li><span class="dot">V</span><span><strong>El trauma complejo empieza en la infancia, no en el adulto.</strong> <em>«El maltrato intrafamiliar, la negligencia y el abuso sexual configuran un escenario que condiciona el desarrollo desde la temprana infancia»</em> (§4.5). El trauma complejo, que el §8.2.3 aborda desde el Tratamiento Informado en el Trauma, <em>empieza aquí, en la infancia</em>, cuando el entorno más cercano es la fuente del peligro en lugar de la fuente de protección. El niño que sale a la calle en busca de la sustancia muchas veces <em>está huyendo de un hogar más peligroso que la esquina</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>Repetición generacional: los adultos en consumo fueron niños heridos.</strong> El diagnóstico del §4.5 contiene una de las imágenes más dolorosas del Manual: <em>«muchos de los adultos que hoy atraviesan el consumo son los niños heridos del pasado que nunca contaron con una red de contención efectiva»</em>. La repetición generacional <em>no es fatalismo</em>: es el diagnóstico de un sistema de exclusión que reproduce a sus propias víctimas. La pastoral que acompaña al adulto en recuperación y no llega a los niños del mismo territorio <em>está gestionando consecuencias sin tocar causas</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>Más de 8 horas diarias de pantalla: territorio digital como esquina invisible.</strong> El §4.5 también documenta el impacto del entorno digital: <em>«estudios internacionales y la observación territorial coinciden en que los niños pueden pasar más de ocho horas diarias frente a pantallas, exponiéndose a una sobrecarga de información y, de manera creciente, a la ludopatía por apuestas en línea»</em>. El territorio digital es hoy tan peligroso para los menores como la esquina física del barrio, <em>y mucho más invisible para los adultos referentes</em>.</span></li>
       </ul>
 
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>Culpar a los padres sin ver el círculo es juzgar el síntoma.</strong> La orfandad funcional que el §4.5 describe no es solo un problema de familias disfuncionales: es el resultado de estructuras de exclusión que dejan a las familias sin recursos para cuidar. <em>"Generalmente, estos adultos tampoco estuvieron preparados para formar una familia: provienen de experiencias similares y no logran romper el círculo"</em> (§4.5). <em>Culpar a los padres sin ver el círculo generacional</em> es juzgar el síntoma e ignorar la causa. La pastoral que puede ver el círculo <em>puede empezar a romperlo</em>.</span></li>
-        <li><span class="dot j">J</span><span><strong>La prevención a los 13 llega tarde donde el consumo empieza a los 8.</strong> El §11.1.9 formula la consecuencia pastoral más urgente del diagnóstico: <em>"la parroquia no puede esperar a que el problema se manifieste en la adolescencia; debe llegar antes a través de espacios promocionales que fortalezcan la construcción del ser social."</em> La prevención que llega a los 13 años <em>llega tarde para los territorios donde el consumo empieza a los 8</em>. El umbral pastoral tiene que bajar.</span></li>
+        <li><span class="dot j">J</span><span><strong>Culpar a los padres sin ver el círculo es juzgar el síntoma.</strong> La orfandad funcional que el §4.5 describe no es solo un problema de familias disfuncionales: es el resultado de estructuras de exclusión que dejan a las familias sin recursos para cuidar. <em>«Generalmente, estos adultos tampoco estuvieron preparados para formar una familia: provienen de experiencias similares y no logran romper el círculo»</em> (§4.5). <em>Culpar a los padres sin ver el círculo generacional</em> es juzgar el síntoma e ignorar la causa. La pastoral que puede ver el círculo <em>puede empezar a romperlo</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>La prevención a los 13 llega tarde donde el consumo empieza a los 8.</strong> El §11.1.9 formula la consecuencia pastoral más urgente del diagnóstico: <em>«la parroquia no puede esperar a que el problema se manifieste en la adolescencia; debe llegar antes a través de espacios promocionales que fortalezcan la construcción del ser social»</em>. La prevención que llega a los 13 años <em>llega tarde para los territorios donde el consumo empieza a los 8</em>. El umbral pastoral tiene que bajar.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1293,10 +1310,10 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Mapear la orfandad funcional del territorio</div>
         <div class="mode-g">
-          <div class="act-body">El grupo identifica: <em>¿cuántos niños del territorio tienen adultos referentes presentes? ¿cuántos tienen adultos físicamente presentes pero funcionalmente ausentes? ¿cuántos viven situaciones de maltrato o negligencia que el equipo conoce pero no nombra?</em> El mapa de la orfandad funcional es el punto de partida para saber <em>a cuántos niños les falta el "abrazo" que el §11.1.9 propone como primer medicamento</em>.</div>
+          <div class="act-body">El grupo identifica: <em>¿cuántos niños del territorio tienen adultos referentes presentes? ¿Cuántos tienen adultos físicamente presentes pero funcionalmente ausentes? ¿Cuántos viven situaciones de maltrato o negligencia que el equipo conoce pero no nombra?</em> El mapa de la orfandad funcional es el punto de partida para saber <em>a cuántos niños les falta el «abrazo» que el §11.1.9 propone como primer medicamento</em>.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Anotá en tu bitácora <em>tres niños del territorio</em> (sin nombres completos) cuya situación de orfandad funcional conocés. Al lado de cada uno: <em>¿qué espacio pastoral tiene?</em> Si la respuesta es <em>"ninguno"</em>, ese es tu llamado concreto a construirlo.</div>
+          <div class="act-body">Anotá en tu bitácora <em>tres niños del territorio</em> (sin nombres completos) cuya situación de orfandad funcional conocés. Al lado de cada uno: <em>¿qué espacio pastoral tiene?</em> Si la respuesta es <em>«ninguno»</em>, ese es tu llamado concreto a construirlo.</div>
         </div>
       </div>
 
@@ -1305,7 +1322,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">¿A qué edad llega la pastoral al territorio?</div>
         <div class="mode-g">
-          <div class="act-body">El grupo evalúa: <em>¿cuál es la edad mínima de las personas que acompañan los dispositivos pastorales del territorio?</em> Si la respuesta es <em>"13 años" o más en territorios donde el consumo empieza a los 8 o 9, el dispositivo está llegando tarde</em>. <em>¿Qué propuesta existe para el rango de 6 a 12 años? ¿hay comedores, actividades deportivas o espacios de juego que lleguen a esa franja etaria?</em></div>
+          <div class="act-body">El grupo evalúa: <em>¿cuál es la edad mínima de las personas que acompañan los dispositivos pastorales del territorio?</em> Si la respuesta es <em>«13 años» o más en territorios donde el consumo empieza a los 8 o 9, el dispositivo está llegando tarde</em>. <em>¿Qué propuesta existe para el rango de 6 a 12 años? ¿Hay comedores, actividades deportivas o espacios de juego que lleguen a esa franja etaria?</em></div>
         </div>
         <div class="mode-i">
           <div class="act-body">Anotá en tu bitácora la edad mínima de los chicos que llegan a tu dispositivo y la edad promedio de inicio de consumo en el territorio. La diferencia entre esos dos números es <em>el agujero de prevención</em> que hay que empezar a cerrar.</div>
@@ -1317,7 +1334,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">El círculo generacional: leer el presente en el pasado</div>
         <div class="mode-g">
-          <div class="act-body">El grupo toma tres adultos en proceso de recuperación (anonimizados) y recorre su historia: <em>¿cómo era su entorno cuando tenían 8 o 9 años? ¿había orfandad funcional? ¿trauma? ¿pobreza extrema?</em> El ejercicio <em>no es para culpar al pasado ni exculpar el presente</em>: es para ver el círculo generacional y entender <em>qué tipo de intervención puede romperlo</em> en la generación que ahora tiene 8 años en ese mismo territorio.</div>
+          <div class="act-body">El grupo toma tres adultos en proceso de recuperación (anonimizados) y recorre su historia: <em>¿cómo era su entorno cuando tenían 8 o 9 años? ¿Había orfandad funcional? ¿Trauma? ¿Pobreza extrema?</em> El ejercicio <em>no es para culpar al pasado ni exculpar el presente</em>: es para ver el círculo generacional y entender <em>qué tipo de intervención puede romperlo</em> en la generación que ahora tiene 8 años en ese mismo territorio.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Elegí a un adulto que acompañás y escribí en tu bitácora, con respeto, <em>qué sabés de su infancia</em>. Luego: <em>¿quién en el territorio actual tiene hoy esa misma edad y esa misma situación?</em> Esa es la generación que la pastoral de infancias puede todavía proteger.</div>
@@ -1326,7 +1343,7 @@
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §4.5</div>
-        <div class="cita-txt">"El diagnóstico revela una repetición generacional: muchos de los adultos que hoy atraviesan el consumo son los niños heridos del pasado que nunca contaron con una red de contención efectiva."</div>
+        <div class="cita-txt">«El diagnóstico revela así una repetición generacional de estas historias, donde muchos de los adultos que hoy atraviesan el consumo son los niños heridos del pasado que nunca contaron con una red de contención efectiva».</div>
         <div class="cita-ref">Manual de la PLAPA, §4.5 — Las familias y los más chicos (CELAM 2026)</div>
       </div>
 
@@ -1340,7 +1357,7 @@
         <div class="autocuidado-txt">El diagnóstico de la orfandad funcional y el inicio de consumo a los 8 o 9 años puede generar en el equipo una <em>sensación de urgencia desbordante</em>. El facilitador cuida que esa urgencia no se convierta en <em>heroísmo individual que luego colapsa</em>. La pastoral de infancias <em>es un trabajo de largo plazo que requiere relevos, descanso y celebración</em> de los pequeños avances. Un agente agotado no puede ser figura de apego seguro para ningún niño.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §4.5 (Las familias y los más chicos), §11.1.9 (El abrazo a las infancias), §9.4.1 (Vulnerabilidad biológica adolescente), §8.2.3 (Trauma complejo) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §4.1 (Nuestros barrios), §4.5 (Las familias y los más chicos), §11.1.9 (El abrazo a las infancias), §9.4.1 (Vulnerabilidad biológica aumentada en adolescentes y jóvenes), §8.2.3 (Sobre la implementación del Tratamiento Informado en el Trauma) — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1355,8 +1372,15 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"El narcotráfico opera como un sistema de captación planificada. Se presenta como el único camino de ascenso social visible ante el repliegue de las instituciones estatales, aprovechándose de la vulnerabilidad biológica de un cerebro en desarrollo cuya corteza prefrontal inmadura carece de los frenos necesarios para evaluar el riesgo o resistir la presión del grupo."</div>
+        <div class="resonancia-txt">«El narcotráfico opera como un sistema de captación planificada […]. Esta estructura delictiva se presenta como el único camino de ascenso social visible ante el repliegue de las instituciones estatales, aprovechándose de la vulnerabilidad biológica de un cerebro en desarrollo cuya corteza prefrontal inmadura carece de los frenos necesarios para evaluar el riesgo o resistir la presión del grupo».</div>
       </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>No «caen» en el narco: son reclutados activamente.</strong> El §4.5 es explícito sobre el carácter planificado del reclutamiento: <em>«el narcotráfico opera como un sistema de captación planificada, reclutando a niños de entre 12 y 16 años para utilizarlos como soldaditos o microtraficantes»</em>. No es que los niños <em>«caen»</em> en el narco: <em>son reclutados activamente</em> por estructuras que conocen bien su vulnerabilidad biológica y su orfandad funcional, y diseñan la oferta en función de esas necesidades insatisfechas.</span></li>
+        <li><span class="dot">V</span><span><strong>El narco llena el vacío que dejan las instituciones.</strong> <em>«Esta estructura delictiva se presenta como el único camino de ascenso social visible ante el repliegue de las instituciones estatales, aprovechándose de la vulnerabilidad biológica de un cerebro en desarrollo cuya corteza prefrontal inmadura carece de los frenos necesarios»</em> (§4.5). El narco no vence la voluntad de los niños: <em>llena el vacío que dejan las instituciones</em> y explota una biología que todavía no puede decir que no.</span></li>
+        <li><span class="dot">V</span><span><strong>El narco ofrece una caricatura de las 3T: tierra, techo, trabajo.</strong> La oferta del narcotráfico a los menores responde exactamente a <em>las 3T que el §6.3.2 identifica como necesidades fundamentales</em>: tierra (la esquina como territorio propio y espacio de poder), techo (la protección del grupo como amparo), trabajo (el menudeo como fuente de ingreso). La comunidad pastoral que no puede ofrecer una alternativa concreta a esas tres necesidades <em>no puede competir con el narco solo con mensajes de prevención</em>.</span></li>
+      </ul>
 
       <div class="pl">El Juzgar — El reclutamiento planificado (§4.5)</div>
       <div class="ejes">
@@ -1368,21 +1392,14 @@
         <div class="eje">
           <div class="eje-n">La vulnerabilidad</div>
           <div class="eje-t">Lo que la biología todavía no puede hacer</div>
-          <div class="eje-txt">La corteza prefrontal —el freno neurológico— <em>no madura hasta los 25 años</em>. El niño de 12 años <strong>no tiene el hardware biológico</strong> para evaluar el riesgo a largo plazo, resistir la presión del grupo o anticipar consecuencias. <em>No es falta de voluntad: es inmadurez biológica que el narco explota deliberadamente.</em></div>
+          <div class="eje-txt">La corteza prefrontal —el freno neurológico— <em>no madura hasta los 25 años</em>. El niño de 12 años <strong>no tiene la madurez biológica</strong> para evaluar el riesgo a largo plazo, resistir la presión del grupo o anticipar consecuencias. <em>No es falta de voluntad: es inmadurez biológica que el narco explota deliberadamente.</em></div>
         </div>
       </div>
 
-      <div class="pl">El Ver — Realidad</div>
-      <ul class="pts">
-        <li><span class="dot">V</span><span><strong>No "caen" en el narco: son reclutados activamente.</strong> El §4.5 es explícito sobre el carácter planificado del reclutamiento: <em>"el narcotráfico opera como un sistema de captación planificada, reclutando a niños de entre 12 y 16 años para utilizarlos como soldaditos o microtraficantes."</em> No es que los niños <em>"caen"</em> en el narco: <em>son reclutados activamente</em> por estructuras que conocen bien su vulnerabilidad biológica y su orfandad funcional, y diseñan la oferta en función de esas necesidades insatisfechas.</span></li>
-        <li><span class="dot">V</span><span><strong>El narco llena el vacío que dejan las instituciones.</strong> <em>"Esta estructura delictiva se presenta como el único camino de ascenso social visible ante el repliegue de las instituciones estatales, aprovechándose de la vulnerabilidad biológica de un cerebro en desarrollo cuya corteza prefrontal inmadura carece de los frenos necesarios"</em> (§4.5). El narco no vence la voluntad de los niños: <em>llena el vacío que dejan las instituciones</em> y explota una biología que todavía no puede decir que no.</span></li>
-        <li><span class="dot">V</span><span><strong>El narco ofrece las 3T: territorio, techo, trabajo.</strong> La oferta del narcotráfico a los menores responde exactamente a <em>las 3T que el §6.3.2 identifica como necesidades fundamentales</em>: territorio (la esquina como espacio de poder), techo (la protección del grupo como amparo), trabajo (el menudeo como fuente de ingreso). La comunidad pastoral que no puede ofrecer una alternativa concreta a esas tres necesidades <em>no puede competir con el narco solo con mensajes de prevención</em>.</span></li>
-      </ul>
-
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>Víctima de explotación, no delincuente: distinción con consecuencias jurídicas y pastorales.</strong> La captación planificada del §4.5 tiene implicaciones jurídicas que el agente pastoral necesita conocer: <em>el niño de 12 años que distribuye drogas en la esquina es una víctima de explotación, no un delincuente</em>. Esa distinción <em>no es semántica</em>: cambia el abordaje jurídico (protección vs. punición) y cambia el abordaje pastoral (acompañamiento vs. condena). El equipo que puede hacer esa distinción <em>tiene más herramientas para articular con el sistema de justicia juvenil</em> del territorio.</span></li>
-        <li><span class="dot j">J</span><span><strong>Primerear: salir al encuentro antes de que la muerte ocupe el espacio.</strong> <em>"La prevención es, ante todo, la decisión de llegar antes, de primerear. Es salir al encuentro antes de que el sufrimiento se vuelva más profundo y las propuestas de muerte ocupen el lugar que la comunidad dejó vacío"</em> (§11.1.10). La prevención que espera que el niño llegue al dispositivo <em>siempre llega tarde</em> cuando el narcotráfico activamente los busca. La pastoral que primerea <em>sale al encuentro: a la canchita, a la plaza, a la escuela</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>Víctima de explotación, no delincuente: distinción con consecuencias jurídicas y pastorales.</strong> La captación planificada del §4.5 invita al agente pastoral a mirar <em>al niño de 12 años que distribuye drogas en la esquina ante todo como víctima de explotación, no como delincuente</em>. Esa mirada <em>no es semántica</em>: orienta hacia la protección más que hacia la punición —los alcances jurídicos concretos dependen de la legislación de cada país y conviene consultarlos con los operadores del territorio— y cambia el abordaje pastoral (acompañamiento vs. condena). El equipo que puede hacer esa distinción <em>tiene más herramientas para articular con el sistema de justicia juvenil</em> del territorio.</span></li>
+        <li><span class="dot j">J</span><span><strong>Primerear: salir al encuentro antes de que la muerte ocupe el espacio.</strong> <em>«La prevención es, ante todo, la decisión de llegar antes, de primerear. Es salir al encuentro antes de que el sufrimiento se vuelva más profundo y las propuestas de muerte ocupen el lugar que la comunidad dejó vacío»</em> (§11.1.10). La prevención que espera que el niño llegue al dispositivo <em>siempre llega tarde</em> cuando el narcotráfico activamente los busca. La pastoral que primerea <em>sale al encuentro: a la canchita, a la plaza, a la escuela</em>.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1392,7 +1409,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">¿Qué ofrece la comunidad pastoral que el narco no puede ofrecer?</div>
         <div class="mode-g">
-          <div class="act-body">El grupo responde específicamente: <em>¿qué tiene el espacio comunitario que la esquina no puede dar? ¿relaciones de cuidado gratuito? ¿adultos referentes que conocen al niño por su nombre? ¿actividades que generan identidad y pertenencia? ¿experiencias de sentido que el narco no puede ofrecer?</em> Nombrar esas ventajas concretas es <em>el primer paso para fortalecerlas como respuesta preventiva</em>.</div>
+          <div class="act-body">El grupo responde específicamente: <em>¿qué tiene el espacio comunitario que la esquina no puede dar? ¿Relaciones de cuidado gratuito? ¿Adultos referentes que conocen al niño por su nombre? ¿Actividades que generan identidad y pertenencia? ¿Experiencias de sentido que el narco no puede ofrecer?</em> Nombrar esas ventajas concretas es <em>el primer paso para fortalecerlas como respuesta preventiva</em>.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Anotá en tu bitácora las <em>tres cosas específicas</em> que tu espacio pastoral ofrece a un niño que la esquina no puede dar. Y las <em>tres cosas</em> que la esquina ofrece hoy mejor que vos. La segunda lista es la agenda honesta: <em>ahí hay que fortalecerse</em>.</div>
@@ -1404,10 +1421,10 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Identificar a los niños en riesgo de captación</div>
         <div class="mode-g">
-          <div class="act-body">El grupo identifica (sin nombrar) <em>los signos de alerta</em> de un niño en proceso de captación: <em>ausencia escolar repentina, cambio brusco de pares, dinero o bienes nuevos sin explicación, horarios nocturnos, lenguaje del grupo criminal, marcas o señales del barrio</em>. <em>¿Hay en el territorio niños con esos signos? ¿qué protocolo tiene el equipo para responder cuando los detecta?</em> La detección temprana <em>es la intervención preventiva más eficaz</em>.</div>
+          <div class="act-body">El grupo identifica (sin nombrar) <em>los signos de alerta</em> de un niño en proceso de captación: <em>ausencia escolar repentina, cambio brusco de pares, dinero o bienes nuevos sin explicación, horarios nocturnos, lenguaje del grupo criminal, marcas o señales del barrio</em>. <em>¿Hay en el territorio niños con esos signos? ¿Qué protocolo tiene el equipo para responder cuando los detecta?</em> La detección temprana <em>es la intervención preventiva más eficaz</em>.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Anotá en tu bitácora los <em>cinco signos</em> de captación y, al lado, el protocolo (aunque sea mínimo) que seguirías si los ves. Si no hay protocolo, <em>escribí hoy la primera versión</em>: a quién llamás, con quién consultás, qué pasos das. La claridad previa <em>evita la parálisis en el momento</em>.</div>
+          <div class="act-body">Anotá en tu bitácora los <em>seis signos</em> de captación —<em>ausencia escolar repentina, cambio brusco de pares, dinero o bienes nuevos sin explicación, horarios nocturnos, lenguaje del grupo criminal, marcas o señales del barrio</em>— y, al lado, el protocolo (aunque sea mínimo) que seguirías si los ves. Si no hay protocolo, <em>escribí hoy la primera versión</em>: a quién llamás, con quién consultás, qué pasos das. La claridad previa <em>evita la parálisis en el momento</em>.</div>
         </div>
       </div>
 
@@ -1416,7 +1433,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Articulación con la justicia juvenil: la distinción víctima/delincuente</div>
         <div class="mode-g">
-          <div class="act-body">El grupo evalúa: <em>¿tiene el dispositivo articulación con el sistema de justicia juvenil del territorio? ¿hay operadores judiciales que distinguen entre el niño reclutado (víctima) y el adolescente con agencia (responsable)? ¿hay un protocolo de acompañamiento pastoral para niños con causas judiciales vinculadas al narcotráfico?</em> Si no, identificar <em>el primer paso para construir esa articulación</em>.</div>
+          <div class="act-body">El grupo evalúa: <em>¿tiene el dispositivo articulación con el sistema de justicia juvenil del territorio? ¿Hay operadores judiciales que distinguen entre el niño reclutado (víctima) y el adolescente con agencia (responsable)? ¿Hay un protocolo de acompañamiento pastoral para niños con causas judiciales vinculadas al narcotráfico?</em> Si no, identificar <em>el primer paso para construir esa articulación</em>.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Anotá en tu bitácora el <em>nombre y contacto</em> del defensor público o fiscal de menores de tu territorio. Si no lo tenés, esa es <em>la gestión concreta de esta semana</em>. La articulación con justicia juvenil no se improvisa en la emergencia.</div>
@@ -1425,21 +1442,21 @@
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §11.1.10</div>
-        <div class="cita-txt">"La prevención es, ante todo, la decisión de llegar antes, de primerear. Es salir al encuentro antes de que el sufrimiento se vuelva más profundo y las propuestas de muerte ocupen el lugar que la comunidad dejó vacío."</div>
-        <div class="cita-ref">Manual de la PLAPA, §11.1.10 — La propuesta preventiva de las 3C (CELAM 2026)</div>
+        <div class="cita-txt">«[…] la prevención no puede reducirse solamente a campañas informativas o intervenciones esporádicas. […] Es ir a buscar a la oveja perdida, y trabajar para que las otras no se pierdan».</div>
+        <div class="cita-ref">Manual de la PLAPA, §11.1.10 — La propuesta preventiva de las «3 C» (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Alerta pastoral</div>
-        <div class="alerta-txt">La distinción <em>víctima/delincuente</em> en adolescentes no es automática: <em>admite grados de responsabilidad progresiva</em>. Un chico de 12 años reclutado es claramente víctima; uno de 17 que ya ejerce violencia con otros chicos tiene agencia creciente, aunque todavía incompleta. La pastoral que simplifica <em>"todos son víctimas"</em> pierde capacidad de responsabilización pedagógica; la que simplifica <em>"ya son delincuentes"</em> abandona a chicos todavía recuperables. El criterio del Manual es gradual: <em>más víctima cuanto más chico, más agencia cuanto más grande</em>, siempre con responsabilidad proporcional a la madurez biológica real.</div>
+        <div class="alerta-txt">La distinción <em>víctima/delincuente</em> en adolescentes no es automática: <em>admite grados de responsabilidad progresiva</em>. Un chico de 12 años reclutado es claramente víctima; uno de 17 que ya ejerce violencia con otros chicos tiene agencia creciente, aunque todavía incompleta. La pastoral que simplifica <em>«todos son víctimas»</em> pierde capacidad de responsabilización pedagógica; la que simplifica <em>«ya son delincuentes»</em> abandona a chicos todavía recuperables. Un criterio prudente es gradual: <em>más víctima cuanto más chico, más agencia cuanto más grande</em>, siempre con responsabilidad proporcional a la madurez biológica real.</div>
       </div>
 
       <div class="autocuidado">
         <div class="autocuidado-lbl">Autocuidado del agente</div>
-        <div class="autocuidado-txt">El módulo sobre captación puede despertar en el equipo la pregunta: <em>¿estamos compitiendo con el narco?</em> La respuesta del Manual es sí, aunque no con sus mismas herramientas. La comunidad pastoral compite con la oferta de pertenencia, identidad y sentido del narcotráfico <em>ofreciendo alternativas más profundas y más duraderas</em>. Pero esa competencia requiere que el equipo sea honesto sobre <em>qué tan atractiva y acogedora es la propuesta comunitaria</em> para un niño de 12 años del barrio. Si el espacio pastoral no es más convocante que la esquina, <em>es urgente preguntar por qué</em>.</div>
+        <div class="autocuidado-txt">El módulo sobre captación puede despertar en el equipo la pregunta: <em>¿estamos compitiendo con el narco?</em> La respuesta honesta es sí, aunque no con sus mismas herramientas. La comunidad pastoral compite con la oferta de pertenencia, identidad y sentido del narcotráfico <em>ofreciendo alternativas más profundas y más duraderas</em>. Pero esa competencia requiere que el equipo sea honesto sobre <em>qué tan atractiva y acogedora es la propuesta comunitaria</em> para un niño de 12 años del barrio. Si el espacio pastoral no es más convocante que la esquina, <em>es urgente preguntar por qué</em>.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §4.5 (Captación del narcotráfico), §9.4.1 (Vulnerabilidad biológica adolescente), §6.3.2 (Las 3T), §11.1.10 (Primerear) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §4.5 (Las familias y los más chicos), §9.4.1 (Vulnerabilidad biológica aumentada en adolescentes y jóvenes), §6.3.2 (Las 3T: Tierra, Techo y Trabajo), §11.1.10 (La propuesta preventiva de las «3 C») — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1454,28 +1471,28 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"El baño, la mesa compartida y el abrazo son los primeros medicamentos que devuelven la dignidad al niño. Antes de cualquier abordaje pedagógico o espiritual profundo, la comunidad debe asegurar el derecho a la alimentación, la higiene y el abrigo."</div>
+        <div class="resonancia-txt">«Antes de cualquier abordaje pedagógico o espiritual profundo, la comunidad debe asegurar el derecho a la alimentación, la higiene y el abrigo. El baño, la mesa compartida y el abrazo son los primeros medicamentos que devuelven la dignidad al niño» (§11.1.9).</div>
       </div>
 
-      <div class="pl">El Juzgar — Las cinco líneas del abrazo a las infancias (§11.1.9)</div>
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>La crianza comunitaria no reemplaza la familia: la sostiene.</strong> El §11.1.9 funda el acompañamiento de infancias en el <em>«paradigma de la crianza comunitaria»</em> del §6.2.8: <em>«cuando las familias son muy disfuncionales o están muy rotas, la crianza no es una tarea confinada exclusivamente a la esfera de la intimidad familiar biológica, sino que es una responsabilidad compartida por toda la comunidad»</em> (§11.1.9). La parroquia que puede asumir ese rol <em>no está reemplazando a la familia</em>: está siendo el tejido de sostén que la familia en crisis necesita <em>para no colapsar</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>El niño que sabe que lo que dice llega a sus padres no habla.</strong> La separación de acompañantes del niño y de los padres que propone el §11.1.9 es una de las decisiones metodológicas más importantes: <em>el niño que sabe que lo que dice al acompañante puede llegar a sus padres no habla</em>. La confidencialidad del espacio del niño —<em>con los límites claros que impone la protección de menores</em>— es la condición para que ese espacio sea verdaderamente suyo.</span></li>
+      </ul>
+
+      <div class="pl">El Juzgar — Las cinco claves del abrazo a las infancias: tres líneas de acción, las familias de apoyo y el vínculo de origen (§11.1.9)</div>
       <ul class="pts">
         <li><span class="dot j">1</span><span><strong>Priorizar lo primario.</strong> Antes de cualquier abordaje pedagógico o espiritual, la comunidad asegura <em>el derecho a la alimentación, la higiene y el abrigo</em>. El baño, la mesa compartida y el abrazo son <em>los primeros medicamentos que devuelven la dignidad al niño</em>.</span></li>
         <li><span class="dot j">2</span><span><strong>Espacios específicos de escucha.</strong> Dentro de la parroquia deben existir lugares donde los niños tengan su propia voz y equipos específicos que los miren. <em>El acompañante del niño no debe ser el mismo que acompaña a la madre o al padre</em>, para evitar sesgos y garantizar que el niño se sienta protagonista de su propio proceso.</span></li>
         <li><span class="dot j">3</span><span><strong>La pedagogía de la ternura.</strong> El límite sano en el acompañamiento a las niñeces <em>es la ternura</em>. Se actúa con paciencia infinita, reconociendo que un niño que ha sido vulnerado <em>está volviendo a nacer</em> y necesita modelos de autoridad que no se basen en el castigo, sino en el ejemplo y el perdón.</span></li>
-        <li><span class="dot j">4</span><span><strong>Familias de apoyo.</strong> Algunas familias de la comunidad se abren para colaborar con el colegio, la terapia o incluso para alojar temporalmente a niños en situaciones de crisis, <em>sumando brazos y afecto a la red de crianza comunitaria</em>.</span></li>
+        <li><span class="dot j">4</span><span><strong>Familias de apoyo.</strong> Algunas familias de la comunidad se abren para colaborar con el colegio, la terapia o incluso para alojar temporalmente a niños en situaciones de crisis, <em>sumando brazos y afecto a la red de crianza</em>.</span></li>
         <li><span class="dot j">5</span><span><strong>Fortalecimiento del vínculo familiar de origen.</strong> La parroquia trabaja siempre por <em>restaurar el vínculo con la familia</em>, evitando la sobreintervención que fragmenta al niño o la separación forzada que profundiza el daño. Se acompaña a los adultos a cargo <em>para que recuperen su capacidad de cuidado</em>.</span></li>
-      </ul>
-
-      <div class="pl">El Ver — Realidad</div>
-      <ul class="pts">
-        <li><span class="dot">V</span><span><strong>La crianza comunitaria no reemplaza la familia: la sostiene.</strong> El §11.1.9 funda el acompañamiento de infancias en el <em>"paradigma de la crianza comunitaria"</em> del §6.2.8: <em>"cuando las familias son muy disfuncionales o están muy rotas, la crianza no es una tarea confinada exclusivamente a la esfera de la intimidad familiar biológica, sino que es una responsabilidad compartida por toda la comunidad."</em> La parroquia que puede asumir ese rol <em>no está reemplazando a la familia</em>: está siendo el tejido de sostén que la familia en crisis necesita <em>para no colapsar</em>.</span></li>
-        <li><span class="dot">V</span><span><strong>El niño que sabe que lo que dice llega a sus padres no habla.</strong> La separación de acompañantes del niño y de los padres que propone el §11.1.9 es una de las decisiones metodológicas más importantes: <em>el niño que sabe que lo que dice al acompañante puede llegar a sus padres no habla</em>. La confidencialidad del espacio del niño —<em>con los límites claros que impone la protección de menores</em>— es la condición para que ese espacio sea verdaderamente suyo.</span></li>
       </ul>
 
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>Más neuroplasticidad en el niño: ventana de oportunidad única.</strong> La pedagogía de la ternura del §11.1.9 es la misma que el §7.9.5 describe para el acompañamiento de adultos, con una diferencia crucial: <em>en el niño, el daño está más fresco y la plasticidad biológica es mayor</em>. El cerebro del niño que recibe modelos de autoridad basados en el ejemplo y el perdón —en lugar del castigo y la humillación— <em>tiene más recursos neuroplásticos</em> para reconstruir los circuitos de regulación emocional que el trauma dañó.</span></li>
-        <li><span class="dot j">J</span><span><strong>La Iglesia como tejido de sostén que no deja solo a nadie.</strong> <em>"La Iglesia actúa como el tejido de sostén que no deja a nadie solo en la tarea de criar"</em> (§11.1.9). Esa frase describe con precisión el rol diferencial de la comunidad pastoral: <em>no sustituye a la familia ni al Estado</em>, pero teje la red que impide que el niño caiga cuando las dos fallan simultáneamente. Ese rol de tejido es el que justifica <em>la presencia territorial permanente de la Iglesia</em> en los barrios de exclusión.</span></li>
+        <li><span class="dot j">J</span><span><strong>Más neuroplasticidad en el niño: ventana de oportunidad única.</strong> La pedagogía de la ternura del §11.1.9 es la misma que el §6.5.1 y el §7.8.3 describen para el acompañamiento de adultos, con una diferencia crucial: <em>en el niño, el daño está más fresco y la plasticidad biológica es mayor</em>. El cerebro del niño que recibe modelos de autoridad basados en el ejemplo y el perdón —en lugar del castigo y la humillación— <em>tiene más recursos neuroplásticos</em> para reconstruir los circuitos de regulación emocional que el trauma dañó.</span></li>
+        <li><span class="dot j">J</span><span><strong>La Iglesia como tejido de sostén que no deja solo a nadie.</strong> <em>«La Iglesia actúa como el tejido de sostén que no deja a nadie solo en la tarea de criar»</em> (§11.1.9). Esa frase describe con precisión el rol diferencial de la comunidad pastoral: <em>no sustituye a la familia ni al Estado</em>, pero teje la red que impide que el niño caiga cuando las dos fallan simultáneamente. Ese rol de tejido es el que justifica <em>la presencia territorial permanente de la Iglesia</em> en los barrios de exclusión.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1483,12 +1500,12 @@
       <div class="act">
         <span class="act-tag tag-gru mode-g">Grupal</span>
         <span class="act-tag tag-ind mode-i">Individual</span>
-        <div class="act-title">Evaluar las cinco líneas de acción en el territorio</div>
+        <div class="act-title">Evaluar las cinco claves en el territorio</div>
         <div class="mode-g">
-          <div class="act-body">El grupo evalúa cada una de las cinco líneas del §11.1.9 para el territorio actual: <em>¿se priorizan las necesidades básicas antes del abordaje espiritual (Línea 1)? ¿hay un espacio propio para los niños separado del de los adultos (Línea 2)? ¿los acompañantes usan la ternura como límite y no el castigo (Línea 3)? ¿hay familias de apoyo identificadas y formadas (Línea 4)? ¿se trabaja siempre por restaurar el vínculo familiar de origen (Línea 5)?</em> Para cada línea ausente: <em>un primer paso concreto</em>.</div>
+          <div class="act-body">El grupo evalúa cada una de las cinco claves del §11.1.9 para el territorio actual: <em>¿se priorizan las necesidades básicas antes del abordaje espiritual (Clave 1)? ¿Hay un espacio propio para los niños separado del de los adultos (Clave 2)? ¿Los acompañantes usan la ternura como límite y no el castigo (Clave 3)? ¿Hay familias de apoyo identificadas y formadas (Clave 4)? ¿Se trabaja siempre por restaurar el vínculo familiar de origen (Clave 5)?</em> Para cada clave ausente: <em>un primer paso concreto</em>.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Anotá en tu bitácora las <em>cinco líneas</em> y marcá para cada una <em>sí/parcial/no</em> en tu dispositivo. Los <em>"parcial"</em> son los más fértiles para avanzar primero: ya hay base, solo hay que consolidar.</div>
+          <div class="act-body">Anotá en tu bitácora las <em>cinco claves</em> y marcá para cada una <em>sí/parcial/no</em> en tu dispositivo. Los <em>«parcial»</em> son los más fértiles para avanzar primero: ya hay base, solo hay que consolidar.</div>
         </div>
       </div>
 
@@ -1497,7 +1514,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Crear o fortalecer el espacio específico para niños</div>
         <div class="mode-g">
-          <div class="act-body">Si el dispositivo no tiene un espacio separado para niños con acompañantes propios, el grupo diseña sus elementos mínimos: <em>¿qué actividades (juego, arte, deporte, merienda compartida)? ¿quiénes facilitan (con formación básica en protección de menores)? ¿qué protocolo de confidencialidad y protección? ¿qué articulación con las escuelas y centros de salud del territorio?</em> El espacio mínimo es suficiente para empezar: <em>una mesa, un adulto, un momento de la semana</em>.</div>
+          <div class="act-body">Si el dispositivo no tiene un espacio separado para niños con acompañantes propios, el grupo diseña sus elementos mínimos: <em>¿qué actividades (juego, arte, deporte, merienda compartida)? ¿Quiénes facilitan (con formación básica en protección de menores)? ¿Qué protocolo de confidencialidad y protección? ¿Qué articulación con las escuelas y centros de salud del territorio?</em> El espacio mínimo es suficiente para empezar: <em>una mesa, un adulto, un momento de la semana</em>.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Anotá en tu bitácora los <em>cinco elementos mínimos</em> para el espacio de niños (actividad, facilitadores, protocolo, articulación, horario). Si falta alguno, <em>empezá por el que depende solo de vos</em>: eso ya es el primer paso real.</div>
@@ -1509,7 +1526,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Identificar y sostener las familias de apoyo</div>
         <div class="mode-g">
-          <div class="act-body"><em>¿Hay familias en la comunidad dispuestas a ser familias de apoyo para niños en situación de crisis? ¿están siendo identificadas, formadas y acompañadas? ¿hay protocolos claros sobre qué implica ese rol (límites, duración, articulación con el sistema de protección)?</em> Las familias de apoyo son <em>uno de los recursos más poderosos y menos desarrollados</em> del §11.1.9. Identificar <em>tres familias del territorio</em> que podrían asumir ese rol es una acción concreta para la próxima semana.</div>
+          <div class="act-body"><em>¿Hay familias en la comunidad dispuestas a ser familias de apoyo para niños en situación de crisis? ¿Están siendo identificadas, formadas y acompañadas? ¿Hay protocolos claros sobre qué implica ese rol (límites, duración, articulación con el sistema de protección)?</em> Las familias de apoyo son <em>uno de los recursos más poderosos y menos desarrollados</em> del §11.1.9. Identificar <em>tres familias del territorio</em> que podrían asumir ese rol es una acción concreta para la próxima semana.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Escribí en tu bitácora los nombres de <em>tres familias</em> del territorio que, con formación y acompañamiento, podrían asumir el rol de familia de apoyo. Esa lista es el <em>primer insumo</em> para el próximo plan de formación del equipo.</div>
@@ -1518,13 +1535,13 @@
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §11.1.9</div>
-        <div class="cita-txt">"El actuar parroquial con las niñeces se fundamenta en el paradigma de la crianza comunitaria. La parroquia debe constituirse como una familia grande que ofrece amparo y pertenencia allí donde los lazos primarios se encuentran fragilizados."</div>
+        <div class="cita-txt">«El actuar parroquial con las niñeces se fundamenta en el paradigma de la crianza comunitaria. […] La parroquia debe constituirse como una familia grande que ofrece amparo y pertenencia allí donde los lazos primarios se encuentran fragilizados».</div>
         <div class="cita-ref">Manual de la PLAPA, §11.1.9 — El abrazo a las infancias (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Alerta pastoral</div>
-        <div class="alerta-txt">La <em>confidencialidad</em> del espacio del niño (Línea 2) tiene límites: cuando el niño revela abuso, violencia o riesgo de vida, <em>el agente está obligado a denunciar</em> ante las autoridades competentes. Confundir confidencialidad con <em>secreto absoluto</em> expone al niño a seguir siendo víctima. El Manual propone <em>confidencialidad protectora</em>: todo lo que el niño cuenta queda en el espacio, salvo lo que pone en riesgo su vida o integridad, que activa el protocolo de denuncia. Esa diferencia es parte de la formación básica de todo acompañante de infancias.</div>
+        <div class="alerta-txt">La <em>confidencialidad</em> del espacio del niño (Clave 2) tiene límites: cuando el niño revela abuso, violencia o riesgo de vida, <em>el agente debe activar el protocolo y dar intervención</em> a los organismos de protección competentes. Confundir confidencialidad con <em>secreto absoluto</em> expone al niño a seguir siendo víctima. El Manual exige <em>«canales de escucha y denuncia accesibles para los niños, articulación con los organismos de protección de derechos de la infancia de cada país»</em> (§6.2.8) y pide <em>«implementar de forma irrenunciable protocolos de protección de menores y códigos de conducta para todos los agentes pastorales»</em> (§11.8.7). En la práctica: lo que el niño cuenta queda en el espacio, salvo lo que pone en riesgo su vida o integridad, que activa el protocolo de protección. Esa diferencia es parte de la formación básica de todo acompañante de infancias.</div>
       </div>
 
       <div class="autocuidado">
@@ -1532,7 +1549,7 @@
         <div class="autocuidado-txt">El acompañamiento de niños en situación de vulnerabilidad extrema puede generar en el equipo <em>movimientos emocionales intensos</em>: angustia, rabia ante la injusticia, sobreidentificación, o también la distancia defensiva de quien se protege del dolor. El facilitador cuida que el equipo tenga <em>un espacio para procesar esas emociones</em>: el agente que no puede procesar lo que siente ante el sufrimiento de un niño <em>no puede sostener ese acompañamiento sin dañarse a sí mismo o al niño</em>. La supervisión regular <em>no es un lujo</em>: es la condición de seguridad del equipo y de los niños.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §11.1.9 (El abrazo a las infancias), §6.2.8 (Crianza comunitaria), §7.9.5 (Pedagogía de la ternura) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §11.1.9 (El abrazo a las infancias), §6.2.8 (Sobre el paradigma de la crianza comunitaria), §6.5.1 (La aplicación de los tres lenguajes en la metodología de la ternura), §7.8.3 (La restauración de la imagen de Dios tras el trauma mediante la pedagogía de la ternura), §11.8.7 (Acciones concretas que puede desarrollar la pastoral) — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1547,10 +1564,16 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"Allí donde la cultura del descarte propone abandono y desesperanza, la comunidad cristiana responde organizando la esperanza y construyendo cultura del encuentro."</div>
+        <div class="resonancia-txt">«Allí donde la cultura del descarte propone abandono y desesperanza, la comunidad cristiana responde organizando la esperanza y construyendo cultura del encuentro».</div>
       </div>
 
-      <div class="pl">El Juzgar — Las 3C de la muerte (§11.1.10)</div>
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>Intuición pastoral territorial, no modelo teórico importado.</strong> Las 3C de la Vida nacieron de una intuición pastoral territorial, no de un modelo teórico importado: <em>«muchas comunidades fueron descubriendo que la prevención requiere generar espacios concretos de pertenencia, identidad y cuidado. No alcanza solamente con denunciar el avance del narcotráfico o advertir sobre los riesgos del consumo. Es necesario construir propuestas reales de vida, capaces de acompañar cotidianamente a niños, niñas y adolescentes»</em> (§11.1.10).</span></li>
+        <li><span class="dot">V</span><span><strong>Las tres son expresiones integradas, no programas independientes.</strong> <em>«Las tres “C” no son programas aislados ni estructuras independientes. Son expresiones de una Iglesia que quiere hacerse familia en medio del barrio, una Iglesia que recibe la vida como viene y se organiza para que ningún joven se pierda»</em> (§11.1.10). La integración entre las tres es la clave: <em>el niño que solo va al Club pero no tiene vínculos con la Capilla ni con el Colegio tiene un sostén más frágil</em>. La trama comunitaria necesita las tres dimensiones tejidas.</span></li>
+      </ul>
+
+      <div class="pl">El Ver — Las 3C de la muerte, nombradas en el §11.1.10</div>
       <ul class="pts">
         <li><span class="dot">C</span><span><strong>Calle.</strong> Abandono, orfandad funcional, captación del narco, exposición al consumo <em>sin red de protección</em>.</span></li>
         <li><span class="dot">C</span><span><strong>Cárcel.</strong> Criminalización de la pobreza, encarcelamiento de víctimas del reclutamiento, <em>destrucción de proyectos de vida</em>.</span></li>
@@ -1564,16 +1587,10 @@
         <li><span class="dot j">C</span><span><strong>Club.</strong> <em>Pertenencia, identidad y cuidado cotidiano.</em> El deporte, el arte y el juego como espacios donde el niño <em>construye una identidad alternativa</em> a la que ofrece el narco.</span></li>
       </ul>
 
-      <div class="pl">El Ver — Realidad</div>
-      <ul class="pts">
-        <li><span class="dot">V</span><span><strong>Intuición pastoral territorial, no modelo teórico importado.</strong> Las 3C de la Vida nacieron de una intuición pastoral territorial, no de un modelo teórico importado: <em>"muchas comunidades fueron descubriendo que la prevención requiere generar espacios concretos de pertenencia, identidad y cuidado. No alcanza solamente con denunciar el avance del narcotráfico o advertir sobre los riesgos del consumo. Es necesario construir propuestas reales de vida, capaces de acompañar cotidianamente a niños, niñas y adolescentes"</em> (§11.1.10).</span></li>
-        <li><span class="dot">V</span><span><strong>Las tres son expresiones integradas, no programas independientes.</strong> <em>"Las tres 'C' no son programas aislados ni estructuras independientes. Son expresiones de una Iglesia que quiere hacerse familia en medio del barrio, una Iglesia que recibe la vida como viene y se organiza para que ningún joven se pierda"</em> (§11.1.10). La integración entre las tres es la clave: <em>el niño que solo va al Club pero no tiene vínculos con la Capilla ni con el Colegio tiene un sostén más frágil</em>. La trama comunitaria necesita las tres dimensiones tejidas.</span></li>
-      </ul>
-
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>Las 3C compiten con la oferta del narco respondiendo a las mismas necesidades.</strong> Las 3C de la Vida son la <em>respuesta directa</em> a lo que el §4.5 identifica como oferta del narcotráfico: pertenencia, identidad y sentido. <em>La Capilla ofrece sentido trascendente; el Colegio ofrece horizonte futuro; el Club ofrece pertenencia e identidad colectiva</em>. Las tres juntas generan una oferta de vida que <em>puede competir con la oferta del narco</em> porque responde a las mismas necesidades humanas con propuestas que no destruyen.</span></li>
-        <li><span class="dot j">J</span><span><strong>El barrio es la parroquia: redefinición de los límites.</strong> <em>"El barrio es la parroquia, y la parroquia está llamada a organizarse para cuidar la vida"</em> (§11.1.10). Esta frase redefine los límites de la parroquia: <em>no son los muros del edificio sino los límites del territorio</em> donde viven los feligreses. La parroquia que cuida la vida en el barrio —<em>en la canchita, en la escuela, en el comedor</em>— es la que el §11.1.10 propone como el actor central de las 3C.</span></li>
+        <li><span class="dot j">J</span><span><strong>Las 3C compiten con la oferta del narco respondiendo a las mismas necesidades.</strong> Las 3C de la Vida son la <em>respuesta directa</em> a lo que el narcotráfico ofrece: el <em>«único camino de ascenso social visible»</em> (§4.5) y una <em>«falsa pertenencia»</em> (§6.6.1). Lo que la comunidad ofrece en cambio es pertenencia, identidad y sentido. <em>La Capilla ofrece sentido trascendente; el Colegio ofrece horizonte futuro; el Club ofrece pertenencia e identidad colectiva</em>. Las tres juntas generan una oferta de vida que <em>puede competir con la oferta del narco</em> porque responde a las mismas necesidades humanas con propuestas que no destruyen.</span></li>
+        <li><span class="dot j">J</span><span><strong>El barrio es la parroquia: redefinición de los límites.</strong> <em>«El barrio es la parroquia, y la parroquia está llamada a organizarse para cuidar la vida»</em> (§11.1.10). Esta frase redefine los límites de la parroquia: <em>no son los muros del edificio sino los límites del territorio</em> donde viven los feligreses. La parroquia que cuida la vida en el barrio —<em>en la canchita, en la escuela, en el comedor</em>— es la que el §11.1.10 propone como el actor central de las 3C.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1583,7 +1600,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Mapear las 3C del territorio propio</div>
         <div class="mode-g">
-          <div class="act-body">El grupo mapea el estado actual de las 3C en el territorio: <em>¿hay Capilla con presencia activa entre niños y jóvenes del barrio? ¿hay articulación con las escuelas del territorio (Colegio)? ¿hay Club (espacio deportivo, artístico, de juego) con presencia regular? ¿las tres están integradas o funcionan como silos independientes? ¿hay niños en riesgo que no están alcanzados por ninguna de las tres?</em> El mapa revela <em>cuál C es más débil y cuál necesita fortalecerse primero</em>.</div>
+          <div class="act-body">El grupo mapea el estado actual de las 3C en el territorio: <em>¿hay Capilla con presencia activa entre niños y jóvenes del barrio? ¿Hay articulación con las escuelas del territorio (Colegio)? ¿Hay Club (espacio deportivo, artístico, de juego) con presencia regular? ¿Las tres están integradas o funcionan como silos independientes? ¿Hay niños en riesgo que no están alcanzados por ninguna de las tres?</em> El mapa revela <em>cuál C es más débil y cuál necesita fortalecerse primero</em>.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Anotá en tu bitácora las <em>tres C</em> del territorio y marcá cuál es la más fuerte, cuál la más débil, y qué grado de integración hay entre las tres. La más débil es la agenda de los próximos meses: <em>la que ya existe debe irradiarse hacia la que falta</em>.</div>
@@ -1607,7 +1624,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Cierre: el niño que inspira el itinerario</div>
         <div class="mode-g">
-          <div class="act-body">El grupo cierra nombrando (sin apellidos) <em>a un niño o adolescente del territorio</em> cuya historia es un ejemplo concreto de lo que las 3C de la Vida pueden hacer: <em>¿qué tenía ese niño cuando llegó? ¿qué tiene ahora? ¿cuál de las tres C fue decisiva en su proceso?</em> Ese testimonio es <em>el argumento más poderoso para sostener al equipo</em> cuando la tarea se hace extenuante y los resultados tardan en aparecer.</div>
+          <div class="act-body">El grupo cierra nombrando (sin apellidos) <em>a un niño o adolescente del territorio</em> cuya historia es un ejemplo concreto de lo que las 3C de la Vida pueden hacer: <em>¿qué tenía ese niño cuando llegó? ¿Qué tiene ahora? ¿Cuál de las tres C fue decisiva en su proceso?</em> Ese testimonio es <em>el argumento más poderoso para sostener al equipo</em> cuando la tarea se hace extenuante y los resultados tardan en aparecer.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Escribí en tu bitácora, con respeto, el <em>nombre interno</em> (solo para vos) de un niño o adolescente cuyo proceso te sigue inspirando. Al lado: <em>¿qué C fue decisiva?</em> Ese nombre es tu <em>referencia personal</em> para los días en que el trabajo con infancias se vuelve pesado.</div>
@@ -1616,21 +1633,21 @@
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §11.1.10</div>
-        <div class="cita-txt">"Por eso las '3C de la Vida' se presentan como respuesta concreta frente a las '3C de la muerte': Calle, Cárcel y Cementerio. Allí donde la cultura del descarte propone abandono y desesperanza, la comunidad cristiana responde organizando la esperanza y construyendo cultura del encuentro."</div>
-        <div class="cita-ref">Manual de la PLAPA, §11.1.10 — La propuesta preventiva de las 3C de la Vida (CELAM 2026)</div>
+        <div class="cita-txt">«Por eso las “3C de la Vida” se presentan como respuesta concreta frente a las “3C de la muerte”: Calle, Cárcel y Cementerio».</div>
+        <div class="cita-ref">Manual de la PLAPA, §11.1.10 — La propuesta preventiva de las «3 C» (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Alerta pastoral</div>
-        <div class="alerta-txt">Las 3C de la Vida <em>no son un slogan de marketing pastoral</em>. El riesgo de instrumentalización es real: convertir la fórmula en una campaña vacía de contenido territorial. El Manual propone <em>una organización de la esperanza encarnada en vínculos cotidianos</em>, no una marca que se imprime en banners. La prueba es simple: <em>¿hay niños concretos del territorio cuya vida cambió por el tejido de las tres C del dispositivo?</em> Si la respuesta no se puede dar con nombres (aunque sean reservados), el slogan todavía no se encarnó.</div>
+        <div class="alerta-txt">Las 3C de la Vida <em>no son un eslogan de mercadotecnia pastoral</em>. El riesgo de instrumentalización es real: convertir la fórmula en una campaña vacía de contenido territorial. El Manual propone <em>una organización de la esperanza encarnada en vínculos cotidianos</em>, no una marca que se imprime en pancartas. La prueba es simple: <em>¿hay niños concretos del territorio cuya vida cambió por el tejido de las tres C del dispositivo?</em> Si la respuesta no se puede dar con nombres (aunque sean reservados), el eslogan todavía no se encarnó.</div>
       </div>
 
       <div class="autocuidado">
         <div class="autocuidado-lbl">Autocuidado del agente — cierre del itinerario</div>
-        <div class="autocuidado-txt">El itinerario cierra con la imagen que lo abrió: <em>el niño de 8 o 9 años que empieza a consumir</em>. Y con la respuesta que las 3C proponen: <em>llegar antes, con presencia cotidiana, en los espacios donde la vida de ese niño transcurre</em>. El agente que puede sostener esa presencia cotidiana —que no llega solo cuando hay crisis sino que está en la canchita, en la escuela, en el comedor— es el que más se acerca al ideal del §11.1.9: <em>la comunidad como "tejido de sostén que no deja a nadie solo"</em>. Cerrar con gratitud por ese trabajo invisible que nadie mide pero que <em>salva vidas</em>.</div>
+        <div class="autocuidado-txt">El itinerario cierra con la imagen que lo abrió: <em>el niño de 8 o 9 años que empieza a consumir</em>. Y con la respuesta que las 3C proponen: <em>llegar antes, con presencia cotidiana, en los espacios donde la vida de ese niño transcurre</em>. El agente que puede sostener esa presencia cotidiana —que no llega solo cuando hay crisis sino que está en la canchita, en la escuela, en el comedor— es el que más se acerca al ideal del §11.1.9: <em>la comunidad como «tejido de sostén que no deja a nadie solo»</em>. Cerrar con gratitud por ese trabajo invisible que nadie mide pero que <em>salva vidas</em>.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §11.1.10 (Las 3C de la Vida), §4.5 (3C de la muerte), §6.2.8 (Crianza comunitaria), §11.1.9 (Abrazo a las infancias) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §11.1.10 (La propuesta preventiva de las «3 C»), §4.5 (Las familias y los más chicos), §6.2.8 (Sobre el paradigma de la crianza comunitaria), §11.1.9 (El abrazo a las infancias), §6.6.1 (La exclusión social y la pobreza estructural como herida de la sociedad) — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1645,8 +1662,8 @@
 
       <!-- Selector de vista: este itinerario / global -->
       <div class="foro-vista">
-        <button class="foro-vista-btn on" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
-        <button class="foro-vista-btn" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
+        <button class="foro-vista-btn on" aria-pressed="true" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
+        <button class="foro-vista-btn" aria-pressed="false" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
       </div>
 
       <!-- Pautas pastorales -->
@@ -1698,7 +1715,7 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Antes de comenzar</div>
-        <div class="resonancia-txt">"La revisión de vida es la forma histórica que la Iglesia latinoamericana encontró para institucionalizar el Ver–Juzgar–Actuar. El agente que la practica no aplica el método: lo vive." Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
+        <div class="resonancia-txt">Este itinerario te invitó a mirar la orfandad funcional y el inicio cada vez más temprano del consumo, la captación de chicos por el narcotráfico, el abrazo a las infancias y la propuesta preventiva de las 3C: Capilla, Colegio y Club. Ahora es el momento de nombrar qué cambió en tu mirada. Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
       </div>
 
       <div class="eval-nota">
@@ -1708,24 +1725,24 @@
 
       <div class="pl">El Ver — Qué se hizo visible</div>
       <div class="eval-q">
-        <label for="evalVer">¿Qué realidad del territorio se hizo más visible para vos a lo largo de estos cuatro módulos? ¿Qué llagas emergieron con más fuerza? ¿Qué zonas del mapa estaban en blanco antes y ahora tienen contenido?</label>
+        <label for="evalVer">¿Qué chicos y chicas del territorio se hicieron más visibles para vos a lo largo de estos cuatro módulos? ¿Cuáles tienen un adulto que los mire y cuáles crecen con padres presentes pero ausentes? ¿A qué edad llega hoy tu comunidad a ellos, y a qué edad llega el narco?</label>
         <textarea id="evalVer" data-eval="ver" placeholder="Escribí con calma, sin apurarte..."></textarea>
       </div>
 
       <div class="pl">El Juzgar — Qué iluminó, qué preguntas quedaron abiertas</div>
       <div class="eval-q">
-        <label for="evalJuzgar1">¿Qué del método del diagnóstico territorial te iluminó de manera nueva? ¿Qué idea del Manual sentís que ya no podrás dejar de lado?</label>
+        <label for="evalJuzgar1">De la orfandad funcional, de la captación planificada por el narcotráfico, del abrazo a las infancias y de las 3C de la Vida: ¿qué te iluminó de manera nueva? ¿Qué idea del Manual sentís que ya no podrás dejar de lado?</label>
         <textarea id="evalJuzgar1" data-eval="juzgar1" placeholder="Nombralo con precisión..."></textarea>
       </div>
       <div class="eval-q">
-        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos? Las preguntas abiertas son también fruto (§13.3).</label>
+        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos? La tensión entre ver al chico que vende en la esquina como víctima de explotación y no como delincuente, entre sostener a la familia de origen y proteger al chico cuando esa misma familia lo daña: ¿dónde te dejó incómodo/a?</label>
         <textarea id="evalJuzgar2" data-eval="juzgar2" placeholder="Las que siguen ardiendo..."></textarea>
       </div>
 
       <div class="pl">El Actuar — Compromiso concreto</div>
       <div class="eval-q">
-        <label for="evalActuar">¿Qué gesto pastoral concreto vas a intentar en las próximas semanas a partir del diagnóstico que hiciste? Nombralo con nombre, tiempo y lugar. Un compromiso vago no es un compromiso.</label>
-        <textarea id="evalActuar" data-eval="actuar" placeholder="Ej.: En la próxima reunión de equipo (jueves 25) voy a presentar el mapa territorial que construimos y proponer una callejeada específica al sector X del barrio..."></textarea>
+        <label for="evalActuar">¿Qué gesto concreto vas a intentar en las próximas semanas para llegar antes a los chicos del barrio? Puede ser abrir o sostener un espacio de escucha para niños, acercarte a la escuela de la zona, sumar una actividad del club o encontrar una familia de apoyo para un chico que está solo. Nombralo con nombre, tiempo y lugar. Un compromiso vago no es un compromiso.</label>
+        <textarea id="evalActuar" data-eval="actuar" placeholder="Ej.: El sábado 10 arrancamos con X un picado en la canchita de la capilla para los chicos de 9 a 12 años del pasillo Y, con merienda al final..."></textarea>
       </div>
       <div class="eval-q eval-fecha">
         <label for="evalFecha">Fecha en la que vas a volver a revisar si pudiste sostenerlo</label>
@@ -1733,8 +1750,8 @@
       </div>
 
       <div class="pl">Autocuidado y equipo</div>
-      <div class="eval-q eval-scale">
-        <label>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</label>
+      <fieldset class="eval-q eval-scale">
+        <legend>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</legend>
         <div class="eval-scale-row">
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="1" data-eval="animo"><span>1</span></label>
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="2" data-eval="animo"><span>2</span></label>
@@ -1742,10 +1759,10 @@
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="4" data-eval="animo"><span>4</span></label>
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="5" data-eval="animo"><span>5</span></label>
         </div>
-      </div>
+      </fieldset>
       <div class="eval-q">
-        <label for="evalCuidado">¿Qué necesitás cuidar de vos mismo/a en las próximas semanas? ¿A quién del equipo se lo vas a decir?</label>
-        <textarea id="evalCuidado" data-eval="cuidado" placeholder="El agente que cuida su esperanza puede sostener la del otro (§1.3)..."></textarea>
+        <label for="evalCuidado">Acompañar chicos que sufren maltrato, abandono o la presión del narco puede dejar angustia, miedo y la sensación de llegar tarde. No es una carga para llevar en soledad: el Manual propone encuentros fraternos para procesar las frustraciones propias del territorio (§11.1.14). ¿Qué necesitás cuidar de vos en las próximas semanas? ¿Quién te sostiene a vos? ¿A quién del equipo se lo vas a decir?</label>
+        <textarea id="evalCuidado" data-eval="cuidado" placeholder="Ej.: Voy a contarle a X que no me puedo sacar de la cabeza lo que me contó Y en el apoyo escolar y que necesito pensarlo con alguien..."></textarea>
       </div>
 
       <div class="pl">Cierre</div>
@@ -1764,10 +1781,10 @@
 
       <div class="autocuidado" style="margin-top: 2rem;">
         <div class="autocuidado-lbl">Cierre del itinerario</div>
-        <div class="autocuidado-txt">Cerrar bien un itinerario también es autocuidado: celebrar lo caminado, agradecer al equipo, reconocer los propios límites y renovar la esperanza. Este itinerario termina con gratitud: por el territorio que nos habló, por las llagas que dejamos de negar, por el equipo que hizo posible mirar sin apartar la mirada.</div>
+        <div class="autocuidado-txt">Cerrar bien un itinerario también es autocuidado: celebrar lo caminado, agradecer al equipo, reconocer los propios límites y renovar la esperanza. Este itinerario termina con gratitud: por los chicos que nos dejaron entrar en su mundo, por los adultos que se hacen cargo de los hijos de todos, por el equipo que hizo posible llegar antes de que llegue la calle.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §1.3 (Prólogo), §6.1.3 (Evitar la romantización), §13.2 (Sinodalidad en la práctica), §13.3 (Rolling release), §13.5 (Mecanismos de colaboración) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §4.5 (Las familias y los más chicos), §11.1.9 (El abrazo a las infancias), §11.1.10 (La propuesta preventiva de las «3 C»), §11.1.14 (Cuidar a los que cuidan), §13.3 (La propuesta de un manual Rolling Release), §13.5 (Los mecanismos de colaboración) — CELAM 2026.</div>
 
     </div>
   </div>
@@ -1781,9 +1798,9 @@
     root.classList.add('mode-' + mode);
     var buttons = document.querySelectorAll('.mode-btn');
     for (var i = 0; i < buttons.length; i++) {
-      buttons[i].classList.remove('on');
+      buttons[i].classList.remove('on'); buttons[i].setAttribute('aria-pressed', 'false');
     }
-    btn.classList.add('on');
+    btn.classList.add('on'); btn.setAttribute('aria-pressed', 'true');
   }
 
   function show(n, btn) {
@@ -2060,8 +2077,8 @@
   function setVistaForo(v, btn) {
     vistaForo = v;
     var buttons = document.querySelectorAll('.foro-vista-btn');
-    for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove('on'); }
-    btn.classList.add('on');
+    for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove('on'); buttons[i].setAttribute('aria-pressed', 'false'); }
+    btn.classList.add('on'); btn.setAttribute('aria-pressed', 'true');
     cargarComentarios();
   }
 
@@ -2139,16 +2156,17 @@
     var datos = recolectarEvaluacion();
     var minimoTexto = (datos.ver || '').trim() + (datos.actuar || '').trim();
     if (minimoTexto.length < 30) {
-      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos "El Ver" y "El Actuar" merecen unos renglones honestos.', 'error');
+      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos «El Ver» y «El Actuar» merecen unos renglones honestos.', 'error');
       return;
     }
 
     // Guardar en Supabase (siempre queda en tu bitácora)
     if (!sesion) { window.location.href = '/login'; return; }
-    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario', {
+    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario?on_conflict=usuario_id,itinerario_id', {
       method: 'POST',
       headers: Object.assign({}, supaHeaders(), { 'Prefer': 'resolution=merge-duplicates' }),
       body: JSON.stringify({
+        usuario_id: sesion.user ? sesion.user.id : undefined,
         itinerario_id: ITINERARIO_ID,
         respuestas: datos,
         compartir_con_equipo: datos.compartir_con_equipo === true
@@ -2171,12 +2189,18 @@
 
   function imprimirEvaluacion() {
     autoguardarBorrador();
+    // Que cada respuesta se imprima completa, sin cortarse
+    var areas = document.querySelectorAll('#m6 textarea');
+    for (var i = 0; i < areas.length; i++) {
+      areas[i].style.height = 'auto';
+      areas[i].style.height = areas[i].scrollHeight + 'px';
+    }
     window.print();
   }
 
   // Init general del itinerario
   document.addEventListener('DOMContentLoaded', function() {
-    // Leer sesión (el guard del <head> garantiza que existe)
+    // Leer sesión guardada por el login (puede no existir)
     try {
       var stored = localStorage.getItem('escuela_plapa_sesion');
       if (stored) sesion = JSON.parse(stored);

@@ -24,7 +24,7 @@
     --borde:      #E4E2F0;
 
     --font-serif: "Georgia", "Times New Roman", serif;
-    --font-sans:  "system-ui", -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+    --font-sans:  system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -772,7 +772,7 @@
   }
   .foro-form textarea:focus,
   .foro-form select:focus {
-    outline: none;
+    outline: 2px solid transparent;
     border-color: var(--i6-medio);
   }
   .foro-form-actions {
@@ -1009,7 +1009,18 @@
   .eval-q {
     margin-bottom: 1.5rem;
   }
-  .eval-q > label {
+  fieldset.eval-scale {
+    border: 0;
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+    min-width: 0;
+  }
+  .eval-q > legend {
+    padding: 0;
+  }
+  .eval-q > label,
+  .eval-q > legend {
     display: block;
     font-size: 14px;
     font-weight: 500;
@@ -1033,7 +1044,7 @@
   }
   .eval-q textarea:focus,
   .eval-q input:focus {
-    outline: none;
+    outline: 2px solid transparent;
     border-color: var(--i6-medio);
     box-shadow: 0 0 0 3px rgba(60, 52, 137, 0.1);
   }
@@ -1063,6 +1074,10 @@
     position: absolute;
     opacity: 0;
     pointer-events: none;
+  }
+  .eval-radio input:focus-visible + span {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
   }
   .eval-radio span {
     display: block;
@@ -1155,7 +1170,10 @@
     .root { box-shadow: none; padding: 1rem; max-width: 100%; }
     .portada, .video-wrap, .mode-selector, .nav { display: none !important; }
     .card { display: none !important; }
-    #m6.card { display: block !important; break-inside: avoid; border: none; }
+    #m6.card { display: block !important; border: none; }
+    .eval-q { break-inside: avoid; }
+    .video-wrap, .top-header, .foro-vista { display: none !important; }
+    .eval-q textarea { overflow: visible; resize: none; }
     .eval-actions, .eval-msg { display: none !important; }
     .ch { background: transparent; }
     .eval-q textarea, .eval-q input[type="date"] {
@@ -1211,7 +1229,7 @@
     </div>
 
     <div class="portada-pills">
-      <span class="portada-pill">§4.1–4.13, §6.1.3</span>
+      <span class="portada-pill">§4.1–4.8, §4.10–4.14, §6.1.3</span>
       <span class="portada-pill">4 módulos</span>
       <span class="portada-pill">Equipos territoriales</span>
       <span class="portada-pill">Nivel inicial–intermedio</span>
@@ -1221,15 +1239,14 @@
 
   <!-- ═══ VIDEO ═══════════════════════════════════════════ -->
   
-  <!-- NUEVO: Bloque del Video de Presentación Incrustado -->
-<div style="background: var(--surface-2); border: 0.5px solid var(--border); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
-  <p style="font-size: 11px; font-weight: 500; color: #085041; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; text-align: left;">
+<div class="video-wrap" style="background: #FFF; border: 1px solid var(--borde); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
+  <p style="font-size: 11px; font-weight: 500; color: var(--i6-oscuro); letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; text-align: left;">
     ▶️ Video de presentación
   </p>
   <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px;">
     <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
       src="https://www.youtube.com/embed/hNJbuEHtC0A"
-      title="Presentación del Itinerario 06" 
+      title="Video de presentación: Leer el territorio sin romantizarlo — Itinerario 06" 
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
       allowfullscreen>
     </iframe>
@@ -1238,8 +1255,8 @@
 
   <!-- ═══ SELECTOR DE MODALIDAD ═══════════════════════════ -->
   <div class="mode-selector">
-    <button class="mode-btn on" onclick="setMode('grupal', this)">👥 Hacer en comunidad</button>
-    <button class="mode-btn" onclick="setMode('individual', this)">👤 Hacer de forma individual</button>
+    <button class="mode-btn on" aria-pressed="true" onclick="setMode('grupal', this)">👥 Hacer en comunidad</button>
+    <button class="mode-btn" aria-pressed="false" onclick="setMode('individual', this)">👤 Hacer de forma individual</button>
   </div>
 
   <!-- ═══ NAVEGACIÓN ══════════════════════════════════════ -->
@@ -1264,20 +1281,20 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"El narcotráfico se ha constituido en el organizador de la vida cotidiana ante el repliegue o la ausencia de las instituciones estatales. El barrio se ha convertido en un escenario de disputa por la subjetividad."</div>
+        <div class="resonancia-txt">«[…] el narcotráfico se ha constituido en el organizador de la vida cotidiana ante el repliegue o la ausencia de las instituciones estatales […]. El barrio se ha convertido en un escenario de disputa por la subjetividad […]» (§4.1).</div>
       </div>
 
       <div class="pl">El Ver — Realidad</div>
       <ul class="pts">
-        <li><span class="dot">V</span><span><strong>El barrio bajo la lógica de la narcocultura.</strong> El diagnóstico del §4.1 es preciso y duro: "la narcocultura impone fronteras invisibles en el barrio, donde el simple movimiento de un sector a otro puede representar un riesgo para la vida". Los búnkeres se han convertido en los nuevos centros de referencia comercial. El crimen organizado ofrece el único camino de ascenso social visible para quien no tiene otro horizonte.</span></li>
-        <li><span class="dot">V</span><span><strong>La captación de la infancia como aspecto más crítico.</strong> "Niños y adolescentes son utilizados como eslabones de la cadena delictiva desde los 8 o 9 años" (§4.1). Las estadísticas nacionales suelen situar el inicio del consumo entre los 13 y 15 años; en los barrios de mayor exclusión, ese promedio se cae a la mitad. El sistema no ve ese desfase porque no entra al territorio.</span></li>
-        <li><span class="dot">V</span><span><strong>La parroquia como aduana antes que como casa.</strong> Muchas parroquias "funcionan bajo una lógica predominantemente administrativa o de sacristía, replegadas en el mantenimiento de un orden interno y guardando una distancia prudente del dolor que habita en sus territorios" (§4.2). El diagnóstico nombra lo que pocas comunidades se animan a decirse: la parroquia puede funcionar como aduana, no como casa.</span></li>
+        <li><span class="dot">V</span><span><strong>El barrio bajo la lógica de la narcocultura.</strong> El diagnóstico del §4.1 es preciso y duro: «Esta narcocultura funciona como una estructura que impone fronteras invisibles en el barrio, donde el simple movimiento de un sector a otro puede representar un riesgo para la vida». Los búnkeres se han convertido en los nuevos centros de referencia comercial. El crimen organizado ofrece el único camino de ascenso social visible para quien no tiene otro horizonte.</span></li>
+        <li><span class="dot">V</span><span><strong>La captación de la infancia como aspecto más crítico.</strong> «Niños y adolescentes son utilizados como eslabones de la cadena delictiva bajo la figura de soldaditos o microtraficantes» (§4.1); el narco los recluta entre los 12 y los 16 años (§4.5, §4.13). El consumo empieza todavía antes: las crónicas territoriales reportan casos de inicio en barrios populares desde los 8 o 9 años, mientras las estadísticas nacionales suelen situar el promedio de inicio entre los 13 y 15 años (§4.1). El sistema no ve ese desfase porque no entra al territorio.</span></li>
+        <li><span class="dot">V</span><span><strong>La parroquia como aduana antes que como casa.</strong> Muchas parroquias «funcionan bajo una lógica predominantemente administrativa o de sacristía, replegadas en el mantenimiento de un orden interno y guardando una distancia prudente del dolor que habita en sus territorios» (§4.2). El diagnóstico nombra lo que pocas comunidades se animan a decirse: la parroquia puede funcionar como aduana, no como casa.</span></li>
       </ul>
 
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>El primer diagnóstico es sobre la propia comunidad.</strong> "La rigidez en los horarios y los procedimientos institucionales suele anteponerse al caos existencial que introduce quien llega en situación de crisis. Esta dinámica genera un ambiente que es percibido como expulsivo por aquellos que están rotos" (§4.2). Antes de leer el barrio, el agente necesita leer a su propia parroquia con la misma honestidad.</span></li>
-        <li><span class="dot j">J</span><span><strong>El barrio es un lugar teológico, no un problema a resolver.</strong> El §6.1.3 lo dirá con claridad al final del itinerario: "evitar la romantización del barrio es una condición de honestidad misionera. Si bien el territorio posee una potencia fraterna, también es escenario de una violencia estructural y de exclusiones que deben ser trabajadas con mirada crítica". Ver bien no es ver oscuro: es ver completo.</span></li>
+        <li><span class="dot j">J</span><span><strong>El primer diagnóstico es sobre la propia comunidad.</strong> «[…] la rigidez en los horarios y los procedimientos institucionales suele anteponerse al caos existencial que introduce quien llega en situación de crisis. Esta dinámica genera un ambiente que es percibido como expulsivo por aquellos que están rotos […]» (§4.2). Antes de leer el barrio, el agente necesita leer a su propia parroquia con la misma honestidad.</span></li>
+        <li><span class="dot j">J</span><span><strong>Mirar el barrio completo, sin idealizarlo ni estigmatizarlo.</strong> El §6.1.3 lo dirá con claridad al final del itinerario: «Evitar la romantización es una condición de honestidad misionera. Si bien el territorio posee una potencia fraterna, también es escenario de una violencia estructural y de exclusiones que deben ser trabajadas con mirada crítica». Ver bien no es ver oscuro: es ver completo.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1287,10 +1304,10 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Mapa del territorio con dos lentes</div>
         <div class="mode-g">
-          <div class="act-body">El grupo dibuja el barrio en papel grande con dos colores: uno para los <em>espacios de vida</em> (clubes, comedores, plazas activas, centros de salud, escuelas que funcionan) y otro para los <em>espacios de riesgo</em> (búnkeres conocidos, esquinas de consumo, zonas de frontera territorial del narco). Al comparar los dos mapas: <em>¿dónde está la Iglesia? ¿dónde debería estar? ¿qué zonas están completamente afuera de nuestro radar?</em> El mapa se guarda: se irá enriqueciendo en los módulos siguientes.</div>
+          <div class="act-body">El grupo dibuja el barrio en papel grande con dos colores: uno para los <em>espacios de vida</em> (clubes, comedores, plazas activas, centros de salud, escuelas que funcionan) y otro para los <em>espacios de riesgo</em> (búnkeres conocidos, esquinas de consumo, zonas de frontera territorial del narco). Al comparar los dos mapas: <em>¿dónde está la Iglesia? ¿Dónde debería estar? ¿Qué zonas están completamente afuera de nuestro radar?</em> El mapa se guarda: se irá enriqueciendo en los módulos siguientes.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Dibujá en tu bitácora un mapa del barrio (o del ámbito donde intervenís) con dos colores: los <em>espacios de vida</em> y los <em>espacios de riesgo</em>. Ubicá tu comunidad pastoral en el mapa. Escribí una pregunta honesta: <em>¿por qué está ahí y no en otro lado? ¿a qué distancia queda el dolor del que hablamos los domingos?</em> Guardá el mapa: lo irás completando en los próximos módulos.</div>
+          <div class="act-body">Dibujá en tu bitácora un mapa del barrio (o del ámbito donde intervenís) con dos colores: los <em>espacios de vida</em> y los <em>espacios de riesgo</em>. Ubicá tu comunidad pastoral en el mapa. Escribí una pregunta honesta: <em>¿por qué está ahí y no en otro lado? ¿A qué distancia queda el dolor del que hablamos los domingos?</em> Guardá el mapa: lo irás completando en los próximos módulos.</div>
         </div>
       </div>
 
@@ -1299,27 +1316,27 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">La parroquia como aduana o como casa: autoevaluación</div>
         <div class="mode-g">
-          <div class="act-body">El grupo responde honestamente doce preguntas surgidas del §4.2: <em>¿tenemos horarios rígidos que expulsan a quien está en crisis? ¿se etiqueta moralmente a quien llega con consumo? ¿hay alguien que salga a buscar a los que no llegan? ¿la problemática de las adicciones se trata como algo "de afuera"?</em> No es para castigarse: es para ubicarse y decidir qué cambiar primero. El facilitador cuida que la honestidad no se convierta en autoflagelación.</div>
+          <div class="act-body">El grupo responde honestamente preguntas surgidas del §4.2: <em>¿tenemos horarios rígidos que expulsan a quien está en crisis? ¿Se etiqueta moralmente a quien llega con consumo? ¿Hay alguien que salga a buscar a los que no llegan? ¿La problemática de las adicciones se trata como algo «de afuera»?</em> No es para castigarse: es para ubicarse y decidir qué cambiar primero. El facilitador cuida que la honestidad no se convierta en autoflagelación.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Escribí en tu bitácora una lista de aspectos concretos de tu comunidad pastoral que se parezcan al patrón "aduana" del §4.2 (horarios rígidos, requisitos morales, distancia del dolor). Al lado de cada uno, marcá lo que <em>vos</em> podés hacer, y lo que necesita una decisión de otros. El diagnóstico solo es útil cuando distingue lo que depende de uno y lo que requiere articulación.</div>
+          <div class="act-body">Escribí en tu bitácora una lista de aspectos concretos de tu comunidad pastoral que se parezcan al patrón «aduana» del §4.2 (horarios rígidos, requisitos morales, distancia del dolor). Al lado de cada uno, marcá lo que <em>vos</em> podés hacer, y lo que necesita una decisión de otros. El diagnóstico solo es útil cuando distingue lo que depende de uno y lo que requiere articulación.</div>
         </div>
       </div>
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §4.1 — Manual PLAPA</div>
-        <div class="cita-txt">"El barrio se ha convertido en un escenario de disputa por la subjetividad, donde el mensaje del consumo inmediato compite con la posibilidad de una vida digna. El enfoque meramente asistencial resulta insuficiente frente a la ruptura profunda de los lazos sociales y la desolación de comunidades enteras que ven al territorio como un lugar de descarte."</div>
+        <div class="cita-txt">«El barrio se ha convertido en un escenario de disputa por la subjetividad, donde el mensaje del consumo inmediato compite con la posibilidad de una vida digna. […] el enfoque meramente asistencial resulta insuficiente frente a la ruptura profunda de los lazos sociales y la desolación de comunidades enteras que ven al territorio como un lugar de descarte».</div>
         <div class="cita-ref">Manual de la PLAPA, §4.1 — Nuestros barrios (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Alerta pastoral</div>
-        <div class="alerta-txt">Diagnosticar la propia parroquia como "aduana" no es una acusación al párroco ni a los agentes que la sostienen. Es un ejercicio de <em>honestidad misionera</em> (§6.1.3) que la comunidad se debe a sí misma antes de mirar al barrio. El diagnóstico que empieza por juzgar afuera y no adentro reproduce la misma lógica que denuncia. Aduana o casa: la pregunta es primero para nosotros.</div>
+        <div class="alerta-txt">Diagnosticar la propia parroquia como «aduana» no es una acusación al párroco ni a los agentes que la sostienen. Es un ejercicio de <em>honestidad misionera</em> (§6.1.3) que la comunidad se debe a sí misma antes de mirar al barrio. El diagnóstico que empieza por juzgar afuera y no adentro reproduce la misma lógica que denuncia. Aduana o casa: la pregunta es primero para nosotros.</div>
       </div>
 
       <div class="autocuidado">
         <div class="autocuidado-lbl">Autocuidado del agente</div>
-        <div class="autocuidado-txt">El diagnóstico del barrio puede generar impotencia, rabia o desánimo. El Manual lo anticipa: "si no descubrimos la luz en el camino, entonces tarde o temprano la frustración nos ganará" (§1.3). El objetivo del diagnóstico no es abrumar sino ver con claridad. Ver bien es el primer paso de la esperanza, no su obstáculo. Cerrar la sesión con una pregunta: <em>¿dónde ves un signo de vida en este barrio que el diagnóstico no alcanza a capturar?</em></div>
+        <div class="autocuidado-txt">El diagnóstico del barrio puede generar impotencia, rabia o desánimo. El Manual lo anticipa: «Si no descubrimos la luz en el camino, entonces tarde o temprano la frustración nos ganará […]» (§1.3). El objetivo del diagnóstico no es abrumar sino ver con claridad. Ver bien es el primer paso de la esperanza, no su obstáculo. Cerrar la sesión con una pregunta: <em>¿dónde ves un signo de vida en este barrio que el diagnóstico no alcanza a capturar?</em></div>
       </div>
 
       <div class="ref">Referencias: Manual de la PLAPA §4.1 (Nuestros barrios), §4.2 (Nuestras parroquias), §6.1.3 (Sobre la necesidad de evitar la romantización del barrio), §1.3 (Prólogo) — CELAM 2026.</div>
@@ -1331,13 +1348,13 @@
     <div class="ch">
       <span class="cn">Módulo 2 · El Juzgar</span>
       <div class="ct">La escuela que perdió la batalla y las infancias que nadie está mirando</div>
-      <div class="cs">Crisis educativa, orfandad funcional y territorio digital · §4.3, §4.5, §4.6</div>
+      <div class="cs">Crisis educativa, orfandad funcional y territorio digital · §4.3, §4.5, §4.6, §5.10</div>
     </div>
     <div class="cb">
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"En los contextos de mayor vulnerabilidad hasta el 50% de los adolescentes abandonan la escuela secundaria. Los niños que inician el consumo a los 8 o 9 años no eligieron esa vida: nadie los estaba mirando."</div>
+        <div class="resonancia-txt">«[…] en los contextos de mayor vulnerabilidad hasta el 50 por ciento de los adolescentes abandonan la escuela secundaria debido a que el sistema no logra responder a sus necesidades ni ofrecer un horizonte atractivo» (§4.3).</div>
       </div>
 
       <div class="pl">El Ver — Los tres escenarios simultáneos</div>
@@ -1355,7 +1372,7 @@
         <div class="eje">
           <div class="eje-n">Las pantallas</div>
           <div class="eje-t">Territorio digital sin adultos</div>
-          <div class="eje-txt">Más de 8 horas diarias. FOMO y ansiedad. Ludopatía por apuestas online. Liberación de dopamina análoga a las sustancias químicas (§4.6).</div>
+          <div class="eje-txt">Varias horas diarias, más de ocho en algunos contextos. FOMO y ansiedad. Ludopatía por apuestas online. Alteración de los centros de placer de forma análoga a las sustancias químicas (§4.5, §4.6).</div>
         </div>
         <div class="eje">
           <div class="eje-n">La convergencia</div>
@@ -1365,13 +1382,13 @@
       </div>
 
       <ul class="pts">
-        <li><span class="dot">V</span><span><strong>La escuela como reproductora del descarte.</strong> "Ante la carencia de herramientas de detección y abordaje, se recurre frecuentemente a etiquetas estigmatizantes que terminan por expulsar al joven del sistema educativo, reforzando su exclusión" (§4.3). La escuela que expulsa al más vulnerable no es un sistema fallido accidentalmente: reproduce la lógica del descarte desde adentro.</span></li>
-        <li><span class="dot">V</span><span><strong>La orfandad funcional del §4.5.</strong> No es la ausencia física del padre: es la ausencia de adultos que funcionen como figuras protectoras. "Niños y adolescentes crecen en entornos en los que los adultos referentes han dejado de ser figuras protectoras para volverse ausentes o invisibles". Muchos de esos adultos son los niños heridos de hace quince años, que nunca contaron con una red de contención.</span></li>
+        <li><span class="dot">V</span><span><strong>La escuela como reproductora del descarte.</strong> «Ante la carencia de herramientas de detección y abordaje, se recurre frecuentemente a etiquetas estigmatizantes que terminan por expulsar al joven del sistema educativo, reforzando su exclusión» (§4.3). La escuela que expulsa al más vulnerable no es un sistema fallido accidentalmente: reproduce la lógica del descarte desde adentro.</span></li>
+        <li><span class="dot">V</span><span><strong>La orfandad funcional del §4.5.</strong> No es la ausencia física del padre: es la ausencia de adultos que funcionen como figuras protectoras. «[…] niños y adolescentes crecen en entornos en los que los adultos referentes han dejado de ser figuras protectoras para volverse ausentes o invisibles». Muchos de esos adultos son los niños heridos del pasado, que nunca contaron con una red de contención.</span></li>
       </ul>
 
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>El territorio digital no es un problema de tecnología: es un problema de vacío.</strong> "Los niños pueden pasar más de ocho horas diarias frente a pantallas. La liberación constante de dopamina provocada por los dispositivos electrónicos altera los circuitos cerebrales de placer de forma análoga a la de las sustancias químicas" (§4.6). La pastoral de adicciones no puede ignorar las pantallas como vector de dependencia — y sobre todo, como <em>síntoma</em> de la orfandad.</span></li>
+        <li><span class="dot j">J</span><span><strong>El territorio digital no es un problema de tecnología: es un problema de vacío.</strong> «[…] los niños pueden pasar más de ocho horas diarias frente a pantallas […]. La liberación constante de dopamina provocada por los dispositivos electrónicos altera los circuitos cerebrales de placer de forma análoga a la de las sustancias químicas […]» (§4.5). La pastoral de adicciones no puede ignorar las pantallas como vector de dependencia — y sobre todo, como <em>síntoma</em> de la orfandad.</span></li>
         <li><span class="dot j">J</span><span><strong>La incoherencia institucional como espejo.</strong> El §4.3 denuncia escuelas que previenen el consumo y al mismo tiempo naturalizan el alcohol en sus eventos para recaudar fondos. No es solo un error de gestión: es un síntoma de que el sistema educativo tampoco ha hecho la lectura crítica de su propio territorio. El agente pastoral tiene algo para decirle a la escuela, no solo para aprender de ella.</span></li>
       </ul>
 
@@ -1382,10 +1399,10 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Diagnóstico de las infancias del territorio</div>
         <div class="mode-g">
-          <div class="act-body">El grupo construye un diagnóstico mínimo con lo que sabe: <em>¿cuántos niños del barrio están efectivamente escolarizados? ¿cuántos quedaron afuera? ¿quiénes son los adultos referentes que los conocen por nombre? ¿hay espacios donde pasen las tardes?</em> Lo que el grupo <em>no sabe</em> es tan importante como lo que sabe: marca lo que todavía necesita escuchar y a quién tiene que consultar.</div>
+          <div class="act-body">El grupo construye un diagnóstico mínimo con lo que sabe: <em>¿cuántos niños del barrio están efectivamente escolarizados? ¿Cuántos quedaron afuera? ¿Quiénes son los adultos referentes que los conocen por nombre? ¿Hay espacios donde pasen las tardes?</em> Lo que el grupo <em>no sabe</em> es tan importante como lo que sabe: marca lo que todavía necesita escuchar y a quién tiene que consultar.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Escribí en tu bitácora las respuestas honestas a estas preguntas sobre tu ámbito de intervención: <em>¿cuántos chicos y chicas del barrio están escolarizados? ¿cuántos quedaron afuera? ¿los conocés por nombre? ¿sabés dónde pasan las tardes?</em> Al lado de cada pregunta que no sabés responder, escribí a quién podrías preguntarle. El diagnóstico también se hace preguntando bien.</div>
+          <div class="act-body">Escribí en tu bitácora las respuestas honestas a estas preguntas sobre tu ámbito de intervención: <em>¿cuántos chicos y chicas del barrio están escolarizados? ¿Cuántos quedaron afuera? ¿Los conocés por nombre? ¿Sabés dónde pasan las tardes?</em> Al lado de cada pregunta que no sabés responder, escribí a quién podrías preguntarle. El diagnóstico también se hace preguntando bien.</div>
         </div>
       </div>
 
@@ -1394,7 +1411,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">La incoherencia que vivimos: mirada crítica a la propia comunidad</div>
         <div class="mode-g">
-          <div class="act-body">Inspirándose en la crítica que el §4.3 hace a la escuela, el grupo aplica la misma honestidad a la comunidad pastoral: <em>¿hay incoherencias entre lo que predicamos y lo que vivimos? ¿naturalizamos algo que después denunciamos? ¿qué prácticas nuestras contradicen el mensaje que ofrecemos a los jóvenes?</em> No para culpar: para ver. El diagnóstico de la incoherencia propia es el más difícil y el más liberador.</div>
+          <div class="act-body">Inspirándose en la crítica que el §4.3 hace a la escuela, el grupo aplica la misma honestidad a la comunidad pastoral: <em>¿hay incoherencias entre lo que predicamos y lo que vivimos? ¿Naturalizamos algo que después denunciamos? ¿Qué prácticas nuestras contradicen el mensaje que ofrecemos a los jóvenes?</em> No para culpar: para ver. El diagnóstico de la incoherencia propia es el más difícil y el más liberador.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Hacé una lista de al menos tres prácticas de tu comunidad pastoral (o de vos mismo/a como agente) que contradigan el mensaje que ofrecemos sobre el cuidado y el consumo. No es un examen de conciencia moralista: es un diagnóstico. Al lado de cada una, escribí: <em>¿qué cambiaría si esto se transformara?</em></div>
@@ -1406,22 +1423,22 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Las pantallas en el acompañamiento</div>
         <div class="mode-g">
-          <div class="act-body">El grupo mapea: <em>¿qué plataformas y apps usan los jóvenes del territorio? ¿hay apuestas online presentes? ¿la comunidad tiene una respuesta pastoral para eso?</em> El §4.6 y el §5.10 (León XIV, <em>Magnifica Humanitas</em>) ofrecen el marco. El grupo identifica un primer gesto de presencia en el territorio digital — puede ser pequeño, pero tiene que ser real.</div>
+          <div class="act-body">El grupo mapea: <em>¿qué plataformas y apps usan los jóvenes del territorio? ¿Hay apuestas online presentes? ¿La comunidad tiene una respuesta pastoral para eso?</em> El §4.6 y el §5.10 (León XIV: La pastoral de las adicciones como lucha liberadora), que presenta la encíclica <em>Magnifica Humanitas</em>, ofrecen el marco. El grupo identifica un primer gesto de presencia en el territorio digital — puede ser pequeño, pero tiene que ser real.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Registrá durante una semana qué apps y plataformas usan los jóvenes que acompañás. Al final anotá: <em>¿en qué territorio digital estoy ausente como agente pastoral? ¿qué primer gesto real podría hacer para estar presente ahí?</em> No se trata de ser experto en tecnología: se trata de no dejarles ese territorio a solas.</div>
+          <div class="act-body">Registrá durante una semana qué apps y plataformas usan los jóvenes que acompañás. Al final anotá: <em>¿en qué territorio digital estoy ausente como agente pastoral? ¿Qué primer gesto real podría hacer para estar presente ahí?</em> No se trata de ser experto en tecnología: se trata de no dejarles ese territorio a solas.</div>
         </div>
       </div>
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §4.5 — Manual PLAPA</div>
-        <div class="cita-txt">"El diagnóstico revela una repetición generacional de estas historias, donde muchos de los adultos que hoy atraviesan el consumo son los niños heridos del pasado que nunca contaron con una red de contención efectiva."</div>
+        <div class="cita-txt">«El diagnóstico revela así una repetición generacional de estas historias, donde muchos de los adultos que hoy atraviesan el consumo son los niños heridos del pasado que nunca contaron con una red de contención efectiva».</div>
         <div class="cita-ref">Manual de la PLAPA, §4.5 — Las familias y los más chicos (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Alerta pastoral</div>
-        <div class="alerta-txt">El diagnóstico del territorio digital no puede quedar en generalidades ("las pantallas son un problema") ni en pánico moral ("hay que prohibirlas"). El §4.6 y el §5.10 piden algo más difícil: presencia pastoral encarnada <em>dentro</em> del territorio digital, no fuera de él. La comunidad que solo condena las pantallas sin ofrecer presencia real ahí adentro suena a los mayores que denuncian sin acompañar.</div>
+        <div class="alerta-txt">El diagnóstico del territorio digital no puede quedar en generalidades («las pantallas son un problema») ni en pánico moral («hay que prohibirlas»). El §5.10 lo dice sin rodeos: «El territorio digital es, también, un territorio pastoral». Eso pide algo más difícil: presencia pastoral encarnada <em>dentro</em> del territorio digital, no fuera de él. La comunidad que solo condena las pantallas, sin ofrecer presencia real ahí adentro, repite el gesto del adulto que denuncia pero no acompaña.</div>
       </div>
 
       <div class="autocuidado">
@@ -1429,7 +1446,7 @@
         <div class="autocuidado-txt">El diagnóstico de las infancias es uno de los más dolorosos: habla de niños que nadie está mirando. El agente que tiene hijos, o que fue un niño herido, puede verse interpelado más allá de lo que esperaba. Reservar tiempo al final de la sesión para que quien quiera pueda nombrar lo que el diagnóstico movió en su historia personal. No es terapia: es honestidad pastoral, y es parte del método.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §4.3 (Nuestras escuelas), §4.5 (Las familias y los más chicos), §4.6 (Las nuevas tecnologías), §5.10 (León XIV: <em>Magnifica Humanitas</em>) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §4.3 (Nuestras escuelas), §4.5 (Las familias y los más chicos), §4.6 (Las nuevas tecnologías), §5.10 (León XIV: La pastoral de las adicciones como lucha liberadora) — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1444,7 +1461,7 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"La pastoral no puede quedar subordinada a un debate teórico cuando hay personas que mueren en la calle sin que nadie les pregunte su nombre. La tarea es precisamente esa: preguntarles el nombre y reconocer su dignidad ontológica como hijos de Dios."</div>
+        <div class="resonancia-txt">«[…] la pastoral no puede quedar subordinada a un debate teórico cuando hay personas que mueren en la calle sin que nadie les pregunte su nombre. La tarea de este manual es precisamente esa: preguntarles el nombre, reconocer su dignidad ontológica como hijos de Dios […]» (§4.11).</div>
       </div>
 
       <div class="alerta">
@@ -1454,14 +1471,14 @@
 
       <div class="pl">El Ver — Realidad</div>
       <ul class="pts">
-        <li><span class="dot">V</span><span><strong>La doble condena sobre las mujeres.</strong> Las mujeres en situación de consumo son juzgadas no solo por el consumo sino por el incumplimiento del rol cultural de madre y cuidadora. El <em>efecto telescopio</em> (§4.4) hace que su trayectoria hacia la dependencia severa sea mucho más acelerada que la de los varones. El sistema de salud las expulsa; el sistema judicial las amenaza con quitarles los hijos. Muchas ocultan su consumo por ese miedo.</span></li>
-        <li><span class="dot">V</span><span><strong>La calle como "falsa libertad" y como red de pertenencia.</strong> Las personas en situación de calle "perciben la calle, de manera paradójica, como un espacio de falsa libertad" (§4.10). Y los lazos de apoyo mutuo que tejen ahí son tan significativos que "a menudo se convierten en un factor de añoranza que dificulta los procesos de recuperación si no se ofrece una comunidad de pertenencia similar" (§4.10). La propuesta de recuperación que no entiende eso fracasa antes de empezar.</span></li>
+        <li><span class="dot">V</span><span><strong>La doble condena sobre las mujeres.</strong> Las mujeres en situación de consumo son juzgadas no solo por el consumo sino por el incumplimiento del rol cultural de madre y cuidadora. El <em>efecto telescopio</em> (§4.4) hace que su trayectoria hacia la dependencia severa sea mucho más acelerada que la de los varones. El sistema de salud las expulsa; temen que los organismos de protección les quiten la custodia de sus hijos. Muchas ocultan su consumo por ese miedo.</span></li>
+        <li><span class="dot">V</span><span><strong>La calle como «falsa libertad» y como red de pertenencia.</strong> Las personas en situación de calle «perciben la calle, de manera paradójica, como un espacio de falsa libertad» (§4.10). Y los lazos de apoyo mutuo que tejen ahí son tan significativos que «a menudo se convierten en un factor de añoranza que dificulta los procesos de recuperación si no se ofrece una comunidad de pertenencia similar» (§4.10). La propuesta de recuperación que no entiende eso fracasa antes de empezar.</span></li>
       </ul>
 
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>La opción inequívoca por la dignidad de toda persona.</strong> La población travesti-trans es abordada en el §4.11 con precisión pastoral: "este Manual aborda esta realidad desde su competencia específica: el acompañamiento y la prevención de las adicciones en contextos de exclusión. Lo que sí presupone es una opción inequívoca por la dignidad y la vida de toda persona humana, independientemente de su condición, su identidad o su historia".</span></li>
-        <li><span class="dot j">J</span><span><strong>El abismo del egreso carcelario.</strong> Las cárceles revelan "el abismo de la libertad": el momento más complejo no es el encierro sino el egreso. "El liberado sale al portón del penal sin recursos económicos, sin empleo y, frecuentemente, sin una red familiar que lo reciba. Este desamparo estructural empuja al individuo a regresar al mismo entorno de consumo" (§4.12). La pastoral carcelaria que no acompaña el egreso solo trabaja la mitad del proceso.</span></li>
+        <li><span class="dot j">J</span><span><strong>La opción inequívoca por la dignidad de toda persona.</strong> La población travesti-trans es abordada en el §4.11 con precisión pastoral: «Este manual aborda la realidad de la población travesti-trans desde la perspectiva específica de su competencia: el acompañamiento y la prevención de las adicciones en contextos de exclusión. La inclusión de esta población en el diagnóstico no presupone ni implica una toma de posición doctrinal sobre las teorías contemporáneas de la identidad de género, cuyo discernimiento corresponde a otros ámbitos del magisterio eclesial. Lo que sí presupone es una opción inequívoca por la dignidad y la vida de toda persona humana, independientemente de su condición, su identidad o su historia».</span></li>
+        <li><span class="dot j">J</span><span><strong>El abismo del egreso carcelario.</strong> Las cárceles revelan «el abismo de la libertad»: el momento más complejo no es el encierro sino el egreso. «El liberado sale al portón del penal sin recursos económicos, sin empleo y, frecuentemente, sin una red familiar que lo reciba. Este desamparo estructural empuja al individuo a regresar al mismo entorno de consumo […]» (§4.12). La pastoral carcelaria que no acompaña el egreso solo trabaja la mitad del proceso.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1471,7 +1488,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">¿A quiénes no estamos llegando?</div>
         <div class="mode-g">
-          <div class="act-body">El grupo identifica, sin juzgar, qué poblaciones están presentes en el territorio pero ausentes en la vida de la comunidad pastoral: <em>¿hay mujeres con consumo que no llegan? ¿personas en situación de calle? ¿población travesti-trans? ¿liberados recientes? ¿por qué no llegan? ¿qué tendría que cambiar en la comunidad para que pudieran llegar?</em> La ausencia no es neutra: siempre tiene causas concretas.</div>
+          <div class="act-body">El grupo identifica, sin juzgar, qué poblaciones están presentes en el territorio pero ausentes en la vida de la comunidad pastoral: <em>¿hay mujeres con consumo que no llegan? ¿Personas en situación de calle? ¿Población travesti-trans? ¿Liberados recientes? ¿Por qué no llegan? ¿Qué tendría que cambiar en la comunidad para que pudieran llegar?</em> La ausencia no es neutra: siempre tiene causas concretas.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Escribí una lista de las poblaciones que están en tu territorio pero <em>ausentes</em> en la comunidad pastoral que integrás. Al lado de cada una, anotá con honestidad: <em>¿qué de la comunidad las está manteniendo afuera?</em> No hace falta que la respuesta sea cómoda. La lucidez sobre las causas de la ausencia es el primer gesto de acogida.</div>
@@ -1486,7 +1503,7 @@
           <div class="act-body">El grupo elige una población que le resulte más <em>próxima</em> (no la más cómoda: la más próxima) y diseña un primer gesto concreto de presencia: una visita, un contacto con una organización que ya trabaja con ellos, una callejeada específica. El primer gesto no tiene que ser grande: tiene que ser <em>real</em>. Se define quién lo hace, cuándo y con qué se vuelve para compartir con el equipo.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Elegí una población de tu lista (la más próxima, no la más cómoda). Diseñá un primer gesto concreto, fechado y realista: <em>¿qué hacés esta semana o la próxima? ¿con quién te vinculás para no ir solo/a? ¿qué esperás aprender antes de intentar cualquier propuesta?</em> Anotalo en tu bitácora: primer gesto pequeño, real, fechado.</div>
+          <div class="act-body">Elegí una población de tu lista (la más próxima, no la más cómoda). Diseñá un primer gesto concreto, fechado y realista: <em>¿qué hacés esta semana o la próxima? ¿Con quién te vinculás para no ir solo/a? ¿Qué esperás aprender antes de intentar cualquier propuesta?</em> Anotalo en tu bitácora: primer gesto pequeño, real, fechado.</div>
         </div>
       </div>
 
@@ -1495,27 +1512,27 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Retablo de Isenheim y el criterio de la puerta abierta</div>
         <div class="mode-g">
-          <div class="act-body">"Los antonianos no pedían diagnóstico antes de abrir la puerta del monasterio" (§4.11). El grupo reflexiona: <em>¿qué "diagnóstico" exige implícitamente nuestra comunidad antes de abrir la puerta? ¿a quién estamos dejando afuera por ese requisito?</em> El Retablo como espejo del criterio de acogida de la comunidad — no como consigna piadosa, sino como pregunta concreta sobre umbrales reales.</div>
+          <div class="act-body">«[…] los antonianos no pedían diagnóstico antes de abrir la puerta del monasterio» (§4.11). El grupo reflexiona: <em>¿qué «diagnóstico» exige implícitamente nuestra comunidad antes de abrir la puerta? ¿A quién estamos dejando afuera por ese requisito?</em> El Retablo como espejo del criterio de acogida de la comunidad — no como consigna piadosa, sino como pregunta concreta sobre umbrales reales.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Escribí en tu bitácora los "diagnósticos previos" que exige tu comunidad pastoral antes de acoger (aunque no estén escritos: los que <em>de hecho</em> operan). Al lado de cada uno: <em>¿es un umbral necesario o es un requisito que expulsa? ¿qué haría el criterio antoniano en esa situación?</em></div>
+          <div class="act-body">Escribí en tu bitácora los «diagnósticos previos» que exige tu comunidad pastoral antes de acoger (aunque no estén escritos: los que <em>de hecho</em> operan). Al lado de cada uno: <em>¿es un umbral necesario o es un requisito que expulsa? ¿Qué haría el criterio antoniano en esa situación?</em></div>
         </div>
       </div>
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §4.11 — Manual PLAPA</div>
-        <div class="cita-txt">"Que la Iglesia acompañe a estas personas no requiere haber agotado todas las cuestiones doctrinales que su realidad plantea; requiere haber entendido que nadie puede quedar fuera del cuidado pastoral mientras viva en el sufrimiento."</div>
+        <div class="cita-txt">«Que la Iglesia acompañe a estas personas no requiere haber agotado todas las cuestiones doctrinales que su realidad plantea; requiere haber entendido que nadie puede quedar fuera del cuidado pastoral mientras viva en el sufrimiento».</div>
         <div class="cita-ref">Manual de la PLAPA, §4.11 — La población travesti-trans (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Alerta pastoral</div>
-        <div class="alerta-txt">Este módulo puede generar resistencias genuinas, especialmente en lo referido a la población travesti-trans o a la reducción de daños en calle. El facilitador cuida que las resistencias sean <em>nombradas</em> y no <em>suprimidas</em>, pero que no detengan el diagnóstico. El Manual no pide acuerdo en todos los debates teóricos: pide acuerdo en que nadie puede quedar fuera del cuidado. Ese es el punto de partida que no admite negociación.</div>
+        <div class="alerta-txt">Este módulo puede generar resistencias genuinas, especialmente en lo referido a la población travesti-trans. El facilitador cuida que las resistencias sean <em>nombradas</em> y no <em>suprimidas</em>, pero que no detengan el diagnóstico. El Manual no pide acuerdo en todos los debates teóricos: pide acuerdo en que nadie puede quedar fuera del cuidado. Ese es el punto de partida que no admite negociación.</div>
       </div>
 
       <div class="autocuidado">
         <div class="autocuidado-lbl">Autocuidado del agente</div>
-        <div class="autocuidado-txt">Mirar a las poblaciones que el sistema no ve puede movilizar sentimientos ambivalentes: compasión, culpa por no haberlas visto antes, temor a lo desconocido, hasta rechazo. Todos son legítimos y ninguno debe ser reprimido. El agente que no procesa lo que siente ante el otro terminan proyectándolo. El equipo es el lugar para nombrar la ambivalencia sin culpa y aprender a convertirla en acogida real.</div>
+        <div class="autocuidado-txt">Mirar a las poblaciones que el sistema no ve puede movilizar sentimientos ambivalentes: compasión, culpa por no haberlas visto antes, temor a lo desconocido, hasta rechazo. Todos son legítimos y ninguno debe ser reprimido. El agente que no procesa lo que siente ante el otro termina proyectándolo. El equipo es el lugar para nombrar la ambivalencia sin culpa y aprender a convertirla en acogida real.</div>
       </div>
 
       <div class="ref">Referencias: Manual de la PLAPA §4.4 (La situación particular de las mujeres), §4.10 (Nuestros hermanos en la calle), §4.11 (La población travesti-trans), §4.12 (Las cárceles), §3.1 (Retablo de Isenheim) — CELAM 2026.</div>
@@ -1527,26 +1544,26 @@
     <div class="ch">
       <span class="cn">Módulo 4 · Síntesis</span>
       <div class="ct">Sin romantizar ni demonizar: el diagnóstico que habilita el Actuar</div>
-      <div class="cs">Narco, Estado, salud mental y cierre del mapa territorial · §4.7, §4.8, §4.13, §6.1.3</div>
+      <div class="cs">Narco, Estado, salud mental y cierre del mapa territorial · §4.7, §4.8, §4.13, §4.14, §6.1.3</div>
     </div>
     <div class="cb">
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"Evitar la romantización es una condición de honestidad misionera. La sanación comienza cuando se nombran las llagas del territorio para poder aplicar el fundamento del acompañamiento integral."</div>
+        <div class="resonancia-txt">«Evitar la romantización es una condición de honestidad misionera. […] La sanación comienza cuando se nombran las llagas del territorio para poder aplicar el fundamento del acompañamiento integral» (§6.1.3).</div>
       </div>
 
       <div class="pl">El Ver — Realidad</div>
       <ul class="pts">
-        <li><span class="dot">V</span><span><strong>El sistema de salud como espejo del descarte.</strong> "El sistema de salud formal suele encontrar un tope o límite ante la marginalidad. Las instituciones sanitarias presuponen que el paciente posee condiciones basales de vida cuya ausencia anula la eficacia de cualquier tratamiento médico y expulsa a los sujetos del circuito de cuidado" (§4.7). Las muertes que el Manual llama "vergonzosas y absolutamente prevenibles" son el resultado directo de ese tope.</span></li>
-        <li><span class="dot">V</span><span><strong>El narcotráfico como parásito de la economía barrial.</strong> "No es un agente externo, sino un ente que parasita la economía barrial, secuestra los espacios públicos y utiliza el terror para extinguir las formas de organización comunitaria" (§6.1.3). La diferencia entre <em>narcocultura</em> y <em>cultura del pueblo</em> es real y necesaria. El diagnóstico honesto la nombra sin confundir las dos.</span></li>
+        <li><span class="dot">V</span><span><strong>El sistema de salud como espejo del descarte.</strong> «[…] el sistema de salud formal suele encontrar un tope o límite ante la marginalidad. Se detecta que las instituciones sanitarias presuponen que el paciente posee condiciones basales de vida, como techo, comida o estabilidad habitacional, cuya ausencia anula la eficacia de cualquier tratamiento médico y expulsa a los sujetos del circuito de cuidado» (§4.7). Las muertes que el Manual describe como «vergonzosas y absolutamente prevenibles» son el resultado directo de ese tope.</span></li>
+        <li><span class="dot">V</span><span><strong>El narcotráfico como parásito de la economía barrial.</strong> «[…] el narcotráfico no es un agente externo, sino un ente que parasita la economía barrial, secuestra los espacios públicos y utiliza el terror para extinguir las formas de organización comunitaria» (§6.1.3). Donde el Estado se replegó, «el narcotráfico ha ocupado ese vacío constituyéndose en el nuevo organizador de la vida cotidiana» (§4.13); y el Estado que sí llega lo hace con casillas burocráticas estancas que «no se comunican entre sí» (§4.14). La diferencia entre <em>narcocultura</em> y <em>cultura del pueblo</em> es real y necesaria. El diagnóstico honesto la nombra sin confundir las dos.</span></li>
       </ul>
 
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>La salud mental como componente crítico invisibilizado.</strong> Es "un componente crítico y frecuentemente invisibilizado en el drama de las adicciones" (§4.8). El 50% de las personas con TUS presentan también un trastorno mental coocurrente. La pastoral que no lo sabe o lo ignora aborda solo la mitad del problema. El diagnóstico de salud mental no es competencia del agente pastoral para tratar: sí lo es para <em>detectar y derivar oportunamente</em>.</span></li>
-        <li><span class="dot j">J</span><span><strong>El diagnóstico como condición de posibilidad de la esperanza.</strong> El §6.1.3 ofrece el criterio que sintetiza todo el itinerario: "evitar la romantización del barrio es una condición de honestidad misionera. Si bien el territorio posee una potencia fraterna, también es escenario de una violencia estructural y de exclusiones que deben ser trabajadas con mirada crítica". El diagnóstico no es el enemigo de la esperanza: es su condición de posibilidad.</span></li>
-        <li><span class="dot j">J</span><span><strong>Del Ver al Actuar: la triple pregunta.</strong> El Manual está construido para que el Ver desemboque en el Actuar. Las tres preguntas que ordenan el paso son: <em>¿qué es lo más urgente en el territorio que estamos mirando? ¿qué podemos hacer nosotros con lo que tenemos? ¿con quién tenemos que articular para lo que no podemos hacer solos?</em> El diagnóstico que no llega a esas preguntas quedó incompleto.</span></li>
+        <li><span class="dot j">J</span><span><strong>La salud mental como componente crítico invisibilizado.</strong> Es «un componente crítico y frecuentemente invisibilizado en el drama de las adicciones» (§4.8). Aproximadamente el 50 % de las personas con un trastorno por uso de sustancias presentan también un trastorno mental coocurrente. La pastoral que no lo sabe o lo ignora aborda solo la mitad del problema. El diagnóstico de salud mental no es competencia del agente pastoral para tratar: sí lo es para <em>detectar y derivar oportunamente</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>El diagnóstico como condición de posibilidad de la esperanza.</strong> El §6.1.3 ofrece el criterio que sintetiza todo el itinerario: «Evitar la romantización es una condición de honestidad misionera. Si bien el territorio posee una potencia fraterna, también es escenario de una violencia estructural y de exclusiones que deben ser trabajadas con mirada crítica». El diagnóstico no es el enemigo de la esperanza: es su condición de posibilidad.</span></li>
+        <li><span class="dot j">J</span><span><strong>Del Ver al Actuar: la triple pregunta.</strong> El Manual está construido para que el Ver desemboque en el Actuar. Tres preguntas pueden ordenar ese paso: <em>¿qué es lo más urgente en el territorio que estamos mirando? ¿Qué podemos hacer nosotros con lo que tenemos? ¿Con quién tenemos que articular para lo que no podemos hacer solos?</em> El diagnóstico que no llega a esas preguntas quedó incompleto.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1559,7 +1576,7 @@
           <div class="act-body">El grupo retoma el mapa iniciado en el Módulo 1 y lo completa con lo que aprendió en los módulos 2, 3 y 4: las poblaciones invisibles, los riesgos específicos, los actores presentes, los topes del sistema de salud, la presencia del narco. El mapa final tiene <em>cinco capas</em>: barrio y narco, parroquia, escuela y familias, poblaciones específicas, salud y Estado. Es el diagnóstico del equipo, en su propio lenguaje, para su propio territorio.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Completá el mapa que empezaste en el Módulo 1 con las cinco capas: barrio y narco, parroquia, escuela y familias, poblaciones específicas, salud y Estado. Al terminar, escribí debajo del mapa un párrafo breve: <em>¿qué me dice este mapa que no me decía antes? ¿qué me pide?</em></div>
+          <div class="act-body">Completá el mapa que empezaste en el Módulo 1 con las cinco capas: barrio y narco, parroquia, escuela y familias, poblaciones específicas, salud y Estado. Al terminar, escribí debajo del mapa un párrafo breve: <em>¿qué me dice este mapa que no me decía antes? ¿Qué me pide?</em></div>
         </div>
       </div>
 
@@ -1568,10 +1585,10 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Las tres preguntas del diagnóstico que habilitan el Actuar</div>
         <div class="mode-g">
-          <div class="act-body">El grupo responde: <em>¿qué es lo más urgente en el territorio que estamos mirando? ¿qué podemos hacer nosotros con lo que tenemos? ¿con quién tenemos que articular para lo que no podemos hacer solos?</em> Las respuestas se anotan en el cuaderno colectivo y se convierten en el punto de partida del próximo itinerario o del plan pastoral del equipo. El diagnóstico solo cierra cuando abre a la acción.</div>
+          <div class="act-body">El grupo responde: <em>¿qué es lo más urgente en el territorio que estamos mirando? ¿Qué podemos hacer nosotros con lo que tenemos? ¿Con quién tenemos que articular para lo que no podemos hacer solos?</em> Las respuestas se anotan en el cuaderno colectivo y se convierten en el punto de partida del próximo itinerario o del plan pastoral del equipo. El diagnóstico solo cierra cuando abre a la acción.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Escribí las respuestas a las tres preguntas en tu bitácora: <em>lo más urgente</em>, <em>lo que puedo hacer con lo que tengo</em>, <em>con quién tengo que articular</em>. Al lado de cada respuesta, fechá un primer paso concreto. Un diagnóstico sin primer paso concreto es literatura pastoral.</div>
+          <div class="act-body">Respondé en tu bitácora: <em>¿qué es lo más urgente en el territorio que estoy mirando? ¿Qué puedo hacer con lo que tengo? ¿Con quién tengo que articular para lo que no puedo hacer solo/a?</em> Al lado de cada respuesta, fechá un primer paso concreto. Un diagnóstico sin primer paso concreto es literatura pastoral.</div>
         </div>
       </div>
 
@@ -1580,7 +1597,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Compartir el diagnóstico con quien toma decisiones</div>
         <div class="mode-g">
-          <div class="act-body">El diagnóstico territorial que el grupo construyó a lo largo de este itinerario no debería quedarse en el cuaderno del equipo. <em>¿Quién en la diócesis, en la pastoral nacional o en la PLAPA necesita conocer lo que vieron? ¿cómo se lo hacen llegar?</em> El diagnóstico desde el territorio es el insumo de la voz profética continental (§11.8.4, §13.5). Se identifica destinatario, formato y fecha.</div>
+          <div class="act-body">El diagnóstico territorial que el grupo construyó a lo largo de este itinerario no debería quedarse en el cuaderno del equipo. <em>¿Quién en la diócesis, en la pastoral nacional o en la PLAPA necesita conocer lo que vieron? ¿Cómo se lo hacen llegar?</em> El diagnóstico desde el territorio es insumo para la voz profética de la pastoral nacional (§11.8.4) y para la incidencia de la red PLAPA (§13.5, §13.8). Se identifica destinatario, formato y fecha.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Identificá una persona con capacidad de decisión (párroco, obispo, referente diocesano, coordinador nacional, red PLAPA) a quien le compartirías tu diagnóstico. Escribí una versión breve — media página — de lo que aprendiste. Fechá el envío. El agente que ve y no comparte lo que vio deja al territorio hablando solo.</div>
@@ -1589,27 +1606,26 @@
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §6.1.3 — Manual PLAPA</div>
-        <div class="cita-txt">"El objetivo no es alimentar el estigma, sino ejercer una función profética que identifique las violencias reales para que la comunidad organizada pueda exigir el cumplimiento de los derechos fundamentales y construir alternativas de vida que no sean un simple maquillaje de la realidad social."</div>
+        <div class="cita-txt">«[…] el objetivo no es alimentar el estigma, sino ejercer una función profética que identifique las violencias reales para que la comunidad organizada pueda exigir el cumplimiento de los derechos fundamentales y construir alternativas de vida que no sean un simple maquillaje de la realidad social».</div>
         <div class="cita-ref">Manual de la PLAPA, §6.1.3 — Sobre la necesidad de evitar la romantización del barrio (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Alerta pastoral</div>
-        <div class="alerta-txt">Terminar el itinerario con un diagnóstico completo puede generar la ilusión de haber "resuelto" el trabajo. No es así: el diagnóstico es el <em>inicio</em> del Juzgar y del Actuar, no su reemplazo. Un mapa hermoso guardado en un cajón no cambia nada. El siguiente paso — leer el Manual en el capítulo que corresponde a la urgencia detectada, elegir el siguiente itinerario de la Escuela, iniciar el primer dispositivo — es tan importante como el diagnóstico mismo.</div>
+        <div class="alerta-txt">Terminar el itinerario con un diagnóstico completo puede generar la ilusión de haber «resuelto» el trabajo. No es así: el diagnóstico es el <em>inicio</em> del Juzgar y del Actuar, no su reemplazo. Un mapa hermoso guardado en un cajón no cambia nada. El siguiente paso — leer el Manual en el capítulo que corresponde a la urgencia detectada, elegir el siguiente itinerario de la Escuela, iniciar el primer dispositivo — es tan importante como el diagnóstico mismo.</div>
       </div>
 
       <div class="autocuidado">
         <div class="autocuidado-lbl">Autocuidado del agente — cierre del itinerario</div>
-        <div class="autocuidado-txt">Cuatro módulos mirando de frente el sufrimiento del territorio pesan. El cierre del itinerario no es una evaluación técnica: es un momento de nombrar lo que se vio y lo que se siente. El facilitador propone: <em>¿qué luz encontraste en el medio de este diagnóstico?</em> No para equilibrar artificialmente el cuadro, sino porque el diagnóstico honesto siempre descubre también <em>potencia, resiliencia y vida</em>. El barrio no es solo sus llagas: también es sus fuerzas.</div>
+        <div class="autocuidado-txt">Cuatro módulos mirando de frente el sufrimiento del territorio pesan. El cierre del itinerario no es una evaluación técnica: es un momento de nombrar lo que se vio y lo que se siente. El facilitador propone: <em>¿qué luz encontraste en el medio de este diagnóstico?</em> No para equilibrar artificialmente el cuadro, sino porque el diagnóstico honesto siempre descubre también <em>potencia, resiliencia y vida</em>. El barrio no son solo sus llagas: también son sus fuerzas.</div>
       </div>
 
       <div class="lectura">
         <div class="lectura-lbl">Lectura complementaria</div>
-        <div class="lectura-txt">Para profundizar en la metodología del diagnóstico territorial participativo con la tradición de la <strong>Familia Grande Hogar de Cristo</strong> y el criterio de la puerta abierta antoniana, ofrecemos este texto para la reflexión del equipo.</div>
-        <a href="ElMetodoFGHC.pdf" download class="lectura-link">📥 Descargar "ElMetodoFGHC.pdf"</a>
+        <div class="lectura-txt">Para profundizar, leé en el Manual de la PLAPA el capítulo 4, <strong>«La crisis ya no se puede disimular»</strong> (§4.1–4.14), que es el diagnóstico continental del que parte este itinerario. Detenete en los ámbitos que más se parecen a tu territorio. Después leé completo el <strong>§6.1.3, «Sobre la necesidad de evitar la romantización del barrio»</strong>: sus objeciones y respuestas ayudan a revisar el mapa que construiste para que no quede ni idealizado ni estigmatizado.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §4.7 (La salud), §4.8 (Salud mental), §4.13 (Los Estados y las políticas públicas), §6.1.3 (Evitar la romantización del barrio), §11.8.4 (Caridad política), §13.5 (Mecanismos de colaboración) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §4.7 (La salud), §4.8 (Salud mental), §4.13 (El narcotráfico y la globalización del crimen organizado), §4.14 (Los Estados y las políticas públicas), §6.1.3 (Sobre la necesidad de evitar la romantización del barrio), §11.8.4 (La voz profética y la incidencia en las políticas públicas), §13.5 (Mecanismos de colaboración), §13.8 (Dimensión profética e incidencia política) — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1624,8 +1640,8 @@
 
       <!-- Selector de vista: este itinerario / global -->
       <div class="foro-vista">
-        <button class="foro-vista-btn on" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
-        <button class="foro-vista-btn" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
+        <button class="foro-vista-btn on" aria-pressed="true" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
+        <button class="foro-vista-btn" aria-pressed="false" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
       </div>
 
       <!-- Pautas pastorales -->
@@ -1648,7 +1664,7 @@
             <option value="1">Módulo 1 · El barrio y la parroquia</option>
             <option value="2">Módulo 2 · Escuela, familia y pantallas</option>
             <option value="3">Módulo 3 · Las poblaciones invisibles</option>
-            <option value="4">Módulo 4 · Síntesis</option>
+            <option value="4">Módulo 4 · Síntesis: narco, salud y mapa</option>
           </select>
         </div>
         <textarea id="foroTexto" placeholder="Escribí tu comentario, pregunta o testimonio de camino..."></textarea>
@@ -1677,7 +1693,7 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Antes de comenzar</div>
-        <div class="resonancia-txt">"La revisión de vida es la forma histórica que la Iglesia latinoamericana encontró para institucionalizar el Ver–Juzgar–Actuar. El agente que la practica no aplica el método: lo vive." Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
+        <div class="resonancia-txt">Este itinerario te pidió mirar el territorio completo: sus llagas y también sus fuerzas. La evaluación recorre el mismo camino que el mapa: qué apareció, qué te pide y cuál es el primer paso. Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
       </div>
 
       <div class="eval-nota">
@@ -1697,7 +1713,7 @@
         <textarea id="evalJuzgar1" data-eval="juzgar1" placeholder="Nombralo con precisión..."></textarea>
       </div>
       <div class="eval-q">
-        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos? Las preguntas abiertas son también fruto (§13.3).</label>
+        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos?</label>
         <textarea id="evalJuzgar2" data-eval="juzgar2" placeholder="Las que siguen ardiendo..."></textarea>
       </div>
 
@@ -1712,8 +1728,8 @@
       </div>
 
       <div class="pl">Autocuidado y equipo</div>
-      <div class="eval-q eval-scale">
-        <label>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</label>
+      <fieldset class="eval-q eval-scale">
+        <legend>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</legend>
         <div class="eval-scale-row">
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="1" data-eval="animo"><span>1</span></label>
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="2" data-eval="animo"><span>2</span></label>
@@ -1721,10 +1737,10 @@
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="4" data-eval="animo"><span>4</span></label>
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="5" data-eval="animo"><span>5</span></label>
         </div>
-      </div>
+      </fieldset>
       <div class="eval-q">
-        <label for="evalCuidado">¿Qué necesitás cuidar de vos mismo/a en las próximas semanas? ¿A quién del equipo se lo vas a decir?</label>
-        <textarea id="evalCuidado" data-eval="cuidado" placeholder="El agente que cuida su esperanza puede sostener la del otro (§1.3)..."></textarea>
+        <label for="evalCuidado">Mirar de frente el sufrimiento del territorio pesa. ¿Qué te dejó este diagnóstico en el ánimo? ¿Qué luz encontraste en el camino que te ayude a no dejar que la frustración te gane (§1.3)? ¿A quién del equipo se lo vas a decir?</label>
+        <textarea id="evalCuidado" data-eval="cuidado" placeholder="Ej.: Después de cada callejeada voy a tomarme un rato con alguien del equipo para contar lo que vi antes de volver a casa..."></textarea>
       </div>
 
       <div class="pl">Cierre</div>
@@ -1746,7 +1762,7 @@
         <div class="autocuidado-txt">Cerrar bien un itinerario también es autocuidado: celebrar lo caminado, agradecer al equipo, reconocer los propios límites y renovar la esperanza. Este itinerario termina con gratitud: por el territorio que nos habló, por las llagas que dejamos de negar, por el equipo que hizo posible mirar sin apartar la mirada.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §1.3 (Prólogo), §6.1.3 (Evitar la romantización), §13.2 (Sinodalidad en la práctica), §13.3 (Rolling release), §13.5 (Mecanismos de colaboración) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §1.3 (Prólogo), §6.1.3 (Sobre la necesidad de evitar la romantización del barrio), §13.3 (Rolling release), §13.5 (Mecanismos de colaboración) — CELAM 2026.</div>
 
     </div>
   </div>
@@ -1760,9 +1776,9 @@
     root.classList.add('mode-' + mode);
     var buttons = document.querySelectorAll('.mode-btn');
     for (var i = 0; i < buttons.length; i++) {
-      buttons[i].classList.remove('on');
+      buttons[i].classList.remove('on'); buttons[i].setAttribute('aria-pressed', 'false');
     }
-    btn.classList.add('on');
+    btn.classList.add('on'); btn.setAttribute('aria-pressed', 'true');
   }
 
   function show(n, btn) {
@@ -2039,8 +2055,8 @@
   function setVistaForo(v, btn) {
     vistaForo = v;
     var buttons = document.querySelectorAll('.foro-vista-btn');
-    for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove('on'); }
-    btn.classList.add('on');
+    for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove('on'); buttons[i].setAttribute('aria-pressed', 'false'); }
+    btn.classList.add('on'); btn.setAttribute('aria-pressed', 'true');
     cargarComentarios();
   }
 
@@ -2118,16 +2134,17 @@
     var datos = recolectarEvaluacion();
     var minimoTexto = (datos.ver || '').trim() + (datos.actuar || '').trim();
     if (minimoTexto.length < 30) {
-      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos "El Ver" y "El Actuar" merecen unos renglones honestos.', 'error');
+      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos «El Ver» y «El Actuar» merecen unos renglones honestos.', 'error');
       return;
     }
 
     // Guardar en Supabase (siempre queda en tu bitácora)
     if (!sesion) { window.location.href = '/login'; return; }
-    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario', {
+    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario?on_conflict=usuario_id,itinerario_id', {
       method: 'POST',
       headers: Object.assign({}, supaHeaders(), { 'Prefer': 'resolution=merge-duplicates' }),
       body: JSON.stringify({
+        usuario_id: sesion.user ? sesion.user.id : undefined,
         itinerario_id: ITINERARIO_ID,
         respuestas: datos,
         compartir_con_equipo: datos.compartir_con_equipo === true
@@ -2150,12 +2167,18 @@
 
   function imprimirEvaluacion() {
     autoguardarBorrador();
+    // Que cada respuesta se imprima completa, sin cortarse
+    var areas = document.querySelectorAll('#m6 textarea');
+    for (var i = 0; i < areas.length; i++) {
+      areas[i].style.height = 'auto';
+      areas[i].style.height = areas[i].scrollHeight + 'px';
+    }
     window.print();
   }
 
   // Init general del itinerario
   document.addEventListener('DOMContentLoaded', function() {
-    // Leer sesión (el guard del <head> garantiza que existe)
+    // Leer sesión guardada por el login (puede no existir)
     try {
       var stored = localStorage.getItem('escuela_plapa_sesion');
       if (stored) sesion = JSON.parse(stored);

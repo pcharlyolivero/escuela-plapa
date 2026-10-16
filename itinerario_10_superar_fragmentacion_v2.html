@@ -24,7 +24,7 @@
     --borde:      #E4E2F0;
 
     --font-serif: "Georgia", "Times New Roman", serif;
-    --font-sans:  "system-ui", -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+    --font-sans:  system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -772,7 +772,7 @@
   }
   .foro-form textarea:focus,
   .foro-form select:focus {
-    outline: none;
+    outline: 2px solid transparent;
     border-color: var(--i10-medio);
   }
   .foro-form-actions {
@@ -1009,7 +1009,18 @@
   .eval-q {
     margin-bottom: 1.5rem;
   }
-  .eval-q > label {
+  fieldset.eval-scale {
+    border: 0;
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+    min-width: 0;
+  }
+  .eval-q > legend {
+    padding: 0;
+  }
+  .eval-q > label,
+  .eval-q > legend {
     display: block;
     font-size: 14px;
     font-weight: 500;
@@ -1033,7 +1044,7 @@
   }
   .eval-q textarea:focus,
   .eval-q input:focus {
-    outline: none;
+    outline: 2px solid transparent;
     border-color: var(--i10-medio);
     box-shadow: 0 0 0 3px rgba(60, 52, 137, 0.1);
   }
@@ -1063,6 +1074,10 @@
     position: absolute;
     opacity: 0;
     pointer-events: none;
+  }
+  .eval-radio input:focus-visible + span {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
   }
   .eval-radio span {
     display: block;
@@ -1155,7 +1170,10 @@
     .root { box-shadow: none; padding: 1rem; max-width: 100%; }
     .portada, .video-wrap, .mode-selector, .nav { display: none !important; }
     .card { display: none !important; }
-    #m6.card { display: block !important; break-inside: avoid; border: none; }
+    #m6.card { display: block !important; border: none; }
+    .eval-q { break-inside: avoid; }
+    .video-wrap, .top-header, .foro-vista { display: none !important; }
+    .eval-q textarea { overflow: visible; resize: none; }
     .eval-actions, .eval-msg { display: none !important; }
     .ch { background: transparent; }
     .eval-q textarea, .eval-q input[type="date"] {
@@ -1221,15 +1239,14 @@
 
   <!-- ═══ VIDEO ═══════════════════════════════════════════ -->
   
-  <!-- NUEVO: Bloque del Video de Presentación Incrustado -->
-<div style="background: var(--surface-2); border: 0.5px solid var(--border); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
-  <p style="font-size: 11px; font-weight: 500; color: #085041; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; text-align: left;">
+<div class="video-wrap" style="background: #FFF; border: 1px solid var(--borde); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
+  <p style="font-size: 11px; font-weight: 500; color: var(--i10-oscuro); letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; text-align: left;">
     ▶️ Video de presentación
   </p>
   <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px;">
     <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
       src="https://www.youtube.com/embed/gxrFKBqpsD8"
-      title="Presentación del Itinerario 10" 
+      title="Video de presentación: Superar la fragmentación institucional — Itinerario 10" 
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
       allowfullscreen>
     </iframe>
@@ -1238,8 +1255,8 @@
 
   <!-- ═══ SELECTOR DE MODALIDAD ═══════════════════════════ -->
   <div class="mode-selector">
-    <button class="mode-btn on" onclick="setMode('grupal', this)">👥 Hacer en comunidad</button>
-    <button class="mode-btn" onclick="setMode('individual', this)">👤 Hacer de forma individual</button>
+    <button class="mode-btn on" aria-pressed="true" onclick="setMode('grupal', this)">👥 Hacer en comunidad</button>
+    <button class="mode-btn" aria-pressed="false" onclick="setMode('individual', this)">👤 Hacer de forma individual</button>
   </div>
 
   <!-- ═══ NAVEGACIÓN ══════════════════════════════════════ -->
@@ -1264,7 +1281,7 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"La fragmentación genera una crisis de accesibilidad donde las personas más vulnerabilizadas quedan excluidas, al no poder navegar por sí mismas un entramado institucional que las percibe como un conjunto de trámites aislados y no como una vida que clama por ser integrada."</div>
+        <div class="resonancia-txt">«[…] la fragmentación administrativa traduce esta división en casillas institucionales estancas. […] Esta realidad genera una crisis de accesibilidad donde las personas más vulnerabilizadas quedan excluidas, al no poder navegar por sí mismas un entramado institucional que las percibe como un conjunto de trámites aislados y no como una vida que clama por ser integrada» (§6.4.1).</div>
       </div>
 
       <div class="pl">El Ver — Las dos caras de la fragmentación</div>
@@ -1282,14 +1299,14 @@
       </div>
 
       <ul class="pts">
-        <li><span class="dot">V</span><span><strong>El descuartizamiento del §4.3.</strong> El diagnóstico es brutal: <em>"diversos actores como centros de salud, juzgados y organismos sociales actúan sobre un mismo niño sin coordinación alguna, lo que deriva en un descuartizamiento de su situación personal."</em> El sistema que debería integrar al niño lo fragmenta: cada institución se lleva un pedazo. El resultado no es atención integral: es un nuevo tipo de violencia institucional.</span></li>
-        <li><span class="dot">V</span><span><strong>"La especialización garantiza mayor calidad técnica": la objeción más frecuente.</strong> El §6.4.1 la refuta: <em>"si bien la especialización permite profundidad, en el paradigma de la complejidad la interacción entre las dimensiones de la persona produce realidades que no pueden comprenderse estudiando cada pieza por separado."</em> La persona no es la suma de sus dimensiones.</span></li>
+        <li><span class="dot">V</span><span><strong>El descuartizamiento del §4.3.</strong> El diagnóstico es brutal: <em>«[…] diversos actores como centros de salud, juzgados y organismos sociales actúan sobre un mismo niño sin coordinación alguna, lo que deriva en un descuartizamiento de su situación personal»</em>. El sistema que debería integrar al niño lo fragmenta: cada institución se lleva un pedazo. El resultado no es atención integral: es un nuevo tipo de violencia institucional.</span></li>
+        <li><span class="dot">V</span><span><strong>La especialización garantiza mayor calidad técnica: la objeción más frecuente.</strong> El §6.4.1 la refuta: <em>«[…] si bien la especialización permite profundidad, en el paradigma de la complejidad la interacción entre las dimensiones de la persona produce realidades que no pueden comprenderse estudiando cada pieza por separado»</em>. La persona no es la suma de sus dimensiones.</span></li>
       </ul>
 
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>La autosuficiencia como principal obstáculo.</strong> <em>"La verdadera eficiencia nace de una red que, superando la autosuficiencia, logre unificar los fragmentos de respuesta para humanizar el recorrido de cada hermano"</em> (§6.4.1). La autosuficiencia institucional no es fortaleza: es el principal obstáculo a la integración. La institución que no necesita a las otras deja a las personas rebotando entre oficinas.</span></li>
-        <li><span class="dot j">J</span><span><strong>El todo es más que la suma de las partes.</strong> El magisterio social sostiene que <em>"el todo es más que la suma de las partes"</em> (§6.4.1). Aplicado al acompañamiento: la persona que recibe atención médica + atención psicológica + acompañamiento pastoral + inserción laboral + vivienda, de forma articulada, recibe algo cualitativamente diferente a la suma de esos cinco servicios por separado. La articulación produce un efecto que ninguna institución sola puede generar.</span></li>
+        <li><span class="dot j">J</span><span><strong>La autosuficiencia como principal obstáculo.</strong> <em>«[…] la verdadera eficiencia nace de una red que, superando la autosuficiencia, logre unificar los fragmentos de respuesta para humanizar el recorrido de cada hermano»</em> (§6.4.1). La autosuficiencia institucional no es fortaleza: es el principal obstáculo a la integración. La institución que no necesita a las otras deja a las personas rebotando entre oficinas.</span></li>
+        <li><span class="dot j">J</span><span><strong>El todo es más que la suma de las partes.</strong> El magisterio social sostiene que <em>«el todo es más que la suma de las partes»</em> (§6.4.1). Aplicado al acompañamiento: la persona que recibe atención médica + atención psicológica + acompañamiento pastoral + inserción laboral + vivienda, de forma articulada, recibe algo cualitativamente diferente a la suma de esos cinco servicios por separado. La articulación produce un efecto que ninguna institución sola puede generar.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1299,10 +1316,10 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Mapear la fragmentación en el territorio propio</div>
         <div class="mode-g">
-          <div class="act-body">El grupo identifica un caso real (anonimizado) del territorio en que la fragmentación institucional fue un obstáculo: <em>¿cuántas instituciones intervinieron? ¿se comunicaron entre sí? ¿la persona quedó rebotando? ¿quién la sostuvo en el trayecto?</em> El ejercicio hace visible un fenómeno que suele ser invisible porque ocurre "en los pasillos" entre instituciones.</div>
+          <div class="act-body">El grupo identifica un caso real (anonimizado) del territorio en que la fragmentación institucional fue un obstáculo: <em>¿cuántas instituciones intervinieron? ¿Se comunicaron entre sí? ¿La persona quedó rebotando? ¿Quién la sostuvo en el trayecto?</em> El ejercicio hace visible un fenómeno que suele ser invisible porque ocurre «en los pasillos» entre instituciones.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Pensá en una persona concreta que acompañás. Escribí en tu bitácora la lista de instituciones que intervienen (o intervinieron) sobre su vida: hospital, escuela, juzgado, centro de salud mental, organismo de niñez, subsidios, parroquia. Al lado de cada par: <em>¿se comunican entre sí? ¿o cada una recibe y suelta?</em> Ese mapa es el punto de partida del itinerario.</div>
+          <div class="act-body">Pensá en una persona concreta que acompañás. Escribí en tu bitácora la lista de instituciones que intervienen (o intervinieron) sobre su vida: hospital, escuela, juzgado, centro de salud mental, organismo de niñez, subsidios, parroquia. Al lado de cada par: <em>¿se comunican entre sí? ¿O cada una recibe y suelta?</em> Ese mapa es el punto de partida del itinerario.</div>
         </div>
       </div>
 
@@ -1311,10 +1328,10 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">El mapa institucional del territorio: ¿quién hace qué y cómo se conecta?</div>
         <div class="mode-g">
-          <div class="act-body">El grupo dibuja el mapa de instituciones presentes en el territorio (hospital, juzgado, escuela, organismo de niñez, centro de salud mental, parroquia, centro barrial). Para cada par: <em>¿hay comunicación regular? ¿hay derivación con acompañamiento? ¿hay casos que "se pierden" en el espacio entre dos instituciones?</em> El mapa revela las grietas por donde caen las personas.</div>
+          <div class="act-body">El grupo dibuja el mapa de instituciones presentes en el territorio (hospital, juzgado, escuela, organismo de niñez, centro de salud mental, parroquia, centro barrial). Para cada par: <em>¿hay comunicación regular? ¿Hay derivación con acompañamiento? ¿Hay casos que «se pierden» en el espacio entre dos instituciones?</em> El mapa revela las grietas por donde caen las personas.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Bosquejá en tu bitácora el mapa institucional del territorio. Marcá con línea llena las conexiones que funcionan y con línea punteada las que serían necesarias pero no existen. Al lado del mapa, escribí una lista de <em>"grietas conocidas"</em>: los espacios entre instituciones donde caen personas concretas que conocés.</div>
+          <div class="act-body">Bosquejá en tu bitácora el mapa institucional del territorio. Marcá con línea llena las conexiones que funcionan y con línea punteada las que serían necesarias pero no existen. Al lado del mapa, escribí una lista de <em>«grietas conocidas»</em>: los espacios entre instituciones donde caen personas concretas que conocés.</div>
         </div>
       </div>
 
@@ -1323,7 +1340,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Nombrar la doble fragmentación en un caso propio</div>
         <div class="mode-g">
-          <div class="act-body">Retomando el caso del ejercicio anterior, el grupo lo relee con las dos categorías del §6.4.1: <em>¿dónde operó la fragmentación epistemológica (cada especialista viendo su parte sin ver a la persona entera)? ¿dónde operó la fragmentación administrativa (los requisitos de una institución impidiendo el acceso a otra)?</em> Distinguir las dos fragmentaciones ayuda a pensar respuestas específicas para cada una.</div>
+          <div class="act-body">Retomando el caso del ejercicio anterior, el grupo lo relee con las dos categorías del §6.4.1: <em>¿dónde operó la fragmentación epistemológica (cada especialista viendo su parte sin ver a la persona entera)? ¿Dónde operó la fragmentación administrativa (los requisitos de una institución impidiendo el acceso a otra)?</em> Distinguir las dos fragmentaciones ayuda a pensar respuestas específicas para cada una.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Escribí en tu bitácora, sobre el caso que elegiste, dos párrafos cortos: uno describiendo cómo operó la <em>fragmentación epistemológica</em>, otro describiendo cómo operó la <em>fragmentación administrativa</em>. Distinguirlas es la mitad del diagnóstico: cada una pide una respuesta diferente en los módulos que vienen.</div>
@@ -1332,21 +1349,21 @@
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §6.4.1</div>
-        <div class="cita-txt">"La fragmentación genera una crisis de accesibilidad donde las personas más vulnerabilizadas quedan excluidas, al no poder navegar por sí mismas un entramado institucional que las percibe como un conjunto de trámites aislados y no como una vida que clama por ser integrada."</div>
-        <div class="cita-ref">Manual de la PLAPA, §6.4.1 — Fragmentación epistemológica y administrativa (CELAM 2026)</div>
+        <div class="cita-txt">«El pensamiento integral y el magisterio social enseñan que el todo es más que la suma de las partes. Una respuesta fragmentada resulta insuficiente para abordar problemas complejos, ya que la hiperespecialización y la burocracia suelen ignorar la unidad ontológica de la persona».</div>
+        <div class="cita-ref">Manual de la PLAPA, §6.4.1 — Sobre la fragmentación epistemológica y administrativa (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Alerta pastoral</div>
-        <div class="alerta-txt">La comunidad pastoral también puede caer en la fragmentación: catequesis por un lado, Cáritas por otro, pastoral juvenil por otro, sin comunicación entre sí. El diagnóstico del §6.4.1 no es solo para "las instituciones del Estado": es <em>para todos, incluidos nosotros</em>. La primera red horizontal a construir es la interna. Sin ella, la propuesta hacia afuera pierde autoridad.</div>
+        <div class="alerta-txt">La comunidad pastoral también puede caer en la fragmentación: catequesis por un lado, Cáritas por otro, pastoral juvenil por otro, sin comunicación entre sí. El diagnóstico del §6.4.1 no es solo para «las instituciones del Estado»: es <em>para todos, incluidos nosotros</em>. La primera red horizontal a construir es la interna. Sin ella, la propuesta hacia afuera pierde autoridad.</div>
       </div>
 
       <div class="autocuidado">
         <div class="autocuidado-lbl">Autocuidado del agente</div>
-        <div class="autocuidado-txt">El diagnóstico de la fragmentación puede generar rabia hacia las instituciones que "no funcionan." El facilitador cuida que esa rabia no paralice ni derive en cinismo. La pregunta útil no es <em>"¿por qué el sistema es así?"</em> sino <em>"¿qué puede hacer este equipo para unir lo que el sistema separa?"</em> El acompañamiento inespecífico no espera la reforma del sistema: trabaja en sus grietas.</div>
+        <div class="autocuidado-txt">El diagnóstico de la fragmentación puede generar rabia hacia las instituciones que «no funcionan». El facilitador cuida que esa rabia no paralice ni derive en cinismo. La pregunta útil no es <em>«¿por qué el sistema es así?»</em> sino <em>«¿qué puede hacer este equipo para unir lo que el sistema separa?»</em>. El acompañamiento inespecífico no espera la reforma del sistema: trabaja en sus grietas.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §6.4.1 (Fragmentación epistemológica y administrativa), §4.3 (Nuestras escuelas) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §6.4.1 (Sobre la fragmentación epistemológica y administrativa), §4.3 (Nuestras escuelas) — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1361,13 +1378,13 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"El acompañante comunitario posee una mirada holística e integral, similar a la de una madre que conoce la totalidad de la vida de su hijo y es capaz de unir lo que el sistema separa."</div>
+        <div class="resonancia-txt">«Mientras que el especialista tiene una mirada incisiva pero parcial, el acompañante comunitario posee una mirada holística e integral, similar a la de una madre que conoce la totalidad de la vida de su hijo y es capaz de unir lo que el sistema separa» (§6.4.2).</div>
       </div>
 
       <div class="pl">El Ver — Realidad</div>
       <ul class="pts">
-        <li><span class="dot">V</span><span><strong>"El acompañamiento debe ser siempre específico y técnico para ser profesional": la objeción más resistente.</strong> El §6.4.2 la refuta con precisión: <em>"el acompañamiento inespecífico no busca reemplazar al saber técnico, sino complementarlo; su función es asegurar que la persona pueda sostener el tratamiento médico o el proceso legal mediante el soporte emocional y la presencia constante."</em></span></li>
-        <li><span class="dot">V</span><span><strong>"La fragmentación es un problema de gestión estatal": la segunda objeción.</strong> El §6.4.2 también la responde: <em>"aunque el Estado es el garante de derechos, carece de la capacidad de generar comunidades de cuidado y vínculos de pertenencia; solo la comunidad organizada puede ofrecer el lugar seguro y la persistencia en el amor indispensables para una sanación integral."</em></span></li>
+        <li><span class="dot">V</span><span><strong>«[…] el acompañamiento debería ser siempre específico y técnico para ser profesional»: la objeción más resistente.</strong> El §6.4.2 la refuta con precisión: <em>«[…] el acompañamiento inespecífico no busca reemplazar al saber técnico, sino complementarlo; su función es asegurar que la persona pueda sostener el tratamiento médico o el proceso legal mediante el soporte emocional y la presencia constante»</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>«La fragmentación es un problema de gestión estatal»: la segunda objeción.</strong> El §6.4.2 también la responde: <em>«[…] aunque el Estado es el garante de derechos, carece de la capacidad de generar comunidades de cuidado y vínculos de pertenencia; solo la comunidad organizada puede ofrecer el lugar seguro y la persistencia en el amor indispensables para una sanación integral»</em>.</span></li>
       </ul>
 
       <div class="pl">El Juzgar — Las tres funciones del acompañante inespecífico (§6.4.2)</div>
@@ -1378,7 +1395,7 @@
       </ul>
 
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>El acompañante como narrador que une los fragmentos.</strong> <em>"Esta presencia inespecífica es lo que permite que los intentos de cambio de una persona se transformen en una historia de vida con sentido"</em> (§6.4.2). Sin el hilo conductor del acompañamiento inespecífico, los episodios de atención son eventos aislados que la persona no puede integrar en una narrativa de recuperación. El acompañante inespecífico es el narrador que une los fragmentos.</span></li>
+        <li><span class="dot j">J</span><span><strong>El acompañante como narrador que une los fragmentos.</strong> <em>«Esta presencia inespecífica es lo que permite que los intentos de cambio de una persona se transformen en una historia de vida con sentido»</em> (§6.4.2). Sin el hilo conductor del acompañamiento inespecífico, los episodios de atención son eventos aislados que la persona no puede integrar en una narrativa de recuperación. El acompañante inespecífico es el narrador que une los fragmentos.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1388,10 +1405,10 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">¿Quiénes ejercen el acompañamiento inespecífico en el territorio?</div>
         <div class="mode-g">
-          <div class="act-body">El grupo identifica: <em>¿hay en el territorio personas o roles que ya ejercen este acompañamiento inespecífico sin llamarlo así? ¿el referente del centro barrial que acompaña al hermano al hospital? ¿la catequista que lo ayuda a tramitar el DNI? ¿la tejedora que lo acompaña al juzgado?</em> Nombrar esas figuras y reconocer su función es el primer paso para sostenerlas y fortalecerlas.</div>
+          <div class="act-body">El grupo identifica: <em>¿hay en el territorio personas o roles que ya ejercen este acompañamiento inespecífico sin llamarlo así? ¿El referente del centro barrial que acompaña al hermano al hospital? ¿La catequista que lo ayuda a tramitar el DNI? ¿La vecina que lo acompaña al juzgado?</em> Nombrar esas figuras y reconocer su función es el primer paso para sostenerlas y fortalecerlas.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Anotá en tu bitácora los nombres de 3 personas del territorio que ya ejercen acompañamiento inespecífico (aunque no se llamen así). Al lado de cada una: <em>¿saben que lo hacen? ¿alguien las acompaña a ellas? ¿qué necesitarían para sostener esa función?</em> Reconocer al acompañante inespecífico es el primer gesto para sostenerlo.</div>
+          <div class="act-body">Anotá en tu bitácora los nombres de tres personas del territorio que ya ejercen acompañamiento inespecífico (aunque no se llamen así). Al lado de cada una: <em>¿saben que lo hacen? ¿Alguien las acompaña a ellas? ¿Qué necesitarían para sostener esa función?</em> Reconocer al acompañante inespecífico es el primer gesto para sostenerlo.</div>
         </div>
       </div>
 
@@ -1400,10 +1417,10 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Practicar el hilado de fragmentos en un caso real</div>
         <div class="mode-g">
-          <div class="act-body">El grupo toma un caso activo (anonimizado) y mapea las instituciones que intervienen. Luego identifica: <em>¿quién está haciendo el hilo entre ellas? ¿hay alguien que acompañe a esa persona de institución en institución? ¿o cada institución la recibe y la suelta?</em> Si no hay hilo, el grupo diseña quién puede hacerlo y cómo.</div>
+          <div class="act-body">El grupo toma un caso activo (anonimizado) y mapea las instituciones que intervienen. Luego identifica: <em>¿quién está haciendo el hilo entre ellas? ¿Hay alguien que acompañe a esa persona de institución en institución? ¿O cada institución la recibe y la suelta?</em> Si no hay hilo, el grupo diseña quién puede hacerlo y cómo.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Retomá el caso del Módulo 1 y respondé: <em>¿quién está siendo hoy el hilo entre las instituciones que intervienen sobre esta persona? ¿sos vos? ¿es otro? ¿no hay hilo?</em> Si no lo hay, escribí quién podría serlo y qué haría falta para que pueda cumplir ese rol de forma sostenida.</div>
+          <div class="act-body">Retomá el caso del Módulo 1 y respondé: <em>¿quién está siendo hoy el hilo entre las instituciones que intervienen sobre esta persona? ¿Sos vos? ¿Es otro? ¿No hay hilo?</em> Si no lo hay, escribí quién podría serlo y qué haría falta para que pueda cumplir ese rol de forma sostenida.</div>
         </div>
       </div>
 
@@ -1421,13 +1438,13 @@
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §6.4.2</div>
-        <div class="cita-txt">"El acompañamiento inespecífico actúa como la fuerza integradora del proceso de recuperación. Esta presencia inespecífica es lo que permite que los intentos de cambio de una persona se transformen en una historia de vida con sentido."</div>
-        <div class="cita-ref">Manual de la PLAPA, §6.4.2 — El acompañamiento inespecífico (CELAM 2026)</div>
+        <div class="cita-txt">«El acompañamiento inespecífico actúa como la fuerza integradora del proceso de recuperación […]. Esta presencia inespecífica es lo que permite que los intentos de cambio de una persona se transformen en una historia de vida con sentido».</div>
+        <div class="cita-ref">Manual de la PLAPA, §6.4.2 — Sobre la acción del acompañamiento inespecífico frente a la fragmentación (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Alerta pastoral</div>
-        <div class="alerta-txt">El acompañamiento inespecífico puede ser malentendido como <em>"cualquier cosa vale"</em>: llevar a alguien al hospital sin más criterio que la buena voluntad. No es así. La inespecificidad es de <em>función</em> (no reemplaza al técnico), no de <em>preparación</em>. El acompañante inespecífico necesita formación en escucha, en límites, en articulación con las instituciones. Sin esa formación, acompaña con buena voluntad pero puede complicar el caso.</div>
+        <div class="alerta-txt">El acompañamiento inespecífico puede ser malentendido como <em>«cualquier cosa vale»</em>: llevar a alguien al hospital sin más criterio que la buena voluntad. No es así. La inespecificidad es de <em>función</em> (no reemplaza al técnico), no de <em>preparación</em>. El acompañante inespecífico necesita formación en escucha, en límites, en articulación con las instituciones. Sin esa formación, acompaña con buena voluntad pero puede complicar el caso.</div>
       </div>
 
       <div class="autocuidado">
@@ -1435,7 +1452,7 @@
         <div class="autocuidado-txt">El acompañante inespecífico carga con la complejidad total de la persona: el médico ve la biología, el abogado ve el proceso legal, el trabajador social ve el subsidio. <em>El acompañante ve todo junto</em>. Esa carga puede generar agotamiento si no hay contención. El equipo que sostiene al acompañante inespecífico necesita espacios de supervisión y revisión de vida donde él también pueda soltar lo que carga.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §6.4.2 (El acompañamiento inespecífico) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §6.4.2 (Sobre la acción del acompañamiento inespecífico frente a la fragmentación) — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1450,8 +1467,14 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"Para actuar en red la construcción debe ser horizontal, poniendo en valor lo que cada sector puede aportar. El desplazamiento del enfoque debe ir siempre del consumo a la persona."</div>
+        <div class="resonancia-txt">«Para actuar en red la construcción debe ser horizontal, poniendo en valor lo que cada sector puede aportar. El desplazamiento del enfoque debe ir siempre del consumo a la persona […]» (§6.4.3).</div>
       </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>La objeción jerárquica.</strong> Según esta objeción, <em>«[…] el trabajo en red debe ser estrictamente jerárquico y piramidal, donde las instituciones del Estado o los especialistas médicos dicten directivas a las comunidades […]»</em>. El §6.4.3 la refuta: <em>«[…] la horizontalidad protege la autonomía de la comunidad y evita que el saber territorial sea absorbido por una lógica burocrática»</em>. La red que funciona no tiene una institución en la cima: tiene nodos, y en el centro, la persona. Y el nodo pastoral tiene un saber territorial que ningún organismo estatal puede reemplazar.</span></li>
+        <li><span class="dot">V</span><span><strong>La persona en el centro vs. la sustancia en el centro.</strong> <em>«[…] un enfoque centrado solo en la sustancia es un reduccionismo que ignora la complejidad de la persona; situar al sujeto en el centro desde el inicio humaniza el recorrido y garantiza que la red institucional no lo trate como un caso administrativo que rebota entre oficinas»</em> (§6.4.3). La red que pone la sustancia en el centro diseña protocolos. La red que pone a la persona en el centro diseña trayectorias.</span></li>
+      </ul>
 
       <div class="pl">El Juzgar — Las cuatro dimensiones de la red horizontal (§6.4.3)</div>
       <ul class="pts">
@@ -1461,15 +1484,9 @@
         <li><span class="dot j">4</span><span><strong>Promoción del protagonismo.</strong> La red no asiste a un objeto pasivo sino que <em>empodera a un sujeto responsable</em>, integrando a los acompañantes pares y a la comunidad como actores políticos de transformación social.</span></li>
       </ul>
 
-      <div class="pl">El Ver — Realidad</div>
-      <ul class="pts">
-        <li><span class="dot">V</span><span><strong>La objeción jerárquica.</strong> <em>"El trabajo en red debe ser estrictamente piramidal, donde el Estado o los especialistas dicten directivas a las comunidades."</em> El §6.4.3 la refuta: <em>"la horizontalidad protege la autonomía de la comunidad y evita que el saber territorial sea absorbido por una lógica burocrática."</em> La red que funciona no tiene centro: tiene nodos. Y el nodo pastoral tiene un saber territorial que ningún organismo estatal puede reemplazar.</span></li>
-        <li><span class="dot">V</span><span><strong>La persona en el centro vs. la sustancia en el centro.</strong> <em>"Un enfoque centrado solo en la sustancia es un reduccionismo que ignora la complejidad de la persona; situar al sujeto en el centro desde el inicio humaniza el recorrido y garantiza que la red institucional no lo trate como un caso administrativo que rebota entre oficinas"</em> (§6.4.3). La red que pone la sustancia en el centro diseña protocolos. La red que pone a la persona en el centro diseña trayectorias.</span></li>
-      </ul>
-
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>La complementariedad, no la competencia.</strong> El §6.4 introduce una distinción clave que la red necesita integrar: <em>el acompañamiento inespecífico no compite con la especificidad técnica, sino que le da sentido</em>. La red horizontal es el escenario donde esa complementariedad se hace posible: cada actor aporta lo suyo sin pretender tener todo, y el conjunto produce algo que ninguno podría producir solo.</span></li>
+        <li><span class="dot j">J</span><span><strong>La complementariedad, no la competencia.</strong> El §6.4.2 introduce una distinción clave que la red necesita integrar: <em>el acompañamiento inespecífico no busca reemplazar al saber técnico, sino complementarlo</em>. La red horizontal es el escenario donde esa complementariedad se hace posible: cada actor aporta lo suyo sin pretender tener todo, y el conjunto produce algo que ninguno podría producir solo.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1479,10 +1496,10 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Construir o fortalecer la mesa de red territorial</div>
         <div class="mode-g">
-          <div class="act-body">El grupo evalúa: <em>¿existe en el territorio un espacio regular de encuentro entre instituciones? ¿se reúnen periódicamente hospital, escuela, juzgado, centro barrial, parroquia? Si existe: ¿es horizontal o jerárquica? ¿pone a la persona en el centro o al trámite?</em> Si no existe: el grupo diseña la primera convocatoria, elige quiénes invitar y qué preguntas llevar.</div>
+          <div class="act-body">El grupo evalúa: <em>¿existe en el territorio un espacio regular de encuentro entre instituciones? ¿Se reúnen periódicamente hospital, escuela, juzgado, centro barrial, parroquia? Si existe: ¿es horizontal o jerárquica? ¿Pone a la persona en el centro o al trámite?</em> Si no existe: el grupo diseña la primera convocatoria, elige quiénes invitar y qué preguntas llevar.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Escribí en tu bitácora si en tu territorio existe una mesa de red. Si no, anotá: <em>¿quiénes deberían estar? ¿quién podría convocarla? ¿cuál sería la primera pregunta útil para reunirlos alrededor de una misma mesa?</em> Aunque no seas vos quien la convoque, el diseño puede ser el insumo que otro necesita.</div>
+          <div class="act-body">Escribí en tu bitácora si en tu territorio existe una mesa de red. Si no, anotá: <em>¿quiénes deberían estar? ¿Quién podría convocarla? ¿Cuál sería la primera pregunta útil para reunirlos alrededor de una misma mesa?</em> Aunque no seas vos quien la convoque, el diseño puede ser el insumo que otro necesita.</div>
         </div>
       </div>
 
@@ -1506,19 +1523,19 @@
           <div class="act-body">Para los casos en que dos o más instituciones intervienen sobre la misma persona, el grupo diseña un protocolo mínimo de casos compartidos: <em>quién convoca la reunión de coordinación, cada cuánto se actualiza la información, quién es el referente principal del caso, cómo se decide cuándo una institución puede retirarse</em>. Sin ese protocolo, la coordinación queda librada a la buena voluntad de turno.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Bosquejá en tu bitácora un protocolo mínimo de casos compartidos que puedas proponerle a las instituciones con las que ya articulás. Cuatro preguntas: <em>quién convoca, con qué frecuencia se actualiza, quién es referente principal, cómo se cierra el caso</em>. Un protocolo escrito circula; una promesa verbal se pierde en la primera vacación.</div>
+          <div class="act-body">Bosquejá en tu bitácora un protocolo mínimo de casos compartidos que puedas proponerle a las instituciones con las que ya articulás. Cuatro preguntas: <em>quién convoca, con qué frecuencia se actualiza, quién es referente principal, cómo se cierra el caso</em>. Un protocolo escrito circula; una promesa verbal se pierde con el primer cambio de referente.</div>
         </div>
       </div>
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §6.4.3</div>
-        <div class="cita-txt">"La red no asiste a un objeto pasivo, sino que empodera a un sujeto responsable, integrando a los acompañantes pares y a la comunidad como actores políticos de transformación social."</div>
-        <div class="cita-ref">Manual de la PLAPA, §6.4.3 — Horizontalidad y centralidad de la persona (CELAM 2026)</div>
+        <div class="cita-txt">«[…] la red no asiste a un objeto pasivo, sino que empodera a un sujeto responsable, integrando a los acompañantes pares y a la comunidad como actores políticos de transformación social».</div>
+        <div class="cita-ref">Manual de la PLAPA, §6.4.3 — La horizontalidad y centralidad de la persona en el trabajo en red (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Alerta pastoral</div>
-        <div class="alerta-txt">La palabra <em>"red"</em> puede convertirse en un slogan que reemplace a la práctica: se habla mucho de red, se hacen reuniones donde se acuerda "coordinar mejor", pero al día siguiente cada institución sigue haciendo lo suyo. La red horizontal no se construye en la mesa de reunión: se construye <em>caso por caso, derivación por derivación</em>. La reunión sirve para acordar; el caso concreto es donde la red se prueba o se cae.</div>
+        <div class="alerta-txt">La palabra <em>«red»</em> puede convertirse en un eslogan que reemplace a la práctica: se habla mucho de red, se hacen reuniones donde se acuerda «coordinar mejor», pero al día siguiente cada institución sigue haciendo lo suyo. La red horizontal no se construye en la mesa de reunión: se construye <em>caso por caso, derivación por derivación</em>. La reunión sirve para acordar; el caso concreto es donde la red se prueba o se cae.</div>
       </div>
 
       <div class="autocuidado">
@@ -1526,7 +1543,7 @@
         <div class="autocuidado-txt">El trabajo en red puede generar frustración cuando las otras instituciones no responden con la misma disposición. El facilitador recuerda que la red no se construye de golpe: se construye <em>relación por relación</em>. El primer paso es identificar a las personas concretas dentro de cada institución que tienen disposición a articular, y empezar por ellas. <em>Las instituciones son abstractas; las personas que las habitan no lo son.</em></div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §6.4.3 (Horizontalidad y centralidad de la persona) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §6.4.3 (La horizontalidad y centralidad de la persona en el trabajo en red), §6.4.2 (Sobre la acción del acompañamiento inespecífico frente a la fragmentación) — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1541,19 +1558,19 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"La comunidad organizada es el ámbito capaz de alojar la complejidad del sujeto, brindando un puerto seguro y un vínculo de pertenencia que trasciende la asistencia técnica."</div>
+        <div class="resonancia-txt">«[…] promover procesos de integración que reconozcan la dignidad ontológica de cada hermano y hermana, asegurando que el acceso a derechos fundamentales no se vea obstaculizado por la rigidez de los sistemas administrativos fragmentados» (§6.4).</div>
       </div>
 
       <div class="pl">El Ver — Realidad</div>
       <ul class="pts">
-        <li><span class="dot">V</span><span><strong>Las grietas del sistema como lugar teológico.</strong> El diagnóstico del §6.4 cierra con una imagen precisa: <em>la persona que no puede navegar el sistema institucional termina cayendo en las grietas que el sistema no reconoce como propias</em>. Nadie la expulsó deliberadamente: simplemente nadie se hizo cargo del trayecto entre una institución y otra. La pastoral que hace el trayecto con la persona llena ese vacío que el sistema produce pero no puede llenar.</span></li>
-        <li><span class="dot">V</span><span><strong>Procesos, no eventos.</strong> El §6.4.3 propone que la red no planifique <em>"eventos aislados"</em> sino <em>"procesos"</em>. La diferencia es crucial: el evento tiene fecha de inicio y de cierre, presupuesto y resultado medible. El proceso tiene dirección pero no fecha de vencimiento, tiene acompañantes pero no propietarios, tiene hitos pero no protocolos rígidos. <em>La pastoral organiza procesos; el Estado organiza eventos.</em></span></li>
+        <li><span class="dot">V</span><span><strong>Las grietas del sistema.</strong> El §6.4.1 lo describe: las personas más vulnerabilizadas quedan excluidas <em>«al no poder navegar por sí mismas un entramado institucional que las percibe como un conjunto de trámites aislados»</em>. Caen en las grietas entre una institución y otra. Nadie las expulsó deliberadamente: simplemente nadie se hizo cargo del trayecto entre una institución y otra. La pastoral que hace el trayecto con la persona llena ese vacío que el sistema produce pero no puede llenar.</span></li>
+        <li><span class="dot">V</span><span><strong>Procesos, no eventos.</strong> El §6.4.3 propone que la red planifique sus estrategias <em>«en términos de procesos y no de eventos aislados»</em>. La diferencia es crucial: el evento tiene fecha de inicio y de cierre, presupuesto y resultado medible. El proceso tiene dirección pero no fecha de vencimiento, tiene acompañantes pero no propietarios, tiene hitos pero no protocolos rígidos. <em>La red que funciona organiza procesos, no eventos.</em></span></li>
       </ul>
 
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>La humildad institucional como condición espiritual.</strong> El §6.4 introduce un criterio que sintetiza el itinerario: <em>"pasar de la autosuficiencia institucional a un trabajo en red horizontal."</em> Ese pasaje no es técnico: es espiritual. Implica que cada institución —incluida la pastoral— reconozca sus límites, acepte que necesita a las otras, y se relacione con ellas desde la complementariedad y no desde la competencia. <em>La humildad institucional es la condición del trabajo en red que funciona.</em></span></li>
-        <li><span class="dot j">J</span><span><strong>El aporte único de la comunidad organizada.</strong> <em>"La comunidad organizada es el ámbito capaz de alojar la complejidad del sujeto"</em> (§6.4, introducción). Esa capacidad no la tiene por ser más competente que el hospital o más eficiente que el juzgado: la tiene porque puede ofrecer lo que ninguna institución técnica puede dar. <em>El vínculo de pertenencia, la presencia cotidiana, la memoria del nombre.</em> Eso es lo que hace único al aporte de la comunidad en la red.</span></li>
+        <li><span class="dot j">J</span><span><strong>La humildad institucional como condición espiritual.</strong> El §6.4 introduce un criterio que sintetiza el itinerario: <em>«pasar de la autosuficiencia institucional a un trabajo en red horizontal»</em>. Ese pasaje no es técnico: es espiritual. Implica que cada institución —incluida la pastoral— reconozca sus límites, acepte que necesita a las otras, y se relacione con ellas desde la complementariedad y no desde la competencia. <em>La humildad institucional es la condición del trabajo en red que funciona.</em></span></li>
+        <li><span class="dot j">J</span><span><strong>El aporte único de la comunidad organizada.</strong> El §6.4 destaca el papel de la comunidad organizada como el ámbito capaz de alojar la complejidad del sujeto. Esa capacidad no la tiene por ser más competente que el hospital o más eficiente que el juzgado: la tiene porque puede ofrecer lo que ninguna institución técnica puede dar. <em>El vínculo de pertenencia, la presencia cotidiana, la memoria del nombre.</em> Eso es lo que hace único al aporte de la comunidad en la red.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1563,7 +1580,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Revisión del aporte propio a la red territorial</div>
         <div class="mode-g">
-          <div class="act-body">El grupo evalúa el estado actual de la articulación en red del equipo: <em>¿con cuántas instituciones del territorio tenemos relación regular? ¿cuántas derivaciones hacemos por mes? ¿cuántas derivaciones recibimos? ¿hay alguna institución con la que deberíamos articular y no lo estamos haciendo? ¿por qué?</em> El cuadro resultante es el diagnóstico de red del equipo.</div>
+          <div class="act-body">El grupo evalúa el estado actual de la articulación en red del equipo: <em>¿con cuántas instituciones del territorio tenemos relación regular? ¿Cuántas derivaciones hacemos por mes? ¿Cuántas derivaciones recibimos? ¿Hay alguna institución con la que deberíamos articular y no lo estamos haciendo? ¿Por qué?</em> El cuadro resultante es el diagnóstico de red del equipo.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Escribí en tu bitácora una lista de las instituciones con las que <em>tu comunidad</em> tiene relación regular hoy. Al lado, otra lista: instituciones con las que <em>debería tenerla y no la tiene</em>. La brecha entre las dos listas es tu plan de trabajo en red para los próximos seis meses.</div>
@@ -1575,7 +1592,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Un caso, una trayectoria, un mapa</div>
         <div class="mode-g">
-          <div class="act-body">El grupo toma el caso trabajado en el Módulo 1 y lo redibuja: esta vez no como un mapa de fragmentación sino como una <em>trayectoria posible con acompañamiento inespecífico</em>. ¿Quién podría ser el hilo? ¿qué instituciones intervendrían en qué momento? ¿cómo se comunicarían? El mismo caso, dos mapas: <em>el de la realidad y el del ideal posible</em>. La distancia entre los dos es el plan de trabajo del equipo.</div>
+          <div class="act-body">El grupo toma el caso trabajado en el Módulo 1 y lo redibuja: esta vez no como un mapa de fragmentación sino como una <em>trayectoria posible con acompañamiento inespecífico</em>. ¿Quién podría ser el hilo? ¿Qué instituciones intervendrían en qué momento? ¿Cómo se comunicarían? El mismo caso, dos mapas: <em>el de la realidad y el del ideal posible</em>. La distancia entre los dos es el plan de trabajo del equipo.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Redibujá en tu bitácora el mapa del caso que trabajaste en el Módulo 1, esta vez como <em>trayectoria posible</em> con las cuatro dimensiones de la red horizontal del §6.4.3. ¿Quién sería el hilo inespecífico? ¿Qué instituciones intervendrían y cuándo? La distancia entre el mapa real y el mapa posible es tu propio plan de trabajo con esta persona.</div>
@@ -1587,7 +1604,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Compromiso concreto de articulación</div>
         <div class="mode-g">
-          <div class="act-body">Cada participante nombra: <em>una institución del territorio con la que va a establecer o fortalecer un vínculo en el próximo mes, una persona concreta dentro de esa institución a quien va a contactar, y una razón específica de la persona que acompaña que hace urgente esa articulación</em>. Se registra en el cuaderno colectivo y se revisa en el primer <em>"Parar para seguir."</em></div>
+          <div class="act-body">Cada participante nombra: <em>una institución del territorio con la que va a establecer o fortalecer un vínculo en el próximo mes, una persona concreta dentro de esa institución a quien va a contactar, y una razón específica de la persona que acompaña que hace urgente esa articulación</em>. Se registra en el cuaderno colectivo y se revisa en la próxima reunión de equipo.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Cerrá el itinerario con un compromiso escrito en tu bitácora: <em>una institución, una persona concreta dentro de esa institución, una razón específica que hace urgente el contacto, una fecha</em>. Sin esos cuatro datos, el compromiso es intención; con ellos, es plan. La red horizontal se teje con contactos concretos, no con voluntad genérica.</div>
@@ -1596,27 +1613,26 @@
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §6.4 — introducción</div>
-        <div class="cita-txt">"La comunidad organizada es el ámbito capaz de alojar la complejidad del sujeto, brindando un puerto seguro y un vínculo de pertenencia que trasciende la asistencia técnica."</div>
-        <div class="cita-ref">Manual de la PLAPA, §6.4 — Superación de la Fragmentación (CELAM 2026)</div>
+        <div class="cita-txt">«[…] se destaca el papel de la comunidad organizada como el ámbito capaz de alojar la complejidad del sujeto, brindando un puerto seguro y un vínculo de pertenencia que trasciende la asistencia técnica».</div>
+        <div class="cita-ref">Manual de la PLAPA, §6.4 — Superación de la Fragmentación e Integralidad del Acompañamiento (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Alerta pastoral</div>
-        <div class="alerta-txt">Terminar el itinerario con un mapa hermoso de red horizontal puede generar la ilusión de que <em>"ya está"</em>. No es así: el mapa es el punto de partida del trabajo cotidiano, no su reemplazo. La red horizontal se prueba en la primera derivación que hace falta esta semana, no en la reunión de coordinación del mes que viene. Sin ese aterrizaje concreto, la síntesis del itinerario se queda en literatura pastoral.</div>
+        <div class="alerta-txt">Terminar el itinerario con un mapa hermoso de red horizontal puede generar la ilusión de que <em>«ya está»</em>. No es así: el mapa es el punto de partida del trabajo cotidiano, no su reemplazo. La red horizontal se prueba en la primera derivación que hace falta esta semana, no en la reunión de coordinación del mes que viene. Sin ese aterrizaje concreto, la síntesis del itinerario se queda en literatura pastoral.</div>
       </div>
 
       <div class="autocuidado">
         <div class="autocuidado-lbl">Autocuidado del agente — cierre del itinerario</div>
-        <div class="autocuidado-txt">El itinerario cierra con la pregunta que el §6.4 le hace a cada agente: <em>¿somos nosotros también "autosuficientes"? ¿hay dimensiones de la vida de las personas que acompañamos que no sabemos cómo abordar y en lugar de derivar, ignoramos?</em> La humildad epistémica —saber lo que no sé y buscar a quien lo sabe— es la condición personal del trabajo en red que el itinerario propone institucionalmente. Cerrar en silencio o con una oración por todas las personas que hoy están rebotando en las grietas del sistema.</div>
+        <div class="autocuidado-txt">El itinerario cierra con una pregunta para cada agente, a la luz del §6.4: <em>¿somos nosotros también autosuficientes? ¿Hay dimensiones de la vida de las personas que acompañamos que no sabemos cómo abordar y en lugar de derivar, ignoramos?</em> La humildad epistémica —saber lo que no sé y buscar a quien lo sabe— es la condición personal del trabajo en red que el itinerario propone institucionalmente. Cerrar en silencio o con una oración por todas las personas que hoy están rebotando en las grietas del sistema.</div>
       </div>
 
       <div class="lectura">
         <div class="lectura-lbl">Lectura complementaria</div>
-        <div class="lectura-txt">Para profundizar en la práctica del <strong>acompañamiento inespecífico</strong> y del trabajo en red horizontal desde la tradición de la Familia Grande Hogar de Cristo, con casos concretos de articulación entre pastoral, salud, justicia y organismos sociales, ofrecemos este texto para la reflexión del equipo.</div>
-        <a href="ElMetodoFGHC.pdf" download class="lectura-link">📥 Descargar "ElMetodoFGHC.pdf"</a>
+        <div class="lectura-txt">Para profundizar, leé completo en el Manual de la PLAPA el <strong>§6.4, «Superación de la Fragmentación e Integralidad del Acompañamiento»</strong> (§6.4.1–6.4.3). Cada artículo trae las objeciones más frecuentes y la respuesta del Manual. Volvé con especial atención al <strong>§6.4.2, «Sobre la acción del acompañamiento inespecífico frente a la fragmentación»</strong>, por las tres funciones del acompañante, y al <strong>§6.4.3, «La horizontalidad y centralidad de la persona en el trabajo en red»</strong>, que fundamenta el paso de la autosuficiencia institucional a la red horizontal.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §6.4 (Superación de la Fragmentación), §6.4.1 (Fragmentación epistemológica y administrativa), §6.4.2 (El acompañamiento inespecífico), §6.4.3 (Horizontalidad y centralidad de la persona) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §6.4 (Superación de la Fragmentación e Integralidad del Acompañamiento), §6.4.1 (Sobre la fragmentación epistemológica y administrativa), §6.4.2 (Sobre la acción del acompañamiento inespecífico frente a la fragmentación), §6.4.3 (La horizontalidad y centralidad de la persona en el trabajo en red) — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1631,8 +1647,8 @@
 
       <!-- Selector de vista: este itinerario / global -->
       <div class="foro-vista">
-        <button class="foro-vista-btn on" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
-        <button class="foro-vista-btn" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
+        <button class="foro-vista-btn on" aria-pressed="true" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
+        <button class="foro-vista-btn" aria-pressed="false" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
       </div>
 
       <!-- Pautas pastorales -->
@@ -1684,7 +1700,7 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Antes de comenzar</div>
-        <div class="resonancia-txt">"La revisión de vida es la forma histórica que la Iglesia latinoamericana encontró para institucionalizar el Ver–Juzgar–Actuar. El agente que la practica no aplica el método: lo vive." Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
+        <div class="resonancia-txt">Este itinerario te invitó a nombrar la doble fragmentación que descuartiza a las personas, a reconocer el acompañamiento inespecífico como el hilo que une lo que el sistema separa y a construir una red horizontal con la persona en el centro. Ahora es el momento de nombrar qué cambió en tu mirada. Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
       </div>
 
       <div class="eval-nota">
@@ -1694,24 +1710,24 @@
 
       <div class="pl">El Ver — Qué se hizo visible</div>
       <div class="eval-q">
-        <label for="evalVer">¿Qué realidad del territorio se hizo más visible para vos a lo largo de estos cuatro módulos? ¿Qué llagas emergieron con más fuerza? ¿Qué zonas del mapa estaban en blanco antes y ahora tienen contenido?</label>
+        <label for="evalVer">¿Qué grietas entre instituciones se hicieron más visibles para vos a lo largo de estos cuatro módulos? ¿Qué personas viste rebotar entre oficinas sin que nadie hiciera el trayecto con ellas? ¿Quiénes del territorio ya ejercen el acompañamiento inespecífico sin llamarlo así?</label>
         <textarea id="evalVer" data-eval="ver" placeholder="Escribí con calma, sin apurarte..."></textarea>
       </div>
 
       <div class="pl">El Juzgar — Qué iluminó, qué preguntas quedaron abiertas</div>
       <div class="eval-q">
-        <label for="evalJuzgar1">¿Qué del método del diagnóstico territorial te iluminó de manera nueva? ¿Qué idea del Manual sentís que ya no podrás dejar de lado?</label>
+        <label for="evalJuzgar1">De la fragmentación epistemológica y administrativa, del acompañamiento inespecífico, de la red horizontal y de la persona en el centro: ¿qué te iluminó de manera nueva? ¿Qué idea del Manual sentís que ya no podrás dejar de lado?</label>
         <textarea id="evalJuzgar1" data-eval="juzgar1" placeholder="Nombralo con precisión..."></textarea>
       </div>
       <div class="eval-q">
-        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos? Las preguntas abiertas son también fruto (§13.3).</label>
+        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos? La tensión entre el saber técnico y el saber territorial, entre la red que se declara en la reunión y la que se prueba en cada derivación, entre criticar la autosuficiencia de otros y reconocer la propia: ¿dónde te dejó incómodo/a?</label>
         <textarea id="evalJuzgar2" data-eval="juzgar2" placeholder="Las que siguen ardiendo..."></textarea>
       </div>
 
       <div class="pl">El Actuar — Compromiso concreto</div>
       <div class="eval-q">
-        <label for="evalActuar">¿Qué gesto pastoral concreto vas a intentar en las próximas semanas a partir del diagnóstico que hiciste? Nombralo con nombre, tiempo y lugar. Un compromiso vago no es un compromiso.</label>
-        <textarea id="evalActuar" data-eval="actuar" placeholder="Ej.: En la próxima reunión de equipo (jueves 25) voy a presentar el mapa territorial que construimos y proponer una callejeada específica al sector X del barrio..."></textarea>
+        <label for="evalActuar">¿Qué gesto concreto de articulación vas a intentar en las próximas semanas? Puede ser acompañar en persona una derivación, contactar a alguien concreto de una institución con la que tu comunidad no articula, o proponer una reunión de caso compartido. Nombralo con nombre, tiempo y lugar. Un compromiso vago no es un compromiso.</label>
+        <textarea id="evalActuar" data-eval="actuar" placeholder="Ej.: El miércoles 12 acompaño a X a su turno en el centro de salud mental y, a la salida, le pido a la trabajadora social Y un teléfono para hacer el seguimiento..."></textarea>
       </div>
       <div class="eval-q eval-fecha">
         <label for="evalFecha">Fecha en la que vas a volver a revisar si pudiste sostenerlo</label>
@@ -1719,8 +1735,8 @@
       </div>
 
       <div class="pl">Autocuidado y equipo</div>
-      <div class="eval-q eval-scale">
-        <label>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</label>
+      <fieldset class="eval-q eval-scale">
+        <legend>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</legend>
         <div class="eval-scale-row">
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="1" data-eval="animo"><span>1</span></label>
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="2" data-eval="animo"><span>2</span></label>
@@ -1728,10 +1744,10 @@
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="4" data-eval="animo"><span>4</span></label>
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="5" data-eval="animo"><span>5</span></label>
         </div>
-      </div>
+      </fieldset>
       <div class="eval-q">
-        <label for="evalCuidado">¿Qué necesitás cuidar de vos mismo/a en las próximas semanas? ¿A quién del equipo se lo vas a decir?</label>
-        <textarea id="evalCuidado" data-eval="cuidado" placeholder="El agente que cuida su esperanza puede sostener la del otro (§1.3)..."></textarea>
+        <label for="evalCuidado">El acompañante inespecífico carga con la vida entera de la persona y choca una y otra vez con instituciones que no responden; eso puede dejar rabia, cinismo o agotamiento. ¿Qué necesitás cuidar de vos en las próximas semanas? ¿Quién te sostiene a vos cuando cargás con todo el recorrido? ¿A quién del equipo se lo vas a decir?</label>
+        <textarea id="evalCuidado" data-eval="cuidado" placeholder="Ej.: Voy a decirle a X que el caso de Y me tiene enojado/a con el juzgado y que necesito compartirlo en la próxima revisión de vida del equipo..."></textarea>
       </div>
 
       <div class="pl">Cierre</div>
@@ -1750,10 +1766,10 @@
 
       <div class="autocuidado" style="margin-top: 2rem;">
         <div class="autocuidado-lbl">Cierre del itinerario</div>
-        <div class="autocuidado-txt">Cerrar bien un itinerario también es autocuidado: celebrar lo caminado, agradecer al equipo, reconocer los propios límites y renovar la esperanza. Este itinerario termina con gratitud: por el territorio que nos habló, por las llagas que dejamos de negar, por el equipo que hizo posible mirar sin apartar la mirada.</div>
+        <div class="autocuidado-txt">Cerrar bien un itinerario también es autocuidado: celebrar lo caminado, agradecer al equipo, reconocer los propios límites y renovar la esperanza. Este itinerario termina con gratitud: por las personas que nos dejaron caminar con ellas de una oficina a otra, por quienes dentro de cada institución aceptaron articular, por el equipo que hizo posible unir lo que el sistema separa.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §1.3 (Prólogo), §6.1.3 (Evitar la romantización), §13.2 (Sinodalidad en la práctica), §13.3 (Rolling release), §13.5 (Mecanismos de colaboración) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §6.4 (Superación de la Fragmentación e Integralidad del Acompañamiento), §6.4.1 (Sobre la fragmentación epistemológica y administrativa), §6.4.2 (Sobre la acción del acompañamiento inespecífico frente a la fragmentación), §6.4.3 (La horizontalidad y centralidad de la persona en el trabajo en red), §13.3 (La propuesta de un manual Rolling Release), §13.5 (Los mecanismos de colaboración) — CELAM 2026.</div>
 
     </div>
   </div>
@@ -1767,9 +1783,9 @@
     root.classList.add('mode-' + mode);
     var buttons = document.querySelectorAll('.mode-btn');
     for (var i = 0; i < buttons.length; i++) {
-      buttons[i].classList.remove('on');
+      buttons[i].classList.remove('on'); buttons[i].setAttribute('aria-pressed', 'false');
     }
-    btn.classList.add('on');
+    btn.classList.add('on'); btn.setAttribute('aria-pressed', 'true');
   }
 
   function show(n, btn) {
@@ -2046,8 +2062,8 @@
   function setVistaForo(v, btn) {
     vistaForo = v;
     var buttons = document.querySelectorAll('.foro-vista-btn');
-    for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove('on'); }
-    btn.classList.add('on');
+    for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove('on'); buttons[i].setAttribute('aria-pressed', 'false'); }
+    btn.classList.add('on'); btn.setAttribute('aria-pressed', 'true');
     cargarComentarios();
   }
 
@@ -2125,16 +2141,17 @@
     var datos = recolectarEvaluacion();
     var minimoTexto = (datos.ver || '').trim() + (datos.actuar || '').trim();
     if (minimoTexto.length < 30) {
-      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos "El Ver" y "El Actuar" merecen unos renglones honestos.', 'error');
+      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos «El Ver» y «El Actuar» merecen unos renglones honestos.', 'error');
       return;
     }
 
     // Guardar en Supabase (siempre queda en tu bitácora)
     if (!sesion) { window.location.href = '/login'; return; }
-    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario', {
+    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario?on_conflict=usuario_id,itinerario_id', {
       method: 'POST',
       headers: Object.assign({}, supaHeaders(), { 'Prefer': 'resolution=merge-duplicates' }),
       body: JSON.stringify({
+        usuario_id: sesion.user ? sesion.user.id : undefined,
         itinerario_id: ITINERARIO_ID,
         respuestas: datos,
         compartir_con_equipo: datos.compartir_con_equipo === true
@@ -2157,12 +2174,18 @@
 
   function imprimirEvaluacion() {
     autoguardarBorrador();
+    // Que cada respuesta se imprima completa, sin cortarse
+    var areas = document.querySelectorAll('#m6 textarea');
+    for (var i = 0; i < areas.length; i++) {
+      areas[i].style.height = 'auto';
+      areas[i].style.height = areas[i].scrollHeight + 'px';
+    }
     window.print();
   }
 
   // Init general del itinerario
   document.addEventListener('DOMContentLoaded', function() {
-    // Leer sesión (el guard del <head> garantiza que existe)
+    // Leer sesión guardada por el login (puede no existir)
     try {
       var stored = localStorage.getItem('escuela_plapa_sesion');
       if (stored) sesion = JSON.parse(stored);

@@ -11,9 +11,8 @@
       --text-muted: #5a5a5a;
       --primary: #854F0B; 
       --primary-dark: #412402;
-      --accent: #1D9E75; 
+      --accent: #0E7356; 
       --surface: #ffffff;
-      --surface-2: #f9f7f2;
       --border: #e2dfd8;
       --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       --font-serif: Georgia, "Times New Roman", serif;
@@ -179,6 +178,51 @@
       font-size: 0.9rem;
       margin-top: 4rem;
     }
+    /* Celular */
+    @media (max-width: 640px) {
+      header { padding: 0.75rem 16px; flex-wrap: wrap; gap: 0.4rem 1rem; }
+      .nav-links a { margin-left: 0; margin-right: 1rem; }
+      .ruta-hero { padding: 2.5rem 16px 2rem; }
+      .ruta-hero h1 { font-size: 1.8rem; }
+      .timeline-container { margin: 2.5rem auto; padding: 0 16px; }
+      .etapa { margin-bottom: 2.5rem; }
+      .etapa-title { font-size: 1.5rem; }
+      .grid { grid-template-columns: 1fr; }
+      footer { padding: 2rem 16px; margin-top: 2.5rem; }
+    }
+  
+    /* Accesibilidad: foco visible */
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+    .ruta-hero a:focus-visible { outline-color: #ffffff; }
+
+    /* Impresión */
+    @media print {
+      header, footer, nav, video, iframe { display: none !important; }
+      body { background: #ffffff !important; color: #000000 !important; }
+      .ruta-hero { background: none !important; color: #000 !important; padding: 0 0 1rem !important; text-align: left !important; }
+      .ruta-icon { display: none !important; }
+      .ruta-hero h1 { color: #000 !important; font-size: 1.6rem !important; margin-bottom: 0.5rem !important; }
+      .ruta-hero p { color: #333 !important; max-width: 100% !important; }
+      .timeline-container { max-width: 100% !important; margin: 1rem 0 !important; padding: 0 !important; }
+      .etapa { page-break-inside: avoid; break-inside: avoid; margin-bottom: 1.5rem !important; }
+      .etapa-header { border-bottom-color: #999 !important; }
+      .etapa-title, .etapa-num, .etapa-desc { color: #000 !important; }
+      .grid { gap: 10px !important; }
+      .card {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        border: 1px solid #999 !important;
+        border-left: 3px solid #333 !important;
+        box-shadow: none !important;
+        transform: none !important;
+        background: #fff !important;
+      }
+      .card-title, .card-n, .card-sub { color: #000 !important; }
+    }
   </style>
 </head>
 <body>
@@ -186,107 +230,107 @@
   <header>
     <a href="index.html" class="logo">Escuela PLAPA</a>
     <nav class="nav-links">
-      <a href="index.html#ambitos">← Volver a Ámbitos</a>
-      <a href="catalogo_30_itinerarios_plapa_corregido.html">Catálogo Completo</a>
+      <a href="index.html#ambitos">← Volver a ámbitos</a>
+      <a href="catalogo_30_itinerarios_plapa_corregido.html">Catálogo completo</a>
     </nav>
   </header>
 
   <section class="ruta-hero">
     <div class="ruta-icon">🏘️</div>
-    <h1>Barrio Popular y Centros Barriales</h1>
+    <h1>Barrio popular y centros barriales</h1>
     <p>Una hoja de ruta para quienes están fundando o sosteniendo espacios de umbral bajo en la trinchera comunitaria.</p>
   </section>
 
   <main class="timeline-container">
     
     <!-- Etapa 1 -->
-    <div class="etapa">
+    <section class="etapa" aria-label="Etapa 1: Pisando el territorio">
       <div class="etapa-header">
         <span class="etapa-num">Etapa 1</span>
-        <h2 class="etapa-title">Pisando el Territorio</h2>
+        <h2 class="etapa-title">Pisando el territorio</h2>
         <p class="etapa-desc">Acercarse a la realidad del barrio exige una espiritualidad encarnada y una lectura clara del entramado social y económico.</p>
       </div>
       <div class="grid">
-        <a class="card" href="itinerario_3_mistica_v4.html" style="border-left-color: #1D9E75;">
-          <div class="card-n" style="color: #1D9E75;">Itinerario 3</div>
+        <a class="card" href="itinerario_3_mistica_v4.html" aria-label="Ir al itinerario 3: Mística de la proximidad" style="border-left-color: #1D9E75;">
+          <div class="card-n" style="color: #085041;">Itinerario 3</div>
           <div class="card-title">Mística de la proximidad</div>
           <div class="card-sub">Achicar distancias, callejear y tocar la carne sufriente como espiritualidad fundante para sostener la mirada en el barrio.</div>
         </a>
-        <a class="card" href="itinerario_6_leer_territorio_v4.html" style="border-left-color: #534AB7;">
-          <div class="card-n" style="color: #534AB7;">Itinerario 6</div>
+        <a class="card" href="itinerario_6_leer_territorio_v4.html" aria-label="Ir al itinerario 6: Leer el territorio sin romantizarlo" style="border-left-color: #534AB7;">
+          <div class="card-n" style="color: #3C3489;">Itinerario 6</div>
           <div class="card-title">Leer el territorio sin romantizarlo</div>
           <div class="card-sub">Diagnóstico barrial crudo: identificar las lógicas del narcotráfico, la ausencia del Estado y las redes informales de cuidado.</div>
         </a>
-        <a class="card" href="itinerario_9_drama_trabajo_3T_v2.html" style="border-left-color: #534AB7;">
-          <div class="card-n" style="color: #534AB7;">Itinerario 9</div>
+        <a class="card" href="itinerario_9_drama_trabajo_3T_v2.html" aria-label="Ir al itinerario 9: El drama del trabajo y las 3T" style="border-left-color: #534AB7;">
+          <div class="card-n" style="color: #3C3489;">Itinerario 9</div>
           <div class="card-title">El drama del trabajo y las 3T</div>
           <div class="card-sub">Comprender el desempleo estructural y la economía popular (Tierra, Techo, Trabajo) como andamiaje de justicia.</div>
         </a>
       </div>
-    </div>
+    </section>
 
     <!-- Etapa 2 -->
-    <div class="etapa">
+    <section class="etapa" aria-label="Etapa 2: El dispositivo institucional">
       <div class="etapa-header">
         <span class="etapa-num">Etapa 2</span>
-        <h2 class="etapa-title">El Dispositivo Institucional</h2>
+        <h2 class="etapa-title">El dispositivo institucional</h2>
         <p class="etapa-desc">El paso de la buena voluntad espontánea a la construcción de un espacio organizado y en red.</p>
       </div>
       <div class="grid">
-        <a class="card" href="itinerario_25_centros_barriales_v2.html" style="border-left-color: #185FA5;">
+        <a class="card" href="itinerario_25_centros_barriales_v2.html" aria-label="Ir al itinerario 25: Cómo abrir y sostener un centro barrial" style="border-left-color: #378ADD;">
           <div class="card-n" style="color: #185FA5;">Itinerario 25</div>
-          <div class="card-title">Abrir y sostener un centro barrial</div>
+          <div class="card-title">Cómo abrir y sostener un centro barrial</div>
           <div class="card-sub">El corazón de esta ruta: los tres ejes del centro barrial, cómo comenzar desde cero y la gestión de la sustentabilidad.</div>
         </a>
-        <a class="card" href="itinerario_10_superar_fragmentacion_v2.html" style="border-left-color: #534AB7;">
-          <div class="card-n" style="color: #534AB7;">Itinerario 10</div>
+        <a class="card" href="itinerario_10_superar_fragmentacion_v2.html" aria-label="Ir al itinerario 10: Superar la fragmentación institucional" style="border-left-color: #534AB7;">
+          <div class="card-n" style="color: #3C3489;">Itinerario 10</div>
           <div class="card-title">Superar la fragmentación institucional</div>
           <div class="card-sub">Un centro barrial no puede trabajar solo. Estrategias de acompañamiento inespecífico y trabajo en red horizontal.</div>
         </a>
       </div>
-    </div>
+    </section>
 
     <!-- Etapa 3 -->
-    <div class="etapa">
+    <section class="etapa" aria-label="Etapa 3: Abordajes específicos">
       <div class="etapa-header">
         <span class="etapa-num">Etapa 3</span>
-        <h2 class="etapa-title">Abordajes Específicos</h2>
+        <h2 class="etapa-title">Abordajes específicos</h2>
         <p class="etapa-desc">Profundizar en las particularidades de la exclusión que se viven a diario en los barrios populares.</p>
       </div>
       <div class="grid">
-        <a class="card" href="itinerario_20_biologia_pobreza_v2.html" style="border-left-color: #BA7517;">
-          <div class="card-n" style="color: #BA7517;">Itinerario 20</div>
+        <a class="card" href="itinerario_20_biologia_pobreza_v2.html" aria-label="Ir al itinerario 20: Biología, pobreza y vulnerabilidad" style="border-left-color: #BA7517;">
+          <div class="card-n" style="color: #854F0B;">Itinerario 20</div>
           <div class="card-title">Biología, pobreza y vulnerabilidad</div>
           <div class="card-sub">Cómo la cicatriz biológica de la exclusión impacta en el embarazo, las infancias y el consumo en contextos de pobreza extrema.</div>
         </a>
-        <a class="card" href="itinerario_21_mujeres_consumo_v2.html" style="border-left-color: #D4537E;">
-          <div class="card-n" style="color: #D4537E;">Itinerario 21</div>
-          <div class="card-title">Mujeres en situación de consumo</div>
-          <div class="card-sub">Abordaje de la feminización de la pobreza y reducción de daños con perspectiva de género en los barrios.</div>
+        <a class="card" href="itinerario_21_mujeres_consumo_v2.html" aria-label="Ir al itinerario 21: Pastoral con mujeres en situación de consumo" style="border-left-color: #D4537E;">
+          <div class="card-n" style="color: #72243E;">Itinerario 21</div>
+          <div class="card-title">Pastoral con mujeres en situación de consumo</div>
+          <div class="card-sub">Doble condena, feminización de la pobreza y un abordaje diferenciado con perspectiva de género en los barrios.</div>
         </a>
       </div>
-    </div>
+    </section>
 
     <!-- Etapa 4 -->
-    <div class="etapa">
+    <section class="etapa" aria-label="Etapa 4: Sostenibilidad integral">
       <div class="etapa-header">
         <span class="etapa-num">Etapa 4</span>
-        <h2 class="etapa-title">Sostenibilidad Integral</h2>
+        <h2 class="etapa-title">Sostenibilidad integral</h2>
         <p class="etapa-desc">Garantizar que tanto el proyecto económico de quienes se recuperan como la salud de quienes acompañan perdure en el tiempo.</p>
       </div>
       <div class="grid">
-        <a class="card" href="itinerario_11_microcreditos_finanzas_solidarias_v2.html" style="border-left-color: #534AB7;">
-          <div class="card-n" style="color: #534AB7;">Itinerario 11</div>
-          <div class="card-title">Microcréditos y finanzas solidarias</div>
+        <a class="card" href="itinerario_11_microcreditos_finanzas_solidarias_v2.html" aria-label="Ir al itinerario 11: Microcréditos y Finanzas Solidarias" style="border-left-color: #534AB7;">
+          <div class="card-n" style="color: #3C3489;">Itinerario 11</div>
+          <div class="card-title">Microcréditos y Finanzas Solidarias</div>
           <div class="card-sub">Herramientas concretas de economía popular para la reintegración y autonomía de quienes asisten al centro.</div>
         </a>
-        <a class="card" href="itinerario_29_cuidar_que_cuidan_v2.html" style="border-left-color: #639922;">
-          <div class="card-n" style="color: #639922;">Itinerario 29</div>
+        <a class="card" href="itinerario_29_cuidar_que_cuidan_v2.html" aria-label="Ir al itinerario 29: Cuidar a los que cuidan" style="border-left-color: #639922;">
+          <div class="card-n" style="color: #3B6D11;">Itinerario 29</div>
           <div class="card-title">Cuidar a los que cuidan</div>
           <div class="card-sub">Esencial en el barrio: acompañamiento del duelo, desgaste emocional y cómo sostener al equipo a largo plazo.</div>
         </a>
       </div>
-    </div>
+    </section>
 
   </main>
 

@@ -24,7 +24,7 @@
     --borde:      #E4E2F0;
 
     --font-serif: "Georgia", "Times New Roman", serif;
-    --font-sans:  "system-ui", -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
+    --font-sans:  system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
   }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -772,7 +772,7 @@
   }
   .foro-form textarea:focus,
   .foro-form select:focus {
-    outline: none;
+    outline: 2px solid transparent;
     border-color: var(--i13-medio);
   }
   .foro-form-actions {
@@ -1009,7 +1009,18 @@
   .eval-q {
     margin-bottom: 1.5rem;
   }
-  .eval-q > label {
+  fieldset.eval-scale {
+    border: 0;
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+    min-width: 0;
+  }
+  .eval-q > legend {
+    padding: 0;
+  }
+  .eval-q > label,
+  .eval-q > legend {
     display: block;
     font-size: 14px;
     font-weight: 500;
@@ -1033,7 +1044,7 @@
   }
   .eval-q textarea:focus,
   .eval-q input:focus {
-    outline: none;
+    outline: 2px solid transparent;
     border-color: var(--i13-medio);
     box-shadow: 0 0 0 3px rgba(60, 52, 137, 0.1);
   }
@@ -1063,6 +1074,10 @@
     position: absolute;
     opacity: 0;
     pointer-events: none;
+  }
+  .eval-radio input:focus-visible + span {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
   }
   .eval-radio span {
     display: block;
@@ -1155,7 +1170,10 @@
     .root { box-shadow: none; padding: 1rem; max-width: 100%; }
     .portada, .video-wrap, .mode-selector, .nav { display: none !important; }
     .card { display: none !important; }
-    #m6.card { display: block !important; break-inside: avoid; border: none; }
+    #m6.card { display: block !important; border: none; }
+    .eval-q { break-inside: avoid; }
+    .video-wrap, .top-header, .foro-vista { display: none !important; }
+    .eval-q textarea { overflow: visible; resize: none; }
     .eval-actions, .eval-msg { display: none !important; }
     .ch { background: transparent; }
     .eval-q textarea, .eval-q input[type="date"] {
@@ -1211,7 +1229,7 @@
     </div>
 
     <div class="portada-pills">
-      <span class="portada-pill">§7.9.5 · §8.1 · §8.2 · §8.4</span>
+      <span class="portada-pill">§6.5.1 · §7.8.3 · §8.1 · §8.2 · §8.4</span>
       <span class="portada-pill">4 módulos</span>
       <span class="portada-pill">Equipos interdisciplinarios</span>
       <span class="portada-pill">Nivel intermedio–avanzado</span>
@@ -1221,15 +1239,14 @@
 
   <!-- ═══ VIDEO ═══════════════════════════════════════════ -->
   
-  <!-- NUEVO: Bloque del Video de Presentación Incrustado -->
-<div style="background: var(--surface-2); border: 0.5px solid var(--border); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
-  <p style="font-size: 11px; font-weight: 500; color: #085041; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; text-align: left;">
+<div class="video-wrap" style="background: #FFF; border: 1px solid var(--borde); border-radius: 12px; padding: 1rem; margin-bottom: 1.25rem; text-align: center;">
+  <p style="font-size: 11px; font-weight: 500; color: var(--i13-oscuro); letter-spacing: .08em; text-transform: uppercase; margin-bottom: .5rem; text-align: left;">
     ▶️ Video de presentación
   </p>
   <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px;">
     <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
       src="https://www.youtube.com/embed/ZwQ10e_1AFM"
-      title="Presentación del Itinerario 13" 
+      title="Video de presentación: Pedagogía de la ternura y sanación del trauma — Itinerario 13" 
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
       allowfullscreen>
     </iframe>
@@ -1238,8 +1255,8 @@
 
   <!-- ═══ SELECTOR DE MODALIDAD ═══════════════════════════ -->
   <div class="mode-selector">
-    <button class="mode-btn on" onclick="setMode('grupal', this)">👥 Hacer en comunidad</button>
-    <button class="mode-btn" onclick="setMode('individual', this)">👤 Hacer de forma individual</button>
+    <button class="mode-btn on" aria-pressed="true" onclick="setMode('grupal', this)">👥 Hacer en comunidad</button>
+    <button class="mode-btn" aria-pressed="false" onclick="setMode('individual', this)">👤 Hacer de forma individual</button>
   </div>
 
   <!-- ═══ NAVEGACIÓN ══════════════════════════════════════ -->
@@ -1258,25 +1275,25 @@
     <div class="ch">
       <span class="cn">Módulo 1 · El Ver</span>
       <div class="ct">Persona Primero: el TUS no es lo que la persona es, sino algo que le pasó</div>
-      <div class="cs">El estatuto psicológico del TUS y el principio de dignidad inalienable · §8.1.1</div>
+      <div class="cs">El estatuto psicológico del TUS y el principio de dignidad inalienable · §8.1.1, §8.1.3</div>
     </div>
     <div class="cb">
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"El TUS es una condición de salud o síntoma, pero no define el núcleo del sujeto. La persona es una 'sustancia individual de naturaleza racional' cuya esencia no puede ser absorbida por un trastorno."</div>
+        <div class="resonancia-txt">«Se debe decir que la persona es una “sustancia individual de naturaleza racional” cuya esencia no puede ser absorbida por un trastorno. […] El TUS es una condición de salud o síntoma, pero no define el núcleo del sujeto».</div>
       </div>
 
       <div class="pl">El Ver — Realidad</div>
       <ul class="pts">
-        <li><span class="dot">V</span><span><strong>El lenguaje que asigna identidad en lugar de describir situación.</strong> En el territorio, el lenguaje cotidiano revela la trampa: <em>"es un adicto", "es un drogadicto", "es un alcohólico"</em>. El §8.1.1 plantea la transición terminológica hacia <em>"Persona Primero"</em>: "persona con trastorno por uso de sustancias", "persona en situación de consumo". <em>No es corrección política: es una declaración teológica y clínica.</em> El TUS es algo que le ocurre a la persona; no es lo que la persona es.</span></li>
-        <li><span class="dot">V</span><span><strong>El mito de la "personalidad adictiva" innata.</strong> La creencia de que hay personas que "nacen para la adicción" es uno de los mitos más dañinos del campo. El §8.1.1 lo desmonta: <em>"la investigación ha desmentido la existencia de una estructura de personalidad adictiva innata; los rasgos observados son consecuencias del proceso de consumo y no su causa original."</em> El determinismo psicológico abandona al hermano antes de que el acompañamiento empiece.</span></li>
+        <li><span class="dot">V</span><span><strong>El lenguaje que asigna identidad en lugar de describir situación.</strong> En el territorio, el lenguaje cotidiano revela la trampa: <em>«es un adicto», «es un drogadicto», «es un alcohólico»</em>. El §8.1.3 plantea la transición terminológica hacia <em>«Persona Primero»</em>: «persona con trastorno por uso de sustancias», «persona en situación de consumo». <em>No es corrección política: es una declaración teológica y clínica.</em> El TUS es algo que le ocurre a la persona; no es lo que la persona es.</span></li>
+        <li><span class="dot">V</span><span><strong>El mito de la «personalidad adictiva» innata.</strong> La creencia de que hay personas que «nacen para la adicción» es uno de los mitos más dañinos del campo. El §8.1.1 lo desmonta: <em>«la investigación ha desmentido la existencia de una estructura de personalidad adictiva innata; los rasgos observados son consecuencias del proceso de consumo y no su causa original».</em> El determinismo psicológico abandona al hermano antes de que el acompañamiento empiece.</span></li>
       </ul>
 
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>El modelo biopsicosocial-espiritual.</strong> El §8.1.1 reconoce al ser humano como <em>"un espíritu encarnado donde lo biológico, lo psicológico, lo social y lo espiritual interactúan de forma sistémica."</em> La adicción es frecuentemente <em>"una fractura interna como motor del consumo"</em>: el consumo es un intento autoterapéutico de lidiar con un dolor que se ha vuelto intolerable. Entender eso cambia el modo de acompañar: <em>no se trata el síntoma sin tratar la herida</em>.</span></li>
-        <li><span class="dot j">J</span><span><strong>La neuroplasticidad como base biológica de la esperanza pastoral.</strong> <em>"Gracias a la neuroplasticidad y al acompañamiento comunitario, el sujeto puede reconstruir su proyecto de vida, demostrando que la personalidad es capaz de trascender el trastorno"</em> (§8.1.1). La neuroplasticidad no es solo un concepto neurocientífico: <em>es la base biológica de la esperanza pastoral</em>. El cerebro que aprendió el consumo puede desaprender; el que formó redes de memoria desadaptativas puede formar redes nuevas.</span></li>
+        <li><span class="dot j">J</span><span><strong>El modelo biopsicosocial-espiritual.</strong> El §8.1.1 reconoce al ser humano como <em>«un espíritu encarnado donde lo biológico, lo psicológico, lo social y lo espiritual interactúan de forma sistémica».</em> El mismo artículo habla de <em>«la fractura interna como motor del consumo»</em>: el consumo es, en origen, un intento autoterapéutico de lidiar con un dolor que se ha vuelto intolerable. Entender eso cambia el modo de acompañar: <em>no se trata el síntoma sin tratar la herida</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>La neuroplasticidad como base biológica de la esperanza pastoral.</strong> <em>«Gracias a la neuroplasticidad y al acompañamiento comunitario, el sujeto puede reconstruir su proyecto de vida, demostrando que la personalidad es capaz de trascender el trastorno»</em> (§8.1.1). La neuroplasticidad no es solo un concepto neurocientífico: <em>es la base biológica de la esperanza pastoral</em>. El cerebro que aprendió el consumo puede desaprender; el que formó redes de memoria desadaptativas puede formar redes nuevas.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1286,7 +1303,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Auditoría del lenguaje en el dispositivo</div>
         <div class="mode-g">
-          <div class="act-body">El grupo revisa el lenguaje que usa cotidianamente: <em>¿cómo se refieren a las personas que acompañan en las reuniones de equipo, en los registros escritos, en las conversaciones informales? ¿hay etiquetas que asignan identidad ("el adicto de la esquina") en lugar de describir una situación ("la persona que está consumiendo")?</em> El cambio de lenguaje es el primer cambio cultural del dispositivo.</div>
+          <div class="act-body">El grupo revisa el lenguaje que usa cotidianamente: <em>¿cómo se refieren a las personas que acompañan en las reuniones de equipo, en los registros escritos, en las conversaciones informales? ¿Hay etiquetas que asignan identidad («el adicto de la esquina») en lugar de describir una situación («la persona que está consumiendo»)?</em> El cambio de lenguaje es el primer cambio cultural del dispositivo.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Anotá en tu bitácora las tres etiquetas más frecuentes con las que se habla de las personas del territorio. Al lado de cada una, una formulación <em>Persona Primero</em> alternativa. Un cambio de lenguaje por semana es un cambio de mirada acumulativo.</div>
@@ -1298,7 +1315,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">El mapa de dimensiones: ¿qué dimensión estamos mirando?</div>
         <div class="mode-g">
-          <div class="act-body">El grupo toma tres casos activos (anonimizados) y para cada uno mapea: <em>¿qué sabemos de la dimensión biológica? ¿de la psicológica? ¿de la social? ¿de la espiritual?</em> El ejercicio suele revelar que el equipo tiene mucho de una dimensión y casi nada de otras. El modelo biopsicosocial-espiritual no es un enunciado: es <em>una exigencia de completitud diagnóstica</em>.</div>
+          <div class="act-body">El grupo toma tres casos activos (anonimizados) y para cada uno mapea: <em>¿qué sabemos de la dimensión biológica? ¿De la psicológica? ¿De la social? ¿De la espiritual?</em> El ejercicio suele revelar que el equipo tiene mucho de una dimensión y casi nada de otras. El modelo biopsicosocial-espiritual no es un enunciado: es <em>una exigencia de completitud diagnóstica</em>.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Elegí en tu bitácora una persona que acompañás y dibujá cuatro columnas (Bio · Psi · Social · Espiritual). Escribí lo que sabés en cada una. <em>¿Qué columna está vacía?</em> Esa columna es la próxima conversación pastoral que hay que abrir.</div>
@@ -1308,9 +1325,9 @@
       <div class="act">
         <span class="act-tag tag-gru mode-g">Grupal</span>
         <span class="act-tag tag-ind mode-i">Individual</span>
-        <div class="act-title">"Persona Primero" también para el equipo</div>
+        <div class="act-title">«Persona Primero» también para el equipo</div>
         <div class="mode-g">
-          <div class="act-body">El equipo que se define solo por su función (<em>"el coordinador", "la psicóloga"</em>) reproduce la misma lógica que critica cuando etiqueta a quienes acompaña. El grupo instituye un momento breve al inicio de una próxima reunión donde cada uno se presente como persona —con su fatiga, su alegría, algo que le pasó esa semana— antes de entrar en la agenda técnica. La <em>dignidad recíproca</em> se practica.</div>
+          <div class="act-body">El equipo que se define solo por su función (<em>«el coordinador», «la psicóloga»</em>) reproduce la misma lógica que critica cuando etiqueta a quienes acompaña. El grupo instituye un momento breve al inicio de una próxima reunión donde cada uno se presente como persona —con su fatiga, su alegría, algo que le pasó esa semana— antes de entrar en la agenda técnica. La <em>dignidad recíproca</em> se practica.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Escribí en tu bitácora tres cosas que sos <em>además</em> de tu función pastoral. Guardalas. La próxima vez que alguien te reduzca a tu función (o vos te reduzcas), releelas. El Persona Primero empieza por casa.</div>
@@ -1319,13 +1336,13 @@
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §8.1.1</div>
-        <div class="cita-txt">"La persona humana posee una dignidad inalienable por ser imagen de Dios. El TUS es una condición de salud o síntoma, pero no define el núcleo del sujeto. Aunque existan cambios neurobiológicos crónicos, la persona siempre subsiste con capacidad de libertad y trascendencia."</div>
-        <div class="cita-ref">Manual de la PLAPA, §8.1.1 — El estatuto psicológico del TUS (CELAM 2026)</div>
+        <div class="cita-txt">«La persona humana posee una dignidad inalienable por ser imagen de Dios. El TUS es una condición de salud o síntoma, pero no define el núcleo del sujeto. […] Aunque existan cambios neurobiológicos crónicos, la persona siempre subsiste con capacidad de libertad y trascendencia».</div>
+        <div class="cita-ref">Manual de la PLAPA, §8.1.1 — Sobre el estatuto psicológico del TUS y el fundamento de la persona (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Alerta pastoral</div>
-        <div class="alerta-txt">El principio <em>Persona Primero</em> puede convertirse en <em>corrección lingüística de escritorio</em> si no se acompaña de un cambio real de mirada. Cambiar "adicto" por "persona con TUS" en un informe mientras se sigue tratando al hermano como caso administrativo es <em>maquillaje semántico</em>. El §8.1.1 pide una transformación de la actitud, no solo del vocabulario. La palabra correcta sin la mirada correcta no ayuda.</div>
+        <div class="alerta-txt">El principio <em>Persona Primero</em> puede convertirse en <em>corrección lingüística de escritorio</em> si no se acompaña de un cambio real de mirada. Cambiar «adicto» por «persona con TUS» en un informe mientras se sigue tratando al hermano como caso administrativo es <em>maquillaje semántico</em>. El §8.1.3 pide una transformación de la actitud, no solo del vocabulario. La palabra correcta sin la mirada correcta no ayuda.</div>
       </div>
 
       <div class="autocuidado">
@@ -1333,7 +1350,7 @@
         <div class="autocuidado-txt">El principio <em>Persona Primero</em> también aplica al agente. El equipo que se define solo por su función reproduce la misma lógica que critica cuando etiqueta a quienes acompaña. Instituir momentos donde el equipo se vea como personas —con sus propias heridas, sus propias fortalezas, sus propias historias— es una práctica de <em>dignidad recíproca</em> que da coherencia al modelo.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §8.1.1 (El estatuto psicológico del TUS), §8.1.2 (Persona Primero) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §8.1.1 (Sobre el estatuto psicológico del TUS y el fundamento de la persona), §8.1.3 (Sobre la transición terminológica y el combate al estigma) — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1348,30 +1365,30 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"La intervención debe ser proporcional a la fragilidad de la estructura sobre la que se monta el consumo. Entender la adicción como síntoma de una organización mental previa ayuda a diseñar estrategias que no solo busquen la abstinencia, sino la integración de una personalidad fracturada."</div>
+        <div class="resonancia-txt">«Entender la adicción como un síntoma de una organización mental previa ayuda a diseñar estrategias de acompañamiento que no solo busquen la abstinencia, sino la integración de una personalidad que se encuentra fracturada. […] La intervención debe ser proporcional a la fragilidad de la estructura sobre la que se monta el consumo».</div>
       </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>La estructura limítrofe, prevalente en los territorios de exclusión.</strong> El §8.2.2 la describe: <em>«se caracteriza por una notoria impulsividad y pérdida de contacto con la realidad en momentos de descompensación».</em> Estos son los hermanos que el dispositivo suele describir como <em>«los más difíciles»</em>: los que rompen la alianza terapéutica, los que recaen más frecuentemente, los que generan más desgaste en el equipo. Saber que eso corresponde a una estructura específica <em>cambia el enfoque</em>: deja de ser «un problema de voluntad» y pasa a ser una necesidad clínica que exige otro tipo de sostén.</span></li>
+        <li><span class="dot">V</span><span><strong>La sustancia como anestésico frente al trauma.</strong> <em>«La patología dual es la coexistencia de este cuadro de base con un consumo problemático. En estas situaciones, la sustancia cumple una función de supervivencia psíquica, actuando como un anestésico frente a una vida percibida como amenaza constante debido a traumas no procesados»</em> (§8.2.2). El hermano con patología dual no consume por placer: <em>consume para sobrevivir a su propio sistema nervioso</em>.</span></li>
+      </ul>
 
       <div class="pl">El Juzgar — Las tres estructuras de personalidad (§8.2.2)</div>
       <ul class="pts">
         <li><span class="dot j">1</span><span><strong>Estructura psicótica.</strong> La más frágil. Mecanismos de <em>disociación y desconexión</em>. Alteración del juicio de realidad. Alucinaciones o delirios posibles. Requiere <em>estabilización psiquiátrica como condición previa</em>.</span></li>
-        <li><span class="dot j">2</span><span><strong>Estructura limítrofe.</strong> En la frontera. <em>Impulsividad notoria</em> y pérdida de contacto en descompensación. La más frecuente en los territorios de exclusión. Requiere <em>TDC y apego seguro intensivo</em>.</span></li>
+        <li><span class="dot j">2</span><span><strong>Estructura limítrofe.</strong> En la frontera. <em>Impulsividad notoria</em> y pérdida de contacto en descompensación. Prevalente en los territorios (§8.4.7). Para ella el §8.4.7 destaca la <em>TDC</em>; necesita un <em>apego seguro intensivo</em>.</span></li>
         <li><span class="dot j">3</span><span><strong>Estructura neurótica.</strong> Mayor solidez. <em>Juicio de realidad conservado</em>. Mecanismos defensivos funcionales. Puede participar de grupos terapéuticos y procesar su historia con mayor autonomía.</span></li>
       </ul>
 
       <div class="alerta">
         <div class="alerta-lbl">Discernimiento pastoral crítico · Patología dual y medicación (§8.2.2)</div>
-        <div class="alerta-txt">En los cuadros de <em>patología dual</em> (TUS + trastorno mental), <em>"la intervención psiquiátrica y la medicación adecuada constituyen frecuentemente una condición necesaria para que el proceso de acompañamiento pueda sostenerse."</em> Rechazar la medicación legítima bajo el argumento de que <em>"se reemplaza una droga con otra"</em> es una forma de ignorancia que puede costar vidas. La medicación no sana por sí sola, pero <em>crea las condiciones mínimas para que la persona pueda estar disponible para el encuentro sanador</em>. Este es un principio no negociable del itinerario.</div>
+        <div class="alerta-txt">En los cuadros de <em>patología dual</em> (TUS + trastorno mental), <em>«la intervención psiquiátrica y la medicación adecuada constituyen frecuentemente una condición necesaria para que el proceso de acompañamiento pueda sostenerse».</em> Rechazar la medicación legítima bajo el argumento de que <em>«se reemplaza una droga con otra»</em> es una forma de ignorancia que puede costar vidas. La medicación no sana por sí sola, pero <em>crea las condiciones mínimas para que la persona pueda estar disponible para el encuentro sanador</em>. Este es un principio no negociable del itinerario.</div>
       </div>
-
-      <div class="pl">El Ver — Realidad</div>
-      <ul class="pts">
-        <li><span class="dot">V</span><span><strong>La estructura limítrofe como la más prevalente en territorios de exclusión.</strong> El §8.2.2 la describe: <em>"se caracteriza por una notoria impulsividad y pérdida de contacto con la realidad en momentos de descompensación."</em> Estos son los hermanos que el dispositivo suele describir como <em>"los más difíciles"</em>: los que rompen la alianza terapéutica, los que recaen más frecuentemente, los que generan más desgaste en el equipo. Saber que eso corresponde a una estructura específica <em>cambia el enfoque</em>: deja de ser "un problema de voluntad" y pasa a ser una necesidad clínica que exige otro tipo de sostén.</span></li>
-        <li><span class="dot">V</span><span><strong>La sustancia como anestésico frente al trauma.</strong> <em>"La patología dual es la coexistencia de una estructura de base con un consumo problemático. En estas situaciones, la sustancia cumple una función de supervivencia psíquica, actuando como un anestésico frente a una vida percibida como amenaza constante debido a traumas no procesados"</em> (§8.2.2). El hermano con patología dual no consume por placer: <em>consume para sobrevivir a su propio sistema nervioso</em>.</span></li>
-      </ul>
 
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>Las estructuras dialogan con el DSM-5 sin contradicción.</strong> El §8.2.2 propone que las tres estructuras <em>"pueden dialogar"</em> con los sistemas clasificatorios actuales (DSM-5, CIE-11): la estructura psicótica corresponde a los niveles de severidad grave, la neurótica a los leves, la limítrofe a los moderados. El Manual opta por la perspectiva estructural <em>"porque permite al acompañante captar con rapidez el grado de fragilidad del hermano y ajustar la intensidad del sostén que ofrece."</em></span></li>
+        <li><span class="dot j">J</span><span><strong>Las estructuras dialogan con la CIE-11 sin contradicción.</strong> El §8.2.2 advierte que el DSM-5 usa categorías diagnósticas discretas que no se ordenan según niveles de integración estructural, mientras que la CIE-11 adoptó un modelo dimensional de severidad. Con ese modelo, las tres estructuras <em>«pueden dialogar […] sin contradicción»</em>: la fragilidad psicótica corresponde, en términos generales, a los niveles de severidad grave de la CIE-11, la estructura neurótica a los leves y la limítrofe a los moderados. El Manual opta por la perspectiva estructural <em>«porque permite al acompañante captar con rapidez el grado de fragilidad del hermano que tiene delante y ajustar la intensidad y el tipo de sostén que ofrece […]»</em>.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1381,10 +1398,10 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Identificar la estructura en los procesos activos</div>
         <div class="mode-g">
-          <div class="act-body">Sin hacer diagnósticos formales, el grupo evalúa con las tres estructuras como mapa: <em>¿qué procesos activos corresponden a estructuras más frágiles? ¿cuáles a estructuras más sólidas? ¿el acompañamiento que ofrece el equipo es el mismo para todos? ¿hay casos que necesitan derivación psiquiátrica que el equipo está sosteniendo solo?</em> El mapa de estructuras es un <em>mapa de necesidades de articulación</em>.</div>
+          <div class="act-body">Sin hacer diagnósticos formales, el grupo evalúa con las tres estructuras como mapa: <em>¿qué procesos activos corresponden a estructuras más frágiles? ¿Cuáles a estructuras más sólidas? ¿El acompañamiento que ofrece el equipo es el mismo para todos? ¿Hay casos que necesitan derivación psiquiátrica que el equipo está sosteniendo solo?</em> El mapa de estructuras es un <em>mapa de necesidades de articulación</em>.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Escribí en tu bitácora los nombres de tres personas que acompañás. Al lado, tu hipótesis de estructura (con la nota de que no es diagnóstico formal). Al lado de cada una: <em>¿el tipo de sostén que ofrezco corresponde a la fragilidad real? ¿hay derivación pendiente?</em></div>
+          <div class="act-body">Escribí en tu bitácora los nombres de tres personas que acompañás. Al lado, tu hipótesis de estructura (con la nota de que no es diagnóstico formal). Al lado de cada una: <em>¿el tipo de sostén que ofrezco corresponde a la fragilidad real? ¿Hay derivación pendiente?</em></div>
         </div>
       </div>
 
@@ -1393,7 +1410,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Protocolo de derivación psiquiátrica para patología dual</div>
         <div class="mode-g">
-          <div class="act-body">El grupo diseña (o revisa si existe) el protocolo de articulación con servicios de salud mental del territorio: <em>¿cuándo se decide derivar? ¿quién lo hace? ¿cómo se acompaña a la persona durante el proceso? ¿cómo se sostiene el vínculo pastoral mientras recibe atención psiquiátrica?</em> La derivación sin acompañamiento es <em>abandono con tramitación</em>.</div>
+          <div class="act-body">El grupo diseña (o revisa si existe) el protocolo de articulación con servicios de salud mental del territorio: <em>¿cuándo se decide derivar? ¿Quién lo hace? ¿Cómo se acompaña a la persona durante el proceso? ¿Cómo se sostiene el vínculo pastoral mientras recibe atención psiquiátrica?</em> La derivación sin acompañamiento es <em>abandono con tramitación</em>.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Anotá en tu bitácora los servicios de salud mental de tu territorio con los que ya articulás. Al lado, uno con el que <em>deberías</em> articular y no lo hacés todavía. Fechá el primer contacto. La red de patología dual se construye contacto por contacto.</div>
@@ -1405,25 +1422,25 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Trabajar el prejuicio del equipo sobre la medicación psiquiátrica</div>
         <div class="mode-g">
-          <div class="act-body">La objeción de <em>"reemplazar una droga con otra"</em> aparece en muchos equipos pastorales. El grupo la trabaja abiertamente: <em>¿alguien del equipo tiene resistencia a la medicación psiquiátrica en los procesos que acompaña? ¿por qué? ¿qué le pasa cuando ve al hermano medicado?</em> Nombrar el prejuicio del equipo es la única forma de que deje de afectar en silencio las decisiones pastorales.</div>
+          <div class="act-body">La objeción de <em>«reemplazar una droga con otra»</em> aparece en muchos equipos pastorales. El grupo la trabaja abiertamente: <em>¿alguien del equipo tiene resistencia a la medicación psiquiátrica en los procesos que acompaña? ¿Por qué? ¿Qué le pasa cuando ve al hermano medicado?</em> Nombrar el prejuicio del equipo es la única forma de que deje de afectar en silencio las decisiones pastorales.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Escribí en tu bitácora tu propia posición frente a la medicación psiquiátrica en procesos de recuperación. Sin auto-censura: <em>¿qué sentís cuando ves a un hermano medicado? ¿confías en el psiquiatra que lo trata?</em> Lo que aparezca ahí es material pastoral que hay que llevar a supervisión.</div>
+          <div class="act-body">Escribí en tu bitácora tu propia posición frente a la medicación psiquiátrica en procesos de recuperación. Sin auto-censura: <em>¿qué sentís cuando ves a un hermano medicado? ¿Confiás en el psiquiatra que lo trata?</em> Lo que aparezca ahí es material pastoral que hay que llevar a supervisión.</div>
         </div>
       </div>
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §8.2.2</div>
-        <div class="cita-txt">"La adicción no es el problema en sí mismo, sino el síntoma de una fractura interna. La intervención debe ser proporcional a la fragilidad de la estructura sobre la que se monta el consumo. La respuesta debe ser una cultura terapéutica que ofrezca un apego seguro para que la personalidad pueda alcanzar un mayor grado de integración."</div>
-        <div class="cita-ref">Manual de la PLAPA, §8.2.2 — Estructuras de personalidad y patología dual (CELAM 2026)</div>
+        <div class="cita-txt">«[…] la adicción no es el problema en sí mismo, sino el síntoma de una fractura interna. La intervención debe ser proporcional a la fragilidad de la estructura sobre la que se monta el consumo. […] la respuesta debe ser una cultura terapéutica que ofrezca un apego seguro para que la personalidad pueda alcanzar un mayor grado de integración».</div>
+        <div class="cita-ref">Manual de la PLAPA, §8.2.2 — Sobre la distinción clínica de las estructuras de personalidad y la patología dual (CELAM 2026)</div>
       </div>
 
       <div class="autocuidado">
         <div class="autocuidado-lbl">Autocuidado del agente</div>
-        <div class="autocuidado-txt">Los hermanos con estructura limítrofe son los que más activan el sistema nervioso del equipo: sus crisis son intensas, sus abandonos del proceso son frecuentes, sus demandas pueden ser exhaustivas. El §8.5.4 reconoce que el <em>"saber territorial puede verse desbordado por situaciones de alta complejidad."</em> El equipo que acompaña patología dual <em>necesita supervisión especializada regular</em>: no es un lujo, es una condición de seguridad para el equipo y para los hermanos.</div>
+        <div class="autocuidado-txt">Los hermanos con estructura limítrofe son los que más activan el sistema nervioso del equipo: sus crisis son intensas, sus abandonos del proceso son frecuentes, sus demandas pueden ser exhaustivas. El §8.5.4 reconoce que <em>«el saber territorial puede verse desbordado por situaciones de alta complejidad […]»</em>. El equipo que acompaña patología dual <em>necesita supervisión especializada regular</em>: no es un lujo, es una condición de seguridad para el equipo y para los hermanos.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §8.2.2 (Estructuras y patología dual), §8.5.4 (Límites del saber territorial) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §8.2.2 (Sobre la distinción clínica de las estructuras de personalidad y la patología dual), §8.5.4 (Sobre la gestión de la tensión entre el saber profesional y el saber territorial), §8.4.7 (Sobre el aporte de las terapias de tercera generación: aceptación, regulación y compromiso con los valores) — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1438,8 +1455,14 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"El consumo es el lenguaje de un dolor que no ha podido ser nombrado de otra manera. Un tratamiento que ignore el malestar primario que precede al consumo será ineficiente para lograr una sanación integral."</div>
+        <div class="resonancia-txt">«[…] el consumo es el lenguaje de un dolor que no ha podido ser nombrado de otra manera. […] cualquier abordaje que ignore el malestar primario que precede al consumo será ineficiente para lograr una sanación integral».</div>
       </div>
+
+      <div class="pl">El Ver — Realidad</div>
+      <ul class="pts">
+        <li><span class="dot">V</span><span><strong>«¿Qué le pasó?» vs. «¿qué le pasa?»: el cambio de pregunta que cambia el eje.</strong> <em>«La gran mayoría de las personas que presentan trastornos por uso de sustancias han atravesado historias de trauma complejo, negligencia o abusos en la infancia que han marcado sus redes de memoria desadaptativas»</em> (§8.2.3). El itinerario traduce el cambio de paradigma que propone el TIT en un cambio de pregunta: en lugar de preguntar <em>«¿qué le pasa a esta persona?»</em>, preguntar <em>«¿qué le pasó a esta persona?»</em> El cambio de pregunta cambia el eje de la intervención: <em>del control del síntoma a la sanación de la herida</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>«El trauma le da una excusa al hermano»: la objeción que el TIT responde.</strong> El §8.2.3 la refuta: <em>«El enfoque en el trauma no anula la responsabilidad, sino que la empodera. Al comprender que su consumo fue un mecanismo de supervivencia fallido, la persona puede dejar de identificarse con el estigma y empezar a verse como un sujeto digno capaz de elegir un futuro diferente».</em></span></li>
+      </ul>
 
       <div class="pl">El Juzgar — Los cuatro pilares del TIT (§8.2.3)</div>
       <ul class="pts">
@@ -1449,16 +1472,11 @@
         <li><span class="dot j">4</span><span><strong>Integración interdisciplinaria.</strong> Coordinar la atención médica, psicológica y espiritual. El <em>vínculo comunitario</em> es el factor que verdaderamente permite integrar la personalidad fracturada.</span></li>
       </ul>
 
-      <div class="pl">El Ver — Realidad</div>
-      <ul class="pts">
-        <li><span class="dot">V</span><span><strong>"¿Qué le pasó?" vs. "¿qué le pasa?": el cambio de pregunta que cambia el eje.</strong> <em>"La gran mayoría de las personas que presentan TUS han atravesado historias de trauma complejo, negligencia o abusos en la infancia que han marcado sus redes de memoria desadaptativas"</em> (§8.2.3). El cambio de paradigma que propone el TIT es preciso: en lugar de preguntar <em>"¿qué le pasa a esta persona?"</em>, preguntar <em>"¿qué le pasó a esta persona?"</em> El cambio de pregunta cambia el eje de la intervención: <em>del control del síntoma a la sanación de la herida</em>.</span></li>
-        <li><span class="dot">V</span><span><strong>"El trauma le da una excusa al hermano": la objeción que el TIT responde.</strong> El §8.2.3 la refuta: <em>"El enfoque en el trauma no anula la responsabilidad, sino que la empodera. Al comprender que su consumo fue un mecanismo de supervivencia fallido, la persona puede dejar de identificarse con el estigma y empezar a verse como un sujeto digno capaz de elegir un futuro diferente."</em></span></li>
-      </ul>
-
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>El TIT como traducción psicológica de la Pedagogía de la Ternura.</strong> La <em>"sensibilidad y ternura"</em> del segundo pilar del TIT (§8.2.3) conecta directamente con la Pedagogía de la Ternura de Francisco que el §7.9.5 desarrolla: los tres lenguajes de la <em>cabeza</em> (comprender la complejidad), el <em>corazón</em> (leer el dolor en los ojos) y las <em>manos</em> (el tacto y el abrazo que derriban los muros del estigma). El TIT no es solo un protocolo clínico: es la traducción psicológica de la mística de la ternura pastoral.</span></li>
-        <li><span class="dot j">J</span><span><strong>La abstinencia como único objetivo es insuficiente.</strong> <em>"Si no se trata el malestar primario, el cerebro seguirá buscando la sustancia como la única vía conocida de escape y alivio"</em> (§8.2.3). Esta afirmación tiene implicaciones directas para el diseño de los dispositivos: <em>el hermano que deja de consumir sin que la herida sea tocada es como un recipiente sin tapa expuesto al mismo entorno que disparó el consumo</em>. La tapa es la sanación del trauma.</span></li>
+        <li><span class="dot j">J</span><span><strong>El TIT como traducción psicológica de la Pedagogía de la Ternura.</strong> La <em>«sensibilidad y ternura»</em> del segundo pilar del TIT (§8.2.3) conecta directamente con la metodología de la ternura que el §6.5.1 desarrolla a partir de la propuesta del Papa Francisco: los tres lenguajes de la <em>cabeza</em> (comprender la complejidad), el <em>corazón</em> (leer el dolor en los ojos) y las <em>manos</em> (el tacto y el abrazo que derriban los muros de la indiferencia). El TIT no es solo un protocolo clínico: es la traducción psicológica de la mística de la ternura pastoral.</span></li>
+        <li><span class="dot j">J</span><span><strong>La abstinencia como único objetivo es insuficiente.</strong> <em>«Si no se trata el malestar primario, el cerebro seguirá buscando la sustancia como la única vía conocida de escape y alivio»</em> (§8.2.3). Esta afirmación tiene implicaciones directas para el diseño de los dispositivos: <em>el hermano que deja de consumir sin que la herida sea tocada es como un recipiente sin tapa expuesto al mismo entorno que disparó el consumo</em>. La tapa es la sanación del trauma.</span></li>
+        <li><span class="dot j">J</span><span><strong>La ternura que restaura la imagen de Dios tras el trauma.</strong> El §8.2.3 remite en su margen al §7.8.3, que lee el trauma desde la fe: <em>«Las heridas de la vida pueden ensombrecer la dignidad, dificultando que la persona reconozca su valor original»</em>, y la sanación comienza <em>«cuando el entorno ofrece una experiencia opuesta a la violencia»</em>. El §7.8.3 habla en particular de las mujeres, pero su clave ilumina todo acompañamiento del trauma: <em>«la ternura es el suelo fértil donde la clínica da frutos»</em>.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1468,7 +1486,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Auditar el dispositivo con los cuatro pilares</div>
         <div class="mode-g">
-          <div class="act-body">El grupo evalúa el dispositivo actual con los cuatro pilares del TIT: <em>¿garantizamos un entorno seguro (protocolos, zonas sin juicio, reglas claras de confidencialidad)? ¿usamos un lenguaje de cercanía o moralizante? ¿trabajamos sobre las fortalezas o solo sobre los problemas? ¿hay integración interdisciplinaria real o cada profesional trabaja en silos?</em> Para cada pilar: una fortaleza y un desafío.</div>
+          <div class="act-body">El grupo evalúa el dispositivo actual con los cuatro pilares del TIT: <em>¿garantizamos un entorno seguro (protocolos, zonas sin juicio, reglas claras de confidencialidad)? ¿Usamos un lenguaje de cercanía o moralizante? ¿Trabajamos sobre las fortalezas o solo sobre los problemas? ¿Hay integración interdisciplinaria real o cada profesional trabaja en silos?</em> Para cada pilar: una fortaleza y un desafío.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Escribí en tu bitácora, para cada uno de los cuatro pilares, una fortaleza y un desafío del dispositivo donde trabajás. Los desafíos son la agenda de mejora del semestre.</div>
@@ -1478,12 +1496,12 @@
       <div class="act">
         <span class="act-tag tag-gru mode-g">Grupal</span>
         <span class="act-tag tag-ind mode-i">Individual</span>
-        <div class="act-title">La pregunta que cambia todo: "¿qué te pasó?"</div>
+        <div class="act-title">La pregunta que cambia todo: «¿qué te pasó?»</div>
         <div class="mode-g">
-          <div class="act-body">El grupo practica en tríos la diferencia entre las dos preguntas: uno hace el rol de acompañante, otro de persona acompañada, tercero observa. Primera ronda: <em>"¿qué te pasa?"</em> (enfoque en el síntoma). Segunda ronda: <em>"¿qué te pasó?"</em> (enfoque en la historia). Tercero comparte lo que observó en el lenguaje corporal, el tono, la apertura o cierre del que respondía. <em>La pregunta correcta es el inicio del TIT</em>.</div>
+          <div class="act-body">El grupo practica en tríos la diferencia entre las dos preguntas: uno hace el rol de acompañante, otro de persona acompañada, tercero observa. Primera ronda: <em>«¿qué te pasa?»</em> (enfoque en el síntoma). Segunda ronda: <em>«¿qué te pasó?»</em> (enfoque en la historia). Tercero comparte lo que observó en el lenguaje corporal, el tono, la apertura o cierre del que respondía. <em>La pregunta correcta es el inicio del TIT</em>.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">En tu próxima conversación pastoral, practicá cambiar la pregunta habitual por <em>"¿qué te pasó?"</em>. Anotá después: <em>¿qué se abrió que no se abría antes? ¿qué te costó a vos formularla?</em> La práctica sostenida convierte la pregunta en actitud.</div>
+          <div class="act-body">En tu próxima conversación pastoral, practicá cambiar la pregunta habitual por <em>«¿qué te pasó?»</em>. Anotá después: <em>¿qué se abrió que no se abría antes? ¿Qué te costó a vos formularla?</em> La práctica sostenida convierte la pregunta en actitud.</div>
         </div>
       </div>
 
@@ -1492,7 +1510,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Identificar los disparadores del entorno</div>
         <div class="mode-g">
-          <div class="act-body">El primer pilar del TIT pide identificar <em>disparadores que activen redes de memoria negativas</em>. El grupo revisa el espacio físico y social del dispositivo: <em>¿hay ruidos, olores, formas de recibir, formas de hablar que pueden activar trauma en algún hermano? ¿lo sabemos? ¿lo revisamos con ellos?</em> El dispositivo pensado desde el trauma es distinto del pensado desde la eficiencia.</div>
+          <div class="act-body">El primer pilar del TIT pide identificar <em>disparadores que activen redes de memoria negativas</em>. El grupo revisa el espacio físico y social del dispositivo: <em>¿hay ruidos, olores, formas de recibir, formas de hablar que pueden activar trauma en algún hermano? ¿Lo sabemos? ¿Lo revisamos con ellos?</em> El dispositivo pensado desde el trauma es distinto del pensado desde la eficiencia.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Recorré mentalmente el espacio donde recibís a las personas que acompañás. Anotá en tu bitácora <em>tres elementos concretos</em> (ruido, iluminación, forma de recibir, ubicación de la puerta) que <em>podrían</em> ser disparadores para alguien con trauma. Ese diagnóstico personal es el punto de partida.</div>
@@ -1501,21 +1519,21 @@
 
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · §8.2.3</div>
-        <div class="cita-txt">"Un tratamiento informado en el trauma propone un cambio de paradigma: no se busca únicamente tratar la conducta adictiva superficial, sino abordar y sanar la herida subjetiva que la sustenta, entendiendo que el consumo es el lenguaje de un dolor que no ha podido ser nombrado de otra manera."</div>
-        <div class="cita-ref">Manual de la PLAPA, §8.2.3 — Tratamiento Informado en el Trauma (CELAM 2026)</div>
+        <div class="cita-txt">«Un tratamiento informado en el trauma propone un cambio de paradigma: no se busca únicamente tratar la conducta adictiva superficial, sino abordar y sanar la herida subjetiva que la sustenta, entendiendo que el consumo es el lenguaje de un dolor que no ha podido ser nombrado de otra manera».</div>
+        <div class="cita-ref">Manual de la PLAPA, §8.2.3 — Sobre la implementación del Tratamiento Informado en el Trauma (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Alerta pastoral</div>
-        <div class="alerta-txt">El TIT NO es <em>terapia del trauma</em> hecha por el acompañante pastoral. Es un marco de comprensión que <em>evita retraumatizar</em>. El procesamiento clínico del trauma (EMDR, terapia focalizada en trauma) lo hacen profesionales capacitados. El agente pastoral no revive el trauma con el hermano: crea las condiciones para que pueda ser procesado con quien tenga la formación para hacerlo con seguridad.</div>
+        <div class="alerta-txt">El TIT NO es <em>terapia del trauma</em> hecha por el acompañante pastoral. Es un marco de comprensión que <em>evita retraumatizar</em>. El procesamiento clínico del trauma, dentro del Tratamiento Informado en el Trauma que describe el §8.2.3, lo hacen profesionales capacitados. El agente pastoral no revive el trauma con el hermano: crea las condiciones para que pueda ser procesado con quien tenga la formación para hacerlo con seguridad.</div>
       </div>
 
       <div class="autocuidado">
         <div class="autocuidado-lbl">Autocuidado del agente</div>
-        <div class="autocuidado-txt">El §8.2.3 incluye el riesgo del <em>"trauma secundario"</em> o <em>"fatiga por compasión"</em>: el equipo que escucha historias de trauma complejo sin procesarlas absorbe algo de ese trauma. El primer pilar del TIT —la seguridad— aplica también al equipo: <em>¿es el equipo un entorno seguro para que los acompañantes puedan hablar de lo que les afecta? ¿hay un espacio donde el equipo procesa el impacto de lo que escucha?</em> Si no existe, crear uno antes de que el burnout lo exija.</div>
+        <div class="autocuidado-txt">El §8.7.4 advierte sobre el <em>«trauma secundario»</em> y la <em>«fatiga por compasión»</em>: el equipo que escucha historias de trauma complejo sin procesarlas absorbe algo de ese trauma. El primer pilar del TIT —la seguridad— aplica también al equipo: <em>¿es el equipo un entorno seguro para que los acompañantes puedan hablar de lo que les afecta? ¿Hay un espacio donde el equipo procesa el impacto de lo que escucha?</em> Si no existe, crear uno antes de que el burnout lo exija.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §8.2.3 (TIT), §7.9.5 (Pedagogía de la Ternura) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §8.2.3 (Sobre la implementación del Tratamiento Informado en el Trauma), §6.5.1 (La aplicación de los tres lenguajes en la metodología de la ternura), §7.8.3 (La restauración de la imagen de Dios tras el trauma mediante la pedagogía de la ternura), §8.7.4 (Sobre la necesidad vital del autocuidado para los agentes pastorales) — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1524,21 +1542,21 @@
     <div class="ch">
       <span class="cn">Módulo 4 · Síntesis</span>
       <div class="ct">Herramientas psicológicas al servicio de la ternura pastoral</div>
-      <div class="cs">TCC, TDC, ACT, Gestalt, Logoterapia y CRAFT articuladas en la pastoral · §8.4</div>
+      <div class="cs">TCC, TDC, TAC, Gestalt, Logoterapia y CRAFT articuladas en la pastoral · §8.4</div>
     </div>
     <div class="cb">
 
       <div class="resonancia">
         <div class="resonancia-lbl">Caja de resonancia</div>
-        <div class="resonancia-txt">"El objetivo no es adoptar una sola escuela sino construir un modelo integrado de intervención donde cada enfoque aporta lo que los otros no pueden, y la mística de la ternura pastoral es el hilo conductor que los articula."</div>
+        <div class="resonancia-txt">«[…] la complejidad del ser humano y de las adicciones requiere una multiplicidad de enfoques y técnicas en lugar de una respuesta única».</div>
       </div>
 
-      <div class="pl">El Ver — Las seis herramientas del §8.4</div>
+      <div class="pl">El Ver — Seis herramientas seleccionadas del §8.4</div>
       <div class="ejes">
         <div class="eje">
           <div class="eje-n">Cognitivo-Conductual</div>
           <div class="eje-t">TCC</div>
-          <div class="eje-txt">Identifica y modifica pensamientos irracionales. Herramientas: "Urge Surfing", detención del pensamiento, debate cognitivo, fortalecimiento de la autoeficacia.</div>
+          <div class="eje-txt">Identifica y modifica pensamientos irracionales. Herramientas: «Urge Surfing», detención del pensamiento, debate cognitivo, fortalecimiento de la autoeficacia.</div>
         </div>
         <div class="eje">
           <div class="eje-n">Dialéctico-Conductual</div>
@@ -1547,8 +1565,8 @@
         </div>
         <div class="eje">
           <div class="eje-n">Aceptación y Compromiso</div>
-          <div class="eje-t">ACT</div>
-          <div class="eje-txt">Modifica la relación con el sufrimiento, no el sufrimiento mismo. "Sentir el ansia y decidir no consumir." Acción orientada por valores, no por impulsos.</div>
+          <div class="eje-t">TAC</div>
+          <div class="eje-txt">Modifica la relación con el sufrimiento, no el sufrimiento mismo. El hermano aprende que <em>«puede sentir el ansia y al mismo tiempo decidir no consumir»</em> (§8.4.7). Acción orientada por valores, no por impulsos.</div>
         </div>
         <div class="eje">
           <div class="eje-n">Sentido y trascendencia</div>
@@ -1558,7 +1576,7 @@
         <div class="eje">
           <div class="eje-n">Aquí y ahora</div>
           <div class="eje-t">Gestalt</div>
-          <div class="eje-txt">"Darse cuenta" de las necesidades reales en el momento del impulso. Responsabilización sin moralización.</div>
+          <div class="eje-txt">«Darse cuenta» de las necesidades reales en el momento del impulso. Responsabilización sin moralización.</div>
         </div>
         <div class="eje">
           <div class="eje-n">Refuerzo Comunitario Familiar</div>
@@ -1569,13 +1587,13 @@
 
       <div class="pl">El Ver — Realidad</div>
       <ul class="pts">
-        <li><span class="dot">V</span><span><strong>"Toda esta psicología es ajena a la fe": la objeción más frecuente.</strong> El §8.4 la refuta: <em>"La espiritualidad y la ciencia son complementarias. La TCC ayuda a sanar el dolor secundario —la culpa y la vergüenza— que a menudo bloquea el crecimiento espiritual y la capacidad de sentirse digno del amor y la misericordia"</em> (§8.4.2). La psicología no reemplaza la fe: <em>despeja el terreno para que la fe pueda actuar</em>.</span></li>
+        <li><span class="dot">V</span><span><strong>«Toda esta psicología es ajena a la fe»: la objeción más frecuente.</strong> El §8.4.2 la refuta: <em>«La espiritualidad y la ciencia son complementarias. La TCC ayuda a sanar el dolor secundario, como la culpa y la vergüenza, que a menudo bloquea el crecimiento espiritual y la capacidad de sentirse digno del amor y la misericordia»</em>. La psicología no reemplaza la fe: <em>despeja el terreno para que la fe pueda actuar</em>.</span></li>
       </ul>
 
       <div class="pl">El Juzgar — Iluminación</div>
       <ul class="pts">
-        <li><span class="dot j">J</span><span><strong>Mindfulness y tradición cristiana: el diálogo que el §8.4.7 abre.</strong> <em>"La capacidad de observar los propios movimientos interiores sin reaccionar automáticamente no es ajena a la tradición cristiana; es, de hecho, una disposición que los maestros de la vida espiritual han cultivado durante siglos bajo nombres como la custodia cordis, el recogimiento interior o la oración de quietud."</em> El mindfulness no contradice la espiritualidad cristiana: <em>conversa con ella</em>.</span></li>
-        <li><span class="dot j">J</span><span><strong>ACT y Gal 5,1: la libertad frente al deseo.</strong> <em>"El hermano aprende que puede sentir el ansia y al mismo tiempo decidir no consumir, no porque haya dejado de sufrir, sino porque su proyecto de vida pesa más que su malestar transitorio"</em> (§8.4.7). Esta frase es la síntesis más precisa del proceso de recuperación desde la dimensión psicológica: <em>no la eliminación del deseo, sino la recuperación de la libertad frente al deseo</em>. Es exactamente lo que la libertad espiritual del §7.2.4 (Gal 5,1) propone desde otro ángulo.</span></li>
+        <li><span class="dot j">J</span><span><strong>Mindfulness y tradición cristiana: el diálogo que el §8.4.7 abre.</strong> <em>«La capacidad de observar los propios movimientos interiores sin reaccionar automáticamente no es ajena a la tradición cristiana; es, de hecho, una disposición que los maestros de la vida espiritual han cultivado durante siglos bajo nombres como la custodia cordis, el recogimiento interior o la oración de quietud».</em> La atención plena clínica y la contemplación cristiana <em>«operan en registros diferentes y no deben confundirse, pero tampoco son incompatibles»</em>.</span></li>
+        <li><span class="dot j">J</span><span><strong>TAC y Gal 5,1: la libertad frente al deseo.</strong> <em>«El hermano aprende que puede sentir el ansia y al mismo tiempo decidir no consumir, no porque haya dejado de sufrir, sino porque su proyecto de vida pesa más que su malestar transitorio»</em> (§8.4.7). Esta frase es la síntesis más precisa del proceso de recuperación desde la dimensión psicológica: <em>no la eliminación del deseo, sino la recuperación de la libertad frente al deseo</em>. Es exactamente lo que la libertad espiritual del §7.2.4 (Gal 5,1) propone desde otro ángulo.</span></li>
       </ul>
 
       <div class="pl">El Actuar — Propuesta pastoral</div>
@@ -1585,10 +1603,10 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Mapear las herramientas que ya usa el equipo</div>
         <div class="mode-g">
-          <div class="act-body">El grupo identifica qué herramientas psicológicas usa ya de manera espontánea en su práctica (aunque no las llame por su nombre técnico): <em>¿hay "Urge Surfing" cuando se le propone al hermano "esperar a que pase el impulso"? ¿hay TDC cuando se trabaja regulación emocional en momentos de crisis? ¿hay Logoterapia cuando se trabaja el sentido de vida?</em> Nombrar lo que ya se hace le da <em>marco y sostenibilidad</em>.</div>
+          <div class="act-body">El grupo identifica qué herramientas psicológicas usa ya de manera espontánea en su práctica (aunque no las llame por su nombre técnico): <em>¿hay «Urge Surfing» cuando se le propone al hermano «esperar a que pase el impulso»? ¿Hay TDC cuando se trabaja regulación emocional en momentos de crisis? ¿Hay Logoterapia cuando se trabaja el sentido de vida?</em> Nombrar lo que ya se hace le da <em>marco y sostenibilidad</em>.</div>
         </div>
         <div class="mode-i">
-          <div class="act-body">Anotá en tu bitácora las prácticas cotidianas del acompañamiento que hacés. Al lado de cada una, cuál de las seis herramientas del §8.4 corresponde. Nombrar las prácticas propias con el marco correcto <em>ordena la propia intuición pastoral</em>.</div>
+          <div class="act-body">Anotá en tu bitácora las prácticas cotidianas del acompañamiento que hacés. Al lado de cada una, cuál de las seis herramientas seleccionadas del §8.4 corresponde. Nombrar las prácticas propias con el marco correcto <em>ordena la propia intuición pastoral</em>.</div>
         </div>
       </div>
 
@@ -1597,7 +1615,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Elegir una herramienta para profundizar</div>
         <div class="mode-g">
-          <div class="act-body">El grupo elige una herramienta del §8.4 que no utiliza actualmente y diseña cómo incorporarla: <em>¿quién la conoce o puede aprender? ¿en qué momento del proceso se usaría? ¿con qué tipo de hermanos sería más útil?</em> La incorporación de <em>una herramienta nueva por semestre</em> es suficiente para enriquecer el modelo sin sobrecargar al equipo.</div>
+          <div class="act-body">El grupo elige una herramienta del §8.4 que no utiliza actualmente y diseña cómo incorporarla: <em>¿quién la conoce o puede aprender? ¿En qué momento del proceso se usaría? ¿Con qué tipo de hermanos sería más útil?</em> La incorporación de <em>una herramienta nueva por semestre</em> es suficiente para enriquecer el modelo sin sobrecargar al equipo.</div>
         </div>
         <div class="mode-i">
           <div class="act-body">Elegí en tu bitácora una herramienta del §8.4 que te interesa profundizar. Fechá una acción concreta: <em>leer sobre ella, tomar un curso corto, conversar con alguien que la practica</em>. Una herramienta nueva por semestre suma; seis a la vez no.</div>
@@ -1609,7 +1627,7 @@
         <span class="act-tag tag-ind mode-i">Individual</span>
         <div class="act-title">Cierre: la ternura como hilo conductor</div>
         <div class="mode-g">
-          <div class="act-body">El §7.9.5 describe los <em>tres lenguajes de la ternura</em>: cabeza, corazón y manos. El grupo cierra el itinerario evaluando: <em>¿qué herramientas psicológicas trabajan la cabeza (cognición)? ¿cuáles el corazón (emoción y vínculo)? ¿cuáles las manos (la presencia corporal, el contacto, la acción)?</em> El mapa muestra qué lenguaje está bien cubierto y cuál falta. <em>La ternura completa usa los tres.</em></div>
+          <div class="act-body">El §6.5.1 describe los <em>tres lenguajes de la ternura</em>: cabeza, corazón y manos. El grupo cierra el itinerario evaluando: <em>¿qué herramientas psicológicas trabajan la cabeza (cognición)? ¿Cuáles el corazón (emoción y vínculo)? ¿Cuáles las manos (la presencia corporal, el contacto, la acción)?</em> El mapa muestra qué lenguaje está bien cubierto y cuál falta. <em>La ternura completa usa los tres.</em></div>
         </div>
         <div class="mode-i">
           <div class="act-body">Escribí en tu bitácora cuál de los tres lenguajes de la ternura te resulta más natural (cabeza · corazón · manos) y cuál te cuesta más. El que te cuesta más es el próximo campo de trabajo personal <em>y</em> el que probablemente falta en el dispositivo donde acompañás.</div>
@@ -1617,28 +1635,27 @@
       </div>
 
       <div class="cita">
-        <div class="cita-lbl">Cita inspiradora · §7.9.5 — Papa Francisco</div>
-        <div class="cita-txt">"La Pedagogía de la Ternura usa los tres lenguajes: la cabeza para comprender la complejidad del fenómeno, el corazón para la afectividad que lee el dolor en los ojos, y las manos para el tacto y el abrazo que derriban los muros del estigma."</div>
-        <div class="cita-ref">Manual de la PLAPA, §7.9.5 — La Pedagogía de la Ternura (CELAM 2026)</div>
+        <div class="cita-lbl">Cita inspiradora · §6.5.1</div>
+        <div class="cita-txt">«La metodología de la ternura no es un sentimentalismo, sino una forma de transparentar el amor de Dios que sale al encuentro de la totalidad del ser humano, reconociendo que no hay verdadera sanación sin una cercanía que involucre el pensamiento, el afecto y la acción concreta».</div>
+        <div class="cita-ref">Manual de la PLAPA, §6.5.1 — La aplicación de los tres lenguajes en la metodología de la ternura (CELAM 2026)</div>
       </div>
 
       <div class="alerta">
         <div class="alerta-lbl">Alerta pastoral</div>
-        <div class="alerta-txt">La lista de las seis herramientas puede generar en el equipo la ilusión de que <em>"hay que dominarlas todas"</em>. No es así. El §8.4 propone un <em>modelo integrado</em>, no un curriculum acumulativo: cada equipo elige las herramientas que mejor le calzan a su territorio y las profundiza. <em>Mejor dos herramientas bien practicadas que seis conocidas superficialmente.</em></div>
+        <div class="alerta-txt">La selección de seis herramientas puede generar en el equipo la ilusión de que <em>«hay que dominarlas todas»</em>. No es así. El §8.4 propone un <em>modelo integrado</em>, no un currículo acumulativo: cada equipo elige las herramientas que mejor le calzan a su territorio y las profundiza. <em>Mejor dos herramientas bien practicadas que seis conocidas superficialmente.</em></div>
       </div>
 
       <div class="autocuidado">
         <div class="autocuidado-lbl">Autocuidado del agente — cierre del itinerario</div>
-        <div class="autocuidado-txt">El itinerario cierra con la pregunta que la Pedagogía de la Ternura le hace al equipo: <em>¿qué lenguaje usamos menos con nosotros mismos? ¿entendemos nuestra propia complejidad (cabeza)? ¿leemos nuestro propio dolor en los ojos (corazón)? ¿nos damos el abrazo que necesitamos (manos)?</em> El equipo que practica la ternura consigo mismo puede ofrecerla a los hermanos desde la autenticidad. <em>El que no, la practica como técnica, y la técnica sin ternura no sana.</em></div>
+        <div class="autocuidado-txt">El itinerario cierra con la pregunta que la Pedagogía de la Ternura le hace al equipo: <em>¿qué lenguaje usamos menos con nosotros mismos? ¿Entendemos nuestra propia complejidad (cabeza)? ¿Leemos nuestro propio dolor en los ojos (corazón)? ¿Nos damos el abrazo que necesitamos (manos)?</em> El equipo que practica la ternura consigo mismo puede ofrecerla a los hermanos desde la autenticidad. <em>El que no, la practica como técnica, y la técnica sin ternura no sana.</em></div>
       </div>
 
       <div class="lectura">
         <div class="lectura-lbl">Lectura complementaria</div>
-        <div class="lectura-txt">Para profundizar en la <strong>articulación entre las herramientas psicológicas y la mística de la ternura pastoral</strong> en la tradición del Método FGHC, con casos concretos de aplicación integrada de TCC, TDC, ACT y Logoterapia en dispositivos comunitarios, ofrecemos este texto para la reflexión del equipo.</div>
-        <a href="ElMetodoFGHC.pdf" download class="lectura-link">📥 Descargar "ElMetodoFGHC.pdf"</a>
+        <div class="lectura-txt">Para profundizar, leé completos en el Manual de la PLAPA el <strong>§8.2, «Trauma, Estructuras de Personalidad y Patología Dual»</strong> (§8.2.1–8.2.3) y el <strong>§8.4, «Aportes de las Escuelas de la Psicología»</strong> (§8.4.1–8.4.7). Cada artículo trae las objeciones más frecuentes y la respuesta del Manual. Sumá el <strong>§6.5.1, «La aplicación de los tres lenguajes en la metodología de la ternura»</strong>, donde se desarrolla la pedagogía de la cabeza, el corazón y las manos, y el <strong>§7.8.3, «La restauración de la imagen de Dios tras el trauma mediante la pedagogía de la ternura»</strong>, que da la clave teológica del tema.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §7.9.5 (Pedagogía de la Ternura), §8.1 (Estatuto del TUS), §8.2.2 (Estructuras), §8.2.3 (TIT), §8.4.2 (TCC), §8.4.7 (ACT y mindfulness) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §6.5.1 (La aplicación de los tres lenguajes en la metodología de la ternura), §8.4 (Aportes de las Escuelas de la Psicología), §8.4.2 (Sobre las herramientas de la TCC en el tratamiento de las adicciones), §8.4.3 (Sobre el aporte de la Psicoterapia Gestalt y la responsabilidad), §8.4.4 (Sobre el aporte de la Logoterapia en la reconstrucción del sentido y la trascendencia), §8.4.7 (Sobre el aporte de las terapias de tercera generación: aceptación, regulación y compromiso con los valores), §7.2.4 (El papel de la libertad en la relación con Dios) — CELAM 2026.</div>
     </div>
   </div>
 
@@ -1653,8 +1670,8 @@
 
       <!-- Selector de vista: este itinerario / global -->
       <div class="foro-vista">
-        <button class="foro-vista-btn on" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
-        <button class="foro-vista-btn" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
+        <button class="foro-vista-btn on" aria-pressed="true" onclick="setVistaForo('itinerario', this)">🌱 Este itinerario</button>
+        <button class="foro-vista-btn" aria-pressed="false" onclick="setVistaForo('global', this)">🌎 Toda la Escuela</button>
       </div>
 
       <!-- Pautas pastorales -->
@@ -1706,7 +1723,7 @@
 
       <div class="resonancia">
         <div class="resonancia-lbl">Antes de comenzar</div>
-        <div class="resonancia-txt">"La revisión de vida es la forma histórica que la Iglesia latinoamericana encontró para institucionalizar el Ver–Juzgar–Actuar. El agente que la practica no aplica el método: lo vive." Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
+        <div class="resonancia-txt">Este itinerario te invitó a mirar a la persona antes que al trastorno, a leer la fragilidad de cada estructura sin etiquetar, a preguntar por la herida que sostiene el consumo y a poner las herramientas de la psicología al servicio de la ternura pastoral. Ahora es el momento de nombrar qué cambió en tu mirada. Tomate el tiempo necesario. No hay respuestas correctas ni equivocadas: hay palabras honestas.</div>
       </div>
 
       <div class="eval-nota">
@@ -1716,24 +1733,24 @@
 
       <div class="pl">El Ver — Qué se hizo visible</div>
       <div class="eval-q">
-        <label for="evalVer">¿Qué realidad del territorio se hizo más visible para vos a lo largo de estos cuatro módulos? ¿Qué llagas emergieron con más fuerza? ¿Qué zonas del mapa estaban en blanco antes y ahora tienen contenido?</label>
+        <label for="evalVer">¿Qué historias de trauma se hicieron más visibles para vos detrás del consumo de las personas que acompañás a lo largo de estos cuatro módulos? ¿Qué etiquetas dejaste de usar o empezaste a cuestionar? ¿Qué descubriste sobre la fragilidad de cada persona y sobre si el sostén que le ofrecés corresponde a esa fragilidad?</label>
         <textarea id="evalVer" data-eval="ver" placeholder="Escribí con calma, sin apurarte..."></textarea>
       </div>
 
       <div class="pl">El Juzgar — Qué iluminó, qué preguntas quedaron abiertas</div>
       <div class="eval-q">
-        <label for="evalJuzgar1">¿Qué del método del diagnóstico territorial te iluminó de manera nueva? ¿Qué idea del Manual sentís que ya no podrás dejar de lado?</label>
+        <label for="evalJuzgar1">Del principio Persona Primero, de las estructuras de personalidad, del Tratamiento Informado en el Trauma y de las herramientas psicológicas al servicio de la ternura: ¿qué te iluminó de manera nueva? ¿Qué idea del Manual sentís que ya no podrás dejar de lado?</label>
         <textarea id="evalJuzgar1" data-eval="juzgar1" placeholder="Nombralo con precisión..."></textarea>
       </div>
       <div class="eval-q">
-        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos? Las preguntas abiertas son también fruto (§13.3).</label>
+        <label for="evalJuzgar2">¿Qué preguntas del itinerario no cerraron en vos? La tensión entre comprender el trauma y sostener la responsabilidad, entre la ternura pastoral y la técnica profesional, entre acompañar y reconocer hasta dónde llega tu rol frente a quien necesita tratamiento especializado: ¿dónde te dejó incómodo/a?</label>
         <textarea id="evalJuzgar2" data-eval="juzgar2" placeholder="Las que siguen ardiendo..."></textarea>
       </div>
 
       <div class="pl">El Actuar — Compromiso concreto</div>
       <div class="eval-q">
-        <label for="evalActuar">¿Qué gesto pastoral concreto vas a intentar en las próximas semanas a partir del diagnóstico que hiciste? Nombralo con nombre, tiempo y lugar. Un compromiso vago no es un compromiso.</label>
-        <textarea id="evalActuar" data-eval="actuar" placeholder="Ej.: En la próxima reunión de equipo (jueves 25) voy a presentar el mapa territorial que construimos y proponer una callejeada específica al sector X del barrio..."></textarea>
+        <label for="evalActuar">¿Qué gesto concreto de acompañamiento informado en el trauma vas a intentar en las próximas semanas? Puede ser reemplazar una etiqueta por una formulación Persona Primero, revisar un posible disparador en el espacio donde recibís a las personas, concretar una derivación a salud mental que está pendiente o proponer al equipo un espacio para procesar lo que escucha. Nombralo con nombre, tiempo y lugar. Un compromiso vago no es un compromiso.</label>
+        <textarea id="evalActuar" data-eval="actuar" placeholder="Ej.: El lunes 12, antes de abrir el centro barrial, recorro con X la sala de recepción para identificar ruidos, luces y formas de recibir que puedan ser disparadores, y lo llevamos a la reunión de equipo..."></textarea>
       </div>
       <div class="eval-q eval-fecha">
         <label for="evalFecha">Fecha en la que vas a volver a revisar si pudiste sostenerlo</label>
@@ -1741,8 +1758,8 @@
       </div>
 
       <div class="pl">Autocuidado y equipo</div>
-      <div class="eval-q eval-scale">
-        <label>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</label>
+      <fieldset class="eval-q eval-scale">
+        <legend>¿Cómo salís emocionalmente de este itinerario? (1 = agotado/a · 5 = renovado/a)</legend>
         <div class="eval-scale-row">
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="1" data-eval="animo"><span>1</span></label>
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="2" data-eval="animo"><span>2</span></label>
@@ -1750,10 +1767,10 @@
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="4" data-eval="animo"><span>4</span></label>
           <label class="eval-radio"><input type="radio" name="evalAnimo" value="5" data-eval="animo"><span>5</span></label>
         </div>
-      </div>
+      </fieldset>
       <div class="eval-q">
-        <label for="evalCuidado">¿Qué necesitás cuidar de vos mismo/a en las próximas semanas? ¿A quién del equipo se lo vas a decir?</label>
-        <textarea id="evalCuidado" data-eval="cuidado" placeholder="El agente que cuida su esperanza puede sostener la del otro (§1.3)..."></textarea>
+        <label for="evalCuidado">Escuchar historias de trauma complejo expone al agente al trauma secundario y a la fatiga por compasión (§8.7.4). ¿Qué necesitás cuidar de vos en las próximas semanas? ¿Dónde procesás lo que escuchás? ¿A quién del equipo se lo vas a decir?</label>
+        <textarea id="evalCuidado" data-eval="cuidado" placeholder="Ej.: Voy a contarle a X que lo que me contó Y me quedó dando vueltas toda la semana, y le voy a pedir un rato para hablarlo antes de la próxima supervisión..."></textarea>
       </div>
 
       <div class="pl">Cierre</div>
@@ -1772,10 +1789,10 @@
 
       <div class="autocuidado" style="margin-top: 2rem;">
         <div class="autocuidado-lbl">Cierre del itinerario</div>
-        <div class="autocuidado-txt">Cerrar bien un itinerario también es autocuidado: celebrar lo caminado, agradecer al equipo, reconocer los propios límites y renovar la esperanza. Este itinerario termina con gratitud: por el territorio que nos habló, por las llagas que dejamos de negar, por el equipo que hizo posible mirar sin apartar la mirada.</div>
+        <div class="autocuidado-txt">Cerrar bien un itinerario también es autocuidado: celebrar lo caminado, agradecer al equipo, reconocer los propios límites y renovar la esperanza. Este itinerario termina con gratitud: por las personas que nos confiaron lo que les pasó, por las heridas que aprendimos a mirar con ternura y no con juicio, por el equipo que hizo posible acompañar el dolor sin dejar de cuidarse.</div>
       </div>
 
-      <div class="ref">Referencias: Manual de la PLAPA §1.3 (Prólogo), §6.1.3 (Evitar la romantización), §13.2 (Sinodalidad en la práctica), §13.3 (Rolling release), §13.5 (Mecanismos de colaboración) — CELAM 2026.</div>
+      <div class="ref">Referencias: Manual de la PLAPA §8.1 (Fundamentos del Funcionamiento Mental y el Abordaje Psicológico), §8.2 (Trauma, Estructuras de Personalidad y Patología Dual), §8.4 (Aportes de las Escuelas de la Psicología), §6.5.1 (La aplicación de los tres lenguajes en la metodología de la ternura), §8.7.4 (Sobre la necesidad vital del autocuidado para los agentes pastorales), §13.3 (La propuesta de un manual Rolling Release), §13.5 (Los mecanismos de colaboración) — CELAM 2026.</div>
 
     </div>
   </div>
@@ -1789,9 +1806,9 @@
     root.classList.add('mode-' + mode);
     var buttons = document.querySelectorAll('.mode-btn');
     for (var i = 0; i < buttons.length; i++) {
-      buttons[i].classList.remove('on');
+      buttons[i].classList.remove('on'); buttons[i].setAttribute('aria-pressed', 'false');
     }
-    btn.classList.add('on');
+    btn.classList.add('on'); btn.setAttribute('aria-pressed', 'true');
   }
 
   function show(n, btn) {
@@ -2068,8 +2085,8 @@
   function setVistaForo(v, btn) {
     vistaForo = v;
     var buttons = document.querySelectorAll('.foro-vista-btn');
-    for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove('on'); }
-    btn.classList.add('on');
+    for (var i = 0; i < buttons.length; i++) { buttons[i].classList.remove('on'); buttons[i].setAttribute('aria-pressed', 'false'); }
+    btn.classList.add('on'); btn.setAttribute('aria-pressed', 'true');
     cargarComentarios();
   }
 
@@ -2147,16 +2164,17 @@
     var datos = recolectarEvaluacion();
     var minimoTexto = (datos.ver || '').trim() + (datos.actuar || '').trim();
     if (minimoTexto.length < 30) {
-      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos "El Ver" y "El Actuar" merecen unos renglones honestos.', 'error');
+      mostrarEvalMsg('Todavía hay campos importantes vacíos. La revisión de vida pide tu palabra: al menos «El Ver» y «El Actuar» merecen unos renglones honestos.', 'error');
       return;
     }
 
     // Guardar en Supabase (siempre queda en tu bitácora)
     if (!sesion) { window.location.href = '/login'; return; }
-    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario', {
+    fetch(SUPABASE_URL + '/rest/v1/evaluaciones_itinerario?on_conflict=usuario_id,itinerario_id', {
       method: 'POST',
       headers: Object.assign({}, supaHeaders(), { 'Prefer': 'resolution=merge-duplicates' }),
       body: JSON.stringify({
+        usuario_id: sesion.user ? sesion.user.id : undefined,
         itinerario_id: ITINERARIO_ID,
         respuestas: datos,
         compartir_con_equipo: datos.compartir_con_equipo === true
@@ -2179,12 +2197,18 @@
 
   function imprimirEvaluacion() {
     autoguardarBorrador();
+    // Que cada respuesta se imprima completa, sin cortarse
+    var areas = document.querySelectorAll('#m6 textarea');
+    for (var i = 0; i < areas.length; i++) {
+      areas[i].style.height = 'auto';
+      areas[i].style.height = areas[i].scrollHeight + 'px';
+    }
     window.print();
   }
 
   // Init general del itinerario
   document.addEventListener('DOMContentLoaded', function() {
-    // Leer sesión (el guard del <head> garantiza que existe)
+    // Leer sesión guardada por el login (puede no existir)
     try {
       var stored = localStorage.getItem('escuela_plapa_sesion');
       if (stored) sesion = JSON.parse(stored);
