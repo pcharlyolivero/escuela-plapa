@@ -563,6 +563,55 @@
     border-top: 1px dashed var(--borde);
   }
 
+  /* ─── APORTAR AL MANUAL (rolling release) ────────────── */
+  .aportar {
+    background: #FEF4ED;
+    border: 1px solid #E6C3A5;
+    border-left: 4px solid #B8530E;
+    border-radius: 0 10px 10px 0;
+    padding: 1.25rem 1.4rem;
+    margin-top: 2rem;
+  }
+  .aportar-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #8A3F0A;
+    margin-bottom: 8px;
+  }
+  .aportar-lbl::before { content: '↻ '; }
+  .aportar-title {
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #6D320A;
+    margin-bottom: 8px;
+    line-height: 1.35;
+  }
+  .aportar-txt {
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.65;
+    margin-bottom: 12px;
+  }
+  .aportar-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #B8530E;
+    color: #FFF;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.18s;
+  }
+  .aportar-link:hover {
+    background: #6D320A;
+  }
+
   /* ─── FORO / MURO DEL CAMINO ─────────────────────────── */
   .foro-vista {
     display: flex;
@@ -1415,6 +1464,14 @@
 
       <div class="ref">Referencias: Manual de la PLAPA §11.8.4 (La voz profética y la incidencia en las políticas públicas), §11.8 (La Pastoral Nacional), §11.9 (La Pastoral Latinoamericana de Acompañamiento y Prevención de las Adicciones PLAPA), §2.2 (Las opciones y el método), §13.5 (Los mecanismos de colaboración), §13.8 (Dimensión profética e incidencia política) — CELAM 2026.</div>
     </div>
+  </div>
+
+  <!-- ═══ APORTAR AL MANUAL ═══════════════════════════════ -->
+  <div class="aportar">
+    <div class="aportar-lbl">Aportar al Manual (rolling release)</div>
+    <div class="aportar-title">El Manual de la PLAPA se actualiza con el saber del territorio</div>
+    <div class="aportar-txt">El Manual es un rolling release: incorpora correcciones, experiencias y aportes de los equipos que lo usan en el terreno. Si tenés una observación, una corrección o una experiencia que suma, podés enviarla al equipo editorial.</div>
+    <a class="aportar-link" href="https://www.plapa.org/capitulo1-manual/" target="_blank" rel="noopener">Aportar al Manual →</a>
   </div>
 
   <!-- ═══ MÓDULO 5 · MURO DEL CAMINO (FORO) ═══════════════ -->

@@ -1,0 +1,239 @@
+AVISO PARA EL MOMENTO DE LA MIGRACIÓN A WORDPRESS
+===================================================
+
+Gustavo como estas?
+
+Este repositorio es el sitio estático de la Escuela de la PLAPA. Está pensado
+para ser migrado a una web hecha en WordPress, que estas desarrollabdo vos. Lo que sigue es lo que necesitás
+saber para que la migración no rompa lo que ya funciona ni te sorprenda con lo
+que todavía no está terminado.
+
+
+1. QUÉ ESTÁS RECIBIENDO
+-----------------------
+
+- 30 itinerarios formativos (archivos `itinerario_N_*.html`): cada uno es una
+  página HTML autocontenida con su CSS y su JS inline. Tienen una paleta propia
+  (variables `--iN-*`) y una estructura homogénea: portada, video de YouTube
+  embebido, selector grupal/individual, cuatro módulos pedagógicos (Ver /
+  Juzgar / Actuar), muro del camino (foro) y evaluación.
+
+- 10 rutas por ámbito (`ruta_*.html`): parroquia, barrio, calle, cárcel,
+  diócesis, escuela, sobriedad, terapéutica, trabajo-dinero y universidades.
+  Son páginas de navegación que agrupan itinerarios por público.
+
+- 1 catálogo (`catalogo_30_itinerarios_plapa_corregido.html`) con los 30
+  itinerarios ordenados en bloques temáticos.
+
+- 1 portada (`index.html`) con la entrada al sitio y las rutas por ámbito.
+
+- 1 login (`login.html`) para el registro, el ingreso y la recuperación de
+  contraseña. Es el único archivo cuyo contenido es puro backend/sesión.
+
+- Documentación del backend actual: `setup_supabase.md` y
+  `escuela_plapa_schema.sql`. Explican cómo está pensado el backend hoy.
+
+
+2. LO QUE ES PURO CONTENIDO Y SE PUEDE MIGRAR SIN DRAMA
+-------------------------------------------------------
+
+El cuerpo pedagógico de cada itinerario (todo lo que está dentro de `<main>`
+hasta antes del bloque `<div class="foro">`) es contenido pastoral que puede
+pasar tal cual a un post, página o custom post type de WordPress.
+
+Lo mismo con las 10 rutas, el catálogo y la portada: son páginas estáticas con
+HTML y estilos inline. Se pueden volcar como entradas de WordPress o como
+plantillas de un tema custom.
+
+Importante: cada itinerario tiene su propia paleta de colores definida en el
+`<style>` del `<head>`. Si vas a usar un tema único de WordPress con una hoja
+de estilos global, vas a tener que extraer esas variables y servirlas por
+bloque (por ejemplo, con una clase `.itinerario-15` que redefine las variables
+en ese ámbito). Si en cambio renderizás cada itinerario con su `<style>`
+inline tal cual está, también funciona pero es menos elegante.
+
+
+3. LO QUE DEPENDE DE BACKEND (y es lo que hay que resolver)
+-----------------------------------------------------------
+
+Hay tres piezas dinámicas en el sitio. Las tres hoy se conectan a Supabase.
+
+3.1 LOGIN
+
+   - Archivo principal: `login.html`.
+   - También aparece en los 30 itinerarios y en las rutas: cada uno chequea
+     la sesión en `localStorage` (clave `escuela_plapa_sesion`) y, si no la
+     encuentra, redirige a `/login.html?next=<URL actual>`.
+   - Backend: Supabase Auth (email/password).
+   - Estado actual: Supabase NO está configurado en producción. Los archivos
+     tienen placeholders:
+         SUPABASE_URL = 'https://TU-PROYECTO.supabase.co'
+         SUPABASE_ANON_KEY = 'TU_ANON_KEY'
+     Hasta que no se completen, el login no funciona. Esto es importante
+     porque significa que no hay base de usuarios que migrar: podés empezar
+     de cero.
+
+   Qué considerar en WordPress:
+   - Lo más natural es usar el sistema de usuarios de WordPress y descartar
+     `login.html` por completo. WordPress ya tiene login, registro,
+     recuperación de contraseña y roles. Un plugin como Ultimate Member,
+     Paid Memberships Pro o incluso WP-Members cubre todo lo que hoy hace
+     Supabase Auth.
+   - Si usás el login de WordPress, hay que mantener la lógica de "redirigir
+     al itinerario que estaba mirando" (hoy `?next=`). WordPress tiene un
+     parámetro equivalente (`redirect_to=`) que podés aprovechar.
+   - Si decidís mantener Supabase (por ejemplo, porque querés el mismo
+     usuario entre WordPress y otra app), hay que mantener la lógica de
+     `localStorage` tal cual, pero vas a tener que sincronizar el usuario
+     entre los dos sistemas.
+
+   Lo que hay que sacar o adaptar de los HTMLs al migrar:
+   - El bloque JS al inicio de cada itinerario que chequea sesión y redirige
+     a `/login.html`. Si usás auth de WordPress, eso se reemplaza por una
+     restricción a nivel servidor (plugin de membership o `wp_redirect`).
+   - El bloque `login.html` entero puede eliminarse.
+
+3.2 MURO DEL CAMINO (foro por itinerario)
+
+   - Está al final de cada itinerario, en el bloque `<div class="foro">`.
+   - Permite a quien está logueado dejar un comentario anclado al itinerario,
+     responder a otros y reaccionar con un "like".
+   - Backend Supabase: tablas `foro_comentarios` y `foro_reacciones`,
+     funciones RPC `comentarios_para_itinerario` y `toggle_reaccion`.
+   - Hay rol de moderador (flag `es_moderador` en la tabla `perfiles`) que
+     puede aprobar/ocultar comentarios.
+   - Estado actual: nunca estuvo en producción. No hay comentarios reales
+     que migrar.
+
+   Qué considerar en WordPress:
+   - Opción más simple: usar los comentarios nativos de WordPress. Cada
+     itinerario es un post y los comentarios van asociados al post. Perdés
+     la identidad visual del muro actual pero ganás moderación nativa, spam,
+     notificaciones y plugins de todo tipo.
+   - Opción foro-like: bbPress o Asgaros Forum. Da threading, categorías por
+     itinerario y moderación. Puede ser overkill si solo querés un hilo
+     por itinerario.
+   - Opción con más social: BuddyPress. Más complejo, útil si pensás que la
+     comunidad crece y querés perfiles, grupos, mensajes privados.
+   - Reacciones (likes): si usás los comentarios nativos de WP, necesitás
+     un plugin específico de likes. Si usás bbPress, también.
+
+   Lo que hay que resolver en el HTML:
+   - El bloque `<div class="foro">` tiene su JS inline para hacer `fetch`
+     a Supabase. Hay que reemplazarlo por el shortcode o template tag del
+     plugin que elijas (ej. `<?php comments_template(); ?>`).
+   - Los estilos del foro (clases `.foro-*`) se pueden conservar si queda
+     bien, o reescribir para que cuadren con los selectores del plugin.
+
+3.3 EVALUACIONES (bitácora por itinerario)
+
+   - También está al final de cada itinerario, después del muro.
+   - Tiene tres textareas (Ver / Juzgar / Actuar) donde quien hace el
+     itinerario anota su propia bitácora.
+   - Puede guardarse como privada (solo quien la escribió la ve) o
+     compartida (los moderadores la ven).
+   - Backend Supabase: tabla `evaluaciones_itinerario`.
+   - Estado actual: tampoco estuvo en producción.
+
+   Qué considerar en WordPress:
+   - Opción con plugin de formularios: Gravity Forms, Fluent Forms o WPForms.
+     Las entradas quedan asociadas al usuario WP. Para que cada evaluación
+     se guarde "por itinerario y por usuario" hay que pasarle el ID del
+     itinerario como hidden field.
+   - Opción con custom post type: crear un CPT "Evaluación", con autor WP
+     y una metabox que vincula al itinerario. Las "compartidas" se filtran
+     por un campo meta booleano. Más limpio pero más trabajo inicial.
+   - Opción con plugin de LMS: si la Escuela de la PLAPA se piensa como
+     curso formal, un plugin como LearnDash, LifterLMS o Tutor LMS tiene
+     la lógica de "lección + progreso + notas del alumno" ya resuelta.
+     Es la opción más ambiciosa y la más natural si el proyecto crece.
+   - Compartir con moderadores: en WordPress se resuelve con capabilities
+     del rol. El moderador es un rol WP con `read_private_posts` o similar.
+
+
+4. ENLACE A "APORTAR AL MANUAL" (importante)
+--------------------------------------------
+
+Cada uno de los 30 itinerarios incluye, justo antes del muro, un bloque
+titulado "Aportar al Manual (rolling release)" que invita a la persona a
+enviar observaciones, correcciones o experiencias para la próxima versión
+del Manual de la PLAPA.
+
+El enlace actual, hardcodeado en los 30 archivos, es:
+
+    https://www.plapa.org/capitulo1-manual/
+
+ATENCIÓN: si esa URL cambia en la nueva web (otro slug, otra sección, otra
+plataforma de formulario, etc.), hay que cambiarla en los 30 itinerarios.
+El enlace aparece una sola vez por archivo, dentro de un bloque
+`<a class="aportar-link" href="...">`. Es un reemplazo mecánico pero no se
+puede olvidar ninguno: si queda un itinerario con la URL vieja, el aporte
+se pierde en una página rota.
+
+Dos formas de evitar el problema a futuro:
+  - Centralizar la URL en una variable JS o en una constante del tema,
+    y que los itinerarios la lean (una sola fuente de verdad).
+  - O, si todos los itinerarios se migran como posts, usar una plantilla
+    única (`single-itinerario.php` o similar) que renderice el bloque
+    "Aportar al Manual" con la URL leída de una opción de WordPress
+    (via Options API o Customizer). Así se cambia una vez y vale para los
+    30.
+
+
+5. ARCHIVOS A ESTAR ATENTO AL MIGRAR
+------------------------------------
+
+- `login.html`: no se migra como página. Es backend de sesión. Reemplazar
+  por el login de WordPress.
+- `setup_supabase.md` y `escuela_plapa_schema.sql`: documentación del
+  backend viejo. Útil como referencia de las tablas que había (si querés
+  mantener los nombres de campos en WordPress), pero no se migra.
+- `img/thumbnails/*.webp`: miniaturas de los itinerarios. Van a Media
+  Library de WordPress.
+- Los 30 itinerarios usan videos de YouTube embebidos vía `<iframe>`.
+  WordPress maneja embeds de YouTube automáticamente al pegar la URL en
+  el editor; no es necesario mantener el `<iframe>` manual.
+
+
+6. NO TOCAR, POR FAVOR
+----------------------
+
+El contenido pastoral (todo lo que está dentro de los módulos: puntos del
+Ver, del Juzgar, actividades del Actuar, citas inspiradoras, alertas
+pastorales, protocolos operativos, versiones mínimas viables, bloques de
+pedido de refuerzo profesional, autocuidado, referencias al Manual) está
+validado por el equipo PLAPA. Las palabras importan. Si al migrar necesitás
+reemplazar comillas, acentos o alguna etiqueta HTML por otra equivalente,
+dale, pero no reescribas los textos.
+
+Los números de los itinerarios y las referencias al Manual de la PLAPA
+(§X.Y.Z) tampoco se tocan: son la trazabilidad editorial del proyecto.
+
+
+7. PUNTOS DE ATENCIÓN QUE AHORRAN DOLORES DE CABEZA
+---------------------------------------------------
+
+- Supabase todavía no está en producción. No hay datos de usuarios ni de
+  comentarios que migrar. Es un buen momento para rediseñar el backend
+  desde cero con lo que WordPress ofrece.
+- La URL `?next=` que usa el login actual para volver al itinerario después
+  del ingreso: tiene su equivalente natural en `redirect_to=` de WordPress.
+- Las paletas de color por itinerario están declaradas como variables CSS
+  en el `<head>`. Si querés unificar en una hoja global, es mecánico pero
+  son 30 bloques distintos.
+- Nunca se implementó modo oscuro. Si WordPress incorpora uno a nivel tema,
+  conviene verificar que los colores de los itinerarios no queden ilegibles.
+- Varias rutas e itinerarios comparten estructura pero cambian paleta y
+  contenido. Un buen tema parametrizable (con ACF o similar) te evita
+  duplicar código.
+
+
+8. CONTACTO
+-----------
+
+Si algo del repositorio no se entiende o la lógica de alguna sección no
+queda clara, lo mejor es preguntar antes de reescribir. El contenido
+pastoral tiene varias capas (teológica, pedagógica, clínica, operativa)
+que no son obvias al leer el HTML.
+
+Buena migración.
