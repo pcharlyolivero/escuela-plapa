@@ -612,6 +612,129 @@
     border-top: 1px dashed var(--borde);
   }
 
+  /* ─── PROTOCOLO OPERATIVO ────────────────────────────── */
+  .protocolo {
+    background: #F0F7F4;
+    border: 1px solid #B8D4CB;
+    border-left: 4px solid #0E7356;
+    border-radius: 0 10px 10px 0;
+    padding: 1.25rem 1.4rem;
+    margin-top: 1.75rem;
+  }
+  .protocolo-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #0E7356;
+    margin-bottom: 8px;
+  }
+  .protocolo-lbl::before { content: '⚙ '; }
+  .protocolo-title {
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #0A4D3C;
+    margin-bottom: 8px;
+    line-height: 1.35;
+  }
+  .protocolo-sub {
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .protocolo-pasos {
+    margin: 10px 0 0 20px;
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+  .protocolo-pasos li { margin-bottom: 6px; }
+  .protocolo-pasos li strong { color: #0A4D3C; }
+
+  /* ─── CUÁNDO DERIVAR (señal de derivación) ───────────── */
+  .derivar {
+    background: #FFF8EB;
+    border: 1px solid #F0D59C;
+    border-left: 4px solid #B8860B;
+    border-radius: 0 10px 10px 0;
+    padding: 1.25rem 1.4rem;
+    margin-top: 1.75rem;
+  }
+  .derivar-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #8B6508;
+    margin-bottom: 8px;
+  }
+  .derivar-lbl::before { content: '⇆ '; }
+  .derivar-title {
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #5A4208;
+    margin-bottom: 8px;
+    line-height: 1.35;
+  }
+  .derivar-sub {
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .derivar-list {
+    margin: 0 0 10px 20px;
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+  .derivar-list li { margin-bottom: 5px; }
+  .derivar-list li strong { color: #8B6508; }
+
+  /* ─── VERSIÓN MÍNIMA VIABLE ──────────────────────────── */
+  .mvv {
+    background: #F5F2FA;
+    border: 1px solid #CFC5E5;
+    border-left: 4px solid #534AB7;
+    border-radius: 0 10px 10px 0;
+    padding: 1.25rem 1.4rem;
+    margin-top: 1.75rem;
+  }
+  .mvv-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #3C3489;
+    margin-bottom: 8px;
+  }
+  .mvv-lbl::before { content: '◆ '; }
+  .mvv-title {
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #2A2470;
+    margin-bottom: 8px;
+    line-height: 1.35;
+  }
+  .mvv-sub {
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .mvv-pasos {
+    margin: 10px 0 0 20px;
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+  .mvv-pasos li { margin-bottom: 6px; }
+  .mvv-pasos li strong { color: #2A2470; }
+
   /* ─── FORO / MURO DEL CAMINO ─────────────────────────── */
   .foro {
     background: #FFFFFF;
@@ -1523,6 +1646,19 @@
         </div>
       </div>
 
+      <div class="derivar">
+        <div class="derivar-lbl">Pedir refuerzo profesional (y qué hacer si la red no está)</div>
+        <div class="derivar-title">Señal detectada → acción del agente pastoral</div>
+        <div class="derivar-sub">El agente pastoral <em>detecta, sostiene y articula</em>: no diagnostica ni trata. Esta guía orienta el tiempo y el destino de la derivación según el tipo de señal. En toda derivación, el agente sostiene el vínculo pastoral durante el proceso.</div>
+        <ul class="derivar-list">
+          <li><strong>Señal 5 (ideación suicida o autolesión) — URGENTE:</strong> derivación inmediata a guardia de salud mental o número local de emergencias. No se deja sola a la persona hasta que quede en manos del servicio. Nunca se maneja esta señal en solitario (§8.5.4, §11.7.6).</li>
+          <li><strong>Señales 1 y 2 (desorganización persistente, episodios disociativos):</strong> derivación en 48–72 horas a psiquiatra o psicólogo clínico del territorio. Mientras tanto, se suspenden actividades grupales demandantes y se mantiene acompañamiento individual.</li>
+          <li><strong>Señales 3 y 4 (humor extremadamente inestable, síntomas que persisten en abstinencia):</strong> interconsulta con salud mental dentro de 1–2 semanas. Se registra la observación en bitácora y se comparte con el equipo antes de la consulta.</li>
+          <li><strong>Señal 6 (fracasos reiterados sin causa aparente):</strong> reunión de equipo con un profesional de referencia para revisar el caso. No se deriva sin acuerdo previo del equipo: la hipótesis de patología dual se discute antes de nombrarla.</li>
+          <li><strong>Si no hay red de salud mental disponible:</strong> ese es el hallazgo más importante del itinerario. Construir el primer contacto profesional (nombre y teléfono de una persona concreta) es la agenda del semestre.</li>
+        </ul>
+      </div>
+
       <div class="pl">El Ver — Realidad</div>
       <ul class="pts">
         <li><span class="dot">V</span><span><strong>El umbral de estabilización clínica como condición pastoral.</strong> El §8.2.2 es explícito: <em>«Una persona con una estructura psicótica descompensada o con un episodio depresivo severo no puede participar de un grupo terapéutico, elaborar su historia en un espacio de escucha ni sostener una experiencia espiritual si su sistema nervioso no ha alcanzado un umbral mínimo de estabilización».</em> La pastoral que intenta avanzar sobre este umbral sin estabilización previa <em>no acompaña: frustra al hermano y al equipo</em>.</span></li>
@@ -1570,6 +1706,19 @@
         <div class="mode-i">
           <div class="act-body">Repasá mentalmente cómo respondiste la última vez que alguien mencionó ideación suicida (aunque fuera de manera velada). Anotá en tu bitácora: <em>¿minimicé? ¿Entré en pánico? ¿Escuché? ¿Derivé con urgencia sin dejar sola a la persona?</em> La honestidad con la propia respuesta es el primer paso para prepararla mejor la próxima vez.</div>
         </div>
+      </div>
+
+      <div class="protocolo">
+        <div class="protocolo-lbl">Protocolo operativo</div>
+        <div class="protocolo-title">Protocolo mínimo de detección y derivación en patología dual · 5 pasos para los primeros 7 días</div>
+        <div class="protocolo-sub">Un protocolo mínimo escrito vale más que un protocolo perfecto imaginado. Este modelo se adapta a la realidad del dispositivo y se imprime para que esté a mano del equipo. No reemplaza la formación clínica: ordena la respuesta pastoral.</div>
+        <ol class="protocolo-pasos">
+          <li><strong>Nombrar la observación (dentro de 24 h):</strong> el agente que detectó la señal la comparte con el coordinador o con un referente del equipo. La observación no se guarda en silencio y no se diagnostica: se nombra la señal concreta que se vio.</li>
+          <li><strong>Clasificar la urgencia:</strong> el equipo decide la franja — <em>urgencia</em> (señal 5), <em>prioridad alta</em> (señales 1–2), <em>prioridad media</em> (señales 3–4–6). La franja define el tiempo máximo para la consulta profesional.</li>
+          <li><strong>Activar la red profesional:</strong> se usa el contacto profesional preestablecido (psiquiatra, psicólogo, hospital, guardia). Si no hay contacto, este caso construye el primer puente: el equipo busca <em>un nombre y un teléfono humano</em>, no un logo institucional.</li>
+          <li><strong>Sostener el vínculo pastoral:</strong> durante la derivación, el agente de referencia visita o conversa con la persona al menos dos veces por semana. La derivación no corta el vínculo pastoral: lo refuerza y sostiene la adherencia al tratamiento (§11.7.6).</li>
+          <li><strong>Registrar y revisar mensualmente:</strong> cada derivación queda anotada (fecha, señal, servicio contactado, respuesta del sistema). Una vez al mes, el equipo revisa los casos y la calidad de la red. Lo que no se registra, no se puede mejorar.</li>
+        </ol>
       </div>
 
       <div class="cita">

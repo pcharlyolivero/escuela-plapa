@@ -612,6 +612,129 @@
     border-top: 1px dashed var(--borde);
   }
 
+  /* ─── PROTOCOLO OPERATIVO ────────────────────────────── */
+  .protocolo {
+    background: #F0F7F4;
+    border: 1px solid #B8D4CB;
+    border-left: 4px solid #0E7356;
+    border-radius: 0 10px 10px 0;
+    padding: 1.25rem 1.4rem;
+    margin-top: 1.75rem;
+  }
+  .protocolo-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #0E7356;
+    margin-bottom: 8px;
+  }
+  .protocolo-lbl::before { content: '⚙ '; }
+  .protocolo-title {
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #0A4D3C;
+    margin-bottom: 8px;
+    line-height: 1.35;
+  }
+  .protocolo-sub {
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .protocolo-pasos {
+    margin: 10px 0 0 20px;
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+  .protocolo-pasos li { margin-bottom: 6px; }
+  .protocolo-pasos li strong { color: #0A4D3C; }
+
+  /* ─── CUÁNDO DERIVAR (señal de derivación) ───────────── */
+  .derivar {
+    background: #FFF8EB;
+    border: 1px solid #F0D59C;
+    border-left: 4px solid #B8860B;
+    border-radius: 0 10px 10px 0;
+    padding: 1.25rem 1.4rem;
+    margin-top: 1.75rem;
+  }
+  .derivar-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #8B6508;
+    margin-bottom: 8px;
+  }
+  .derivar-lbl::before { content: '⇆ '; }
+  .derivar-title {
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #5A4208;
+    margin-bottom: 8px;
+    line-height: 1.35;
+  }
+  .derivar-sub {
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .derivar-list {
+    margin: 0 0 10px 20px;
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+  .derivar-list li { margin-bottom: 5px; }
+  .derivar-list li strong { color: #8B6508; }
+
+  /* ─── VERSIÓN MÍNIMA VIABLE ──────────────────────────── */
+  .mvv {
+    background: #F5F2FA;
+    border: 1px solid #CFC5E5;
+    border-left: 4px solid #534AB7;
+    border-radius: 0 10px 10px 0;
+    padding: 1.25rem 1.4rem;
+    margin-top: 1.75rem;
+  }
+  .mvv-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #3C3489;
+    margin-bottom: 8px;
+  }
+  .mvv-lbl::before { content: '◆ '; }
+  .mvv-title {
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #2A2470;
+    margin-bottom: 8px;
+    line-height: 1.35;
+  }
+  .mvv-sub {
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .mvv-pasos {
+    margin: 10px 0 0 20px;
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+  .mvv-pasos li { margin-bottom: 6px; }
+  .mvv-pasos li strong { color: #2A2470; }
+
   /* ─── FORO / MURO DEL CAMINO ─────────────────────────── */
   .foro {
     background: #FFFFFF;
@@ -1541,6 +1664,19 @@
         <div class="mode-i">
           <div class="act-body">Anotá en tu bitácora el <em>nombre</em> de una mujer del territorio que, con formación adecuada, podría ejercer el rol de acompañante par. Si no se te ocurre ninguna, el problema no es que no exista: <em>es que el equipo no la está viendo</em>. Esa búsqueda es la primera gestión concreta.</div>
         </div>
+      </div>
+
+      <div class="protocolo">
+        <div class="protocolo-lbl">Protocolo operativo</div>
+        <div class="protocolo-title">Protocolo mínimo del dispositivo con perspectiva de género · 5 criterios no negociables</div>
+        <div class="protocolo-sub">La doble condena (consumo + género) exige un dispositivo con rasgos específicos. Estos cinco criterios funcionan como piso: sin ellos, el dispositivo repite las barreras que empujaron a la mujer a desaparecer de los circuitos de ayuda.</div>
+        <ol class="protocolo-pasos">
+          <li><strong>Horarios y espacios compatibles con el cuidado:</strong> la mujer con hijos no puede llegar al mismo horario que un adulto solo. Se abren franjas con guardería acompañada o espacio seguro para niños. Sin esto, el dispositivo es inaccesible por diseño.</li>
+          <li><strong>Equipo mixto con mujeres de referencia:</strong> siempre hay al menos una mujer en el equipo que acoge y acompaña. La ausencia de referencia femenina re-victimiza en muchos casos con historia de violencia previa.</li>
+          <li><strong>Confidencialidad reforzada frente a parejas o familiares violentos:</strong> ninguna información sobre participación o avances se comparte con terceros sin consentimiento explícito. El riesgo de violencia aumenta cuando la mujer empieza a cuidarse.</li>
+          <li><strong>Articulación con la red de violencia de género:</strong> contacto preestablecido con línea 144 o equivalente local, refugios y asesoría jurídica. La mujer que entra al dispositivo con frecuencia también vive violencia; sin red articulada el acompañamiento es parcial.</li>
+          <li><strong>No condicionar la acogida a la separación del hijo o de la pareja:</strong> la mujer decide. El dispositivo acompaña sus decisiones y protege su autonomía. Condicionar la ayuda a una decisión familiar previa es una forma sutil de violencia institucional.</li>
+        </ol>
       </div>
 
       <div class="cita">

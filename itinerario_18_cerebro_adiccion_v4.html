@@ -612,6 +612,129 @@
     border-top: 1px dashed var(--borde);
   }
 
+  /* ─── PROTOCOLO OPERATIVO ────────────────────────────── */
+  .protocolo {
+    background: #F0F7F4;
+    border: 1px solid #B8D4CB;
+    border-left: 4px solid #0E7356;
+    border-radius: 0 10px 10px 0;
+    padding: 1.25rem 1.4rem;
+    margin-top: 1.75rem;
+  }
+  .protocolo-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #0E7356;
+    margin-bottom: 8px;
+  }
+  .protocolo-lbl::before { content: '⚙ '; }
+  .protocolo-title {
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #0A4D3C;
+    margin-bottom: 8px;
+    line-height: 1.35;
+  }
+  .protocolo-sub {
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .protocolo-pasos {
+    margin: 10px 0 0 20px;
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+  .protocolo-pasos li { margin-bottom: 6px; }
+  .protocolo-pasos li strong { color: #0A4D3C; }
+
+  /* ─── CUÁNDO DERIVAR (señal de derivación) ───────────── */
+  .derivar {
+    background: #FFF8EB;
+    border: 1px solid #F0D59C;
+    border-left: 4px solid #B8860B;
+    border-radius: 0 10px 10px 0;
+    padding: 1.25rem 1.4rem;
+    margin-top: 1.75rem;
+  }
+  .derivar-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #8B6508;
+    margin-bottom: 8px;
+  }
+  .derivar-lbl::before { content: '⇆ '; }
+  .derivar-title {
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #5A4208;
+    margin-bottom: 8px;
+    line-height: 1.35;
+  }
+  .derivar-sub {
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .derivar-list {
+    margin: 0 0 10px 20px;
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+  .derivar-list li { margin-bottom: 5px; }
+  .derivar-list li strong { color: #8B6508; }
+
+  /* ─── VERSIÓN MÍNIMA VIABLE ──────────────────────────── */
+  .mvv {
+    background: #F5F2FA;
+    border: 1px solid #CFC5E5;
+    border-left: 4px solid #534AB7;
+    border-radius: 0 10px 10px 0;
+    padding: 1.25rem 1.4rem;
+    margin-top: 1.75rem;
+  }
+  .mvv-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #3C3489;
+    margin-bottom: 8px;
+  }
+  .mvv-lbl::before { content: '◆ '; }
+  .mvv-title {
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #2A2470;
+    margin-bottom: 8px;
+    line-height: 1.35;
+  }
+  .mvv-sub {
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .mvv-pasos {
+    margin: 10px 0 0 20px;
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+  .mvv-pasos li { margin-bottom: 6px; }
+  .mvv-pasos li strong { color: #2A2470; }
+
   /* ─── FORO / MURO DEL CAMINO ─────────────────────────── */
   .foro {
     background: #FFFFFF;
@@ -1625,6 +1748,20 @@
         <div class="mode-i">
           <div class="act-body">Cerrá el itinerario respondiendo en tu bitácora: <em>«El concepto de biología que más me da esperanza es…»</em>. Compartilo con el equipo en la próxima reunión. La conversación colectiva sobre <em>de dónde saca cada uno la esperanza</em> es en sí misma una práctica de autocuidado pastoral.</div>
         </div>
+      </div>
+
+      <div class="derivar">
+        <div class="derivar-lbl">Pedir refuerzo profesional (y qué hacer si la red no está)</div>
+        <div class="derivar-title">Cuando el cerebro pide más que el acompañamiento</div>
+        <div class="derivar-sub">La traducción pastoral de la neurobiología orienta la mirada pero no reemplaza el tratamiento clínico. Estas señales marcan cuándo la neurobiología excede lo que la comunidad puede sostener sola.</div>
+        <ul class="derivar-list">
+          <li><strong>Síndrome de abstinencia severo — URGENTE</strong> (temblores intensos, convulsiones, delirium tremens, alucinaciones): hospitalización. La abstinencia de alcohol y benzodiazepinas puede ser potencialmente letal: nunca se maneja en el dispositivo.</li>
+          <li><strong>Sospecha de daño cognitivo persistente</strong> (dificultades severas de memoria, atención o lenguaje) después de 3 meses de abstinencia sostenida: neurología + evaluación neuropsicológica.</li>
+          <li><strong>Craving incontrolable con recaídas semanales:</strong> evaluación psiquiátrica para considerar farmacoterapia específica (naltrexona, buprenorfina, acamprosato, según sustancia). La comunidad sostiene; la farmacología crea la ventana para que el sostén funcione.</li>
+          <li><strong>Depresión o ansiedad severas que no mejoran con abstinencia</strong> después de 4 semanas: psiquiatra para evaluar patología dual (ver itinerario 15). El consumo no era la causa única.</li>
+          <li><strong>Sobredosis, cuadros confusionales agudos o crisis convulsivas — URGENTE:</strong> emergencias médicas, siempre. La neurobiología aguda se trata en el hospital, no en la capilla.</li>
+          <li><strong>Si no hay servicios clínicos accesibles en el territorio:</strong> la pastoral sostiene con tres mínimos — información básica y veraz sobre la sustancia específica, acompañamiento del cuerpo (sueño, alimentación, hidratación) y vínculo estable y previsible. Para las urgencias agudas (abstinencia severa, sobredosis, convulsiones), el hospital público es siempre el destino, aunque después no haya tratamiento especializado disponible. La ausencia de red es parte del hallazgo pastoral y agenda la construcción del primer puente clínico accesible.</li>
+        </ul>
       </div>
 
       <div class="cita">

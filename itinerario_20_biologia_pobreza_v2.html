@@ -612,6 +612,129 @@
     border-top: 1px dashed var(--borde);
   }
 
+  /* ─── PROTOCOLO OPERATIVO ────────────────────────────── */
+  .protocolo {
+    background: #F0F7F4;
+    border: 1px solid #B8D4CB;
+    border-left: 4px solid #0E7356;
+    border-radius: 0 10px 10px 0;
+    padding: 1.25rem 1.4rem;
+    margin-top: 1.75rem;
+  }
+  .protocolo-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #0E7356;
+    margin-bottom: 8px;
+  }
+  .protocolo-lbl::before { content: '⚙ '; }
+  .protocolo-title {
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #0A4D3C;
+    margin-bottom: 8px;
+    line-height: 1.35;
+  }
+  .protocolo-sub {
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .protocolo-pasos {
+    margin: 10px 0 0 20px;
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+  .protocolo-pasos li { margin-bottom: 6px; }
+  .protocolo-pasos li strong { color: #0A4D3C; }
+
+  /* ─── CUÁNDO DERIVAR (señal de derivación) ───────────── */
+  .derivar {
+    background: #FFF8EB;
+    border: 1px solid #F0D59C;
+    border-left: 4px solid #B8860B;
+    border-radius: 0 10px 10px 0;
+    padding: 1.25rem 1.4rem;
+    margin-top: 1.75rem;
+  }
+  .derivar-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #8B6508;
+    margin-bottom: 8px;
+  }
+  .derivar-lbl::before { content: '⇆ '; }
+  .derivar-title {
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #5A4208;
+    margin-bottom: 8px;
+    line-height: 1.35;
+  }
+  .derivar-sub {
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .derivar-list {
+    margin: 0 0 10px 20px;
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+  .derivar-list li { margin-bottom: 5px; }
+  .derivar-list li strong { color: #8B6508; }
+
+  /* ─── VERSIÓN MÍNIMA VIABLE ──────────────────────────── */
+  .mvv {
+    background: #F5F2FA;
+    border: 1px solid #CFC5E5;
+    border-left: 4px solid #534AB7;
+    border-radius: 0 10px 10px 0;
+    padding: 1.25rem 1.4rem;
+    margin-top: 1.75rem;
+  }
+  .mvv-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #3C3489;
+    margin-bottom: 8px;
+  }
+  .mvv-lbl::before { content: '◆ '; }
+  .mvv-title {
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #2A2470;
+    margin-bottom: 8px;
+    line-height: 1.35;
+  }
+  .mvv-sub {
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .mvv-pasos {
+    margin: 10px 0 0 20px;
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+  .mvv-pasos li { margin-bottom: 6px; }
+  .mvv-pasos li strong { color: #2A2470; }
+
   /* ─── FORO / MURO DEL CAMINO ─────────────────────────── */
   .foro {
     background: #FFFFFF;
@@ -1696,6 +1819,33 @@
         <div class="mode-i">
           <div class="act-body">Escribí en tu bitácora la respuesta a la pregunta: <em>«¿Qué cambió en mi forma de mirar a los hermanos que acompaño después de conocer la biología de la vulnerabilidad?»</em> Si recorriste otros itinerarios del bloque de biología, guardala junto a esas respuestas: <em>juntas forman tu mapa personal del bloque biológico</em>. Compartila en la próxima reunión del equipo si el clima lo permite.</div>
         </div>
+      </div>
+
+      <div class="derivar">
+        <div class="derivar-lbl">Pedir refuerzo profesional (y qué hacer si la red no está)</div>
+        <div class="derivar-title">Señales neurobiológicas y perinatales → acción del agente pastoral</div>
+        <div class="derivar-sub">El agente pastoral detecta y articula: no diagnostica el daño neurobiológico ni trata el embarazo con consumo. Esta guía orienta tiempos y destino según la señal detectada; en toda derivación, el agente sostiene el vínculo pastoral.</div>
+        <ul class="derivar-list">
+          <li><strong>Mujer embarazada con consumo activo — URGENTE:</strong> derivación inmediata a obstetricia del hospital público y, de ser posible, a equipo de salud mental perinatal. No postergar por falta de documentos ni por juicio moral.</li>
+          <li><strong>Neonato con signos de síndrome de abstinencia neonatal</strong> (temblor sostenido, llanto agudo e inconsolable, dificultad para alimentarse, hipertonía): derivación urgente a neonatología. El cuadro puede ser grave.</li>
+          <li><strong>Adolescente con consumo precoz (menor de 15 años) y deterioro cognitivo visible</strong> (dificultades escolares nuevas, lentificación, cambios abruptos de personalidad): evaluación neuropediátrica o psicopedagógica dentro de 2 semanas.</li>
+          <li><strong>Mujer en edad fértil con consumo problemático:</strong> consejería anticonceptiva no coercitiva + control ginecológico. Es prevención concreta de la próxima gestación con consumo.</li>
+          <li><strong>Lactante o niño expuesto a sustancias durante la gestación:</strong> seguimiento pediátrico especializado al menos durante el primer año de vida. Registrar hitos del desarrollo y signos de alteración.</li>
+          <li><strong>Si no hay servicio perinatal especializado accesible:</strong> el hospital público obstétrico es siempre el destino, aunque no haya salud mental perinatal articulada. La pastoral sostiene con tres cuidados — presencia en los controles obstétricos, acompañamiento a la casa después del nacimiento, y red comunitaria organizada desde antes del parto. La ausencia de servicio especializado no exime de la atención médica básica.</li>
+        </ul>
+      </div>
+
+      <div class="protocolo">
+        <div class="protocolo-lbl">Protocolo operativo</div>
+        <div class="protocolo-title">Protocolo mínimo de atención perinatal con consumo · 5 pasos cuando se detecta una mujer embarazada que consume</div>
+        <div class="protocolo-sub">La ventana perinatal es crítica: las intervenciones de los primeros meses afectan al bebé por años. Este protocolo busca no perder esa ventana por falta de ruta clara.</div>
+        <ol class="protocolo-pasos">
+          <li><strong>Vínculo primero (24 h):</strong> el agente se asegura de que la mujer no se sienta juzgada ni amenazada. Explicita que la pastoral no denunciará ni se retirará. El miedo al juicio es la primera causa de la desaparición del seguimiento perinatal.</li>
+          <li><strong>Articulación obstétrica (48 h):</strong> activar el contacto preestablecido con obstetricia; si no hay, hospital público de referencia. No postergar por falta de documentos.</li>
+          <li><strong>Reducción de daños + consulta médica para cualquier cambio del consumo:</strong> mientras se construye el acceso, se trabaja alimentación, descanso y no sumar sustancias. La abstinencia abrupta en embarazo puede dañar al feto en algunas sustancias: cualquier reducción se consulta con el equipo médico, no se decide en el dispositivo.</li>
+          <li><strong>Red postparto desde el embarazo:</strong> antes del nacimiento, identificar quién sostendrá a la mujer y al bebé en los primeros 6 meses (familia extensa, pareja no consumidora, centro barrial, hogar materno). El postparto no se improvisa.</li>
+          <li><strong>Seguimiento del bebé:</strong> coordinar con pediatría los controles del primer año. Registrar signos de síndrome de abstinencia neonatal, hitos del desarrollo y alteraciones del sueño o la alimentación.</li>
+        </ol>
       </div>
 
       <div class="cita">

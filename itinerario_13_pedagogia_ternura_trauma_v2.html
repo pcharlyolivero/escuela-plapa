@@ -612,6 +612,129 @@
     border-top: 1px dashed var(--borde);
   }
 
+  /* ─── PROTOCOLO OPERATIVO ────────────────────────────── */
+  .protocolo {
+    background: #F0F7F4;
+    border: 1px solid #B8D4CB;
+    border-left: 4px solid #0E7356;
+    border-radius: 0 10px 10px 0;
+    padding: 1.25rem 1.4rem;
+    margin-top: 1.75rem;
+  }
+  .protocolo-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #0E7356;
+    margin-bottom: 8px;
+  }
+  .protocolo-lbl::before { content: '⚙ '; }
+  .protocolo-title {
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #0A4D3C;
+    margin-bottom: 8px;
+    line-height: 1.35;
+  }
+  .protocolo-sub {
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .protocolo-pasos {
+    margin: 10px 0 0 20px;
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+  .protocolo-pasos li { margin-bottom: 6px; }
+  .protocolo-pasos li strong { color: #0A4D3C; }
+
+  /* ─── CUÁNDO DERIVAR (señal de derivación) ───────────── */
+  .derivar {
+    background: #FFF8EB;
+    border: 1px solid #F0D59C;
+    border-left: 4px solid #B8860B;
+    border-radius: 0 10px 10px 0;
+    padding: 1.25rem 1.4rem;
+    margin-top: 1.75rem;
+  }
+  .derivar-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #8B6508;
+    margin-bottom: 8px;
+  }
+  .derivar-lbl::before { content: '⇆ '; }
+  .derivar-title {
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #5A4208;
+    margin-bottom: 8px;
+    line-height: 1.35;
+  }
+  .derivar-sub {
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .derivar-list {
+    margin: 0 0 10px 20px;
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+  .derivar-list li { margin-bottom: 5px; }
+  .derivar-list li strong { color: #8B6508; }
+
+  /* ─── VERSIÓN MÍNIMA VIABLE ──────────────────────────── */
+  .mvv {
+    background: #F5F2FA;
+    border: 1px solid #CFC5E5;
+    border-left: 4px solid #534AB7;
+    border-radius: 0 10px 10px 0;
+    padding: 1.25rem 1.4rem;
+    margin-top: 1.75rem;
+  }
+  .mvv-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #3C3489;
+    margin-bottom: 8px;
+  }
+  .mvv-lbl::before { content: '◆ '; }
+  .mvv-title {
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #2A2470;
+    margin-bottom: 8px;
+    line-height: 1.35;
+  }
+  .mvv-sub {
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .mvv-pasos {
+    margin: 10px 0 0 20px;
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+  .mvv-pasos li { margin-bottom: 6px; }
+  .mvv-pasos li strong { color: #2A2470; }
+
   /* ─── FORO / MURO DEL CAMINO ─────────────────────────── */
   .foro {
     background: #FFFFFF;
@@ -1515,6 +1638,20 @@
         <div class="mode-i">
           <div class="act-body">Recorré mentalmente el espacio donde recibís a las personas que acompañás. Anotá en tu bitácora <em>tres elementos concretos</em> (ruido, iluminación, forma de recibir, ubicación de la puerta) que <em>podrían</em> ser disparadores para alguien con trauma. Ese diagnóstico personal es el punto de partida.</div>
         </div>
+      </div>
+
+      <div class="derivar">
+        <div class="derivar-lbl">Pedir refuerzo profesional (y qué hacer si la red no está)</div>
+        <div class="derivar-title">Cuando el trauma excede el acompañamiento pastoral</div>
+        <div class="derivar-sub">El Tratamiento Informado en el Trauma orienta la pastoral pero no la convierte en terapia. Esta guía marca el umbral donde el agente debe articular con un profesional, sosteniendo el vínculo pastoral durante todo el proceso.</div>
+        <ul class="derivar-list">
+          <li><strong>Trauma severo con disociación persistente</strong> (la persona se «ausenta» repetidamente, pierde minutos u horas, relata despersonalización que no se explica por consumo): psicólogo con formación específica en trauma (EMDR, somatic experiencing, TRE).</li>
+          <li><strong>Trauma con autolesión activa o ideación suicida — URGENTE:</strong> guardia de salud mental o número local de emergencias. No se maneja en solitario y no se deja sola a la persona en ningún momento.</li>
+          <li><strong>Trauma complejo del desarrollo con descompensación emocional severa</strong> que impide funcionar en el dispositivo: psiquiatra + psicólogo clínico, con articulación explícita con el equipo pastoral para no cortar el vínculo.</li>
+          <li><strong>Pesadillas, flashbacks o hipervigilancia</strong> que afectan sueño o alimentación durante más de 4 semanas: evaluación clínica de TEPT. El acompañamiento pastoral solo no revierte estos síntomas.</li>
+          <li><strong>Trauma por abuso sexual o violencia reciente:</strong> derivación específica a servicios con experiencia (centros de atención a víctimas) + asesoría jurídica si corresponde. No se intenta la primera elaboración del hecho desde la pastoral.</li>
+          <li><strong>Si no hay red de atención en trauma en el territorio:</strong> el acompañamiento pastoral sostiene con tres cuidados mínimos — vínculo estable y previsible, no reactivar el trauma preguntando por el detalle del hecho, y acompañar al cuerpo (sueño, comida, respiración) antes que al relato. Al mismo tiempo, se usa la agenda de los próximos meses para construir el primer contacto profesional accesible, aunque sea a distancia o itinerante.</li>
+        </ul>
       </div>
 
       <div class="cita">

@@ -612,6 +612,129 @@
     border-top: 1px dashed var(--borde);
   }
 
+  /* ─── PROTOCOLO OPERATIVO ────────────────────────────── */
+  .protocolo {
+    background: #F0F7F4;
+    border: 1px solid #B8D4CB;
+    border-left: 4px solid #0E7356;
+    border-radius: 0 10px 10px 0;
+    padding: 1.25rem 1.4rem;
+    margin-top: 1.75rem;
+  }
+  .protocolo-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #0E7356;
+    margin-bottom: 8px;
+  }
+  .protocolo-lbl::before { content: '⚙ '; }
+  .protocolo-title {
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #0A4D3C;
+    margin-bottom: 8px;
+    line-height: 1.35;
+  }
+  .protocolo-sub {
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .protocolo-pasos {
+    margin: 10px 0 0 20px;
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+  .protocolo-pasos li { margin-bottom: 6px; }
+  .protocolo-pasos li strong { color: #0A4D3C; }
+
+  /* ─── CUÁNDO DERIVAR (señal de derivación) ───────────── */
+  .derivar {
+    background: #FFF8EB;
+    border: 1px solid #F0D59C;
+    border-left: 4px solid #B8860B;
+    border-radius: 0 10px 10px 0;
+    padding: 1.25rem 1.4rem;
+    margin-top: 1.75rem;
+  }
+  .derivar-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #8B6508;
+    margin-bottom: 8px;
+  }
+  .derivar-lbl::before { content: '⇆ '; }
+  .derivar-title {
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #5A4208;
+    margin-bottom: 8px;
+    line-height: 1.35;
+  }
+  .derivar-sub {
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .derivar-list {
+    margin: 0 0 10px 20px;
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+  .derivar-list li { margin-bottom: 5px; }
+  .derivar-list li strong { color: #8B6508; }
+
+  /* ─── VERSIÓN MÍNIMA VIABLE ──────────────────────────── */
+  .mvv {
+    background: #F5F2FA;
+    border: 1px solid #CFC5E5;
+    border-left: 4px solid #534AB7;
+    border-radius: 0 10px 10px 0;
+    padding: 1.25rem 1.4rem;
+    margin-top: 1.75rem;
+  }
+  .mvv-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #3C3489;
+    margin-bottom: 8px;
+  }
+  .mvv-lbl::before { content: '◆ '; }
+  .mvv-title {
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #2A2470;
+    margin-bottom: 8px;
+    line-height: 1.35;
+  }
+  .mvv-sub {
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .mvv-pasos {
+    margin: 10px 0 0 20px;
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+  .mvv-pasos li { margin-bottom: 6px; }
+  .mvv-pasos li strong { color: #2A2470; }
+
   /* ─── FORO / MURO DEL CAMINO ─────────────────────────── */
   .foro {
     background: #FFFFFF;
@@ -1449,6 +1572,20 @@
         <div class="mode-i">
           <div class="act-body">Escuchá tu propio lenguaje en las próximas 48 horas cuando hables de las personas que acompañás. Anotá en tu bitácora las frases donde la <em>moralización se disfraza de cariño</em>. Nombrarlas por escrito reduce su repetición automática.</div>
         </div>
+      </div>
+
+      <div class="derivar">
+        <div class="derivar-lbl">Pedir refuerzo profesional (y qué hacer si la red no está)</div>
+        <div class="derivar-title">El agente pastoral no es terapeuta: cuándo pasar la posta</div>
+        <div class="derivar-sub">La escucha activa es una herramienta pastoral, no una técnica clínica. Estas cinco señales marcan el momento en que la conversación requiere un profesional; el agente articula sin retirar el vínculo.</div>
+        <ul class="derivar-list">
+          <li><strong>La conversación se repite y no avanza:</strong> el mismo tema vuelve una y otra vez sin elaboración, durante varias semanas. Es señal de que la escucha pastoral alcanzó su límite y se necesita un dispositivo terapéutico.</li>
+          <li><strong>Aparece contenido traumático complejo</strong> (abuso, violencia reciente, pérdida no elaborada, ideación suicida): no se trabaja con escucha activa. Se contiene, se nombra y se deriva.</li>
+          <li><strong>La persona pide un diagnóstico o un plan terapéutico:</strong> la pastoral acompaña, no diagnostica. Si lo que la persona pide es evaluación psicológica, se articula con un profesional del territorio.</li>
+          <li><strong>El agente se siente «la única persona que la entiende»:</strong> señal de alarma. La escucha pastoral no se construye en exclusividad: eso es trampa vincular. Buscar supervisión y proponer red profesional en paralelo.</li>
+          <li><strong>La conversación afecta sueño, humor o salud del agente:</strong> la propia salud del agente es el primer indicador de que la situación excedió el marco pastoral. Pedir supervisión y revisar la derivación.</li>
+          <li><strong>Si no hay red profesional disponible en el territorio:</strong> la escucha pastoral continúa, pero con límites explícitos — se le nombra a la persona que no se puede resolver todo desde el acompañamiento, se buscan referentes alternativos (otros agentes del equipo con más recorrido, un religioso con formación, un supervisor itinerante o a distancia) y se pide formación específica para el equipo. La construcción de la red es tarea pastoral: no esperar que exista.</li>
+        </ul>
       </div>
 
       <div class="cita">

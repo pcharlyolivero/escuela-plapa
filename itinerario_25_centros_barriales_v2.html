@@ -612,6 +612,129 @@
     border-top: 1px dashed var(--borde);
   }
 
+  /* ─── PROTOCOLO OPERATIVO ────────────────────────────── */
+  .protocolo {
+    background: #F0F7F4;
+    border: 1px solid #B8D4CB;
+    border-left: 4px solid #0E7356;
+    border-radius: 0 10px 10px 0;
+    padding: 1.25rem 1.4rem;
+    margin-top: 1.75rem;
+  }
+  .protocolo-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #0E7356;
+    margin-bottom: 8px;
+  }
+  .protocolo-lbl::before { content: '⚙ '; }
+  .protocolo-title {
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #0A4D3C;
+    margin-bottom: 8px;
+    line-height: 1.35;
+  }
+  .protocolo-sub {
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .protocolo-pasos {
+    margin: 10px 0 0 20px;
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+  .protocolo-pasos li { margin-bottom: 6px; }
+  .protocolo-pasos li strong { color: #0A4D3C; }
+
+  /* ─── CUÁNDO DERIVAR (señal de derivación) ───────────── */
+  .derivar {
+    background: #FFF8EB;
+    border: 1px solid #F0D59C;
+    border-left: 4px solid #B8860B;
+    border-radius: 0 10px 10px 0;
+    padding: 1.25rem 1.4rem;
+    margin-top: 1.75rem;
+  }
+  .derivar-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #8B6508;
+    margin-bottom: 8px;
+  }
+  .derivar-lbl::before { content: '⇆ '; }
+  .derivar-title {
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #5A4208;
+    margin-bottom: 8px;
+    line-height: 1.35;
+  }
+  .derivar-sub {
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .derivar-list {
+    margin: 0 0 10px 20px;
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.65;
+  }
+  .derivar-list li { margin-bottom: 5px; }
+  .derivar-list li strong { color: #8B6508; }
+
+  /* ─── VERSIÓN MÍNIMA VIABLE ──────────────────────────── */
+  .mvv {
+    background: #F5F2FA;
+    border: 1px solid #CFC5E5;
+    border-left: 4px solid #534AB7;
+    border-radius: 0 10px 10px 0;
+    padding: 1.25rem 1.4rem;
+    margin-top: 1.75rem;
+  }
+  .mvv-lbl {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #3C3489;
+    margin-bottom: 8px;
+  }
+  .mvv-lbl::before { content: '◆ '; }
+  .mvv-title {
+    font-family: var(--font-serif);
+    font-size: 15.5px;
+    font-weight: 600;
+    color: #2A2470;
+    margin-bottom: 8px;
+    line-height: 1.35;
+  }
+  .mvv-sub {
+    font-size: 13px;
+    color: var(--texto-2);
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .mvv-pasos {
+    margin: 10px 0 0 20px;
+    font-size: 13.5px;
+    color: var(--texto-2);
+    line-height: 1.7;
+  }
+  .mvv-pasos li { margin-bottom: 6px; }
+  .mvv-pasos li strong { color: #2A2470; }
+
   /* ─── FORO / MURO DEL CAMINO ─────────────────────────── */
   .foro {
     background: #FFFFFF;
@@ -1602,6 +1725,19 @@
         </div>
       </div>
 
+      <div class="mvv">
+        <div class="mvv-lbl">Versión mínima viable</div>
+        <div class="mvv-title">Un centro barrial mínimo · Dos horas por semana, tres voluntarios, una libreta</div>
+        <div class="mvv-sub">Un centro barrial pleno (varios días, equipo profesional, red completa) exige recursos que muchas parroquias no tienen. Esta versión mínima permite empezar con regularidad terapéutica y sin equipamiento, y crecer solo cuando lo mínimo ya es sostenible.</div>
+        <ol class="mvv-pasos">
+          <li><strong>Un día, un horario, un lugar:</strong> elegir un día de la semana (ej. martes de 15 a 17 h), un espacio físico mínimo (salón parroquial, atrio, patio) y mantenerlo seis meses sin cambios. La regularidad es más terapéutica que el equipamiento.</li>
+          <li><strong>Bebida compartida, silla y puerta abierta:</strong> el dispositivo mínimo es presencia hospitalaria. Un café o un mate según el territorio, pan o algo dulce para compartir, silla afuera, puerta abierta. Nada más es necesario para empezar: el umbral bajo lo construye la pastoral, no la infraestructura.</li>
+          <li><strong>Tres voluntarios con un referente formado:</strong> dos adultos de la comunidad acompañados por un referente con recorrido (párroco, catequista formado, pastoral social diocesana). Que haya siempre dos presentes evita el peso individual y protege del desgaste.</li>
+          <li><strong>Una libreta de registro simple:</strong> cada tarde se anota a mano quién pasó, qué conversó, qué se detectó. En seis meses esa libreta es el mapa del territorio real del dispositivo y la base para discernir el próximo paso.</li>
+          <li><strong>No ofrecer lo que no se puede sostener:</strong> no se promete derivación, dinero, alimentos ni acompañamiento diario si no está asegurado. El umbral bajo bien hecho vale más que un centro completo que cierra. La promesa incumplida daña más que la ausencia.</li>
+        </ol>
+      </div>
+
       <div class="cita">
         <div class="cita-lbl">Cita inspiradora · Gn 4,9 y §11.1.8</div>
         <div class="cita-txt">«¿Dónde está tu hermano?» (Gn 4,9, citado al margen del §11.1.8). «No hace falta tener todo resuelto para empezar. Hace falta un espacio físico —puede ser una habitación en el salón parroquial—, un grupo pequeño de personas dispuestas a recibir, y la decisión de no juzgar a quien llegue. El resto se construye caminando» (§11.1.8).</div>
@@ -1713,7 +1849,7 @@
       <div class="pl">El Actuar — Compromiso concreto</div>
       <div class="eval-q">
         <label for="evalActuar">¿Qué paso concreto hacia la apertura o el fortalecimiento del centro barrial vas a dar en las próximas semanas? Puede ser recorrer el barrio para saber quiénes están en situación de consumo y qué recursos existen, invitar a un posible acompañante par o a un voluntario con arraigo, o fijar el horario y el lugar de la primera apertura. Nombralo con nombre, tiempo y lugar. Un compromiso vago no es un compromiso.</label>
-        <textarea id="evalActuar" data-eval="actuar" placeholder="Ej.: El sábado 15 a las 17 abrimos por primera vez el salón parroquial con mate y merienda, con X y Z recibiendo en la puerta, y nos comprometemos a repetirlo todos los sábados..."></textarea>
+        <textarea id="evalActuar" data-eval="actuar" placeholder="Ej.: El sábado 15 a las 17 abrimos por primera vez el salón parroquial con café y merienda compartida, con X y Z recibiendo en la puerta, y nos comprometemos a repetirlo todos los sábados..."></textarea>
       </div>
       <div class="eval-q eval-fecha">
         <label for="evalFecha">Fecha en la que vas a volver a revisar si pudiste sostenerlo</label>
